@@ -1,0 +1,27 @@
+{
+  "name": "uniswap-io",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "engines": {
+    "node": "10.x"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "now-build": "next build",
+    "start": "next start",
+    "_prettier": "yarn prettier './**/*{.ts,.tsx,.js,.jsx}'",
+    "prettier:check": "yarn _pretty --check",
+    "prettier:fix": "yarn _pretty --write"
+  },
+  "dependencies": {
+    "next": "^9.0.6",
+    "polished": "^3.4.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6"
+  }
+}
