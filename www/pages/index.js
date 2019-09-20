@@ -138,6 +138,15 @@ const FooterActions = styled.div`
   }
 `
 
+const logoAnimation = {
+  initial: {
+    opacity: 0
+  },
+  final: {
+    opacity: 1
+  }
+}
+
 const pointAnimation = {
   initial: {
     opacity: 0,
@@ -165,7 +174,7 @@ export default function App() {
     <AppBackground>
       <AppWrapper>
         <Body>
-          <BodySection>
+          <BodySection as={motion.div} variants={logoAnimation} initial="initial" animate="final">
             <Img alt="logo" src="static/logo.svg" />
           </BodySection>
 
