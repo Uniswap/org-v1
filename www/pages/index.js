@@ -205,8 +205,22 @@ export default function App() {
 
           <BodySection>
             <ButtonsWrapper variants={buttonAnimation} initial="initial" animate="final">
-              <AButton href="https://uniswap.exchange">Swap Tokens</AButton>
-              <AButton href="https://docs.uniswap.io">Read the Docs</AButton>
+              <AButton
+                forwardedAs={motion.a}
+                whileHover={{ scale: 1.025 }}
+                whileTap={{ scale: 0.975 }}
+                href="https://uniswap.exchange"
+              >
+                Swap Tokens
+              </AButton>
+              <AButton
+                forwardedAs={motion.a}
+                whileHover={{ scale: 1.025 }}
+                whileTap={{ scale: 0.975 }}
+                href="https://docs.uniswap.io"
+              >
+                Read the Docs
+              </AButton>
             </ButtonsWrapper>
           </BodySection>
         </Body>
