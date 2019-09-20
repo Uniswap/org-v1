@@ -15,6 +15,7 @@
     "prettier:fix": "yarn _pretty --write"
   },
   "dependencies": {
+    "framer-motion": "^1.6.7",
     "next": "^9.0.6",
     "polished": "^3.4.1",
     "react": "^16.9.0",

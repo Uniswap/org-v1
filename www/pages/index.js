@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { transparentize } from 'polished'
+import { motion } from 'framer-motion'
 
 import _A from '../components/A'
 import _AButton from '../components/AButton'
@@ -82,10 +83,11 @@ const H1 = styled.h1`
   font-weight: 500;
 `
 
-const Point = styled.p`
+const Point = styled(motion.li)`
   margin: 0;
   font-size: 1rem;
   line-height: 1.5rem;
+  list-style: none;
 
   :before {
     content: '→ ';
@@ -98,13 +100,15 @@ const Point = styled.p`
   }
 `
 
-const PointsWrapper = styled.div`
+const PointsWrapper = styled(motion.ul)`
+  padding: 0;
+
   ${Point}:not(:last-child) {
     margin-bottom: 0.75rem;
   }
 `
 
-const ButtonsWrapper = styled.div`
+const ButtonsWrapper = styled(motion.div)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -134,6 +138,28 @@ const FooterActions = styled.div`
   }
 `
 
+const pointAnimation = {
+  initial: {
+    opacity: 0,
+    x: -24
+  },
+  final: {
+    opacity: 1,
+    x: 0,
+    transition: { staggerChildren: 0.075, delayChildren: 0.025 }
+  }
+}
+
+const buttonAnimation = {
+  initial: {
+    opacity: 0
+  },
+  final: {
+    opacity: 1,
+    transition: { delay: 0.025 + 0.075 * 4 }
+  }
+}
+
 export default function App() {
   return (
     <AppBackground>
@@ -148,28 +174,28 @@ export default function App() {
           </BodySection>
 
           <BodySection>
-            <PointsWrapper>
-              <Point>
+            <PointsWrapper variants={pointAnimation} initial="initial" animate="final">
+              <Point variants={pointAnimation}>
                 A <A href="https://github.com/Uniswap/contracts-vyper">simple smart contract</A> interface for swapping
                 ERC20 tokens
               </Point>
-              <Point>
+              <Point variants={pointAnimation}>
                 A{' '}
                 <A href="https://github.com/runtimeverification/verified-smart-contracts/blob/uniswap/uniswap/x-y-k.pdf">
                   formalized model
                 </A>{' '}
                 for pooling liquidity reserves
               </Point>
-              <Point>
+              <Point variants={pointAnimation}>
                 An <A href="https://github.com/Uniswap/uniswap-frontend">open source frontend</A> interface for traders
                 and liquidity providers
               </Point>
-              <Point>A commitment to free and decentralized asset exchange</Point>
+              <Point variants={pointAnimation}>A commitment to free and decentralized asset exchange</Point>
             </PointsWrapper>
           </BodySection>
 
           <BodySection>
-            <ButtonsWrapper>
+            <ButtonsWrapper variants={buttonAnimation} initial="initial" animate="final">
               <AButton href="https://uniswap.exchange">Swap Tokens</AButton>
               <AButton href="https://docs.uniswap.io">Read the Docs</AButton>
             </ButtonsWrapper>
