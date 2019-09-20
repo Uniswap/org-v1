@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "uniswap.io",
+  "alias": "uniswap.io",
   "builds": [{ "src": "www/next.config.js", "use": "@now/next" }],
   "routes": [{ "src": "/(.*)", "dest": "/www/$1" }]
 }
