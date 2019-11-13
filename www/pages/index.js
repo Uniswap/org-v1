@@ -16,7 +16,6 @@ const AppBackground = styled.div`
 const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
