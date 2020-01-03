@@ -1,2 +1,7 @@
+# gatsby files
+.cache/
+public
+
+# dependencies
 .next/
 node_modules/

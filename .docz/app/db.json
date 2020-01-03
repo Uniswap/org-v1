@@ -1,0 +1,223 @@
+{
+  "config": {
+    "title": "Coolest Library",
+    "description": "Gatsby starter with Docz and a blog for your documentation",
+    "menu": [
+      "Getting Started",
+      "Components"
+    ],
+    "version": "0.0.1",
+    "repository": "https://github.com/pedronauck/gatsby-starter-docz",
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {
+      "colors": {
+        "primary": "#3742fa"
+      }
+    },
+    "separator": "-",
+    "base": "/docs",
+    "ignore": [
+      "**/blog/**",
+      "readme.md"
+    ]
+  },
+  "entries": [
+    {
+      "key": "README 2.md",
+      "value": {
+        "id": "b6e8e5e7a4afe3c2cd68d154c0bacf0a",
+        "filepath": "README 2.md",
+        "link": "https://github.com/pedronauck/gatsby-starter-docz/edit/master/README 2.md",
+        "slug": "readme-2",
+        "route": "/docs/readme-2",
+        "name": "Readme 2",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "-look-at-the-demo",
+            "depth": 2,
+            "value": "👀 Look at  the Demo"
+          },
+          {
+            "slug": "-quick-start",
+            "depth": 2,
+            "value": "🚀 Quick start"
+          },
+          {
+            "slug": "🧐-whats-inside",
+            "depth": 2,
+            "value": "🧐 What's inside?"
+          },
+          {
+            "slug": "-learning-gatsby-and-docz",
+            "depth": 2,
+            "value": "🎓 Learning Gatsby and Docz"
+          },
+          {
+            "slug": "-deploy",
+            "depth": 2,
+            "value": "💫 Deploy"
+          }
+        ]
+      }
+    },
+    {
+      "key": "docs/Button.mdx",
+      "value": {
+        "name": "Button",
+        "menu": "Components",
+        "id": "68a6b55def5e73bf0a1b7ab2a4a79f62",
+        "filepath": "docs/Button.mdx",
+        "link": "https://github.com/pedronauck/gatsby-starter-docz/edit/master/docs/Button.mdx",
+        "slug": "docs-button",
+        "route": "/docs/docs-button",
+        "headings": [
+          {
+            "slug": "button",
+            "depth": 1,
+            "value": "Button"
+          },
+          {
+            "slug": "best-practices",
+            "depth": 3,
+            "value": "Best practices"
+          },
+          {
+            "slug": "properties",
+            "depth": 2,
+            "value": "Properties"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          },
+          {
+            "slug": "with-different-sizes",
+            "depth": 2,
+            "value": "With different sizes"
+          },
+          {
+            "slug": "with-different-colors",
+            "depth": 2,
+            "value": "With different colors"
+          },
+          {
+            "slug": "outlined",
+            "depth": 2,
+            "value": "Outlined"
+          }
+        ]
+      }
+    },
+    {
+      "key": "docs/index.mdx",
+      "value": {
+        "name": "Getting Started",
+        "route": "/docs/",
+        "id": "73498ad0e1e62a714b08085d318f9de1",
+        "filepath": "docs/index.mdx",
+        "link": "https://github.com/pedronauck/gatsby-starter-docz/edit/master/docs/index.mdx",
+        "slug": "docs-index",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "getting-started",
+            "depth": 1,
+            "value": "Getting Started"
+          },
+          {
+            "slug": "hello-world",
+            "depth": 2,
+            "value": "Hello world"
+          }
+        ]
+      }
+    }
+  ],
+  "props": [
+    {
+      "key": "docs/Button.jsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Button",
+          "methods": [],
+          "actualName": "Button",
+          "props": {
+            "scales": {
+              "type": {
+                "name": "enum",
+                "value": [
+                  {
+                    "value": "'small'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'normal'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'big'",
+                    "computed": false
+                  }
+                ]
+              },
+              "required": false,
+              "description": "This is a pretty good description for this prop",
+              "defaultValue": {
+                "value": "'normal'",
+                "computed": false
+              }
+            },
+            "kind": {
+              "type": {
+                "name": "enum",
+                "value": [
+                  {
+                    "value": "'primary'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'secondary'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'cancel'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'dark'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'gray'",
+                    "computed": false
+                  }
+                ]
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "'primary'",
+                "computed": false
+              }
+            },
+            "outline": {
+              "type": {
+                "name": "bool"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "false",
+                "computed": false
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

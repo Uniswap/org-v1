@@ -1,7 +1,15 @@
+// now.json
 {
-  "version": 2,
-  "name": "uniswap.io",
-  "alias": "uniswap.io",
-  "builds": [{ "src": "www/next.config.js", "use": "@now/next" }],
-  "routes": [{ "src": "/(.*)", "dest": "/www/$1" }]
+  "version": 2, // using version 2.0 of now.sh
+  "name": "Uniswap",
+  "alias": "uniswap.io", // remove it if you don't own a domain with now.sh
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "public" // default folder for Gatsby builds
+      }
+    }
+  ]
 }
