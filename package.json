@@ -2,7 +2,6 @@
   "name": "uniswap-io",
   "description": "Uniswap documentation site",
   "version": "0.0.1",
-  "author": "Pedro Nauck <pedronauck@gmail.com>",
   "author": "Callil Capuozzo",
   "bugs": {
     "url": "https://github.com/uniswap"
