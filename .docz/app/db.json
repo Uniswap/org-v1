@@ -1,7 +1,7 @@
 {
   "config": {
-    "title": "Coolest Library",
-    "description": "Gatsby starter with Docz and a blog for your documentation",
+    "title": "Documentation",
+    "description": "Uniswap documentation site",
     "menu": [
       "Getting Started",
       "Components"
@@ -9,29 +9,30 @@
     "version": "0.0.1",
     "repository": "https://github.com/pedronauck/gatsby-starter-docz",
     "native": false,
-    "codeSandbox": true,
-    "themeConfig": {
-      "colors": {
-        "primary": "#3742fa"
-      }
-    },
+    "themeConfig": {},
     "separator": "-",
     "base": "/docs",
     "ignore": [
       "**/blog/**",
-      "readme.md"
-    ]
+      "readme.md",
+      "changelog.md",
+      "code_of_conduct.md",
+      "contributing.md",
+      "license.md"
+    ],
+    "files": "**/*.{md,mdx}"
   },
   "entries": [
     {
-      "key": "README 2.md",
+      "key": "README.md",
       "value": {
-        "id": "b6e8e5e7a4afe3c2cd68d154c0bacf0a",
-        "filepath": "README 2.md",
-        "link": "https://github.com/pedronauck/gatsby-starter-docz/edit/master/README 2.md",
-        "slug": "readme-2",
-        "route": "/docs/readme-2",
-        "name": "Readme 2",
+        "id": "04c6e90faac2675aa89e2176d2eec7d8",
+        "filepath": "README.md",
+        "fullpath": "/Users/callil/Code/c-ufe/uniswap-io/README.md",
+        "link": "https://github.com/pedronauck/gatsby-starter-docz/edit/master/README.md",
+        "slug": "readme",
+        "route": "/readme",
+        "name": "Readme",
         "menu": "",
         "headings": [
           {
@@ -69,9 +70,10 @@
         "menu": "Components",
         "id": "68a6b55def5e73bf0a1b7ab2a4a79f62",
         "filepath": "docs/Button.mdx",
+        "fullpath": "/Users/callil/Code/c-ufe/uniswap-io/docs/Button.mdx",
         "link": "https://github.com/pedronauck/gatsby-starter-docz/edit/master/docs/Button.mdx",
         "slug": "docs-button",
-        "route": "/docs/docs-button",
+        "route": "/docs-button",
         "headings": [
           {
             "slug": "button",
@@ -115,9 +117,10 @@
       "key": "docs/index.mdx",
       "value": {
         "name": "Getting Started",
-        "route": "/docs/",
+        "route": "/docs",
         "id": "73498ad0e1e62a714b08085d318f9de1",
         "filepath": "docs/index.mdx",
+        "fullpath": "/Users/callil/Code/c-ufe/uniswap-io/docs/index.mdx",
         "link": "https://github.com/pedronauck/gatsby-starter-docz/edit/master/docs/index.mdx",
         "slug": "docs-index",
         "menu": "",
@@ -151,15 +154,15 @@
                 "name": "enum",
                 "value": [
                   {
-                    "value": "'small'",
+                    "value": "\"small\"",
                     "computed": false
                   },
                   {
-                    "value": "'normal'",
+                    "value": "\"normal\"",
                     "computed": false
                   },
                   {
-                    "value": "'big'",
+                    "value": "\"big\"",
                     "computed": false
                   }
                 ]
@@ -167,7 +170,7 @@
               "required": false,
               "description": "This is a pretty good description for this prop",
               "defaultValue": {
-                "value": "'normal'",
+                "value": "\"normal\"",
                 "computed": false
               }
             },
@@ -176,23 +179,23 @@
                 "name": "enum",
                 "value": [
                   {
-                    "value": "'primary'",
+                    "value": "\"primary\"",
                     "computed": false
                   },
                   {
-                    "value": "'secondary'",
+                    "value": "\"secondary\"",
                     "computed": false
                   },
                   {
-                    "value": "'cancel'",
+                    "value": "\"cancel\"",
                     "computed": false
                   },
                   {
-                    "value": "'dark'",
+                    "value": "\"dark\"",
                     "computed": false
                   },
                   {
-                    "value": "'gray'",
+                    "value": "\"gray\"",
                     "computed": false
                   }
                 ]
@@ -200,7 +203,7 @@
               "required": false,
               "description": "",
               "defaultValue": {
-                "value": "'primary'",
+                "value": "\"primary\"",
                 "computed": false
               }
             },
@@ -216,6 +219,28 @@
               }
             }
           }
+        }
+      ]
+    },
+    {
+      "key": "src/pages/index.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "BlogIndex",
+          "methods": [],
+          "actualName": "BlogIndex"
+        }
+      ]
+    },
+    {
+      "key": "src/gatsby-theme-docz/components/Header/index.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Header",
+          "methods": [],
+          "actualName": "Header"
         }
       ]
     }

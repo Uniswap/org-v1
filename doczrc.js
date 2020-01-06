@@ -1,13 +1,14 @@
-import * as colors from './src/utils/colors'
-
 export default {
-  title: 'Coolest Library',
+  title: 'Documentation',
   base: '/docs',
-  ignore: ['**/blog/**', 'readme.md'],
-  menu: ['Getting Started', 'Components'],
-  themeConfig: {
-    colors: {
-      primary: colors.primary,
-    },
-  },
+  ignore: [
+    '**/blog/**',
+    'readme.md',
+    'changelog.md',
+    'code_of_conduct.md',
+    'contributing.md',
+    'license.md'
+  ],
+  files: '**/*.{md,mdx}',
+  menu: ['Getting Started', 'Components']
 }

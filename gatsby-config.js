@@ -1,21 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: `Coolest Library`,
-    author: `Pedro Nauck`,
-    description: `Gatsby starter with Docz and a blog for your documentation`,
+    title: `Uniswap`,
+    author: `Callil Capuozzo`,
+    description: `Gatsby starter with Docz and a blog for your documentation`
   },
-  __experimentalThemes: [
-    {
-      resolve: 'gatsby-theme-docz',
-    },
-  ],
   plugins: [
+    "gatsby-theme-docz",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/blog`,
-        name: `blog`,
-      },
+        name: `blog`
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -24,20 +20,20 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
-            },
+              maxWidth: 590
+            }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
+              wrapperStyle: `margin-bottom: 1.0725rem`
+            }
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
-      },
+          `gatsby-remark-smartypants`
+        ]
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -46,8 +42,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-  ],
+        pathToConfigModule: `src/utils/typography`
+      }
+    }
+  ]
 }

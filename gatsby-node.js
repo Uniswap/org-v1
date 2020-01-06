@@ -8,7 +8,8 @@ exports.createPages = ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
+          sort: { order: DESC, fields: [frontmatter___date] }
+          filter: { fileAbsolutePath: { regex: "/blog/" } }
           limit: 1000
         ) {
           edges {
@@ -40,8 +41,8 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug,
           previous,
-          next,
-        },
+          next
+        }
       })
     })
 
@@ -56,7 +57,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: `slug`,
-      value: `/blog${value}`,
+      value: `/blog${value}`
     })
   }
 }

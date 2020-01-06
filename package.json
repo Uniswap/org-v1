@@ -1,15 +1,16 @@
 {
-  "name": "@pedronauck/gatsby-starter-docz",
-  "description": "Gatsby starter with Docz and a blog for your documentation",
+  "name": "uniswap-io",
+  "description": "Uniswap documentation site",
   "version": "0.0.1",
   "author": "Pedro Nauck <pedronauck@gmail.com>",
+  "author": "Callil Capuozzo",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/uniswap"
   },
   "dependencies": {
-    "docz": "1.0.3",
+    "docz": "^2.2.0",
     "docz-theme-default": "1.0.3",
-    "gatsby": "^2.3.23",
+    "gatsby": "^2.18.17",
     "gatsby-image": "^2.0.39",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
@@ -21,12 +22,12 @@
     "gatsby-remark-responsive-iframe": "^2.1.1",
     "gatsby-remark-smartypants": "^2.0.9",
     "gatsby-source-filesystem": "^2.0.29",
-    "gatsby-theme-docz": "1.0.3",
+    "gatsby-theme-docz": "^2.2.0",
     "gatsby-transformer-remark": "^2.3.8",
     "gatsby-transformer-sharp": "^2.1.18",
     "prismjs": "^1.16.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.19",
     "rebass": "^3.1.0",
@@ -51,7 +52,6 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "now-build": "gatsby build",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve"

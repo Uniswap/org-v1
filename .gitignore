@@ -1,7 +1,11 @@
 # gatsby files
 .cache/
+.docz/
 public
 
 # dependencies
 .next/
 node_modules/
+
+#misc
+**/.DS_Store

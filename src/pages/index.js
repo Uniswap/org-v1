@@ -1,11 +1,11 @@
-import React from 'react'
-import { Box, Heading } from 'rebass'
-import { Link, graphql } from 'gatsby'
-import styled from 'styled-components'
+import React from "react"
+import { Box, Heading } from "rebass"
+import { Link, graphql } from "gatsby"
+import styled from "styled-components"
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import { rhythm } from "../utils/typography"
 
 const PostItem = styled(Box)`
   & ~ & {
@@ -42,7 +42,7 @@ class BlogIndex extends React.Component {
               <small>{node.frontmatter.date}</small>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: node.frontmatter.description || node.excerpt
                 }}
               />
             </PostItem>
@@ -62,7 +62,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+    ) {
       edges {
         node {
           excerpt
