@@ -1,5 +1,5 @@
-import React from "react"
-import Layout from "../components/layout"
+import React from 'react'
+import Layout from '../components/layout'
 
 const DocsLayout = ({ children }) => {
   return (
@@ -8,7 +8,7 @@ const DocsLayout = ({ children }) => {
         style={{
           // Layout styling
           margin: `10%`,
-          backgroundColor: `#fafafa`,
+          backgroundColor: `#fafafa`
         }}
       >
         {children}
