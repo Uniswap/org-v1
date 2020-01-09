@@ -1,43 +1,45 @@
+/**
+ * Layout component that queries for data
+ * with Gatsby's useStaticQuery component
+ *
+ * See: https://www.gatsbyjs.org/docs/use-static-query/
+ */
+
 import React from "react"
-import { navigate } from "gatsby"
-import { Button, Box, Heading } from "rebass"
-import { ThemeProvider } from "styled-components"
-import styled from "styled-components"
+import { useStaticQuery, graphql } from "gatsby"
 
-import theme from "../utils/theme"
-import { rhythm } from "../utils/typography"
+import { createGlobalStyle } from "styled-components"
 import Header from "./header"
+import Footer from "./footer"
 
-const Container = styled(Box)`
-  max-width: 720px;
-  margin: 0 auto;
+import "./layout.css"
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0px auto;
+    max-width: 960px;
+  }
 `
 
-class Layout extends React.Component {
-  render() {
-    const { children } = this.props
-    return (
-      <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <Header />
-          <Container>
-            <main>{children}</main>
-            <hr
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: rhythm(1)
-              }}
-            />
-            <Box as="footer" mb={4}>
-              © {new Date().getFullYear()}, Built with
-              {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </Box>
-          </Container>
-        </React.Fragment>
-      </ThemeProvider>
-    )
-  }
+const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query GuidesSiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+  return (
+    <React.Fragment>
+      <GlobalStyle />
+      <Header siteTitle={data.site.siteMetadata.title} />
+      {children}
+      <Footer />
+    </React.Fragment>
+  )
 }
 
 export default Layout

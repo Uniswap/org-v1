@@ -17,7 +17,7 @@ function Dropdown(props) {
   return <ul>{items}</ul>
 }
 
-const Header = props => {
+const Footer = props => {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -37,7 +37,7 @@ const Header = props => {
   `)
 
   return (
-    <header
+    <footer
       style={{
         marginBottom: `1.45rem`,
       }}
@@ -60,21 +60,12 @@ const Header = props => {
           return (
             <>
               <p>{item.name}</p>
-              {/* <Dropdown links={item.sublinks} /> */}
+              <Dropdown links={item.sublinks} />
             </>
           )
         })}
       </div>
-    </header>
+    </footer>
   )
 }
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
+export default Footer
