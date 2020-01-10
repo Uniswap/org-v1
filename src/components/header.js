@@ -1,21 +1,50 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 
 function Dropdown(props) {
   const items = props.links.map(node => {
     const title = node.name
     return (
-      <li>
-        <Link key={node.name} to={node.link}>
-          {title}
-        </Link>
+      <li key={node.name}>
+        <Link to={node.link}>{title}</Link>
       </li>
     )
   })
   return <ul>{items}</ul>
 }
+
+const StyledHeader = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
+  font-size: 1.25rem;
+  margin-bottom: 7rem;
+`
+
+const StyledNav = styled.nav`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-items: baseline;
+`
+
+const StyledNavElement = styled.div`
+  margin-left: 1.5rem;
+`
+
+const StyledTradeLink = styled.a`
+  padding: 0.5rem 1rem;
+  background-color: black;
+  text-decoration: none;
+  color: white;
+  border-radius: 100px;
+  margin-left: 1.5rem;
+`
 
 const Header = props => {
   const data = useStaticQuery(graphql`
@@ -37,44 +66,36 @@ const Header = props => {
   `)
 
   return (
-    <header
-      style={{
-        marginBottom: `1.45rem`,
-      }}
-    >
-      <div
+    <StyledHeader>
+      <Link
+        to="/"
         style={{
-          display: "flex",
-          flexDirection: "row",
+          textDecoration: `none`
         }}
       >
-        <Link
-          to="/"
-          style={{
-            textDecoration: `none`,
-          }}
-        >
-          {data.title}
-        </Link>
+        {data.site.siteMetadata.title}
+      </Link>
+      <StyledNav>
         {data.site.siteMetadata.menulinks.map(item => {
           return (
-            <>
+            <StyledNavElement key={item.name}>
               <p>{item.name}</p>
               {/* <Dropdown links={item.sublinks} /> */}
-            </>
+            </StyledNavElement>
           )
         })}
-      </div>
-    </header>
+        <StyledTradeLink>Trade Tokens</StyledTradeLink>
+      </StyledNav>
+    </StyledHeader>
   )
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  siteTitle: PropTypes.string
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: ``
 }
 
 export default Header

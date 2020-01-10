@@ -1,7 +1,7 @@
 import React from 'react'
-import Layout from '../components/layout'
+import Layout from '.'
 
-const DocsLayout = ({ children }) => {
+const Guides = ({ children }) => {
   return (
     <Layout>
       <div
@@ -17,4 +17,4 @@ const DocsLayout = ({ children }) => {
   )
 }
 
-export default DocsLayout
+export default Guides
