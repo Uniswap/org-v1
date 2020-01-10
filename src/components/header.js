@@ -42,6 +42,7 @@ const StyledNavElement = styled.div`
 
 const StyledNavImage = styled.img`
   margin: 0;
+  width: 160px;
 `
 
 const StyledTradeLink = styled.a`

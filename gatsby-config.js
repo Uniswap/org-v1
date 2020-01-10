@@ -75,7 +75,6 @@ module.exports = {
           guides: require.resolve(`./src/layouts/guides`)
         },
         gatsbyRemarkPlugins: [
-          `gatsby-remark-code-buttons`,
           `gatsby-remark-code-titles`,
           `gatsby-remark-autolink-headers`,
           {

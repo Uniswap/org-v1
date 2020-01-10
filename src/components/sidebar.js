@@ -13,28 +13,25 @@ const StyledSidebar = styled.span`
   flex-wrap: wrap;
   position: -webkit-sticky;
   position: sticky;
-  top: 2rem;
+  top: 5rem;
   align-self: flex-start;
   color: #2172e5;
-  padding-left: 4rem;
+  padding: 0 4rem;
   font-size: 1.125rem;
 `
 
 const StyledSection = styled(Collapsible)`
-  /* margin-bottom: 1.25rem; */
-
-  .Collapsible__trigger {
-    cursor: pointer;
-  }
+  opacity: ${({ open }) => (open ? 1 : 0.6)};
 `
 
 const StyledLink = styled(Link)`
   font-weight: ${({ active }) => active && 600};
-  background-color: ${({ active }) => active && '#F7F8FA'};
+  /* background-color: ${({ active }) => active && '#F7F8FA'}; */
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
   margin: 0;
+  opacity: ${({ active }) => (active ? 1 : 0.6)};
   color: #2172e5;
 `
 
@@ -48,9 +45,10 @@ const StyledLisItem = styled.li`
   margin-left: 1rem;
 `
 
-const StyledHeader = styled.h2`
+const StyledHeader = styled.p`
   color: black;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
   /* padding-bottom: 1rem; */
 `
 
@@ -120,6 +118,7 @@ const SideBar = props => {
       {data.topNav.edges.map(({ node }) => {
         const title = node.name
           .replace('(?m)^[\\d-]*\\s*', '')
+          .replace(/\d/g, '')
           .replace(/-/g, ' ')
           .replace(/(^|\s)\S/g, function(t) {
             return t.toUpperCase()
