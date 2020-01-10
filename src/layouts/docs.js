@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Layout from '.'
 import SideBar from '../components/sidebar'
 import styled from 'styled-components'
-import { InView } from 'react-intersection-observer'
+import scrollTo from 'gatsby-plugin-smoothscroll'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -11,21 +11,25 @@ import Slugger from 'github-slugger'
 
 const slugger = new Slugger()
 
+const StyledHeadingListElement = styled.li`
+  margin-left: ${({ depth }) => depth && depth / 2 + 'rem'};
+`
+
 const StyledHeadingLink = styled.a`
   text-decoration: none;
-  margin-left: ${({ depth }) => depth && depth / 2 + 'rem'};
-  color: #2172e5;
+  color: black;
+  cursor: pointer;
 `
 
 const Heading = ({ heading }) => {
   const slug = slugger.slug(heading.value)
   slugger.reset()
   return (
-    <li key={heading.value}>
-      <StyledHeadingLink href={'#' + slug} depth={heading.depth}>
+    <StyledHeadingListElement key={heading.value} depth={heading.depth}>
+      <StyledHeadingLink onClick={() => scrollTo('#' + slug)}>
         {heading.value}
       </StyledHeadingLink>
-    </li>
+    </StyledHeadingListElement>
   )
 }
 
@@ -37,10 +41,10 @@ const StyledTOC = styled.ul`
   position: sticky;
   top: 3rem;
   align-self: flex-start;
-  color: #2172e5;
-  min-width: 256px;
+  max-width: 256px;
   font-size: 0.75rem;
-  /* padding-left: 3rem; */
+  margin-top: 6rem;
+  margin-right: 3rem;
   opacity: 0.6;
   transition: opacity 0.3s ease;
   list-style: none;
@@ -76,7 +80,12 @@ const StyledDocs = styled.div`
 const StyledMDX = styled.div`
   min-width: 756px;
   max-width: 756px;
-  margin-top: 4rem;
+  margin-top: 5.5rem;
+  padding: 0 2rem;
+  margin-bottom: 3rem;
+  a {
+    color: #2172e5;
+  }
 `
 
 const StyledDocsNavWrapper = styled.ul`
@@ -85,15 +94,27 @@ const StyledDocsNavWrapper = styled.ul`
   justify-content: space-between;
   list-style: none;
   margin: 0;
+  margin-top: 2rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 `
 const StyledDocsNav = styled.li`
-  font-size: 1.25rem;
-  border: 1px solid black;
-  border-radius: 0.25rem;
-  padding: 1rem 1.5rem;
-
   a {
-    text-decoration: none;
+    color: black;
+  }
+`
+
+const StyledLink = styled(Link)`
+  font-size: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  small {
+    font-size: 0.75rem;
+    opacity: 0.6;
   }
 `
 
@@ -146,7 +167,7 @@ const Docs = props => {
 
   return (
     <Layout>
-      <StyledDocs>
+      <StyledDocs id="docs-header">
         <SideBar parent={'/docs/'} {...props} />
         <StyledMDX>
           {props.children}
@@ -156,16 +177,26 @@ const Docs = props => {
                 <StyledDocsNavWrapper key={node.id}>
                   <StyledDocsNav>
                     {previous && (
-                      <Link to={'/docs/' + previous.fields.slug} rel="prev">
-                        ← {previous.frontmatter.title}
-                      </Link>
+                      <StyledLink
+                        style={{ alignItems: 'flex-end' }}
+                        to={'/docs/' + previous.fields.slug}
+                        rel="prev"
+                      >
+                        <small>Previous</small>
+                        <span>← {previous.frontmatter.title}</span>
+                      </StyledLink>
                     )}
                   </StyledDocsNav>
                   <StyledDocsNav>
                     {next && (
-                      <Link to={'/docs/' + next.fields.slug} rel="next">
-                        {next.frontmatter.title} →
-                      </Link>
+                      <StyledLink
+                        style={{ alignItems: 'flex-start' }}
+                        to={'/docs/' + next.fields.slug}
+                        rel="next"
+                      >
+                        <small>Next</small>
+                        <span>{next.frontmatter.title} →</span>
+                      </StyledLink>
                     )}
                   </StyledDocsNav>
                 </StyledDocsNavWrapper>

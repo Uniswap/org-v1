@@ -4,6 +4,8 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
+import uni from '../images/uni.svg'
+
 function Dropdown(props) {
   const items = props.links.map(node => {
     const title = node.name
@@ -22,7 +24,8 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   padding: 2rem;
   font-size: 1.25rem;
-  margin-bottom: 7rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `
 
 const StyledNav = styled.nav`
@@ -35,6 +38,10 @@ const StyledNav = styled.nav`
 
 const StyledNavElement = styled.div`
   margin-left: 1.5rem;
+`
+
+const StyledNavImage = styled.img`
+  margin: 0;
 `
 
 const StyledTradeLink = styled.a`
@@ -73,13 +80,13 @@ const Header = props => {
           textDecoration: `none`
         }}
       >
-        {data.site.siteMetadata.title}
+        <StyledNavImage src={uni} alt="uni logo" />
       </Link>
       <StyledNav>
         {data.site.siteMetadata.menulinks.map(item => {
           return (
             <StyledNavElement key={item.name}>
-              <p>{item.name}</p>
+              <>{item.name}</>
               {/* <Dropdown links={item.sublinks} /> */}
             </StyledNavElement>
           )

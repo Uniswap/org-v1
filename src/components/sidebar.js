@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import scrollTo from 'gatsby-plugin-smoothscroll'
+import Collapsible from 'react-collapsible'
 
 import { useStaticQuery, graphql } from 'gatsby'
+import './sidebar.css'
 
 const StyledSidebar = styled.span`
   display: flex;
@@ -10,19 +13,19 @@ const StyledSidebar = styled.span`
   flex-wrap: wrap;
   position: -webkit-sticky;
   position: sticky;
-  top: 3rem;
+  top: 2rem;
   align-self: flex-start;
   color: #2172e5;
-  padding-left: 2rem;
+  padding-left: 4rem;
+  font-size: 1.125rem;
 `
 
-const StyledSection = styled.section`
-  margin-bottom: 1.25rem;
-`
+const StyledSection = styled(Collapsible)`
+  /* margin-bottom: 1.25rem; */
 
-const StyledSectionHeader = styled.p`
-  font-weight: 500;
-  margin-bottom: 0.75rem !important;
+  .Collapsible__trigger {
+    cursor: pointer;
+  }
 `
 
 const StyledLink = styled(Link)`
@@ -45,9 +48,9 @@ const StyledLisItem = styled.li`
   margin-left: 1rem;
 `
 
-const StyledHeader = styled.h3`
+const StyledHeader = styled.h2`
   color: black;
-  /* margin-top: -3rem; */
+  margin-bottom: 3rem;
   /* padding-bottom: 1rem; */
 `
 
@@ -58,6 +61,7 @@ function List(props) {
       return (
         <StyledLisItem key={node.id}>
           <StyledLink
+            onClick={() => scrollTo('#docs-header')}
             active={props.path === `/docs` + node.fields.slug}
             to={`/docs/` + node.fields.slug}
           >
@@ -120,11 +124,21 @@ const SideBar = props => {
           .replace(/(^|\s)\S/g, function(t) {
             return t.toUpperCase()
           })
+        const dirOpen = node.name === props.path.split('/')[2]
         return (
-          <StyledSection key={node.id}>
-            <StyledSectionHeader>{title}</StyledSectionHeader>
+          <StyledSection
+            key={node.id}
+            trigger={title}
+            transitionTime={250}
+            open={dirOpen}
+            easing="ease"
+          >
             <List data={data} parent={node.name} path={props.path} />
           </StyledSection>
+          // <StyledSection key={node.id}>
+          //   <StyledSectionHeader>{title}</StyledSectionHeader>
+          //   <List data={data} parent={node.name} path={props.path} />
+          // </StyledSection>
         )
       })}
     </StyledSidebar>

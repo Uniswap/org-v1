@@ -48,7 +48,6 @@ const menu = [
     sublinks: [
       { name: 'About', link: '/' },
       { name: 'Team', link: '/' },
-      { name: 'Community', link: '/' },
       { name: 'Contact', link: '/' },
       { name: 'Guides', link: '/' },
       { name: 'FAQ', link: '/' }
@@ -64,6 +63,7 @@ module.exports = {
     menulinks: menu
   },
   plugins: [
+    `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -75,14 +75,15 @@ module.exports = {
           guides: require.resolve(`./src/layouts/guides`)
         },
         gatsbyRemarkPlugins: [
+          `gatsby-remark-code-buttons`,
+          `gatsby-remark-code-titles`,
+          `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
               showLineNumbers: true
             }
           },
-          `gatsby-remark-code-buttons`,
-          `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -138,6 +139,12 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
+      }
+    },
+    {
+      resolve: `gatsby-plugin-scroll-indicator`,
+      options: {
+        color: `#2172e5`
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

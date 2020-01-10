@@ -11,6 +11,23 @@
 require('prismjs/themes/prism.css')
 // require('prismjs/themes/prism-solarizedlight.css')
 require('prismjs/plugins/line-numbers/prism-line-numbers.css')
-exports.shouldUpdateScroll = () => {
+
+const transitionDelay = 50
+
+exports.shouldUpdateScroll = ({
+  routerProps: { location },
+  getSavedScrollPosition
+}) => {
+  if (location.action === 'PUSH') {
+    // window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
+    window.scrollTo(0, 0)
+  }
+  // else {
+  //   const savedPosition = getSavedScrollPosition(location)
+  //   window.setTimeout(
+  //     () => window.scrollTo(...(savedPosition || [0, 0])),
+  //     transitionDelay
+  //   )
+  // }
   return false
 }
