@@ -8,11 +8,13 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
 import './layout.css'
+
+import bg from '../images/bg.jpg'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -31,6 +33,13 @@ const GlobalStyle = createGlobalStyle`
     margin-top: 2rem !important;
   }
 `
+const StyledNavImage = styled.img`
+  position: fixed;
+  top: -300px;
+  right: -100px;
+  margin: 0;
+  z-index: -999;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -45,6 +54,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
+      <StyledNavImage src={bg} alt="bg" />
       <Header siteTitle={data.site.siteMetadata.title} />
       {children}
       <Footer />

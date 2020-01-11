@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import Collapsible from 'react-collapsible'
+import Search from '../components/search'
 
 import { useStaticQuery, graphql } from 'gatsby'
 import './sidebar.css'
@@ -17,6 +18,7 @@ const StyledSidebar = styled.span`
   align-self: flex-start;
   color: #2172e5;
   padding: 0 4rem;
+  min-width: 256px;
   font-size: 1.125rem;
 `
 
@@ -115,6 +117,7 @@ const SideBar = props => {
   return (
     <StyledSidebar>
       <StyledHeader>{'Documentation'}</StyledHeader>
+      <Search />
       {data.topNav.edges.map(({ node }) => {
         const title = node.name
           .replace('(?m)^[\\d-]*\\s*', '')
