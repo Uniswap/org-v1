@@ -25,15 +25,12 @@ const StyledHeader = styled.header`
   padding: 2rem;
   font-size: 1.25rem;
   margin-bottom: 3rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey3};
 `
 
 const StyledNav = styled.nav`
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  align-items: baseline;
 `
 
 const StyledNavElement = styled.div`
@@ -47,11 +44,12 @@ const StyledNavImage = styled.img`
 
 const StyledTradeLink = styled.a`
   padding: 0.5rem 1rem;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.pink1};
   text-decoration: none;
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
   border-radius: 100px;
   margin-left: 1.5rem;
+  max-height: 48px;
 `
 
 const Header = props => {

@@ -22,8 +22,8 @@ const StyledFooter = styled.footer`
   margin-top: 4rem;
   display: flex;
   justify-content: space-evenly;
-  background-color: black;
-  color: white;
+  background-color: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.colors.white};
 `
 
 const StyledSection = styled.section`
@@ -58,7 +58,7 @@ const StyledFooterLink = styled.li`
   margin-bottom: 1rem;
   a {
     text-decoration: none;
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
   }
 `
 

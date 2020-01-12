@@ -16,10 +16,10 @@ const StyledSidebar = styled.span`
   position: sticky;
   top: 5rem;
   align-self: flex-start;
-  color: #2172e5;
+  color: ${({ theme }) => theme.colors.link};
   padding: 0 4rem;
   min-width: 256px;
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
 `
 
 const StyledSection = styled(Collapsible)`
@@ -34,7 +34,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   margin: 0;
   opacity: ${({ active }) => (active ? 1 : 0.6)};
-  color: #2172e5;
+  color: ${({ theme }) => theme.colors.link};
 `
 
 const StyledList = styled.ul`

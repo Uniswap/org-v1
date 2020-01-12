@@ -19,7 +19,7 @@ const StyledMDX = styled.div`
   padding: 0;
   margin-bottom: 3rem;
   a {
-    color: #2172e5;
+    color: ${({ theme }) => theme.colors.link};
   }
 
   h1 {
