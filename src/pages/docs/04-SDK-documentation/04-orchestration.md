@@ -3,63 +3,13 @@ title: Orchestration
 index: 5
 ---
 
-
 # Orchestration
 
 Orchestration functions are plain-english wrappers for the function defined in [Data](data.md) and [Computation](https://github.com/Uniswap/docs/tree/d81e772a2b536e59f7887e7ac82a4bc568e69267/sdk-documentation/Computation.md).
 
-* tradeExactEthForTokensWithData
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeExactEthForTokens
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeEthForExactTokensWithData
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeEthForExactTokens
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeExactTokensForEthWithData
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeExactTokensForEth
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeTokensForExactEthWithData
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeTokensForExactEth
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeExactTokensForTokensWithData
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeExactTokensForTokens
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeTokensForExactTokensWithData
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-* tradeTokensForExactTokens
-  * Function Signature
-  * Input Parameters
-  * Example Usage
-
-{% hint style="info" %}
+<Info>
 Functions with the `WithData` suffix are synchronous, and require token reserves to be passed in as arguments. Functions without the suffix are asychronous, and require token addresses to be passed in as arguments.
-{% endhint %}
+</Info>
 
 ## tradeExactEthForTokensWithData
 
@@ -68,20 +18,26 @@ The function facilitates trading an exact amount of ETH for a specified token.
 ### Function Signature
 
 ```typescript
-export function tradeExactEthForTokensWithData(reserves: OptionalReserves, ethAmount: BigNumberish): TradeDetails
+export function tradeExactEthForTokensWithData(
+  reserves: OptionalReserves,
+  ethAmount: BigNumberish
+): TradeDetails
 ```
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| reserves | `OptionalReserves` | Reserves data for the output token. |
-| ethAmount | `BigNumberish` | The input amount of ETH. |
+| Parameter | Type               | Description                         |
+| :-------- | :----------------- | :---------------------------------- |
+| reserves  | `OptionalReserves` | Reserves data for the output token. |
+| ethAmount | `BigNumberish`     | The input amount of ETH.            |
 
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = tradeExactEthForTokensWithData(reserves, '1000000000000000000')
+const tradeDetails: TradeDetails = tradeExactEthForTokensWithData(
+  reserves,
+  '1000000000000000000'
+)
 ```
 
 ## tradeExactEthForTokens
@@ -100,16 +56,19 @@ export async function tradeExactEthForTokens(
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| tokenAddress | `string` | Address of output token. |
-| ethAmount | `BigNumberish` | The input amount of ETH. |
+| Parameter          | Type                | Description                                                                                                                                                                                                                            |
+| :----------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tokenAddress       | `string`            | Address of output token.                                                                                                                                                                                                               |
+| ethAmount          | `BigNumberish`      | The input amount of ETH.                                                                                                                                                                                                               |
 | chainIdOrProvider? | `ChainIdOrProvider` | A supported chain id \(`1`, `3`, `4`, or `42`\), or an [underlying web3 provider](https://docs.ethers.io/ethers.js/html/api-providers.html#web3provider-inherits-from-jsonrpcprovider) connected to a chain with a supported chain id. |
 
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = await tradeExactEthForTokens(tokenAddress, '1000000000000000000')
+const tradeDetails: TradeDetails = await tradeExactEthForTokens(
+  tokenAddress,
+  '1000000000000000000'
+)
 ```
 
 ## tradeEthForExactTokensWithData
@@ -119,20 +78,26 @@ The function facilitates trading ETH for an exact amount of a specified token.
 ### Function Signature
 
 ```typescript
-export function tradeEthForExactTokensWithData(reserves: OptionalReserves, tokenAmount: BigNumberish): TradeDetails
+export function tradeEthForExactTokensWithData(
+  reserves: OptionalReserves,
+  tokenAmount: BigNumberish
+): TradeDetails
 ```
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| reserves | `OptionalReserves` | Reserves data for the output token. |
-| tokenAmount | `BigNumberish` | The output amount of tokens. |
+| Parameter   | Type               | Description                         |
+| :---------- | :----------------- | :---------------------------------- |
+| reserves    | `OptionalReserves` | Reserves data for the output token. |
+| tokenAmount | `BigNumberish`     | The output amount of tokens.        |
 
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = tradeEthForExactTokensWithData(reserves, '1000000000000000000')
+const tradeDetails: TradeDetails = tradeEthForExactTokensWithData(
+  reserves,
+  '1000000000000000000'
+)
 ```
 
 ## tradeEthForExactTokens
@@ -151,16 +116,19 @@ export async function tradeEthForExactTokens(
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| tokenAddress | `string` | Address of output token. |
-| tokenAmount | `BigNumberish` | The output amount of tokens. |
+| Parameter          | Type                | Description                                                                                                                                                                                                                            |
+| :----------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tokenAddress       | `string`            | Address of output token.                                                                                                                                                                                                               |
+| tokenAmount        | `BigNumberish`      | The output amount of tokens.                                                                                                                                                                                                           |
 | chainIdOrProvider? | `ChainIdOrProvider` | A supported chain id \(`1`, `3`, `4`, or `42`\), or an [underlying web3 provider](https://docs.ethers.io/ethers.js/html/api-providers.html#web3provider-inherits-from-jsonrpcprovider) connected to a chain with a supported chain id. |
 
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = await tradeEthForExactTokens(tokenAddress, '1000000000000000000')
+const tradeDetails: TradeDetails = await tradeEthForExactTokens(
+  tokenAddress,
+  '1000000000000000000'
+)
 ```
 
 ## tradeExactTokensForEthWithData
@@ -170,20 +138,26 @@ The function facilitates trading an exact amount of a specified token for ETH.
 ### Function Signature
 
 ```typescript
-export function tradeExactTokensForEthWithData(reserves: OptionalReserves, tokenAmount: BigNumberish): TradeDetails
+export function tradeExactTokensForEthWithData(
+  reserves: OptionalReserves,
+  tokenAmount: BigNumberish
+): TradeDetails
 ```
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| reserves | `OptionalReserves` | Reserves data for the input token. |
-| tokenAmount | `BigNumberish` | The input amount of tokens. |
+| Parameter   | Type               | Description                        |
+| :---------- | :----------------- | :--------------------------------- |
+| reserves    | `OptionalReserves` | Reserves data for the input token. |
+| tokenAmount | `BigNumberish`     | The input amount of tokens.        |
 
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = tradeExactTokensForEthWithData(reserves, '1000000000000000000')
+const tradeDetails: TradeDetails = tradeExactTokensForEthWithData(
+  reserves,
+  '1000000000000000000'
+)
 ```
 
 ## tradeExactTokensForEth
@@ -202,16 +176,19 @@ export async function tradeExactTokensForEth(
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| tokenAddress | `string` | Address of input token. |
-| tokenAmount | `BigNumberish` | The input amount of tokens. |
+| Parameter          | Type                | Description                                                                                                                                                                                                                            |
+| :----------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tokenAddress       | `string`            | Address of input token.                                                                                                                                                                                                                |
+| tokenAmount        | `BigNumberish`      | The input amount of tokens.                                                                                                                                                                                                            |
 | chainIdOrProvider? | `ChainIdOrProvider` | A supported chain id \(`1`, `3`, `4`, or `42`\), or an [underlying web3 provider](https://docs.ethers.io/ethers.js/html/api-providers.html#web3provider-inherits-from-jsonrpcprovider) connected to a chain with a supported chain id. |
 
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = await tradeExactTokensForEth(tokenAddress, '1000000000000000000')
+const tradeDetails: TradeDetails = await tradeExactTokensForEth(
+  tokenAddress,
+  '1000000000000000000'
+)
 ```
 
 ## tradeTokensForExactEthWithData
@@ -221,20 +198,26 @@ The function facilitates trading a specified token for an exact amount of ETH.
 ### Function Signature
 
 ```typescript
-export function tradeTokensForExactEthWithData(reserves: OptionalReserves, ethAmount: BigNumberish): TradeDetails
+export function tradeTokensForExactEthWithData(
+  reserves: OptionalReserves,
+  ethAmount: BigNumberish
+): TradeDetails
 ```
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| reserves | `OptionalReserves` | Reserves data for the input token. |
-| ethAmount | `BigNumberish` | The outpute amount of ETH. |
+| Parameter | Type               | Description                        |
+| :-------- | :----------------- | :--------------------------------- |
+| reserves  | `OptionalReserves` | Reserves data for the input token. |
+| ethAmount | `BigNumberish`     | The outpute amount of ETH.         |
 
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = tradeTokensForExactEthWithData(reserves, '1000000000000000000')
+const tradeDetails: TradeDetails = tradeTokensForExactEthWithData(
+  reserves,
+  '1000000000000000000'
+)
 ```
 
 ## tradeTokensForExactEth
@@ -253,16 +236,19 @@ export async function tradeTokensForExactEth(
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| tokenAddress | `string` | Address of input token. |
-| ethAmount | `BigNumberish` | The output amount of ETH. |
+| Parameter          | Type                | Description                                                                                                                                                                                                                            |
+| :----------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tokenAddress       | `string`            | Address of input token.                                                                                                                                                                                                                |
+| ethAmount          | `BigNumberish`      | The output amount of ETH.                                                                                                                                                                                                              |
 | chainIdOrProvider? | `ChainIdOrProvider` | A supported chain id \(`1`, `3`, `4`, or `42`\), or an [underlying web3 provider](https://docs.ethers.io/ethers.js/html/api-providers.html#web3provider-inherits-from-jsonrpcprovider) connected to a chain with a supported chain id. |
 
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = await tradeTokensForExactEth(tokenAddress, '1000000000000000000')
+const tradeDetails: TradeDetails = await tradeTokensForExactEth(
+  tokenAddress,
+  '1000000000000000000'
+)
 ```
 
 ## tradeExactTokensForTokensWithData
@@ -281,17 +267,19 @@ export function tradeExactTokensForTokensWithData(
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| reservesInput | `OptionalReserves` | Reserves data for the input token. |
+| Parameter      | Type               | Description                         |
+| :------------- | :----------------- | :---------------------------------- |
+| reservesInput  | `OptionalReserves` | Reserves data for the input token.  |
 | reservesOutput | `OptionalReserves` | Reserves data for the output token. |
-| tokenAmount | `BigNumberish` | The input amount of tokens. |
+| tokenAmount    | `BigNumberish`     | The input amount of tokens.         |
 
 ### Example Usage
 
 ```typescript
 const tradeDetails: TradeDetails = tradeExactTokensForTokensWithData(
-    reservesInput, reservesOutput, '1000000000000000000'
+  reservesInput,
+  reservesOutput,
+  '1000000000000000000'
 )
 ```
 
@@ -312,18 +300,20 @@ export async function tradeExactTokensForTokens(
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| tokenAddressInput | `string` | Address of input token. |
-| tokenAddressOutput | `string` | Address of output token. |
-| tokenAmount | `BigNumberish` | The input amount of tokens. |
+| Parameter          | Type                | Description                                                                                                                                                                                                                            |
+| :----------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tokenAddressInput  | `string`            | Address of input token.                                                                                                                                                                                                                |
+| tokenAddressOutput | `string`            | Address of output token.                                                                                                                                                                                                               |
+| tokenAmount        | `BigNumberish`      | The input amount of tokens.                                                                                                                                                                                                            |
 | chainIdOrProvider? | `ChainIdOrProvider` | A supported chain id \(`1`, `3`, `4`, or `42`\), or an [underlying web3 provider](https://docs.ethers.io/ethers.js/html/api-providers.html#web3provider-inherits-from-jsonrpcprovider) connected to a chain with a supported chain id. |
 
 ### Example Usage
 
 ```typescript
 const tradeDetails: TradeDetails = await tradeExactTokensForTokens(
-    tokenAddressInput, tokenAddressOutput, '1000000000000000000'
+  tokenAddressInput,
+  tokenAddressOutput,
+  '1000000000000000000'
 )
 ```
 
@@ -343,17 +333,19 @@ export function tradeTokensForExactTokensWithData(
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| reservesInput | `OptionalReserves` | Reserves data for the input token. |
+| Parameter      | Type               | Description                         |
+| :------------- | :----------------- | :---------------------------------- |
+| reservesInput  | `OptionalReserves` | Reserves data for the input token.  |
 | reservesOutput | `OptionalReserves` | Reserves data for the output token. |
-| tokenAmount | `BigNumberish` | The output amount of tokens. |
+| tokenAmount    | `BigNumberish`     | The output amount of tokens.        |
 
 ### Example Usage
 
 ```typescript
 const tradeDetails: TradeDetails = tradeTokensForExactTokensWithData(
-    reservesInput, reservesOutput, '1000000000000000000'
+  reservesInput,
+  reservesOutput,
+  '1000000000000000000'
 )
 ```
 
@@ -374,18 +366,19 @@ export async function tradeTokensForExactTokens(
 
 ### Input Parameters
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| tokenAddressInput | `string` | Address of input token. |
-| tokenAddressOutput | `string` | Address of output token. |
-| tokenAmount | `BigNumberish` | The output amount of tokens. |
+| Parameter          | Type                | Description                                                                                                                                                                                                                            |
+| :----------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tokenAddressInput  | `string`            | Address of input token.                                                                                                                                                                                                                |
+| tokenAddressOutput | `string`            | Address of output token.                                                                                                                                                                                                               |
+| tokenAmount        | `BigNumberish`      | The output amount of tokens.                                                                                                                                                                                                           |
 | chainIdOrProvider? | `ChainIdOrProvider` | A supported chain id \(`1`, `3`, `4`, or `42`\), or an [underlying web3 provider](https://docs.ethers.io/ethers.js/html/api-providers.html#web3provider-inherits-from-jsonrpcprovider) connected to a chain with a supported chain id. |
 
 ### Example Usage
 
 ```typescript
 const tradeDetails: TradeDetails = await tradeTokensForExactTokens(
-    tokenAddressInput, tokenAddressOutput, '1000000000000000000'
+  tokenAddressInput,
+  tokenAddressOutput,
+  '1000000000000000000'
 )
 ```
-

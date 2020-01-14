@@ -2,33 +2,11 @@
 title: Endpoints
 ---
 
-```js
-alert('click to copy 💾')
-```
-
 # Endpoints
 
-- [`/v1/summary`](#v1summary)
-  - [Request](#request)
-  - [Response](#response)
-- [`/v1/assets`](#v1assets)
-  - [Request](#request-1)
-  - [Response](#response-1)
-- [`/v1/tickers`](#v1tickers)
-  - [Request](#request-2)
-  - [Response](#response-2)
-- [`/v1/orderbook/:pair`](#v1orderbookpair)
-  - [Request](#request-3)
-  - [URL Parameters](#url-parameters)
-  - [Response](#response-3)
-- [`/v1/trades/:pair`](#v1tradespair)
-  - [URL Parameters](#url-parameters-1)
-  - [Request](#request-4)
-  - [Response](#response-4)
-
-{% hint style="info" %}
+<Info>
 All Uniswap pairs consist of ETH (treated as the base currency) paired with an ERC20 token (treated as the quote currency).
-{% endhint %}
+</Info>
 
 ## `/v1/summary`
 

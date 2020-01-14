@@ -11,7 +11,7 @@ const StyledFormField = styled(Field)`
   padding: 0.25rem 0.5rem;
 `
 
-const SearchList = styled.ul`
+const SearchList = styled.div`
   position: absolute;
   top: 100px;
   list-style: none;
@@ -30,14 +30,7 @@ const SearchList = styled.ul`
   }
 `
 
-const SearchListItem = styled.li`
-  padding: 1rem;
-  margin: 0;
-  :hover {
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-`
+const SearchListItem = styled.li``
 
 const SearchListItemExcerpt = styled.div`
   font-size: 0.75rem;
@@ -50,13 +43,20 @@ const SearchListItemHeader = styled.h5`
 `
 
 const StyledLink = styled(Link)`
+  display: block;
   font-weight: ${({ active }) => active && 600};
   /* background-color: ${({ active }) => active && '#F7F8FA'}; */
   border-radius: 8px;
   text-decoration: none;
   margin: 0;
-  opacity: ${({ active }) => (active ? 1 : 0.6)};
+  /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
   color: black;
+  padding: 1rem;
+  margin: 0;
+  :hover {
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 `
 
 const Search = () => {
@@ -74,18 +74,20 @@ const Search = () => {
   const [query, setQuery] = useState('')
   const results = useLunr(query, index, store)
 
+  console.log(results)
+
   return (
     <div>
       <Formik
         initialValues={{ query: '' }}
         onSubmit={(values, { setSubmitting }) => {
-          setQuery(values.query)
+          setQuery(values.query + '*')
           setSubmitting(false)
         }}
       >
         <Form
           onChange={e => {
-            setQuery(e.target.value)
+            setQuery(e.target.value + '*')
           }}
         >
           <StyledFormField
@@ -96,29 +98,27 @@ const Search = () => {
           />
         </Form>
       </Formik>
-      {query !== '' && (
+      {query !== '' && query && (
         <SearchList>
           {results.map(result => (
-            <SearchListItem key={result.id}>
-              <StyledLink to={'/docs/' + results.path}>
-                <SearchListItemHeader
-                  dangerouslySetInnerHTML={{
-                    __html: result.title.replace(
-                      new RegExp(query, 'gi'),
-                      match => `<mark>${match}</mark>`
-                    )
-                  }}
-                />
-                <SearchListItemExcerpt
-                  dangerouslySetInnerHTML={{
-                    __html: result.excerpt.replace(
-                      new RegExp(query, 'gi'),
-                      match => `<mark>${match}</mark>`
-                    )
-                  }}
-                />
-              </StyledLink>
-            </SearchListItem>
+            <StyledLink to={'/docs/' + result.path}>
+              <SearchListItemHeader
+                dangerouslySetInnerHTML={{
+                  __html: result.title.replace(
+                    new RegExp(query, 'gi'),
+                    match => `<mark>${match}</mark>`
+                  )
+                }}
+              />
+              <SearchListItemExcerpt
+                dangerouslySetInnerHTML={{
+                  __html: result.excerpt.replace(
+                    new RegExp(query, 'gi'),
+                    match => `<mark>${match}</mark>`
+                  )
+                }}
+              />
+            </StyledLink>
           ))}
         </SearchList>
       )}

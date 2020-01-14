@@ -3,20 +3,21 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import Menu from './menu'
 
 import uni from '../images/uni.svg'
 
-function Dropdown(props) {
-  const items = props.links.map(node => {
-    const title = node.name
-    return (
-      <li key={node.name}>
-        <Link to={node.link}>{title}</Link>
-      </li>
-    )
-  })
-  return <ul>{items}</ul>
-}
+// function Dropdown(props) {
+//   const items = props.links.map(node => {
+//     const title = node.name
+//     return (
+//       <Menu key={node.name}>
+//         <Link to={node.link}>{title}</Link>
+//       </Menu>
+//     )
+//   })
+//   return <ul>{items}</ul>
+// }
 
 const StyledHeader = styled.header`
   display: flex;
@@ -25,7 +26,7 @@ const StyledHeader = styled.header`
   padding: 2rem;
   font-size: 1.25rem;
   margin-bottom: 3rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey3};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
 `
 
 const StyledNav = styled.nav`
@@ -84,10 +85,11 @@ const Header = props => {
       <StyledNav>
         {data.site.siteMetadata.menulinks.map(item => {
           return (
-            <StyledNavElement key={item.name}>
-              <>{item.name}</>
-              {/* <Dropdown links={item.sublinks} /> */}
-            </StyledNavElement>
+            <Menu data={item} />
+            // <StyledNavElement key={item.name}>
+            //   <>{item.name}</>
+            //   {/* <Dropdown links={item.sublinks} /> */}
+            // </StyledNavElement>
           )
         })}
         <StyledTradeLink>Trade Tokens</StyledTradeLink>

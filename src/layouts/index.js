@@ -12,8 +12,10 @@ import styled, { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from '../components/theme'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import Mdx from '../components/mdx'
 
-import './layout.css'
+import '../css/prism-github.css'
+import '../css/layout.css'
 
 import bg from '../images/bg.jpg'
 
@@ -41,7 +43,8 @@ const Layout = ({ children }) => {
         <GlobalStyle />
         <StyledNavImage src={bg} alt="bg" />
         <Header siteTitle={data.site.siteMetadata.title} />
-        {children}
+        {/* {children} */}
+        <Mdx> {children}</Mdx>
         <Footer />
       </ThemeProvider>
     </>

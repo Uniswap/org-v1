@@ -187,7 +187,7 @@ module.exports = {
         // List of keys to store and make available in your UI. The values of
         // the keys are taken from the normalizer function below.
         // Default: all fields
-        store: ['id', 'title', 'slug', 'body', 'excerpt'],
+        store: ['id', 'path', 'title', 'body', 'excerpt'],
 
         // Function used to map the result from the GraphQL query. This should
         // return an array of items to index in the form of flat objects
@@ -195,7 +195,7 @@ module.exports = {
         normalizer: ({ data }) =>
           data.allMdx.nodes.map(node => ({
             id: node.id,
-            path: node.fields.path,
+            path: node.fields.slug,
             title: node.frontmatter.title,
             body: node.rawBody,
             excerpt: node.excerpt

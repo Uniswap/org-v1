@@ -5,12 +5,6 @@ index: 6
 
 # Transact
 
-- [Transact](transact.md#Transact)
-  - [getExecutionDetails](transact.md#getExecutionDetails)
-    - [Function Signature](transact.md#Function-Signature)
-    - [Input Parameters](transact.md#Input-Parameters)
-    - [Example Usage](transact.md#Example-Usage)
-
 ## getExecutionDetails
 
 The function formats trade data for execution against the relevant Uniswap exchange.
@@ -44,7 +38,7 @@ Method arguments are returned as one of: `BigNumber`, `number`, or `string`. `Bi
 ```typescript
 const tradeDetails: TradeDetails = tradeExactEthForTokensWithData(
   reserves,
-  "1000000000000000000"
+  '1000000000000000000'
 )
 
 const executionDetails: ExecutionDetails = await getExecutionDetails(

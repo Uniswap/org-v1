@@ -6,7 +6,7 @@ import Collapsible from 'react-collapsible'
 import Search from '../components/search'
 
 import { useStaticQuery, graphql } from 'gatsby'
-import './sidebar.css'
+import '../css/sidebar.css'
 
 const StyledSidebar = styled.span`
   display: flex;
@@ -23,17 +23,17 @@ const StyledSidebar = styled.span`
 `
 
 const StyledSection = styled(Collapsible)`
-  opacity: ${({ open }) => (open ? 1 : 0.6)};
+  /* opacity: ${({ open }) => (open ? 1 : 0.6)}; */
 `
 
 const StyledLink = styled(Link)`
   font-weight: ${({ active }) => active && 600};
-  /* background-color: ${({ active }) => active && '#F7F8FA'}; */
+  background-color: ${({ active }) => active && '#F7F8FA'};
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
   margin: 0;
-  opacity: ${({ active }) => (active ? 1 : 0.6)};
+  /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
   color: ${({ theme }) => theme.colors.link};
 `
 
@@ -51,7 +51,6 @@ const StyledHeader = styled.p`
   color: black;
   margin-bottom: 1rem;
   font-weight: 600;
-  /* padding-bottom: 1rem; */
 `
 
 function List(props) {

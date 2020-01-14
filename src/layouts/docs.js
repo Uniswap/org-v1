@@ -15,7 +15,9 @@ const StyledDocs = styled.div`
 `
 
 const StyledMDX = styled.div`
-  width: 640px;
+  /* width: 640px; */
+  min-width: 550px;
+  max-width: 768px;
   padding: 0;
   margin-bottom: 3rem;
   a {
@@ -23,7 +25,7 @@ const StyledMDX = styled.div`
   }
 
   h1 {
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
   }
 `
 

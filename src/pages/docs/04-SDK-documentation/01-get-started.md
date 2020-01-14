@@ -5,9 +5,9 @@ index: 0
 
 # Get Started
 
-{% hint style="info" %}
+<Info>
 The SDK is currently in a beta release. Please [file an issue](https://github.com/Uniswap/uniswap-sdk/issues) if you run into any bugs!
-{% endhint %}
+</Info>
 
 The [Uniswap SDK](https://github.com/Uniswap/uniswap-sdk) is meant to simplify every aspect of integrating Uniswap into your project. It's written in [TypeScript](https://www.typescriptlang.org), has a [robust test suite](https://github.com/Uniswap/uniswap-sdk/tree/master/src/__tests__), uses [bignumber.js](https://github.com/MikeMcl/bignumber.js) for math, and includes an optional data-fetching module which relies on [ethers.js](https://github.com/ethers-io/ethers.js/).
 

@@ -9,15 +9,25 @@
 
 // export const wrapRootElement = wrap
 require('prismjs/themes/prism.css')
-// require('prismjs/themes/prism-solarizedlight.css')
 require('prismjs/plugins/line-numbers/prism-line-numbers.css')
+
+const transitionDelay = 100
 
 exports.shouldUpdateScroll = ({
   routerProps: { location },
   getSavedScrollPosition
 }) => {
   if (location.action === 'PUSH') {
+    console.log(location)
+
+    // window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
     window.scrollTo(0, 0)
+  } else {
+    const savedPosition = getSavedScrollPosition(location)
+    window.setTimeout(
+      () => window.scrollTo(...(savedPosition || [0, 0])),
+      transitionDelay
+    )
   }
   return false
 }

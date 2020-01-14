@@ -1,5 +1,5 @@
 import scrollTo from 'gatsby-plugin-smoothscroll'
-import React, { useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import Slugger from 'github-slugger'
@@ -58,7 +58,6 @@ const StyledTOC = styled.ul`
   }
 
   li {
-    /* margin: 0; */
     padding: 0;
   }
 `

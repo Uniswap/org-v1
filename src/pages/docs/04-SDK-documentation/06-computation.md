@@ -5,26 +5,17 @@ index: 3
 
 # Computation
 
-- getMarketDetails
-  - Function Signature
-  - Input Parameters
-  - Example Usage
-- getTradeDetails
-  - Function Signature
-  - Input Parameters
-  - Example Usage
-
 ## getMarketDetails
 
 This function computes market details for the passed reserves data. Markets are defined as ETH&lt;&gt;ERC20, ERC20&lt;&gt;ETH, or ERC20&lt;&gt;ERC20 pairs, where the first currency is the input and the second is the output. Reserves must be specified for both the input and output currency.
 
-{% hint style="info" %}
+<Info>
 In the case of ETH, `undefined` should be passed as the reserves data. [`getTokenReserves`](data.md#getTokenReserves) returns properly formatted ERC20 reserves, or the requisite data can be fetched manually and passed in.
-{% endhint %}
+</Info>
 
-{% hint style="info" %}
+<Info>
 Rates are calculated to 18 decimal places of precision.
-{% endhint %}
+</Info>
 
 ### Function Signature
 
@@ -108,7 +99,7 @@ export function getTradeDetails(
 ### Example Usage
 
 ```typescript
-const _purchaseAmount: BigNumber = new BigNumber("2.5")
+const _purchaseAmount: BigNumber = new BigNumber('2.5')
 const _decimals: number = 18
 const tradeAmount: BigNumber = _purchaseAmount.multipliedBy(10 ** _decimals)
 const marketDetails: MarketDetails = getMarketDetails(undefined, reserves) // ETH<>ERC20

@@ -5,22 +5,17 @@ index: 1
 
 # Data
 
-- getTokenReserves
-  - Function Signature
-  - Input Parameters
-  - Example Usage
-
 ## getTokenReserves
 
 This function fetches Uniswap reserve data for a given token address on a given network.
 
-{% hint style="info" %}
+<Info>
 If only a chain id is specified, the Ethereum node used to fulfill data requests is determined by [`ethers.getDefaultProvider`](https://docs.ethers.io/ethers.js/html/api-providers.html#connecting-to-ethereum), else it is the one specified by the passed provider.
-{% endhint %}
+</Info>
 
-{% hint style="danger" %}
+<Info>
 This function throws an error if the provided tokenAddress is not a token with a Uniswap exchange.
-{% endhint %}
+</Info>
 
 ### Function Signature
 
@@ -41,7 +36,7 @@ export async function getTokenReserves(
 ### Example Usage
 
 ```typescript
-const tokenAddress = "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359" // DAI Mainnet
+const tokenAddress = '0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359' // DAI Mainnet
 const chainIdOrProvider: ChainIdOrProvider = 1 // could be e.g. window.ethereum instead
 
 const tokenReserves: TokenReservesNormalized = await getTokenReserves(
