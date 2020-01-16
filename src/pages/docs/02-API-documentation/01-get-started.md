@@ -2,7 +2,7 @@
 title: Get Started
 ---
 
-# Get Started
+## Get Started
 
 This API is intended to help cryptocurrency data aggregators surface Uniswap statistics.
 

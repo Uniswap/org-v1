@@ -30,6 +30,7 @@ const StyledMenuItem = styled.li`
   text-decoration: none;
   /* padding: 0.15rem 0.5rem; */
   margin: 0px;
+  margin-bottom: 0.5rem;
   border-radius: 0.5rem;
 `
 
@@ -40,9 +41,8 @@ const MenuFlyout = styled.span`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 2.5rem;
-  right: 0rem;
-  padding: 0.75rem;
+  top: 3rem;
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
   border-radius: 8px;
   background-color: white;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
@@ -54,32 +54,16 @@ const StyledLink = styled(Link)`
   font-weight: ${({ active }) => active && 600};
   border-radius: 8px;
   text-decoration: none;
-  margin: 0;
   color: black;
   padding: 0.25rem 0.5rem;
   padding-right: 2rem;
 
-  color: ${({ theme }) => theme.colors.link};
-  margin: 0;
+  color: ${({ theme }) => theme.colors.grey9};
   :hover {
     border-radius: 8px;
     background-color: ${({ theme }) => theme.colors.grey1};
   }
 `
-
-const Divider = styled.span`
-  width: 100%;
-  /* margin-bottom: 0.5rem; */
-  padding-top: 0.5rem;
-  border-bottom: 1px solid ${({ theme }) => theme.mercuryGray};
-`
-
-const onFocus = e => {
-  let message = `Oh no, EventFocus bubbles up!`
-  console.log(message, e.type, e.bubbles)
-  // WARNING: don't use alert or you will fall into infinite loop
-  // alert(message)
-}
 
 export default function Menu(props) {
   const node = useRef()
@@ -118,10 +102,8 @@ export default function Menu(props) {
   return (
     <StyledMenu ref={node}>
       <StyledMenuItem
-        // onFocus={e => onFocus(e)}
         onMouseOver={() => updateIsOpen(true)}
-        // onBlur={() => updateIsOpen(false)}
-        // toggle={() => updateIsOpen(!isOpen)}
+        onFocus={() => updateIsOpen(true)}
         isOpen={isOpen}
       >
         {props.data.name}

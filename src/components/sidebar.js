@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
@@ -6,7 +6,7 @@ import Collapsible from 'react-collapsible'
 import Search from '../components/search'
 
 import { useStaticQuery, graphql } from 'gatsby'
-import '../css/sidebar.css'
+import '../styles/sidebar.css'
 
 const StyledSidebar = styled.span`
   display: flex;
@@ -47,38 +47,58 @@ const StyledLisItem = styled.li`
   margin-left: 1rem;
 `
 
-const StyledHeader = styled.p`
+const StyledHeader = styled.h1`
   color: black;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: 600;
+  font-family: 'Principal Trial Semibold';
 `
 
 function List(props) {
-  const items = props.data.docs.edges.map(({ node }) => {
-    const title = node.frontmatter.title || node.fields.slug
-    if (node.fields.topLevelDir === props.parent) {
+  const parentSlug = props.slug === '/docs/' ? '/docs' : '/guides'
+
+  const items = props.data.edges
+    .filter(({ node }) => {
+      return node.fields.topLevelDir === props.parent
+    })
+    .map(({ node }) => {
+      const title = node.frontmatter.title || node.fields.slug
       return (
         <StyledLisItem key={node.id}>
           <StyledLink
             onClick={() => scrollTo('#docs-header')}
-            active={props.path === `/docs` + node.fields.slug}
-            to={`/docs/` + node.fields.slug}
+            active={props.path === parentSlug + node.fields.slug}
+            to={parentSlug + node.fields.slug}
           >
             {title}
           </StyledLink>
         </StyledLisItem>
       )
-    }
-  })
+    })
   return <StyledList>{items}</StyledList>
 }
 
 const SideBar = props => {
   const data = useStaticQuery(graphql`
     query {
-      topNav: allDirectory(
+      topNavDocs: allDirectory(
         filter: {
           sourceInstanceName: { eq: "docs" }
+          relativeDirectory: { eq: "" }
+        }
+        sort: { fields: name, order: ASC }
+      ) {
+        edges {
+          node {
+            name
+            id
+            relativePath
+          }
+        }
+      }
+      topNavGuides: allDirectory(
+        filter: {
+          sourceInstanceName: { eq: "guides" }
           relativeDirectory: { eq: "" }
         }
         sort: { fields: name, order: ASC }
@@ -110,14 +130,40 @@ const SideBar = props => {
           }
         }
       }
+      guides: allMdx(
+        filter: { fileAbsolutePath: { regex: "/guides/" } }
+        sort: { order: ASC, fields: fields___slug }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+              subDir
+              topLevelDir
+            }
+            fileAbsolutePath
+          }
+        }
+      }
     }
   `)
 
+  const listData = props.parent === '/docs/' ? data.docs : data.guides
+
+  const navData =
+    props.parent === '/docs/' ? data.topNavDocs : data.topNavGuides
+
   return (
     <StyledSidebar>
-      <StyledHeader>{'Documentation'}</StyledHeader>
-      <Search />
-      {data.topNav.edges.map(({ node }) => {
+      <StyledHeader>
+        {props.parent === '/docs/' ? 'Documentation' : 'Guides'}
+      </StyledHeader>
+      <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
+      {navData.edges.map(({ node }) => {
         const title = node.name
           .replace('(?m)^[\\d-]*\\s*', '')
           .replace(/\d/g, '')
@@ -125,7 +171,9 @@ const SideBar = props => {
           .replace(/(^|\s)\S/g, function(t) {
             return t.toUpperCase()
           })
+
         const dirOpen = node.name === props.path.split('/')[2]
+
         return (
           <StyledSection
             key={node.id}
@@ -134,12 +182,13 @@ const SideBar = props => {
             open={dirOpen}
             easing="ease"
           >
-            <List data={data} parent={node.name} path={props.path} />
+            <List
+              data={listData}
+              parent={node.name}
+              slug={props.parent}
+              path={props.path}
+            />
           </StyledSection>
-          // <StyledSection key={node.id}>
-          //   <StyledSectionHeader>{title}</StyledSectionHeader>
-          //   <List data={data} parent={node.name} path={props.path} />
-          // </StyledSection>
         )
       })}
     </StyledSidebar>

@@ -18,8 +18,6 @@ exports.shouldUpdateScroll = ({
   getSavedScrollPosition
 }) => {
   if (location.action === 'PUSH') {
-    console.log(location)
-
     // window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
     window.scrollTo(0, 0)
   } else {

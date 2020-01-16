@@ -30,8 +30,6 @@ const SearchList = styled.div`
   }
 `
 
-const SearchListItem = styled.li``
-
 const SearchListItemExcerpt = styled.div`
   font-size: 0.75rem;
   color: rgba(0, 0, 0, 0.4);
@@ -59,7 +57,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const Search = () => {
+const Search = props => {
   const data = useStaticQuery(graphql`
     {
       localSearchDocs {
@@ -73,9 +71,6 @@ const Search = () => {
   const store = data.localSearchDocs.store
   const [query, setQuery] = useState('')
   const results = useLunr(query, index, store)
-
-  console.log(results)
-
   return (
     <div>
       <Formik
@@ -94,7 +89,7 @@ const Search = () => {
             type="text"
             autoComplete="off"
             name="query"
-            placeholder="Search docs..."
+            placeholder={'Search ' + props.parent + '...'}
           />
         </Form>
       </Formik>

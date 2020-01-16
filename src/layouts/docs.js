@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import Layout from '.'
 import SideBar from '../components/sidebar'
@@ -26,6 +26,7 @@ const StyledMDX = styled.div`
 
   h1 {
     margin-bottom: 2rem;
+    font-size: 2rem;
   }
 `
 
@@ -112,8 +113,11 @@ const Docs = props => {
         <SideBar parent={'/docs/'} {...props} />
         <StyledMDX>
           {props.children}
-          {data.allMdx.edges.map(({ node, next, previous }) => {
-            if ('/docs' + node.fields.slug === props.path) {
+          {data.allMdx.edges
+            .filter(({ node }) => {
+              return '/docs' + node.fields.slug === props.path
+            })
+            .map(({ node, next, previous }) => {
               return (
                 <StyledDocsNavWrapper key={node.id}>
                   <StyledDocsNav>
@@ -142,14 +146,15 @@ const Docs = props => {
                   </StyledDocsNav>
                 </StyledDocsNavWrapper>
               )
-            }
-          })}
+            })}
         </StyledMDX>
-        {data.allMdx.edges.map(({ node }) => {
-          if ('/docs' + node.fields.slug === props.path) {
+        {data.allMdx.edges
+          .filter(({ node }) => {
+            return '/docs' + node.fields.slug === props.path
+          })
+          .map(({ node }) => {
             return <TableofContents key={node.id} headings={node.headings} />
-          }
-        })}
+          })}
       </StyledDocs>
     </Layout>
   )

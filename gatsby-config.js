@@ -46,11 +46,11 @@ const menu = [
   {
     name: 'About',
     sublinks: [
-      { name: 'About', link: '/' },
-      { name: 'Team', link: '/' },
-      { name: 'Contact', link: '/' },
-      { name: 'Guides', link: '/' },
-      { name: 'FAQ', link: '/' }
+      { name: 'About', link: '/about' },
+      { name: 'Team', link: '/about#team' },
+      { name: 'Contact', link: '/contact' },
+      { name: 'Guides', link: '/guides' },
+      { name: 'FAQ', link: '/faq' }
     ]
   }
 ]
@@ -78,7 +78,6 @@ module.exports = {
           guides: require.resolve(`./src/layouts/guides`)
         },
         gatsbyRemarkPlugins: [
-          `gatsby-remark-code-titles`,
           `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-prismjs`,
@@ -92,12 +91,7 @@ module.exports = {
               maxWidth: 590
             }
           }
-        ],
-        remarkPlugins: [
-          require('remark-git-contributors'),
-          require('remark-external-links')
         ]
-        // rehypePlugins: [require("rehype-autolink-headings")],
       }
     },
 
