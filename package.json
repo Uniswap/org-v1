@@ -12,6 +12,7 @@
     "@mdx-js/react": "^1.5.3",
     "babel-plugin-styled-components": "^1.10.6",
     "formik": "^2.1.1",
+    "framer-motion": "^1.7.0",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-layout": "^1.1.21",

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Link } from 'gatsby'
 
 import styled from 'styled-components'
+import DropdownArrow from './dropdownArrow.js'
 
 export function useToggle(initialState = false) {
   const [state, setState] = useState(initialState)
@@ -26,14 +27,6 @@ const StyledMenu = styled.button`
   background: none;
 `
 
-const StyledMenuItem = styled.li`
-  text-decoration: none;
-  /* padding: 0.15rem 0.5rem; */
-  margin: 0px;
-  margin-bottom: 0.5rem;
-  border-radius: 0.5rem;
-`
-
 const MenuFlyout = styled.span`
   font-size: 1.125rem;
   background-color: ${({ theme }) => theme.inputBackground};
@@ -42,27 +35,59 @@ const MenuFlyout = styled.span`
   flex-direction: column;
   position: absolute;
   top: 3rem;
-  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  width: 256px;
+  padding: 1rem 1rem 0.75rem 1rem;
   border-radius: 8px;
   background-color: white;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
     0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
 `
 
+const StyledMenuTitle = styled.span`
+  text-decoration: none;
+  margin: 0px;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+`
+
+const StyledMenuItem = styled.span`
+  text-decoration: none;
+  margin: 0px;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  :hover {
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.colors.grey1};
+  }
+`
+
 const StyledLink = styled(Link)`
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  width: 100%;
+`
+
+const StyledTitle = styled.p`
   display: block;
   font-weight: ${({ active }) => active && 600};
   border-radius: 8px;
   text-decoration: none;
   color: black;
-  padding: 0.25rem 0.5rem;
-  padding-right: 2rem;
-
+  margin: 0;
+  padding: 0;
+  padding: 0.125rem 0.5rem 0px 0.5rem;
   color: ${({ theme }) => theme.colors.grey9};
-  :hover {
-    border-radius: 8px;
-    background-color: ${({ theme }) => theme.colors.grey1};
-  }
+`
+
+const StyledDescription = styled.p`
+  font-size: 0.825rem;
+  margin: 0;
+  padding: 0;
+  padding: 0px 0.5rem 0.25rem 0.5rem;
+  color: ${({ theme }) => theme.colors.grey6};
 `
 
 export default function Menu(props) {
@@ -101,19 +126,24 @@ export default function Menu(props) {
 
   return (
     <StyledMenu ref={node}>
-      <StyledMenuItem
+      <StyledMenuTitle
         onMouseOver={() => updateIsOpen(true)}
         onFocus={() => updateIsOpen(true)}
         isOpen={isOpen}
       >
-        {props.data.name}
-      </StyledMenuItem>
+        {props.data.name} <DropdownArrow />
+      </StyledMenuTitle>
       {isOpen ? (
         <MenuFlyout>
           {props.data.sublinks.map(item => {
             return (
               <StyledMenuItem key={item.name}>
-                <StyledLink to={item.link}>{item.name}</StyledLink>
+                <StyledLink to={item.link}>
+                  <StyledTitle>{item.name}</StyledTitle>
+                  {item.description && (
+                    <StyledDescription>{item.description}</StyledDescription>
+                  )}
+                </StyledLink>
               </StyledMenuItem>
             )
           })}

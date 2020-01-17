@@ -34,6 +34,7 @@ const StyledCardTitle = styled.p`
 const StyledCardDesc = styled.p`
   color: ${({ theme }) => theme.colors.grey5};
   margin: 0;
+  font-size: 1.125rem;
 `
 
 const StyledArrowRight = styled.div`

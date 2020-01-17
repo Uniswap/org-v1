@@ -9,6 +9,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Layout from '../layouts'
 import SEO from '../components/seo'
 import Card from '../components/card'
+import Marquee from '../components/marquee'
 import noise from '../images/bg_texture.jpg'
 import uni_image from '../images/uni_image.jpg'
 
@@ -79,7 +80,7 @@ const Stats = styled.div`
   color: white;
   align-items: center;
   z-index: 999;
-  animation: ${rotate} 100s linear infinite;
+  /* animation: ${rotate} 100s linear infinite; */
   p {
     margin: 0px;
     margin-right: 1rem;
@@ -170,30 +171,33 @@ const IndexPage = props => {
       </StyledBody>
 
       <Stats>
-        <p>
-          Total Liquidity: <b>$26,024,434</b>
-        </p>
-        <p>Uniswap ETH Price: $185.83</p>
-        <p>Total Liquidity: $26,024,434</p>
-        <p>Uniswap ETH Price: $185.83</p>
-        <p>Total Liquidity: $26,024,434</p>
-        <p>Uniswap ETH Price: $185.83</p>
-        <p>Total Liquidity: $26,024,434</p>
-        <p>Uniswap ETH Price: $185.83</p>
-        <p>Total Liquidity: $26,024,434</p>
-        <p>Uniswap ETH Price: $185.83</p>
-        <p>Total Liquidity: $26,024,434</p>
-        <p>Uniswap ETH Price: $185.83</p>
-        <p>Total Liquidity: $26,024,434</p>
-        <p>Uniswap ETH Price: $185.83</p>
-        <p>Total Liquidity: $26,024,434</p>
-        <p>Uniswap ETH Price: $185.83</p>
-        <p>Total Liquidity: $26,024,434</p>
-        <p>Uniswap ETH Price: $185.83</p>
+        <Marquee>
+          <p>
+            Total Liquidity: <b>$26,024,434</b>
+          </p>
+          <p>Uniswap ETH Price: $185.83</p>
+          <a href="/">Total Liquidity: $26,024,434</a>
+          <p>Uniswap ETH Price: $185.83</p>
+          <p>Total Liquidity: $26,024,434</p>
+          <p>Uniswap ETH Price: $185.83</p>
+          <p>Total Liquidity: $26,024,434</p>
+          <p>Uniswap ETH Price: $185.83</p>
+          <p>Total Liquidity: $26,024,434</p>
+          <p>Uniswap ETH Price: $185.83</p>
+          <p>Total Liquidity: $26,024,434</p>
+          <p>Uniswap ETH Price: $185.83</p>
+          <p>Total Liquidity: $26,024,434</p>
+          <p>Uniswap ETH Price: $185.83</p>
+          <p>Total Liquidity: $26,024,434</p>
+          <p>Uniswap ETH Price: $185.83</p>
+          <a href="/">Total Liquidity: $26,024,434</a>
+          <p>Total Liquidity: $26,024,434</p>
+          <p>Uniswap ETH Price: $185.83</p>
+        </Marquee>
       </Stats>
 
       <StyledSection id="down">
-        <StyledSectionHeader>{'How Uniswap works...'}</StyledSectionHeader>
+        <StyledSectionHeader>{'Use Uniswap to...'}</StyledSectionHeader>
         <StyledCardsWrapper>
           {data.allMdx.edges.map(({ node }, index) => {
             return <Card key={node.id} index={index} node={node} />
