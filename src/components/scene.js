@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import Matter from 'matter-js'
-import MatterAttractors from 'matter-attractors'
+// import MatterAttractors from 'matter-attractors'
 
 export function Scene() {
   const node = useRef()
@@ -9,12 +9,12 @@ export function Scene() {
     const Engine = Matter.Engine,
       Render = Matter.Render,
       World = Matter.World,
-      Bodies = Matter.Bodies,
-      Mouse = Matter.Mouse,
-      MouseConstraint = Matter.MouseConstraint
+      Bodies = Matter.Bodies
+    // Mouse = Matter.Mouse,
+    // MouseConstraint = Matter.MouseConstraint
 
     const engine = Engine.create({
-      positionIterations: 20
+      // positionIterations: 20
     })
 
     var ballA = Bodies.circle(
@@ -32,23 +32,22 @@ export function Scene() {
 
     World.add(engine.world, [ballA, ballB])
 
+    // Matter.use(MatterAttractors)
 
-    Matter.use(MatterAttractors)
+    // var body = Bodies.circle(0, 0, 10, {
+    // plugin: {
+    //     attractors: [
+    //     function(ballA, ballB) {
+    //         return {
+    //         x: (ballA.position.x - ballB.position.x) * 1e-10,
+    //         y: (ballA.position.y - ballB.position.y) * 1e-10
+    //         }
+    //     }
+    //     ]
+    // }
+    // )
 
-    var body = Bodies.circle(0, 0, 10, {
-    plugin: {
-        attractors: [
-        function(ballA, ballB) {
-            return {
-            x: (ballA.position.x - ballB.position.x) * 1e-10,
-            y: (ballA.position.y - ballB.position.y) * 1e-10
-            }
-        }
-        ]
-    }
-    )
-
-    World.add(engine.world, [body])
+    // World.add(engine.world, [body])
 
     World.add(engine.world, [
       // walls
@@ -76,9 +75,9 @@ export function Scene() {
       }
     })
 
-    engine.world.gravity.scale = 0
+    // engine.world.gravity.scale = 0
 
-  engine.timing.timeScale = 1.5
+    // engine.timing.timeScale = 1.5
 
     Engine.run(engine)
 

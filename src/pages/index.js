@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import styled, { keyframes } from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
-// import Tilt from 'react-tilt'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -12,8 +10,6 @@ import Card from '../components/card'
 import Marquee from '../components/marquee'
 import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
-
-import noise from '../images/bg_texture.jpg'
 
 const StyledCardsWrapper = styled.span`
   display: flex;

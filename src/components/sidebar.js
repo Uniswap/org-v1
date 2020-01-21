@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
-import Collapsible from 'react-collapsible'
 import Search from '../components/search'
 
 import { useStaticQuery, graphql } from 'gatsby'
