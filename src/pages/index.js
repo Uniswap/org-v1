@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled, { keyframes } from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
-import Tilt from 'react-tilt'
+// import Tilt from 'react-tilt'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -10,8 +10,10 @@ import Layout from '../layouts'
 import SEO from '../components/seo'
 import Card from '../components/card'
 import Marquee from '../components/marquee'
+import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
+
 import noise from '../images/bg_texture.jpg'
-import uni_image from '../images/uni_image.jpg'
 
 const StyledCardsWrapper = styled.span`
   display: flex;
@@ -19,14 +21,14 @@ const StyledCardsWrapper = styled.span`
   justify-content: flex-start;
 `
 
-const StyledBackgroundWrapper = styled.div`
-  position: absolute;
+const StyledBackgroundWrapper = styled(BackgroundImage)`
+  position: absolute !important;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   background-color: white;
-  background-image: url(${noise});
+  background-image: ${({ imgUrl }) => `url(${imgUrl})`};
   background-repeat: no-repeat;
   background-size: contain;
   z-index: -999;
@@ -88,13 +90,13 @@ const Stats = styled.div`
   }
 `
 
-const StyledUnicornImage = styled.img`
-  position: absolute;
+const StyledUnicornImage = styled(Img)`
+  position: absolute !important;
   right: 0px;
   top: 11rem;
   width: 50%;
   background-color: none;
-  border-radius: 20px 0px 0px 20px;
+  border-radius: 8px 0px 0px 8px;
   box-shadow: ${({ theme }) => theme.shadows.huge};
 `
 
@@ -140,25 +142,34 @@ const IndexPage = props => {
           }
         }
       }
+      unicornImage: file(relativePath: { eq: "uni_image.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      noise: file(relativePath: { eq: "bg_texture.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid_noBase64
+          }
+        }
+      }
     }
   `)
 
   return (
     <Layout>
       <SEO title="Home" />
-      <StyledBackgroundWrapper>
-        <Tilt
-          style={{ background: '#000', borderRadius: '8px' }}
-          options={{
-            scale: 1.01,
-            max: 10,
-            glare: true,
-            'max-glare': 1,
-            speed: 1000
-          }}
-        >
-          <StyledUnicornImage src={uni_image} />
-        </Tilt>
+      <StyledBackgroundWrapper
+        fadeIn={false}
+        durationFadeIn={0}
+        backgroundColor={false}
+        loading={'eager'}
+        fluid={data.noise.childImageSharp.fluid}
+      >
+        <StyledUnicornImage fluid={data.unicornImage.childImageSharp.fluid} />
       </StyledBackgroundWrapper>
 
       <StyledBody>

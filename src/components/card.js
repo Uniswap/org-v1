@@ -55,8 +55,7 @@ const NewPill = styled.p`
   border-radius: 1rem;
   text-align: center;
   margin: 0;
-  transform: rotateZ(-25deg);
-  box-shadow: ${({ theme, index }) => theme.shadows.small};
+  transform: rotateZ(-30deg);
 `
 
 const Card = ({ node, index }) => {

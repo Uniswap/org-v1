@@ -35,7 +35,7 @@ const MenuFlyout = styled.span`
   flex-direction: column;
   position: absolute;
   top: 3rem;
-  width: 256px;
+  /* width: 256px; */
   padding: 1rem 1rem 0.75rem 1rem;
   border-radius: 8px;
   background-color: white;
@@ -87,6 +87,7 @@ const StyledDescription = styled.p`
   margin: 0;
   padding: 0;
   padding: 0px 0.5rem 0.25rem 0.5rem;
+  min-width: 200px;
   color: ${({ theme }) => theme.colors.grey6};
 `
 

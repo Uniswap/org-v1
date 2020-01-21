@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
@@ -7,6 +7,7 @@ import Search from '../components/search'
 
 import { useStaticQuery, graphql } from 'gatsby'
 import '../styles/sidebar.css'
+import DropdownArrow from './dropdownArrow.js'
 
 const StyledSidebar = styled.span`
   display: flex;
@@ -14,7 +15,7 @@ const StyledSidebar = styled.span`
   flex-wrap: wrap;
   position: -webkit-sticky;
   position: sticky;
-  top: 5rem;
+  top: 4rem;
   align-self: flex-start;
   color: ${({ theme }) => theme.colors.link};
   padding: 0 4rem;
@@ -22,8 +23,11 @@ const StyledSidebar = styled.span`
   /* font-size: 1.125rem; */
 `
 
-const StyledSection = styled(Collapsible)`
+const StyledSection = styled.div`
   /* opacity: ${({ open }) => (open ? 1 : 0.6)}; */
+  height: ${({ open }) => (open ? 'inital' : '2.5rem')};
+  overflow: hidden;
+  cursor: pointer;
 `
 
 const StyledLink = styled(Link)`
@@ -47,11 +51,31 @@ const StyledLisItem = styled.li`
   margin-left: 1rem;
 `
 
-const StyledHeader = styled.h1`
+const StyledSectionTitle = styled.p`
+  margin: 0;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: no-wrap;
+`
+
+const StyledHeader = styled.h3`
   color: black;
   margin-bottom: 2rem;
+  margin-top: 0px !important;
   font-weight: 600;
   font-family: 'Principal Trial Semibold';
+`
+
+const StyledArrow = styled.div`
+  display: flex;
+  transform-origin: center;
+  transform: ${({ open }) => (open ? `rotateZ(0deg)` : `rotateZ(-90deg)`)};
+  width: 10px;
+  height: 10px;
+  margin-left: 0.5rem;
+  opacity: 0.4;
 `
 
 function List(props) {
@@ -76,6 +100,35 @@ function List(props) {
       )
     })
   return <StyledList>{items}</StyledList>
+}
+
+const CollapsibleList = ({ node, listData, path, parent }) => {
+  const [open, setOpen] = useState(node.name === path.split('/')[2])
+  const title = node.name
+    .replace('(?m)^[\\d-]*\\s*', '')
+    .replace(/\d/g, '')
+    .replace(/-/g, ' ')
+    .replace(/(^|\s)\S/g, function(t) {
+      return t.toUpperCase()
+    })
+
+  return (
+    <StyledSection
+      trigger={title}
+      transitionTime={250}
+      open={open}
+      onClick={() => setOpen(!open)}
+      easing="ease"
+    >
+      <StyledSectionTitle>
+        {title}
+        <StyledArrow open={open}>
+          <DropdownArrow />
+        </StyledArrow>
+      </StyledSectionTitle>
+      <List data={listData} parent={node.name} slug={parent} path={path} />
+    </StyledSection>
+  )
 }
 
 const SideBar = props => {
@@ -163,34 +216,15 @@ const SideBar = props => {
         {props.parent === '/docs/' ? 'Documentation' : 'Guides'}
       </StyledHeader>
       <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
-      {navData.edges.map(({ node }) => {
-        const title = node.name
-          .replace('(?m)^[\\d-]*\\s*', '')
-          .replace(/\d/g, '')
-          .replace(/-/g, ' ')
-          .replace(/(^|\s)\S/g, function(t) {
-            return t.toUpperCase()
-          })
-
-        const dirOpen = node.name === props.path.split('/')[2]
-
-        return (
-          <StyledSection
-            key={node.id}
-            trigger={title}
-            transitionTime={250}
-            open={dirOpen}
-            easing="ease"
-          >
-            <List
-              data={listData}
-              parent={node.name}
-              slug={props.parent}
-              path={props.path}
-            />
-          </StyledSection>
-        )
-      })}
+      {navData.edges.map(({ node }) => (
+        <CollapsibleList
+          key={node.id}
+          node={node}
+          listData={listData}
+          path={props.path}
+          parent={props.parent}
+        />
+      ))}
     </StyledSidebar>
   )
 }

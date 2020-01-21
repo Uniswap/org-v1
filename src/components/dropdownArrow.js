@@ -9,7 +9,7 @@ const DropdownArrow = () => (
     width="10"
     height="10"
     class="css-1jiuhrf"
-    style={{ margin: '0px .25rem' }}
+    style={{}}
   >
     <g transform="translate(904.92214,-879.1482)">
       <path
