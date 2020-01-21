@@ -1,15 +1,3 @@
-# [uniswap.io](https://uniswap.io)
+Uniswap.io rewrite
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-## Development
-### Install dependencies
-```bash
-cd www/
-yarn
-```
-
-### Run localhost
-```bash
-now dev
-```
+(https://github.com/facebook/docusaurus/blob/75f5bb4d2336e1a153e189ab279c12c407a7ee81/packages/docusaurus-plugin-content-docs/src/lastUpdate.ts)[https://github.com/facebook/docusaurus/blob/75f5bb4d2336e1a153e189ab279c12c407a7ee81/packages/docusaurus-plugin-content-docs/src/lastUpdate.ts]
