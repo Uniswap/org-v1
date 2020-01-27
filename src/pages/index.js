@@ -11,6 +11,8 @@ import Marquee from '../components/marquee'
 import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
 
+import circle from '../images/circle.svg'
+
 const StyledCardsWrapper = styled.span`
   display: flex;
   flex-direction: row;
@@ -33,7 +35,6 @@ const StyledBackgroundWrapper = styled(BackgroundImage)`
 `
 
 const StyledBody = styled.div`
-  /* min-height: 60vh; */
   padding: 4rem;
 `
 
@@ -58,11 +59,11 @@ const StyledBodyTitle = styled.div`
 
 const rotate = keyframes`
   from {
-    transform: translateX(0px);
+    transform: rotate(0deg);
   }
 
   to {
-    transform: translateX(-9000px);
+    transform: rotate(9000deg);
   }
 `
 
@@ -78,7 +79,6 @@ const Stats = styled.div`
   color: white;
   align-items: center;
   z-index: 999;
-  /* animation: ${rotate} 100s linear infinite; */
   p {
     margin: 0px;
     margin-right: 1rem;
@@ -107,6 +107,49 @@ const StyledDownArrow = styled.a`
 const StyledSectionHeader = styled.p`
   font-weight: 400;
   font-size: 1.5rem;
+`
+
+const StyledSectionFlex = styled.div`
+  padding: 4rem;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-around;
+  h2 {
+    font-family: 'Principal Trial Semibold';
+    margin-bottom: 0.5rem;
+  }
+  p {
+    margin-bottom: 0.5rem;
+  }
+`
+
+const StyledImgSection = styled.div`
+  position: relative;
+  min-width: 400px;
+`
+
+const StyledCircleImg = styled.img`
+  margin: 0;
+  max-width: 400px;
+  position: absolute;
+  top: 0px;
+  left: 200px;
+  margin-right: 0.5rem;
+  animation: ${rotate} 700s linear infinite;
+`
+
+const StyledLineImg = styled(Img)`
+  max-width: 300px;
+`
+
+const StyledGoal = styled.div`
+  padding: 0 2rem 2rem 2rem;
+  margin: 4rem;
+  border: 1px solid ${({ theme }) => theme.colors.grey2};
+  border-radius: 0.5rem;
+  h2 {
+    font-family: 'Principal Trial Semibold';
+  }
 `
 
 const IndexPage = props => {
@@ -146,6 +189,13 @@ const IndexPage = props => {
         }
       }
       noise: file(relativePath: { eq: "bg_texture.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid_noBase64
+          }
+        }
+      }
+      line: file(relativePath: { eq: "sq.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_noBase64
@@ -211,6 +261,52 @@ const IndexPage = props => {
           })}
         </StyledCardsWrapper>
       </StyledSection>
+      <StyledSectionFlex>
+        <StyledImgSection>
+          <StyledLineImg fluid={data.line.childImageSharp.fluid} />
+          <StyledCircleImg src={circle} alt="circle logo" />{' '}
+        </StyledImgSection>
+        <StyledImgSection>
+          <div>
+            <h2>Documentation</h2>
+            <p>Get started building on Uniswap using the SDK.</p>
+            <div>
+              <a href="">Get Started</a> • <a href="">Javascript SDK</a> •{' '}
+              <a href="">Smart Contracts</a>
+            </div>
+          </div>
+          <div>
+            <h2>About</h2>
+            <p>Learn more about Uniswap.</p>
+            <div>
+              <a href="">What is Uniswap?</a> • <a href="">FAQ</a> •{' '}
+              <a href="">Whitepaper</a>
+            </div>
+          </div>
+          <div>
+            <h2>Community</h2>
+            <p>Get help and participate in the community.</p>
+            <div>
+              <a href="">Twitter</a> • <a href="">Discord</a> •{' '}
+              <a href="">Github</a> • <a href="">Reddit</a>
+            </div>
+          </div>
+        </StyledImgSection>
+      </StyledSectionFlex>
+      <StyledGoal>
+        <h2>Our goals</h2>
+        <p>
+          Uniswap is important infrastructure for the emerging crypto economy
+          and enables markets to be created that couldn't have existed before.
+          As more assets become tokenized, public blockchains and protocols like
+          Uniswap provide the opportunity to establish a new financial stack
+          that is more efficient, transparent, and equitable than any system in
+          the past.
+        </p>
+        <div>
+          <a href="">Read more about how we are working towards this future.</a>
+        </div>
+      </StyledGoal>
     </Layout>
   )
 }

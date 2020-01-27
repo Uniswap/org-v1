@@ -161,4 +161,8 @@ export const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     justify-content: space-between;
   }
+  a{
+    color: ${({ theme }) => theme.colors.link};
+    text-decoration: none;
+  }
 `
