@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Menu from './menu'
 
-import uni from '../images/uni.svg'
+import uni from '../images/uni2.svg'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -22,7 +22,9 @@ const StyledNav = styled.nav`
 `
 
 const StyledNavTitle = styled.span`
-  font-weight: 700;
+  font-family: 'Principal Trial Semibold';
+
+  font-weight: 800;
   color: black;
 `
 

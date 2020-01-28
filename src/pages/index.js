@@ -261,6 +261,20 @@ const IndexPage = props => {
           })}
         </StyledCardsWrapper>
       </StyledSection>
+      <StyledGoal>
+        <h2>Our goals</h2>
+        <p>
+          Uniswap is important infrastructure for the emerging crypto economy
+          and enables markets to be created that couldn't have existed before.
+          As more assets become tokenized, public blockchains and protocols like
+          Uniswap provide the opportunity to establish a new financial stack
+          that is more efficient, transparent, and equitable than any system in
+          the past.
+        </p>
+        <div>
+          <a href="">Read more about how we are working towards this future.</a>
+        </div>
+      </StyledGoal>
       <StyledSectionFlex>
         <StyledImgSection>
           <StyledLineImg fluid={data.line.childImageSharp.fluid} />
@@ -293,20 +307,6 @@ const IndexPage = props => {
           </div>
         </StyledImgSection>
       </StyledSectionFlex>
-      <StyledGoal>
-        <h2>Our goals</h2>
-        <p>
-          Uniswap is important infrastructure for the emerging crypto economy
-          and enables markets to be created that couldn't have existed before.
-          As more assets become tokenized, public blockchains and protocols like
-          Uniswap provide the opportunity to establish a new financial stack
-          that is more efficient, transparent, and equitable than any system in
-          the past.
-        </p>
-        <div>
-          <a href="">Read more about how we are working towards this future.</a>
-        </div>
-      </StyledGoal>
     </Layout>
   )
 }
