@@ -112,6 +112,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Principal Trial Semibold";
     src: url("/fonts/Principal-Trial-Semibold.otf");
   }
+  @font-face {
+    font-family: "Principal Trial Black";
+    src: url("/fonts/Principal-Trial-Black.otf");
+  }
   
   html,
   body {

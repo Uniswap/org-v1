@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
+import TextLoop from 'react-text-loop'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -29,13 +30,15 @@ const StyledBackgroundWrapper = styled(BackgroundImage)`
   background-image: ${({ imgUrl }) => `url(${imgUrl})`};
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: -999;
-  padding: 4rem;
+  /* z-index: -1; */
+  padding: 2rem;
   overflow: visible;
 `
 
 const StyledBody = styled.div`
-  padding: 4rem;
+  padding: 0 2rem 5rem 2rem;
+  font-size: 18px;
+  width: 50%;
 `
 
 const StyledSection = styled.div`
@@ -44,16 +47,29 @@ const StyledSection = styled.div`
 `
 
 const StyledBodyTitle = styled.div`
-  font-family: 'Principal Trial Semibold';
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 56px;
-  max-width: 556px;
+  font-family: 'Principal Trial Black';
+  color: ${({ theme }) => theme.colors.pink1};
+  font-weight: 900;
+  font-size: 8vw;
+  line-height: 8rem;
   margin-bottom: 2rem;
+  min-height: 40vh;
+  /* max-width: 20%; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  filter: blur(0.25px);
   @media (min-width: 1441px) {
     font-size: 4vw;
     line-height: 4.25vw;
     max-width: 40vw;
+  }
+
+  * {
+    /* white-space: pre-wrap; */
+    white-space: pre-wrap;
+    word-break: break-word;
+    /* max-width: 600px; */
   }
 `
 
@@ -86,20 +102,51 @@ const Stats = styled.div`
   }
 `
 
+const NewInfo = styled.a`
+  position: absolute !important;
+  right: -3vw;
+  top: 12rem;
+  width: 50%;
+  transform: rotate(-4deg);
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  z-index: 99;
+  color: ${({ theme }) => theme.colors.grey9};
+
+  :hover {
+    transform: rotate(-2deg);
+  }
+  a {
+    color: ${({ theme }) => theme.colors.grey9};
+  }
+`
+
+const NewPill = styled.div`
+  float: left;
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.grey9};
+  padding: 0rem 0.75rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin: 0;
+  margin-right: 1rem;
+  font-size: 18px;
+`
+
 const StyledUnicornImage = styled(Img)`
   position: absolute !important;
-  right: 0px;
-  top: 11rem;
-  width: 50%;
+  top: 3rem;
+  width: 100%;
   background-color: none;
   border-radius: 8px 0px 0px 8px;
   box-shadow: ${({ theme }) => theme.shadows.huge};
 `
 
 const StyledDownArrow = styled.a`
-  font-weight: 300;
+  font-weight: 600;
   font-size: 48px;
   position: absolute;
+  left: 4rem;
   margin-top: 5rem;
   color: ${({ theme }) => theme.colors.link};
 `
@@ -152,6 +199,21 @@ const StyledGoal = styled.div`
   }
 `
 
+const Noise = styled(Img)`
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height: 100vh; */
+  /* background-color: white; */
+  /* background-image: ${({ imgUrl }) => `url(${imgUrl})`}; */
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 999;
+`
+
 const IndexPage = props => {
   const data = useStaticQuery(graphql`
     {
@@ -188,14 +250,21 @@ const IndexPage = props => {
           }
         }
       }
-      noise: file(relativePath: { eq: "bg_texture.jpg" }) {
+      bg: file(relativePath: { eq: "bg_texture.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid_noBase64
+          }
+        }
+      }
+      line: file(relativePath: { eq: "sq.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
-      line: file(relativePath: { eq: "sq.jpg" }) {
+      noise: file(relativePath: { eq: "noise.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_noBase64
@@ -213,17 +282,32 @@ const IndexPage = props => {
         durationFadeIn={0}
         backgroundColor={false}
         loading={'eager'}
-        fluid={data.noise.childImageSharp.fluid}
+        fluid={data.bg.childImageSharp.fluid}
       >
-        <StyledUnicornImage fluid={data.unicornImage.childImageSharp.fluid} />
+        <a href="">
+          <NewInfo>
+            <NewPill>V2</NewPill>Learn what’s new ↗
+            <StyledUnicornImage
+              fluid={data.unicornImage.childImageSharp.fluid}
+            />
+          </NewInfo>
+        </a>
       </StyledBackgroundWrapper>
 
       <StyledBody>
         <StyledBodyTitle>
-          A protocol for automated token exchange on Ethereum.
-        </StyledBodyTitle>
-        <p>Core infrastructure for decentralized finance.</p>
+          {/* <Noise fluid={data.noise.childImageSharp.fluid} /> */}
 
+          <TextLoop interval={12000}>
+            <span>Automated token exchange.</span>
+            <span>Automated price feeds.</span>
+            <span>Open token liquidity.</span>
+          </TextLoop>
+        </StyledBodyTitle>
+        {/* <p>Decentralized exchange, market making & on chain price feeds.</p>
+        <span>
+          <NewPill>V2</NewPill> <a href="">What's new?</a>
+        </span> */}
         <StyledDownArrow onClick={() => scrollTo('#down')}>↓</StyledDownArrow>
       </StyledBody>
 

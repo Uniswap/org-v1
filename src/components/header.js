@@ -6,14 +6,16 @@ import styled from 'styled-components'
 import Menu from './menu'
 
 import uni from '../images/uni2.svg'
+import wordmark from '../images/wordmark.svg'
 
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 4rem;
+  padding: 2rem;
   font-size: 1.125rem;
   margin-bottom: 3rem;
+  z-index: 1;
 `
 
 const StyledNav = styled.nav`
@@ -32,6 +34,12 @@ const StyledNavImage = styled.img`
   margin: 0;
   width: 24px;
   margin-right: 0.5rem;
+`
+
+const StyledNavWordMark = styled.img`
+  margin: 0;
+  margin-top: 4px;
+  /* width: 24px; */
 `
 
 const StyledTradeLink = styled.a`
@@ -78,7 +86,8 @@ const Header = props => {
         }}
       >
         <StyledNavImage src={uni} alt="uni logo" />{' '}
-        <StyledNavTitle>Uniswap</StyledNavTitle>
+        <StyledNavWordMark src={wordmark} alt="uniswap" />{' '}
+        {/* <StyledNavTitle>Uniswap</StyledNavTitle> */}
       </StyledHomeLink>
       <StyledNav>
         {data.site.siteMetadata.menulinks
