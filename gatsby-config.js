@@ -12,12 +12,7 @@ const menu = [
         link: '/',
         description: 'Track Uniswap exchanges and token prices'
       },
-      {
-        name: 'Widget',
-        link: '/',
-        description: 'Customize and embed token tools on your site'
-      },
-      { name: 'Oracles', link: '/', description: '' }
+      { name: 'Unisocks', link: '/', description: 'Dynamically priced Socks' }
     ]
   },
   {
@@ -46,12 +41,42 @@ const menu = [
   {
     name: 'About',
     sublinks: [
-      { name: 'About', link: '/about' },
-      { name: 'Team', link: '/about#team' },
+      // { name: 'About', link: '/about' },
+      // { name: 'Team', link: '/about#team' },
       { name: 'Contact', link: '/contact' },
-      { name: 'Guides', link: '/guides' },
+      { name: 'Blog', link: '/blog' },
       { name: 'FAQ', link: '/faq' }
     ]
+  }
+]
+
+const cards = [
+  {
+    slug: '/',
+    cardTitle: 'Swap tokens',
+    cardDesc:
+      'Use uniswap.exchange or integrate into your project using the SDK.',
+    cardButton: 'Swap now'
+  },
+  {
+    slug: '/',
+    cardTitle: 'Unstoppable liquidity for any project',
+    cardDesc: 'Add liquidity or create an exchange for any ERC20 token.',
+    cardButton: 'Integrate your project'
+  },
+  {
+    slug: '/',
+    cardTitle: 'Earn fees through passive market making',
+    cardDesc:
+      'Provide liquidity to earn .03% of all spread fees for adding market depth.',
+    cardButton: 'How pooling works'
+  },
+  {
+    slug: '/',
+    cardTitle: 'Build decentralized price feeds',
+    cardDesc: 'Perfect TWAPs on chain, customizable to your risk profile.',
+    type: 'New',
+    cardButton: 'Read the SDK'
   }
 ]
 
@@ -63,10 +88,12 @@ module.exports = {
     title: `Uniswap`,
     description: `Uniswap homepage`,
     author: `@callil`,
-    menulinks: menu
+    menulinks: menu,
+    cardlinks: cards
   },
   plugins: [
     `gatsby-plugin-smoothscroll`,
+    `gatsby-background-image`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -75,9 +102,11 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
           docs: require.resolve(`./src/layouts/docs`),
+          blog: require.resolve(`./src/layouts/blog`),
           guides: require.resolve(`./src/layouts/guides`)
         },
         gatsbyRemarkPlugins: [
+          `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-prismjs`,
@@ -94,7 +123,13 @@ module.exports = {
         ]
       }
     },
-
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/src/pages/blog/`
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -123,14 +123,15 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;    
+    overflow: hidden;   
+    overflow: scroll;
   }
 
   body > div {
     height: 100%;
-    overflow: auto;
+    overflow: visible;
     -webkit-overflow-scrolling: touch;
-}
+  }
 
   html {
     font-size: 16px;
@@ -140,13 +141,20 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background-image: url("images/bg_radial.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
+
   body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin: 0px auto;
     line-height: 1.75 !important;
-    /* max-width: 960px; */
+    max-width: 1440px;
+    overflow: visible;
+    padding: 0 3rem;
   }
+
   h1{
     font-weight: 600;
     font-family: 'Principal Trial Semibold';
@@ -161,9 +169,6 @@ export const GlobalStyle = createGlobalStyle`
   #gatsby-focus-wrapper{
     min-height: 100vh;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
   a{
     color: ${({ theme }) => theme.colors.link};

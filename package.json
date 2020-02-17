@@ -29,6 +29,7 @@
     "gatsby-plugin-smoothscroll": "^1.0.4",
     "gatsby-plugin-styled-components": "^3.1.16",
     "gatsby-remark-autolink-headers": "^2.1.22",
+    "gatsby-remark-copy-linked-files": "^2.1.37",
     "gatsby-remark-images": "^3.1.39",
     "gatsby-remark-prismjs": "^3.3.29",
     "gatsby-remark-responsive-iframe": "^2.2.30",
@@ -52,6 +53,7 @@
     "react-lunr": "^0.6.0",
     "react-spring": "^8.0.27",
     "react-text-loop": "^2.3.0",
+    "react-typist": "^2.0.5",
     "remark": "^11.0.2",
     "strip-markdown": "^3.1.1",
     "styled-components": "^5.0.0"

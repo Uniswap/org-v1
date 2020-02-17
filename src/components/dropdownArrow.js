@@ -8,7 +8,6 @@ const DropdownArrow = () => (
     y="0px"
     width="10"
     height="10"
-    class="css-1jiuhrf"
     style={{}}
   >
     <g transform="translate(904.92214,-879.1482)">

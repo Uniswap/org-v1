@@ -12,7 +12,7 @@ export function useToggle(initialState = false) {
 }
 
 const StyledMenu = styled.button`
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1.5rem;
   margin: 0;
   display: flex;
   box-sizing: border-box;
@@ -35,9 +35,9 @@ const MenuFlyout = styled.span`
   flex-direction: column;
   position: absolute;
   top: 3rem;
-  /* width: 256px; */
+  min-width: 196px;
   padding: 1rem 1rem 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: white;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
     0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);

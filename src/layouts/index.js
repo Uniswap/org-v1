@@ -17,7 +17,7 @@ import Mdx from '../components/mdx'
 import '../styles/prism-github.css'
 import '../styles/layout.css'
 
-const Layout = ({ children }) => {
+const Layout = ({ path, children }) => {
   const data = useStaticQuery(graphql`
     query GuidesSiteTitleQuery {
       site {
@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header path={path} siteTitle={data.site.siteMetadata.title} />
         <Mdx>{children}</Mdx>
         <Footer />
       </ThemeProvider>

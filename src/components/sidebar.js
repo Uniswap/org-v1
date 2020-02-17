@@ -17,7 +17,7 @@ const StyledSidebar = styled.span`
   top: 4rem;
   align-self: flex-start;
   color: ${({ theme }) => theme.colors.link};
-  padding: 0 4rem;
+  padding: 0 4rem 0 0;
   min-width: 256px;
   /* font-size: 1.125rem; */
 `

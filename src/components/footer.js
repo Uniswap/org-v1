@@ -20,9 +20,9 @@ const StyledFooter = styled.footer`
   /* margin-bottom: 2rem; */
   margin-top: 4rem;
   display: flex;
-  justify-content: space-evenly;
-  background-color: ${({ theme }) => theme.colors.grey9};
-  color: ${({ theme }) => theme.colors.white};
+  justify-content: space-between;
+  /* background-color: ${({ theme }) => theme.colors.grey9}; */
+  color: ${({ theme }) => theme.colors.grey9};
 `
 
 const StyledSection = styled.section`
@@ -57,7 +57,7 @@ const StyledFooterLink = styled.li`
   margin-bottom: 1rem;
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.grey9};
   }
 `
 

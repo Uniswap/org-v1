@@ -5,17 +5,20 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Menu from './menu'
 
-import uni from '../images/uni2.svg'
+import uni from '../images/uni4.svg'
+import uni4 from '../images/uni5.svg'
 import wordmark from '../images/wordmark.svg'
 
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 3rem 0px;
+  width: 100%;
   font-size: 1.125rem;
-  margin-bottom: 3rem;
-  z-index: 1;
+  /* margin-bottom: 3rem; */
+  z-index: 999;
+  font-weight: 500;
 `
 
 const StyledNav = styled.nav`
@@ -25,7 +28,6 @@ const StyledNav = styled.nav`
 
 const StyledNavTitle = styled.span`
   font-family: 'Principal Trial Semibold';
-
   font-weight: 800;
   color: black;
 `
@@ -47,7 +49,7 @@ const StyledTradeLink = styled.a`
   background-color: ${({ theme }) => theme.colors.pink1};
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
-  border-radius: 100px;
+  border-radius: 20px;
   margin-left: 1.5rem;
   max-height: 48px;
 `
@@ -85,9 +87,9 @@ const Header = props => {
           textDecoration: `none`
         }}
       >
-        <StyledNavImage src={uni} alt="uni logo" />{' '}
+        <StyledNavImage src={uni4} alt="uni logo" />{' '}
         <StyledNavWordMark src={wordmark} alt="uniswap" />{' '}
-        {/* <StyledNavTitle>Uniswap</StyledNavTitle> */}
+        <StyledNavTitle>{props.path}</StyledNavTitle>
       </StyledHomeLink>
       <StyledNav>
         {data.site.siteMetadata.menulinks
@@ -97,7 +99,7 @@ const Header = props => {
           .map(item => {
             return <Menu key={item.name} data={item} />
           })}
-        <StyledTradeLink>Swap Tokens</StyledTradeLink>
+        {/* <StyledTradeLink>Swap Tokens</StyledTradeLink> */}
       </StyledNav>
     </StyledHeader>
   )

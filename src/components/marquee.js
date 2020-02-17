@@ -30,7 +30,7 @@ const Marquee = ({ children }) => {
   return (
     <Stats
       x={-elementWidth}
-      time={30}
+      time={70}
       style={{
         display: 'flex',
         flexDirection: 'row',
