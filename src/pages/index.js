@@ -139,11 +139,11 @@ const NewInfo = styled(Link)`
   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
     position: relative;
     width: 120%;
-    right: -40px;
+    right: -30px;
     margin-right: 0px;
     top: 0px;
     height: 100%;
-    margin-top: 6rem;
+    margin-top: 4rem;
   }
 `
 
@@ -278,12 +278,20 @@ const StyledTradeLink = styled.a`
   color: ${({ theme }) => theme.colors.white};
   border-radius: 20px;
   margin-right: 1.5rem;
-  height: 56px;
+  /* height: 56px; */
+  display: inline-block;
   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
     margin-right: 0.5rem;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    border-radius: 12px;
+    /* width: 100%; */
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid ${({ theme }) => theme.colors.pink1};
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.pink1};
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.5rem 1.25rem;
   }
 `
 
@@ -295,6 +303,7 @@ const StyledTradeLinkOutlined = styled(Link)`
   border-radius: 20px;
   margin-right: 1.5rem;
   height: 56px;
+  display: inline-block;
   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
     margin-right: 0.5rem;
     padding: 0.5rem 1rem;
@@ -350,7 +359,7 @@ const IndexPage = props => {
           <StyledBodyTitle>Automated token exchange.</StyledBodyTitle>
           <span>
             <StyledTradeLink href="https://uniswap.exchange/">
-              Swap tokens
+              Trade Now
             </StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">
               Read the docs

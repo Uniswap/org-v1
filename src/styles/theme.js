@@ -156,6 +156,8 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0 3rem;
     @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
         padding: 0 1rem;
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
   }
 

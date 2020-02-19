@@ -30,6 +30,11 @@ const StyledMDX = styled.div`
     margin-bottom: 2rem;
     font-size: 2rem;
   }
+
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    min-width: 100%;
+    max-width: 100%;
+  }
 `
 
 const StyledDocsNavWrapper = styled.ul`

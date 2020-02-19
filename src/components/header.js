@@ -38,7 +38,7 @@ const StyledNavTitleWrapper = styled.nav`
 `
 
 const StyledNavTitle = styled(Link)`
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.grey6};
   margin-left: 0.25rem;
