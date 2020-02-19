@@ -67,7 +67,7 @@ const NewPill = styled.p`
   border-radius: 1rem;
   text-align: center;
   margin: 0;
-  transform: rotateZ(-30deg);
+  transform: rotateZ(-20deg);
 `
 
 const Card = ({ node, index }) => {

@@ -141,6 +141,10 @@ export const GlobalStyle = createGlobalStyle`
     background-image: url("images/bg_radial.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    overflow: hidden;   
+    overflow: scroll;
+    overflow-x: hidden;
+    /* max-width: 1440px; */
   }
 
   body {
@@ -148,9 +152,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0px auto;
     line-height: 1.75 !important;
     max-width: 1440px;
-    overflow: hidden;   
-    overflow: scroll;
-    overflow-x: hidden;
     width: 100vw;
     padding: 0 3rem;
     @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {

@@ -18,7 +18,7 @@ const StyledCardsWrapper = styled.span`
   flex-direction: row;
   justify-content: flex-start;
   justify-content: space-between;
-  padding-top: 4rem;
+  padding-top: 0rem;
   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
     padding-top: 0;
     flex-direction: column;
@@ -138,8 +138,8 @@ const NewInfo = styled(Link)`
   }
   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
     position: relative;
-    width: 100%;
-    right: -20px;
+    width: 120%;
+    right: -40px;
     margin-right: 0px;
     top: 0px;
     height: 100%;
@@ -196,6 +196,11 @@ const StyledSectionFlex = styled.div`
   margin-top: 4rem;
   display: flex;
   justify-content: space-around;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    padding: 1rem;
+    margin-top: 0rem;
+    flex-direction: column;
+  }
   h2 {
     font-family: 'Principal Trial Semibold';
     margin-bottom: 0.5rem;
@@ -208,6 +213,9 @@ const StyledSectionFlex = styled.div`
 const StyledImgSection = styled.div`
   position: relative;
   min-width: 400px;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    min-width: 0px;
+  }
 `
 
 const rotate = keyframes`
@@ -228,6 +236,11 @@ const StyledCircleImg = styled.img`
   left: 200px;
   margin-right: 0.5rem;
   animation: ${rotate} 700s linear infinite;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    width: 100%;
+    max-width: 200px;
+    left: 100px;
+  }
 `
 
 const StyledStarImg = styled.img`
@@ -242,6 +255,10 @@ const StyledStarImg = styled.img`
 
 const StyledLineImg = styled(Img)`
   max-width: 300px;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    width: 100%;
+    max-width: 200px;
+  }
 `
 
 const StyledGoal = styled.div`
@@ -283,6 +300,7 @@ const StyledTradeLinkOutlined = styled(Link)`
     padding: 0.5rem 1rem;
     width: 100%;
     border-radius: 12px;
+    display: none;
   }
 `
 
