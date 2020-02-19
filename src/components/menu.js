@@ -38,7 +38,9 @@ const MenuFlyout = styled.span`
   min-width: 196px;
   padding: 1rem 1rem 0.75rem 1rem;
   border-radius: 20px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  /* mix-blend-mode: overlay; */
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
     0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
 `
@@ -58,7 +60,10 @@ const StyledMenuItem = styled.span`
   border-radius: 0.5rem;
   :hover {
     border-radius: 8px;
-    background-color: ${({ theme }) => theme.colors.grey1};
+    color: ${({ theme }) => theme.colors.link};
+    p {
+      color: ${({ theme }) => theme.colors.link};
+    }
   }
 `
 

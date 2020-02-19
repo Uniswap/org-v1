@@ -133,7 +133,7 @@ const NewPill = styled.span`
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.grey9};
   padding: 0rem 0.75rem;
-  border-radius: 1rem;
+  border-radius: 0.5em;
   text-align: center;
   margin: 0;
   margin-right: 1rem;
@@ -158,11 +158,6 @@ const StyledDownArrow = styled.a`
   color: ${({ theme }) => theme.colors.link};
   cursor: pointer;
   animation: ${bounce} 5s infinite;
-`
-
-const StyledSectionHeader = styled.p`
-  font-weight: 400;
-  font-size: 1.5rem;
 `
 
 const StyledSectionFlex = styled.div`
@@ -299,14 +294,13 @@ const IndexPage = props => {
           <StyledBodyTitle>Automated token exchange.</StyledBodyTitle>
           <span>
             <StyledTradeLink href="https://uniswap.exchange/">
-              Swap tokens ↗
+              Swap tokens
             </StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">
               Read the docs
             </StyledTradeLinkOutlined>
           </span>
         </StyledTitle>
-        {/* <p>Decentralized exchange, market making & on chain price feeds.</p> */}
         <StyledDownArrow onClick={() => scrollTo('#down')}>↓</StyledDownArrow>
         <StyledStarImg src={star} alt="star logo" />{' '}
         <NewInfo to="/blog/post-01">
@@ -395,8 +389,6 @@ const IndexPage = props => {
           <a href="">Read more about how we are working towards this future.</a>
         </div>
       </StyledGoal>
-
-      <styledProjects></styledProjects>
     </Layout>
   )
 }

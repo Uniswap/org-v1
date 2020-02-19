@@ -43,8 +43,8 @@ const menu = [
     sublinks: [
       // { name: 'About', link: '/about' },
       // { name: 'Team', link: '/about#team' },
-      { name: 'Contact', link: '/contact' },
       { name: 'Blog', link: '/blog' },
+      { name: 'Contact', link: '/contact' },
       { name: 'FAQ', link: '/faq' }
     ]
   }
@@ -92,9 +92,12 @@ module.exports = {
     cardlinks: cards
   },
   plugins: [
+    `gatsby-plugin-twitter`,
+    'gatsby-plugin-instagram-embed',
     `gatsby-plugin-smoothscroll`,
     `gatsby-background-image`,
     `gatsby-plugin-styled-components`,
+    'gatsby-remark-reading-time',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -102,10 +105,11 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
           docs: require.resolve(`./src/layouts/docs`),
-          blog: require.resolve(`./src/layouts/blog`),
+          blog: require.resolve(`./src/layouts/blogPost`),
           guides: require.resolve(`./src/layouts/guides`)
         },
         gatsbyRemarkPlugins: [
+          `gatsby-remark-embedder`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
           {
@@ -170,12 +174,6 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
-      }
-    },
-    {
-      resolve: `gatsby-plugin-scroll-indicator`,
-      options: {
-        color: `#2172e5`
       }
     },
     {

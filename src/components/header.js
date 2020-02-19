@@ -26,16 +26,29 @@ const StyledNav = styled.nav`
   align-items: center;
 `
 
-const StyledNavTitle = styled.span`
-  font-family: 'Principal Trial Semibold';
-  font-weight: 800;
-  color: black;
+const StyledNavTitleWrapper = styled.nav`
+  display: flex;
+  align-items: center;
+`
+
+const StyledNavTitle = styled(Link)`
+  font-family: 'Inter';
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.grey6};
+  margin-left: 0.25rem;
+  margin-top: 2px;
+  vertical-align: bottom;
 `
 
 const StyledNavImage = styled.img`
   margin: 0;
   width: 24px;
   margin-right: 0.5rem;
+  transform: rotate(0deg);
+  transition: transform 0.2s linear;
+  :hover {
+    transform: rotate(-10deg);
+  }
 `
 
 const StyledNavWordMark = styled.img`
@@ -46,7 +59,7 @@ const StyledNavWordMark = styled.img`
 
 const StyledTradeLink = styled.a`
   padding: 0.5rem 1.25rem;
-  background-color: ${({ theme }) => theme.colors.pink1};
+  background-color: ${({ theme }) => theme.colors.link};
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
   border-radius: 20px;
@@ -81,16 +94,27 @@ const Header = props => {
 
   return (
     <StyledHeader>
-      <StyledHomeLink
-        to="/"
-        style={{
-          textDecoration: `none`
-        }}
-      >
-        <StyledNavImage src={uni4} alt="uni logo" />{' '}
-        <StyledNavWordMark src={wordmark} alt="uniswap" />{' '}
-        <StyledNavTitle>{props.path}</StyledNavTitle>
-      </StyledHomeLink>
+      <StyledNavTitleWrapper>
+        <StyledHomeLink
+          to="/"
+          style={{
+            textDecoration: `none`
+          }}
+        >
+          <StyledNavImage src={uni4} alt="uni logo" />{' '}
+          <StyledNavWordMark src={wordmark} alt="uniswap" />{' '}
+        </StyledHomeLink>
+        {props.path && (
+          <StyledNavTitle
+            to={'/' + props.path.split('/')[1]}
+            style={{
+              textDecoration: `none`
+            }}
+          >
+            / {props.path.split('/')[1]}
+          </StyledNavTitle>
+        )}
+      </StyledNavTitleWrapper>
       <StyledNav>
         {data.site.siteMetadata.menulinks
           .filter(item => {

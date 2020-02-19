@@ -17,7 +17,7 @@ const StyledSidebar = styled.span`
   top: 4rem;
   align-self: flex-start;
   color: ${({ theme }) => theme.colors.link};
-  padding: 0 4rem 0 0;
+  padding: 0rem 4rem 0 0;
   min-width: 256px;
   /* font-size: 1.125rem; */
 `
@@ -211,10 +211,6 @@ const SideBar = props => {
 
   return (
     <StyledSidebar>
-      <StyledHeader>
-        {props.parent === '/docs/' ? 'Documentation' : 'Guides'}
-      </StyledHeader>
-      <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
       {navData.edges.map(({ node }) => (
         <CollapsibleList
           key={node.id}
@@ -224,6 +220,7 @@ const SideBar = props => {
           parent={props.parent}
         />
       ))}
+      <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
     </StyledSidebar>
   )
 }

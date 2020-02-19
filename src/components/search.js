@@ -5,24 +5,31 @@ import { useLunr } from 'react-lunr'
 import { Formik, Form, Field } from 'formik'
 import { useStaticQuery, graphql } from 'gatsby'
 
+const SearchWrapper = styled.div`
+  position: relative;
+  padding-top: 1rem;
+`
+
 const StyledFormField = styled(Field)`
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
+  background-color: ${({ theme }) => theme.colors.grey1};
+  border: none;
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
 `
 
 const SearchList = styled.div`
   position: absolute;
-  top: 100px;
+  top: 60px;
   list-style: none;
   margin: 0;
   min-width: 256px;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   z-index: 99;
   border-radius: 8px;
-  background-color: white;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-    0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
+  /* background-color: white; */
+  /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), */
+  /* 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04); */
   max-height: 400px;
   overflow: scroll;
   mark {
@@ -72,17 +79,17 @@ const Search = props => {
   const [query, setQuery] = useState('')
   const results = useLunr(query, index, store)
   return (
-    <div>
+    <SearchWrapper>
       <Formik
         initialValues={{ query: '' }}
         onSubmit={(values, { setSubmitting }) => {
-          setQuery(values.query + '*')
+          setQuery(values.query + ' *')
           setSubmitting(false)
         }}
       >
         <Form
           onChange={e => {
-            setQuery(e.target.value + '*')
+            setQuery(e.target.value + ' *')
           }}
         >
           <StyledFormField
@@ -117,7 +124,7 @@ const Search = props => {
           ))}
         </SearchList>
       )}
-    </div>
+    </SearchWrapper>
   )
 }
 

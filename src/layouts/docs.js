@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Layout from '.'
 import SideBar from '../components/sidebar'
+import SEO from '../components/seo'
+
 import TableofContents from '../components/toc'
 import styled from 'styled-components'
 
@@ -108,7 +110,8 @@ const Docs = props => {
   `)
 
   return (
-    <Layout>
+    <Layout path={props.path}>
+      <SEO title="Uniswap Documentation" />
       <StyledDocs id="docs-header">
         <SideBar parent={'/docs/'} {...props} />
         <StyledMDX>

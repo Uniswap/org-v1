@@ -110,7 +110,7 @@ const Guides = props => {
   `)
 
   return (
-    <Layout>
+    <Layout path={props.path}>
       <StyledDocs id="docs-header">
         <SideBar parent={path} {...props} />
         <StyledMDX>
