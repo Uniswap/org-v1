@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Layout from '.'
 import styled from 'styled-components'
 import Moment from 'react-moment'
 
 import { Twitter, Facebook } from 'react-social-sharing'
 
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 const StyledBlog = styled.div`
   display: flex;

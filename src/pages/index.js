@@ -1,8 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
-import TextLoop from 'react-text-loop'
-import Typist from 'react-typist'
 
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
@@ -21,6 +19,12 @@ const StyledCardsWrapper = styled.span`
   justify-content: flex-start;
   justify-content: space-between;
   padding-top: 4rem;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 const Stats = styled.div`
   width: 10000px;
@@ -54,6 +58,10 @@ const StyledBody = styled.div`
     padding-top: 0px;
     justify-content: center;
   }
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    height: auto;
+    max-height: 100%;
+  }
 `
 
 const StyledSection = styled.div`
@@ -70,6 +78,12 @@ const StyledTitle = styled.div`
   @media (min-width: 1441px) {
     width: 70%;
   }
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    width: 100%;
+    mix-blend-mode: normal;
+    min-height: 40vh;
+    justify-content: center;
+  }
 `
 
 const StyledBodyTitle = styled.div`
@@ -78,13 +92,18 @@ const StyledBodyTitle = styled.div`
   font-weight: 900;
   font-size: 7.5vw;
   line-height: 6.5rem;
-  letter-spacing: -0em;
+  letter-spacing: -0.06rem;
   margin-bottom: 4rem;
   padding-right: 4rem;
   pointer-events: none;
   @media (min-width: 1441px) {
     font-size: 5.5vw;
     line-height: 5.25vw;
+  }
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    font-size: 3.5rem;
+    line-height: 3.75rem;
+    padding-right: 0rem;
   }
 
   * {
@@ -116,6 +135,15 @@ const NewInfo = styled(Link)`
   }
   a {
     color: ${({ theme }) => theme.colors.grey9};
+  }
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    position: relative;
+    width: 100%;
+    right: -20px;
+    margin-right: 0px;
+    top: 0px;
+    height: 100%;
+    margin-top: 6rem;
   }
 `
 
@@ -158,6 +186,9 @@ const StyledDownArrow = styled.a`
   color: ${({ theme }) => theme.colors.link};
   cursor: pointer;
   animation: ${bounce} 5s infinite;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    display: none;
+  }
 `
 
 const StyledSectionFlex = styled.div`
@@ -230,11 +261,12 @@ const StyledTradeLink = styled.a`
   color: ${({ theme }) => theme.colors.white};
   border-radius: 20px;
   margin-right: 1.5rem;
-  height: 64px;
-  transform: rotate(20deg);
-
-  :hover {
-    transform: rotate(20deg);
+  height: 56px;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border-radius: 12px;
   }
 `
 
@@ -245,7 +277,13 @@ const StyledTradeLinkOutlined = styled(Link)`
   color: ${({ theme }) => theme.colors.pink1};
   border-radius: 20px;
   margin-right: 1.5rem;
-  height: 64px;
+  height: 56px;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border-radius: 12px;
+  }
 `
 
 const IndexPage = props => {
@@ -301,15 +339,15 @@ const IndexPage = props => {
             </StyledTradeLinkOutlined>
           </span>
         </StyledTitle>
-        <StyledDownArrow onClick={() => scrollTo('#down')}>↓</StyledDownArrow>
         <StyledStarImg src={star} alt="star logo" />{' '}
         <NewInfo to="/blog/post-01">
           <NewPill>V2 Announced</NewPill>Learn what’s new ↗
           <StyledUnicornImage fluid={data.unicornImage.childImageSharp.fluid} />
         </NewInfo>
+        <StyledDownArrow onClick={() => scrollTo('#down')}>↓</StyledDownArrow>
       </StyledBody>
 
-      {/* <Stats>
+      <Stats>
         <Marquee>
           <p>
             Total Liquidity: <b>$26,024,434</b>
@@ -333,12 +371,11 @@ const IndexPage = props => {
           <p>Total Liquidity: $26,024,434</p>
           <p>Uniswap ETH Price: $185.83</p>
         </Marquee>
-      </Stats> */}
+      </Stats>
 
       <StyledSection id="down">
         <StyledCardsWrapper>
           {data.site.siteMetadata.cardlinks.map((node, index) => {
-            console.log(node)
             return <Card key={index} index={index} node={node} />
           })}
         </StyledCardsWrapper>

@@ -6,14 +6,13 @@ import Layout from '../layouts'
 import Img from 'gatsby-image'
 
 import SEO from '../components/seo'
-import Scene from '../components/scene'
 
 const PostsWrapper = styled.div`
   color: ${({ theme }) => theme.colors.grey9};
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 `
 
 const Posts = styled.div`

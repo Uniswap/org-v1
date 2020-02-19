@@ -52,27 +52,27 @@ const menu = [
 
 const cards = [
   {
-    slug: '/',
-    cardTitle: 'Swap tokens',
+    slug: 'http://uniswap.exchange',
+    cardTitle: 'Swap any token on Ethereum',
     cardDesc:
       'Use uniswap.exchange or integrate into your project using the SDK.',
     cardButton: 'Swap now'
   },
   {
-    slug: '/',
-    cardTitle: 'Unstoppable liquidity for any project',
+    slug: '/docs',
+    cardTitle: 'Add liquidity for any project',
     cardDesc: 'Add liquidity or create an exchange for any ERC20 token.',
     cardButton: 'Integrate your project'
   },
   {
-    slug: '/',
+    slug: '/docs',
     cardTitle: 'Earn fees through passive market making',
     cardDesc:
       'Provide liquidity to earn .03% of all spread fees for adding market depth.',
     cardButton: 'How pooling works'
   },
   {
-    slug: '/',
+    slug: '/docs',
     cardTitle: 'Build decentralized price feeds',
     cardDesc: 'Perfect TWAPs on chain, customizable to your risk profile.',
     type: 'New',

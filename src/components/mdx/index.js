@@ -1,6 +1,6 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import Info from './Info'
+import Info from './info'
 
 const components = {
   Info: Info

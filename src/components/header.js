@@ -19,11 +19,17 @@ const StyledHeader = styled.header`
   /* margin-bottom: 3rem; */
   z-index: 999;
   font-weight: 500;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    padding: 1rem 0px;
+  }
 `
 
 const StyledNav = styled.nav`
   display: flex;
   align-items: center;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    display: none;
+  }
 `
 
 const StyledNavTitleWrapper = styled.nav`

@@ -6,10 +6,10 @@ const StyledCard = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${({ theme, index }) =>
-    index === 0 ? theme.colors.white : 'none'};
-  box-shadow: ${({ theme, index }) =>
-    index === 0 ? theme.shadows.huge : 'none'};
+  /* background-color: ${({ theme, index }) =>
+    index === 0 ? theme.colors.white : 'none'}; */
+  /* box-shadow: ${({ theme, index }) =>
+    index === 0 ? theme.shadows.huge : 'none'}; */
   padding: 1.5rem;
   max-width: 300px;
 
@@ -21,12 +21,17 @@ const StyledCard = styled(Link)`
   background-color: rgba(255,255,255,0.4);
 
   /* box-shadow: ${({ theme, index }) => theme.shadows.small}; */
-  border: 1px solid
-    ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)};
+  /* border: 1px solid
+    ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)}; */
   transition: transform 0.25s ease;
 
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+
   :hover {
-    background-color: ${({ theme }) => theme.colors.white};
+    /* background-color: ${({ theme }) => theme.colors.white}; */
     /* box-shadow: ${({ theme, index }) => theme.shadows.huge}; */
     transform: scale(1);
   }
@@ -72,7 +77,7 @@ const Card = ({ node, index }) => {
       <StyledCardTitle>{node.cardTitle}</StyledCardTitle>
       <div>
         <StyledCardDesc>{node.cardDesc}</StyledCardDesc>
-        <StyledArrowRight>Learn more -></StyledArrowRight>
+        <StyledArrowRight>Learn more →</StyledArrowRight>
       </div>
     </StyledCard>
   )

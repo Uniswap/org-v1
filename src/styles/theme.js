@@ -123,13 +123,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;   
-    overflow: scroll;
   }
 
   body > div {
     height: 100%;
-    overflow: visible;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -151,8 +148,14 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0px auto;
     line-height: 1.75 !important;
     max-width: 1440px;
-    overflow: visible;
+    overflow: hidden;   
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100vw;
     padding: 0 3rem;
+    @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+        padding: 0 1rem;
+    }
   }
 
   h1{
