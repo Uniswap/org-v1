@@ -86,7 +86,6 @@ const StyledTitle = styled.div`
     mix-blend-mode: normal;
     min-height: auto;
     height: 100%;
-    /* justify-content: center; */
   }
 `
 
@@ -292,7 +291,6 @@ const StyledTradeLink = styled.a`
   color: ${({ theme }) => theme.colors.white};
   border-radius: 20px;
   margin-right: 1.5rem;
-  /* height: 56px; */
   display: inline-block;
   transform: scale(0.98);
   transition: transform 0.25s ease;
@@ -302,7 +300,6 @@ const StyledTradeLink = styled.a`
   }
   @media (max-width: 812px) {
     margin-right: 0.5rem;
-    /* width: 100%; */
     border-radius: 20px;
     text-align: center;
     border: 1px solid ${({ theme }) => theme.colors.pink1};
@@ -366,7 +363,7 @@ const IndexPage = props => {
           }
         }
       }
-      noise: file(relativePath: { eq: "noise.jpg" }) {
+      bg: file(relativePath: { eq: "bg_radial.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_noBase64

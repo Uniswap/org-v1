@@ -123,19 +123,21 @@ module.exports = {
           guides: require.resolve(`./src/layouts/guides`)
         },
         gatsbyRemarkPlugins: [
+          // `gatsby-remark-code-buttons`,
           `gatsby-remark-embedder`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              showLineNumbers: true
-            }
-          },
+          // {
+          //   resolve: `gatsby-remark-prismjs`,
+          //   options: {
+          //     showLineNumbers: true
+          //   }
+          // },
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1200
+              maxWidth: 1200,
+              showCaptions: true
             }
           }
         ]

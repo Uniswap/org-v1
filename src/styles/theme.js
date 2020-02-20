@@ -117,13 +117,6 @@ export const GlobalStyle = createGlobalStyle`
     src: url("/fonts/Principal-Trial-Black.otf");
   }
   
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-  }
 
   body > div {
     height: 100%;
@@ -131,6 +124,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     font-size: 16px;
     font-variant: none;
     color: ${({ theme }) => theme.textColor};
@@ -138,7 +139,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-image: url("images/bg_radial.jpg");
+    /* background-image: url("images/bg_radial.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;   
@@ -149,6 +150,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin: 0px auto;
     line-height: 1.75 !important;
@@ -156,8 +164,14 @@ export const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     width: 100vw;
     padding: 0 3rem;
-    @media (max-device-width: 1024px) {
+    @media (max-width: 1024px) {
         padding: 0 1.5rem;
+
+    }
+    
+    @media (min-width: 1441px) {
+        padding: 0 1.5rem;
+        overflow-x: visible;
     }
   }
 

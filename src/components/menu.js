@@ -35,6 +35,13 @@ const StyledMenu = styled.button`
     padding: 0;
     padding-bottom: 2rem;
   }
+  :hover {
+    color: ${({ theme }) => theme.colors.link};
+  }
+  :focus {
+    outline: none;
+    color: ${({ theme }) => theme.colors.link};
+  }
 `
 
 const MenuFlyout = styled.span`

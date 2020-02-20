@@ -27,8 +27,24 @@ const StyledMDX = styled.div`
   }
 
   h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1em;
+    /* border: 1px solid ${({ theme }) => theme.colors.grey2}; */
     font-size: 2rem;
+  }
+
+  h2{
+    margin-top: 4rem !important;
+    margin-bottom: 1.5rem;
+  }
+
+  h2:before{
+    top: -32px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    content: " ";
+    position: absolute;
+    background-color: #E6ECF1;
   }
 
   @media only screen and (min-width: 375px) and (max-width: 812px) {

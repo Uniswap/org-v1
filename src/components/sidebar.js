@@ -18,7 +18,7 @@ const StyledSidebar = styled.span`
   align-self: flex-start;
   color: ${({ theme }) => theme.colors.link};
   padding: 0rem 4rem 0 0;
-  min-width: 256px;
+  min-width: 300px;
   /* font-size: 1.125rem; */
 `
 
@@ -31,7 +31,7 @@ const StyledSection = styled.div`
 
 const StyledLink = styled(({ active, ...props }) => <Link {...props} />)`
   font-weight: ${({ active }) => active && 600};
-  background-color: ${({ active }) => active && '#F7F8FA'};
+  background-color: ${({ active }) => active && '#fff'};
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
@@ -77,7 +77,7 @@ const StyledArrow = styled.span`
   width: 10px;
   height: 10px;
   margin-left: 0.5rem;
-  opacity: 0.4;
+  opacity: 1;
 `
 
 function List(props) {
@@ -124,9 +124,9 @@ const CollapsibleList = ({ node, listData, path, parent }) => {
     >
       <StyledSectionTitle>
         {title}
-        <StyledArrow open={open}>
+        {/* <StyledArrow open={open}>
           <DropdownArrow />
-        </StyledArrow>
+        </StyledArrow> */}
       </StyledSectionTitle>
       <List data={listData} parent={node.name} slug={parent} path={path} />
     </StyledSection>
@@ -214,6 +214,7 @@ const SideBar = props => {
 
   return (
     <StyledSidebar>
+      <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
       {navData.edges.map(({ node }) => (
         <CollapsibleList
           key={node.id}
@@ -223,7 +224,6 @@ const SideBar = props => {
           parent={props.parent}
         />
       ))}
-      <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
     </StyledSidebar>
   )
 }

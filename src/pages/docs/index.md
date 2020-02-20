@@ -2,7 +2,7 @@
 title: Docs
 ---
 
-## Docs
+# Docs
 
 This API is intended to help cryptocurrency data aggregators surface Uniswap statistics.
 

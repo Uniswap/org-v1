@@ -38,14 +38,11 @@ const StyledTOC = styled.ul`
   flex-wrap: wrap;
   position: -webkit-sticky;
   position: sticky;
-  top: 5rem;
   align-self: flex-start;
 
   width: 160px;
   font-size: 0.75rem;
-  margin-top: 3rem;
   margin: 0 4rem;
-  margin-top: 4.75rem;
   opacity: 0.4;
   transition: opacity 0.3s ease;
   list-style: none;
