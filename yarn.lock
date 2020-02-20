@@ -1368,6 +1368,11 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
+"@react-hook/media-query@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@react-hook/media-query/-/media-query-1.0.1.tgz#4a0f5b216a12bd8e09f1f8273582f7365be4e324"
+  integrity sha512-8QeqldZ/6PDkboR00hgglGt2ebUnCBd4zQ0aNMcnP1pcskP8BHb7GgJWOmG4FjnGwPZPp/Hb+7YkDlonPDYAMw==
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"

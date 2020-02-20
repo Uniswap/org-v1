@@ -86,7 +86,7 @@ const StyledTitle = styled.div`
     mix-blend-mode: normal;
     min-height: auto;
     height: 100%;
-    justify-content: center;
+    /* justify-content: center; */
   }
 `
 
@@ -100,6 +100,8 @@ const StyledBodyTitle = styled.div`
   margin-bottom: 4rem;
   /* padding-right: 4rem; */
   pointer-events: none;
+  white-space: wrap;
+  overflow-wrap: normal;
   @media (min-width: 1441px) {
     font-size: 5.5vw;
     line-height: 5.25vw;
@@ -110,14 +112,9 @@ const StyledBodyTitle = styled.div`
     padding-right: 0rem;
   }
   @media (max-width: 356px) {
-    font-size: 2.5rem;
-    line-height: 2.75rem;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
     padding-right: 0rem;
-  }
-
-  * {
-    white-space: pre-wrap;
-    word-break: break-word;
   }
 `
 
@@ -289,7 +286,7 @@ const StyledGoal = styled.div`
 `
 
 const StyledTradeLink = styled.a`
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1rem;
   background-color: ${({ theme }) => theme.colors.pink1};
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
@@ -297,6 +294,12 @@ const StyledTradeLink = styled.a`
   margin-right: 1.5rem;
   /* height: 56px; */
   display: inline-block;
+  transform: scale(0.98);
+  transition: transform 0.25s ease;
+
+  :hover {
+    transform: scale(1);
+  }
   @media (max-width: 812px) {
     margin-right: 0.5rem;
     /* width: 100%; */
@@ -313,14 +316,19 @@ const StyledTradeLink = styled.a`
 `
 
 const StyledTradeLinkOutlined = styled(Link)`
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1rem;
   border: 1px solid ${({ theme }) => theme.colors.pink1};
   text-decoration: none;
   color: ${({ theme }) => theme.colors.pink1};
   border-radius: 20px;
   margin-right: 1.5rem;
-  height: 56px;
   display: inline-block;
+  transform: scale(0.98);
+  transition: transform 0.25s ease;
+
+  :hover {
+    transform: scale(1);
+  }
   @media (max-width: 812px) {
     margin-right: 0.5rem;
     padding: 0.5rem 1rem;

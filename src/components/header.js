@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Menu from './menu'
@@ -20,14 +20,35 @@ const StyledHeader = styled.header`
   font-weight: 500;
   @media (max-width: 812px) {
     padding: 2rem 0px;
+    flex-direction: column;
   }
 `
 
 const StyledNav = styled.nav`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  transition: right 0.25s ease;
   @media (max-width: 812px) {
-    display: none;
+    position: fixed;
+    top: 0px;
+    /* left: 0px; */
+    right: ${({ open }) => (open ? '0px' : '-100vw')};
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: ${({ theme }) => theme.colors.grey1};
+    z-index: 9998;
+    width: 100vw;
+    padding: 2rem;
+    overflow: scroll;
+    box-shadow: ${({ theme }) => theme.shadows.huge};
+    /* position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; */
   }
 `
 
@@ -42,6 +63,7 @@ const StyledNavTitle = styled(Link)`
   color: ${({ theme }) => theme.colors.grey6};
   margin-left: 0.25rem;
   margin-top: 2px;
+  z-index: 999;
   vertical-align: bottom;
 `
 
@@ -78,7 +100,27 @@ const StyledHomeLink = styled(Link)`
   align-items: center;
 `
 
+const MenuToggle = styled.button`
+  /* max-height: 48px; */
+  border: none;
+  backgound-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.link};
+  position: absolute;
+  right: 0px;
+  display: none;
+  z-index: 9999;
+  @media (max-width: 812px) {
+    display: inline-block;
+  }
+`
+
 const Header = props => {
+  const [isMenuOpen, updateIsMenuOpen] = useState(false)
+
+  // useEffect(() => {
+  //   updateIsMenuOpen(!isMenuOpen)
+  // }, [isMenuOpen, updateIsMenuOpen])
+
   const data = useStaticQuery(graphql`
     {
       site {
@@ -120,7 +162,8 @@ const Header = props => {
           </StyledNavTitle>
         )}
       </StyledNavTitleWrapper>
-      <StyledNav>
+      <MenuToggle onClick={e => updateIsMenuOpen(!isMenuOpen)}>Menu</MenuToggle>
+      <StyledNav open={isMenuOpen}>
         {data.site.siteMetadata.menulinks
           .filter(item => {
             return item.name !== 'Community'

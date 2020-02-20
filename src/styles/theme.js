@@ -144,6 +144,7 @@ export const GlobalStyle = createGlobalStyle`
     overflow: hidden;   
     overflow: scroll;
     overflow-x: hidden;
+    width: 100vw;
     /* max-width: 1440px; */
   }
 
@@ -152,6 +153,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0px auto;
     line-height: 1.75 !important;
     max-width: 1440px;
+    overflow-x: hidden;
     width: 100vw;
     padding: 0 3rem;
     @media (max-device-width: 1024px) {

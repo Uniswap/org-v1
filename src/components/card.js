@@ -25,6 +25,29 @@ const StyledCard = styled(Link)`
   }
 `
 
+const StyledExternalCard = styled.a`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  max-width: 300px;
+  border-radius: 20px;
+  text-decoration: none;
+  transform: scale(0.99);
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: transform 0.25s ease;
+
+  @media (max-width: 812px) {
+    margin-bottom: 2rem;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  :hover {
+    transform: scale(1);
+  }
+`
+
 const StyledCardTitle = styled.p`
   color: ${({ theme }) => theme.colors.grey9};
   font-size: 2rem;
@@ -65,14 +88,27 @@ const NewPill = styled.p`
 
 const Card = ({ node, index }) => {
   return (
-    <StyledCard index={index} to={node.slug}>
-      {node.type === 'New' ? <NewPill>New</NewPill> : null}
-      <StyledCardTitle>{node.cardTitle}</StyledCardTitle>
-      <div>
-        <StyledCardDesc>{node.cardDesc}</StyledCardDesc>
-        <StyledArrowRight>Learn more →</StyledArrowRight>
-      </div>
-    </StyledCard>
+    <>
+      {node.slug.split('/')[0] === '' ? (
+        <StyledCard index={index} to={node.slug}>
+          {node.type === 'New' ? <NewPill>New</NewPill> : null}
+          <StyledCardTitle>{node.cardTitle}</StyledCardTitle>
+          <div>
+            <StyledCardDesc>{node.cardDesc}</StyledCardDesc>
+            <StyledArrowRight>Learn more →</StyledArrowRight>
+          </div>
+        </StyledCard>
+      ) : (
+        <StyledExternalCard index={index} to={node.slug}>
+          {node.type === 'New' ? <NewPill>New</NewPill> : null}
+          <StyledCardTitle>{node.cardTitle}</StyledCardTitle>
+          <div>
+            <StyledCardDesc>{node.cardDesc}</StyledCardDesc>
+            <StyledArrowRight>Learn more →</StyledArrowRight>
+          </div>
+        </StyledExternalCard>
+      )}
+    </>
   )
 }
 export default Card

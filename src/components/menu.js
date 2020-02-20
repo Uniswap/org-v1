@@ -4,6 +4,8 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import DropdownArrow from './dropdownArrow.js'
 
+import { useMediaQuery } from '@react-hook/media-query'
+
 export function useToggle(initialState = false) {
   const [state, setState] = useState(initialState)
   const toggle = useCallback(() => setState(state => !state), [])
@@ -25,6 +27,14 @@ const StyledMenu = styled.button`
   padding-right: 2rem;
   z-index: 9999;
   background: none;
+  @media (max-width: 812px) {
+    font-size: 1.5rem;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    padding-bottom: 2rem;
+  }
 `
 
 const MenuFlyout = styled.span`
@@ -43,6 +53,17 @@ const MenuFlyout = styled.span`
   /* mix-blend-mode: overlay; */
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
     0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
+
+  @media (max-width: 812px) {
+    font-size: 1rem;
+    position: relative;
+    box-shadow: none;
+    padding: 0;
+    top: 0;
+    left: 0;
+    backdrop-filter: 'none';
+    background-color: rgba(255, 255, 255, 0);
+  }
 `
 
 const StyledMenuTitle = styled.span`
@@ -92,6 +113,9 @@ const StyledTitle = styled.p`
   padding: 0;
   padding: 0.125rem 0.5rem 0px 0.5rem;
   color: ${({ theme }) => theme.colors.grey9};
+  @media (max-width: 812px) {
+    padding: 0;
+  }
 `
 
 const StyledDescription = styled.p`
@@ -101,11 +125,15 @@ const StyledDescription = styled.p`
   padding: 0px 0.5rem 0.25rem 0.5rem;
   min-width: 200px;
   color: ${({ theme }) => theme.colors.grey6};
+  @media (max-width: 812px) {
+    padding: 0;
+  }
 `
 
 export default function Menu(props) {
+  const matches = useMediaQuery('only screen and (max-width: 812px)')
   const node = useRef()
-  const [isOpen, updateIsOpen] = useState(false)
+  const [isOpen, updateIsOpen] = useState(matches)
 
   function onFocus(focused) {
     if (focused) {
@@ -123,7 +151,7 @@ export default function Menu(props) {
       updateIsOpen(false)
     }
 
-    if (isOpen) {
+    if (isOpen && !matches) {
       node.current.removeEventListener('focus', e => onFocus(false))
       document.addEventListener('mouseover', handleClickOutside)
     } else {
@@ -135,7 +163,7 @@ export default function Menu(props) {
       document.removeEventListener('mouseover', handleClickOutside)
       node.current.removeEventListener('focus', e => onFocus(false))
     }
-  }, [isOpen, updateIsOpen])
+  }, [isOpen, updateIsOpen, matches])
 
   return (
     <StyledMenu ref={node}>
@@ -144,7 +172,7 @@ export default function Menu(props) {
         onFocus={() => updateIsOpen(true)}
         isOpen={isOpen}
       >
-        {props.data.name} <DropdownArrow />
+        {props.data.name} {!matches && <DropdownArrow />}
       </StyledMenuTitle>
       {isOpen ? (
         <MenuFlyout>

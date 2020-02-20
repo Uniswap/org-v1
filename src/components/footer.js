@@ -8,7 +8,11 @@ function Dropdown(props) {
     const title = node.name
     return (
       <StyledFooterLink key={node.name}>
-        <Link to={node.link}>{title}</Link>
+        {node.link.split('/')[0] === '' ? (
+          <Link to={node.link}>{title}</Link>
+        ) : (
+          <a href={node.link}>{title}</a>
+        )}
       </StyledFooterLink>
     )
   })
