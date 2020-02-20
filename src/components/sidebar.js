@@ -29,7 +29,7 @@ const StyledSection = styled.div`
   cursor: pointer;
 `
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(({ active, ...props }) => <Link {...props} />)`
   font-weight: ${({ active }) => active && 600};
   background-color: ${({ active }) => active && '#F7F8FA'};
   border-radius: 8px;
@@ -37,8 +37,19 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   margin: 0;
   /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
-  color: ${({ theme }) => theme.colors.link};
+  color: ${({ theme }) => theme.colors.link}; 
 `
+
+// const StyledLink = styled(Link)`
+//   font-weight: ${({ active }) => active && 600};
+//   background-color: ${({ active }) => active && '#F7F8FA'};
+//   border-radius: 8px;
+//   padding: 0.25rem 0.5rem;
+//   text-decoration: none;
+//   margin: 0;
+//   /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
+//   color: ${({ theme }) => theme.colors.link};
+// `
 
 const StyledList = styled.ul`
   list-style: none;
@@ -59,15 +70,7 @@ const StyledSectionTitle = styled.p`
   flex-wrap: no-wrap;
 `
 
-const StyledHeader = styled.h3`
-  color: black;
-  margin-bottom: 2rem;
-  margin-top: 0px !important;
-  font-weight: 600;
-  font-family: 'Principal Trial Semibold';
-`
-
-const StyledArrow = styled.div`
+const StyledArrow = styled.span`
   display: flex;
   transform-origin: center;
   transform: ${({ open }) => (open ? `rotateZ(0deg)` : `rotateZ(-90deg)`)};

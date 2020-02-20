@@ -4,15 +4,24 @@ const menu = [
     sublinks: [
       {
         name: 'Exchange',
-        link: '/',
+        link: 'https://uniswap.exchange/',
         description: 'Swap, Send and Supply tokens'
       },
       {
         name: 'Info',
-        link: '/',
+        link: 'https://uniswap.info/',
         description: 'Track Uniswap exchanges and token prices'
       },
-      { name: 'Unisocks', link: '/', description: 'Dynamically priced Socks' }
+      {
+        name: 'Unisocks',
+        link: 'https://unisocks.exchange/',
+        description: 'Dynamically priced Socks'
+      },
+      {
+        name: 'Unipig',
+        link: 'https://unipig.exchange/',
+        description: 'L2 Optimstic rollup demo'
+      }
     ]
   },
   {
@@ -20,22 +29,27 @@ const menu = [
     sublinks: [
       {
         name: 'Documentation',
-        link: '/docs/',
+        link: '/docs',
         description: 'Full API, smart contract and integration docs'
       },
-      { name: 'Github', link: '/' },
-      { name: 'Whitepaper', link: '/' },
-      { name: 'Smart Contract ABI', link: '/' },
-      { name: 'Javascript SDK', link: '/' }
+      { name: 'Github', link: 'https://github.com/Uniswap' },
+      { name: 'Whitepaper', link: '/docs' },
+      {
+        name: 'Smart Contract ABI',
+        link: '/docs/05-smart-contract-api/01-exchange/'
+      },
+      {
+        name: 'Javascript SDK',
+        link: '/docs/04-SDK-documentation/01-get-started/'
+      }
     ]
   },
   {
     name: 'Community',
     sublinks: [
-      { name: 'Twitter', link: '/' },
-      { name: 'Discord', link: '/' },
-      { name: 'Reddit', link: '/' },
-      { name: 'Slack', link: '/' }
+      { name: 'Twitter', link: 'https://twitter.com/UniswapExchange' },
+      { name: 'Discord', link: 'https://discord.gg/Y7TF6QA' },
+      { name: 'Reddit', link: 'https://www.reddit.com/r/UniSwap/' }
     ]
   },
   {
@@ -44,7 +58,7 @@ const menu = [
       // { name: 'About', link: '/about' },
       // { name: 'Team', link: '/about#team' },
       { name: 'Blog', link: '/blog' },
-      { name: 'Contact', link: '/contact' },
+      // { name: 'Contact', link: '/contact' },
       { name: 'FAQ', link: '/faq' }
     ]
   }

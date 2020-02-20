@@ -58,7 +58,7 @@ const StyledBody = styled.div`
     max-height: 900px;
     height: 80vh;
   }
-  @media (max-width: 1440px) {
+  @media (max-width: 1440px) and (max-height: 1000px) {
     max-height: 900px;
     height: 80vh;
   }
@@ -347,14 +347,14 @@ const IndexPage = props => {
       unicornImage: file(relativePath: { eq: "uni_image.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
-      line: file(relativePath: { eq: "sq.jpg" }) {
+      line: file(relativePath: { eq: "sq.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_noBase64
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -434,24 +434,32 @@ const IndexPage = props => {
             <h2>Documentation</h2>
             <p>Get started building on Uniswap using the SDK.</p>
             <div>
-              <a href="">Get Started</a> • <a href="">Javascript SDK</a> •{' '}
-              <a href="">Smart Contracts</a>
+              <Link to="/docs">Get Started</Link> •{' '}
+              <Link to="/docs/04-SDK-documentation/01-get-started/">
+                Javascript SDK
+              </Link>{' '}
+              •{' '}
+              <Link to="/docs/05-smart-contract-api/01-exchange/">
+                Smart Contracts
+              </Link>
             </div>
           </div>
           <div>
             <h2>About</h2>
             <p>Learn more about Uniswap.</p>
             <div>
-              <a href="">What is Uniswap?</a> • <a href="">FAQ</a> •{' '}
-              <a href="">Whitepaper</a>
+              <Link to="/">What is Uniswap?</Link> • <Link to="/faq">FAQ</Link>{' '}
+              • <Link to="/">Whitepaper</Link>
             </div>
           </div>
           <div>
             <h2>Community</h2>
             <p>Get help and participate in the community.</p>
             <div>
-              <a href="">Twitter</a> • <a href="">Discord</a> •{' '}
-              <a href="">Github</a> • <a href="">Reddit</a>
+              <a href="https://twitter.com/UniswapExchange">Twitter</a> •{' '}
+              <a href="https://discord.gg/Y7TF6QA">Discord</a> •{' '}
+              <a href="https://github.com/Uniswap">Github</a> •{' '}
+              <a href="https://www.reddit.com/r/UniSwap/">Reddit</a>
             </div>
           </div>
         </StyledImgSection>
@@ -467,7 +475,9 @@ const IndexPage = props => {
           the past.
         </p>
         <div>
-          <a href="">Read more about how we are working towards this future.</a>
+          <Link to="/">
+            Read more about how we are working towards this future.
+          </Link>
         </div>
       </StyledGoal>
     </Layout>

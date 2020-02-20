@@ -74,6 +74,13 @@ const StyledLink = styled(Link)`
   margin-bottom: 0.5rem;
   width: 100%;
 `
+const StyledExternalLink = styled.a`
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  width: 100%;
+`
 
 const StyledTitle = styled.p`
   display: block;
@@ -144,12 +151,21 @@ export default function Menu(props) {
           {props.data.sublinks.map(item => {
             return (
               <StyledMenuItem key={item.name}>
-                <StyledLink to={item.link}>
-                  <StyledTitle>{item.name}</StyledTitle>
-                  {item.description && (
-                    <StyledDescription>{item.description}</StyledDescription>
-                  )}
-                </StyledLink>
+                {item.link.split('/')[0] === '' ? (
+                  <StyledLink to={item.link}>
+                    <StyledTitle>{item.name}</StyledTitle>
+                    {item.description && (
+                      <StyledDescription>{item.description}</StyledDescription>
+                    )}
+                  </StyledLink>
+                ) : (
+                  <StyledExternalLink href={item.link}>
+                    <StyledTitle>{item.name}</StyledTitle>
+                    {item.description && (
+                      <StyledDescription>{item.description}</StyledDescription>
+                    )}
+                  </StyledExternalLink>
+                )}
               </StyledMenuItem>
             )
           })}
