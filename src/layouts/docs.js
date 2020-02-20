@@ -31,7 +31,7 @@ const StyledMDX = styled.div`
     font-size: 2rem;
   }
 
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media only screen and (min-width: 375px) and (max-width: 812px) {
     min-width: 100%;
     max-width: 100%;
   }

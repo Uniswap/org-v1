@@ -6,33 +6,21 @@ const StyledCard = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: ${({ theme, index }) =>
-    index === 0 ? theme.colors.white : 'none'}; */
-  /* box-shadow: ${({ theme, index }) =>
-    index === 0 ? theme.shadows.huge : 'none'}; */
   padding: 1.5rem;
   max-width: 300px;
-
-  /* min-height: 350px; */
   border-radius: 20px;
-  /* margin: 2rem; */
   text-decoration: none;
   transform: scale(0.99);
-  background-color: rgba(255,255,255,0.4);
-
-  /* box-shadow: ${({ theme, index }) => theme.shadows.small}; */
-  /* border: 1px solid
-    ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)}; */
+  background-color: rgba(255, 255, 255, 0.4);
   transition: transform 0.25s ease;
 
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     margin-bottom: 2rem;
     max-width: 100%;
+    width: 100%;
   }
 
   :hover {
-    /* background-color: ${({ theme }) => theme.colors.white}; */
-    /* box-shadow: ${({ theme, index }) => theme.shadows.huge}; */
     transform: scale(1);
   }
 `
@@ -42,6 +30,11 @@ const StyledCardTitle = styled.p`
   font-size: 2rem;
   line-height: 2.5rem;
   font-weight: 800;
+
+  @media (max-width: 1024px) {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 `
 
 const StyledCardDesc = styled.p`

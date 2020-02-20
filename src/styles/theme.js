@@ -154,10 +154,8 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 1440px;
     width: 100vw;
     padding: 0 3rem;
-    @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
-        padding: 0 1rem;
-        overflow-x: hidden;
-        overflow-y: scroll;
+    @media (max-device-width: 1024px) {
+        padding: 0 1.5rem;
     }
   }
 

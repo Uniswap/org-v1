@@ -23,7 +23,7 @@ const StyledFooter = styled.footer`
   justify-content: space-between;
   /* background-color: ${({ theme }) => theme.colors.grey9}; */
   color: ${({ theme }) => theme.colors.grey9};
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media  (max-width: 812px) {
     flex-direction: column;
     padding: 2rem 1rem;
   }
@@ -33,7 +33,7 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     flex-direction: column;
     justify-content: flex-start;
     margin-bottom: 2rem;
@@ -46,7 +46,7 @@ const StyledFooterSection = styled.section`
   align-items: flex-start;
   margin: 0;
   padding-left: 5rem;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     padding-left: 0rem;
     margin-bottom: 2rem;
   }

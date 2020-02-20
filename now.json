@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "name": "Uniswap",
-  "alias": "uniswap.io",
   "builds": [
     {
       "src": "package.json",

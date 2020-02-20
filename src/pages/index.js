@@ -19,7 +19,7 @@ const StyledCardsWrapper = styled.span`
   justify-content: flex-start;
   justify-content: space-between;
   padding-top: 0rem;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     padding-top: 0;
     flex-direction: column;
     justify-content: center;
@@ -47,8 +47,6 @@ const Stats = styled.div`
 
 const StyledBody = styled.div`
   font-size: 18px;
-  height: 80vh;
-  max-height: 900px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -57,15 +55,20 @@ const StyledBody = styled.div`
   @media (min-width: 1441px) {
     padding-top: 0px;
     justify-content: center;
+    max-height: 900px;
+    height: 80vh;
   }
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 1440px) {
+    max-height: 900px;
+    height: 80vh;
+  }
+  @media (max-width: 1024px) {
     height: auto;
     max-height: 100%;
   }
 `
 
 const StyledSection = styled.div`
-  /* padding: 4rem; */
   margin-top: 6rem;
 `
 const StyledTitle = styled.div`
@@ -78,10 +81,11 @@ const StyledTitle = styled.div`
   @media (min-width: 1441px) {
     width: 70%;
   }
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     width: 100%;
     mix-blend-mode: normal;
-    min-height: 40vh;
+    min-height: auto;
+    height: 100%;
     justify-content: center;
   }
 `
@@ -91,18 +95,23 @@ const StyledBodyTitle = styled.div`
   color: ${({ theme }) => theme.colors.pink1};
   font-weight: 900;
   font-size: 7.5vw;
-  line-height: 6.5rem;
+  line-height: 7.75vw;
   letter-spacing: -0.06rem;
   margin-bottom: 4rem;
-  padding-right: 4rem;
+  /* padding-right: 4rem; */
   pointer-events: none;
   @media (min-width: 1441px) {
     font-size: 5.5vw;
     line-height: 5.25vw;
   }
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     font-size: 3.5rem;
     line-height: 3.75rem;
+    padding-right: 0rem;
+  }
+  @media (max-width: 356px) {
+    font-size: 2.5rem;
+    line-height: 2.75rem;
     padding-right: 0rem;
   }
 
@@ -136,7 +145,7 @@ const NewInfo = styled(Link)`
   a {
     color: ${({ theme }) => theme.colors.grey9};
   }
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     position: relative;
     width: 120%;
     right: -30px;
@@ -186,7 +195,7 @@ const StyledDownArrow = styled.a`
   color: ${({ theme }) => theme.colors.link};
   cursor: pointer;
   animation: ${bounce} 5s infinite;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     display: none;
   }
 `
@@ -196,7 +205,7 @@ const StyledSectionFlex = styled.div`
   margin-top: 4rem;
   display: flex;
   justify-content: space-around;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     padding: 1rem;
     margin-top: 0rem;
     flex-direction: column;
@@ -213,7 +222,7 @@ const StyledSectionFlex = styled.div`
 const StyledImgSection = styled.div`
   position: relative;
   min-width: 400px;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     min-width: 0px;
   }
 `
@@ -233,13 +242,29 @@ const StyledCircleImg = styled.img`
   max-width: 400px;
   position: absolute;
   top: 0px;
-  left: 200px;
+  left: 150px;
   margin-right: 0.5rem;
   animation: ${rotate} 700s linear infinite;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 1024px) {
+    max-width: 50%;
+    left: 25%;
+  }
+  @media (max-width: 812px) {
     width: 100%;
     max-width: 200px;
     left: 100px;
+  }
+`
+
+const StyledLineImg = styled(Img)`
+  max-width: 300px;
+  @media (max-width: 1024px) {
+    max-width: 50%;
+    left: 25%;
+  }
+  @media (max-width: 812px) {
+    width: 100%;
+    max-width: 200px;
   }
 `
 
@@ -251,14 +276,6 @@ const StyledStarImg = styled.img`
   right: 0px;
   margin-right: 0.5rem;
   z-index: 999;
-`
-
-const StyledLineImg = styled(Img)`
-  max-width: 300px;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
-    width: 100%;
-    max-width: 200px;
-  }
 `
 
 const StyledGoal = styled.div`
@@ -280,7 +297,7 @@ const StyledTradeLink = styled.a`
   margin-right: 1.5rem;
   /* height: 56px; */
   display: inline-block;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     margin-right: 0.5rem;
     /* width: 100%; */
     border-radius: 20px;
@@ -304,7 +321,7 @@ const StyledTradeLinkOutlined = styled(Link)`
   margin-right: 1.5rem;
   height: 56px;
   display: inline-block;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 812px) {
     margin-right: 0.5rem;
     padding: 0.5rem 1rem;
     width: 100%;
