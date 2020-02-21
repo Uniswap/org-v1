@@ -38,7 +38,9 @@ const Layout = ({ path, children }) => {
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:image"
-            content={`${data.site.siteMetadata.siteUrl}${path}twitter-card.jpg`}
+            content={`${data.site.siteMetadata.siteUrl}${
+              path ? path : '/'
+            }twitter-card.jpg`}
           />
         </Helmet>
         <GlobalStyle />
