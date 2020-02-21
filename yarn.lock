@@ -5968,6 +5968,11 @@ gatsby-plugin-react-helmet@^3.1.16:
   dependencies:
     "@babel/runtime" "^7.7.4"
 
+gatsby-plugin-replace-path@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-replace-path/-/gatsby-plugin-replace-path-1.0.0.tgz#8f28daf8fe40bc3a6a79fa4de2d936fcba298491"
+  integrity sha512-4Mbm6zQz6d/75+SslewvVV4qR002LZw/j2DTHfw6daNeGgPgowWZAHU0+JKqFi1Rb9GD0FGR7axUNNK/5S5t2A==
+
 gatsby-plugin-scroll-indicator@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-scroll-indicator/-/gatsby-plugin-scroll-indicator-0.1.4.tgz#325332da103e257de807574f3c8ed791612a6deb"

@@ -92,33 +92,23 @@ const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
 `
 
-function StripName(name) {
-  const editedName = name
-    .replace('(?m)^[\\d-]*\\s*', '')
-    .replace(/\d/g, '')
-    .replace(/-/g, ' ')
-    .replace(/(^|\s)\S/g, function(t) {
-      return t.toUpperCase()
-    })
-
-  return editedName
-}
-
 function List(props) {
-  const parentSlug = props.slug === '/docs/' ? '/docs' : '/guides'
+  const parentSlug =
+    props.slug.replace(/\d+-/g, '') === '/docs/' ? '/docs' : '/guides'
 
   const items = props.data.edges
     .filter(({ node }) => {
-      return node.fields.topLevelDir === props.parent
+      return node.fields.topLevelDir === props.parent.replace(/\d+-/g, '')
     })
     .map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
+      const activePath = parentSlug + node.fields.slug
       return (
         <StyledLisItem key={node.id}>
           <StyledLink
             onClick={() => scrollTo('#docs-header')}
-            active={props.path === parentSlug + node.fields.slug}
-            to={parentSlug + node.fields.slug}
+            active={props.path === activePath}
+            to={activePath}
           >
             {title}
           </StyledLink>
@@ -129,15 +119,16 @@ function List(props) {
 }
 
 const CollapsibleList = ({ node, listData, path, parent }) => {
-  const [open, setOpen] = useState(node.name === path.split('/')[2])
+  const [open, setOpen] = useState(
+    node.name.replace(/\d+-/g, '') === path.split('/')[2]
+  )
+
   const title = node.name
-    .replace('(?m)^[\\d-]*\\s*', '')
-    .replace(/\d/g, '')
+    .replace(/\d+-/g, '')
     .replace(/-/g, ' ')
     .replace(/(^|\s)\S/g, function(t) {
       return t.toUpperCase()
     })
-
   return (
     <StyledSection
       trigger={title}
@@ -146,12 +137,7 @@ const CollapsibleList = ({ node, listData, path, parent }) => {
       onClick={() => setOpen(!open)}
       easing="ease"
     >
-      <StyledSectionTitle>
-        {title}
-        {/* <StyledArrow open={open}>
-          <DropdownArrow />
-        </StyledArrow> */}
-      </StyledSectionTitle>
+      <StyledSectionTitle>{title}</StyledSectionTitle>
       <List data={listData} parent={node.name} slug={parent} path={path} />
     </StyledSection>
   )
@@ -236,16 +222,14 @@ const SideBar = props => {
   const navData =
     props.parent === '/docs/' ? data.topNavDocs : data.topNavGuides
 
-  const [isMenuOpen, updateIsMenuOpen] = useState(!matches)
   const matches = useMediaQuery('only screen and (max-width: 960px)')
+  const [isMenuOpen, updateIsMenuOpen] = useState(!matches)
 
   return (
     <StyledSidebar>
       <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
       <StyledMobileMenu onClick={e => updateIsMenuOpen(!isMenuOpen)}>
-        <span>
-          {isMenuOpen ? StripName(props.path.split('/')[2]) : 'Hide Menu'}
-        </span>
+        <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
           <DropdownArrow />
         </StyledArrow>

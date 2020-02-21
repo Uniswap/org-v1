@@ -21,7 +21,7 @@ const StyledHeadingLink = styled.a`
 `
 
 const Heading = ({ heading }) => {
-  const slug = slugger.slug(heading.value)
+  const slug = slugger.slug(heading.value.replace(/\d+-/g, ''))
   slugger.reset()
   return (
     <StyledHeadingListElement key={heading.value} depth={heading.depth}>

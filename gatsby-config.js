@@ -106,6 +106,13 @@ module.exports = {
     cardlinks: cards
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-replace-path',
+      options: {
+        pattern: /\d+-/g,
+        replacement: ''
+      }
+    },
     `gatsby-plugin-twitter`,
     'gatsby-plugin-instagram-embed',
     `gatsby-plugin-smoothscroll`,
