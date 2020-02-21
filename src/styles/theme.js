@@ -139,7 +139,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    /* background-image: url("images/bg_radial.jpg"); */
+    background-image: url("images/bg_radial.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;   

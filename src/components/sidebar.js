@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
+import { useMediaQuery } from '@react-hook/media-query'
+
 import Search from '../components/search'
 
 import { useStaticQuery, graphql } from 'gatsby'
@@ -19,11 +21,15 @@ const StyledSidebar = styled.span`
   color: ${({ theme }) => theme.colors.link};
   padding: 0rem 4rem 0 0;
   min-width: 300px;
-  /* font-size: 1.125rem; */
+  @media (max-width: 960px) {
+    top: 0px;
+    position: relative;
+    padding: 0rem;
+    width: 100%;
+  }
 `
 
 const StyledSection = styled.div`
-  /* opacity: ${({ open }) => (open ? 1 : 0.6)}; */
   height: ${({ open }) => (open ? 'inital' : '2.5rem')};
   overflow: hidden;
   cursor: pointer;
@@ -39,17 +45,6 @@ const StyledLink = styled(({ active, ...props }) => <Link {...props} />)`
   /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
   color: ${({ theme }) => theme.colors.link}; 
 `
-
-// const StyledLink = styled(Link)`
-//   font-weight: ${({ active }) => active && 600};
-//   background-color: ${({ active }) => active && '#F7F8FA'};
-//   border-radius: 8px;
-//   padding: 0.25rem 0.5rem;
-//   text-decoration: none;
-//   margin: 0;
-//   /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
-//   color: ${({ theme }) => theme.colors.link};
-// `
 
 const StyledList = styled.ul`
   list-style: none;
@@ -73,12 +68,41 @@ const StyledSectionTitle = styled.p`
 const StyledArrow = styled.span`
   display: flex;
   transform-origin: center;
-  transform: ${({ open }) => (open ? `rotateZ(0deg)` : `rotateZ(-90deg)`)};
+  transform: ${({ open }) => (open ? `rotateZ(0deg)` : `rotateZ(-180deg)`)};
   width: 10px;
   height: 10px;
   margin-left: 0.5rem;
   opacity: 1;
 `
+
+const StyledMobileMenu = styled.div`
+  display: none;
+
+  @media (max-width: 960px) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem 0;
+    font-weight: 600;
+    margin: 1rem 0 0 0;
+  }
+`
+
+const ListWrapper = styled.span`
+  display: ${({ open }) => (open ? 'none' : 'initial')};
+`
+
+function StripName(name) {
+  const editedName = name
+    .replace('(?m)^[\\d-]*\\s*', '')
+    .replace(/\d/g, '')
+    .replace(/-/g, ' ')
+    .replace(/(^|\s)\S/g, function(t) {
+      return t.toUpperCase()
+    })
+
+  return editedName
+}
 
 function List(props) {
   const parentSlug = props.slug === '/docs/' ? '/docs' : '/guides'
@@ -212,18 +236,31 @@ const SideBar = props => {
   const navData =
     props.parent === '/docs/' ? data.topNavDocs : data.topNavGuides
 
+  const [isMenuOpen, updateIsMenuOpen] = useState(!matches)
+  const matches = useMediaQuery('only screen and (max-width: 960px)')
+
   return (
     <StyledSidebar>
       <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
-      {navData.edges.map(({ node }) => (
-        <CollapsibleList
-          key={node.id}
-          node={node}
-          listData={listData}
-          path={props.path}
-          parent={props.parent}
-        />
-      ))}
+      <StyledMobileMenu onClick={e => updateIsMenuOpen(!isMenuOpen)}>
+        <span>
+          {isMenuOpen ? StripName(props.path.split('/')[2]) : 'Hide Menu'}
+        </span>
+        <StyledArrow open={isMenuOpen}>
+          <DropdownArrow />
+        </StyledArrow>
+      </StyledMobileMenu>
+      <ListWrapper open={isMenuOpen && matches}>
+        {navData.edges.map(({ node }) => (
+          <CollapsibleList
+            key={node.id}
+            node={node}
+            listData={listData}
+            path={props.path}
+            parent={props.parent}
+          />
+        ))}
+      </ListWrapper>
     </StyledSidebar>
   )
 }

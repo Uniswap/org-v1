@@ -57,6 +57,10 @@ const StyledTOC = styled.ul`
   li {
     padding: 0;
   }
+
+  @media (max-width: 960px) {
+    display: none;
+  }
 `
 
 const TableofContents = ({ headings }) => (

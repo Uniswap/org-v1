@@ -1,21 +1,29 @@
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import React, { useState } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useLunr } from 'react-lunr'
 import { Formik, Form, Field } from 'formik'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const SearchWrapper = styled.div`
   position: relative;
-  /* padding-top: 1rem; */
+  width: 100%;
+  @media (max-width: 960px) {
+    form {
+      margin-bottom: 0px;
+    }
+  }
 `
 
 const StyledFormField = styled(Field)`
-  /* border: 1px solid lightgrey; */
   background-color: ${({ theme }) => theme.colors.grey1};
   border: none;
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
+  width: 100%;
+  @media (max-width: 960px) {
+    padding: 0.5rem 0.75rem;
+  }
 `
 
 const SearchList = styled.div`
@@ -24,7 +32,7 @@ const SearchList = styled.div`
   list-style: none;
   margin: 0;
   min-width: 256px;
-  /* padding: 0.5rem; */
+  width: 100%;
   z-index: 99;
   border-radius: 8px;
   background-color: white;
@@ -64,6 +72,20 @@ const StyledLink = styled(Link)`
   }
 `
 
+const StyledForm = styled(Form)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.grey1};
+`
+
+const ClearButton = styled.button`
+  background-color: unset;
+  border: none;
+  padding-right: 1rem;
+`
+
 const Search = props => {
   const data = useStaticQuery(graphql`
     {
@@ -75,21 +97,32 @@ const Search = props => {
   `)
 
   const index = data.localSearchDocs.index /* a FlexSearch index */
+
+  // const newIndex = useMemo(() => {
+  //   const modIndex = index
+  //   modIndex.metadataWhitelist = ['position']
+
+  //   return modIndex
+  // }, [index])
+
   const store = data.localSearchDocs.store
   const [query, setQuery] = useState('')
   const results = useLunr(query, index, store)
+  // console.log(index)
+  // console.log(store)
+
   return (
     <SearchWrapper>
       <Formik
         initialValues={{ query: '' }}
         onSubmit={(values, { setSubmitting }) => {
-          setQuery(values.query + ' *')
-          setSubmitting(false)
+          setQuery(values.query)
         }}
       >
-        <Form
+        <StyledForm
+          style={{ display: 'relative' }}
           onChange={e => {
-            setQuery(e.target.value + ' *')
+            e.target.value !== '' && setQuery(e.target.value + '~1')
           }}
         >
           <StyledFormField
@@ -98,30 +131,36 @@ const Search = props => {
             name="query"
             placeholder={'Search ' + props.parent + '...'}
           />
-        </Form>
+          <ClearButton type="reset" onClick={() => setQuery('')}>
+            ×
+          </ClearButton>
+        </StyledForm>
       </Formik>
       {query !== '' && query && (
         <SearchList>
-          {results.map(result => (
-            <StyledLink to={'/docs/' + result.path}>
-              <SearchListItemHeader
-                dangerouslySetInnerHTML={{
-                  __html: result.title.replace(
-                    new RegExp(query, 'gi'),
-                    match => `<mark>${match}</mark>`
-                  )
-                }}
-              />
-              <SearchListItemExcerpt
-                dangerouslySetInnerHTML={{
-                  __html: result.excerpt.replace(
-                    new RegExp(query, 'gi'),
-                    match => `<mark>${match}</mark>`
-                  )
-                }}
-              />
-            </StyledLink>
-          ))}
+          {results.map(result => {
+            console.log(result)
+            return (
+              <StyledLink to={'/docs/' + result.path}>
+                <SearchListItemHeader
+                  dangerouslySetInnerHTML={{
+                    __html: result.title.replace(
+                      new RegExp(query, 'gi'),
+                      match => `<mark>${match}</mark>`
+                    )
+                  }}
+                />
+                <SearchListItemExcerpt
+                  dangerouslySetInnerHTML={{
+                    __html: result.excerpt.replace(
+                      new RegExp(query, 'gi'),
+                      match => `<mark>${match}</mark>`
+                    )
+                  }}
+                />
+              </StyledLink>
+            )
+          })}
         </SearchList>
       )}
     </SearchWrapper>

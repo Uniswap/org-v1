@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Menu from './menu'
@@ -15,10 +15,9 @@ const StyledHeader = styled.header`
   padding: 3rem 0px;
   width: 100%;
   font-size: 1.125rem;
-  /* margin-bottom: 3rem; */
   z-index: 999;
   font-weight: 500;
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     padding: 2rem 0px;
     flex-direction: column;
   }
@@ -29,10 +28,9 @@ const StyledNav = styled.nav`
   display: flex;
   align-items: center;
   transition: right 0.25s ease;
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     position: fixed;
     top: 0px;
-    /* left: 0px; */
     right: ${({ open }) => (open ? '0px' : '-100vw')};
     flex-direction: column;
     align-items: flex-start;
@@ -43,12 +41,6 @@ const StyledNav = styled.nav`
     padding: 2rem;
     overflow: scroll;
     box-shadow: ${({ theme }) => theme.shadows.huge};
-    /* position: fixed;
-    overflow-y: scroll;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; */
   }
 `
 
@@ -81,17 +73,22 @@ const StyledNavImage = styled.img`
 const StyledNavWordMark = styled.img`
   margin: 0;
   margin-top: 4px;
-  /* width: 24px; */
 `
 
 const StyledTradeLink = styled.a`
-  padding: 0.5rem 1.25rem;
+  padding: 0.25rem 0.75rem;
   background-color: ${({ theme }) => theme.colors.link};
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
-  border-radius: 20px;
+  border-radius: 12px;
   margin-left: 1.5rem;
-  max-height: 48px;
+  display: inline-block;
+  transform: scale(0.98);
+  transition: transform 0.25s ease;
+
+  :hover {
+    transform: scale(1);
+  }
 `
 
 const StyledHomeLink = styled(Link)`
@@ -101,25 +98,20 @@ const StyledHomeLink = styled(Link)`
 `
 
 const MenuToggle = styled.button`
-  /* max-height: 48px; */
   border: none;
-  backgound-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.link};
   position: absolute;
   right: 0px;
   display: none;
   z-index: 9999;
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     display: inline-block;
   }
 `
 
 const Header = props => {
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
-
-  // useEffect(() => {
-  //   updateIsMenuOpen(!isMenuOpen)
-  // }, [isMenuOpen, updateIsMenuOpen])
 
   const data = useStaticQuery(graphql`
     {
@@ -172,7 +164,9 @@ const Header = props => {
             return <Menu key={item.name} data={item} />
           })}
         {props.path !== undefined && (
-          <StyledTradeLink>Swap Tokens</StyledTradeLink>
+          <StyledTradeLink href="https://uniswap.exchange/">
+            Trade tokens
+          </StyledTradeLink>
         )}
       </StyledNav>
     </StyledHeader>

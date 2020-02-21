@@ -27,7 +27,7 @@ const StyledMenu = styled.button`
   padding-right: 2rem;
   z-index: 9999;
   background: none;
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     font-size: 1.5rem;
     width: 100%;
     flex-direction: column;
@@ -61,7 +61,7 @@ const MenuFlyout = styled.span`
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
     0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
 
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     font-size: 1rem;
     position: relative;
     box-shadow: none;
@@ -120,7 +120,7 @@ const StyledTitle = styled.p`
   padding: 0;
   padding: 0.125rem 0.5rem 0px 0.5rem;
   color: ${({ theme }) => theme.colors.grey9};
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     padding: 0;
   }
 `
@@ -132,13 +132,13 @@ const StyledDescription = styled.p`
   padding: 0px 0.5rem 0.25rem 0.5rem;
   min-width: 200px;
   color: ${({ theme }) => theme.colors.grey6};
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     padding: 0;
   }
 `
 
 export default function Menu(props) {
-  const matches = useMediaQuery('only screen and (max-width: 812px)')
+  const matches = useMediaQuery('only screen and (max-width: 960px)')
   const node = useRef()
   const [isOpen, updateIsOpen] = useState(matches)
 

@@ -1,19 +1,28 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { createGlobalStyle } from 'styled-components'
+import { Link, useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 import Layout from '.'
 import SideBar from '../components/sidebar'
 import SEO from '../components/seo'
-
 import TableofContents from '../components/toc'
-import styled from 'styled-components'
 
-import { useStaticQuery, graphql } from 'gatsby'
+const GlobalStyle = createGlobalStyle`
+  html {
+    background-image: none;
+    background-color: ${({ theme }) => theme.colors.white};
+}
+`
 
 const StyledDocs = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `
 
 const StyledMDX = styled.div`
@@ -47,7 +56,7 @@ const StyledMDX = styled.div`
     background-color: #E6ECF1;
   }
 
-  @media only screen and (min-width: 375px) and (max-width: 812px) {
+  @media (max-width: 960px) {
     min-width: 100%;
     max-width: 100%;
   }
@@ -132,6 +141,7 @@ const Docs = props => {
 
   return (
     <Layout path={props.path}>
+      <GlobalStyle />
       <SEO title="Uniswap Documentation" />
       <StyledDocs id="docs-header">
         <SideBar parent={'/docs/'} {...props} />

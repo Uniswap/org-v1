@@ -19,7 +19,7 @@ const StyledCardsWrapper = styled.span`
   justify-content: flex-start;
   justify-content: space-between;
   padding-top: 0rem;
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     padding-top: 0;
     flex-direction: column;
     justify-content: center;
@@ -81,7 +81,7 @@ const StyledTitle = styled.div`
   @media (min-width: 1441px) {
     width: 70%;
   }
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     width: 100%;
     mix-blend-mode: normal;
     min-height: auto;
@@ -105,7 +105,7 @@ const StyledBodyTitle = styled.div`
     font-size: 5.5vw;
     line-height: 5.25vw;
   }
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     font-size: 3.5rem;
     line-height: 3.75rem;
     padding-right: 0rem;
@@ -141,7 +141,7 @@ const NewInfo = styled(Link)`
   a {
     color: ${({ theme }) => theme.colors.grey9};
   }
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     position: relative;
     width: 120%;
     right: -30px;
@@ -191,7 +191,7 @@ const StyledDownArrow = styled.a`
   color: ${({ theme }) => theme.colors.link};
   cursor: pointer;
   animation: ${bounce} 5s infinite;
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     display: none;
   }
 `
@@ -201,7 +201,7 @@ const StyledSectionFlex = styled.div`
   margin-top: 4rem;
   display: flex;
   justify-content: space-around;
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     padding: 1rem;
     margin-top: 0rem;
     flex-direction: column;
@@ -218,7 +218,7 @@ const StyledSectionFlex = styled.div`
 const StyledImgSection = styled.div`
   position: relative;
   min-width: 400px;
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     min-width: 0px;
   }
 `
@@ -245,7 +245,7 @@ const StyledCircleImg = styled.img`
     max-width: 50%;
     left: 25%;
   }
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     width: 100%;
     max-width: 200px;
     left: 100px;
@@ -258,7 +258,7 @@ const StyledLineImg = styled(Img)`
     max-width: 50%;
     left: 25%;
   }
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     width: 100%;
     max-width: 200px;
   }
@@ -277,7 +277,9 @@ const StyledStarImg = styled.img`
 const StyledGoal = styled.div`
   padding: 0 2rem 2rem 2rem;
   margin-top: 4rem;
-  border: 1px solid ${({ theme }) => theme.colors.grey2};
+  border: 1px solid ${({ theme }) => theme.colors.grey9};
+  background-color: ${({ theme }) => theme.colors.grey9};
+  color: white;
   border-radius: 0.5rem;
   h2 {
     font-family: 'Principal Trial Semibold';
@@ -298,7 +300,7 @@ const StyledTradeLink = styled.a`
   :hover {
     transform: scale(1);
   }
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     margin-right: 0.5rem;
     border-radius: 20px;
     text-align: center;
@@ -326,7 +328,7 @@ const StyledTradeLinkOutlined = styled(Link)`
   :hover {
     transform: scale(1);
   }
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     margin-right: 0.5rem;
     padding: 0.5rem 1rem;
     width: 100%;
@@ -470,7 +472,7 @@ const IndexPage = props => {
         </StyledImgSection>
       </StyledSectionFlex>
       <StyledGoal>
-        <h2>Our goals</h2>
+        <h2>Our goal</h2>
         <p>
           Uniswap is important infrastructure for the emerging crypto economy
           and enables markets to be created that couldn't have existed before.

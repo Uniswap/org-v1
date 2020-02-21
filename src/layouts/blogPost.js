@@ -29,7 +29,7 @@ const StyledMDX = styled.div`
     margin-bottom: 2rem;
     font-size: 2rem;
   }
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 960px) {
     min-width: 100%;
     max-width: 100%;
   }
@@ -44,7 +44,7 @@ const PostHeader = styled.div`
   min-width: 550px;
   max-width: 768px;
   padding: 8rem 0;
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media (max-width: 960px) {
     min-width: 100%;
     max-width: 100%;
   }

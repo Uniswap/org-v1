@@ -14,7 +14,7 @@ const StyledCard = styled(Link)`
   background-color: rgba(255, 255, 255, 0.4);
   transition: transform 0.25s ease;
 
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     margin-bottom: 2rem;
     max-width: 100%;
     width: 100%;
@@ -37,7 +37,7 @@ const StyledExternalCard = styled.a`
   background-color: rgba(255, 255, 255, 0.4);
   transition: transform 0.25s ease;
 
-  @media (max-width: 812px) {
+  @media (max-width: 960px) {
     margin-bottom: 2rem;
     max-width: 100%;
     width: 100%;
