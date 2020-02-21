@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState } from 'react'
 import { useLunr } from 'react-lunr'
 import { Formik, Form, Field } from 'formik'
 import { useStaticQuery, graphql } from 'gatsby'

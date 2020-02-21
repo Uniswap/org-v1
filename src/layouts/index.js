@@ -7,6 +7,7 @@
 
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 import { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from '../styles/theme'
@@ -17,12 +18,13 @@ import Mdx from '../components/mdx'
 import '../styles/prism-github.css'
 import '../styles/layout.css'
 
-const Layout = ({ path, children }) => {
+const Layout = ({ path, pathname, children }) => {
   const data = useStaticQuery(graphql`
-    query GuidesSiteTitleQuery {
+    query {
       site {
         siteMetadata {
           title
+          siteUrl
         }
       }
     }
@@ -30,6 +32,15 @@ const Layout = ({ path, children }) => {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:image"
+            content={`${data.site.siteMetadata.siteUrl}${path}twitter-card.jpg`}
+          />
+        </Helmet>
         <GlobalStyle />
         <Header path={path} siteTitle={data.site.siteMetadata.title} />
         <Mdx>{children}</Mdx>

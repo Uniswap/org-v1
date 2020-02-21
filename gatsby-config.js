@@ -36,11 +36,11 @@ const menu = [
       { name: 'Whitepaper', link: '/docs' },
       {
         name: 'Smart Contract ABI',
-        link: '/docs/05-smart-contract-api/01-exchange/'
+        link: '/docs/smart-contract-api/exchange/'
       },
       {
         name: 'Javascript SDK',
-        link: '/docs/04-SDK-documentation/01-get-started/'
+        link: '/docs/SDK-documentation/get-started/'
       }
     ]
   },
@@ -101,9 +101,10 @@ module.exports = {
   siteMetadata: {
     title: `Uniswap`,
     description: `Uniswap homepage`,
-    author: `@callil`,
+    author: `@UniswapExchange`,
     menulinks: menu,
-    cardlinks: cards
+    cardlinks: cards,
+    siteUrl: `https://uniswap.io`
   },
   plugins: [
     {
@@ -113,6 +114,8 @@ module.exports = {
         replacement: ''
       }
     },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-twitter`,
     'gatsby-plugin-instagram-embed',
     `gatsby-plugin-smoothscroll`,
@@ -130,16 +133,11 @@ module.exports = {
           guides: require.resolve(`./src/layouts/guides`)
         },
         gatsbyRemarkPlugins: [
-          // `gatsby-remark-code-buttons`,
           `gatsby-remark-embedder`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
-          // {
-          //   resolve: `gatsby-remark-prismjs`,
-          //   options: {
-          //     showLineNumbers: true
-          //   }
-          // },
+          `gatsby-remark-twitter-cards`,
+          `gatsby-remark-smartypants`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -251,7 +249,62 @@ module.exports = {
             excerpt: node.excerpt
           }))
       }
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return {
+                  description: edge.node.frontmatter.previewText,
+                  title: edge.node.frontmatter.title,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug
+                }
+              })
+            },
+            query: `
+            {
+              allMdx(filter: {fileAbsolutePath: {regex: "/blog/"}}, sort: {order: DESC, fields: frontmatter___date}) {
+                edges {
+                  node {
+                    id
+                    frontmatter {
+                      date
+                      title
+                      previewText
+                    }
+                    fields {
+                      slug
+                    }
+                    rawBody
+                  }
+                }
+              }
+            }
+            `,
+            output: '/rss.xml',
+            title: 'Uniswap Blog RSS Feed'
+          }
+        ]
+      }
     }
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
