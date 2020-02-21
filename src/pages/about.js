@@ -4,8 +4,8 @@ import { Link } from 'gatsby'
 import Layout from '../layouts'
 import SEO from '../components/seo'
 
-const SecondPage = () => (
-  <Layout>
+const SecondPage = ({ path }) => (
+  <Layout path={path}>
     <SEO title="Page two" />
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>

@@ -18,7 +18,7 @@ import Mdx from '../components/mdx'
 import '../styles/prism-github.css'
 import '../styles/layout.css'
 
-const Layout = ({ path, pathname, children }) => {
+const Layout = ({ path, children }) => {
   const data = useStaticQuery(graphql`
     query {
       site {

@@ -376,7 +376,7 @@ const IndexPage = props => {
   `)
 
   return (
-    <Layout>
+    <Layout path={props.path}>
       <SEO title="Home" />
       <StyledBody>
         <StyledTitle>
