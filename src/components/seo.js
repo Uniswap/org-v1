@@ -29,58 +29,27 @@ function SEO({ description, lang, meta, title, path }) {
   const metaDescription = description || site.siteMetadata.description
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription
-        },
-        {
-          property: `og:title`,
-          content: title
-        },
-        {
-          property: `og:description`,
-          content: metaDescription
-        },
-        {
-          property: `og:type`,
-          content: `website`
-        },
-        {
-          property: `og:image`,
-          content: `${site.siteMetadata.siteUrl}${
-            path ? path : '/'
-          }twitter-card.jpg`
-        },
-        {
-          property: `twitter:image`,
-          content: `${site.siteMetadata.siteUrl}${
-            path ? path : '/'
-          }twitter-card.jpg`
-        },
-        {
-          property: `twitter:card`,
-          content: `summary_large_image`
-        }
-      ].concat(meta)}
-    >
+    <Helmet>
       <meta charSet="utf-8" />
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="description" content={metaDescription} />
+      <meta name="og:title" content={title} />
+      <meta name="og:description" content={metaDescription} />
+      <meta name="og:type" content={website} />
+      <meta name="og:url" content={site.siteMetadata.siteUrl + path} />
       <meta
-        name="twitter:image"
+        property="og:image"
         content={`${site.siteMetadata.siteUrl}${
           path ? path : '/'
         }twitter-card.jpg`}
       />
+
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:url" content={site.siteMetadata.siteUrl + path} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta
-        property="og:image"
+        name="twitter:image"
         content={`${site.siteMetadata.siteUrl}${
           path ? path : '/'
         }twitter-card.jpg`}
