@@ -140,9 +140,9 @@ const Docs = props => {
   `)
 
   return (
-    <Layout path={props.path}>
+    <Layout path={props.path} pathname={props.location.pathname}>
       <GlobalStyle />
-      <SEO title="Uniswap Documentation" />
+      <SEO title="Uniswap Documentation" path={props.path} />
       <StyledDocs id="docs-header">
         <SideBar parent={'/docs/'} {...props} />
         <StyledMDX>

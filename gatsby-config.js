@@ -104,7 +104,7 @@ module.exports = {
     author: `@UniswapExchange`,
     menulinks: menu,
     cardlinks: cards,
-    siteUrl: `https://uniswap.io`
+    siteUrl: `https://uniswap-site-v2.now.sh`
   },
   plugins: [
     {

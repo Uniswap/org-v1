@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Moment from 'react-moment'
 
 import { Twitter, Facebook } from 'react-social-sharing'
+import SEO from '../components/seo'
 
 import { graphql } from 'gatsby'
 
@@ -12,11 +13,9 @@ const StyledBlog = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  /* align-items: center; */
 `
 
 const StyledMDX = styled.div`
-  /* width: 640px; */
   min-width: 550px;
   max-width: 768px;
   padding: 0;
@@ -79,6 +78,7 @@ const PostDate = styled(Moment)`
 const Blog = ({ pageContext, path, children }) => {
   return (
     <Layout path={path}>
+      <SEO title={pageContext.frontmatter.title} path={path} />
       <StyledBlog id="blog-header">
         <PostHeader>
           <PostTitle>{pageContext.frontmatter.title}</PostTitle>

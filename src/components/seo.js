@@ -10,12 +10,13 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, path }) {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
+            siteUrl
             title
             description
             author
@@ -26,6 +27,7 @@ function SEO({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  console.log(path)
 
   return (
     <Helmet
@@ -68,7 +70,17 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription
         }
       ].concat(meta)}
-    />
+    >
+      <meta charSet="utf-8" />
+      <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        name="twitter:image"
+        content={`${site.siteMetadata.siteUrl}${
+          path ? path : '/'
+        }twitter-card.jpg`}
+      />
+    </Helmet>
   )
 }
 

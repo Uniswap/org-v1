@@ -376,8 +376,8 @@ const IndexPage = props => {
   `)
 
   return (
-    <Layout path={props.path}>
-      <SEO title="Home" />
+    <Layout path={props.paths}>
+      <SEO title="Home" path={props.paths} />
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated token exchange.</StyledBodyTitle>
