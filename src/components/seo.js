@@ -53,20 +53,20 @@ function SEO({ description, lang, meta, title, path }) {
           content: `website`
         },
         {
-          name: `twitter:card`,
-          content: `summary`
+          property: `og:image`,
+          content: `${site.siteMetadata.siteUrl}${
+            path ? path : '/'
+          }twitter-card.jpg`
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author
+          property: `twitter:image`,
+          content: `${site.siteMetadata.siteUrl}${
+            path ? path : '/'
+          }twitter-card.jpg`
         },
         {
-          name: `twitter:title`,
-          content: title
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription
+          property: `twitter:card`,
+          content: `summary_large_image`
         }
       ].concat(meta)}
     >
@@ -75,6 +75,12 @@ function SEO({ description, lang, meta, title, path }) {
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:image"
+        content={`${site.siteMetadata.siteUrl}${
+          path ? path : '/'
+        }twitter-card.jpg`}
+      />
+      <meta
+        property="og:image"
         content={`${site.siteMetadata.siteUrl}${
           path ? path : '/'
         }twitter-card.jpg`}
