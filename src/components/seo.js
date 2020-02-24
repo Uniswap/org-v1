@@ -31,6 +31,7 @@ function SEO({ description, lang, meta, title, path }) {
   return (
     <Helmet>
       <meta charSet="utf-8" />
+      <meta name="title" content={title} />
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
       <meta name="description" content={metaDescription} />
       <meta name="og:title" content={title} />
@@ -52,7 +53,7 @@ function SEO({ description, lang, meta, title, path }) {
         name="twitter:image"
         content={`${site.siteMetadata.siteUrl}${
           path ? path : '/'
-        }twitter-card.jpg`}
+        }twitter-card.jpg?ok`}
       />
     </Helmet>
   )

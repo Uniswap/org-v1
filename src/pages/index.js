@@ -6,6 +6,8 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Layout from '../layouts'
 import SEO from '../components/seo'
+import { Helmet } from 'react-helmet'
+
 import Card from '../components/card'
 import Marquee from '../components/marquee'
 import Img from 'gatsby-image'
@@ -342,6 +344,7 @@ const IndexPage = props => {
     {
       site {
         siteMetadata {
+          siteUrl
           cardlinks {
             cardButton
             cardDesc
@@ -378,6 +381,12 @@ const IndexPage = props => {
   return (
     <Layout path={props.paths}>
       <SEO title="Home" path={props.paths} />
+      <Helmet>
+        <meta
+          name="twitter:image"
+          content={`${data.site.siteMetadata.siteUrl}/images/twitter-card.jpg`}
+        />
+      </Helmet>
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated token exchange.</StyledBodyTitle>
