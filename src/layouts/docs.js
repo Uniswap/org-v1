@@ -149,7 +149,7 @@ const Docs = props => {
           {props.children}
           {data.allMdx.edges
             .filter(({ node }) => {
-              return '/docs' + node.fields.slug === props.path
+              return node.fields.slug === props.path
             })
             .map(({ node, next, previous }) => {
               return (
@@ -184,7 +184,7 @@ const Docs = props => {
         </StyledMDX>
         {data.allMdx.edges
           .filter(({ node }) => {
-            return '/docs' + node.fields.slug === props.path
+            return node.fields.slug === props.path
           })
           .map(({ node }) => {
             return <TableofContents key={node.id} headings={node.headings} />

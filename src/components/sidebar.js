@@ -94,15 +94,17 @@ const ListWrapper = styled.span`
 
 function List(props) {
   const parentSlug =
-    props.slug.replace(/\d+-/g, '') === '/docs/' ? '/docs' : '/guides'
+    props.slug.replace(/\d+-/g, '') === '/docs/' ? 'docs' : 'guides'
 
   const items = props.data.edges
     .filter(({ node }) => {
-      return node.fields.topLevelDir === props.parent.replace(/\d+-/g, '')
+      return (
+        node.fields.slug.split('/')[2] === props.parent.replace(/\d+-/g, '')
+      )
     })
     .map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
-      const activePath = parentSlug + node.fields.slug
+      const activePath = node.fields.slug
       return (
         <StyledLisItem key={node.id}>
           <StyledLink

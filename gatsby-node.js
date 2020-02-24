@@ -8,7 +8,6 @@ const getSlugParents = slug => {
 
 exports.onCreateNode = ({ node, getNode, getNodesByType, actions }) => {
   const { createNodeField, createParentChildLink } = actions
-
   if (node.internal.type === 'Directory') {
     // in some case the trailing slash is missing.
     // Always add it and normalize the path to remove duplication
@@ -26,32 +25,18 @@ exports.onCreateNode = ({ node, getNode, getNodesByType, actions }) => {
   }
   // Ensures we are processing only markdown files
   if (node.internal.type === 'Mdx' || node.internal.type === 'Md') {
-    // Use `createFilePath` to turn markdown files in our `data/faqs` directory into `/faqs/slug`
-    const slug = createFilePath({
-      node,
-      getNode,
-      basePath: 'pages'
-    })
-    const slugParentsArr = getSlugParents(slug)
-
-    // Creates new query'able field with name of 'slug'
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug.replace(/\d+-/g, ``)
-    })
+    const slugParentsArr = getSlugParents(node.fields.slug)
 
     createNodeField({
       node,
       name: 'topLevelDir',
-      value: slugParentsArr[0].replace(/\d+-/g, ``)
+      value: slugParentsArr[0]
     })
 
     createNodeField({
       node,
       name: 'subDir',
-      value:
-        slugParentsArr.length > 2 ? slugParentsArr[1].replace(/\d+-/g, ``) : ''
+      value: slugParentsArr.length > 2 ? slugParentsArr[1] : slugParentsArr[0]
     })
   }
 }

@@ -152,7 +152,7 @@ const Blog = props => {
         {data.allMdx.edges.map(({ node }, index) => {
           return (
             <Posts wide={index} key={node.id}>
-              <PostLinkWrapper to={'/blog/' + node.fields.slug}>
+              <PostLinkWrapper to={node.fields.slug}>
                 {index === 0 && <NewPill>New</NewPill>}
                 <PostTitleWrapper>
                   <h1>{node.frontmatter.title}</h1>

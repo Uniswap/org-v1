@@ -117,7 +117,7 @@ const Guides = props => {
           {props.children}
           {data.allMdx.edges
             .filter(({ node }) => {
-              return path + node.fields.slug === props.path
+              return node.fields.slug === props.path
             })
             .map(({ node, next, previous }) => {
               return (
@@ -152,7 +152,7 @@ const Guides = props => {
         </StyledMDX>
         {data.allMdx.edges
           .filter(({ node }) => {
-            return '/guides' + node.fields.slug === props.path
+            return node.fields.slug === props.path
           })
           .map(({ node }) => {
             return <TableofContents key={node.id} headings={node.headings} />

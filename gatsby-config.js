@@ -114,14 +114,15 @@ module.exports = {
         replacement: ''
       }
     },
+    `re-slug`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-twitter`,
     'gatsby-plugin-instagram-embed',
     `gatsby-plugin-smoothscroll`,
-    `gatsby-background-image`,
     `gatsby-plugin-styled-components`,
     'gatsby-remark-reading-time',
+
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -197,6 +198,7 @@ module.exports = {
         icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
       }
     },
+
     {
       resolve: 'gatsby-plugin-local-search',
       options: {
