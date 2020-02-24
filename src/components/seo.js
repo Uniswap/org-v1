@@ -35,7 +35,7 @@ function SEO({ description, lang, meta, title, path }) {
       <meta name="description" content={metaDescription} />
       <meta name="og:title" content={title} />
       <meta name="og:description" content={metaDescription} />
-      <meta name="og:type" content={website} />
+      <meta name="og:type" content={'website'} />
       <meta name="og:url" content={site.siteMetadata.siteUrl + path} />
       <meta
         property="og:image"
