@@ -368,13 +368,6 @@ const IndexPage = props => {
           }
         }
       }
-      bg: file(relativePath: { eq: "bg_radial.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
     }
   `)
 

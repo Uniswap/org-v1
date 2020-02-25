@@ -29,32 +29,52 @@ function SEO({ description, lang, meta, title, path }) {
   const metaDescription = description || site.siteMetadata.description
 
   return (
-    <Helmet>
+    <Helmet
+      htmlAttributes={{
+        lang
+      }}
+      title={title}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
+    >
       <meta charSet="utf-8" />
+      <html lang="en" />
       <meta name="title" content={title} />
-      <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
       <meta name="description" content={metaDescription} />
-      <meta name="og:title" content={title} />
-      <meta name="og:description" content={metaDescription} />
-      <meta name="og:type" content={'website'} />
-      <meta name="og:url" content={site.siteMetadata.siteUrl + path} />
+      <meta name="keywords" content={title}></meta>
+
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content={'website'} />
+      <meta property="og:url" content={site.siteMetadata.siteUrl + path} />
       <meta
+        name="og:image"
+        content={`${site.siteMetadata.siteUrl}${
+          path ? path : '/'
+        }twitter-card.jpg`}
+      />
+      <meta
+        name="image"
         property="og:image"
         content={`${site.siteMetadata.siteUrl}${
           path ? path : '/'
         }twitter-card.jpg`}
       />
 
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:url" content={site.siteMetadata.siteUrl + path} />
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content="@UniswapExchange"></meta>
+      <meta name="twitter:title" content={title}></meta>
+      <meta name="twitter:description" content={metaDescription}></meta>
       <meta
         name="twitter:image"
         content={`${site.siteMetadata.siteUrl}${
           path ? path : '/'
-        }twitter-card.jpg?ok`}
-      />
+        }twitter-card.jpg`}
+      ></meta>
+
+      <meta name="twitter:site" content="@UniswapExchange" />
+      <meta name="twitter:url" content={site.siteMetadata.siteUrl + path} />
+
+      <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
     </Helmet>
   )
 }

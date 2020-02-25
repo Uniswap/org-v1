@@ -76,7 +76,6 @@ const MenuFlyout = styled.span`
 const StyledMenuTitle = styled.span`
   text-decoration: none;
   margin: 0px;
-  margin-bottom: 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
 `

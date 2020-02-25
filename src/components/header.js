@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 3rem 0px;
+  padding: 2rem 0px;
   width: 100%;
   font-size: 1.125rem;
   z-index: 999;

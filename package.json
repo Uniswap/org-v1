@@ -39,6 +39,7 @@
     "gatsby-remark-reading-time": "^1.1.0",
     "gatsby-remark-responsive-iframe": "^2.2.30",
     "gatsby-remark-smartypants": "^2.1.21",
+    "gatsby-remark-social-cards": "^0.4.1",
     "gatsby-remark-twitter-cards": "^0.2.0",
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-sharp": "^2.3.7",
