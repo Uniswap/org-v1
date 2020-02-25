@@ -104,7 +104,9 @@ module.exports = {
     author: `@UniswapExchange`,
     menulinks: menu,
     cardlinks: cards,
-    siteUrl: `https://uniswap-site-v2.now.sh/`
+    siteUrl: `https://uniswap-site-v2.now.sh/`,
+    repository: `https://github.com/Uniswap/uniswap-site-v2`,
+    commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
   plugins: [
     {

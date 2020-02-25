@@ -37,23 +37,22 @@ const StyledMDX = styled.div`
 
   h1 {
     margin-bottom: 1em;
-    /* border: 1px solid ${({ theme }) => theme.colors.grey2}; */
     font-size: 2rem;
   }
 
-  h2{
+  h2 {
     margin-top: 4rem !important;
     margin-bottom: 1.5rem;
   }
 
-  h2:before{
+  h2:before {
     top: -32px;
     left: 0;
     width: 100%;
     height: 1px;
-    content: " ";
+    content: ' ';
     position: absolute;
-    background-color: #E6ECF1;
+    background-color: #e6ecf1;
   }
 
   @media (max-width: 960px) {
@@ -158,7 +157,7 @@ const Docs = props => {
                     {previous && (
                       <StyledLink
                         style={{ alignItems: 'flex-end' }}
-                        to={'/docs/' + previous.fields.slug}
+                        to={previous.fields.slug}
                         rel="prev"
                       >
                         <small>Previous</small>
@@ -170,7 +169,7 @@ const Docs = props => {
                     {next && (
                       <StyledLink
                         style={{ alignItems: 'flex-start' }}
-                        to={'/docs/' + next.fields.slug}
+                        to={next.fields.slug}
                         rel="next"
                       >
                         <small>Next</small>

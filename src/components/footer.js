@@ -77,11 +77,19 @@ const StyledFooterLink = styled.li`
   }
 `
 
+const Commit = styled.p`
+  @media (min-width: 52em) {
+    float: left;
+  }
+`
+
 const Footer = props => {
   const data = useStaticQuery(graphql`
     {
       site {
         siteMetadata {
+          commit
+          repository
           menulinks {
             name
             sublinks {
@@ -100,6 +108,18 @@ const Footer = props => {
     <StyledFooter>
       <StyledSection>
         <h4>{'Stay up to date!'}</h4>
+        <Commit>
+          deployed commit:{' '}
+          <code>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`${data.site.siteMetadata.repository}/commit/${data.site.siteMetadata.commit}`}
+            >
+              {data.site.siteMetadata.commit.substring(0, 7)}
+            </a>
+          </code>
+        </Commit>
       </StyledSection>
       <StyledSection>
         {data.site.siteMetadata.menulinks.map(item => {
