@@ -145,10 +145,10 @@ const Header = props => {
           }}
         >
           <StyledNavImage src={uni} alt="uni logo" />{' '}
-          <StyledNavImage src={uni2} alt="uni logo" />{' '}
+          {/* <StyledNavImage src={uni2} alt="uni logo" />{' '}
           <StyledNavImage src={uni3} alt="uni logo" />{' '}
           <StyledNavImage src={uni4} alt="uni logo" />{' '}
-          <StyledNavImage src={uni5} alt="uni logo" />{' '}
+          <StyledNavImage src={uni5} alt="uni logo" />{' '} */}
           <StyledNavWordMark src={wordmark} alt="uniswap" />{' '}
         </StyledHomeLink>
         {props.path && (
