@@ -2,11 +2,10 @@ import React from 'react'
 import Layout from '.'
 import styled from 'styled-components'
 import Moment from 'react-moment'
+import { graphql } from 'gatsby'
 
 import { Twitter, Facebook } from 'react-social-sharing'
-import SEO from '../components/seo'
-
-import { graphql } from 'gatsby'
+import SEO from '../components/seo2'
 
 const StyledBlog = styled.div`
   display: flex;
@@ -75,17 +74,24 @@ const PostDate = styled(Moment)`
   margin: 0;
 `
 
-const Blog = ({ pageContext, path, children }) => {
+const Blog = props => {
+  // console.log(props.location.pathname)
   return (
-    <Layout path={path}>
-      <SEO title={pageContext.frontmatter.title} path={path} />
+    <Layout>
+      {/* <SEO title={pageContext.frontmatter.title} path={path} /> */}
+      <SEO
+        title={props.pageContext.frontmatter.title}
+        description={props.pageContext.frontmatter.previewText}
+        path={props.location.pathname}
+      />
       <StyledBlog id="blog-header">
         <PostHeader>
-          <PostTitle>{pageContext.frontmatter.title}</PostTitle>
+          <PostTitle>{props.pageContext.frontmatter.title}</PostTitle>
           <PostMetaData>
-            <PostAuthor>{pageContext.frontmatter.author}</PostAuthor> {' — '}
+            <PostAuthor>{props.pageContext.frontmatter.author}</PostAuthor>{' '}
+            {' — '}
             <PostDate parse="YYYY-MM-DD" format="MMMM Do, YYYY">
-              {pageContext.frontmatter.date}
+              {props.pageContext.frontmatter.date}
             </PostDate>
           </PostMetaData>
           <div>
@@ -93,8 +99,8 @@ const Blog = ({ pageContext, path, children }) => {
               style={{ padding: '0.5em 0.5em' }}
               solid
               small
-              message={pageContext.frontmatter.title}
-              link={'https://uniswap.org' + path}
+              message={props.pageContext.frontmatter.title}
+              link={'https://uniswap.org' + props.path}
             />
             <Facebook
               style={{ padding: '0.5em 0.5em' }}
@@ -104,7 +110,7 @@ const Blog = ({ pageContext, path, children }) => {
             />
           </div>
         </PostHeader>
-        <StyledMDX>{children}</StyledMDX>
+        <StyledMDX>{props.children}</StyledMDX>
       </StyledBlog>
     </Layout>
   )
@@ -127,6 +133,11 @@ export const pageQuery = graphql`
         readingTime {
           text
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

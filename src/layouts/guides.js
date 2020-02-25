@@ -6,6 +6,7 @@ import TableofContents from '../components/toc'
 import styled from 'styled-components'
 
 import { useStaticQuery, graphql } from 'gatsby'
+import SEO from '../components/seo2'
 
 const path = '/guides/'
 
@@ -110,7 +111,8 @@ const Guides = props => {
   `)
 
   return (
-    <Layout path={props.path}>
+    <Layout>
+      <SEO title="Uniswap Documentation" path={props.location.pathname} />
       <StyledDocs id="docs-header">
         <SideBar parent={path} {...props} />
         <StyledMDX>

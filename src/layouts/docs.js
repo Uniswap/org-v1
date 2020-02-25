@@ -4,7 +4,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '.'
 import SideBar from '../components/sidebar'
-import SEO from '../components/seo'
+import SEO from '../components/seo2'
 import TableofContents from '../components/toc'
 
 const GlobalStyle = createGlobalStyle`
@@ -139,9 +139,9 @@ const Docs = props => {
   `)
 
   return (
-    <Layout path={props.path} pathname={props.location.pathname}>
+    <Layout>
       <GlobalStyle />
-      <SEO title="Uniswap Documentation" path={props.path} />
+      <SEO title="Uniswap Documentation" path={props.location.pathname} />
       <StyledDocs id="docs-header">
         <SideBar parent={'/docs/'} {...props} />
         <StyledMDX>

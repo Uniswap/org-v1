@@ -100,7 +100,7 @@ const stripMarkdown = require('strip-markdown')
 module.exports = {
   siteMetadata: {
     title: `Uniswap`,
-    description: `Uniswap homepage`,
+    description: `Automated token exchange on Ethereum`,
     author: `@UniswapExchange`,
     menulinks: menu,
     cardlinks: cards,
@@ -117,40 +117,6 @@ module.exports = {
       }
     },
     `re-slug`,
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-twitter`,
-    'gatsby-plugin-instagram-embed',
-    `gatsby-plugin-smoothscroll`,
-    `gatsby-plugin-styled-components`,
-    'gatsby-remark-reading-time',
-
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-        defaultLayouts: {
-          default: require.resolve('./src/layouts'),
-          docs: require.resolve(`./src/layouts/docs`),
-          blog: require.resolve(`./src/layouts/blogPost`),
-          guides: require.resolve(`./src/layouts/guides`)
-        },
-        gatsbyRemarkPlugins: [
-          `gatsby-remark-embedder`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-twitter-cards`,
-          `gatsby-remark-smartypants`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1200,
-              showCaptions: true
-            }
-          }
-        ]
-      }
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -184,6 +150,51 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`
+      }
+    },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-twitter`,
+    'gatsby-plugin-instagram-embed',
+    `gatsby-plugin-smoothscroll`,
+    `gatsby-plugin-styled-components`,
+    'gatsby-remark-reading-time',
+
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        defaultLayouts: {
+          default: require.resolve('./src/layouts'),
+          docs: require.resolve(`./src/layouts/docs`),
+          blog: require.resolve(`./src/layouts/blogPost`),
+          guides: require.resolve(`./src/layouts/guides`)
+        },
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-embedder`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-twitter-cards`,
+            options: {
+              title: 'Uniswap', // website title
+              separator: '|', // default
+              author: '@UniswapExchange',
+              background: require.resolve(
+                './static/images/twitter_card_bg.jpg'
+              ), // path to 1200x630px file or hex code, defaults to black (#000000)
+              fontColor: '#FF3093' // defaults to white (#ffffff)
+            }
+          },
+          `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              showCaptions: true
+            }
+          }
+        ]
       }
     },
     `gatsby-transformer-sharp`,

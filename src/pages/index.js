@@ -5,7 +5,7 @@ import scrollTo from 'gatsby-plugin-smoothscroll'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Layout from '../layouts'
-import SEO from '../components/seo'
+import SEO from '../components/seo2'
 import { Helmet } from 'react-helmet'
 
 import Card from '../components/card'
@@ -372,8 +372,8 @@ const IndexPage = props => {
   `)
 
   return (
-    <Layout path={props.paths}>
-      <SEO title="Home" path={props.paths} />
+    <Layout>
+      <SEO title="Home" path={props.location.pathname} />
       <Helmet>
         <meta
           name="twitter:image"

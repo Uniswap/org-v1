@@ -14,7 +14,7 @@ import { theme, GlobalStyle } from '../styles/theme'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Mdx from '../components/mdx'
-import SEO from '../components/seo'
+import SEO from '../components/seo2'
 
 import '../styles/prism-github.css'
 import '../styles/layout.css'
@@ -34,7 +34,6 @@ const Layout = ({ path, children }) => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <SEO title="Uniswap" path={path} />
         <GlobalStyle />
         <Header path={path} siteTitle={data.site.siteMetadata.title} />
         <Mdx>{children}</Mdx>

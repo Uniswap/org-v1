@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Layout from '../layouts'
 import Img from 'gatsby-image'
 
-import SEO from '../components/seo'
+import SEO from '../components/seo2'
 
 const PostsWrapper = styled.div`
   color: ${({ theme }) => theme.colors.grey9};
@@ -144,8 +144,8 @@ const Blog = props => {
   `)
 
   return (
-    <Layout path={props.paths}>
-      <SEO title="Uniswap Blog" path={props.path} />
+    <Layout>
+      <SEO title="Uniswap Blog" path={props.location.pathname} />
       <h1>Latest Posts</h1>
 
       <PostsWrapper>

@@ -5,7 +5,11 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Menu from './menu'
 
-import uni from '../images/uni5.svg'
+import uni from '../images/uni2.svg'
+import uni2 from '../images/uni3.svg'
+import uni3 from '../images/uni4.svg'
+import uni4 from '../images/uni5.svg'
+import uni5 from '../images/uni6.svg'
 import wordmark from '../images/wordmark.svg'
 
 const StyledHeader = styled.header`
@@ -141,6 +145,10 @@ const Header = props => {
           }}
         >
           <StyledNavImage src={uni} alt="uni logo" />{' '}
+          <StyledNavImage src={uni2} alt="uni logo" />{' '}
+          <StyledNavImage src={uni3} alt="uni logo" />{' '}
+          <StyledNavImage src={uni4} alt="uni logo" />{' '}
+          <StyledNavImage src={uni5} alt="uni logo" />{' '}
           <StyledNavWordMark src={wordmark} alt="uniswap" />{' '}
         </StyledHomeLink>
         {props.path && (
