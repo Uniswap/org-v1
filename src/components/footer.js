@@ -56,6 +56,19 @@ const StyledFooterSection = styled.section`
   }
 `
 
+const StyledFooterSectionNav = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding-left: 5rem;
+  @media (max-width: 960px) {
+    padding-left: 0rem;
+    margin-bottom: 2rem;
+    display: none;
+  }
+`
+
 const StyledFooterLinkSection = styled.ul`
   display: flex;
   flex-direction: column;
@@ -127,10 +140,10 @@ const Footer = props => {
       <StyledSection>
         {data.site.siteMetadata.menulinks.map(item => {
           return (
-            <StyledFooterSection key={item.name}>
+            <StyledFooterSectionNav key={item.name}>
               <h4>{item.name}</h4>
               <Dropdown links={item.sublinks} />
-            </StyledFooterSection>
+            </StyledFooterSectionNav>
           )
         })}
       </StyledSection>

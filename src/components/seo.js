@@ -8,7 +8,8 @@ function SEO({
   ogImageProp,
   lang = 'en',
   keywords = [],
-  title
+  title,
+  site
 }) {
   const data = useStaticQuery(graphql`
     query DefaultSEOQuery {
@@ -24,7 +25,9 @@ function SEO({
   `)
 
   const metaDescription = description || data.site.siteMetadata.description
+  const metaTitle = title || data.site.siteMetadata.title
   const author = data.site.siteMetadata.author
+  const metaSite = site || data.site.siteMetadata.title
   const ogImage = `${data.site.siteMetadata.siteUrl}${
     path ? path : '/'
   }twitter-card.jpg`
@@ -34,8 +37,8 @@ function SEO({
       htmlAttributes={{
         lang
       }}
-      title={title}
-      titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+      title={metaTitle}
+      titleTemplate={`%s | ${metaSite}`}
       meta={[
         {
           name: `description`,

@@ -35,12 +35,19 @@ const StyledMenu = styled.button`
     padding: 0;
     padding-bottom: 2rem;
   }
+
   :hover {
     color: ${({ theme }) => theme.colors.link};
+    @media (max-width: 960px) {
+      color: ${({ theme }) => theme.colors.grey9};
+    }
   }
   :focus {
     outline: none;
     color: ${({ theme }) => theme.colors.link};
+    @media (max-width: 960px) {
+      color: ${({ theme }) => theme.colors.grey9};
+    }
   }
 `
 
@@ -78,6 +85,10 @@ const StyledMenuTitle = styled.span`
   margin: 0px;
   border-radius: 0.5rem;
   cursor: pointer;
+  @media (max-width: 960px) {
+    margin-bottom: 1rem;
+    user-select: none;
+  }
 `
 
 const StyledMenuItem = styled.span`
@@ -91,6 +102,8 @@ const StyledMenuItem = styled.span`
     p {
       color: ${({ theme }) => theme.colors.link};
     }
+  }
+  @media (max-width: 960px) {
   }
 `
 

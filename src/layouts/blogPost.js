@@ -75,12 +75,12 @@ const PostDate = styled(Moment)`
 `
 
 const Blog = props => {
-  // console.log(props.location.pathname)
   return (
     <Layout>
       {/* <SEO title={pageContext.frontmatter.title} path={path} /> */}
       <SEO
         title={props.pageContext.frontmatter.title}
+        site={'Uniswap Blog'}
         description={props.pageContext.frontmatter.previewText}
         path={props.location.pathname}
       />

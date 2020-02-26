@@ -25,7 +25,12 @@ const Heading = ({ heading }) => {
   slugger.reset()
   return (
     <StyledHeadingListElement key={heading.value} depth={heading.depth}>
-      <StyledHeadingLink onClick={() => scrollTo('#' + slug)}>
+      <StyledHeadingLink
+        onClick={() => {
+          scrollTo('#' + slug)
+          window.history.pushState({}, '', '#' + slug)
+        }}
+      >
         {heading.value}
       </StyledHeadingLink>
     </StyledHeadingListElement>
@@ -39,7 +44,7 @@ const StyledTOC = styled.ul`
   position: -webkit-sticky;
   position: sticky;
   align-self: flex-start;
-
+  top: 1rem;
   width: 160px;
   font-size: 0.75rem;
   margin: 0 4rem;

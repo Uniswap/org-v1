@@ -279,9 +279,8 @@ const StyledStarImg = styled.img`
 const StyledGoal = styled.div`
   padding: 0 2rem 2rem 2rem;
   margin-top: 4rem;
-  border: 1px solid ${({ theme }) => theme.colors.grey9};
-  background-color: ${({ theme }) => theme.colors.grey9};
-  color: white;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: ${({ theme }) => theme.colors.grey9};
   border-radius: 0.5rem;
   h2 {
     font-family: 'Principal Trial Semibold';

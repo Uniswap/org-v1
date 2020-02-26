@@ -25,7 +25,6 @@ exports.onCreateNode = ({ node, getNode, getNodesByType, actions }) => {
   }
   // Ensures we are processing only markdown files
   if (node.internal.type === 'Mdx' || node.internal.type === 'Md') {
-    console.log(node.fields.slug, node.fields.path)
     const slugParentsArr = getSlugParents(node.fields.slug)
 
     createNodeField({

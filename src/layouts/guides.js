@@ -82,6 +82,7 @@ const Guides = props => {
             }
             fields {
               slug
+              subDir
             }
           }
           next {
@@ -112,7 +113,25 @@ const Guides = props => {
 
   return (
     <Layout>
-      <SEO title="Uniswap Documentation" path={props.location.pathname} />
+      {data.allMdx.edges
+        .filter(({ node }) => {
+          return node.fields.slug === props.path
+        })
+        .map(({ node }) => {
+          const title = node.fields.subDir
+            .replace(/\d+-/g, '')
+            .replace(/-/g, ' ')
+            .replace(/(^|\s)\S/g, function(t) {
+              return t.toUpperCase()
+            })
+          return (
+            <SEO
+              title={props.pageContext.frontmatter.title}
+              site={'Uniswap ' + title}
+              path={props.location.pathname}
+            />
+          )
+        })}
       <StyledDocs id="docs-header">
         <SideBar parent={path} {...props} />
         <StyledMDX>

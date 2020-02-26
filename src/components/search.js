@@ -108,8 +108,6 @@ const Search = props => {
   const store = data.localSearchDocs.store
   const [query, setQuery] = useState('')
   const results = useLunr(query, index, store)
-  // console.log(index)
-  // console.log(store)
 
   return (
     <SearchWrapper>
@@ -139,7 +137,6 @@ const Search = props => {
       {query !== '' && query && (
         <SearchList>
           {results.map(result => {
-            console.log(result)
             return (
               <StyledLink to={'/docs/' + result.path}>
                 <SearchListItemHeader

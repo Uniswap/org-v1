@@ -23,7 +23,6 @@ const Marquee = ({ children }) => {
   const [elementWidth, setElementWidth] = useState(0)
 
   useEffect(() => {
-    // console.log(node.current.offsetWidth - window.innerWidth)
     setElementWidth(node.current.offsetWidth - window.innerWidth)
   }, [setElementWidth])
 

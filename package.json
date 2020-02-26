@@ -15,6 +15,7 @@
     "formik": "^2.1.1",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
+    "gatsby-plugin-anchor-links": "^1.1.0",
     "gatsby-plugin-feed": "^2.3.27",
     "gatsby-plugin-instagram-embed": "^1.1.0",
     "gatsby-plugin-layout": "^1.1.21",
@@ -39,7 +40,6 @@
     "gatsby-remark-reading-time": "^1.1.0",
     "gatsby-remark-responsive-iframe": "^2.2.30",
     "gatsby-remark-smartypants": "^2.1.21",
-    "gatsby-remark-social-cards": "^0.4.1",
     "gatsby-remark-twitter-cards": "^0.2.0",
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-sharp": "^2.3.7",
@@ -57,6 +57,7 @@
     "react-social-sharing": "^3.0.1",
     "react-use-clipboard": "1.0.0",
     "remark": "^11.0.2",
+    "scroll-to-element": "^2.0.3",
     "strip-markdown": "^3.1.1",
     "styled-components": "^5.0.0"
   },

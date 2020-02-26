@@ -225,7 +225,7 @@ const SideBar = props => {
     props.parent === '/docs/' ? data.topNavDocs : data.topNavGuides
 
   const matches = useMediaQuery('only screen and (max-width: 960px)')
-  const [isMenuOpen, updateIsMenuOpen] = useState(!matches)
+  const [isMenuOpen, updateIsMenuOpen] = useState(true)
 
   return (
     <StyledSidebar>

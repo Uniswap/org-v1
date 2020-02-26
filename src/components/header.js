@@ -1,6 +1,7 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
+import { useMediaQuery } from '@react-hook/media-query'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Menu from './menu'
@@ -11,6 +12,8 @@ import uni3 from '../images/uni4.svg'
 import uni4 from '../images/uni5.svg'
 import uni5 from '../images/uni6.svg'
 import wordmark from '../images/wordmark.svg'
+import MenuIcon from '../images/menu.svg'
+import CloseIcon from '../images/x.svg'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -35,13 +38,14 @@ const StyledNav = styled.nav`
   @media (max-width: 960px) {
     position: fixed;
     top: 0px;
-    right: ${({ open }) => (open ? '0px' : '-100vw')};
+    right: ${({ open }) => (open ? '0px' : '-375px')};
     flex-direction: column;
     align-items: flex-start;
     height: 100vh;
     background-color: ${({ theme }) => theme.colors.grey1};
     z-index: 9998;
-    width: 100vw;
+    width: 100%;
+    max-width: 375px;
     padding: 2rem;
     overflow: scroll;
     box-shadow: ${({ theme }) => theme.shadows.huge};
@@ -103,18 +107,28 @@ const StyledHomeLink = styled(Link)`
 
 const MenuToggle = styled.button`
   border: none;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: transparent;
   color: ${({ theme }) => theme.colors.link};
   position: absolute;
   right: 0px;
   display: none;
   z-index: 9999;
+  :focus {
+    outline: none;
+  }
   @media (max-width: 960px) {
     display: inline-block;
   }
 `
 
+const StyledNavMenuImage = styled.img`
+  margin: 0;
+`
+
 const Header = props => {
+  const matches = useMediaQuery('only screen and (max-width: 960px)')
+  const node = useRef()
+  const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
 
   const data = useStaticQuery(graphql`
@@ -134,6 +148,26 @@ const Header = props => {
       }
     }
   `)
+
+  useEffect(() => {
+    const handleClickOutside = e => {
+      if (
+        node.current.contains(e.target) ||
+        button.current.contains(e.target)
+      ) {
+        return
+      }
+      updateIsMenuOpen(false)
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('touchstart', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside)
+    }
+  }, [isMenuOpen, updateIsMenuOpen, matches])
 
   return (
     <StyledHeader>
@@ -162,8 +196,14 @@ const Header = props => {
           </StyledNavTitle>
         )}
       </StyledNavTitleWrapper>
-      <MenuToggle onClick={e => updateIsMenuOpen(!isMenuOpen)}>Menu</MenuToggle>
-      <StyledNav open={isMenuOpen}>
+      <MenuToggle ref={button} onClick={e => updateIsMenuOpen(!isMenuOpen)}>
+        {/* {isMenuOpen ? 'Close' : 'Menu'} */}
+        <StyledNavMenuImage
+          src={isMenuOpen ? CloseIcon : MenuIcon}
+          alt="uni logo"
+        />{' '}
+      </MenuToggle>
+      <StyledNav ref={node} open={isMenuOpen}>
         {data.site.siteMetadata.menulinks
           .filter(item => {
             return item.name !== 'Community'

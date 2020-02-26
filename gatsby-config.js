@@ -180,9 +180,7 @@ module.exports = {
               title: 'Uniswap', // website title
               separator: '|', // default
               author: '@UniswapExchange',
-              background: require.resolve(
-                './static/images/twitter_card_bg.jpg'
-              ), // path to 1200x630px file or hex code, defaults to black (#000000)
+              background: require.resolve('./src/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: '#FF3093' // defaults to white (#ffffff)
             }
           },

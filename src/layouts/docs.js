@@ -101,6 +101,7 @@ const Docs = props => {
         edges {
           node {
             id
+            excerpt(pruneLength: 40)
             headings {
               value
               depth
@@ -110,6 +111,8 @@ const Docs = props => {
             }
             fields {
               slug
+              topLevelDir
+              subDir
             }
           }
           next {
@@ -141,7 +144,26 @@ const Docs = props => {
   return (
     <Layout>
       <GlobalStyle />
-      <SEO title="Uniswap Documentation" path={props.location.pathname} />
+      {data.allMdx.edges
+        .filter(({ node }) => {
+          return node.fields.slug === props.path
+        })
+        .map(({ node }) => {
+          const title = node.fields.subDir
+            .replace(/\d+-/g, '')
+            .replace(/-/g, ' ')
+            .replace(/(^|\s)\S/g, function(t) {
+              return t.toUpperCase()
+            })
+          return (
+            <SEO
+              title={props.pageContext.frontmatter.title}
+              site={'Uniswap ' + title}
+              path={props.location.pathname}
+              description={node.excerpt}
+            />
+          )
+        })}
       <StyledDocs id="docs-header">
         <SideBar parent={'/docs/'} {...props} />
         <StyledMDX>
@@ -186,7 +208,13 @@ const Docs = props => {
             return node.fields.slug === props.path
           })
           .map(({ node }) => {
-            return <TableofContents key={node.id} headings={node.headings} />
+            return (
+              <TableofContents
+                path={props.path}
+                key={node.id}
+                headings={node.headings}
+              />
+            )
           })}
       </StyledDocs>
     </Layout>
