@@ -12,7 +12,7 @@ const StyledHeadingListElement = styled.li`
 
 const StyledHeadingLink = styled.a`
   text-decoration: none;
-  color: black;
+  color: ${({ theme }) => theme.textColor};
   cursor: pointer;
 
   :hover {
@@ -52,8 +52,7 @@ const StyledTOC = styled.ul`
   transition: opacity 0.3s ease;
   list-style: none;
   text-decoration: none;
-
-  border-left: 1px solid lightgrey;
+  border-left: 1px solid ${({ theme }) => theme.textColor};
 
   :hover {
     opacity: 1;

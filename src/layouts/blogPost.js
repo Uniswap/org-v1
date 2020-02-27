@@ -76,7 +76,7 @@ const PostDate = styled(Moment)`
 
 const Blog = props => {
   return (
-    <Layout>
+    <Layout path={props.location.pathname}>
       {/* <SEO title={pageContext.frontmatter.title} path={path} /> */}
       <SEO
         title={props.pageContext.frontmatter.title}

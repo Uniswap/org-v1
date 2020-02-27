@@ -1,19 +1,15 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useMediaQuery } from '@react-hook/media-query'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Menu from './menu'
 
-import uni from '../images/uni2.svg'
-import uni2 from '../images/uni3.svg'
-import uni3 from '../images/uni4.svg'
-import uni4 from '../images/uni5.svg'
-import uni5 from '../images/uni6.svg'
-import wordmark from '../images/wordmark.svg'
-import MenuIcon from '../images/menu.svg'
-import CloseIcon from '../images/x.svg'
+import Uni from '../images/uni.inline.svg'
+import Wordmark from '../images/wordmark.inline.svg'
+import MenuIcon from '../images/menu.inline.svg'
+import CloseIcon from '../images/x.inline.svg'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -25,8 +21,9 @@ const StyledHeader = styled.header`
   z-index: 999;
   font-weight: 500;
   @media (max-width: 960px) {
-    padding: 2rem 0px;
+    padding: 1rem 0px;
     flex-direction: column;
+    justify-content: center;
   }
 `
 
@@ -60,34 +57,18 @@ const StyledNavTitleWrapper = styled.nav`
 const StyledNavTitle = styled(Link)`
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.grey6};
+  color: ${({ theme }) => theme.colors.textColor};
   margin-left: 0.25rem;
   margin-top: 2px;
   z-index: 999;
   vertical-align: bottom;
 `
 
-const StyledNavImage = styled.img`
-  margin: 0;
-  width: 24px;
-  margin-right: 0.5rem;
-  transform: rotate(0deg);
-  transition: transform 0.2s linear;
-  :hover {
-    transform: rotate(-10deg);
-  }
-`
-
-const StyledNavWordMark = styled.img`
-  margin: 0;
-  margin-top: 4px;
-`
-
 const StyledTradeLink = styled.a`
   padding: 0.25rem 0.75rem;
   background-color: ${({ theme }) => theme.colors.link};
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.invertedTextColor};
   border-radius: 12px;
   margin-left: 1.5rem;
   display: inline-block;
@@ -113,6 +94,9 @@ const MenuToggle = styled.button`
   right: 0px;
   display: none;
   z-index: 9999;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
   :focus {
     outline: none;
   }
@@ -123,6 +107,40 @@ const MenuToggle = styled.button`
 
 const StyledNavMenuImage = styled.img`
   margin: 0;
+`
+
+const StyledUni = styled(Uni)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  margin: 0;
+  width: 24px;
+  margin-right: 0.5rem;
+  transform: rotate(0deg);
+  transition: transform 0.2s linear;
+  :hover {
+    transform: rotate(-10deg);
+  }
+`
+
+const StyledWordmark = styled(Wordmark)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  margin: 0;
+  margin-top: 4px;
+`
+
+const StyledCloseIcon = styled(CloseIcon)`
+  path {
+    stroke: ${({ theme }) => theme.textColor};
+  }
+`
+
+const StyledMenuIcon = styled(MenuIcon)`
+  path {
+    stroke: ${({ theme }) => theme.textColor};
+  }
 `
 
 const Header = props => {
@@ -161,11 +179,9 @@ const Header = props => {
     }
 
     document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('touchstart', handleClickOutside)
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
-      document.addEventListener('touchstart', handleClickOutside)
     }
   }, [isMenuOpen, updateIsMenuOpen, matches])
 
@@ -178,14 +194,10 @@ const Header = props => {
             textDecoration: `none`
           }}
         >
-          <StyledNavImage src={uni} alt="uni logo" />{' '}
-          {/* <StyledNavImage src={uni2} alt="uni logo" />{' '}
-          <StyledNavImage src={uni3} alt="uni logo" />{' '}
-          <StyledNavImage src={uni4} alt="uni logo" />{' '}
-          <StyledNavImage src={uni5} alt="uni logo" />{' '} */}
-          <StyledNavWordMark src={wordmark} alt="uniswap" />{' '}
+          <StyledUni />
+          <StyledWordmark />
         </StyledHomeLink>
-        {props.path && (
+        {props.path && props.path !== '/' && props.path !== '' && (
           <StyledNavTitle
             to={'/' + props.path.split('/')[1]}
             style={{
@@ -197,11 +209,7 @@ const Header = props => {
         )}
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} onClick={e => updateIsMenuOpen(!isMenuOpen)}>
-        {/* {isMenuOpen ? 'Close' : 'Menu'} */}
-        <StyledNavMenuImage
-          src={isMenuOpen ? CloseIcon : MenuIcon}
-          alt="uni logo"
-        />{' '}
+        {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
       </MenuToggle>
       <StyledNav ref={node} open={isMenuOpen}>
         {data.site.siteMetadata.menulinks

@@ -10,7 +10,7 @@ import TableofContents from '../components/toc'
 const GlobalStyle = createGlobalStyle`
   html {
     background-image: none;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.backgroundColor};
 }
 `
 
@@ -73,7 +73,7 @@ const StyledDocsNavWrapper = styled.ul`
 `
 const StyledDocsNav = styled.li`
   a {
-    color: black;
+    color: ${({ theme }) => theme.textColor};
   }
 `
 
@@ -142,7 +142,7 @@ const Docs = props => {
   `)
 
   return (
-    <Layout>
+    <Layout path={props.location.pathname}>
       <GlobalStyle />
       {data.allMdx.edges
         .filter(({ node }) => {

@@ -1,7 +1,14 @@
 import { Link } from 'gatsby'
-import React from 'react'
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useContext
+} from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
+import { ThemeManagerContext } from '../styles/themeManager'
 
 function Dropdown(props) {
   const items = props.links.map(node => {
@@ -26,7 +33,7 @@ const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
   /* background-color: ${({ theme }) => theme.colors.grey9}; */
-  color: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.textColor};
   @media  (max-width: 960px) {
     flex-direction: column;
     padding: 2rem 1rem;
@@ -49,7 +56,6 @@ const StyledFooterSection = styled.section`
   flex-direction: column;
   align-items: flex-start;
   margin: 0;
-  padding-left: 5rem;
   @media (max-width: 960px) {
     padding-left: 0rem;
     margin-bottom: 2rem;
@@ -86,7 +92,7 @@ const StyledFooterLink = styled.li`
   margin-bottom: 1rem;
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.grey9};
+    color: ${({ theme }) => theme.textColor};
   }
 `
 
@@ -117,6 +123,8 @@ const Footer = props => {
     }
   `)
 
+  const themeContext = useContext(ThemeManagerContext)
+
   return (
     <StyledFooter>
       <StyledSection>
@@ -135,6 +143,16 @@ const Footer = props => {
               </a>
             </code>
           </Commit>
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                onChange={() => themeContext.toggleDark()}
+                checked={themeContext.isDark}
+              />{' '}
+              Dark mode
+            </label>
+          </div>
         </StyledFooterSection>
       </StyledSection>
       <StyledSection>

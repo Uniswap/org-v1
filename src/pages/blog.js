@@ -8,7 +8,8 @@ import Img from 'gatsby-image'
 import SEO from '../components/seo2'
 
 const PostsWrapper = styled.div`
-  color: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.textColor};
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -40,7 +41,7 @@ const Posts = styled.div`
   transition: transform 0.25s ease;
 
   a {
-    color: ${({ theme }) => theme.colors.grey9};
+    color: ${({ theme }) => theme.textColor};
   }
   p {
     max-width: 450px;
@@ -80,7 +81,7 @@ const StyledImage = styled(Img)`
 `
 
 const NewPill = styled.p`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.invertedTextColor};
   background-color: ${({ theme }) => theme.colors.link};
   padding: 0rem 0.5rem;
   position: absolute;
@@ -144,7 +145,7 @@ const Blog = props => {
   `)
 
   return (
-    <Layout>
+    <Layout path={props.location.pathname}>
       <SEO title="Uniswap Blog" path={props.location.pathname} />
       <h1>Latest Posts</h1>
 

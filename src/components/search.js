@@ -63,7 +63,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   margin: 0;
   /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
-  color: black;
+  color: ${({ theme }) => theme.colors.textColor};
   padding: 1rem;
   margin: 0;
   :hover {

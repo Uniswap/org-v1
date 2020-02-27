@@ -29,9 +29,13 @@ export const theme = darkMode => ({
   greyText: darkMode ? white : '#6C7284',
 
   // for setting css on <html>
-  backgroundColor: darkMode ? '#333639' : white,
+  backgroundColor: darkMode ? '#000' : white,
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
+  cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.4)',
+  menuBG: darkMode ? 'rgba(10,10,10, 0.4)' : 'rgba(255, 255, 255, 0.6)',
+  marqueeBG: darkMode ? '#00FF85' : '#191B1F',
+
   inputBackground: darkMode ? '#202124' : white,
   placeholderGray: darkMode ? '#5F5F5F' : '#E1E1E1',
   shadowColor: darkMode ? '#000' : '#2F80ED',
@@ -70,7 +74,7 @@ export const theme = darkMode => ({
     green1: '#E6F3EC',
     green2: '#27AE60',
 
-    pink1: '#FF007A',
+    pink1: darkMode ? '#00FF85' : '#FF007A',
 
     pink2: '#FFF8FD',
 
@@ -79,7 +83,8 @@ export const theme = darkMode => ({
 
     red1: '#FF6871',
 
-    link: '#FF007A'
+    link: darkMode ? '#00FF85' : '#FF007A',
+    invertedLink: darkMode ? '#FF007A' : '#00FF85'
   },
 
   shadows: {
@@ -134,14 +139,15 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-size: 16px;
     font-variant: none;
-    color: ${({ theme }) => theme.textColor};
-    background-color: ${({ theme }) => theme.backgroundColor};
+    background-color: ${({ theme, isDark }) => theme.backgroundColor};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-image: url("images/bg_radial.jpg");
-    background-size: cover;
+    background-image: url( ${({ isDark }) =>
+      isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg'});
+    background-size: contain;
     background-repeat: no-repeat;
+
     overflow: hidden;   
     overflow: scroll;
     overflow-x: hidden;
@@ -164,6 +170,8 @@ export const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     width: 100vw;
     padding: 0 3rem;
+    color: ${({ theme }) => theme.textColor};
+
     @media (max-width: 1024px) {
         padding: 0 1.5rem;
 
@@ -194,5 +202,8 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.link};
     text-decoration: none;
   }
-  
+  button{
+    color: ${({ theme }) => theme.textColor};
+
+  }
 `

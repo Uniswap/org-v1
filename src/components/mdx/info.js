@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledInfo = styled.div`
-  color: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.textColor};
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.grey1};
   border-radius: 0.5rem;

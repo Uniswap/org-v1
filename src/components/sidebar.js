@@ -37,13 +37,12 @@ const StyledSection = styled.div`
 
 const StyledLink = styled(({ active, ...props }) => <Link {...props} />)`
   font-weight: ${({ active }) => active && 600};
-  background-color: ${({ active }) => active && '#fff'};
+  background-color: ${({ active, theme }) => active && theme.cardBG};
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
   margin: 0;
-  /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
-  color: ${({ theme }) => theme.colors.link}; 
+  color: ${({ theme }) => theme.colors.link};
 `
 
 const StyledList = styled.ul`

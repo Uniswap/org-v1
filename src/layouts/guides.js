@@ -45,7 +45,7 @@ const StyledDocsNavWrapper = styled.ul`
 `
 const StyledDocsNav = styled.li`
   a {
-    color: black;
+    color: ${({ theme }) => theme.textColor};
   }
 `
 
@@ -112,7 +112,7 @@ const Guides = props => {
   `)
 
   return (
-    <Layout>
+    <Layout path={props.location.pathname}>
       {data.allMdx.edges
         .filter(({ node }) => {
           return node.fields.slug === props.path

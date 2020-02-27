@@ -12,8 +12,8 @@ import Card from '../components/card'
 import Marquee from '../components/marquee'
 import Img from 'gatsby-image'
 
-import circle from '../images/circle.svg'
-import star from '../images/star.svg'
+import Circle from '../images/circle.inline.svg'
+import Star from '../images/star.inline.svg'
 
 const StyledCardsWrapper = styled.span`
   display: flex;
@@ -37,7 +37,7 @@ const Stats = styled.div`
   position: fixed;
   bottom: 0px;
   left: 0px;
-  color: white;
+  background-color: ${({ theme }) => theme.marqueeBG};
   align-items: center;
   z-index: 999;
   p {
@@ -129,7 +129,8 @@ const NewInfo = styled(Link)`
   transform: rotate(-4deg) scale(0.98);
   font-size: 20px;
   transition: transform 0.3s ease;
-  color: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.textColor};
+
   margin-right: -120px;
   @media (min-width: 1441px) {
     top: 60px;
@@ -141,7 +142,7 @@ const NewInfo = styled(Link)`
     transform: rotate(-2deg);
   }
   a {
-    color: ${({ theme }) => theme.colors.grey9};
+    color: ${({ theme }) => theme.textColor};
   }
   @media (max-width: 960px) {
     position: relative;
@@ -165,8 +166,8 @@ const StyledUnicornImage = styled(Img)`
 
 const NewPill = styled.span`
   float: left;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.invertedTextColor};
+  background-color: ${({ theme }) => theme.textColor};
   padding: 0rem 0.75rem;
   border-radius: 0.5em;
   text-align: center;
@@ -235,7 +236,32 @@ const rotate = keyframes`
   }
 `
 
-const StyledCircleImg = styled.img`
+const StyledLineImg = styled(Img)`
+  max-width: 300px;
+  @media (max-width: 1024px) {
+    max-width: 50%;
+    left: 25%;
+  }
+  @media (max-width: 960px) {
+    width: 100%;
+    max-width: 200px;
+  }
+`
+
+const StyledStar = styled(Star)`
+  margin: 0;
+  max-width: 400px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-right: 0.5rem;
+  z-index: 999;
+  path {
+    fill: ${({ theme }) => theme.colors.invertedLink};
+  }
+`
+
+const StyledCircle = styled(Circle)`
   margin: 0;
   max-width: 400px;
   position: absolute;
@@ -252,35 +278,19 @@ const StyledCircleImg = styled.img`
     max-width: 200px;
     left: 100px;
   }
-`
-
-const StyledLineImg = styled(Img)`
-  max-width: 300px;
-  @media (max-width: 1024px) {
-    max-width: 50%;
-    left: 25%;
+  path {
+    fill: ${({ theme }) => theme.colors.link};
   }
-  @media (max-width: 960px) {
-    width: 100%;
-    max-width: 200px;
+  circle {
+    stroke: ${({ theme }) => theme.colors.link};
   }
-`
-
-const StyledStarImg = styled.img`
-  margin: 0;
-  max-width: 400px;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  margin-right: 0.5rem;
-  z-index: 999;
 `
 
 const StyledGoal = styled.div`
-  padding: 0 2rem 2rem 2rem;
+  padding: 0.25rem 2rem 2rem 2rem;
   margin-top: 4rem;
-  background-color: rgba(255, 255, 255, 0.4);
-  color: ${({ theme }) => theme.colors.grey9};
+  background-color: ${({ theme }) => theme.cardBG};
+  color: ${({ theme }) => theme.textColor};
   border-radius: 0.5rem;
   h2 {
     font-family: 'Principal Trial Semibold';
@@ -291,7 +301,7 @@ const StyledTradeLink = styled.a`
   padding: 0.5rem 1rem;
   background-color: ${({ theme }) => theme.colors.pink1};
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.invertedTextColor};
   border-radius: 20px;
   margin-right: 1.5rem;
   display: inline-block;
@@ -371,7 +381,7 @@ const IndexPage = props => {
   `)
 
   return (
-    <Layout>
+    <Layout path={props.location.pathname}>
       <SEO title="Home" path={props.location.pathname} />
       <Helmet>
         <meta
@@ -391,7 +401,7 @@ const IndexPage = props => {
             </StyledTradeLinkOutlined>
           </span>
         </StyledTitle>
-        <StyledStarImg src={star} alt="star logo" />{' '}
+        <StyledStar />{' '}
         <NewInfo to="/blog/post-01">
           <NewPill>V2 Announced</NewPill>Learn what’s new ↗
           <StyledUnicornImage fluid={data.unicornImage.childImageSharp.fluid} />
@@ -435,7 +445,7 @@ const IndexPage = props => {
       <StyledSectionFlex>
         <StyledImgSection>
           <StyledLineImg fluid={data.line.childImageSharp.fluid} />
-          <StyledCircleImg src={circle} alt="circle logo" />{' '}
+          <StyledCircle />{' '}
         </StyledImgSection>
         <StyledImgSection>
           <div>

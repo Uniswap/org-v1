@@ -158,8 +158,15 @@ module.exports = {
     'gatsby-plugin-instagram-embed',
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/
+        }
+      }
+    },
     'gatsby-remark-reading-time',
-
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

@@ -11,8 +11,11 @@ const StyledCard = styled(Link)`
   border-radius: 20px;
   text-decoration: none;
   transform: scale(0.99);
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: ${({ theme }) => theme.cardBG};
+  opacity: 0.9;
   transition: transform 0.25s ease;
+
+  backdrop-filter: blur(40px);
 
   @media (max-width: 960px) {
     margin-bottom: 2rem;
@@ -34,8 +37,11 @@ const StyledExternalCard = styled.a`
   border-radius: 20px;
   text-decoration: none;
   transform: scale(0.99);
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: ${({ theme }) => theme.cardBG};
   transition: transform 0.25s ease;
+  opacity: 0.9;
+
+  backdrop-filter: blur(40px);
 
   @media (max-width: 960px) {
     margin-bottom: 2rem;
@@ -49,7 +55,7 @@ const StyledExternalCard = styled.a`
 `
 
 const StyledCardTitle = styled.p`
-  color: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.textColor};
   font-size: 2rem;
   line-height: 2.5rem;
   font-weight: 800;
@@ -74,7 +80,7 @@ const StyledArrowRight = styled.div`
 `
 
 const NewPill = styled.p`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.invertedTextColor};
   background-color: ${({ theme }) => theme.colors.link};
   padding: 0rem 0.5rem;
   position: absolute;
