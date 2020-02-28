@@ -53,7 +53,7 @@ const menu = [
     ]
   },
   {
-    name: 'About',
+    name: 'Info',
     sublinks: [
       // { name: 'About', link: '/about' },
       // { name: 'Team', link: '/about#team' },

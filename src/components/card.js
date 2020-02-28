@@ -13,18 +13,37 @@ const StyledCard = styled(Link)`
   transform: scale(0.99);
   background-color: ${({ theme }) => theme.cardBG};
   opacity: 0.9;
-  transition: transform 0.25s ease;
-
+  transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
   backdrop-filter: blur(40px);
+  cursor: pointer;
 
   @media (max-width: 960px) {
     margin-bottom: 2rem;
+    padding: 1rem;
     max-width: 100%;
     width: 100%;
   }
 
   :hover {
     transform: scale(1);
+  }
+
+  ::after {
+    content: '';
+    position: absolute;
+    border-radius: 20px;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: ${({ theme }) => theme.shadows.huge};
+    opacity: 0;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  :hover::after {
+    opacity: 1;
   }
 `
 
@@ -38,12 +57,12 @@ const StyledExternalCard = styled.a`
   text-decoration: none;
   transform: scale(0.99);
   background-color: ${({ theme }) => theme.cardBG};
-  transition: transform 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
   opacity: 0.9;
-
   backdrop-filter: blur(40px);
 
   @media (max-width: 960px) {
+    padding: 1rem;
     margin-bottom: 2rem;
     max-width: 100%;
     width: 100%;
@@ -51,6 +70,23 @@ const StyledExternalCard = styled.a`
 
   :hover {
     transform: scale(1);
+  }
+  ::after {
+    content: '';
+    position: absolute;
+    border-radius: 20px;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: ${({ theme }) => theme.shadows.huge};
+    opacity: 0;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  :hover::after {
+    opacity: 1;
   }
 `
 
@@ -61,7 +97,7 @@ const StyledCardTitle = styled.p`
   font-weight: 800;
 
   @media (max-width: 1024px) {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     line-height: 2rem;
   }
 `
@@ -105,7 +141,7 @@ const Card = ({ node, index }) => {
           </div>
         </StyledCard>
       ) : (
-        <StyledExternalCard index={index} to={node.slug}>
+        <StyledExternalCard index={index} href={node.slug}>
           {node.type === 'New' ? <NewPill>New</NewPill> : null}
           <StyledCardTitle>{node.cardTitle}</StyledCardTitle>
           <div>

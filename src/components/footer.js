@@ -9,6 +9,7 @@ import React, {
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import { ThemeManagerContext } from '../styles/themeManager'
+import Uni from '../images/uni.inline.svg'
 
 function Dropdown(props) {
   const items = props.links.map(node => {
@@ -96,6 +97,18 @@ const StyledFooterLink = styled.li`
   }
 `
 
+const StyledUni = styled(Uni)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  margin-bottom: 3rem;
+  transform: rotate(0deg);
+  transition: transform 0.2s linear;
+  :hover {
+    transform: rotate(-10deg);
+  }
+`
+
 const StyledEmailForm = styled.form`
   width: 300px;
 `
@@ -129,8 +142,7 @@ const Footer = props => {
     <StyledFooter>
       <StyledSection>
         <StyledFooterSection>
-          <h4>{'Stay up to date!'}</h4>
-
+          <StyledUni />
           <Commit>
             Deployed commit:{' '}
             <code>
@@ -143,6 +155,7 @@ const Footer = props => {
               </a>
             </code>
           </Commit>
+
           <div>
             <label>
               <input
@@ -153,6 +166,7 @@ const Footer = props => {
               Dark mode
             </label>
           </div>
+          <p>© 2020 Uniswap</p>
         </StyledFooterSection>
       </StyledSection>
       <StyledSection>

@@ -78,6 +78,9 @@ const StyledTradeLink = styled.a`
   :hover {
     transform: scale(1);
   }
+  @media (max-width: 960px) {
+    display: none;
+  }
 `
 
 const StyledHomeLink = styled(Link)`

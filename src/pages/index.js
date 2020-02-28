@@ -57,11 +57,11 @@ const StyledBody = styled.div`
   @media (min-width: 1441px) {
     padding-top: 0px;
     justify-content: center;
-    max-height: 900px;
+    max-height: 800px;
     height: 80vh;
   }
   @media (max-width: 1440px) and (max-height: 1000px) {
-    max-height: 900px;
+    max-height: 700px;
     height: 80vh;
   }
   @media (max-width: 1024px) {
@@ -81,7 +81,7 @@ const StyledTitle = styled.div`
   width: 50%;
   flex-direction: column;
   @media (min-width: 1441px) {
-    width: 70%;
+    width: 50%;
   }
   @media (max-width: 960px) {
     width: 100%;
@@ -240,7 +240,7 @@ const StyledLineImg = styled(Img)`
   max-width: 300px;
   @media (max-width: 1024px) {
     max-width: 50%;
-    left: 25%;
+    /* left: 25%; */
   }
   @media (max-width: 960px) {
     width: 100%;

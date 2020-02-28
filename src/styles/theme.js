@@ -33,7 +33,7 @@ export const theme = darkMode => ({
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.4)',
-  menuBG: darkMode ? 'rgba(10,10,10, 0.4)' : 'rgba(255, 255, 255, 0.6)',
+  menuBG: darkMode ? 'rgba(10,10,10, 0.8)' : 'rgba(255, 255, 255, 0.6)',
   marqueeBG: darkMode ? '#00FF85' : '#191B1F',
 
   inputBackground: darkMode ? '#202124' : white,
@@ -58,15 +58,15 @@ export const theme = darkMode => ({
     blue8: darkMode ? '#C4D9F8' : '#0E2F5E',
     blue9: darkMode ? '#C4D9F8' : '#191B1F',
 
-    grey1: darkMode ? '#292C2F' : '#F7F8FA',
-    grey2: darkMode ? '#F7F8FA' : '#EDEEF2',
-    grey3: darkMode ? '#CED0D9' : '#CED0D9',
-    grey4: darkMode ? '#888D9B' : '#888D9B',
-    grey5: darkMode ? '#888D9B' : '#6C7284',
-    grey6: darkMode ? '#565A69' : '#565A69',
-    grey7: darkMode ? '#40444F' : '#40444F',
-    grey8: darkMode ? '#2C2F36' : '#2C2F36',
-    grey9: darkMode ? '#191B1F' : '#191B1F',
+    grey1: darkMode ? '#191B1F' : '#F7F8FA',
+    grey2: darkMode ? '#2C2F36' : '#EDEEF2',
+    grey3: darkMode ? '#40444F' : '#CED0D9',
+    grey4: darkMode ? '#565A69' : '#888D9B',
+    grey5: darkMode ? '#6C7284' : '#6C7284',
+    grey6: darkMode ? '#888D9B' : '#565A69',
+    grey7: darkMode ? '#CED0D9' : '#40444F',
+    grey8: darkMode ? '#EDEEF2' : '#2C2F36',
+    grey9: darkMode ? '#F7F8FA' : '#191B1F',
 
     white: '#FFFFFF',
     black: '#000000',

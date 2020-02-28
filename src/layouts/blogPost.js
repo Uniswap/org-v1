@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '.'
 import styled from 'styled-components'
 import Moment from 'react-moment'
-import { graphql } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 
 import { Twitter, Facebook } from 'react-social-sharing'
 import SEO from '../components/seo2'
@@ -11,6 +11,7 @@ const StyledBlog = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
 `
 
@@ -26,6 +27,12 @@ const StyledMDX = styled.div`
   h1 {
     margin-bottom: 2rem;
     font-size: 2rem;
+  }
+  figcaption {
+    padding: 0.25rem;
+    font-style: italic;
+    color: ${({ theme }) => theme.colors.grey6};
+    text-align: center;
   }
   @media (max-width: 960px) {
     min-width: 100%;
@@ -56,6 +63,9 @@ const PostMetaData = styled.div`
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.colors.grey6};
   width: 100%;
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `
 
 const PostTitle = styled.h1`
@@ -64,6 +74,9 @@ const PostTitle = styled.h1`
   font-weight: 800 !important;
   margin-bottom: 2rem;
   /* text-align: center; */
+  @media (max-width: 960px) {
+    font-size: 3rem;
+  }
 `
 
 const PostAuthor = styled.p`
@@ -74,7 +87,84 @@ const PostDate = styled(Moment)`
   margin: 0;
 `
 
+const StyledDocsNavWrapper = styled.ul`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  margin-top: 2rem;
+  padding-top: 3rem;
+  border-top: 1px solid ${({ theme }) => theme.colors.grey2};
+  width: 100%;
+  flex-wrap: wrap;
+`
+const StyledDocsNav = styled.li`
+  a {
+    color: ${({ theme }) => theme.textColor};
+  }
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+`
+
+const StyledLink = styled(Link)`
+  font-size: 1.25rem;
+  border: 1px solid ${({ theme }) => theme.colors.grey2};
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  small {
+    font-size: 0.75rem;
+    opacity: 0.6;
+  }
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+`
+
 const Blog = props => {
+  const data = useStaticQuery(graphql`
+    {
+      allMdx(
+        filter: { fileAbsolutePath: { regex: "/blog/" } }
+        sort: { order: ASC, fields: fields___slug }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+              topLevelDir
+              subDir
+            }
+          }
+          next {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
+          }
+          previous {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <Layout path={props.location.pathname}>
       {/* <SEO title={pageContext.frontmatter.title} path={path} /> */}
@@ -111,34 +201,43 @@ const Blog = props => {
           </div>
         </PostHeader>
         <StyledMDX>{props.children}</StyledMDX>
+        {data.allMdx.edges
+          .filter(({ node }) => {
+            return node.fields.slug === props.path
+          })
+          .map(({ node, next, previous }) => {
+            return (
+              <StyledDocsNavWrapper key={node.id}>
+                <StyledDocsNav>
+                  {previous && (
+                    <StyledLink
+                      style={{ alignItems: 'flex-end' }}
+                      to={previous.fields.slug}
+                      rel="prev"
+                    >
+                      <small>Previous</small>
+                      <span>← {previous.frontmatter.title}</span>
+                    </StyledLink>
+                  )}
+                </StyledDocsNav>
+                <StyledDocsNav>
+                  {next && (
+                    <StyledLink
+                      style={{ alignItems: 'flex-start' }}
+                      to={next.fields.slug}
+                      rel="next"
+                    >
+                      <small>Next</small>
+                      <span>{next.frontmatter.title} →</span>
+                    </StyledLink>
+                  )}
+                </StyledDocsNav>
+              </StyledDocsNavWrapper>
+            )
+          })}
       </StyledBlog>
     </Layout>
   )
 }
 
 export default Blog
-
-export const pageQuery = graphql`
-  query MDXQuery($id: String!) {
-    mdx(id: { eq: $id }) {
-      id
-      body
-      excerpt(pruneLength: 250)
-      frontmatter {
-        date(formatString: "dddd DD MMMM YYYY")
-        title
-      }
-      fields {
-        slug
-        readingTime {
-          text
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`

@@ -52,7 +52,12 @@ const StyledMDX = styled.div`
     height: 1px;
     content: ' ';
     position: absolute;
-    background-color: #e6ecf1;
+    background-color: ${({ theme }) => theme.colors.grey2};
+  }
+
+  code {
+    background-color: ${({ theme }) => theme.colors.grey2};
+    color: ${({ theme }) => theme.colors.grey8};
   }
 
   @media (max-width: 960px) {
@@ -69,7 +74,7 @@ const StyledDocsNavWrapper = styled.ul`
   margin: 0;
   margin-top: 2rem;
   padding-top: 3rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid ${({ theme }) => theme.colors.grey2};
 `
 const StyledDocsNav = styled.li`
   a {
@@ -79,7 +84,7 @@ const StyledDocsNav = styled.li`
 
 const StyledLink = styled(Link)`
   font-size: 1.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid ${({ theme }) => theme.colors.grey2};
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
   text-decoration: none;

@@ -22,18 +22,16 @@ const Posts = styled.div`
   padding: 2rem;
   margin: 0.5rem;
   width: 100%;
-  /* max-width: 356px; */
   box-shadow: ${({ theme, index }) =>
     index === 0 ? theme.shadows.huge : 'none'};
-
+  backdrop-filter: blur(40px);
   border-radius: 20px;
   text-decoration: none;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: ${({ theme }) => theme.cardBG};
   border: 1px solid
     ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)};
 
   :hover {
-    background-color: rgba(255, 255, 255, 0.6);
     transform: scale(1);
   }
 
@@ -76,7 +74,9 @@ const StyledImage = styled(Img)`
   border-radius: 12px;
   margin-left: 2rem;
   box-shadow: ${({ theme }) => theme.shadows.huge};
-
+  @media (max-width: 960px) {
+    display: none;
+  }
   /* max-width: 256px; */
 `
 
