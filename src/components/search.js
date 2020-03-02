@@ -124,8 +124,8 @@ const Search = () => {
     .reduce((accumulator, node) => Object.assign({ [node.id]: node.excerpt }, accumulator), {})
 
   const [query, setQuery] = useState('')
-  const index = window.__LUNR__.en.index
-  const store = window.__LUNR__.en.store
+  const index = typeof window !== 'undefined' ? window.__LUNR__.en.index : null
+  const store = typeof window !== 'undefined' ? window.__LUNR__.en.store : null
   const results = useMemo(
     () =>
       index && store && query !== ''
@@ -140,9 +140,6 @@ const Search = () => {
         : [],
     [query]
   )
-
-  window.index = index
-  window.store = store
 
   return (
     <SearchWrapper>
