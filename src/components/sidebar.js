@@ -35,9 +35,10 @@ const StyledSection = styled.div`
   cursor: pointer;
 `
 
-const StyledLink = styled(props => <Link {...props} />)`
-  font-weight: ${({ active }) => active && 600};
-  background-color: ${({ active, theme }) => active && theme.cardBG};
+// eslint-disable-next-line no-unused-vars
+const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
+  font-weight: ${({ isActive }) => isActive && 600};
+  background-color: ${({ isActive, theme }) => isActive && theme.cardBG};
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
@@ -103,7 +104,7 @@ function List(props) {
       const activePath = node.fields.slug
       return (
         <StyledLisItem key={node.id}>
-          <StyledLink onClick={() => scrollTo('#docs-header')} active={props.path === activePath} to={activePath}>
+          <StyledLink onClick={() => scrollTo('#docs-header')} isActive={props.path === activePath} to={activePath}>
             {title}
           </StyledLink>
         </StyledLisItem>

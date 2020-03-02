@@ -1,9 +1,6 @@
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import React, { useState } from 'react'
-import { useLunr } from 'react-lunr'
-import { Formik, Form, Field } from 'formik'
-import { useStaticQuery, graphql } from 'gatsby'
+import React, { useState, useMemo } from 'react'
 
 import CloseIcon from '../images/x.inline.svg'
 
@@ -16,7 +13,7 @@ const SearchWrapper = styled.div`
     }
   }
 `
-const StyledForm = styled(Form)`
+const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +22,7 @@ const StyledForm = styled(Form)`
   border: 1px solid ${({ theme }) => theme.colors.grey1};
 `
 
-const StyledFormField = styled(Field)`
+const StyledInput = styled.input`
   background-color: ${({ theme }) => theme.colors.grey1};
   color: ${({ theme }) => theme.textColor};
   border-radius: 8px;
@@ -81,14 +78,11 @@ const SearchListItemHeader = styled.h5`
 
 const StyledLink = styled(Link)`
   display: block;
-  font-weight: ${({ active }) => active && 600};
-  /* background-color: ${({ active }) => active && '#F7F8FA'}; */
   border-radius: 8px;
   text-decoration: none;
   margin: 0;
-  /* opacity: ${({ active }) => (active ? 1 : 0.6)}; */
   color: ${({ theme }) => theme.colors.textColor};
-  padding: .5rem;
+  padding: 0.5rem;
   margin: 0;
   :hover {
     border-radius: 8px;
@@ -112,64 +106,80 @@ const ClearButton = styled.button`
   }
 `
 
-const Search = props => {
+const Search = () => {
   const data = useStaticQuery(graphql`
     {
-      localSearchDocs {
-        index
-        store
+      allMdx {
+        nodes {
+          id
+          excerpt
+          fields {
+            topLevelDir
+          }
+        }
       }
     }
   `)
+    .allMdx.nodes.filter(node => node.fields.topLevelDir === 'docs')
+    .reduce((accumulator, node) => Object.assign({ [node.id]: node.excerpt }, accumulator), {})
 
-  const index = data.localSearchDocs.index /* a Lunr index */
-
-  const store = data.localSearchDocs.store
   const [query, setQuery] = useState('')
-  const results = useLunr(query, index, store)
+  const index = window.__LUNR__.en.index
+  const store = window.__LUNR__.en.store
+  const results = useMemo(
+    () =>
+      index && store && query !== ''
+        ? index.search(`${query}*~1`).map(result => ({
+            match: {
+              ...store[result.ref],
+              excerpt: data[result.ref]
+            },
+            score: result.score,
+            metadata: result.matchData.metadata
+          }))
+        : [],
+    [query]
+  )
+
+  window.index = index
+  window.store = store
 
   return (
     <SearchWrapper>
-      <Formik
-        initialValues={{ query: '' }}
-        onSubmit={values => {
-          setQuery(values.query)
-        }}
-      >
-        <StyledForm
-          style={{ display: 'relative' }}
-          onChange={e => {
-            e.target.value !== '' && setQuery(e.target.value + '~1')
-          }}
-        >
-          <StyledFormField type="text" autoComplete="off" name="query" placeholder={'Search ' + props.parent + '...'} />
-          <ClearButton isActive={query !== '' && query} type="reset" onClick={() => setQuery('')}>
-            <CloseIcon />
-          </ClearButton>
-        </StyledForm>
-      </Formik>
-      {query !== '' && query && results.length > 0 ? (
+      <StyledForm>
+        <StyledInput
+          type="text"
+          name="query"
+          autoComplete="off"
+          value={query}
+          onChange={event => setQuery(event.target.value)}
+          placeholder="Search"
+        />
+        <ClearButton isActive={query !== '' && query} onClick={() => setQuery('')}>
+          <CloseIcon />
+        </ClearButton>
+      </StyledForm>
+
+      {query !== '' && (
         <SearchList>
-          {results.map(result => {
-            return (
-              <StyledLink key={result.title} to={result.path}>
+          {results.length > 0 ? (
+            results.map(result => (
+              <StyledLink key={result.match.path} to={result.match.path}>
                 <SearchListItemHeader
                   dangerouslySetInnerHTML={{
-                    __html: result.title.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`)
+                    __html: result.match.title.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`)
                   }}
                 />
                 <SearchListItemExcerpt
                   dangerouslySetInnerHTML={{
-                    __html: result.excerpt.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`)
+                    __html: result.match.excerpt.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`)
                   }}
                 />
               </StyledLink>
-            )
-          })}
-        </SearchList>
-      ) : (
-        <SearchList>
-          <SearchListItemHeader>No results</SearchListItemHeader>
+            ))
+          ) : (
+            <SearchListItemHeader>No results</SearchListItemHeader>
+          )}
         </SearchList>
       )}
     </SearchWrapper>
