@@ -55,8 +55,8 @@ const SearchList = styled.div`
   background-color: ${({ theme }) => theme.menuBG};
   backface-visibility: hidden;
   backdrop-filter: blur(20px);
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-    0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
+    0px 24px 32px rgba(0, 0, 0, 0.04);
   max-height: 400px;
   overflow: scroll;
   padding: 0.5rem;
@@ -132,7 +132,7 @@ const Search = props => {
     <SearchWrapper>
       <Formik
         initialValues={{ query: '' }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={values => {
           setQuery(values.query)
         }}
       >
@@ -142,17 +142,8 @@ const Search = props => {
             e.target.value !== '' && setQuery(e.target.value + '~1')
           }}
         >
-          <StyledFormField
-            type="text"
-            autoComplete="off"
-            name="query"
-            placeholder={'Search ' + props.parent + '...'}
-          />
-          <ClearButton
-            isActive={query !== '' && query}
-            type="reset"
-            onClick={() => setQuery('')}
-          >
+          <StyledFormField type="text" autoComplete="off" name="query" placeholder={'Search ' + props.parent + '...'} />
+          <ClearButton isActive={query !== '' && query} type="reset" onClick={() => setQuery('')}>
             <CloseIcon />
           </ClearButton>
         </StyledForm>
@@ -161,21 +152,15 @@ const Search = props => {
         <SearchList>
           {results.map(result => {
             return (
-              <StyledLink to={result.path}>
+              <StyledLink key={result.title} to={result.path}>
                 <SearchListItemHeader
                   dangerouslySetInnerHTML={{
-                    __html: result.title.replace(
-                      new RegExp(query, 'gi'),
-                      match => `<mark>${match}</mark>`
-                    )
+                    __html: result.title.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`)
                   }}
                 />
                 <SearchListItemExcerpt
                   dangerouslySetInnerHTML={{
-                    __html: result.excerpt.replace(
-                      new RegExp(query, 'gi'),
-                      match => `<mark>${match}</mark>`
-                    )
+                    __html: result.excerpt.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`)
                   }}
                 />
               </StyledLink>

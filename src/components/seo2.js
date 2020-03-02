@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, title, path, ogImageProp, pathname }) {
+function SEO({ description, lang, title, path }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -46,23 +46,13 @@ function SEO({ description, lang, meta, title, path, ogImageProp, pathname }) {
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content={'website'} />
       <meta property="og:url" content={site.siteMetadata.siteUrl + path} />
-      <meta
-        property="og:image"
-        content={`${site.siteMetadata.siteUrl}${
-          path ? path : '/'
-        }twitter-card.jpg`}
-      />
+      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/'}twitter-card.jpg`} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@UniswapExchange"></meta>
       <meta name="twitter:title" content={title}></meta>
       <meta name="twitter:description" content={metaDescription}></meta>
-      <meta
-        name="twitter:image"
-        content={`${site.siteMetadata.siteUrl}${
-          path ? path : '/'
-        }twitter-card.jpg`}
-      ></meta>
+      <meta name="twitter:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/'}twitter-card.jpg`}></meta>
 
       <meta name="twitter:site" content="@UniswapExchange" />
       <meta name="twitter:url" content={site.siteMetadata.siteUrl + path} />

@@ -165,7 +165,7 @@ Many Uniswap functions include a transaction `deadline` that sets a time after w
 Deadlines are calculated by adding the desired amount of time \(in seconds\) to the latest Ethereum block timestamp.
 
 ```javascript
-web3.eth.getBlock("latest", (error, block) => {
+web3.eth.getBlock('latest', (error, block) => {
   deadline = block.timestamp + 300 // transaction expires in 300 seconds (5 minutes)
 })
 ```

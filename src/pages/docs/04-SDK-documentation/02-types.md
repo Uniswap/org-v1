@@ -10,30 +10,20 @@ Below is an exhaustive list of all the external types used in the SDK.
 [Actual file](https://github.com/Uniswap/uniswap-sdk/blob/master/src/types.ts).
 
 ```typescript
-import BigNumber from "bignumber.js"
-import { ethers } from "ethers"
+import BigNumber from 'bignumber.js'
+import { ethers } from 'ethers'
 
-import {
-  SUPPORTED_CHAIN_ID,
-  TRADE_TYPE,
-  TRADE_EXACT,
-  FIXED_UNDERFLOW_BEHAVIOR,
-} from "./constants"
+import { SUPPORTED_CHAIN_ID, TRADE_TYPE, TRADE_EXACT, FIXED_UNDERFLOW_BEHAVIOR } from './constants'
 
 export type BigNumberish = BigNumber | ethers.utils.BigNumber | string | number
 
 //// types for on-chain, submitted, and normalized data
-export type ChainIdOrProvider =
-  | SUPPORTED_CHAIN_ID
-  | ethers.providers.AsyncSendable
-  | ethers.providers.Provider
+export type ChainIdOrProvider = SUPPORTED_CHAIN_ID | ethers.providers.AsyncSendable | ethers.providers.Provider
 
 // type guard for ChainIdOrProvider
-export function isChainId(
-  chainIdOrProvider: ChainIdOrProvider
-): chainIdOrProvider is SUPPORTED_CHAIN_ID {
+export function isChainId(chainIdOrProvider: ChainIdOrProvider): chainIdOrProvider is SUPPORTED_CHAIN_ID {
   const chainId: SUPPORTED_CHAIN_ID = chainIdOrProvider as SUPPORTED_CHAIN_ID
-  return typeof chainId === "number"
+  return typeof chainId === 'number'
 }
 
 // type guard for ChainIdOrProvider
@@ -44,7 +34,7 @@ export function isLowLevelProvider(
     return false
   } else {
     const provider: ethers.providers.AsyncSendable = chainIdOrProvider as ethers.providers.AsyncSendable
-    return "send" in provider || "sendAsync" in provider
+    return 'send' in provider || 'sendAsync' in provider
   }
 }
 
@@ -86,26 +76,18 @@ export interface EthReserves {
 export type OptionalReserves = TokenReserves | EthReserves | undefined
 
 // type guard for OptionalReserves
-export function areTokenReserves(
-  reserves: OptionalReserves
-): reserves is TokenReserves {
+export function areTokenReserves(reserves: OptionalReserves): reserves is TokenReserves {
   const tokenReserves: TokenReserves = reserves as TokenReserves
   return (
-    tokenReserves !== undefined &&
-    tokenReserves.ethReserve !== undefined &&
-    tokenReserves.tokenReserve !== undefined
+    tokenReserves !== undefined && tokenReserves.ethReserve !== undefined && tokenReserves.tokenReserve !== undefined
   )
 }
 
 // type guard for OptionalReserves
-export function areETHReserves(
-  reserves: OptionalReserves
-): reserves is EthReserves {
+export function areETHReserves(reserves: OptionalReserves): reserves is EthReserves {
   const tokenReserves: TokenReserves = reserves as TokenReserves
   return (
-    tokenReserves !== undefined &&
-    tokenReserves.ethReserve === undefined &&
-    tokenReserves.tokenReserve === undefined
+    tokenReserves !== undefined && tokenReserves.ethReserve === undefined && tokenReserves.tokenReserve === undefined
   )
 }
 
@@ -113,14 +95,9 @@ export function areETHReserves(
 export type NormalizedReserves = TokenReservesNormalized | EthReserves
 
 // type guard for NormalizedReserves
-export function areTokenReservesNormalized(
-  reserves: NormalizedReserves
-): reserves is TokenReservesNormalized {
+export function areTokenReservesNormalized(reserves: NormalizedReserves): reserves is TokenReservesNormalized {
   const tokenReservesNormalized: TokenReservesNormalized = reserves as TokenReservesNormalized
-  return (
-    tokenReservesNormalized.ethReserve !== undefined &&
-    tokenReservesNormalized.tokenReserve !== undefined
-  )
+  return tokenReservesNormalized.ethReserve !== undefined && tokenReservesNormalized.tokenReserve !== undefined
 }
 
 //// types for computed data
@@ -161,11 +138,9 @@ export interface ExecutionDetails {
 export type FlexibleFormat = BigNumber.Format | boolean
 
 // type guard for FlexibleFormat
-export function isFormat(
-  flexibleFormat: FlexibleFormat
-): flexibleFormat is BigNumber.Format {
+export function isFormat(flexibleFormat: FlexibleFormat): flexibleFormat is BigNumber.Format {
   const format: BigNumber.Format = flexibleFormat as BigNumber.Format
-  return typeof format !== "boolean"
+  return typeof format !== 'boolean'
 }
 
 export interface FormatSignificantOptions {

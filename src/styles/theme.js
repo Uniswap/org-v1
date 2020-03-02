@@ -6,17 +6,14 @@ const MEDIA_WIDTHS = {
   upToLarge: 1280
 }
 
-const mediaWidthTemplates = Object.keys(MEDIA_WIDTHS).reduce(
-  (accumulator, size) => {
-    accumulator[size] = (...args) => css`
-      @media (max-width: ${MEDIA_WIDTHS[size]}px) {
-        ${css(...args)}
-      }
-    `
-    return accumulator
-  },
-  {}
-)
+const mediaWidthTemplates = Object.keys(MEDIA_WIDTHS).reduce((accumulator, size) => {
+  accumulator[size] = (...args) => css`
+    @media (max-width: ${MEDIA_WIDTHS[size]}px) {
+      ${css(...args)}
+    }
+  `
+  return accumulator
+}, {})
 
 const white = '#FFFFFF'
 const black = '#000000'
@@ -139,12 +136,11 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-size: 16px;
     font-variant: none;
-    background-color: ${({ theme, isDark }) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.backgroundColor};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-image: url( ${({ isDark }) =>
-      isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg'});
+    background-image: url(${({ isDark }) => (isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg')});
     background-size: contain;
     background-repeat: no-repeat;
 

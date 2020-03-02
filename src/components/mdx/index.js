@@ -10,8 +10,6 @@ const components = {
   code: Code
 }
 
-const Mdx = props => (
-  <MDXProvider components={components}> {props.children}</MDXProvider>
-)
+const Mdx = props => <MDXProvider components={components}> {props.children}</MDXProvider>
 
 export default Mdx

@@ -39,10 +39,7 @@ export async function getTokenReserves(
 const tokenAddress = '0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359' // DAI Mainnet
 const chainIdOrProvider: ChainIdOrProvider = 1 // could be e.g. window.ethereum instead
 
-const tokenReserves: TokenReservesNormalized = await getTokenReserves(
-  tokenAddress,
-  chainIdOrProvider
-)
+const tokenReserves: TokenReservesNormalized = await getTokenReserves(tokenAddress, chainIdOrProvider)
 
 /*
 {

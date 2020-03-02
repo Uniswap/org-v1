@@ -105,11 +105,7 @@ const tradeAmount: BigNumber = _purchaseAmount.multipliedBy(10 ** _decimals)
 const marketDetails: MarketDetails = getMarketDetails(undefined, reserves) // ETH<>ERC20
 
 // buy exactly 2.5 of an 18 decimal ERC20 with ETH
-const tradeDetails: TradeDetails = getTradeDetails(
-  TRADE_EXACT.OUTPUT,
-  tradeAmount,
-  marketDetails
-)
+const tradeDetails: TradeDetails = getTradeDetails(TRADE_EXACT.OUTPUT, tradeAmount, marketDetails)
 
 /*
 {

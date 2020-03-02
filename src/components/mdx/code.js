@@ -24,12 +24,12 @@ const Pre = styled.pre`
   }
 `
 
-const LineNo = styled.span`
-  display: inline-block;
-  width: 2em;
-  user-select: none;
-  opacity: 0.3;
-`
+// const LineNo = styled.span`
+//   display: inline-block;
+//   width: 2em;
+//   user-select: none;
+//   opacity: 0.3;
+// `
 
 const CopyButton = styled.button`
   position: absolute;
@@ -55,15 +55,8 @@ export default ({ children, className }) => {
 
   return (
     <Wrapper>
-      <CopyButton onClick={setCopied}>
-        {isCopied ? 'Copied' : 'Copy'}
-      </CopyButton>
-      <Highlight
-        {...defaultProps}
-        code={children}
-        language={language}
-        theme={theme}
-      >
+      <CopyButton onClick={setCopied}>{isCopied ? 'Copied' : 'Copy'}</CopyButton>
+      <Highlight {...defaultProps} code={children} language={language} theme={theme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Pre className={className} style={{ ...style, padding: '20px' }}>
             {tokens.map((line, i) => (

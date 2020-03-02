@@ -1,5 +1,5 @@
 {
-  "name": "Uniswap-site-v2",
+  "name": "uniswap-site-v2",
   "private": true,
   "description": "Uniswap homepage and knowledgebase",
   "version": "0.1.0",
@@ -11,7 +11,7 @@
     "@mdx-js/mdx": "^1.5.5",
     "@mdx-js/react": "^1.5.5",
     "@react-hook/media-query": "^1.0.1",
-    "babel-plugin-styled-components": "^1.10.6",
+    "babel-plugin-styled-components": "^1.10.7",
     "formik": "^2.1.1",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
@@ -31,7 +31,7 @@
     "gatsby-plugin-sitemap": "^2.2.27",
     "gatsby-plugin-slug-field": "^0.1.0",
     "gatsby-plugin-smoothscroll": "^1.0.4",
-    "gatsby-plugin-styled-components": "^3.1.16",
+    "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-plugin-twitter": "^2.1.19",
     "gatsby-remark-autolink-headers": "^2.1.22",
     "gatsby-remark-copy-linked-files": "^2.1.37",
@@ -50,37 +50,38 @@
     "prismjs": "^1.18.0",
     "prop-types": "^15.7.2",
     "react": "^16.8",
-    "react-collapsible": "^2.6.2",
     "react-dom": "^16.8",
     "react-helmet": "^5.2.1",
-    "react-is": "^16.8",
     "react-lunr": "^0.6.0",
     "react-moment": "^0.9.7",
     "react-social-sharing": "^3.0.1",
     "react-use-clipboard": "1.0.0",
     "remark": "^11.0.2",
-    "scroll-to-element": "^2.0.3",
     "strip-markdown": "^3.1.1",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-react": "^7.18.3",
+    "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-replace-path": "^1.0.0",
-    "prettier": "^1.19.1",
-    "react-scripts": "^3.4.0"
+    "prettier": "^1.19.1"
   },
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "scripts": {
-    "dev": "gatsby develop",
-    "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "dev": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "format": "prettier --write \"src/**/*.{js,jsx,md,mdx}\""
   },
   "repository": {
     "type": "git",

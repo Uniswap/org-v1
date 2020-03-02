@@ -22,14 +22,12 @@ const Posts = styled.div`
   padding: 2rem;
   margin: 0.5rem;
   width: 100%;
-  box-shadow: ${({ theme, index }) =>
-    index === 0 ? theme.shadows.huge : 'none'};
+  box-shadow: ${({ theme, index }) => (index === 0 ? theme.shadows.huge : 'none')};
   backdrop-filter: blur(40px);
   border-radius: 20px;
   text-decoration: none;
   background-color: ${({ theme }) => theme.cardBG};
-  border: 1px solid
-    ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)};
+  border: 1px solid ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)};
 
   :hover {
     transform: scale(1);
@@ -96,10 +94,7 @@ const NewPill = styled.p`
 const Blog = props => {
   const data = useStaticQuery(graphql`
     {
-      allMdx(
-        filter: { fileAbsolutePath: { regex: "/blog/" } }
-        sort: { order: DESC, fields: frontmatter___date }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { order: DESC, fields: frontmatter___date }) {
         edges {
           node {
             id
@@ -158,22 +153,12 @@ const Blog = props => {
                 <PostTitleWrapper>
                   <h1>{node.frontmatter.title}</h1>
 
-                  {node.frontmatter.previewText ? (
-                    <p>{node.frontmatter.previewText} </p>
-                  ) : (
-                    ''
-                  )}
+                  {node.frontmatter.previewText ? <p>{node.frontmatter.previewText} </p> : ''}
 
-                  <PostMetaData>
-                    {node.frontmatter.date +
-                      ' - ' +
-                      node.fields.readingTime.text}
-                  </PostMetaData>
+                  <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
                 </PostTitleWrapper>
                 {node.frontmatter.featuredImage && (
-                  <StyledImage
-                    fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
-                  />
+                  <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
                 )}
               </PostLinkWrapper>
             </Posts>

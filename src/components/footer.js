@@ -1,11 +1,5 @@
 import { Link } from 'gatsby'
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  useContext
-} from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import { ThemeManagerContext } from '../styles/themeManager'
@@ -16,11 +10,7 @@ function Dropdown(props) {
     const title = node.name
     return (
       <StyledFooterLink key={node.name}>
-        {node.link.split('/')[0] === '' ? (
-          <Link to={node.link}>{title}</Link>
-        ) : (
-          <a href={node.link}>{title}</a>
-        )}
+        {node.link.split('/')[0] === '' ? <Link to={node.link}>{title}</Link> : <a href={node.link}>{title}</a>}
       </StyledFooterLink>
     )
   })
@@ -109,13 +99,9 @@ const StyledUni = styled(Uni)`
   }
 `
 
-const StyledEmailForm = styled.form`
-  width: 300px;
-`
-
 const Commit = styled.div``
 
-const Footer = props => {
+const Footer = () => {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -158,12 +144,8 @@ const Footer = props => {
 
           <div>
             <label>
-              <input
-                type="checkbox"
-                onChange={() => themeContext.toggleDark()}
-                checked={themeContext.isDark}
-              />{' '}
-              Dark mode
+              <input type="checkbox" onChange={() => themeContext.toggleDark()} checked={themeContext.isDark} /> Dark
+              mode
             </label>
           </div>
           <p>© 2020 Uniswap</p>

@@ -384,21 +384,14 @@ const IndexPage = props => {
     <Layout path={props.location.pathname}>
       <SEO title="Home" path={props.location.pathname} />
       <Helmet>
-        <meta
-          name="twitter:image"
-          content={`${data.site.siteMetadata.siteUrl}/images/twitter-card.jpg`}
-        />
+        <meta name="twitter:image" content={`${data.site.siteMetadata.siteUrl}/images/twitter-card.jpg`} />
       </Helmet>
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated token exchange.</StyledBodyTitle>
           <span>
-            <StyledTradeLink href="https://uniswap.exchange/">
-              Trade Now
-            </StyledTradeLink>
-            <StyledTradeLinkOutlined to="/docs">
-              Read the docs
-            </StyledTradeLinkOutlined>
+            <StyledTradeLink href="https://uniswap.exchange/">Trade Now</StyledTradeLink>
+            <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
           </span>
         </StyledTitle>
         <StyledStar />{' '}
@@ -453,21 +446,15 @@ const IndexPage = props => {
             <p>Get started building on Uniswap using the SDK.</p>
             <div>
               <Link to="/docs">Get Started</Link> •{' '}
-              <Link to="/docs/04-SDK-documentation/01-get-started/">
-                Javascript SDK
-              </Link>{' '}
-              •{' '}
-              <Link to="/docs/05-smart-contract-api/01-exchange/">
-                Smart Contracts
-              </Link>
+              <Link to="/docs/04-SDK-documentation/01-get-started/">Javascript SDK</Link> •{' '}
+              <Link to="/docs/05-smart-contract-api/01-exchange/">Smart Contracts</Link>
             </div>
           </div>
           <div>
             <h2>About</h2>
             <p>Learn more about Uniswap.</p>
             <div>
-              <Link to="/">What is Uniswap?</Link> • <Link to="/faq">FAQ</Link>{' '}
-              • <Link to="/">Whitepaper</Link>
+              <Link to="/">What is Uniswap?</Link> • <Link to="/faq">FAQ</Link> • <Link to="/">Whitepaper</Link>
             </div>
           </div>
           <div>
@@ -475,8 +462,7 @@ const IndexPage = props => {
             <p>Get help and participate in the community.</p>
             <div>
               <a href="https://twitter.com/UniswapExchange">Twitter</a> •{' '}
-              <a href="https://discord.gg/Y7TF6QA">Discord</a> •{' '}
-              <a href="https://github.com/Uniswap">Github</a> •{' '}
+              <a href="https://discord.gg/Y7TF6QA">Discord</a> • <a href="https://github.com/Uniswap">Github</a> •{' '}
               <a href="https://www.reddit.com/r/UniSwap/">Reddit</a>
             </div>
           </div>
@@ -485,17 +471,13 @@ const IndexPage = props => {
       <StyledGoal>
         <h2>Our goal</h2>
         <p>
-          Uniswap is important infrastructure for the emerging crypto economy
-          and enables markets to be created that couldn't have existed before.
-          As more assets become tokenized, public blockchains and protocols like
-          Uniswap provide the opportunity to establish a new financial stack
-          that is more efficient, transparent, and equitable than any system in
-          the past.
+          Uniswap is important infrastructure for the emerging crypto economy and enables markets to be created that
+          couldn{"'"}t have existed before. As more assets become tokenized, public blockchains and protocols like
+          Uniswap provide the opportunity to establish a new financial stack that is more efficient, transparent, and
+          equitable than any system in the past.
         </p>
         <div>
-          <Link to="/">
-            Read more about how we are working towards this future.
-          </Link>
+          <Link to="/">Read more about how we are working towards this future.</Link>
         </div>
       </StyledGoal>
     </Layout>

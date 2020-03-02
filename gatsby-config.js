@@ -20,7 +20,7 @@ const menu = [
       {
         name: 'Unipig',
         link: 'https://unipig.exchange/',
-        description: 'L2 Optimstic rollup demo'
+        description: 'L2 Optimistic rollup demo'
       }
     ]
   },
@@ -68,8 +68,7 @@ const cards = [
   {
     slug: 'http://uniswap.exchange',
     cardTitle: 'Swap any token on Ethereum',
-    cardDesc:
-      'Use uniswap.exchange or integrate into your project using the SDK.',
+    cardDesc: 'Use uniswap.exchange or integrate into your project using the SDK.',
     cardButton: 'Swap now'
   },
   {
@@ -81,21 +80,17 @@ const cards = [
   {
     slug: '/docs',
     cardTitle: 'Earn fees through passive market making',
-    cardDesc:
-      'Provide liquidity to earn .03% of all spread fees for adding market depth.',
+    cardDesc: 'Provide liquidity to earn 0.3% of all spread fees for adding market depth.',
     cardButton: 'How pooling works'
   },
   {
     slug: '/docs',
     cardTitle: 'Build decentralized price feeds',
-    cardDesc: 'Perfect TWAPs on chain, customizable to your risk profile.',
+    cardDesc: 'Perfect time-weighted average prices on chain, customizable to your risk profile.',
     type: 'New',
     cardButton: 'Read the SDK'
   }
 ]
-
-const remark = require('remark')
-const stripMarkdown = require('strip-markdown')
 
 module.exports = {
   siteMetadata: {
@@ -155,7 +150,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-twitter`,
-    'gatsby-plugin-instagram-embed',
+    `gatsby-plugin-instagram-embed`,
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
     {
@@ -323,8 +318,8 @@ module.exports = {
           }
         ]
       }
-    }
-
+    },
+    'gatsby-plugin-eslint'
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

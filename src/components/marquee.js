@@ -12,8 +12,7 @@ const moveHorizonatally = x => keyframes`
 
 const Stats = styled.div`
   color: ${({ theme }) => theme.invertedTextColor};
-  animation: ${props => moveHorizonatally(props.x)} ${props => props.time}s
-    linear infinite;
+  animation: ${props => moveHorizonatally(props.x)} ${props => props.time}s linear infinite;
   :hover {
     animation-play-state: paused;
   }

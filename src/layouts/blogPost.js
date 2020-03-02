@@ -128,10 +128,7 @@ const StyledLink = styled(Link)`
 const Blog = props => {
   const data = useStaticQuery(graphql`
     {
-      allMdx(
-        filter: { fileAbsolutePath: { regex: "/blog/" } }
-        sort: { order: ASC, fields: fields___slug }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { order: ASC, fields: fields___slug }) {
         edges {
           node {
             id
@@ -178,8 +175,7 @@ const Blog = props => {
         <PostHeader>
           <PostTitle>{props.pageContext.frontmatter.title}</PostTitle>
           <PostMetaData>
-            <PostAuthor>{props.pageContext.frontmatter.author}</PostAuthor>{' '}
-            {' — '}
+            <PostAuthor>{props.pageContext.frontmatter.author}</PostAuthor> {' — '}
             <PostDate parse="YYYY-MM-DD" format="MMMM Do, YYYY">
               {props.pageContext.frontmatter.date}
             </PostDate>
@@ -192,12 +188,7 @@ const Blog = props => {
               message={props.pageContext.frontmatter.title}
               link={'https://uniswap.org' + props.path}
             />
-            <Facebook
-              style={{ padding: '0.5em 0.5em' }}
-              solid
-              small
-              link="http://sharingbuttons.io"
-            />
+            <Facebook style={{ padding: '0.5em 0.5em' }} solid small link="http://sharingbuttons.io" />
           </div>
         </PostHeader>
         <StyledMDX>{props.children}</StyledMDX>
@@ -210,11 +201,7 @@ const Blog = props => {
               <StyledDocsNavWrapper key={node.id}>
                 <StyledDocsNav>
                   {previous && (
-                    <StyledLink
-                      style={{ alignItems: 'flex-end' }}
-                      to={previous.fields.slug}
-                      rel="prev"
-                    >
+                    <StyledLink style={{ alignItems: 'flex-end' }} to={previous.fields.slug} rel="prev">
                       <small>Previous</small>
                       <span>← {previous.frontmatter.title}</span>
                     </StyledLink>
@@ -222,11 +209,7 @@ const Blog = props => {
                 </StyledDocsNav>
                 <StyledDocsNav>
                   {next && (
-                    <StyledLink
-                      style={{ alignItems: 'flex-start' }}
-                      to={next.fields.slug}
-                      rel="next"
-                    >
+                    <StyledLink style={{ alignItems: 'flex-start' }} to={next.fields.slug} rel="next">
                       <small>Next</small>
                       <span>{next.frontmatter.title} →</span>
                     </StyledLink>
