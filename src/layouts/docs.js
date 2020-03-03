@@ -99,10 +99,7 @@ const StyledLink = styled(Link)`
 const Docs = props => {
   const data = useStaticQuery(graphql`
     {
-      allMdx(
-        filter: { fileAbsolutePath: { regex: "/docs/" } }
-        sort: { order: ASC, fields: fields___slug }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/docs/" } }, sort: { order: ASC, fields: fields___slug }) {
         edges {
           node {
             id
@@ -162,6 +159,7 @@ const Docs = props => {
             })
           return (
             <SEO
+              key={node.fields.slug}
               title={props.pageContext.frontmatter.title}
               site={'Uniswap ' + title}
               path={props.location.pathname}
@@ -182,11 +180,7 @@ const Docs = props => {
                 <StyledDocsNavWrapper key={node.id}>
                   <StyledDocsNav>
                     {previous && (
-                      <StyledLink
-                        style={{ alignItems: 'flex-end' }}
-                        to={previous.fields.slug}
-                        rel="prev"
-                      >
+                      <StyledLink style={{ alignItems: 'flex-end' }} to={previous.fields.slug} rel="prev">
                         <small>Previous</small>
                         <span>← {previous.frontmatter.title}</span>
                       </StyledLink>
@@ -194,11 +188,7 @@ const Docs = props => {
                   </StyledDocsNav>
                   <StyledDocsNav>
                     {next && (
-                      <StyledLink
-                        style={{ alignItems: 'flex-start' }}
-                        to={next.fields.slug}
-                        rel="next"
-                      >
+                      <StyledLink style={{ alignItems: 'flex-start' }} to={next.fields.slug} rel="next">
                         <small>Next</small>
                         <span>{next.frontmatter.title} →</span>
                       </StyledLink>
@@ -213,13 +203,7 @@ const Docs = props => {
             return node.fields.slug === props.path
           })
           .map(({ node }) => {
-            return (
-              <TableofContents
-                path={props.path}
-                key={node.id}
-                headings={node.headings}
-              />
-            )
+            return <TableofContents path={props.path} key={node.id} headings={node.headings} />
           })}
       </StyledDocs>
     </Layout>

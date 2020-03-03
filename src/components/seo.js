@@ -2,15 +2,7 @@ import * as React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({
-  path,
-  description,
-  ogImageProp,
-  lang = 'en',
-  keywords = [],
-  title,
-  site
-}) {
+function SEO({ path, description, ogImageProp, lang = 'en', keywords = [], title, site }) {
   const data = useStaticQuery(graphql`
     query DefaultSEOQuery {
       site {
@@ -28,9 +20,7 @@ function SEO({
   const metaTitle = title || data.site.siteMetadata.title
   const author = data.site.siteMetadata.author
   const metaSite = site || data.site.siteMetadata.title
-  const ogImage = `${data.site.siteMetadata.siteUrl}${
-    path ? path : '/'
-  }twitter-card.jpg`
+  const ogImage = `${data.site.siteMetadata.siteUrl}${path ? path : '/'}twitter-card.jpg`
 
   return (
     <Helmet

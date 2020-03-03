@@ -64,8 +64,8 @@ const MenuFlyout = styled.span`
   border-radius: 20px;
   background-color: ${({ theme }) => theme.menuBG};
   backdrop-filter: blur(20px);
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-    0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
+    0px 24px 32px rgba(0, 0, 0, 0.04);
 
   @media (max-width: 960px) {
     font-size: 1rem;
@@ -169,26 +169,22 @@ export default function Menu(props) {
     }
 
     if (isOpen && !matches) {
-      node.current.removeEventListener('focus', e => onFocus(false))
+      node.current.removeEventListener('focus', () => onFocus(false))
       document.addEventListener('mouseover', handleClickOutside)
     } else {
-      node.current.addEventListener('focus', e => onFocus(true))
+      node.current.addEventListener('focus', () => onFocus(true))
       document.removeEventListener('mouseover', handleClickOutside)
     }
 
     return () => {
       document.removeEventListener('mouseover', handleClickOutside)
-      node.current.removeEventListener('focus', e => onFocus(false))
+      node.current.removeEventListener('focus', () => onFocus(false))
     }
   }, [isOpen, updateIsOpen, matches])
 
   return (
     <StyledMenu ref={node}>
-      <StyledMenuTitle
-        onMouseOver={() => updateIsOpen(true)}
-        onFocus={() => updateIsOpen(true)}
-        isOpen={isOpen}
-      >
+      <StyledMenuTitle onMouseOver={() => updateIsOpen(true)} onFocus={() => updateIsOpen(true)} isOpen={isOpen}>
         {props.data.name} {!matches && <DropdownArrow />}
       </StyledMenuTitle>
       {isOpen ? (
@@ -199,16 +195,12 @@ export default function Menu(props) {
                 {item.link.split('/')[0] === '' ? (
                   <StyledLink to={item.link}>
                     <StyledTitle>{item.name}</StyledTitle>
-                    {item.description && (
-                      <StyledDescription>{item.description}</StyledDescription>
-                    )}
+                    {item.description && <StyledDescription>{item.description}</StyledDescription>}
                   </StyledLink>
                 ) : (
                   <StyledExternalLink href={item.link}>
                     <StyledTitle>{item.name}</StyledTitle>
-                    {item.description && (
-                      <StyledDescription>{item.description}</StyledDescription>
-                    )}
+                    {item.description && <StyledDescription>{item.description}</StyledDescription>}
                   </StyledExternalLink>
                 )}
               </StyledMenuItem>

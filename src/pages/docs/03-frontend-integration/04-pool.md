@@ -47,9 +47,7 @@ const tokenReserve = tokenContract.methods.balanceOf(exchangeAddress)
 Anyone who wants can join a Uniswap liquidity pool by calling the `addLiquidity` function.
 
 ```javascript
-exchange.methods
-  .addLiquidity(min_liquidity, max_tokens, deadline)
-  .send({ value: ethAmount })
+exchange.methods.addLiquidity(min_liquidity, max_tokens, deadline).send({ value: ethAmount })
 ```
 
 Adding liquidity requires depositing an equivalent **value** of ETH and ERC20 tokens into the ERC20 token's associated exchange contract.

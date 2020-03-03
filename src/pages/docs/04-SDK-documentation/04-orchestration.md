@@ -18,10 +18,7 @@ The function facilitates trading an exact amount of ETH for a specified token.
 ### Function Signature
 
 ```typescript
-export function tradeExactEthForTokensWithData(
-  reserves: OptionalReserves,
-  ethAmount: BigNumberish
-): TradeDetails
+export function tradeExactEthForTokensWithData(reserves: OptionalReserves, ethAmount: BigNumberish): TradeDetails
 ```
 
 ### Input Parameters
@@ -34,10 +31,7 @@ export function tradeExactEthForTokensWithData(
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = tradeExactEthForTokensWithData(
-  reserves,
-  '1000000000000000000'
-)
+const tradeDetails: TradeDetails = tradeExactEthForTokensWithData(reserves, '1000000000000000000')
 ```
 
 ## tradeExactEthForTokens
@@ -65,10 +59,7 @@ export async function tradeExactEthForTokens(
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = await tradeExactEthForTokens(
-  tokenAddress,
-  '1000000000000000000'
-)
+const tradeDetails: TradeDetails = await tradeExactEthForTokens(tokenAddress, '1000000000000000000')
 ```
 
 ## tradeEthForExactTokensWithData
@@ -78,10 +69,7 @@ The function facilitates trading ETH for an exact amount of a specified token.
 ### Function Signature
 
 ```typescript
-export function tradeEthForExactTokensWithData(
-  reserves: OptionalReserves,
-  tokenAmount: BigNumberish
-): TradeDetails
+export function tradeEthForExactTokensWithData(reserves: OptionalReserves, tokenAmount: BigNumberish): TradeDetails
 ```
 
 ### Input Parameters
@@ -94,10 +82,7 @@ export function tradeEthForExactTokensWithData(
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = tradeEthForExactTokensWithData(
-  reserves,
-  '1000000000000000000'
-)
+const tradeDetails: TradeDetails = tradeEthForExactTokensWithData(reserves, '1000000000000000000')
 ```
 
 ## tradeEthForExactTokens
@@ -125,10 +110,7 @@ export async function tradeEthForExactTokens(
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = await tradeEthForExactTokens(
-  tokenAddress,
-  '1000000000000000000'
-)
+const tradeDetails: TradeDetails = await tradeEthForExactTokens(tokenAddress, '1000000000000000000')
 ```
 
 ## tradeExactTokensForEthWithData
@@ -138,10 +120,7 @@ The function facilitates trading an exact amount of a specified token for ETH.
 ### Function Signature
 
 ```typescript
-export function tradeExactTokensForEthWithData(
-  reserves: OptionalReserves,
-  tokenAmount: BigNumberish
-): TradeDetails
+export function tradeExactTokensForEthWithData(reserves: OptionalReserves, tokenAmount: BigNumberish): TradeDetails
 ```
 
 ### Input Parameters
@@ -154,10 +133,7 @@ export function tradeExactTokensForEthWithData(
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = tradeExactTokensForEthWithData(
-  reserves,
-  '1000000000000000000'
-)
+const tradeDetails: TradeDetails = tradeExactTokensForEthWithData(reserves, '1000000000000000000')
 ```
 
 ## tradeExactTokensForEth
@@ -185,10 +161,7 @@ export async function tradeExactTokensForEth(
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = await tradeExactTokensForEth(
-  tokenAddress,
-  '1000000000000000000'
-)
+const tradeDetails: TradeDetails = await tradeExactTokensForEth(tokenAddress, '1000000000000000000')
 ```
 
 ## tradeTokensForExactEthWithData
@@ -198,10 +171,7 @@ The function facilitates trading a specified token for an exact amount of ETH.
 ### Function Signature
 
 ```typescript
-export function tradeTokensForExactEthWithData(
-  reserves: OptionalReserves,
-  ethAmount: BigNumberish
-): TradeDetails
+export function tradeTokensForExactEthWithData(reserves: OptionalReserves, ethAmount: BigNumberish): TradeDetails
 ```
 
 ### Input Parameters
@@ -214,10 +184,7 @@ export function tradeTokensForExactEthWithData(
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = tradeTokensForExactEthWithData(
-  reserves,
-  '1000000000000000000'
-)
+const tradeDetails: TradeDetails = tradeTokensForExactEthWithData(reserves, '1000000000000000000')
 ```
 
 ## tradeTokensForExactEth
@@ -245,10 +212,7 @@ export async function tradeTokensForExactEth(
 ### Example Usage
 
 ```typescript
-const tradeDetails: TradeDetails = await tradeTokensForExactEth(
-  tokenAddress,
-  '1000000000000000000'
-)
+const tradeDetails: TradeDetails = await tradeTokensForExactEth(tokenAddress, '1000000000000000000')
 ```
 
 ## tradeExactTokensForTokensWithData

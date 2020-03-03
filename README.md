@@ -1,3 +1,3 @@
-Uniswap.io rewrite
+# UniswapV2
 
-`yarn && yarn dev`
+`yarn && yarn start`

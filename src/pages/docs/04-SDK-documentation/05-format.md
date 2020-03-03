@@ -12,10 +12,7 @@ This function formats values to a specified number of significant digits.
 ### Function Signature
 
 ```typescript
-export function formatSignificant(
-  bigNumberish: BigNumberish,
-  options?: FormatSignificantOptions
-): string
+export function formatSignificant(bigNumberish: BigNumberish, options?: FormatSignificantOptions): string
 ```
 
 ### Input Parameters
@@ -68,10 +65,7 @@ This function formats values to a specified number of decimal places.
 ### Function Signature
 
 ```typescript
-export function formatFixed(
-  bigNumberish: BigNumberish,
-  options?: FormatFixedOptions
-): string
+export function formatFixed(bigNumberish: BigNumberish, options?: FormatFixedOptions): string
 ```
 
 ### Input Parameters
@@ -94,11 +88,7 @@ This function formats token and ethereum values to a specified number of decimal
 ### Function Signature
 
 ```typescript
-export function formatFixedDecimals(
-  bigNumberish: BigNumberish,
-  decimals: number,
-  options?: FormatFixedOptions
-): string
+export function formatFixedDecimals(bigNumberish: BigNumberish, decimals: number, options?: FormatFixedOptions): string
 ```
 
 ### Input Parameters

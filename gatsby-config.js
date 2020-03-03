@@ -20,7 +20,7 @@ const menu = [
       {
         name: 'Unipig',
         link: 'https://unipig.exchange/',
-        description: 'L2 Optimstic rollup demo'
+        description: 'L2 Optimistic rollup demo'
       }
     ]
   },
@@ -68,8 +68,7 @@ const cards = [
   {
     slug: 'http://uniswap.exchange',
     cardTitle: 'Swap any token on Ethereum',
-    cardDesc:
-      'Use uniswap.exchange or integrate into your project using the SDK.',
+    cardDesc: 'Use uniswap.exchange or integrate into your project using the SDK.',
     cardButton: 'Swap now'
   },
   {
@@ -81,21 +80,17 @@ const cards = [
   {
     slug: '/docs',
     cardTitle: 'Earn fees through passive market making',
-    cardDesc:
-      'Provide liquidity to earn .03% of all spread fees for adding market depth.',
+    cardDesc: 'Provide liquidity to earn 0.3% of all spread fees for adding market depth.',
     cardButton: 'How pooling works'
   },
   {
     slug: '/docs',
     cardTitle: 'Build decentralized price feeds',
-    cardDesc: 'Perfect TWAPs on chain, customizable to your risk profile.',
+    cardDesc: 'Perfect time-weighted average prices on chain, customizable to your risk profile.',
     type: 'New',
     cardButton: 'Read the SDK'
   }
 ]
-
-const remark = require('remark')
-const stripMarkdown = require('strip-markdown')
 
 module.exports = {
   siteMetadata: {
@@ -155,7 +150,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-twitter`,
-    'gatsby-plugin-instagram-embed',
+    `gatsby-plugin-instagram-embed`,
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
     {
@@ -216,60 +211,6 @@ module.exports = {
         icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
       }
     },
-
-    {
-      resolve: 'gatsby-plugin-local-search',
-      options: {
-        // A unique name for the search index. This should be descriptive of
-        // what the index contains. This is required.
-        name: 'docs',
-
-        // Set the search engine to create the index. This is required.
-        // The following engines are supported: flexsearch, lunr
-        engine: 'lunr',
-
-        // GraphQL query used to fetch all data for the search index. This is
-        // required.
-        query: `
-          {
-            allMdx {
-              nodes {
-                id
-                frontmatter {
-                  title
-                }
-                fields{
-                  slug
-                }
-                rawBody
-                excerpt
-              }
-            }
-          }
-        `,
-
-        // Field used as the reference value for each document.
-        // Default: 'id'.
-        ref: 'id',
-
-        // List of keys to store and make available in your UI. The values of
-        // the keys are taken from the normalizer function below.
-        // Default: all fields
-        store: ['id', 'path', 'title', 'body', 'excerpt'],
-
-        // Function used to map the result from the GraphQL query. This should
-        // return an array of items to index in the form of flat objects
-        // containing properties to index. This is required.
-        normalizer: ({ data }) =>
-          data.allMdx.nodes.map(node => ({
-            id: node.id,
-            path: node.fields.slug,
-            title: node.frontmatter.title,
-            body: node.rawBody,
-            excerpt: node.excerpt
-          }))
-      }
-    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -323,8 +264,45 @@ module.exports = {
           }
         ]
       }
-    }
-
+    },
+    {
+      resolve: `gatsby-plugin-lunr`,
+      options: {
+        languages: [
+          {
+            // ISO 639-1 language codes. See https://lunrjs.com/guides/language_support.html for details
+            name: 'en',
+            // A function for filtering nodes. () => true by default
+            filterNodes: node => node.fields && node.fields.topLevelDir === 'docs'
+            // Add to index custom entries, that are not actually extracted from gatsby nodes
+            // customEntries: [{ title: 'Pictures', content: 'awesome pictures', url: '/pictures' }]
+          }
+        ],
+        // Fields to index. If store === true value will be stored in index file.
+        // Attributes for custom indexing logic. See https://lunrjs.com/docs/lunr.Builder.html for details
+        fields: [
+          { name: 'path', store: true },
+          { name: 'title', store: true, attributes: { boost: 20 } },
+          { name: 'content' }
+        ],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+          // For any node of type MarkdownRemark, list how to resolve the fields' values
+          Mdx: {
+            path: node => node.fields.slug,
+            title: node => node.frontmatter.title,
+            content: node => node.rawBody
+          }
+        }
+        //custom index file name, default is search_index.json
+        // filename: 'search_index.json',
+        //custom options on fetch api call for search_ındex.json
+        // fetchOptions: {
+        //   credentials: 'same-origin'
+        // }
+      }
+    },
+    'gatsby-plugin-eslint'
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

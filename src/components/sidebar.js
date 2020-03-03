@@ -35,9 +35,10 @@ const StyledSection = styled.div`
   cursor: pointer;
 `
 
-const StyledLink = styled(({ active, ...props }) => <Link {...props} />)`
-  font-weight: ${({ active }) => active && 600};
-  background-color: ${({ active, theme }) => active && theme.cardBG};
+// eslint-disable-next-line no-unused-vars
+const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
+  font-weight: ${({ isActive }) => isActive && 600};
+  background-color: ${({ isActive, theme }) => isActive && theme.cardBG};
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
   text-decoration: none;
@@ -92,25 +93,18 @@ const ListWrapper = styled.span`
 `
 
 function List(props) {
-  const parentSlug =
-    props.slug.replace(/\d+-/g, '') === '/docs/' ? 'docs' : 'guides'
+  // const parentSlug = props.slug.replace(/\d+-/g, '') === '/docs/' ? 'docs' : 'guides'
 
   const items = props.data.edges
     .filter(({ node }) => {
-      return (
-        node.fields.slug.split('/')[2] === props.parent.replace(/\d+-/g, '')
-      )
+      return node.fields.slug.split('/')[2] === props.parent.replace(/\d+-/g, '')
     })
     .map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
       const activePath = node.fields.slug
       return (
         <StyledLisItem key={node.id}>
-          <StyledLink
-            onClick={() => scrollTo('#docs-header')}
-            active={props.path === activePath}
-            to={activePath}
-          >
+          <StyledLink onClick={() => scrollTo('#docs-header')} isActive={props.path === activePath} to={activePath}>
             {title}
           </StyledLink>
         </StyledLisItem>
@@ -120,9 +114,7 @@ function List(props) {
 }
 
 const CollapsibleList = ({ node, listData, path, parent }) => {
-  const [open, setOpen] = useState(
-    node.name.replace(/\d+-/g, '') === path.split('/')[2]
-  )
+  const [open, setOpen] = useState(node.name.replace(/\d+-/g, '') === path.split('/')[2])
 
   const title = node.name
     .replace(/\d+-/g, '')
@@ -131,13 +123,7 @@ const CollapsibleList = ({ node, listData, path, parent }) => {
       return t.toUpperCase()
     })
   return (
-    <StyledSection
-      trigger={title}
-      transitionTime={250}
-      open={open}
-      onClick={() => setOpen(!open)}
-      easing="ease"
-    >
+    <StyledSection trigger={title} transitionTime={250} open={open} onClick={() => setOpen(!open)} easing="ease">
       <StyledSectionTitle>{title}</StyledSectionTitle>
       <List data={listData} parent={node.name} slug={parent} path={path} />
     </StyledSection>
@@ -148,10 +134,7 @@ const SideBar = props => {
   const data = useStaticQuery(graphql`
     query {
       topNavDocs: allDirectory(
-        filter: {
-          sourceInstanceName: { eq: "docs" }
-          relativeDirectory: { eq: "" }
-        }
+        filter: { sourceInstanceName: { eq: "docs" }, relativeDirectory: { eq: "" } }
         sort: { fields: name, order: ASC }
       ) {
         edges {
@@ -163,10 +146,7 @@ const SideBar = props => {
         }
       }
       topNavGuides: allDirectory(
-        filter: {
-          sourceInstanceName: { eq: "guides" }
-          relativeDirectory: { eq: "" }
-        }
+        filter: { sourceInstanceName: { eq: "guides" }, relativeDirectory: { eq: "" } }
         sort: { fields: name, order: ASC }
       ) {
         edges {
@@ -177,10 +157,7 @@ const SideBar = props => {
           }
         }
       }
-      docs: allMdx(
-        filter: { fileAbsolutePath: { regex: "/docs/" } }
-        sort: { order: ASC, fields: fields___slug }
-      ) {
+      docs: allMdx(filter: { fileAbsolutePath: { regex: "/docs/" } }, sort: { order: ASC, fields: fields___slug }) {
         edges {
           node {
             id
@@ -196,10 +173,7 @@ const SideBar = props => {
           }
         }
       }
-      guides: allMdx(
-        filter: { fileAbsolutePath: { regex: "/guides/" } }
-        sort: { order: ASC, fields: fields___slug }
-      ) {
+      guides: allMdx(filter: { fileAbsolutePath: { regex: "/guides/" } }, sort: { order: ASC, fields: fields___slug }) {
         edges {
           node {
             id
@@ -220,8 +194,7 @@ const SideBar = props => {
 
   const listData = props.parent === '/docs/' ? data.docs : data.guides
 
-  const navData =
-    props.parent === '/docs/' ? data.topNavDocs : data.topNavGuides
+  const navData = props.parent === '/docs/' ? data.topNavDocs : data.topNavGuides
 
   const matches = useMediaQuery('only screen and (max-width: 960px)')
   const [isMenuOpen, updateIsMenuOpen] = useState(true)
@@ -229,7 +202,7 @@ const SideBar = props => {
   return (
     <StyledSidebar>
       <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
-      <StyledMobileMenu onClick={e => updateIsMenuOpen(!isMenuOpen)}>
+      <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
           <DropdownArrow />
@@ -237,13 +210,7 @@ const SideBar = props => {
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
         {navData.edges.map(({ node }) => (
-          <CollapsibleList
-            key={node.id}
-            node={node}
-            listData={listData}
-            path={props.path}
-            parent={props.parent}
-          />
+          <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
       </ListWrapper>
     </StyledSidebar>

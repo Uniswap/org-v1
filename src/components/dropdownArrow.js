@@ -1,15 +1,7 @@
 import React from 'react'
 
 const DropdownArrow = () => (
-  <svg
-    viewBox="0 0 926.23699 573.74994"
-    version="1.1"
-    x="0px"
-    y="0px"
-    width="10"
-    height="10"
-    style={{}}
-  >
+  <svg viewBox="0 0 926.23699 573.74994" version="1.1" x="0px" y="0px" width="10" height="10" style={{}}>
     <g transform="translate(904.92214,-879.1482)">
       <path
         d="

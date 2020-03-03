@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "react/prop-types": "off",
+    "no-unused-vars": "warn"
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
+}

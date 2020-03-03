@@ -108,10 +108,6 @@ const MenuToggle = styled.button`
   }
 `
 
-const StyledNavMenuImage = styled.img`
-  margin: 0;
-`
-
 const StyledUni = styled(Uni)`
   path {
     fill: ${({ theme }) => theme.textColor};
@@ -172,10 +168,7 @@ const Header = props => {
 
   useEffect(() => {
     const handleClickOutside = e => {
-      if (
-        node.current.contains(e.target) ||
-        button.current.contains(e.target)
-      ) {
+      if (node.current.contains(e.target) || button.current.contains(e.target)) {
         return
       }
       updateIsMenuOpen(false)
@@ -211,7 +204,7 @@ const Header = props => {
           </StyledNavTitle>
         )}
       </StyledNavTitleWrapper>
-      <MenuToggle ref={button} onClick={e => updateIsMenuOpen(!isMenuOpen)}>
+      <MenuToggle ref={button} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
       </MenuToggle>
       <StyledNav ref={node} open={isMenuOpen}>
@@ -222,11 +215,7 @@ const Header = props => {
           .map(item => {
             return <Menu key={item.name} data={item} />
           })}
-        {props.path !== undefined && (
-          <StyledTradeLink href="https://uniswap.exchange/">
-            Trade tokens
-          </StyledTradeLink>
-        )}
+        {props.path !== undefined && <StyledTradeLink href="https://uniswap.exchange/">Trade tokens</StyledTradeLink>}
       </StyledNav>
     </StyledHeader>
   )

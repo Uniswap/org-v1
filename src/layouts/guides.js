@@ -66,10 +66,7 @@ const StyledLink = styled(Link)`
 const Guides = props => {
   const data = useStaticQuery(graphql`
     {
-      allMdx(
-        filter: { fileAbsolutePath: { regex: "/guides/" } }
-        sort: { order: ASC, fields: fields___slug }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/guides/" } }, sort: { order: ASC, fields: fields___slug }) {
         edges {
           node {
             id
@@ -126,6 +123,7 @@ const Guides = props => {
             })
           return (
             <SEO
+              key={node.fields.slug}
               title={props.pageContext.frontmatter.title}
               site={'Uniswap ' + title}
               path={props.location.pathname}
@@ -145,11 +143,7 @@ const Guides = props => {
                 <StyledDocsNavWrapper key={node.id}>
                   <StyledDocsNav>
                     {previous && (
-                      <StyledLink
-                        style={{ alignItems: 'flex-end' }}
-                        to={path + previous.fields.slug}
-                        rel="prev"
-                      >
+                      <StyledLink style={{ alignItems: 'flex-end' }} to={path + previous.fields.slug} rel="prev">
                         <small>Previous</small>
                         <span>← {previous.frontmatter.title}</span>
                       </StyledLink>
@@ -157,11 +151,7 @@ const Guides = props => {
                   </StyledDocsNav>
                   <StyledDocsNav>
                     {next && (
-                      <StyledLink
-                        style={{ alignItems: 'flex-start' }}
-                        to={path + next.fields.slug}
-                        rel="next"
-                      >
+                      <StyledLink style={{ alignItems: 'flex-start' }} to={path + next.fields.slug} rel="next">
                         <small>Next</small>
                         <span>{next.frontmatter.title} →</span>
                       </StyledLink>
