@@ -7,9 +7,16 @@ import useClipboard from 'react-use-clipboard'
 import '../../styles/prism-github.css'
 
 const Wrapper = styled.div`
-  font-family: sans-serif;
   position: relative;
 `
+
+// const LineNo = styled.span`
+//   display: inline-block;
+//   width: 2em;
+//   user-select: none;
+//   opacity: 0.3;
+// `
+
 const Pre = styled.pre`
   text-align: left;
   font-size: 1rem;
@@ -24,17 +31,10 @@ const Pre = styled.pre`
   }
 `
 
-// const LineNo = styled.span`
-//   display: inline-block;
-//   width: 2em;
-//   user-select: none;
-//   opacity: 0.3;
-// `
-
 const CopyButton = styled.button`
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 1rem;
+  right: 1rem;
   background-color: ${({ theme }) => theme.colors.grey2};
   border: none;
   color: ${({ theme }) => theme.colors.link};
@@ -54,10 +54,9 @@ export default ({ children, className }) => {
   })
 
   return (
-    <Wrapper>
-      <CopyButton onClick={setCopied}>{isCopied ? 'Copied' : 'Copy'}</CopyButton>
-      <Highlight {...defaultProps} code={children} language={language} theme={theme}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+    <Highlight {...defaultProps} code={children} language={language} theme={theme}>
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <Wrapper>
           <Pre className={className} style={{ ...style, padding: '20px' }}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line, key: i })}>
@@ -68,8 +67,9 @@ export default ({ children, className }) => {
               </div>
             ))}
           </Pre>
-        )}
-      </Highlight>
-    </Wrapper>
+          <CopyButton onClick={setCopied}>{isCopied ? 'Copied' : 'Copy'}</CopyButton>
+        </Wrapper>
+      )}
+    </Highlight>
   )
 }

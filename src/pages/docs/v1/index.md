@@ -1,10 +1,6 @@
 ---
-
-title: Introduction to Docs
-index: 0
----# Getting Started
-
-<Info> These docs are still being worked on. Some parts may be unfinished</Info>
+title: Overview
+---
 
 Designed with simplicity in mind, the Uniswap protocol provides an interface for seamless exchange of ERC20 tokens on Ethereum. By eliminating unnecessary forms of rent extraction and middlemen it allows faster, more efficient exchange. Where it makes tradeoffs, decentralization, censorship resistance, and security are prioritized.
 
