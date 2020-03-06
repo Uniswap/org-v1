@@ -1,10 +1,11 @@
-// src/components/CodeBlock.js
 import React from 'react'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/github'
 import styled from 'styled-components'
 import useClipboard from 'react-use-clipboard'
 import '../../styles/prism-github.css'
+import 'prismjs/themes/prism.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 const Wrapper = styled.div`
   position: relative;
@@ -58,14 +59,18 @@ export default ({ children, className }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Wrapper>
           <Pre className={className} style={{ ...style, padding: '20px' }}>
-            {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line, key: i })}>
-                {/* <LineNo>{i + 1}</LineNo> */}
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
+            {tokens.map((line, i) => {
+              return line.length === 1 && line[0].empty && i !== tokens.length - 1 ? (
+                <br key={i} />
+              ) : (
+                <div key={i} {...getLineProps({ line, key: i })}>
+                  {/* <LineNo>{i + 1}</LineNo> */}
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              )
+            })}
           </Pre>
           <CopyButton onClick={setCopied}>{isCopied ? 'Copied' : 'Copy'}</CopyButton>
         </Wrapper>

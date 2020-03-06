@@ -175,6 +175,7 @@ module.exports = {
           `gatsby-remark-embedder`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
+          `gatsby-remark-check-links`,
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {

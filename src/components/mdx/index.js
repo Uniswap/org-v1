@@ -1,15 +1,16 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
+
 import Info from './info'
 import Code from './code'
-
-// const Code = props => <div>{props.children}</div>
+import InlineCode from './inlineCode'
 
 const components = {
   Info: Info,
-  code: Code
+  code: Code,
+  inlineCode: InlineCode
 }
 
-const Mdx = props => <MDXProvider components={components}> {props.children}</MDXProvider>
-
-export default Mdx
+export default function MDX({ children }) {
+  return <MDXProvider components={components}>{children}</MDXProvider>
+}

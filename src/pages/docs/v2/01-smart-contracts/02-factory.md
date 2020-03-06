@@ -2,11 +2,17 @@
 title: Factory
 ---
 
+import { Link } from "gatsby"
+
 # Code
 
 [`UniswapV2Factory.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Factory.sol)
 
-# Pure and View Functions
+# Address
+
+The `UniswapV2Factory` contract is deployed at the same address on the Ethereum mainnet, and the Ropsten, Rinkeby, Görli, and Kovan testnets: `0xF231A51299c872040C002f3E1918D806F951Efcb`.
+
+# Read-Only Functions
 
 ## getExchange
 
@@ -17,7 +23,7 @@ function getExchange(address tokenA, address tokenB) external view returns (addr
 Returns the address of the exchange for `tokenA` and `tokenB`, if it has been created, else `address(0)` (`0x0000000000000000000000000000000000000000`).
 
 - `tokenA` and `tokenB` are interchangeable.
-- Exchange addresses can also be calculated deterministically, thanks to [CREATE2](https://eips.ethereum.org/EIPS/eip-1014).
+- Exchange addresses can also be calculated deterministically, see <Link to='/docs/v2/technical-considerations/determining-exchange-addresses'>Determining Exchange Addresses</Link>.
 
 ## allExchanges
 

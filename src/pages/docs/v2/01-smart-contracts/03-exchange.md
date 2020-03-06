@@ -2,15 +2,98 @@
 title: Exchange
 ---
 
+import { Link } from "gatsby"
+
 # Code
 
 [`UniswapV2Exchange.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Exchange.sol)
 
-# Pure and View Functions
+# Address
+
+See <Link to='/docs/v2/technical-considerations/determining-exchange-addresses'>Determining Exchange Addresses</Link>
+
+# Read-Only Functions
 
 # State-Changing Functions
 
+## mint
+
+```clike
+function mint(address to) external returns (uint liquidity);
+```
+
+- Emits [Mint](#mint-1), [Sync](#sync-1)
+
+## burn
+
+```clike
+function burn(address to) external returns (uint amount0, uint amount1);
+```
+
+- Emits [Burn](#burn-1), [Sync](#sync-1)
+
+## swap
+
+```clike
+function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+```
+
+- Emits [Burn](#burn-1), [Sync](#sync-1)
+
+## skim
+
+```clike
+function skim(address to) external;
+```
+
+## sync
+
+```clike
+function sync() external;
+```
+
+- Emits [Sync](#sync-1)
+
 # Events
+
+## Mint
+
+```clike
+event Mint(address indexed sender, uint amount0, uint amount1);
+```
+
+Emitted each time liquidity shares are created via [mint](#mint).
+
+## Burn
+
+```clike
+event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
+```
+
+Emitted each time liquidity shares are destroyed via [burn](#burn).
+
+## Swap
+
+```clike
+event Swap(
+  address indexed sender,
+  uint amount0In,
+  uint amount1In,
+  uint amount0Out,
+  uint amount1Out,
+  address indexed to
+);
+```
+
+Emitted each time a swap occurs via [swap](#swap).
+
+## Sync
+
+```clike
+event Sync(uint112 reserve0, uint112 reserve1);
+```
+
+Emitted each time reserves are updated.
 
 # ABI
 
