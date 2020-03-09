@@ -14,7 +14,8 @@ const StyledCard = styled(Link)`
   background-color: ${({ theme }) => theme.cardBG};
   opacity: 0.9;
   transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-  backdrop-filter: blur(40px);
+  will-change: transform;
+  /* backdrop-filter: blur(40px); */
   cursor: pointer;
 
   @media (max-width: 960px) {
@@ -39,7 +40,8 @@ const StyledCard = styled(Link)`
     height: 100%;
     box-shadow: ${({ theme }) => theme.shadows.huge};
     opacity: 0;
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity;
   }
 
   :hover::after {
@@ -60,6 +62,7 @@ const StyledExternalCard = styled.a`
   transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
   opacity: 0.9;
   backdrop-filter: blur(40px);
+  will-change: transform;
 
   @media (max-width: 960px) {
     padding: 1rem;
@@ -82,7 +85,8 @@ const StyledExternalCard = styled.a`
     height: 100%;
     box-shadow: ${({ theme }) => theme.shadows.huge};
     opacity: 0;
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity;
   }
 
   :hover::after {

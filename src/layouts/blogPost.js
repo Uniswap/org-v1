@@ -6,6 +6,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby'
 
 // import { Twitter, Facebook } from 'react-social-sharing'
 import SEO from '../components/seo2'
+import '../styles/prism-github.css'
 
 const StyledBlog = styled.div`
   display: flex;

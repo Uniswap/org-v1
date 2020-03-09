@@ -7,7 +7,6 @@ import { useMediaQuery } from '@react-hook/media-query'
 import Search from '../components/search'
 
 import { useStaticQuery, graphql } from 'gatsby'
-import '../styles/sidebar.css'
 import DropdownArrow from './dropdownArrow.js'
 
 const StyledSidebar = styled.span`

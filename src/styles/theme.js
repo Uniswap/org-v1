@@ -71,7 +71,8 @@ export const theme = darkMode => ({
     green1: '#E6F3EC',
     green2: '#27AE60',
 
-    pink1: darkMode ? '#00FF85' : '#FF007A',
+    // pink1: darkMode ? '#00FF85' : '#FF007A',
+    pink1: darkMode ? '#FF007A' : '#FF007A',
 
     pink2: '#FFF8FD',
 
@@ -80,8 +81,11 @@ export const theme = darkMode => ({
 
     red1: '#FF6871',
 
-    link: darkMode ? '#00FF85' : '#FF007A',
-    invertedLink: darkMode ? '#FF007A' : '#00FF85'
+    // link: darkMode ? '#00FF85' : '#FF007A',
+    // invertedLink: darkMode ? '#FF007A' : '#00FF85'
+
+    link: darkMode ? '#FF007A' : '#FF007A',
+    invertedLink: darkMode ? '#FF007A' : '#FF007A'
   },
 
   shadows: {
@@ -117,55 +121,58 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Principal Trial Black";
     src: url("/fonts/Principal-Trial-Black.otf");
   }
-  
 
-  body > div {
-    height: 100%;
-    -webkit-overflow-scrolling: touch;
+  html {
+    box-sizing: border-box;
   }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
 
   html {
     font-family: sans-serif;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
     font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-image: url(${({ isDark }) => (isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg')});
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    /* background-image: url(${({ isDark }) => (isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg')}); */
     background-size: contain;
     background-repeat: no-repeat;
-
-    overflow: hidden;   
-    overflow: scroll;
-    overflow-x: hidden;
-    width: 100vw;
-    /* max-width: 1440px; */
+    box-sizing: border-box;
   }
 
   body {
-    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    margin: 0px auto;
-    line-height: 1.75 !important;
+    line-height: 1.75;
     max-width: 1440px;
-    overflow-x: hidden;
     width: 100vw;
     padding: 0 3rem;
+    margin: 0px auto;
     color: ${({ theme }) => theme.textColor};
+    /* background-color: ${({ theme }) => theme.backgroundColor}; */
 
     @media (max-width: 1024px) {
         padding: 0 1.5rem;
@@ -176,6 +183,16 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0 1.5rem;
         overflow-x: visible;
     }
+  }
+
+  * {
+    box-sizing: inherit;
+  }
+  *:before {
+    box-sizing: inherit;
+  }
+  *:after {
+    box-sizing: inherit;
   }
 
   h1{
@@ -199,6 +216,14 @@ export const GlobalStyle = createGlobalStyle`
   }
   button{
     color: ${({ theme }) => theme.textColor};
+  }
 
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font: inherit;
+    margin: 0;
   }
 `
