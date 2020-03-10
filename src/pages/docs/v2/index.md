@@ -1,40 +1,38 @@
 ---
-title: Overview
+title: Welcome
 ---
 
-# Overview
+import { Link } from "gatsby"
 
-You've arrived, welcome! The pages that follow contain comprehensive documentation of the Uniswap V2 ecosystem. If you don't already know, Uniswap is a protocol for exchanging [ERC-20](https://eips.ethereum.org/EIPS/eip-20) tokens on [Ethereum](https://ethereum.org/). It eliminates trusted intermediaries and unnecessary forms of rent extraction while not compromising on _decentralization_, _censorship resistance_, or _security_. Uniswap is open-source software licensed under [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+# Welcome
 
-If you're wondering: what happened to Uniswap V1? The first version of the protocol, [launched in November 2018](https://twitter.com/haydenzadams/status/1058376395108376577) at Devcon 4, is still around. In fact, because of its permissionless nature, it wil exist for as long as Ethereum is! However, V2 includes a number of tangible improvements over V1, and we hope that you'll begin to see how you could use Uniswap V2 as you explore these docs.
+You've arrived! The pages that follow contain comprehensive documentation of the Uniswap V2 ecosystem. Briefly, Uniswap is a protocol for exchanging [ERC-20](https://eips.ethereum.org/EIPS/eip-20) tokens on [Ethereum](https://ethereum.org/). It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for **fast**, **efficient** exchange. Where it makes tradeoffs **decentralization**, **censorship resistance**, and **security** are prioritized. Uniswap is open-source software licensed under [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License).
+
+You may be wondering: what about Uniswap V1? The first version of the protocol, [launched in November 2018](https://twitter.com/haydenzadams/status/1058376395108376577) at Devcon 4, is still around. In fact, because of its permissionless nature, it will exist for as long as Ethereum does! However, V2 includes a number of tangible improvements over V1, which this documentation will explore in depth.
 
 # V2 Features
 
+- ERC-20⇄ERC-20 pairs
 - Decentralized, manipulation-resistant price oracles
-- ERC-20⇄ERC-20 pools
 - Flash Swaps
 - Broad support for standard and non-conformant ERC20 tokens
 
-<!-- # Description
-
-Each exchange holds reserves of both ETH and its associated ERC20 token. Anyone can become a liquidity provider on an exchange and contribute to its reserves. This is different than buying or selling; it requires depositing an equivalent value of both ETH and the relevant ERC20 token. Liquidity is pooled across all providers and an internal "pool token" \(ERC20\) is used to track each providers relative contribution. Pool tokens are minted when liquidity is deposited into the system and can be burned at any time to withdraw a proportional share of the reserves.
-
-Exchange contracts are automated market makers between an ETH-ERC20 pair. Traders can swap between the two in either direction by adding to the liquidity reserve of one and withdrawing from the reserve of the other. Since ETH is a common pair for all ERC20 exchanges, it can be used as an intermediary allowing direct ERC20-ERC20 trades in a single transaction. Users can specify a recipient address if they want to receive purchased tokens at a different address from the one used to make a transaction.
-
-Uniswap uses a "constant product" market making formula which sets the exchange rate based off of the relative size of the ETH and ERC20 reserves, and the amount with which an incoming trade shifts this ratio. Selling ETH for ERC20 tokens increases the size of the ETH reserve and decreases the size of the ERC20 reserve. This shifts the reserve ratio, increasing the ERC20 token's price relative to ETH for subsequent transactions. The larger a trade relative to the total size of the reserves, the more price slippage will occur. Essentially, exchange contracts use the open financial market to decide on the relative value of a pair and uses that as a market making strategy.
-
-A small liquidity provider fee \(0.3%\) is taken out of each trade and added to the reserves. While the ETH-ERC20 reserve ratio is constantly shifting, fees makes sure that the total combined reserve size increases with every trade. This functions as a payout to liquidity providers that is collected when they burn their pool tokens to withdraw their portion of total reserves. Guaranteed arbitrage opportunities from price fluctuations should push a steady flow of transactions through the system and increase the amount of fee revenue generated.
-
-Since Uniswap is entirely on-chain, prices can change between when a transaction is signed and when it is included in a block. Traders can bound price fluctuations by specifying the minimum amount bought on sell orders, or the maximum amount sold on buy orders. This acts as a limit order that will automatically cancel if it is not filled. It is also possible to set transaction deadlines which will cancel orders if they are not executed fast enough.
-
-The reason only one exchange per token can be registered to the factory is to encourage providers to pool their liquidity into a single reserve. However, Uniswap has built in support for ERC20-to-ERC20 trades using the public pools from the factory on one side of the transaction and custom, user-specified pool on the other. Custom pools could have fund managers, use alternate pricing mechanisms, remove liquidity provider fees, integrate complex three dimensional fomo-based ponzi-schemes and more. They just need to implement the Uniswap interface and accept ETH as an intermediary asset. Custom pools do not have the same safety properties as the public ones. It is recommended users only interact with audited, open-source smart contracts.
-
-Upgrading censorship resistant, decentralized smart contracts is difficult. If significant improvements are made to the system a new version will be released. Liquidity providers can choose between moving to the new system or staying in the old one. If possible, new versions will be backwards compatible and able to trade ERC20-to-ERC20 with the old versions similar to a custom pool. -->
-
 # Resources
 
-- [Protocol Website](https://uniswap.io)
+- <Link to='/'>Protocol Website</Link>
+- <Link to='/whitepaper.pdf'>Whitepaper</Link>
 - [GitHub](https://github.com/Uniswap)
 - [Twitter](https://twitter.com/UniswapExchange)
+- [Discord](https://discord.gg/Y7TF6QA)
 - [Reddit](https://reddit.com/r/Uniswap)
 - [Email](mailto:contact@uniswap.io)
+
+# How it all Works
+
+Uniswap is made up of a series of exchanges, each the venue for a unique ERC-20⇄ERC-20 pair. Exchanges hold **reserves** (balances) of their pair tokens, and define rules around how these reserves can be changed. Anyone can become a **liquidity provider** for a pair by depositing an equivalent value of each token in exchange for **pool tokens**. These tokens track liquidity providers' pro-rata shares of the total reserves, and can be redeemed for the underlying assets at any time.
+
+Exchanges act as **automated market makers**, standing ready to accept one pair token for the other as long as the "constant product" formula is preserved. This formula, most simply expressed as `x * y = k`, states that trades must not change the product of an exchange's reserve balances. Because `k` is constant from the reference frame of a trade, it is often referred to as the **invariant**. This formula has the desirable property that larger trades (relative to reserves) execute at exponentially worse rates than smaller ones.
+
+In practice, Uniswap applies a 0.30% fee to trades, which is added to reserves. As a results each trade actually causes `k` to increase. This functions as a payout to liquidity providers, which is realized when they burn their pool tokens to withdraw their portion of total reserves. In the future, this fee may be reduced to 0.25%, with the remaining 0.05% withheld as a protocol-wide charge.
+
+Because the relative price of the two assets in an exchange can only be changed through trading, divergences between the Uniswap price and external prices create **arbitrage opportunities**. This mechanism ensures that Uniswap prices always trend toward the market-clearing price.

@@ -4,15 +4,87 @@ title: Exchange
 
 import { Link } from "gatsby"
 
+This documentation covers Uniswap-specific exchange functionality. For ERC-20 functionality, see <Link to='/docs/v2/smart-contracts/exchange-erc-20'>Exchange (ERC-20)</Link>.
+
 # Code
 
 [`UniswapV2Exchange.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Exchange.sol)
 
 # Address
 
-See <Link to='/docs/v2/technical-considerations/determining-exchange-addresses'>Determining Exchange Addresses</Link>
+See <Link to='/docs/v2/technical-considerations/determining-exchange-addresses'>Determining Exchange Addresses</Link>.
 
 # Read-Only Functions
+
+## MINIMUM_LIQUIDITY
+
+```clike
+function MINIMUM_LIQUIDITY() external pure returns (uint);
+```
+
+Returns `1000` for all exchanges.
+
+- See <Link to='/docs/v2/smart-contracts/architecture/#minimum-liquidity'>Minimum Liquidity</Link>.
+
+## factory
+
+```clike
+function factory() external view returns (address);
+```
+
+Returns the <Link to='/docs/v2/smart-contracts/factory/#address'>factory address</Link>.
+
+## token0
+
+```clike
+function token0() external view returns (address);
+```
+
+Returns the address of the pair token with the lower sort order.
+
+## token1
+
+```clike
+function token1() external view returns (address);
+```
+
+Returns the address of the pair token with the higher sort order.
+
+## getReserves
+
+```clike
+function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
+```
+
+The reserves of token0 and token1 used to price trades and distribute liquidity. Updated after every contract interaction.
+
+- See <Link to='/docs/v2/smart-contracts/architecture/#pricing'>Pricing</Link>.
+
+## price0CumulativeLast
+
+```clike
+function price0CumulativeLast() external view returns (uint);
+```
+
+- See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
+
+## price1CumulativeLast
+
+```clike
+function price1CumulativeLast() external view returns (uint);
+```
+
+- See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
+
+## kLast
+
+```clike
+function kLast() external view returns (uint);
+```
+
+Stores the product of the reserves as of the most recent liquidity event. Only updated if the protocol charge is active, and only then during [mint](#mint) and [burn](#burn).
+
+- See <Link to='/docs/v2/smart-contracts/architecture/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
 
 # State-Changing Functions
 
@@ -22,7 +94,9 @@ See <Link to='/docs/v2/technical-considerations/determining-exchange-addresses'>
 function mint(address to) external returns (uint liquidity);
 ```
 
-- Emits [Mint](#mint-1), [Sync](#sync-1)
+Creates pool tokens.
+
+- Emits [Mint](#mint-1), [Sync](#sync-1), <Link to='/docs/v2/smart-contracts/exchange-erc-20#transfer-1'>Transfer</Link>.
 
 ## burn
 
@@ -30,7 +104,9 @@ function mint(address to) external returns (uint liquidity);
 function burn(address to) external returns (uint amount0, uint amount1);
 ```
 
-- Emits [Burn](#burn-1), [Sync](#sync-1)
+Destroys pool tokens.
+
+- Emits [Burn](#burn-1), [Sync](#sync-1), <Link to='/docs/v2/smart-contracts/exchange-erc-20#transfer-1'>Transfer</Link>.
 
 ## swap
 
@@ -38,7 +114,10 @@ function burn(address to) external returns (uint amount0, uint amount1);
 function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
 ```
 
-- Emits [Burn](#burn-1), [Sync](#sync-1)
+Swaps tokens.
+
+- See <Link to='/docs/v2/technical-considerations/flash-swaps'>Flash Swaps</Link>.
+- Emits [Burn](#burn-1), [Sync](#sync-1).
 
 ## skim
 
@@ -52,7 +131,7 @@ function skim(address to) external;
 function sync() external;
 ```
 
-- Emits [Sync](#sync-1)
+- Emits [Sync](#sync-1).
 
 # Events
 
@@ -62,7 +141,7 @@ function sync() external;
 event Mint(address indexed sender, uint amount0, uint amount1);
 ```
 
-Emitted each time liquidity shares are created via [mint](#mint).
+Emitted each time liquidity tokens are created via [mint](#mint).
 
 ## Burn
 
@@ -70,7 +149,7 @@ Emitted each time liquidity shares are created via [mint](#mint).
 event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
 ```
 
-Emitted each time liquidity shares are destroyed via [burn](#burn).
+Emitted each time liquidity tokens are destroyed via [burn](#burn).
 
 ## Swap
 
@@ -93,7 +172,7 @@ Emitted each time a swap occurs via [swap](#swap).
 event Sync(uint112 reserve0, uint112 reserve1);
 ```
 
-Emitted each time reserves are updated.
+Emitted each time reserves are updated via [mint](#mint), [burn](#burn), [swap](#swap), or [sync](#sync).
 
 # ABI
 

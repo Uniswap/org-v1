@@ -10,7 +10,7 @@ import { Link } from "gatsby"
 
 # Address
 
-The `UniswapV2Factory` contract is deployed at the same address on the Ethereum mainnet, and the Ropsten, Rinkeby, Görli, and Kovan testnets: `0xF231A51299c872040C002f3E1918D806F951Efcb`.
+The `UniswapV2Factory` contract is deployed at `...` on the Ethereum mainnet, and the Ropsten, Rinkeby, Görli, and Kovan testnets.
 
 # Read-Only Functions
 
@@ -54,7 +54,7 @@ function createExchange(address tokenA, address tokenB) external returns (addres
 Creates an exchange for `tokenA` and `tokenB` if one doesn't exist already.
 
 - `tokenA` and `tokenB` are interchangeable.
-- Emits [ExchangeCreated](#exchangecreated)
+- Emits [ExchangeCreated](#exchangecreated).
 
 # Events
 
@@ -67,7 +67,7 @@ event ExchangeCreated(address indexed token0, address indexed token1, address ex
 Emitted each time an exchange is created via [createExchange](#createexchange).
 
 - `token0` is guaranteed to be strictly less than `token1` by sort order.
-- The final `uint` log value will be `1` for the first exchange created, `2` for the second, etc. (see [allExchanges](#allexchanges)).
+- The final `uint` log value will be `1` for the first exchange created, `2` for the second, etc. (see [allExchanges](#allexchanges)/[getExchange](#getexchange)).
 
 # ABI
 
