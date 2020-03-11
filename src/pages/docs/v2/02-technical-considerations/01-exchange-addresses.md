@@ -1,5 +1,5 @@
 ---
-title: Determining Exchange Addresses
+title: Exchange Addresses
 ---
 
 import { Link } from "gatsby"

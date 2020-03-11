@@ -23,7 +23,7 @@ function getExchange(address tokenA, address tokenB) external view returns (addr
 Returns the address of the exchange for `tokenA` and `tokenB`, if it has been created, else `address(0)` (`0x0000000000000000000000000000000000000000`).
 
 - `tokenA` and `tokenB` are interchangeable.
-- Exchange addresses can also be calculated deterministically, see <Link to='/docs/v2/technical-considerations/determining-exchange-addresses'>Determining Exchange Addresses</Link>.
+- Exchange addresses can also be calculated deterministically, see <Link to='/docs/v2/technical-considerations/exchange-addresses'>Exchange Addresses</Link>.
 
 ## allExchanges
 

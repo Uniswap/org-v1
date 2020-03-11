@@ -98,12 +98,14 @@ const ClearButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   path {
     stroke: ${({ theme }) => theme.colors.textColor};
   }
   :focus {
     outline: none;
+  }
+  :hover {
+    cursor: pointer;
   }
 `
 

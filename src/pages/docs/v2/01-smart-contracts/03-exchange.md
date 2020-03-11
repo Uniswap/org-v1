@@ -12,7 +12,7 @@ This documentation covers Uniswap-specific exchange functionality. For ERC-20 fu
 
 # Address
 
-See <Link to='/docs/v2/technical-considerations/determining-exchange-addresses'>Determining Exchange Addresses</Link>.
+See <Link to='/docs/v2/technical-considerations/exchange-addresses'>Exchange Addresses</Link>.
 
 # Read-Only Functions
 
