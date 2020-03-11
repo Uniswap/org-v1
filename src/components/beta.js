@@ -8,7 +8,7 @@ import Uni from '../images/uni.inline.svg'
 const StyledFooter = styled.p`
   position: fixed;
   right: 2rem;
-  bottom: 2rem;
+  bottom: 0rem;
   font-size: 14px;
   font-style: italic;
   max-width: 200px;
