@@ -26,7 +26,7 @@ export const theme = darkMode => ({
   greyText: darkMode ? white : '#6C7284',
 
   // for setting css on <html>
-  backgroundColor: darkMode ? '#000' : white,
+  backgroundColor: darkMode ? '#000' : '#F7F8FA',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.4)',
@@ -109,7 +109,6 @@ export const theme = darkMode => ({
 })
 
 export const GlobalStyle = createGlobalStyle`
-  html { font-family: 'Inter', sans-serif; }
   @supports (font-variation-settings: normal) {
     html { font-family: 'Inter var', sans-serif; }
   }
@@ -122,9 +121,6 @@ export const GlobalStyle = createGlobalStyle`
     src: url("/fonts/Principal-Trial-Black.otf");
   }
 
-  html {
-    box-sizing: border-box;
-  }
 
   *, *:before, *:after {
     box-sizing: inherit;
@@ -147,7 +143,6 @@ export const GlobalStyle = createGlobalStyle`
   
 
   html {
-    font-family: sans-serif;
     font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
@@ -169,18 +164,18 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.75;
     max-width: 1440px;
     width: 100vw;
-    padding: 0 3rem;
+    /* padding: 0 3rem; */
     margin: 0px auto;
     color: ${({ theme }) => theme.textColor};
     /* background-color: ${({ theme }) => theme.backgroundColor}; */
 
     @media (max-width: 1024px) {
-        padding: 0 1.5rem;
+        /* padding: 0 1.5rem; */
 
     }
     
     @media (min-width: 1441px) {
-        padding: 0 1.5rem;
+        /* padding: 0 1.5rem; */
         overflow-x: visible;
     }
   }
@@ -196,15 +191,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1{
-    font-weight: 600;
-    font-family: 'Principal Trial Semibold';
+    font-weight: 700;
+    font-family: 'EB Garamond';
 
   }
+
   h2, h3{
     font-weight: 500;
-  }
-  h2, h3{
-    margin-top: 2rem !important;
+    margin-top: 2rem;
   }
   #gatsby-focus-wrapper{
     min-height: 100vh;

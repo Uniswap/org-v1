@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import Menu from './menu'
 
 import Uni from '../images/uni.inline.svg'
-import Wordmark from '../images/wordmark.inline.svg'
+import Wordmark from '../images/wordmark4.inline.svg'
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 
@@ -15,15 +15,17 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2rem 0px;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 2rem;
   width: 100%;
   font-size: 1.125rem;
   z-index: 999;
   font-weight: 500;
   @media (max-width: 960px) {
-    padding: 1rem 0px;
-    flex-direction: column;
-    justify-content: center;
+    /* padding: 1rem 0px; */
+    /* flex-direction: column;
+    justify-content: center; */
   }
 `
 
@@ -57,7 +59,7 @@ const StyledNavTitleWrapper = styled.nav`
 const StyledNavTitle = styled(Link)`
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.textColor};
+  color: ${({ theme }) => theme.colors.link};
   margin-left: 0.25rem;
   margin-top: 2px;
   z-index: 999;
@@ -93,8 +95,6 @@ const MenuToggle = styled.button`
   border: none;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.link};
-  position: absolute;
-  right: 0px;
   display: none;
   z-index: 9999;
   width: 24px;
@@ -104,17 +104,18 @@ const MenuToggle = styled.button`
     outline: none;
   }
   @media (max-width: 960px) {
-    display: inline-block;
+    display: initial;
   }
 `
 
 const StyledUni = styled(Uni)`
   path {
-    fill: ${({ theme }) => theme.textColor};
+    fill: ${({ theme }) => theme.colors.link};
   }
   margin: 0;
   width: 24px;
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
+  margin-top: -6px;
   transform: rotate(0deg);
   transition: transform 0.2s linear;
   :hover {
@@ -124,21 +125,23 @@ const StyledUni = styled(Uni)`
 
 const StyledWordmark = styled(Wordmark)`
   path {
-    fill: ${({ theme }) => theme.textColor};
+    fill: ${({ theme }) => theme.colors.link};
   }
   margin: 0;
   margin-top: 4px;
+  /* height: 23px; */
+  width: 82px;
 `
 
 const StyledCloseIcon = styled(CloseIcon)`
   path {
-    stroke: ${({ theme }) => theme.textColor};
+    stroke: ${({ theme }) => theme.colors.link};
   }
 `
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
-    stroke: ${({ theme }) => theme.textColor};
+    stroke: ${({ theme }) => theme.colors.link};
   }
 `
 
@@ -191,13 +194,19 @@ const Header = props => {
           }}
         >
           <StyledUni />
+          {/* <span
+            style={{ fontFamily: 'GT Super Ds Trial', margin: '0px !important', fontWeight: 'Lt', fontSize: '18px' }}
+          >
+            UNISWAP
+          </span> */}
           <StyledWordmark />
         </StyledHomeLink>
         {props.path && props.path !== '/' && props.path !== '' && (
           <StyledNavTitle
             to={'/' + props.path.split('/')[1]}
             style={{
-              textDecoration: `none`
+              textDecoration: `none`,
+              opacity: '0.4'
             }}
           >
             / {props.path.split('/')[1]}
