@@ -61,7 +61,7 @@ const MenuFlyout = styled.span`
   top: 3rem;
   min-width: 196px;
   padding: 1rem 1rem 0.75rem 1rem;
-  border-radius: 20px;
+  border-radius: 12px;
   background-color: ${({ theme }) => theme.menuBG};
   backdrop-filter: blur(20px);
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
@@ -84,6 +84,7 @@ const StyledMenuTitle = styled.span`
   margin: 0px;
   border-radius: 0.5rem;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.link};
   @media (max-width: 960px) {
     margin-bottom: 1rem;
     user-select: none;
@@ -129,7 +130,7 @@ const StyledTitle = styled.p`
   margin: 0;
   padding: 0;
   padding: 0.125rem 0.5rem 0px 0.5rem;
-  color: ${({ theme }) => theme.textColor};
+  color: ${({ theme }) => theme.colors.grey9};
   @media (max-width: 960px) {
     padding: 0;
   }
@@ -141,7 +142,7 @@ const StyledDescription = styled.p`
   padding: 0;
   padding: 0px 0.5rem 0.25rem 0.5rem;
   min-width: 200px;
-  color: ${({ theme }) => theme.colors.grey6};
+  color: ${({ theme }) => theme.colors.grey8};
   @media (max-width: 960px) {
     padding: 0;
   }
@@ -152,14 +153,6 @@ export default function Menu(props) {
   const node = useRef()
   const [isOpen, updateIsOpen] = useState(matches)
 
-  function onFocus(focused) {
-    if (focused) {
-      updateIsOpen(true)
-    } else {
-      updateIsOpen(false)
-    }
-  }
-
   useEffect(() => {
     const handleClickOutside = e => {
       if (node.current.contains(e.target)) {
@@ -168,48 +161,65 @@ export default function Menu(props) {
       updateIsOpen(false)
     }
 
+    const onFocus = focused => {
+      if (focused) {
+        updateIsOpen(true)
+      } else {
+        updateIsOpen(false)
+      }
+    }
+
     if (isOpen && !matches) {
-      node.current.removeEventListener('focus', () => onFocus(false))
+      node.current.removeEventListener('focusin', () => onFocus(false))
+      node.current.removeEventListener('focusout', () => onFocus(false))
       document.addEventListener('mouseover', handleClickOutside)
     } else {
-      node.current.addEventListener('focus', () => onFocus(true))
+      node.current.addEventListener('focusin', () => onFocus(true))
+      node.current.addEventListener('focusout', () => onFocus(false))
       document.removeEventListener('mouseover', handleClickOutside)
     }
 
     return () => {
       document.removeEventListener('mouseover', handleClickOutside)
-      node.current.removeEventListener('focus', () => onFocus(false))
+      node.current.removeEventListener('focusin', () => onFocus(false))
+      node.current.removeEventListener('focusout', () => onFocus(false))
     }
   }, [isOpen, updateIsOpen, matches])
 
   return (
-    <StyledMenu ref={node}>
-      <StyledMenuTitle onMouseOver={() => updateIsOpen(true)} onFocus={() => updateIsOpen(true)} isOpen={isOpen}>
+    <StyledMenu ref={node} tabIndex={0}>
+      <StyledMenuTitle
+        onMouseOver={() => updateIsOpen(true)}
+        onFocus={() => {
+          updateIsOpen(true)
+        }}
+        isOpen={isOpen}
+      >
         {props.data.name} {!matches && <DropdownArrow />}
+        {isOpen ? (
+          <MenuFlyout>
+            {props.data.sublinks.map((item, index) => {
+              return (
+                <StyledMenuItem tabindex={index} key={index}>
+                  {item.link.split('/')[0] === '' ? (
+                    <StyledLink to={item.link}>
+                      <StyledTitle>{item.name}</StyledTitle>
+                      {item.description && <StyledDescription>{item.description}</StyledDescription>}
+                    </StyledLink>
+                  ) : (
+                    <StyledExternalLink href={item.link}>
+                      <StyledTitle>{item.name}</StyledTitle>
+                      {item.description && <StyledDescription>{item.description}</StyledDescription>}
+                    </StyledExternalLink>
+                  )}
+                </StyledMenuItem>
+              )
+            })}
+          </MenuFlyout>
+        ) : (
+          ''
+        )}
       </StyledMenuTitle>
-      {isOpen ? (
-        <MenuFlyout>
-          {props.data.sublinks.map(item => {
-            return (
-              <StyledMenuItem key={item.name}>
-                {item.link.split('/')[0] === '' ? (
-                  <StyledLink to={item.link}>
-                    <StyledTitle>{item.name}</StyledTitle>
-                    {item.description && <StyledDescription>{item.description}</StyledDescription>}
-                  </StyledLink>
-                ) : (
-                  <StyledExternalLink href={item.link}>
-                    <StyledTitle>{item.name}</StyledTitle>
-                    {item.description && <StyledDescription>{item.description}</StyledDescription>}
-                  </StyledExternalLink>
-                )}
-              </StyledMenuItem>
-            )
-          })}
-        </MenuFlyout>
-      ) : (
-        ''
-      )}
     </StyledMenu>
   )
 }

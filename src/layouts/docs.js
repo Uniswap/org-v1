@@ -6,6 +6,7 @@ import Layout from '.'
 import SideBar from '../components/sidebar'
 import SEO from '../components/seo2'
 import TableofContents from '../components/toc'
+import '../styles/prism-github.css'
 
 const GlobalStyle = createGlobalStyle`
   html {

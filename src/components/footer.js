@@ -18,7 +18,7 @@ function Dropdown(props) {
 }
 
 const StyledFooter = styled.footer`
-  padding: 4rem 2rem;
+  padding: 4rem 4rem;
   /* margin-bottom: 2rem; */
   margin-top: 4rem;
   display: flex;
@@ -85,6 +85,11 @@ const StyledFooterLink = styled.li`
     text-decoration: none;
     color: ${({ theme }) => theme.textColor};
   }
+  :hover {
+    a {
+      text-decoration: underline;
+    }
+  }
 `
 
 const StyledUni = styled(Uni)`
@@ -128,7 +133,6 @@ const Footer = () => {
     <StyledFooter>
       <StyledSection>
         <StyledFooterSection>
-          <StyledUni />
           <Commit>
             Deployed commit:{' '}
             <code>
@@ -155,7 +159,7 @@ const Footer = () => {
         {data.site.siteMetadata.menulinks.map(item => {
           return (
             <StyledFooterSectionNav key={item.name}>
-              <h4>{item.name}</h4>
+              <h4 style={{ fontWeight: 600, marginBottom: '1rem' }}>{item.name}</h4>
               <Dropdown links={item.sublinks} />
             </StyledFooterSectionNav>
           )

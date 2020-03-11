@@ -152,6 +152,7 @@ module.exports = {
     `gatsby-plugin-instagram-embed`,
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
+    `gatsby-background-image`,
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {

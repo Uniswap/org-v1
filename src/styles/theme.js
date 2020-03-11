@@ -26,7 +26,7 @@ export const theme = darkMode => ({
   greyText: darkMode ? white : '#6C7284',
 
   // for setting css on <html>
-  backgroundColor: darkMode ? '#000' : white,
+  backgroundColor: darkMode ? '#000' : '#F7F8FA',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.4)',
@@ -71,7 +71,8 @@ export const theme = darkMode => ({
     green1: '#E6F3EC',
     green2: '#27AE60',
 
-    pink1: darkMode ? '#00FF85' : '#FF007A',
+    // pink1: darkMode ? '#00FF85' : '#FF007A',
+    pink1: darkMode ? '#FF007A' : '#FF007A',
 
     pink2: '#FFF8FD',
 
@@ -80,8 +81,11 @@ export const theme = darkMode => ({
 
     red1: '#FF6871',
 
-    link: darkMode ? '#00FF85' : '#FF007A',
-    invertedLink: darkMode ? '#FF007A' : '#00FF85'
+    // link: darkMode ? '#00FF85' : '#FF007A',
+    // invertedLink: darkMode ? '#FF007A' : '#00FF85'
+
+    link: darkMode ? '#FF007A' : '#FF007A',
+    invertedLink: darkMode ? '#FF007A' : '#FF007A'
   },
 
   shadows: {
@@ -105,7 +109,6 @@ export const theme = darkMode => ({
 })
 
 export const GlobalStyle = createGlobalStyle`
-  html { font-family: 'Inter', sans-serif; }
   @supports (font-variation-settings: normal) {
     html { font-family: 'Inter var', sans-serif; }
   }
@@ -117,72 +120,91 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Principal Trial Black";
     src: url("/fonts/Principal-Trial-Black.otf");
   }
-  
 
-  body > div {
-    height: 100%;
-    -webkit-overflow-scrolling: touch;
+
+  *, *:before, *:after {
+    box-sizing: inherit;
   }
 
-  html {
-    font-family: sans-serif;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    font-size: 16px;
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     margin: 0;
     padding: 0;
     width: 100%;
+    font-weight: normal;
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+  html {
     font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-image: url(${({ isDark }) => (isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg')});
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    /* background-image: url(${({ isDark }) => (isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg')}); */
     background-size: contain;
     background-repeat: no-repeat;
-
     overflow-y: scroll;
     width: 100vw;
-    /* max-width: 1440px; */
+    box-sizing: border-box;
   }
 
   body {
-    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     padding: 0;
     width: 100%;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    margin: 0px auto;
-    line-height: 1.75 !important;
+    line-height: 1.75;
     max-width: 1440px;
     width: 100vw;
-    padding: 0 3rem;
+    /* padding: 0 3rem; */
+    margin: 0px auto;
     color: ${({ theme }) => theme.textColor};
+    /* background-color: ${({ theme }) => theme.backgroundColor}; */
 
     @media (max-width: 1024px) {
-        padding: 0 1.5rem;
+        /* padding: 0 1.5rem; */
 
     }
     
     @media (min-width: 1441px) {
-        padding: 0 1.5rem;
+        /* padding: 0 1.5rem; */
         overflow-x: visible;
     }
   }
 
+  * {
+    box-sizing: inherit;
+  }
+  *:before {
+    box-sizing: inherit;
+  }
+  *:after {
+    box-sizing: inherit;
+  }
+
   h1{
-    font-weight: 600;
-    font-family: 'Principal Trial Semibold';
+    font-weight: 700;
+    font-family: 'EB Garamond';
 
   }
+
   h2, h3{
     font-weight: 500;
-  }
-  h2, h3{
-    margin-top: 2rem !important;
+    margin-top: 2rem;
   }
   #gatsby-focus-wrapper{
     min-height: 100vh;
@@ -194,6 +216,14 @@ export const GlobalStyle = createGlobalStyle`
   }
   button{
     color: ${({ theme }) => theme.textColor};
+  }
 
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font: inherit;
+    margin: 0;
   }
 `

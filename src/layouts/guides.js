@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 import { useStaticQuery, graphql } from 'gatsby'
 import SEO from '../components/seo2'
+import '../styles/prism-github.css'
 
 const path = '/guides/'
 

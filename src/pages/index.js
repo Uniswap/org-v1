@@ -11,41 +11,10 @@ import { Helmet } from 'react-helmet'
 import Card from '../components/card'
 import Marquee from '../components/marquee'
 import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 
 import Circle from '../images/circle.inline.svg'
 import Star from '../images/star.inline.svg'
-
-const StyledCardsWrapper = styled.span`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  justify-content: space-between;
-  padding-top: 0rem;
-  @media (max-width: 960px) {
-    padding-top: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-`
-const Stats = styled.div`
-  width: 10000px;
-  background-color: black;
-  padding: 0.5rem 0;
-  display: flex;
-  flex-direction: row;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  background-color: ${({ theme }) => theme.marqueeBG};
-  align-items: center;
-  z-index: 999;
-  p {
-    margin: 0px;
-    margin-right: 1rem;
-    font-size: 1rem;
-  }
-`
 
 const StyledBody = styled.div`
   font-size: 18px;
@@ -54,6 +23,8 @@ const StyledBody = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 3rem;
+  -webkit-transform: translate3d(0, 0, 0);
+
   @media (min-width: 1441px) {
     padding-top: 0px;
     justify-content: center;
@@ -73,19 +44,33 @@ const StyledBody = styled.div`
 const StyledSection = styled.div`
   margin-top: 6rem;
 `
+
+const loadTitle = keyframes`
+  from {
+    transform: translateY(10px) ;
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+`
+
 const StyledTitle = styled.div`
   z-index: 999;
   display: flex;
-  mix-blend-mode: color-dodge;
+  /* mix-blend-mode: color-dodge; */
   min-height: 40vh;
   width: 50%;
   flex-direction: column;
+  animation: ${loadTitle} 0.7s ease;
+  will-change: transform;
+
   @media (min-width: 1441px) {
     width: 50%;
   }
   @media (max-width: 960px) {
     width: 100%;
-    mix-blend-mode: normal;
+    /* mix-blend-mode: normal; */
     min-height: auto;
     height: 100%;
   }
@@ -119,6 +104,16 @@ const StyledBodyTitle = styled.div`
   }
 `
 
+const loadInfo = keyframes`
+  from {
+    transform: rotate(-4.5deg) scale(0.97) translateY(10px) ;
+  }
+
+  to {
+    transform: rotate(-4deg) scale(0.98) translateY(0px);
+  }
+`
+
 const NewInfo = styled(Link)`
   width: 100%;
   position: absolute;
@@ -129,7 +124,9 @@ const NewInfo = styled(Link)`
   transform: rotate(-4deg) scale(0.98);
   font-size: 20px;
   transition: transform 0.3s ease;
+  animation: ${loadInfo} 0.6s ease;
   color: ${({ theme }) => theme.textColor};
+  will-change: transform;
 
   margin-right: -120px;
   @media (min-width: 1441px) {
@@ -193,9 +190,24 @@ const StyledDownArrow = styled.a`
   margin-top: 5rem;
   color: ${({ theme }) => theme.colors.link};
   cursor: pointer;
+  will-change: transform;
   animation: ${bounce} 5s infinite;
   @media (max-width: 960px) {
     display: none;
+  }
+`
+
+const StyledCardsWrapper = styled.span`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  justify-content: space-between;
+  padding-top: 0rem;
+  @media (max-width: 960px) {
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `
 
@@ -223,77 +235,6 @@ const StyledImgSection = styled.div`
   min-width: 400px;
   @media (max-width: 960px) {
     min-width: 0px;
-  }
-`
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(9000deg);
-  }
-`
-
-const StyledLineImg = styled(Img)`
-  max-width: 300px;
-  @media (max-width: 1024px) {
-    max-width: 50%;
-    /* left: 25%; */
-  }
-  @media (max-width: 960px) {
-    width: 100%;
-    max-width: 200px;
-  }
-`
-
-const StyledStar = styled(Star)`
-  margin: 0;
-  max-width: 400px;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  margin-right: 0.5rem;
-  z-index: 999;
-  path {
-    fill: ${({ theme }) => theme.colors.invertedLink};
-  }
-`
-
-const StyledCircle = styled(Circle)`
-  margin: 0;
-  max-width: 400px;
-  position: absolute;
-  top: 0px;
-  left: 150px;
-  margin-right: 0.5rem;
-  animation: ${rotate} 700s linear infinite;
-  @media (max-width: 1024px) {
-    max-width: 50%;
-    left: 25%;
-  }
-  @media (max-width: 960px) {
-    width: 100%;
-    max-width: 200px;
-    left: 100px;
-  }
-  path {
-    fill: ${({ theme }) => theme.colors.link};
-  }
-  circle {
-    stroke: ${({ theme }) => theme.colors.link};
-  }
-`
-
-const StyledGoal = styled.div`
-  padding: 0.25rem 2rem 2rem 2rem;
-  margin-top: 4rem;
-  background-color: ${({ theme }) => theme.cardBG};
-  color: ${({ theme }) => theme.textColor};
-  border-radius: 0.5rem;
-  h2 {
-    font-family: 'Principal Trial Semibold';
   }
 `
 
@@ -348,6 +289,53 @@ const StyledTradeLinkOutlined = styled(Link)`
   }
 `
 
+const StyledNoise = styled(BackgroundImage)`
+  width: 100%;
+  height: 100vh;
+  mix-blend-mode: overlay;
+  position: absolute;
+  top: 0px;
+  background-repeat: repeat;
+  left: 0px;
+  width: 100%;
+  background-size: auto;
+  background-position: center;
+`
+
+const fallIn = keyframes`
+  from {
+    transform:translateY(-100vh);
+  }
+
+  to {
+    transform: translateY(-70vh);
+  }
+`
+
+const StyledRed = styled.div`
+  width: 100%;
+  height: 150vh;
+  border-radius: 10vw;
+  background: ${({ theme }) =>
+    `radial-gradient(50% 50% at 50% 50%, ${theme.colors.link} 0%, ${theme.backgroundColor} 100%)`};
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0.4;
+  animation: ${fallIn} 0.3s ease;
+  transform: translateY(-70vh);
+`
+
+const StyledBG = styled.div`
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  -webkit-transform: translate3d(0, 0, 0);
+`
+
 const IndexPage = props => {
   const data = useStaticQuery(graphql`
     {
@@ -377,11 +365,22 @@ const IndexPage = props => {
           }
         }
       }
+      noise: file(relativePath: { eq: "noise.png" }) {
+        childImageSharp {
+          fluid(quality: 100, maxWidth: 400) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
     }
   `)
 
   return (
     <Layout path={props.location.pathname}>
+      <StyledBG>
+        <StyledRed />
+        <StyledNoise fluid={data.noise.childImageSharp.fluid} />
+      </StyledBG>
       <SEO title="Home" path={props.location.pathname} />
       <Helmet>
         <meta name="twitter:image" content={`${data.site.siteMetadata.siteUrl}/images/twitter-card.jpg`} />
@@ -397,47 +396,94 @@ const IndexPage = props => {
         <StyledStar />{' '}
         <NewInfo to="/blog/post-01">
           <NewPill>V2 Announced</NewPill>Learn what’s new ↗
-          <StyledUnicornImage fluid={data.unicornImage.childImageSharp.fluid} />
+          <StyledUnicornImage fadeIn={false} fluid={data.unicornImage.childImageSharp.fluid} />
         </NewInfo>
         <StyledDownArrow onClick={() => scrollTo('#down')}>↓</StyledDownArrow>
       </StyledBody>
 
-      <Stats>
-        <Marquee>
-          <p>
-            Total Liquidity: <b>$26,024,434</b>
-          </p>
-          <p>Uniswap ETH Price: $185.83</p>
-          <a href="/">Total Liquidity: $26,024,434</a>
-          <p>Uniswap ETH Price: $185.83</p>
-          <p>Total Liquidity: $26,024,434</p>
-          <p>Uniswap ETH Price: $185.83</p>
-          <p>Total Liquidity: $26,024,434</p>
-          <p>Uniswap ETH Price: $185.83</p>
-          <p>Total Liquidity: $26,024,434</p>
-          <p>Uniswap ETH Price: $185.83</p>
-          <p>Total Liquidity: $26,024,434</p>
-          <p>Uniswap ETH Price: $185.83</p>
-          <p>Total Liquidity: $26,024,434</p>
-          <p>Uniswap ETH Price: $185.83</p>
-          <p>Total Liquidity: $26,024,434</p>
-          <p>Uniswap ETH Price: $185.83</p>
-          <a href="/">Total Liquidity: $26,024,434</a>
-          <p>Total Liquidity: $26,024,434</p>
-          <p>Uniswap ETH Price: $185.83</p>
-        </Marquee>
-      </Stats>
-
       <StyledSection id="down">
+        <h2> Whats new in V2?</h2>
         <StyledCardsWrapper>
           {data.site.siteMetadata.cardlinks.map((node, index) => {
             return <Card key={index} index={index} node={node} />
           })}
         </StyledCardsWrapper>
       </StyledSection>
+
+      <SummarySection data={data} />
+      <GoalSection />
+    </Layout>
+  )
+}
+
+export default IndexPage
+
+const StyledStar = styled(Star)`
+  margin: 0;
+  max-width: 400px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-right: 0.5rem;
+  z-index: 999;
+  path {
+    fill: ${({ theme }) => theme.colors.invertedLink};
+  }
+`
+
+const StyledCircle = styled(Circle)`
+  margin: 0;
+  max-width: 400px;
+  position: absolute;
+  top: 0px;
+  left: 150px;
+  margin-right: 0.5rem;
+  animation: ${rotate} 700s linear infinite;
+  @media (max-width: 1024px) {
+    max-width: 50%;
+    left: 25%;
+  }
+  @media (max-width: 960px) {
+    width: 100%;
+    max-width: 200px;
+    left: 100px;
+  }
+  path {
+    fill: ${({ theme }) => theme.colors.link};
+  }
+  circle {
+    stroke: ${({ theme }) => theme.colors.link};
+  }
+`
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(9000deg);
+  }
+`
+
+const StyledLineImg = styled(Img)`
+  max-width: 300px;
+  @media (max-width: 1024px) {
+    max-width: 50%;
+    /* left: 25%; */
+  }
+  @media (max-width: 960px) {
+    width: 100%;
+    max-width: 200px;
+  }
+`
+
+const SummarySection = props => {
+  return (
+    <>
       <StyledSectionFlex>
         <StyledImgSection>
-          <StyledLineImg fluid={data.line.childImageSharp.fluid} />
+          <StyledLineImg fluid={props.data.line.childImageSharp.fluid} />
           <StyledCircle />{' '}
         </StyledImgSection>
         <StyledImgSection>
@@ -468,20 +514,34 @@ const IndexPage = props => {
           </div>
         </StyledImgSection>
       </StyledSectionFlex>
-      <StyledGoal>
-        <h2>Our goal</h2>
-        <p>
-          Uniswap is important infrastructure for the emerging crypto economy and enables markets to be created that
-          couldn{"'"}t have existed before. As more assets become tokenized, public blockchains and protocols like
-          Uniswap provide the opportunity to establish a new financial stack that is more efficient, transparent, and
-          equitable than any system in the past.
-        </p>
-        <div>
-          <Link to="/">Read more about how we are working towards this future.</Link>
-        </div>
-      </StyledGoal>
-    </Layout>
+    </>
   )
 }
 
-export default IndexPage
+const StyledGoal = styled.div`
+  padding: 0.25rem 2rem 2rem 2rem;
+  margin-top: 4rem;
+  background-color: ${({ theme }) => theme.cardBG};
+  color: ${({ theme }) => theme.textColor};
+  border-radius: 0.5rem;
+  h2 {
+    font-family: 'Principal Trial Semibold';
+  }
+`
+
+const GoalSection = props => {
+  return (
+    <StyledGoal>
+      <h2>Our goal</h2>
+      <p>
+        Uniswap is important infrastructure for the emerging crypto economy and enables markets to be created that
+        couldn{"'"}t have existed before. As more assets become tokenized, public blockchains and protocols like Uniswap
+        provide the opportunity to establish a new financial stack that is more efficient, transparent, and equitable
+        than any system in the past.
+      </p>
+      <div>
+        <Link to="/">Read more about how we are working towards this future.</Link>
+      </div>
+    </StyledGoal>
+  )
+}
