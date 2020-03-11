@@ -18,7 +18,7 @@ const StyledBlog = styled.div`
 
 const StyledMDX = styled.div`
   min-width: 550px;
-  max-width: 768px;
+  max-width: 650px;
   padding: 0;
   margin-bottom: 3rem;
   a {
@@ -48,7 +48,7 @@ const PostHeader = styled.div`
   flex-direction: column;
   text-align: center;
   min-width: 550px;
-  max-width: 768px;
+  max-width: 650px;
   padding: 8rem 0;
   @media (max-width: 960px) {
     min-width: 100%;
@@ -70,7 +70,6 @@ const PostMetaData = styled.div`
 `
 
 const PostTitle = styled.h1`
-  font-family: 'Inter';
   font-size: 4rem;
   font-weight: 800 !important;
   margin-bottom: 2rem;

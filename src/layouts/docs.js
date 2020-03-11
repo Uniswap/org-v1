@@ -29,7 +29,7 @@ const StyledDocs = styled.div`
 const StyledMDX = styled.div`
   /* width: 640px; */
   min-width: 550px;
-  max-width: 768px;
+  max-width: 650px;
   padding: 0;
   margin-bottom: 3rem;
   a {
@@ -37,7 +37,7 @@ const StyledMDX = styled.div`
   }
 
   h1 {
-    margin-bottom: 1em;
+    margin: 1em 0 0.75rem 0;
     font-size: 2rem;
   }
 

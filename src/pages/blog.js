@@ -65,6 +65,9 @@ const PostMetaData = styled.p`
   margin-bottom: 0.5rem;
   color: ${({ theme }) => theme.colors.grey6};
   width: 100%;
+  p {
+    width: initial;
+  }
 `
 
 const StyledImage = styled(Img)`

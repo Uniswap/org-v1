@@ -1,12 +1,12 @@
 ---
-title: 'Uniswap V2 announcement'
-date: '2020-02-21'
+title: 'Uniswap V2'
+date: '2020-03-11'
 author: 'Hayden Adams'
 featuredImage: ./featured.jpg
 previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much much more. Launching April 2020.'
 ---
 
-# 🦄 Uniswap V2 — Introduction
+# Introduction
 
 **Uniswap V1 **was the proof-of-concept for a new type of decentralized exchange protocol.
 
