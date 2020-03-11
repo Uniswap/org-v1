@@ -14,7 +14,7 @@ This documentation covers ERC-20 exchange functionality for denominating pool to
 
 ## name
 
-```clike
+```solidity
 function name() external pure returns (string memory);
 ```
 
@@ -22,7 +22,7 @@ Returns `Uniswap V2` for all exchanges.
 
 ## symbol
 
-```clike
+```solidity
 function symbol() external pure returns (string memory);
 ```
 
@@ -30,7 +30,7 @@ Returns `UNI-V2` for all exchanges.
 
 ## decimals
 
-```clike
+```solidity
 function decimals() external pure returns (uint8);
 ```
 
@@ -38,7 +38,7 @@ Returns `18` for all exchanges.
 
 ## totalSupply
 
-```clike
+```solidity
 function totalSupply() external view returns (uint);
 ```
 
@@ -46,7 +46,7 @@ Returns the total amount of pool tokens for an exchange.
 
 ## balanceOf
 
-```clike
+```solidity
 function balanceOf(address owner) external view returns (uint);
 ```
 
@@ -54,7 +54,7 @@ Returns the amount of pool tokens owned by owner.
 
 ## allowance
 
-```clike
+```solidity
 function allowance(address owner, address spender) external view returns (uint);
 ```
 
@@ -62,7 +62,7 @@ Returns the amount of liquidity tokens owned by owner that spender is allowed to
 
 ## DOMAIN_SEPARATOR
 
-```clike
+```solidity
 function DOMAIN_SEPARATOR() external view returns (bytes32);
 ```
 
@@ -70,7 +70,7 @@ Returns a domain separator for use in [permit](#permit).
 
 ## PERMIT_TYPEHASH
 
-```clike
+```solidity
 function PERMIT_TYPEHASH() external view returns (bytes32);
 ```
 
@@ -78,7 +78,7 @@ Returns a typehash for use in [permit](#permit).
 
 ## nonces
 
-```clike
+```solidity
 function nonces(address owner) external view returns (uint);
 ```
 
@@ -88,7 +88,7 @@ Returns the current nonce for owner for use in [permit](#permit).
 
 ## approve
 
-```clike
+```solidity
 function approve(address spender, uint value) external returns (bool);
 ```
 
@@ -98,7 +98,7 @@ Sets the allowance for a spender where `msg.sender` is owner.
 
 ## transfer
 
-```clike
+```solidity
 function transfer(address to, uint value) external returns (bool);
 ```
 
@@ -108,7 +108,7 @@ Sends pool tokens to an address from `msg.sender`.
 
 ## transferFrom
 
-```clike
+```solidity
 function transferFrom(address from, address to, uint value) external returns (bool);
 ```
 
@@ -119,7 +119,7 @@ Sends pool tokens from one address to another.
 
 ## permit
 
-```clike
+```solidity
 function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
 ```
 
@@ -132,7 +132,7 @@ Sets the allowance for a spender where owner approval is granted via a signature
 
 ## Approval
 
-```clike
+```solidity
 event Approval(address indexed owner, address indexed spender, uint value);
 ```
 
@@ -140,7 +140,7 @@ Emitted each time an approval occurs via [approve](#approve) or [permit](#permit
 
 ## Transfer
 
-```clike
+```solidity
 event Transfer(address indexed from, address indexed to, uint value);
 ```
 

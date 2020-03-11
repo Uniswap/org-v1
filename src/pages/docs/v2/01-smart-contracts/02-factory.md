@@ -16,7 +16,7 @@ The `UniswapV2Factory` contract is deployed at `...` on the Ethereum mainnet, an
 
 ## getExchange
 
-```clike
+```solidity
 function getExchange(address tokenA, address tokenB) external view returns (address exchange);
 ```
 
@@ -27,7 +27,7 @@ Returns the address of the exchange for `tokenA` and `tokenB`, if it has been cr
 
 ## allExchanges
 
-```clike
+```solidity
 function allExchanges(uint) external view returns (address exchange);
 ```
 
@@ -37,7 +37,7 @@ Returns the address of the `n`th exchange (`0`-indexed) created through the fact
 
 ## allExchangesLength
 
-```clike
+```solidity
 function allExchangesLength() external view returns (uint);
 ```
 
@@ -47,7 +47,7 @@ Returns the total number of exchanges created through the factory so far.
 
 ## createExchange
 
-```clike
+```solidity
 function createExchange(address tokenA, address tokenB) external returns (address exchange);
 ```
 
@@ -60,7 +60,7 @@ Creates an exchange for `tokenA` and `tokenB` if one doesn't exist already.
 
 ## ExchangeCreated
 
-```clike
+```solidity
 event ExchangeCreated(address indexed token0, address indexed token1, address exchange, uint);
 ```
 

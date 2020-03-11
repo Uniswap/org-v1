@@ -1,11 +1,16 @@
 import React from 'react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/github'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import useClipboard from 'react-use-clipboard'
-import '../../styles/prism-github.css'
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import Prism from 'prismjs'
+import themeLight from 'prism-react-renderer/themes/nightOwlLight'
+import themeDark from 'prism-react-renderer/themes/nightOwl'
+
 import 'prismjs/themes/prism.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+
+require('prismjs/components/prism-solidity')
+require('prismjs/components/prism-typescript')
 
 const Wrapper = styled.div`
   position: relative;
@@ -26,9 +31,10 @@ const Pre = styled.pre`
   line-height: 1.75;
   overflow: scroll;
   border-radius: 0.25rem;
+  text-shadow: none !important;
 
-  div span:last-child {
-    display: none !important;
+  .operator {
+    background: none !important; /* remove background around = in dark mode */
   }
 `
 
@@ -54,15 +60,22 @@ export default ({ children, className }) => {
     successDuration: 1000
   })
 
+  const theme = useTheme()
+  const isDark = theme.textColor === '#FFFFFF'
+
   return (
-    <Highlight {...defaultProps} code={children} language={language} theme={theme}>
+    <Highlight
+      {...defaultProps}
+      Prism={Prism}
+      code={children}
+      language={language}
+      theme={isDark ? themeDark : themeLight}
+    >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Wrapper>
           <Pre className={className} style={{ ...style, padding: '20px' }}>
             {tokens.map((line, i) => {
-              return line.length === 1 && line[0].empty && i !== tokens.length - 1 ? (
-                <br key={i} />
-              ) : (
+              return line.length === 1 && line[0].empty ? null : (
                 <div key={i} {...getLineProps({ line, key: i })}>
                   {/* <LineNo>{i + 1}</LineNo> */}
                   {line.map((token, key) => (

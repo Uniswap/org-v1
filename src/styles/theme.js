@@ -132,7 +132,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
@@ -143,9 +142,7 @@ export const GlobalStyle = createGlobalStyle`
     background-size: contain;
     background-repeat: no-repeat;
 
-    overflow: hidden;   
-    overflow: scroll;
-    overflow-x: hidden;
+    overflow-y: scroll;
     width: 100vw;
     /* max-width: 1440px; */
   }
@@ -157,12 +154,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin: 0px auto;
     line-height: 1.75 !important;
     max-width: 1440px;
-    overflow-x: hidden;
     width: 100vw;
     padding: 0 3rem;
     color: ${({ theme }) => theme.textColor};

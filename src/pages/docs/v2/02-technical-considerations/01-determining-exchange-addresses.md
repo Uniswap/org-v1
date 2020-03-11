@@ -19,7 +19,7 @@ Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswa
 | :--------------------- | :------------------------------------------------------------------------------ |
 | `address`              | The <Link to='/docs/v2/smart-contracts/factory/#address'>factory address</Link> |
 | `salt`                 | `keccak256(abi.encodePacked(token0, token1))`                                   |
-| `keccak256(init_code)` | `0x762dbd0ad132fda0dfcfbc963d8f43f78fc3e23b604fc4c34f61c2ca7b3e1b36`            |
+| `keccak256(init_code)` | `0x8548287401d15401e1162bb5bc290f6fba82afcb66944df43c3017817522771b`            |
 
 - `token0` must be strictly less than `token1` by sort order.
 
@@ -30,7 +30,7 @@ Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswa
 
 ### Solidity
 
-```clike
+```solidity
 address factory = 0xF231A51299c872040C002f3E1918D806F951Efcb;
 address token0 = 0xCAFE000000000000000000000000000000000000; // change me!
 address token1 = 0xc0FFee0000000000000000000000000000000000; // change me!
@@ -39,7 +39,7 @@ address exchange = address(uint(keccak256(abi.encodePacked(
   hex'ff',
   factory,
   keccak256(abi.encodePacked(token0, token1)),
-  hex'762dbd0ad132fda0dfcfbc963d8f43f78fc3e23b604fc4c34f61c2ca7b3e1b36'
+  hex'8548287401d15401e1162bb5bc290f6fba82afcb66944df43c3017817522771b'
 ))));
 ```
 
@@ -56,6 +56,6 @@ const token1 = '0xc0FFee0000000000000000000000000000000000' // change me!
 const exchange = getCreate2Address(
   factory,
   keccak256(['bytes'], [pack(['address', 'address'], [token0, token1])]),
-  '0x762dbd0ad132fda0dfcfbc963d8f43f78fc3e23b604fc4c34f61c2ca7b3e1b36'
+  '0x8548287401d15401e1162bb5bc290f6fba82afcb66944df43c3017817522771b'
 )
 ```

@@ -12,7 +12,6 @@ import Footer from '../components/footer'
 import Mdx from '../components/mdx'
 import { StyledThemeProvider } from '../styles/themeManager'
 
-import '../styles/prism-github.css'
 import '../styles/layout.css'
 
 const Layout = ({ path, children }) => {

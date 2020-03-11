@@ -4,7 +4,7 @@ title: Using Permit
 
 import { Link } from "gatsby"
 
-All Uniswap V2 liquidity tokens support meta-transaction approvals via the <Link to='/docs/v2/smart-contracts/exchange-erc-20#permit'>permit</Link> function. This obviates the need for a blocking approve transaction before programatic interactions with pool tokens can occur.
+All Uniswap V2 pool tokens support meta-transaction approvals via the <Link to='/docs/v2/smart-contracts/exchange-erc-20#permit'>permit</Link> function. This obviates the need for a blocking approve transaction before programmatic interactions with pool tokens can occur.
 
 # ERC-712
 
@@ -12,7 +12,7 @@ In vanilla ERC-20 token contracts, owners may only register approvals by directl
 
 ## Domain Separator
 
-```clike
+```solidity
 keccak256(
   abi.encode(
     keccak256('EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)'),
@@ -30,7 +30,7 @@ keccak256(
 
 ## Permit Typehash
 
-```clike
+```solidity
 keccak256('Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)');`
 ```
 

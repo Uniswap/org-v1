@@ -10,11 +10,10 @@ import { useStaticQuery, graphql } from 'gatsby'
 import '../styles/sidebar.css'
 import DropdownArrow from './dropdownArrow.js'
 
-const StyledSidebar = styled.span`
+const StyledSidebar = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  position: -webkit-sticky;
   position: sticky;
   top: 4rem;
   align-self: flex-start;

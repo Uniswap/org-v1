@@ -18,7 +18,7 @@ See <Link to='/docs/v2/technical-considerations/determining-exchange-addresses'>
 
 ## MINIMUM_LIQUIDITY
 
-```clike
+```solidity
 function MINIMUM_LIQUIDITY() external pure returns (uint);
 ```
 
@@ -28,7 +28,7 @@ Returns `1000` for all exchanges.
 
 ## factory
 
-```clike
+```solidity
 function factory() external view returns (address);
 ```
 
@@ -36,7 +36,7 @@ Returns the <Link to='/docs/v2/smart-contracts/factory/#address'>factory address
 
 ## token0
 
-```clike
+```solidity
 function token0() external view returns (address);
 ```
 
@@ -44,7 +44,7 @@ Returns the address of the pair token with the lower sort order.
 
 ## token1
 
-```clike
+```solidity
 function token1() external view returns (address);
 ```
 
@@ -52,7 +52,7 @@ Returns the address of the pair token with the higher sort order.
 
 ## getReserves
 
-```clike
+```solidity
 function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
 ```
 
@@ -62,7 +62,7 @@ The reserves of token0 and token1 used to price trades and distribute liquidity.
 
 ## price0CumulativeLast
 
-```clike
+```solidity
 function price0CumulativeLast() external view returns (uint);
 ```
 
@@ -70,7 +70,7 @@ function price0CumulativeLast() external view returns (uint);
 
 ## price1CumulativeLast
 
-```clike
+```solidity
 function price1CumulativeLast() external view returns (uint);
 ```
 
@@ -78,7 +78,7 @@ function price1CumulativeLast() external view returns (uint);
 
 ## kLast
 
-```clike
+```solidity
 function kLast() external view returns (uint);
 ```
 
@@ -90,7 +90,7 @@ Stores the product of the reserves as of the most recent liquidity event. Only u
 
 ## mint
 
-```clike
+```solidity
 function mint(address to) external returns (uint liquidity);
 ```
 
@@ -100,7 +100,7 @@ Creates pool tokens.
 
 ## burn
 
-```clike
+```solidity
 function burn(address to) external returns (uint amount0, uint amount1);
 ```
 
@@ -110,7 +110,7 @@ Destroys pool tokens.
 
 ## swap
 
-```clike
+```solidity
 function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
 ```
 
@@ -121,13 +121,13 @@ Swaps tokens.
 
 ## skim
 
-```clike
+```solidity
 function skim(address to) external;
 ```
 
 ## sync
 
-```clike
+```solidity
 function sync() external;
 ```
 
@@ -137,7 +137,7 @@ function sync() external;
 
 ## Mint
 
-```clike
+```solidity
 event Mint(address indexed sender, uint amount0, uint amount1);
 ```
 
@@ -145,7 +145,7 @@ Emitted each time liquidity tokens are created via [mint](#mint).
 
 ## Burn
 
-```clike
+```solidity
 event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
 ```
 
@@ -153,7 +153,7 @@ Emitted each time liquidity tokens are destroyed via [burn](#burn).
 
 ## Swap
 
-```clike
+```solidity
 event Swap(
   address indexed sender,
   uint amount0In,
@@ -168,7 +168,7 @@ Emitted each time a swap occurs via [swap](#swap).
 
 ## Sync
 
-```clike
+```solidity
 event Sync(uint112 reserve0, uint112 reserve1);
 ```
 
