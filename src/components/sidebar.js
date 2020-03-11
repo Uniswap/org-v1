@@ -247,6 +247,14 @@ const SideBar = props => {
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
       </ListWrapper>
+      <a
+        href="https://docs.uniswap.io/"
+        target="_blank"
+        rel="noreferrer noopener"
+        style={{ marginTop: '2rem', opacity: 0.8 }}
+      >
+        Uniswap V1 documentation↗
+      </a>
     </StyledSidebar>
   )
 }
