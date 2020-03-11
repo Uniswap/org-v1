@@ -1,6 +1,7 @@
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import React, { useState, useMemo } from 'react'
+import lunr from 'lunr'
 
 import CloseIcon from '../images/x.inline.svg'
 
@@ -97,19 +98,21 @@ const ClearButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   path {
     stroke: ${({ theme }) => theme.colors.textColor};
   }
   :focus {
     outline: none;
   }
+  :hover {
+    cursor: pointer;
+  }
 `
 
-const Search = () => {
-  const data = useStaticQuery(graphql`
+const Search = ({ isV1 }) => {
+  const queryResults = useStaticQuery(graphql`
     {
-      allMdx {
+      allMdx(filter: { fileAbsolutePath: { regex: "/docs/" } }) {
         nodes {
           id
           excerpt
@@ -118,18 +121,33 @@ const Search = () => {
           }
         }
       }
+
+      localSearchV1 {
+        index
+        store
+      }
+
+      localSearchV2 {
+        index
+        store
+      }
     }
   `)
-    .allMdx.nodes.filter(node => node.fields.topLevelDir === 'docs')
+
+  const data = queryResults.allMdx.nodes
+    .filter(node => node.fields.topLevelDir === 'docs')
     .reduce((accumulator, node) => Object.assign({ [node.id]: node.excerpt }, accumulator), {})
 
+  const version = isV1 ? queryResults.localSearchV1 : queryResults.localSearchV2
+
+  const index = lunr.Index.load(JSON.parse(version.index))
+  const store = JSON.parse(version.store)
+
   const [query, setQuery] = useState('')
-  const index = typeof window !== 'undefined' ? window.__LUNR__.en.index : null
-  const store = typeof window !== 'undefined' ? window.__LUNR__.en.store : null
   const results = useMemo(
     () =>
       index && store && query !== ''
-        ? index.search(`${query}*~1`).map(result => ({
+        ? index.search(`${query}~2`).map(result => ({
             match: {
               ...store[result.ref],
               excerpt: data[result.ref]
@@ -152,7 +170,7 @@ const Search = () => {
           onChange={event => setQuery(event.target.value)}
           placeholder="Search"
         />
-        <ClearButton isActive={query !== '' && query} onClick={() => setQuery('')}>
+        <ClearButton disabled={query === ''} isActive={query !== '' && query} onClick={() => setQuery('')}>
           <CloseIcon />
         </ClearButton>
       </StyledForm>

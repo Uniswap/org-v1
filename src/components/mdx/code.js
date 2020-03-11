@@ -1,27 +1,19 @@
-// src/components/CodeBlock.js
 import React from 'react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/github'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import useClipboard from 'react-use-clipboard'
-import '../../styles/prism-github.css'
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import Prism from 'prismjs'
+import themeLight from 'prism-react-renderer/themes/nightOwlLight'
+import themeDark from 'prism-react-renderer/themes/nightOwl'
+
+import 'prismjs/themes/prism.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+
+require('prismjs/components/prism-solidity')
+require('prismjs/components/prism-typescript')
 
 const Wrapper = styled.div`
-  font-family: sans-serif;
   position: relative;
-`
-const Pre = styled.pre`
-  text-align: left;
-  font-size: 1rem;
-  margin: 1em 0;
-  padding: 0.5em;
-  line-height: 1.75;
-  overflow: scroll;
-  border-radius: 0.25rem;
-
-  div span:last-child {
-    display: none !important;
-  }
 `
 
 // const LineNo = styled.span`
@@ -31,10 +23,25 @@ const Pre = styled.pre`
 //   opacity: 0.3;
 // `
 
+const Pre = styled.pre`
+  text-align: left;
+  font-size: 1rem;
+  margin: 1em 0;
+  padding: 0.5em;
+  line-height: 1.75;
+  overflow: scroll;
+  border-radius: 0.25rem;
+  text-shadow: none !important;
+
+  .operator {
+    background: none !important; /* remove background around = in dark mode */
+  }
+`
+
 const CopyButton = styled.button`
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 1rem;
+  right: 1rem;
   background-color: ${({ theme }) => theme.colors.grey2};
   border: none;
   color: ${({ theme }) => theme.colors.link};
@@ -53,23 +60,34 @@ export default ({ children, className }) => {
     successDuration: 1000
   })
 
+  const theme = useTheme()
+  const isDark = theme.textColor === '#FFFFFF'
+
   return (
-    <Wrapper>
-      <CopyButton onClick={setCopied}>{isCopied ? 'Copied' : 'Copy'}</CopyButton>
-      <Highlight {...defaultProps} code={children} language={language} theme={theme}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+    <Highlight
+      {...defaultProps}
+      Prism={Prism}
+      code={children}
+      language={language}
+      theme={isDark ? themeDark : themeLight}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <Wrapper>
           <Pre className={className} style={{ ...style, padding: '20px' }}>
-            {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line, key: i })}>
-                {/* <LineNo>{i + 1}</LineNo> */}
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
+            {tokens.map((line, i) => {
+              return line.length === 1 && line[0].empty ? null : (
+                <div key={i} {...getLineProps({ line, key: i })}>
+                  {/* <LineNo>{i + 1}</LineNo> */}
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              )
+            })}
           </Pre>
-        )}
-      </Highlight>
-    </Wrapper>
+          <CopyButton onClick={setCopied}>{isCopied ? 'Copied' : 'Copy'}</CopyButton>
+        </Wrapper>
+      )}
+    </Highlight>
   )
 }

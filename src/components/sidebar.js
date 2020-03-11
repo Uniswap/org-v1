@@ -9,11 +9,10 @@ import Search from '../components/search'
 import { useStaticQuery, graphql } from 'gatsby'
 import DropdownArrow from './dropdownArrow.js'
 
-const StyledSidebar = styled.span`
+const StyledSidebar = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  position: -webkit-sticky;
   position: sticky;
   top: 4rem;
   align-self: flex-start;
@@ -91,12 +90,28 @@ const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
 `
 
-function List(props) {
-  // const parentSlug = props.slug.replace(/\d+-/g, '') === '/docs/' ? 'docs' : 'guides'
+const CollapsibleList = ({ node, listData, path, parent }) => {
+  const [open, setOpen] = useState(node.name.replace(/\d+-/g, '') === path.split('/')[3])
 
+  const title = node.name
+    .replace(/\d+-/g, '')
+    .replace(/-/g, ' ')
+    .replace(/(^|\s)\S/g, function(t) {
+      return t.toUpperCase()
+    })
+
+  return (
+    <StyledSection trigger={title} transitionTime={250} open={open} onClick={() => setOpen(!open)} easing="ease">
+      <StyledSectionTitle>{title}</StyledSectionTitle>
+      <List data={listData} parent={node.name} slug={parent} path={path} />
+    </StyledSection>
+  )
+}
+
+function List(props) {
   const items = props.data.edges
     .filter(({ node }) => {
-      return node.fields.slug.split('/')[2] === props.parent.replace(/\d+-/g, '')
+      return node.fields.slug.split('/')[3] === props.parent.replace(/\d+-/g, '')
     })
     .map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
@@ -112,28 +127,23 @@ function List(props) {
   return <StyledList>{items}</StyledList>
 }
 
-const CollapsibleList = ({ node, listData, path, parent }) => {
-  const [open, setOpen] = useState(node.name.replace(/\d+-/g, '') === path.split('/')[2])
-
-  const title = node.name
-    .replace(/\d+-/g, '')
-    .replace(/-/g, ' ')
-    .replace(/(^|\s)\S/g, function(t) {
-      return t.toUpperCase()
-    })
-  return (
-    <StyledSection trigger={title} transitionTime={250} open={open} onClick={() => setOpen(!open)} easing="ease">
-      <StyledSectionTitle>{title}</StyledSectionTitle>
-      <List data={listData} parent={node.name} slug={parent} path={path} />
-    </StyledSection>
-  )
-}
-
 const SideBar = props => {
   const data = useStaticQuery(graphql`
     query {
-      topNavDocs: allDirectory(
-        filter: { sourceInstanceName: { eq: "docs" }, relativeDirectory: { eq: "" } }
+      topNavDocsV1: allDirectory(
+        filter: { sourceInstanceName: { eq: "docs" }, relativeDirectory: { eq: "v1" } }
+        sort: { fields: name, order: ASC }
+      ) {
+        edges {
+          node {
+            name
+            id
+            relativePath
+          }
+        }
+      }
+      topNavDocsV2: allDirectory(
+        filter: { sourceInstanceName: { eq: "docs" }, relativeDirectory: { eq: "v2" } }
         sort: { fields: name, order: ASC }
       ) {
         edges {
@@ -156,7 +166,29 @@ const SideBar = props => {
           }
         }
       }
-      docs: allMdx(filter: { fileAbsolutePath: { regex: "/docs/" } }, sort: { order: ASC, fields: fields___slug }) {
+      docsV1: allMdx(
+        filter: { fileAbsolutePath: { regex: "/docs/v1/" } }
+        sort: { order: ASC, fields: fields___slug }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+              subDir
+              topLevelDir
+            }
+            fileAbsolutePath
+          }
+        }
+      }
+      docsV2: allMdx(
+        filter: { fileAbsolutePath: { regex: "/docs/v2/" } }
+        sort: { order: ASC, fields: fileAbsolutePath }
+      ) {
         edges {
           node {
             id
@@ -191,16 +223,18 @@ const SideBar = props => {
     }
   `)
 
-  const listData = props.parent === '/docs/' ? data.docs : data.guides
+  const isDocs = props.parent === '/docs/'
+  const isV1 = isDocs && props.path.slice(0, 8) === '/docs/v1'
 
-  const navData = props.parent === '/docs/' ? data.topNavDocs : data.topNavGuides
+  const navData = isDocs ? (isV1 ? data.topNavDocsV1 : data.topNavDocsV2) : data.topNavGuides
+  const listData = isDocs ? (isV1 ? data.docsV1 : data.docsV2) : data.guides
 
   const matches = useMediaQuery('only screen and (max-width: 960px)')
   const [isMenuOpen, updateIsMenuOpen] = useState(true)
 
   return (
     <StyledSidebar>
-      <Search parent={props.parent === '/docs/' ? 'Docs' : 'Guides'} />
+      <Search isDocs={isDocs} isV1={isV1} isV2={isDocs && !isV1} />
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -212,6 +246,14 @@ const SideBar = props => {
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
       </ListWrapper>
+      <a
+        href="https://docs.uniswap.io/"
+        target="_blank"
+        rel="noreferrer noopener"
+        style={{ marginTop: '2rem', opacity: 0.8 }}
+      >
+        Uniswap V1 documentation↗
+      </a>
     </StyledSidebar>
   )
 }

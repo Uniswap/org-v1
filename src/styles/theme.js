@@ -129,6 +129,7 @@ export const GlobalStyle = createGlobalStyle`
   body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     margin: 0;
     padding: 0;
+    width: 100%;
     font-weight: normal;
   }
 
@@ -154,12 +155,17 @@ export const GlobalStyle = createGlobalStyle`
     /* background-image: url(${({ isDark }) => (isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg')}); */
     background-size: contain;
     background-repeat: no-repeat;
+    overflow-y: scroll;
+    width: 100vw;
     box-sizing: border-box;
   }
 
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    width: 100%;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.75;
     max-width: 1440px;

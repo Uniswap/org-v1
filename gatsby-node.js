@@ -1,8 +1,7 @@
 const path = require('path')
 
-const getSlugParents = slug => {
-  const slugParentString = slug.substring(1, slug.length - 1)
-  return slugParentString.split('/')
+function getSlugPath(slug) {
+  return slug.slice(1, slug.length - 1).split('/')
 }
 
 exports.onCreateNode = ({ node, getNodesByType, actions }) => {
@@ -16,24 +15,24 @@ exports.onCreateNode = ({ node, getNodesByType, actions }) => {
       node.parent = parent.id
       createParentChildLink({
         child: node,
-        parent: parent
+        parent
       })
     }
   }
   // Ensures we are processing only markdown files
   if (node.internal.type === 'Mdx' || node.internal.type === 'Md') {
-    const slugParentsArr = getSlugParents(node.fields.slug)
+    const slugPath = getSlugPath(node.fields.slug)
 
     createNodeField({
       node,
       name: 'topLevelDir',
-      value: slugParentsArr[0]
+      value: slugPath[0]
     })
 
     createNodeField({
       node,
       name: 'subDir',
-      value: slugParentsArr.length > 2 ? slugParentsArr[1] : slugParentsArr[0]
+      value: slugPath[slugPath.length - 1]
     })
   }
 }
