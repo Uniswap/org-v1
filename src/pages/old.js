@@ -431,6 +431,16 @@ const StyledStar = styled(Star)`
   }
 `
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(9000deg);
+  }
+`
+
 const StyledCircle = styled(Circle)`
   margin: 0;
   max-width: 400px;
@@ -453,16 +463,6 @@ const StyledCircle = styled(Circle)`
   }
   circle {
     stroke: ${({ theme }) => theme.colors.link};
-  }
-`
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(9000deg);
   }
 `
 

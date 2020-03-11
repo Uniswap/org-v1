@@ -114,7 +114,7 @@ const StyledUni = styled(Uni)`
   }
   margin: 0;
   width: 24px;
-  margin-right: 0.75rem;
+  margin-right: 0.5rem;
   margin-top: -6px;
   transform: rotate(0deg);
   transition: transform 0.2s linear;
