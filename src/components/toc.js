@@ -69,11 +69,9 @@ const StyledTOC = styled.ul`
 
 const TableofContents = ({ headings }) => (
   <StyledTOC>
-    {headings
-      // .filter(heading => heading.depth !== 1)
-      .map((heading, i) => (
-        <Heading key={i} heading={heading} />
-      ))}
+    {headings.map((heading, i) => (
+      <Heading key={i} heading={heading} />
+    ))}
   </StyledTOC>
 )
 

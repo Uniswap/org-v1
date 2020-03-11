@@ -99,7 +99,7 @@ const StyledLink = styled(Link)`
 const Docs = props => {
   const data = useStaticQuery(graphql`
     {
-      allMdx(filter: { fileAbsolutePath: { regex: "/docs/" } }, sort: { order: ASC, fields: fields___slug }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/docs/" } }, sort: { order: ASC, fields: fileAbsolutePath }) {
         edges {
           node {
             id
@@ -113,7 +113,6 @@ const Docs = props => {
             }
             fields {
               slug
-              topLevelDir
               subDir
             }
           }
@@ -133,11 +132,6 @@ const Docs = props => {
               slug
             }
           }
-        }
-      }
-      site {
-        siteMetadata {
-          title
         }
       }
     }
