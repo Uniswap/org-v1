@@ -243,9 +243,13 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
-        <Link style={{ marginBottom: '.75rem', display: 'inline-block' }} to={'/docs/'}>
+        <StyledLink
+          isActive={props.path === '/docs/v2/'}
+          style={{ marginBottom: '.75rem', display: 'inline-block', padding: '0px' }}
+          to={'/docs/'}
+        >
           {'Intro'}
-        </Link>
+        </StyledLink>
         {navData.edges.map(({ node }) => (
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}

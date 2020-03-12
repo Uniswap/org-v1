@@ -18,7 +18,7 @@ You may be wondering: what about Uniswap V1? The first version of the protocol, 
 # Resources
 
 - <Link to='/'>Protocol Website</Link>
-- <Link to='/whitepaper.pdf'>Whitepaper</Link>
+- <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>Whitepaper</a>
 - [GitHub](https://github.com/Uniswap)
 - [Twitter](https://twitter.com/UniswapExchange)
 - [Discord](https://discord.gg/Y7TF6QA)

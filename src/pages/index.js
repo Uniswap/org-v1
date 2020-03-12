@@ -48,7 +48,7 @@ const StyledTitle = styled.div`
 
 const StyledBodyTitle = styled.div`
   font-family: 'Bembo Book MT Pro', 'EB Garamond', serif;
-  color: ${({ theme }) => theme.colors.pink1};
+  color: ${({ theme }) => theme.colors.link};
   font-weight: 400;
   font-size: 110px;
   line-height: 90%;
@@ -205,19 +205,19 @@ const rotate = keyframes`
 //   position: 'absolute';
 // `
 
-// const StyledStar = styled(Star)`
-//   margin: 0;
-//   max-width: 400px;
-//   position: absolute;
-//   top: 23%;
-//   right: 19%;
-//   margin-right: 0.5rem;
-//   z-index: 999;
-//   opacity: 0.2;
-//   path {
-//     fill: ${({ theme }) => theme.colors.invertedLink};
-//   }
-// `
+const StyledStar = styled(Star)`
+  margin: 0;
+  max-width: 400px;
+  position: absolute;
+  top: 3%;
+  right: 19%;
+  margin-right: 0.5rem;
+  z-index: 999;
+  opacity: 0.2;
+  path {
+    fill: ${({ theme }) => theme.colors.invertedLink};
+  }
+`
 
 const IndexPage = props => {
   const data = useStaticQuery(graphql`
@@ -431,6 +431,7 @@ const StyledMiniCardHeader = styled.h2`
   color: ${({ theme }) => theme.textColor};
   max-width: 160px;
   font-weight: 600;
+  margin-top: 0px;
 `
 
 const StyledMiniCardDesc = styled.p`

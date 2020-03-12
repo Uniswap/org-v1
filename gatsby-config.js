@@ -5,7 +5,7 @@ const menu = [
       {
         name: 'Exchange',
         link: 'https://uniswap.exchange/',
-        description: 'Swap, Send and Supply tokens'
+        description: 'Swap tokens and supply liquidity'
       },
       {
         name: 'Info',
@@ -15,7 +15,7 @@ const menu = [
       {
         name: 'Unisocks',
         link: 'https://unisocks.exchange/',
-        description: 'Dynamically priced Socks'
+        description: 'Dynamically priced socks'
       }
       // {
       //   name: 'Unipig',
@@ -30,10 +30,10 @@ const menu = [
       {
         name: 'Documentation',
         link: '/docs',
-        description: 'Full API, smart contract and integration docs'
+        description: 'Comprehensive smart contract and integration docs'
       },
       { name: 'Github', link: 'https://github.com/Uniswap' },
-      { name: 'Whitepaper', link: '/docs' }
+      { name: 'Whitepaper', link: '/whitepaper.pdf' }
       // {
       //   name: 'Smart Contract ABI',
       //   link: '/docs/smart-contract-api/exchange/'
@@ -49,7 +49,7 @@ const menu = [
     sublinks: [
       { name: 'Twitter', link: 'https://twitter.com/UniswapExchange' },
       { name: 'Discord', link: 'https://discord.gg/Y7TF6QA' },
-      { name: 'Reddit', link: 'https://www.reddit.com/r/UniSwap/' }
+      { name: 'Reddit', link: 'https://www.reddit.com/r/Uniswap' }
     ]
   },
   {
@@ -99,7 +99,7 @@ module.exports = {
     author: `@UniswapExchange`,
     menulinks: menu,
     cardlinks: cards,
-    siteUrl: `https://uniswap-site-v2.now.sh/`,
+    siteUrl: `https://uniswap.org`,
     repository: `https://github.com/Uniswap/uniswap-site-v2`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },

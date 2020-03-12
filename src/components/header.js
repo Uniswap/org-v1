@@ -59,7 +59,7 @@ const StyledNavTitleWrapper = styled.nav`
 const StyledNavTitle = styled(Link)`
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.colors.link};
   margin-left: 0.25rem;
   margin-top: 2px;
   z-index: 999;
@@ -110,7 +110,7 @@ const MenuToggle = styled.button`
 
 const StyledUni = styled(Uni)`
   path {
-    fill: ${({ theme }) => theme.colors.grey9};
+    fill: ${({ theme }) => theme.colors.link};
   }
   margin: 0;
   width: 30px;
@@ -125,10 +125,10 @@ const StyledUni = styled(Uni)`
 
 const StyledWordmark = styled(Wordmark)`
   path {
-    fill: ${({ theme }) => theme.colors.grey9};
+    fill: ${({ theme }) => theme.colors.link};
   }
   margin: 0;
-  margin-top: 4px;
+  margin-top: 6px;
   /* height: 23px; */
   width: 110px;
 `
@@ -148,7 +148,7 @@ const StyledMenuIcon = styled(MenuIcon)`
 const VersionLabel = styled.p`
   padding: 0rem 0.5rem;
   border-radius: 12px;
-  background: ${({ theme }) => theme.colors.grey9};
+  background: ${({ theme }) => theme.colors.link};
   color: ${({ theme }) => theme.invertedTextColor};
   font-size: 0.75rem;
   margin: 0;
