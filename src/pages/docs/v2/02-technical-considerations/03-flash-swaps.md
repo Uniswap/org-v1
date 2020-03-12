@@ -4,7 +4,7 @@ title: Flash Swaps
 
 import { Link } from "gatsby"
 
-In Uniswap V2 swaps are executed "optimistically", meaning that tokens can be requested and sent to an address before payment for these tokens is collected, as long as payment occurs by the end of the atomic transaction. See the <Link to='/whitepaper.pdf'>whitepaper</Link> for more details.
+In Uniswap V2 swaps are executed "optimistically", meaning that tokens can be requested and sent to an address before payment for these tokens is collected, as long as payment occurs by the end of the atomic transaction. See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> for more details.
 
 Repayment of flash swaps must occur from within a _callback_ function triggered by the exchange in question. Recall the interface of the <Link to='/docs/v2/smart-contracts/exchange#swap'>swap</Link> function:
 

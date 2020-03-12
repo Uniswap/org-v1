@@ -372,7 +372,7 @@ const SummarySection = props => {
   return (
     <StyledSectionFlex>
       <StyledImgSection>
-        <MiniNewInfo to="/blog/post-01">
+        <MiniNewInfo to="/blog/uniswap-v2/">
           <NewPill>V2 Announced</NewPill>Learn what’s new ↗
           <StyledUnicornImage fadeIn={false} fluid={props.data.unicornImage.childImageSharp.fluid} />
         </MiniNewInfo>
@@ -382,9 +382,12 @@ const SummarySection = props => {
           <b>Uniswap</b> is a fully decentralized protocol for automated market making on Ethereum.
         </p>
 
-        <p>A simple formalized equation drives unstoppable liquidity for thousands of exchanges.</p>
+        <p>A simple, formal equation drives unstoppable liquidity for thousands of exchanges.</p>
 
-        <p>The protocol aligns developers, market makers to design markets that are open and accessible to all.</p>
+        <p>
+          The protocol aligns developers, traders, and market makers to create markets that are open and accessible to
+          all.
+        </p>
 
         <Link to="/docs/v2#how-it-all-works">
           <u>Learn More</u>
@@ -393,8 +396,6 @@ const SummarySection = props => {
     </StyledSectionFlex>
   )
 }
-
-// const StyledMiniCardContainer = styled.li`
 
 const StyledMiniCards = styled.a`
   padding: 1.5rem;
@@ -445,23 +446,25 @@ const ProductsSection = props => {
       <StyledMiniCards href="https://uniswap.exchange">
         <StyledMiniCardHeader>
           Uniswap
-          <br /> Exchange
+          <br />
+          Exchange
           <StyledCardBG fluid={props.data.swap.childImageSharp.fluid} />
         </StyledMiniCardHeader>
-        <StyledMiniCardDesc>Trade tokens, add liquidity and create exchanges.</StyledMiniCardDesc>
+        <StyledMiniCardDesc>Trade tokens, add liquidity, and create exchanges.</StyledMiniCardDesc>
       </StyledMiniCards>
       <StyledMiniCards href="https://uniswap.info" style={{ backgroundColor: '#F3BE1E' }}>
         <StyledCardBG fluid={props.data.info.childImageSharp.fluid} />
         <StyledMiniCardHeader>
-          Uniswap <br />
-          Info{' '}
+          Uniswap
+          <br />
+          Info
         </StyledMiniCardHeader>
-        <StyledMiniCardDesc>In depth Uniswap protocol market data.</StyledMiniCardDesc>
+        <StyledMiniCardDesc>In-depth market data.</StyledMiniCardDesc>
       </StyledMiniCards>
       <StyledMiniCards href="https://unisocks.exchange" style={{ backgroundColor: '#000000', color: 'white' }}>
         <StyledCardBG fluid={props.data.socks.childImageSharp.fluid} />
         <StyledMiniCardHeader style={{ color: 'white' }}>Unisocks</StyledMiniCardHeader>
-        <StyledMiniCardDesc>Experimental speculative fashion.</StyledMiniCardDesc>
+        <StyledMiniCardDesc>An experiment in speculative fashion.</StyledMiniCardDesc>
       </StyledMiniCards>
     </StyledSectionFlex>
   )
@@ -485,7 +488,7 @@ const StyledGoal = styled.div`
  
 `
 
-const GoalSection = props => {
+const GoalSection = () => {
   return (
     <StyledSectionFlex>
       <StyledGoal>

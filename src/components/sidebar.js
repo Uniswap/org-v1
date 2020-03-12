@@ -265,7 +265,7 @@ const SideBar = props => {
       >
         V1 Docs
       </a>
-      <a
+      {/* <a
         href="https://docs.uniswap.io/"
         target="_blank"
         rel="noreferrer noopener"
@@ -281,7 +281,7 @@ const SideBar = props => {
         }}
       >
         View on Github
-      </a>
+      </a> */}
     </StyledSidebar>
   )
 }

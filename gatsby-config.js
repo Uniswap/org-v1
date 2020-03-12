@@ -33,7 +33,7 @@ const menu = [
         description: 'Comprehensive smart contract and integration docs'
       },
       { name: 'Github', link: 'https://github.com/Uniswap' },
-      { name: 'Whitepaper', link: 'https://uniswap.org/whitepaper.pdf' }
+      { name: 'Whitepaper', link: '/whitepaper.pdf' }
       // {
       //   name: 'Smart Contract ABI',
       //   link: '/docs/smart-contract-api/exchange/'

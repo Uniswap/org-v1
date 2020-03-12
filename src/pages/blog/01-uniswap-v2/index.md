@@ -1,41 +1,45 @@
 ---
 title: 'Uniswap V2'
-date: '2020-03-11'
+date: '2020-03-13'
 author: 'Hayden Adams'
 featuredImage: ./featured.jpg
-previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much much more. Launching April 2020.'
+previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much, much more. Launching April 2020.'
 ---
 
 # Introduction
 
-**Uniswap V1 **was the proof-of-concept for a new type of decentralized exchange protocol.
+**Uniswap V1** was the proof-of-concept for a new type of decentralized exchange protocol.
 
 Combining automated market-making with on-chain liquidity pools on Ethereum allows Uniswap to function without maintenance, providing an unstoppable and fully decentralized exchange. **Uniswap V1 will work for as long as Ethereum exists**, and so far it has worked very nicely for a wide variety of use cases.
 
-![Uniswap V1 Liquidity Growth](https://cdn-images-1.medium.com/max/4004/1*-pykU7ahDEhYb9DUPB70YA.png)_Uniswap V1 Liquidity Growth_
+![Uniswap V1 Liquidity Growth](./v1_liquidity.png)_Uniswap V1 Liquidity Growth_
 
-However, pooled automated market making remains a nascent technology and **we have only just begun to explore its potential**. This is why[ we raised a seed round](https://finance.yahoo.com/news/paradigm-backs-decentralized-exchange-protocol-184824051.html) and formed a team dedicated to research and development for the Uniswap protocol.
+However, pooled automated market making remains a nascent technology and **we have only just begun to explore its potential**. This is why [we raised a seed round](https://finance.yahoo.com/news/paradigm-backs-decentralized-exchange-protocol-184824051.html) and formed a team dedicated to research and development for the Uniswap protocol.
 
 **Uniswap V2** is our second iteration of the protocol and includes many new features and improvements. This article will serve as a high-level overview of these changes including:
 
-- [ERC20 / ERC20 Pairs](#erc20--erc20-pairs)
+- [ERC-20 / ERC-20 Pairs](#erc-20--erc-20-pairs)
 - [Price Oracles](#price-oracles)
-- Flash Swaps
-- Core-Helper Architecture
-- Technical Improvements
-- Path to Sustainability
+  - [Theoretical Background](#theoretical-background)
+  - [Improving Uniswap as an Oracle](#improving-uniswap-as-an-oracle)
+- [Flash Swaps](#flash-swaps)
+  - [Arbitrage no upfront capital](#arbitrage-no-upfront-capital)
+- [Core-Helper Architecture (IN PROGRESS)](#core-helper-architecture-in-progress)
+- [Technical Improvements (IN PROGRESS)](#technical-improvements-in-progress)
+- [Path to Sustainability](#path-to-sustainability)
+- [**Future Improvements / Outro (IN PROGRESS)**](#future-improvements--outro-in-progress)
 
 For full details check out the:
 
 - [Core smart contracts](https://github.com/Uniswap/uniswap-v2-core/)
 - [Periphery smart contracts](https://github.com/Uniswap/uniswap-v2-periphery)
-- Uniswap V2 Whitepaper
+- <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>Uniswap V2 whitepaper</a>
 
-## ERC20 / ERC20 Pairs
+## ERC-20 / ERC-20 Pairs
 
-In Uniswap V1, all trading pairs are between ETH and a single ERC20 token. Having a single common pair provides a nice UX advantage — you can swap any ERC20 for any other ERC20 by routing through ETH.
+In Uniswap V1, all trading pairs are between ETH and a single ERC-20 token. Having a single common pair provides a nice UX advantage — you can swap any ERC-20 for any other ERC-20 by routing through ETH.
 
-![ERC20 to ERC20 swap in V1](https://cdn-images-1.medium.com/max/4336/0*5Gcgtpp0ZQAdnswV)_ERC20 to ERC20 swap in V1_
+![ERC-20 to ERC-20 swap in V1](./v1_swaps.png)_ERC-20 to ERC-20 swap in V1_
 
 Since ETH is the most liquid asset on Ethereum, and does not introduce any new platform risk, we believe it was the best choice for V1.
 
@@ -43,17 +47,17 @@ However, in order to further grow Uniswap and expand its usefulness as a protoco
 
 This means **liquidity providers can take on more diverse positions**, rather than being forced to have 50% exposure to ETH. One example would be a DAI/USDC pair (or CHAI/cUSDC), which would have almost no price risk for liquidity providers, but still be incredibly useful for trading and arbitrage.
 
-Having direct ERC20/ERC20 pools for highly-desirable pairs can lead to **better trading prices**. This is because routing through ETH for a swap between two other assets (say, DAI/MKR) involves paying fees and slippage on two separate pairs instead of one.
+Having direct ERC-20/ERC-20 pools for highly-desirable pairs can lead to **better trading prices**. This is because routing through ETH for a swap between two other assets (say, DAI/MKR) involves paying fees and slippage on two separate pairs instead of one.
 
 We still anticipate ETH pairs being very popular, but expect to see significant growth in stablecoin-based pairs over time.
 
 ## Price Oracles
 
-_Robust on-chain price feeds using historical TWAPs_
+_Robust, on-chain price feeds based on historical data_
 
 ### Theoretical Background
 
-If the relative price of two assets on Uniswap is ever mismatched with the price on an external market, there exists a profitable arbitrage trade that will bring the two prices into alignment. This creates a financial incentive for the price on Uniswap to very closely track that of other exchanges. We have seen this play out in practice.[ Sophisticated arbitrageurs constantly monitor Uniswap and capitalize on any price discrepancies](http://frontrun.me/revenue/). For a longer theoretical background, I recommend[ this paper](https://arxiv.org/abs/1911.03380).
+If the relative price of two assets on Uniswap is ever mismatched with the price on an external market, there exists a profitable arbitrage trade that will bring the two prices into alignment. This creates a financial incentive for the price on Uniswap to very closely track that of other exchanges. We have seen this play out in practice. Sophisticated arbitrageurs [constantly monitor Uniswap and capitalize on any price discrepancies](http://frontrun.me/revenue/). For a longer theoretical background, I recommend [this paper](https://arxiv.org/abs/1911.03380).
 
 ### Improving Uniswap as an Oracle
 
@@ -61,7 +65,7 @@ On-chain price feeds are a critical component for many decentralized financial a
 
 For example, suppose some contract uses the current ETH-DAI price to settle a derivative. An attacker who wishes to manipulate the measured price can buy ETH from the ETH-DAI exchange, trigger settlement on the derivative contract (causing it to settle based on the inflated price), and then sell ETH back to the exchange to trade it back to the true price. This might even be done as a single atomic transaction, or by a miner who controls the ordering of transactions within a block, meaning the attacker loses no money to arbitrage.
 
-**Uniswap v2 implements new functionality that enables highly decentralized and manipulation resistant on-chain price feeds. **This is achieved by measuring prices when they are expensive to manipulate, and accumulating historical data in a clever way. This lets external smart contracts create incredibly gas-efficient time-weighted averages of Uniswap prices across **any** time interval.
+**Uniswap V2 implements new functionality that enables highly decentralized and manipulation resistant on-chain price feeds.** This is achieved by measuring prices when they are expensive to manipulate, and accumulating historical data in a clever way. This lets external smart contracts create incredibly gas-efficient time-weighted averages of Uniswap prices across **any** time interval.
 
 > # Okay, so how does it work?
 
@@ -73,13 +77,13 @@ This alone is not enough. If significant value settles at this price, it is like
 
 Instead, Uniswap V2 adds this end-of-block price to a single cumulative-price variable in the core exchange contract weighted by the amount of time this price existed. **This variable represents a sum of the Uniswap price for every second in the entire history of the contract.**
 
-![the secret sauce](https://cdn-images-1.medium.com/max/3256/1*PIwzMNVlKXXPn98EaQQpXA.png)_the secret sauce_
+![the secret sauce](./v2_oracle)_The secret sauce_
 
 This variable can be used by external contracts to track accurate time-weighted average prices (TWAPs) across any time interval.
 
 This is done by reading the cumulative price from a Uniswap pair at the beginning and at the end of the interval. The difference in this cumulative price can then be divided by the length of the interval to create a TWAP for that period.
 
-![cooking with secret sauce](https://cdn-images-1.medium.com/max/4840/1*98K8nK4hHO-iVwSsbBPMjQ.png)_cooking with secret sauce_
+![cooking with secret sauce](./v2_twap.png)_Cooking with secret sauce_
 
 TWAPs can be used directly or as the basis for moving averages (EMAs and SMAs) as needed.
 
@@ -90,9 +94,9 @@ A few notes:
 - Manipulation resistance increases with liquidity on Uniswap as well as the length of time over which you are averaging.
 - Cost of attack is relatively simple to reason about. Moving the price 5% on a 1-hour TWAP is approximately equal to the amount lost to arbitrage for moving the price 5% every block for 1 hour.
 
-There are some nuances that are good to be aware of when using Uniswap V2 as an oracle, especially where manipulation resistance is concerned. The whitepaper [add link] elaborates on some of them. Additional oracle-focused developer guides and documentation will be released soon.
+There are some nuances that are good to be aware of when using Uniswap V2 as an oracle, especially where manipulation resistance is concerned. The <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> elaborates on some of them. Additional oracle-focused developer guides and documentation will be released soon.
 
-In the meantime, check out our[ example implementation](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/Oracle.sol) of a 24 hr TWAP Oracle built on Uniswap V2!
+In the meantime, check out our [example implementation](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/Oracle.sol) of a 24-hour TWAP Oracle built on Uniswap V2!
 
 ## Flash Swaps
 
@@ -104,7 +108,7 @@ The composability of open financial protocols on Ethereum allows anyone to build
 
 You find yourself in an unfortunate situation. You notice a cross-dex arbitrage opportunity. You could sell 200 DAI for 1 ETH on Uniswap and then sell that 1 ETH on Oasis for 220 DAI at a 20 DAI profit. But you don’t have any DAI in your wallet.
 
-![](https://cdn-images-1.medium.com/max/2000/1*ZRkp9D-LGv9fhEEjvWC7Mw.gif)
+![](./no_capital.gif)
 
 **Flash swaps** allow you to withdraw as much as you want of any tokens on Uniswap at no upfront cost and do anything you want with them (executing arbitrary code), provided that by the end of the transaction execution, you either:
 
@@ -181,7 +185,7 @@ _TLDR: A small hardcoded fee that is set to 0 but can be turned on in the future
 
 Watching Uniswap’s early growth made it clear to me that pooled, automated market making can be a disruptive force for decentralized exchange.
 
-Uniswap V1 is already highly\*\* **decentralized, trustless, and censorship resistant. But for it to achieve its full potential as infrastructure in a fair and open financial system— **it must continue to grow and improve\*\*.
+Uniswap V1 is already highly **decentralized**, **trustless**, and **censorship resistant**. But for it to achieve its full potential as infrastructure in a fair and open financial system **it must continue to grow and improve**.
 
 https://twitter.com/haydenzadams/status/1228403478285967361
 

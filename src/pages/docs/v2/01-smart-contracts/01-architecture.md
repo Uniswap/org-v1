@@ -50,7 +50,7 @@ The following sections describe some of the notable design decisions made in Uni
 
 ## Sending Tokens
 
-Typically, smart contracts which require tokens in order to perform some functionality call transferFrom on the token contract. In contrast, V2 exchanges track previous token balances, and measure amounts sent to the contract by comparing these values against current balances. See the <Link to='/whitepaper.pdf'>whitepaper</Link> for a justification of why this is the case, but the takeaway is that **tokens must be transferred to the exchange before calling any token-requiring method** (the one exception to this is flash swaps, described again in the whitepaper).
+Typically, smart contracts which require tokens in order to perform some functionality call transferFrom on the token contract. In contrast, V2 exchanges track previous token balances, and measure amounts sent to the contract by comparing these values against current balances. See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> for a justification of why this is the case, but the takeaway is that **tokens must be transferred to the exchange before calling any token-requiring method** (the one exception to this is flash swaps, described again in the whitepaper).
 
 ## Pricing
 
@@ -62,7 +62,7 @@ So, in Uniswap V2, trades and liquidity provisions must be priced in the periphe
 
 ## Oracles
 
-For an in-depth discussion of Uniswap V2 oracles, see the <Link to='/whitepaper.pdf'>whitepaper</Link>.
+For an in-depth discussion of Uniswap V2 oracles, see the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
 
 ## WETH
 
@@ -76,4 +76,4 @@ To ameliorate rounding errors and increase the theoretical minimum tick size for
 
 ## Protocol Charge Calculation
 
-In the future, it is possible that a protocol-wide charge of 0.05% per trade will take effect. This represents ⅙th (or 16.6̅%) of the enforced 0.30% fee. Rather than calculating this charge on swaps, which would significantly increase gas costs for all users, the charge is instead calculated when liquidity is added or removed. See the <Link to='/whitepaper.pdf'>whitepaper</Link> for more details.
+In the future, it is possible that a protocol-wide charge of 0.05% per trade will take effect. This represents ⅙th (or 16.6̅%) of the enforced 0.30% fee. Rather than calculating this charge on swaps, which would significantly increase gas costs for all users, the charge is instead calculated when liquidity is added or removed. See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> for more details.
