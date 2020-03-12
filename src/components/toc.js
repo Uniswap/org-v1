@@ -40,18 +40,20 @@ const Heading = ({ heading }) => {
 const StyledTOC = styled.ul`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   position: -webkit-sticky;
   position: sticky;
   align-self: flex-start;
-  top: 1rem;
+  top: 8rem;
   width: 160px;
+  max-height: 70vh;
   font-size: 0.75rem;
   margin: 0 4rem;
-  opacity: 0.4;
+  opacity: 0.2;
   transition: opacity 0.3s ease;
   list-style: none;
   text-decoration: none;
+  overflow: scroll;
   border-left: 1px solid ${({ theme }) => theme.colors.grey6};
 
   :hover {

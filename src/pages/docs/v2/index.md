@@ -1,10 +1,8 @@
 ---
-title: Welcome
+title: Uniswap Documentation
 ---
 
 import { Link } from "gatsby"
-
-# Welcome
 
 You've arrived! The pages that follow contain comprehensive documentation of the Uniswap V2 ecosystem. Briefly, Uniswap is a protocol for exchanging [ERC-20](https://eips.ethereum.org/EIPS/eip-20) tokens on [Ethereum](https://ethereum.org/). It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for **fast**, **efficient** exchange. Where it makes tradeoffs **decentralization**, **censorship resistance**, and **security** are prioritized. Uniswap is open-source software licensed under [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License).
 

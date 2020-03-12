@@ -68,10 +68,7 @@ function findFileNode({ node, getNode }) {
     whileCount += 1
 
     if (whileCount > 100) {
-      console.log(
-        `It looks like you have a node that's set its parent as itself`,
-        fileNode
-      )
+      console.log(`It looks like you have a node that's set its parent as itself`, fileNode)
     }
   }
 
@@ -102,10 +99,7 @@ function createFilePath({ fileNode, trailingSlash = true, roots }) {
     }
 
     const basePath = _ref2
-    const relativePath = path.posix.relative(
-      slash(basePath),
-      slash(fileNode.absolutePath)
-    )
+    const relativePath = path.posix.relative(slash(basePath), slash(fileNode.absolutePath))
 
     if (relativePath.startsWith('..')) {
       continue
@@ -127,10 +121,7 @@ let defaultRoots
 
 function match(node, options = defaultOptions) {
   const type = node.internal.type
-  return (
-    (Array.isArray(options.types) && options.types.indexOf(type) > -1) ||
-    endsWith(type, options.endsWith)
-  )
+  return (Array.isArray(options.types) && options.types.indexOf(type) > -1) || endsWith(type, options.endsWith)
 }
 
 function addSlug({ context: { node, actions, getNode }, options, api }) {
@@ -143,8 +134,7 @@ function addSlug({ context: { node, actions, getNode }, options, api }) {
   options = Object.assign({}, defaultOptions, options)
 
   if (match(node, options)) {
-    const roots =
-      options.roots || defaultRoots || (defaultRoots = getDefaultRoots())
+    const roots = options.roots || defaultRoots || (defaultRoots = getDefaultRoots())
     const fileNode = findFileNode({
       node,
       getNode
@@ -161,6 +151,12 @@ function addSlug({ context: { node, actions, getNode }, options, api }) {
         name: 'slug',
         node,
         value: value.replace(/\d+-/g, ``)
+      })
+      actions.createNodeField({
+        // Name of the field you are adding
+        name: 'rawSlug',
+        node,
+        value: value
       })
     }
   }

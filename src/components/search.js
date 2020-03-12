@@ -19,15 +19,15 @@ const StyledForm = styled.form`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  background-color: ${({ theme }) => theme.colors.grey1};
-  border: 1px solid ${({ theme }) => theme.colors.grey1};
+  color: ${({ theme }) => theme.colors.grey1};
+  /* border: 1px solid ${({ theme }) => theme.colors.grey1}; */
 `
 
 const StyledInput = styled.input`
-  background-color: ${({ theme }) => theme.colors.grey1};
+  /* background-color: ${({ theme }) => theme.colors.grey1}; */
   color: ${({ theme }) => theme.textColor};
   border-radius: 8px;
-  padding: 0.25rem 0.5rem;
+  /* padding: 0.25rem 0.5rem; */
   width: 100%;
   border: none;
   @media (max-width: 960px) {
@@ -92,7 +92,7 @@ const StyledLink = styled(Link)`
 `
 
 const ClearButton = styled.button`
-  opacity: ${({ isActive }) => (isActive ? 1 : 0.2)};
+  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
   background-color: unset;
   border: none;
   display: flex;
@@ -168,7 +168,7 @@ const Search = ({ isV1 }) => {
           autoComplete="off"
           value={query}
           onChange={event => setQuery(event.target.value)}
-          placeholder="Search"
+          placeholder="Search Docs.."
         />
         <ClearButton disabled={query === ''} isActive={query !== '' && query} onClick={() => setQuery('')}>
           <CloseIcon />

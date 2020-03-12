@@ -235,6 +235,7 @@ const SideBar = props => {
   return (
     <StyledSidebar>
       <Search isDocs={isDocs} isV1={isV1} isV2={isDocs && !isV1} />
+
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -246,13 +247,40 @@ const SideBar = props => {
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
       </ListWrapper>
+
       <a
         href="https://docs.uniswap.io/"
         target="_blank"
         rel="noreferrer noopener"
-        style={{ marginTop: '2rem', opacity: 0.8 }}
+        style={{
+          marginTop: '2rem',
+          opacity: 0.8,
+          maxWidth: '190px',
+          fontSize: '.825rem',
+          lineHeight: '125%'
+          // backgroundColor: 'rgba(0,0,0,0.05)',
+          // borderRadius: '8px',
+          // padding: '1rem'
+        }}
       >
-        Uniswap V1 documentation↗
+        V1 Docs
+      </a>
+      <a
+        href="https://docs.uniswap.io/"
+        target="_blank"
+        rel="noreferrer noopener"
+        style={{
+          marginTop: '.5rem',
+          opacity: 0.8,
+          maxWidth: '190px',
+          fontSize: '.825rem',
+          lineHeight: '125%'
+          // backgroundColor: 'rgba(0,0,0,0.05)',
+          // borderRadius: '8px',
+          // padding: '1rem'
+        }}
+      >
+        View on Github
       </a>
     </StyledSidebar>
   )

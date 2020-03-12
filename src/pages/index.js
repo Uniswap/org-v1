@@ -8,7 +8,6 @@ import Layout from '../layouts'
 import SEO from '../components/seo2'
 import { Helmet } from 'react-helmet'
 
-import Card from '../components/card'
 import Marquee from '../components/marquee'
 import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
@@ -56,7 +55,7 @@ const StyledBodyTitle = styled.div`
   font-size: 110px;
   line-height: 90%;
   letter-spacing: -0.06rem;
-  margin-bottom: 2rem;
+  margin: 4rem 0 2rem 0;
   pointer-events: none;
   white-space: wrap;
   overflow-wrap: normal;
@@ -256,9 +255,23 @@ const StyledCircle = styled(Circle)`
   animation: ${rotate} 700s linear infinite;
   opacity: 0.2;
   width: 200;
-  left: 30vw;
-  top: 70vh;
+  right: 10vw;
+  top: 80vh;
   position: 'absolute';
+`
+
+const StyledStar = styled(Star)`
+  margin: 0;
+  max-width: 400px;
+  position: absolute;
+  top: 23%;
+  right: 19%;
+  margin-right: 0.5rem;
+  z-index: 999;
+  opacity: 0.2;
+  path {
+    fill: ${({ theme }) => theme.colors.invertedLink};
+  }
 `
 
 const IndexPage = props => {
@@ -348,6 +361,7 @@ const IndexPage = props => {
         <StyledRed />
         <StyledNoise fluid={data.noise.childImageSharp.fluid} />
         <StyledCircle />
+        <StyledStar />{' '}
       </StyledBG>
       <SEO title="Home" path={props.location.pathname} />
       <Helmet>

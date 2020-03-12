@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 2rem 0;
   width: 100%;
   font-size: 1.125rem;
   z-index: 999;

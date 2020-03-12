@@ -6,6 +6,8 @@ import Layout from '.'
 import SideBar from '../components/sidebar'
 import SEO from '../components/seo2'
 import TableofContents from '../components/toc'
+import Github from '../images/githubicon.inline.svg'
+
 import '../styles/prism-github.css'
 
 const GlobalStyle = createGlobalStyle`
@@ -20,6 +22,7 @@ const StyledDocs = styled.div`
   justify-content: center;
   align-items: flex-start;
   justify-content: space-between;
+  margin-top: 4rem;
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -37,16 +40,17 @@ const StyledMDX = styled.div`
   }
 
   h1 {
-    margin: 1em 0 0.75rem 0;
+    margin: 2em 0 1rem 0;
     font-size: 2rem;
   }
 
   h2 {
-    margin-top: 4rem !important;
+    margin-top: 2rem !important;
     margin-bottom: 1.5rem;
+    font-size: 1.25rem;
   }
 
-  h2:before {
+  /* h1:before {
     top: -32px;
     left: 0;
     width: 100%;
@@ -54,7 +58,7 @@ const StyledMDX = styled.div`
     content: ' ';
     position: absolute;
     background-color: ${({ theme }) => theme.colors.grey2};
-  }
+  } */
 
   code {
     background-color: ${({ theme }) => theme.colors.grey2};
@@ -97,9 +101,46 @@ const StyledLink = styled(Link)`
   }
 `
 
+const StyledPageTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 2rem;
+  align-items: baseline;
+
+  h1 {
+    font-size: 3rem !important;
+    padding-bottom: 0.5rem;
+    margin-top: 0px !important;
+  }
+
+  :after {
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+
+    content: ' ';
+    position: absolute;
+    background-color: ${({ theme }) => theme.colors.grey2};
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.grey6};
+    display: inherit;
+    font-size: 0.825rem;
+  }
+`
+
 const Docs = props => {
   const data = useStaticQuery(graphql`
     {
+      site {
+        siteMetadata {
+          commit
+          repository
+        }
+      }
       allMdx(filter: { fileAbsolutePath: { regex: "/docs/" } }, sort: { order: ASC, fields: fileAbsolutePath }) {
         edges {
           node {
@@ -115,6 +156,7 @@ const Docs = props => {
             fields {
               slug
               subDir
+              rawSlug
             }
           }
           next {
@@ -165,6 +207,30 @@ const Docs = props => {
       <StyledDocs id="docs-header">
         <SideBar parent={'/docs/'} {...props} />
         <StyledMDX>
+          <StyledPageTitle>
+            <h1>{props.pageContext.frontmatter.title}</h1>
+            {data.allMdx.edges
+              .filter(({ node }) => {
+                return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
+              })
+              .map(({ node }) => {
+                return (
+                  <a
+                    key={node.id}
+                    href={
+                      data.site.siteMetadata.repository +
+                      '/tree/' +
+                      data.site.siteMetadata.commit +
+                      '/src/pages' +
+                      node.fields.rawSlug.slice(0, -1) +
+                      '.md'
+                    }
+                  >
+                    <Github style={{ width: '16px', marginRight: '6px' }} /> Edit on Github
+                  </a>
+                )
+              })}
+          </StyledPageTitle>
           {props.children}
           {data.allMdx.edges
             .filter(({ node }) => {

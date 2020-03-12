@@ -178,12 +178,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
-  h1, h2, h3 {
-    font-weight: 700;
+  h1 {
+    font-weight: 400;
     font-family: 'EB Garamond';
     margin-top: 2rem;
   }
-
+  h2, h3{
+    font-weight: 400;
+  }
 
   #gatsby-focus-wrapper{
     min-height: 100vh;
