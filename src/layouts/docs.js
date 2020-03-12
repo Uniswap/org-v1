@@ -106,7 +106,7 @@ const StyledPageTitle = styled.div`
   justify-content: space-between;
   position: relative;
   margin-bottom: 2rem;
-  align-items: baseline;
+  align-items: center;
 
   h1 {
     font-size: 3rem !important;
@@ -122,13 +122,21 @@ const StyledPageTitle = styled.div`
 
     content: ' ';
     position: absolute;
-    background-color: ${({ theme }) => theme.colors.grey2};
+    background-color: ${({ theme }) => theme.colors.grey9};
   }
 
   a {
     color: ${({ theme }) => theme.colors.grey6};
     display: inherit;
     font-size: 0.825rem;
+  }
+`
+
+const StyledGithubIcon = styled(Github)`
+  width: 16px;
+  margin-right: 6px;
+  path {
+    fill: ${({ theme }) => theme.colors.grey9};
   }
 `
 
@@ -226,7 +234,7 @@ const Docs = props => {
                       '.md'
                     }
                   >
-                    <Github style={{ width: '16px', marginRight: '6px' }} /> Edit on Github
+                    <StyledGithubIcon /> Edit on Github
                   </a>
                 )
               })}

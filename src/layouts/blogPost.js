@@ -6,6 +6,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby'
 
 // import { Twitter, Facebook } from 'react-social-sharing'
 import SEO from '../components/seo2'
+
 import '../styles/prism-github.css'
 
 const StyledBlog = styled.div`
@@ -73,6 +74,8 @@ const PostTitle = styled.h1`
   font-size: 4rem;
   font-weight: 800 !important;
   margin-bottom: 2rem;
+  color: ${({ theme }) => theme.colors.link};
+
   /* text-align: center; */
   @media (max-width: 960px) {
     font-size: 3rem;
@@ -132,6 +135,10 @@ const Blog = props => {
         edges {
           node {
             id
+            headings {
+              value
+              depth
+            }
             frontmatter {
               title
             }
@@ -171,6 +178,7 @@ const Blog = props => {
         description={props.pageContext.frontmatter.previewText}
         path={props.location.pathname}
       />
+
       <StyledBlog id="blog-header">
         <PostHeader>
           <PostTitle>{props.pageContext.frontmatter.title}</PostTitle>
@@ -191,6 +199,7 @@ const Blog = props => {
             <Facebook style={{ padding: '0.5em 0.5em' }} solid small link="http://sharingbuttons.io" />
           </div> */}
         </PostHeader>
+
         <StyledMDX>{props.children}</StyledMDX>
         {data.allMdx.edges
           .filter(({ node }) => {

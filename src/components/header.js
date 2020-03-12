@@ -23,7 +23,7 @@ const StyledHeader = styled.header`
   z-index: 999;
   font-weight: 500;
   @media (max-width: 960px) {
-    /* padding: 1rem 0px; */
+    padding: 1rem 0px;
     /* flex-direction: column;
     justify-content: center; */
   }

@@ -16,12 +16,12 @@ const menu = [
         name: 'Unisocks',
         link: 'https://unisocks.exchange/',
         description: 'Dynamically priced Socks'
-      },
-      {
-        name: 'Unipig',
-        link: 'https://unipig.exchange/',
-        description: 'L2 Optimistic rollup demo'
       }
+      // {
+      //   name: 'Unipig',
+      //   link: 'https://unipig.exchange/',
+      //   description: 'L2 Optimistic rollup demo'
+      // }
     ]
   },
   {
@@ -33,15 +33,15 @@ const menu = [
         description: 'Full API, smart contract and integration docs'
       },
       { name: 'Github', link: 'https://github.com/Uniswap' },
-      { name: 'Whitepaper', link: '/docs' },
-      {
-        name: 'Smart Contract ABI',
-        link: '/docs/smart-contract-api/exchange/'
-      },
-      {
-        name: 'Javascript SDK',
-        link: '/docs/SDK-documentation/get-started/'
-      }
+      { name: 'Whitepaper', link: '/docs' }
+      // {
+      //   name: 'Smart Contract ABI',
+      //   link: '/docs/smart-contract-api/exchange/'
+      // },
+      // {
+      //   name: 'Javascript SDK',
+      //   link: '/docs/SDK-documentation/get-started/'
+      // }
     ]
   },
   {

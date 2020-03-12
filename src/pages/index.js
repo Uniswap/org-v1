@@ -1,16 +1,14 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
-
+import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
 
 import Layout from '../layouts'
 import SEO from '../components/seo2'
-import { Helmet } from 'react-helmet'
-
 import Marquee from '../components/marquee'
-import Img from 'gatsby-image'
-import BackgroundImage from 'gatsby-background-image'
+import BG from '../components/bg'
 
 import Circle from '../images/circle.inline.svg'
 import Star from '../images/star.inline.svg'
@@ -26,7 +24,7 @@ const StyledBody = styled.div`
 
 const loadTitle = keyframes`
   from {
-    transform: translateY(10px) ;
+    transform: translateY(-10px) ;
   }
 
   to {
@@ -41,7 +39,7 @@ const StyledTitle = styled.div`
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  animation: ${loadTitle} 0.7s ease;
+  /* animation: ${loadTitle} 0.7s ease; */
   will-change: transform;
   margin: 4rem 0;
   /* margin-top: -150px; */
@@ -70,12 +68,10 @@ const StyledBodyTitle = styled.div`
   @media (max-width: 960px) {
     font-size: 3.5rem;
     line-height: 3.75rem;
-    padding-right: 0rem;
   }
   @media (max-width: 356px) {
     font-size: 2.25rem;
     line-height: 2.5rem;
-    padding-right: 0rem;
   } */
 `
 
@@ -120,7 +116,7 @@ const StyledSectionFlex = styled.div`
   @media (max-width: 1024px) {
     padding: 1rem;
     margin-top: 0rem;
-    /* flex-direction: column; */
+    flex-direction: ${({ wrapSmall }) => (!wrapSmall ? 'row' : 'column')};
   }
   @media (max-width: 960px) {
     padding: 1rem;
@@ -153,14 +149,12 @@ const StyledTradeLink = styled.a`
   }
   @media (max-width: 960px) {
     margin-right: 0.5rem;
-    border-radius: 20px;
     text-align: center;
     /* border: 1px solid ${({ theme }) => theme.colors.pink1}; */
     text-decoration: none;
     /* color: ${({ theme }) => theme.colors.pink1}; */
     /* background-color: rgba(255, 255, 255, 0); */
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1rem;
     padding: 0.5rem 1.25rem;
   }
 `
@@ -182,60 +176,11 @@ const StyledTradeLinkOutlined = styled(Link)`
   }
   @media (max-width: 960px) {
     margin-right: 0.5rem;
-    border-radius: 20px;
     text-align: center;
     text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1rem;
     padding: 0.5rem 1.25rem;
   }
-`
-
-const StyledNoise = styled(BackgroundImage)`
-  width: 100%;
-  height: 100vh;
-  mix-blend-mode: overlay;
-  position: absolute;
-  top: 0px;
-  background-repeat: repeat;
-  left: 0px;
-  width: 100%;
-  background-size: auto;
-  background-position: center;
-`
-
-const fallIn = keyframes`
-  from {
-    transform:translateY(-100vh);
-  }
-
-  to {
-    transform: translateY(-70vh);
-  }
-`
-
-const StyledRed = styled.div`
-  width: 100%;
-  height: 150vh;
-  border-radius: 10vw;
-  background: ${({ theme }) =>
-    `radial-gradient(50% 50% at 50% 50%, ${theme.colors.link} 0%, ${theme.backgroundColor} 100%)`};
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  opacity: 0.2;
-  animation: ${fallIn} 0.3s ease;
-  transform: translateY(-70vh);
-`
-
-const StyledBG = styled.div`
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: ${({ theme }) => theme.backgroundColor};
-  -webkit-transform: translate3d(0, 0, 0);
 `
 
 const rotate = keyframes`
@@ -248,31 +193,31 @@ const rotate = keyframes`
   }
 `
 
-const StyledCircle = styled(Circle)`
-  margin: 0;
-  max-width: 200px;
-  position: absolute;
-  animation: ${rotate} 700s linear infinite;
-  opacity: 0.2;
-  width: 200;
-  right: 10vw;
-  top: 80vh;
-  position: 'absolute';
-`
+// const StyledCircle = styled(Circle)`
+//   margin: 0;
+//   max-width: 200px;
+//   position: absolute;
+//   animation: ${rotate} 700s linear infinite;
+//   opacity: 0.2;
+//   width: 200;
+//   right: 10vw;
+//   top: 80vh;
+//   position: 'absolute';
+// `
 
-const StyledStar = styled(Star)`
-  margin: 0;
-  max-width: 400px;
-  position: absolute;
-  top: 23%;
-  right: 19%;
-  margin-right: 0.5rem;
-  z-index: 999;
-  opacity: 0.2;
-  path {
-    fill: ${({ theme }) => theme.colors.invertedLink};
-  }
-`
+// const StyledStar = styled(Star)`
+//   margin: 0;
+//   max-width: 400px;
+//   position: absolute;
+//   top: 23%;
+//   right: 19%;
+//   margin-right: 0.5rem;
+//   z-index: 999;
+//   opacity: 0.2;
+//   path {
+//     fill: ${({ theme }) => theme.colors.invertedLink};
+//   }
+// `
 
 const IndexPage = props => {
   const data = useStaticQuery(graphql`
@@ -345,28 +290,17 @@ const IndexPage = props => {
           }
         }
       }
-      noise: file(relativePath: { eq: "noise.png" }) {
-        childImageSharp {
-          fluid(quality: 100, maxWidth: 400) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
     }
   `)
 
   return (
     <Layout path={props.location.pathname}>
-      <StyledBG>
-        <StyledRed />
-        <StyledNoise fluid={data.noise.childImageSharp.fluid} />
-        <StyledCircle />
-        <StyledStar />{' '}
-      </StyledBG>
+      <BG />
       <SEO title="Home" path={props.location.pathname} />
       <Helmet>
         <meta name="twitter:image" content={`${data.site.siteMetadata.siteUrl}/images/twitter-card.jpg`} />
       </Helmet>
+      <Marquee />
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated Token Exchange.</StyledBodyTitle>
@@ -395,12 +329,17 @@ const StyledImgSection = styled.div`
   font-size: 20px;
   margin: 1rem 3rem;
   @media (max-width: 960px) {
-    min-width: 0px;
-    max-width: 768px;
+    /* min-width: 0px;
+    max-width: 768px; */
+    width: 100%;
+    margin: 0;
+    p {
+      max-width: 450px;
+    }
   }
   p {
-    line-height: 140%;
-    margin-bottom: rem;
+    line-height: 155%;
+    margin-bottom: 2rem;
     max-width: 410px;
   }
 `
@@ -423,9 +362,9 @@ const MiniNewInfo = styled(Link)`
   }
   @media (max-width: 960px) {
     position: relative;
-    width: 160%;
+    width: 100%;
     height: 100%;
-    margin-top: 4rem;
+    margin: 4rem 0;
   }
 `
 
@@ -447,7 +386,7 @@ const SummarySection = props => {
 
         <p>The protocol aligns developers, market makers to design markets that are open and accessible to all.</p>
 
-        <Link to="/">
+        <Link to="/docs/v2#how-it-all-works">
           <u>Learn More</u>
         </Link>
       </StyledImgSection>
@@ -488,7 +427,7 @@ const StyledCardBG = styled(Img)`
   /* z-index: -1; */
 `
 
-const StyledMiniCardHeader = styled.p`
+const StyledMiniCardHeader = styled.h2`
   color: ${({ theme }) => theme.textColor};
   max-width: 160px;
   font-weight: 600;
@@ -502,7 +441,7 @@ const StyledMiniCardDesc = styled.p`
 
 const ProductsSection = props => {
   return (
-    <StyledSectionFlex>
+    <StyledSectionFlex wrapSmall={false}>
       <StyledMiniCards href="https://uniswap.exchange">
         <StyledMiniCardHeader>
           Uniswap
@@ -529,16 +468,21 @@ const ProductsSection = props => {
 }
 
 const StyledGoal = styled.div`
-  padding: 0.25rem 2rem 2rem 2rem;
-  margin-top: 4rem;
+  /* padding: 0.25rem 2rem 2rem 2rem; */
+  /* margin-top: 4rem; */
   /* background-color: ${({ theme }) => theme.cardBG}; */
   color: ${({ theme }) => theme.colors.link};
   border-radius: 0.5rem;
-  max-width: 650px;
   font-size: 20px;
   h1 {
     font-family: 'EB Garamond';
   }
+  p{
+    line-height: 155%;
+    margin-bottom: 2rem;
+    max-width: 450px;
+  }
+ 
 `
 
 const GoalSection = props => {
@@ -548,13 +492,16 @@ const GoalSection = props => {
         <h1>Mission</h1>
         <p>
           Uniswap is important infrastructure for the emerging crypto economy and enables markets to be created that
-          couldn{"'"}t have existed before. As more assets become tokenized, public blockchains and protocols like
-          Uniswap provide the opportunity to establish a new financial stack that is more efficient, transparent, and
-          equitable than any system in the past.
+          couldn{"'"}t have existed before.
         </p>
-        <div>
+        <p>
+          As more assets become tokenized, public blockchains and protocols like Uniswap provide the opportunity to
+          establish a new financial stack that is more efficient, transparent, and equitable than any system in the
+          past.
+        </p>
+        {/* <div>
           <Link to="/">Read more about how we are working towards this future.</Link>
-        </div>
+        </div> */}
       </StyledGoal>
     </StyledSectionFlex>
   )

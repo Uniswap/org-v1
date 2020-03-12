@@ -17,6 +17,13 @@ const StyledFooter = styled.p`
 `
 
 const Footer = () => {
-  return <StyledFooter>This site is a work in progress. Found an issue? Get in touch.</StyledFooter>
+  return (
+    <StyledFooter>
+      This site is a work in progress. Found an issue?{' '}
+      <a href="https://github.com/Uniswap/uniswap-site-v2/issues">
+        <u>Get in touch.</u>
+      </a>
+    </StyledFooter>
+  )
 }
 export default Footer

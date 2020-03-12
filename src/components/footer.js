@@ -18,13 +18,13 @@ function Dropdown(props) {
 }
 
 const StyledFooter = styled.footer`
-  padding: 4rem 4rem;
+  padding: 4rem 0rem;
   /* margin-bottom: 2rem; */
   margin-top: 4rem;
   display: flex;
   justify-content: space-between;
   /* background-color: ${({ theme }) => theme.colors.grey9}; */
-  color: ${({ theme }) => theme.textColor};
+  color: ${({ theme }) => theme.colors.link};
   @media  (max-width: 960px) {
     flex-direction: column;
     padding: 2rem 1rem;
@@ -83,7 +83,7 @@ const StyledFooterLink = styled.li`
   margin-bottom: 1rem;
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.textColor};
+    color: ${({ theme }) => theme.colors.link};
   }
   :hover {
     a {
@@ -145,14 +145,13 @@ const Footer = () => {
               </a>
             </code>
           </Commit>
-
+          <p>© 2020 Uniswap</p>
           <div>
             <label>
               <input type="checkbox" onChange={() => themeContext.toggleDark()} checked={themeContext.isDark} /> Dark
               mode
             </label>
           </div>
-          <p>© 2020 Uniswap</p>
         </StyledFooterSection>
       </StyledSection>
       <StyledSection>

@@ -24,7 +24,7 @@ const StyledForm = styled.form`
 `
 
 const StyledInput = styled.input`
-  /* background-color: ${({ theme }) => theme.colors.grey1}; */
+  background-color: transparent;
   color: ${({ theme }) => theme.textColor};
   border-radius: 8px;
   /* padding: 0.25rem 0.5rem; */
@@ -34,7 +34,7 @@ const StyledInput = styled.input`
     padding: 0.5rem 0.75rem;
   }
   ::placeholder {
-    color: ${({ theme }) => theme.colors.grey8};
+    color: ${({ theme }) => theme.colors.pink2};
   }
   :focus {
     outline: none;
@@ -171,7 +171,7 @@ const Search = ({ isV1 }) => {
           placeholder="Search Docs.."
         />
         <ClearButton disabled={query === ''} isActive={query !== '' && query} onClick={() => setQuery('')}>
-          <CloseIcon />
+          <CloseIcon style={{ width: '16px' }} />
         </ClearButton>
       </StyledForm>
 

@@ -26,7 +26,7 @@ export const theme = darkMode => ({
   greyText: darkMode ? white : '#6C7284',
 
   // for setting css on <html>
-  backgroundColor: darkMode ? '#000' : '#FFF',
+  backgroundColor: darkMode ? '#010101' : '#FFF',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.4)',
@@ -74,7 +74,7 @@ export const theme = darkMode => ({
     // pink1: darkMode ? '#00FF85' : '#FF007A',
     pink1: darkMode ? '#FF007A' : '#FF007A',
 
-    pink2: '#FFF8FD',
+    pink2: '#FF007A',
 
     yellow1: '#F3BE1E',
     yellow2: '#F7F2E3',
@@ -158,12 +158,12 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.textColor};
 
     @media (max-width: 1024px) {
-        /* padding: 0 1.5rem; */
+        padding: 0 1.5rem;
 
     }
     
     @media (min-width: 1441px) {
-        /* padding: 0 1.5rem; */
+        padding: 0 1.5rem;
         overflow-x: visible;
     }
   }
