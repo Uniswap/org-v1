@@ -85,7 +85,7 @@ const StyledMenuTitle = styled.span`
   border-radius: 0.5rem;
   font-weight: 400;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.link};
+  color: ${({ theme }) => theme.colors.grey9};
   @media (max-width: 960px) {
     margin-bottom: 1rem;
     user-select: none;

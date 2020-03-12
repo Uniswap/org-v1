@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import Menu from './menu'
 
 import Uni from '../images/uni.inline.svg'
-import Wordmark from '../images/wordmark4.inline.svg'
+import Wordmark from '../images/wordmark.inline.svg'
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 
@@ -59,7 +59,7 @@ const StyledNavTitleWrapper = styled.nav`
 const StyledNavTitle = styled(Link)`
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.link};
+  color: ${({ theme }) => theme.colors.grey9};
   margin-left: 0.25rem;
   margin-top: 2px;
   z-index: 999;
@@ -94,7 +94,7 @@ const StyledHomeLink = styled(Link)`
 const MenuToggle = styled.button`
   border: none;
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.link};
+  color: ${({ theme }) => theme.colors.grey9};
   display: none;
   z-index: 9999;
   width: 24px;
@@ -110,10 +110,10 @@ const MenuToggle = styled.button`
 
 const StyledUni = styled(Uni)`
   path {
-    fill: ${({ theme }) => theme.colors.link};
+    fill: ${({ theme }) => theme.colors.grey9};
   }
   margin: 0;
-  width: 24px;
+  width: 30px;
   margin-right: 0.5rem;
   margin-top: -6px;
   transform: rotate(0deg);
@@ -125,12 +125,12 @@ const StyledUni = styled(Uni)`
 
 const StyledWordmark = styled(Wordmark)`
   path {
-    fill: ${({ theme }) => theme.colors.link};
+    fill: ${({ theme }) => theme.colors.grey9};
   }
   margin: 0;
   margin-top: 4px;
   /* height: 23px; */
-  width: 82px;
+  width: 110px;
 `
 
 const StyledCloseIcon = styled(CloseIcon)`
@@ -143,6 +143,18 @@ const StyledMenuIcon = styled(MenuIcon)`
   path {
     stroke: ${({ theme }) => theme.colors.link};
   }
+`
+
+const VersionLabel = styled.p`
+  padding: 0rem 0.5rem;
+  border-radius: 12px;
+  background: ${({ theme }) => theme.colors.grey9};
+  color: ${({ theme }) => theme.invertedTextColor};
+  font-size: 0.75rem;
+  margin: 0;
+  margin-left: 0.5rem;
+  opacity: 0.4;
+  margin-top: 4px;
 `
 
 const Header = props => {
@@ -202,15 +214,18 @@ const Header = props => {
           <StyledWordmark />
         </StyledHomeLink>
         {props.path && props.path !== '/' && props.path !== '' && (
-          <StyledNavTitle
-            to={'/' + props.path.split('/')[1]}
-            style={{
-              textDecoration: `none`,
-              opacity: '0.4'
-            }}
-          >
-            / {props.path.split('/')[1]}
-          </StyledNavTitle>
+          <>
+            <StyledNavTitle
+              to={'/' + props.path.split('/')[1]}
+              style={{
+                textDecoration: `none`,
+                opacity: '0.4'
+              }}
+            >
+              / {props.path.split('/')[1]}
+            </StyledNavTitle>
+            <VersionLabel> {props.path.split('/')[1] == 'docs' && 'V2'}</VersionLabel>
+          </>
         )}
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} onClick={() => updateIsMenuOpen(!isMenuOpen)}>

@@ -372,7 +372,7 @@ const SummarySection = props => {
   return (
     <StyledSectionFlex>
       <StyledImgSection>
-        <MiniNewInfo to="/blog/post-01">
+        <MiniNewInfo to="/blog/Uniswap-v2/">
           <NewPill>V2 Announced</NewPill>Learn what’s new ↗
           <StyledUnicornImage fadeIn={false} fluid={props.data.unicornImage.childImageSharp.fluid} />
         </MiniNewInfo>

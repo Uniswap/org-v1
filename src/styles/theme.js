@@ -185,6 +185,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   h2, h3{
     font-weight: 400;
+    margin-top: 3rem;
   }
 
   #gatsby-focus-wrapper{
