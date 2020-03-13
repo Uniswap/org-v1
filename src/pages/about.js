@@ -3,12 +3,14 @@ import { Link } from 'gatsby'
 
 import Layout from '../layouts'
 import SEO from '../components/seo2'
+import BG from '../components/bg'
 
 const SecondPage = props => (
   <Layout path={props.location.pathname}>
+    <BG />
+
     <SEO title="Page two" path={props.location.pathname} />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
+    <h1>About page coming soon...</h1>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
 )

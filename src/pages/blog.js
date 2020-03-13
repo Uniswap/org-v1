@@ -1,10 +1,10 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
-
-import Layout from '../layouts'
 import Img from 'gatsby-image'
 
+import Layout from '../layouts'
+import BG from '../components/bg'
 import SEO from '../components/seo2'
 
 const PostsWrapper = styled.div`
@@ -144,6 +144,7 @@ const Blog = props => {
 
   return (
     <Layout path={props.location.pathname}>
+      <BG />
       <SEO title="Uniswap Blog" path={props.location.pathname} />
       <h1>Latest Posts</h1>
 
