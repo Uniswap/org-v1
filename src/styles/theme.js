@@ -112,6 +112,12 @@ export const GlobalStyle = createGlobalStyle`
   @supports (font-variation-settings: normal) {
     html { font-family: 'Inter var', sans-serif; }
   }
+
+  @font-face {
+    font-family: "Times Ten LT Std";
+    src: url("/fonts/TimesTenLTStd-Roman.otf");
+  }
+/* 
   @font-face {
     font-family: "Principal Trial Semibold";
     src: url("/fonts/Principal-Trial-Semibold.otf");
@@ -119,7 +125,7 @@ export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "Principal Trial Black";
     src: url("/fonts/Principal-Trial-Black.otf");
-  }
+  } */
 
 
   *, *:before, *:after {
@@ -180,11 +186,13 @@ export const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-weight: 400;
-    font-family: 'EB Garamond';
+    font-family: 'Times Ten LT Std', 'Times New Roman', serif;
     margin-top: 2rem;
   }
   h2, h3{
     font-weight: 400;
+    /* font-family: 'Times Ten LT Std'; */
+
     margin-top: 3rem;
   }
 

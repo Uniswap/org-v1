@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Moment from 'react-moment'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 
-// import { Twitter, Facebook } from 'react-social-sharing'
+import BG from '../components/bg'
 import SEO from '../components/seo2'
 
 import '../styles/prism-github.css'
@@ -170,6 +170,8 @@ const Blog = props => {
 
   return (
     <Layout path={props.location.pathname}>
+      <BG />
+
       {/* <SEO title={pageContext.frontmatter.title} path={path} /> */}
       <SEO
         title={props.pageContext.frontmatter.title}

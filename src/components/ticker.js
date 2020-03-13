@@ -9,7 +9,7 @@ const moveHorizonatally = () => keyframes`
 100% { transform: translateX(-50%); }
 `
 
-const MarqueeWrapper = styled.div`
+const MarqueeWrapper = styled.a`
   position: fixed;
   z-index: 99;
   bottom: 0px;
@@ -18,7 +18,7 @@ const MarqueeWrapper = styled.div`
   flex-direction: row;
   flex-wrap: no-wrap;
   animation: ${props => moveHorizonatally(props)} ${props => props.time}s linear infinite;
-  font-size: 3vh;
+  font-size: 1rem;
 
   :hover {
     animation-play-state: paused;
@@ -28,19 +28,18 @@ const MarqueeWrapper = styled.div`
 const Stats = styled.div`
   color: ${({ theme }) => theme.invertedTextColor};
   background-color: black;
-  padding: 0rem 0.75rem;
+  padding: 0rem 0.5rem;
   background-color: ${({ theme }) => theme.marqueeBG};
   align-items: center;
   text-transform: uppercase;
   letter-spacing: -0.03rem;
   white-space: pre;
-  font-weight: 200;
+  font-weight: 300;
   transform: translateX(0%);
 `
 
 const NP = styled.span`
-  /* font-variant-numeric: tabular-nums; */
-  font-weight: 400;
+  font-weight: 500;
 `
 
 const AnimatingEl = props => {
@@ -169,57 +168,12 @@ export default function Ticker() {
   }, [UniStats.ETHprice])
 
   return loading || error ? (
-    <MarqueeWrapper ref={node} />
+    <MarqueeWrapper href="https://uniswap.info" ref={node} />
   ) : (
-    <MarqueeWrapper ref={node} time={500}>
+    <MarqueeWrapper href="https://uniswap.info" ref={node} time={100}>
       {Array.from({ length: totalElements }).map((_, idx) => {
         return <AnimatingEl stat={UniStats.key((idx % 4) + 1)} key={idx} />
       })}
     </MarqueeWrapper>
   )
-}
-
-{
-  /* <Stats time={70}>
-        <p>
-          <NP>{UniStats.volume}</NP> {' 24h Volume'}
-        </p>
-        <p>
-          <NP>{UniStats.liquidity}</NP> {' Total Liquidity'}
-        </p>
-        <p>
-          <NP>{UniStats.exchanges}</NP> {' Total Exchanges'}
-        </p>
-        <p>
-          <NP>{UniStats.ETHprice}</NP> {' Uniswap ETH Price'}
-        </p>
-      </Stats>
-      <Stats time={70}>
-        <p>
-          <NP>{UniStats.volume}</NP> {' 24h Volume'}
-        </p>
-        <p>
-          <NP>{UniStats.liquidity}</NP> {' Total Liquidity'}
-        </p>
-        <p>
-          <NP>{UniStats.exchanges}</NP> {' Total Exchanges'}
-        </p>
-        <p>
-          <NP>{UniStats.ETHprice}</NP> {' Uniswap ETH Price'}
-        </p>
-      </Stats>
-      <Stats time={70}>
-        <p>
-          <NP>{UniStats.volume}</NP> {' 24h Volume'}
-        </p>
-        <p>
-          <NP>{UniStats.liquidity}</NP> {' Total Liquidity'}
-        </p>
-        <p>
-          <NP>{UniStats.exchanges}</NP> {' Total Exchanges'}
-        </p>
-        <p>
-          <NP>{UniStats.ETHprice}</NP> {' Uniswap ETH Price'}
-        </p>
-      </Stats> */
 }

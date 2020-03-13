@@ -12,7 +12,6 @@ import Footer from '../components/footer'
 import Beta from '../components/beta'
 import Mdx from '../components/mdx'
 import { StyledThemeProvider } from '../styles/themeManager'
-import BG from '../components/bg'
 
 import '../styles/layout.css'
 import '../styles/prism-github.css'
@@ -32,7 +31,6 @@ const Layout = ({ path, children }) => {
   return (
     <>
       <StyledThemeProvider>
-        <BG />
         <Header path={path} siteTitle={data.site.siteMetadata.title} />
         <Mdx>{children}</Mdx>
         <Footer />

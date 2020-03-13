@@ -43,14 +43,11 @@ const StyledTitle = styled.div`
   /* mix-blend-mode: overlay; */
 `
 
-const StyledBodyTitle = styled.div`
-  font-family: 'Bembo Book MT Pro', 'EB Garamond', serif;
+const StyledBodyTitle = styled.h1`
   color: ${({ theme }) => theme.colors.link};
   font-weight: 400;
-  font-size: 110px;
-  line-height: 90%;
-  letter-spacing: -0.06rem;
-  margin: 4rem 0 2rem 0;
+  font-size: 96px;
+  margin: 4rem 0 3rem 0;
   pointer-events: none;
   white-space: wrap;
   overflow-wrap: normal;
@@ -121,7 +118,6 @@ const StyledSectionFlex = styled.div`
     flex-direction: column;
   }
   h2 {
-    font-family: 'Principal Trial Semibold';
     margin-bottom: 0.5rem;
   }
   p {
@@ -224,27 +220,6 @@ const IndexPage = props => {
           }
         }
       }
-      code: file(relativePath: { eq: "code.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      whitepaper: file(relativePath: { eq: "whitepaper.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      github: file(relativePath: { eq: "github.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       swap: file(relativePath: { eq: "swap.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
@@ -260,13 +235,6 @@ const IndexPage = props => {
         }
       }
       socks: file(relativePath: { eq: "socks.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      line: file(relativePath: { eq: "sq.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
