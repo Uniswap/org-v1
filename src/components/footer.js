@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import { ThemeManagerContext } from '../styles/themeManager'
-import Uni from '../images/uni.inline.svg'
+// import Uni from '../images/uni.inline.svg'
 
 function Dropdown(props) {
   const items = props.links.map(node => {
@@ -100,17 +100,17 @@ const StyledFooterLink = styled.li`
   }
 `
 
-const StyledUni = styled(Uni)`
-  path {
-    fill: ${({ theme }) => theme.textColor};
-  }
-  margin-bottom: 3rem;
-  transform: rotate(0deg);
-  transition: transform 0.2s linear;
-  :hover {
-    transform: rotate(-10deg);
-  }
-`
+// const StyledUni = styled(Uni)`
+//   path {
+//     fill: ${({ theme }) => theme.textColor};
+//   }
+//   margin-bottom: 3rem;
+//   transform: rotate(0deg);
+//   transition: transform 0.2s linear;
+//   :hover {
+//     transform: rotate(-10deg);
+//   }
+// `
 
 const Commit = styled.div``
 

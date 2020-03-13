@@ -1,17 +1,15 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import scrollTo from 'gatsby-plugin-smoothscroll'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql, Link } from 'gatsby'
+
 import Img from 'gatsby-image'
 
 import Layout from '../layouts'
 import SEO from '../components/seo2'
 import Marquee from '../components/marquee'
 import BG from '../components/bg'
-
-import Circle from '../images/circle.inline.svg'
-import Star from '../images/star.inline.svg'
+import Ticker from '../components/ticker'
 
 const StyledBody = styled.div`
   font-size: 18px;
@@ -75,15 +73,15 @@ const StyledBodyTitle = styled.div`
   } */
 `
 
-const loadInfo = keyframes`
-  from {
-    transform: rotate(-4.5deg) scale(0.97) translateY(10px) ;
-  }
+// const loadInfo = keyframes`
+//   from {
+//     transform: rotate(-4.5deg) scale(0.97) translateY(10px) ;
+//   }
 
-  to {
-    transform: rotate(-4deg) scale(0.98) translateY(0px);
-  }
-`
+//   to {
+//     transform: rotate(-4deg) scale(0.98) translateY(0px);
+//   }
+// `
 
 const StyledUnicornImage = styled(Img)`
   width: 100%;
@@ -183,15 +181,15 @@ const StyledTradeLinkOutlined = styled(Link)`
   }
 `
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
+// const rotate = keyframes`
+//   from {
+//     transform: rotate(0deg);
+//   }
 
-  to {
-    transform: rotate(9000deg);
-  }
-`
+//   to {
+//     transform: rotate(9000deg);
+//   }
+// `
 
 // const StyledCircle = styled(Circle)`
 //   margin: 0;

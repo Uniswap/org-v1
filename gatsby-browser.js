@@ -1,3 +1,4 @@
+export { wrapRootElement } from './src/apollo/wrapper'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 
 export function onRouteUpdate({ location }) {

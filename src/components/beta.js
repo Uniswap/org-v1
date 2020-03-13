@@ -1,9 +1,5 @@
-import { Link } from 'gatsby'
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
-import { ThemeManagerContext } from '../styles/themeManager'
-import Uni from '../images/uni.inline.svg'
 
 const StyledFooter = styled.p`
   position: fixed;

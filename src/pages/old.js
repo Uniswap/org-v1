@@ -9,7 +9,6 @@ import SEO from '../components/seo2'
 import { Helmet } from 'react-helmet'
 
 import Card from '../components/card'
-import Marquee from '../components/marquee'
 import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
 
@@ -333,7 +332,6 @@ const StyledBG = styled.div`
   left: 0;
   width: 100%;
   background-color: ${({ theme }) => theme.backgroundColor};
-  -webkit-transform: translate3d(0, 0, 0);
 `
 
 const IndexPage = props => {
@@ -529,7 +527,7 @@ const StyledGoal = styled.div`
   }
 `
 
-const GoalSection = props => {
+const GoalSection = () => {
   return (
     <StyledGoal>
       <h2>Our goal</h2>
