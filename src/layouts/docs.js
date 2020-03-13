@@ -122,7 +122,7 @@ const StyledPageTitle = styled.div`
 
     content: ' ';
     position: absolute;
-    background-color: ${({ theme }) => theme.colors.grey9};
+    background-color: ${({ theme }) => theme.textColor};
   }
 
   a {

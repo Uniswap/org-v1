@@ -25,6 +25,14 @@ pre[class*='language-'] {
   /* font-size: 85%; */
 }
 
+/* p em {
+  font-style: italic;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  font-size: 0.75rem;
+} */
+
 p code,
 li code,
 table code {

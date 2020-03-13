@@ -243,6 +243,13 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
+        <StyledLink
+          isActive={props.path === '/docs/v2/'}
+          style={{ marginBottom: '.75rem', display: 'inline-block', padding: '0px' }}
+          to={'/docs/'}
+        >
+          {'Intro'}
+        </StyledLink>
         {navData.edges.map(({ node }) => (
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
@@ -263,9 +270,9 @@ const SideBar = props => {
           // padding: '1rem'
         }}
       >
-        V1 Docs
+        View on Github
       </a>
-      {/* <a
+      <a
         href="https://docs.uniswap.io/"
         target="_blank"
         rel="noreferrer noopener"
@@ -280,8 +287,8 @@ const SideBar = props => {
           // padding: '1rem'
         }}
       >
-        View on Github
-      </a> */}
+        V1 Documentation
+      </a>
     </StyledSidebar>
   )
 }

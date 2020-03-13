@@ -18,7 +18,6 @@ export const StyledThemeProvider = props => {
     const toggledTheme = !isDark
     setIsDark(toggledTheme)
     localStorage.setItem('dark', JSON.stringify(toggledTheme))
-    console.log(theme(isDark))
   }
 
   useLayoutEffect(() => {

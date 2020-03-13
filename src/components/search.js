@@ -34,7 +34,7 @@ const StyledInput = styled.input`
     padding: 0.5rem 0.75rem;
   }
   ::placeholder {
-    color: ${({ theme }) => theme.colors.pink2};
+    color: ${({ theme }) => theme.colors.link};
   }
   :focus {
     outline: none;

@@ -74,7 +74,6 @@ const PostTitle = styled.h1`
   font-size: 4rem;
   font-weight: 800 !important;
   margin-bottom: 2rem;
-  color: ${({ theme }) => theme.colors.link};
 
   /* text-align: center; */
   @media (max-width: 960px) {
