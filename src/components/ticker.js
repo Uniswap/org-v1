@@ -1,23 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import gql from 'graphql-tag'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 import { useQuery } from '@apollo/react-hooks'
 import styled, { keyframes } from 'styled-components'
 
-const APOLLO_QUERY = gql`
-  {
-    uniswap(id: "1") {
-      totalVolumeUSD
-      totalLiquidityUSD
-      exchangeCount
-    }
-
-    exchanges(where: { tokenAddress: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48" }) {
-      price
-    }
-  }
-`
-
-const moveHorizonatally = props => keyframes`
+const moveHorizonatally = () => keyframes`
 100% { transform: translateX(-50%); }
 `
 
@@ -60,14 +48,55 @@ const AnimatingEl = props => {
 
   return (
     <Stats ref={ref}>
-      <NP>{props.stat[0]}</NP>
-      {props.stat[1]}
+      <NP>{props.stat && props.stat[0]}</NP>
+      {props.stat && props.stat[1]}
     </Stats>
   )
 }
 
+const APOLLO_QUERY = gql`
+  {
+    uniswap(id: "1") {
+      totalVolumeUSD
+      totalLiquidityUSD
+      exchangeCount
+    }
+
+    usdcPrice: exchanges(where: { tokenAddress: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48" }) {
+      price
+    }
+
+    daiPrice: exchanges(where: { tokenAddress: "0x6b175474e89094c44da98b954eedeac495271d0f" }) {
+      price
+    }
+  }
+`
+export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = gql`
+  query uniswapHistoricalDatas($date: Int!) {
+    uniswapHistoricalDatas(where: { timestamp_lt: $date }, first: 1, orderBy: timestamp, orderDirection: desc) {
+      totalVolumeUSD
+      totalLiquidityUSD
+    }
+  }
+`
+
 export default function Ticker() {
-  const { loading, error, data } = useQuery(APOLLO_QUERY)
+  //setup time constants
+  dayjs.extend(utc)
+  const utcCurrentTime = dayjs()
+  const utcOneDayBack = utcCurrentTime.subtract(1, 'day')
+
+  const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 500 })
+
+  const { loading: loadingHistoric, error: errorHistoric, data: dataHistorical } = useQuery(
+    UNISWAP_GLOBALS_24HOURS_AGO_QUERY,
+    {
+      variables: {
+        date: utcOneDayBack.unix()
+      }
+    }
+  )
+
   const node = useRef()
   const [totalElements, setTotalElements] = useState(20)
 
@@ -81,10 +110,11 @@ export default function Ticker() {
     if (window.innerWidth > node.current.offsetWidth) {
       setTotalElements(totalElements + 1)
     }
-    console.log(totalElements, node.current.offsetWidth)
   }, [totalElements, setTotalElements])
 
-  if (!loading && !error) {
+  if (!loading && !error && !loadingHistoric && !errorHistoric) {
+    const volume24Hour = data.uniswap.totalVolumeUSD - dataHistorical.uniswapHistoricalDatas[0].totalVolumeUSD
+
     UniStats.volume = [
       new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -92,7 +122,7 @@ export default function Ticker() {
         notation: 'compact',
         compactDisplay: 'short',
         maximumSignificantDigits: 5
-      }).format(data.uniswap.totalVolumeUSD),
+      }).format(volume24Hour),
       ' 24h Volume'
     ]
     UniStats.liquidity = [
@@ -106,6 +136,14 @@ export default function Ticker() {
       ' Total Liquidity'
     ]
     UniStats.exchanges = [Number.parseFloat(data.uniswap.exchangeCount), ' Total Exchanges']
+
+    let averagePrice = 0
+    const usdcPrice = data && data.usdcPrice && data.usdcPrice[0].price
+    const daiPrice = data && data.daiPrice && data.daiPrice[0].price
+    if (usdcPrice && daiPrice) {
+      averagePrice = (parseFloat(usdcPrice) + parseFloat(daiPrice)) / 2
+    }
+
     UniStats.ETHprice = [
       new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -113,10 +151,22 @@ export default function Ticker() {
         notation: 'compact',
         compactDisplay: 'short',
         maximumSignificantDigits: 5
-      }).format(data.exchanges[0].price),
+      }).format(averagePrice),
       ' Uni ETH Price'
     ]
   }
+
+  useEffect(() => {
+    /**
+     *
+     * could trigger some animation here on, we know the price changed
+     *
+     * usually the price change is so small that it actualy
+     * doesnt display the display amount, so many we'd want to
+     * detect a price percent change
+     *
+     */
+  }, [UniStats.ETHprice])
 
   return loading || error ? (
     <MarqueeWrapper ref={node} />
