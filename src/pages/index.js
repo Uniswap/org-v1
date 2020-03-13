@@ -7,7 +7,7 @@ import Img from 'gatsby-image'
 
 import Layout from '../layouts'
 import SEO from '../components/seo2'
-import Marquee from '../components/marquee'
+import Ticker from '../components/ticker'
 import BG from '../components/bg'
 
 const StyledBody = styled.div`
@@ -278,12 +278,12 @@ const IndexPage = props => {
 
   return (
     <Layout path={props.location.pathname}>
+      <Ticker />
       <BG />
       <SEO title="Home" path={props.location.pathname} />
       <Helmet>
         <meta name="twitter:image" content={`${data.site.siteMetadata.siteUrl}/images/twitter-card.jpg`} />
       </Helmet>
-      <Marquee />
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated Token Exchange.</StyledBodyTitle>
@@ -292,10 +292,6 @@ const IndexPage = props => {
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
           </span>
         </StyledTitle>
-        {/* <NewInfo to="/blog/post-01">
-          <NewPill>V2 Announced</NewPill>Learn what’s new ↗
-          <StyledUnicornImage fadeIn={false} fluid={data.unicornImage.childImageSharp.fluid} />
-        </NewInfo> */}
         <SummarySection data={data} />
         <GoalSection />
         <ProductsSection data={data} />

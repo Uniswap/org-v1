@@ -57,6 +57,7 @@
     "react": "^16.8",
     "react-dom": "^16.8",
     "react-helmet": "^5.2.1",
+    "react-intersection-observer": "^8.26.1",
     "react-moment": "^0.9.7",
     "react-use-clipboard": "1.0.0",
     "remark": "^11.0.2",
