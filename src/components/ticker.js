@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks'
 import styled, { keyframes } from 'styled-components'
 
 const APOLLO_QUERY = gql`
-  {
+  query {
     uniswap(id: "1") {
       totalVolumeUSD
       totalLiquidityUSD
@@ -17,7 +17,7 @@ const APOLLO_QUERY = gql`
   }
 `
 
-const moveHorizonatally = props => keyframes`
+const moveHorizonatally = () => keyframes`
 100% { transform: translateX(-50%); }
 `
 
