@@ -9,7 +9,6 @@ import Layout from '../layouts'
 import SEO from '../components/seo2'
 import Marquee from '../components/marquee'
 import BG from '../components/bg'
-import Ticker from '../components/ticker'
 
 const StyledBody = styled.div`
   font-size: 18px;
@@ -203,20 +202,6 @@ const StyledTradeLinkOutlined = styled(Link)`
 //   position: 'absolute';
 // `
 
-const StyledStar = styled(Star)`
-  margin: 0;
-  max-width: 400px;
-  position: absolute;
-  top: 3%;
-  right: 19%;
-  margin-right: 0.5rem;
-  z-index: 999;
-  opacity: 0.2;
-  path {
-    fill: ${({ theme }) => theme.colors.invertedLink};
-  }
-`
-
 const IndexPage = props => {
   const data = useStaticQuery(graphql`
     {
@@ -370,7 +355,7 @@ const SummarySection = props => {
   return (
     <StyledSectionFlex>
       <StyledImgSection>
-        <MiniNewInfo to="/blog/Uniswap-v2/">
+        <MiniNewInfo to="/blog/uniswap-v2/">
           <NewPill>V2 Announced</NewPill>Learn what’s new ↗
           <StyledUnicornImage fadeIn={false} fluid={props.data.unicornImage.childImageSharp.fluid} />
         </MiniNewInfo>
@@ -484,7 +469,7 @@ const StyledGoal = styled.div`
  
 `
 
-const GoalSection = props => {
+const GoalSection = () => {
   return (
     <StyledSectionFlex>
       <StyledGoal>
