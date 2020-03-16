@@ -4,7 +4,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '.'
 import SideBar from '../components/sidebar'
-import SEO from '../components/seo2'
+import SEO from '../components/seo'
 import TableofContents from '../components/toc'
 import Github from '../images/githubicon.inline.svg'
 

@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 
 import Layout from '../layouts'
 import BG from '../components/bg'
-import SEO from '../components/seo2'
+import SEO from '../components/seo'
 
 const PostsWrapper = styled.div`
   color: ${({ theme }) => theme.textColor};

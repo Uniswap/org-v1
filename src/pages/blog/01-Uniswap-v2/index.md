@@ -31,7 +31,7 @@ For full details check out the:
 - [Periphery smart contracts](https://github.com/Uniswap/uniswap-v2-periphery)
 - Uniswap V2 Whitepaper
 
-## ERC20 / ERC20 Pairs
+# ERC20 / ERC20 Pairs
 
 In Uniswap V1, all trading pairs are between ETH and a single ERC20 token. Having a single common pair provides a nice UX advantage — you can swap any ERC20 for any other ERC20 by routing through ETH.
 
@@ -47,15 +47,15 @@ Having direct ERC20/ERC20 pools for highly-desirable pairs can lead to **better 
 
 We still anticipate ETH pairs being very popular, but expect to see significant growth in stablecoin-based pairs over time.
 
-## Price Oracles
+# Price Oracles
 
 _Robust on-chain price feeds using historical TWAPs_
 
-### Theoretical Background
+## Theoretical Background
 
 If the relative price of two assets on Uniswap is ever mismatched with the price on an external market, there exists a profitable arbitrage trade that will bring the two prices into alignment. This creates a financial incentive for the price on Uniswap to very closely track that of other exchanges. We have seen this play out in practice.[ Sophisticated arbitrageurs constantly monitor Uniswap and capitalize on any price discrepancies](http://frontrun.me/revenue/). For a longer theoretical background, I recommend[ this paper](https://arxiv.org/abs/1911.03380).
 
-### Improving Uniswap as an Oracle
+## Improving Uniswap as an Oracle
 
 On-chain price feeds are a critical component for many decentralized financial applications including derivatives, lending, margin trading, prediction markets and more. Unfortunately, Uniswap V1 is not safe to use as a price oracle, because it is very easy to manipulate the price for a short period of time.
 
@@ -94,13 +94,13 @@ There are some nuances that are good to be aware of when using Uniswap V2 as an 
 
 In the meantime, check out our[ example implementation](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/Oracle.sol) of a 24 hr TWAP Oracle built on Uniswap V2!
 
-## Flash Swaps
+# Flash Swaps
 
 _Try before you buy!_
 
 The composability of open financial protocols on Ethereum allows anyone to build a new financial application without needing to start from scratch. Uniswap is the “exchange lego” that takes in one token and spits out another. It can be combined with a “lending lego” to quickly spin up a new margin trading platform. The more legos we have the better the structures we can build. Flash swaps were created with this in mind.
 
-### Arbitrage no upfront capital
+## Arbitrage no upfront capital
 
 You find yourself in an unfortunate situation. You notice a cross-dex arbitrage opportunity. You could sell 200 DAI for 1 ETH on Uniswap and then sell that 1 ETH on Oasis for 220 DAI at a 20 DAI profit. But you don’t have any DAI in your wallet.
 
@@ -130,7 +130,7 @@ With flash swaps this process is simplified to:
 
 If Uniswap is not paid back, the entire transaction will revert.
 
-## Core-Helper Architecture (IN PROGRESS)
+# Core-Helper Architecture (IN PROGRESS)
 
 _More flexible smart contract structure_
 
@@ -158,7 +158,7 @@ Periphery Functionality
 - Enforce the security of traders through minimum return amounts,
 - Handle all token routing
 
-## Technical Improvements (IN PROGRESS)
+# Technical Improvements (IN PROGRESS)
 
 _We changed a lot_
 
@@ -175,7 +175,7 @@ Uniswap V2 contains many other signifiant changes and improvements.
 - Explicit Boundary conditions
 - Use WETH instead of ETH in core contract. Swaps directly from ETH are still possible through a router.
 
-## Path to Sustainability
+# Path to Sustainability
 
 _TLDR: A small hardcoded fee that is set to 0 but can be turned on in the future_
 
@@ -214,7 +214,7 @@ A few notes:
 
 For more details please refer to the technical whitepaper or code.
 
-## **Future Improvements / Outro (IN PROGRESS)**
+# **Future Improvements / Outro (IN PROGRESS)**
 
 - Dynamic fees
 - External Oracles

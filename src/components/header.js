@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { useMediaQuery } from '@react-hook/media-query'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
@@ -20,12 +20,11 @@ const StyledHeader = styled.header`
   padding: 2rem 0;
   width: 100%;
   font-size: 1.125rem;
-  z-index: 999;
+  z-index: 3;
   font-weight: 500;
   @media (max-width: 960px) {
     padding: 1rem 0px;
-    /* flex-direction: column;
-    justify-content: center; */
+    height: ${({ open }) => (open ? '100vh' : '100%')};
   }
 `
 
@@ -37,14 +36,15 @@ const StyledNav = styled.nav`
   @media (max-width: 960px) {
     position: fixed;
     top: 0px;
-    right: ${({ open }) => (open ? '0px' : '-375px')};
-    flex-direction: column;
+    right: ${({ open }) => (open ? '0px' : '-100%')};
+    /* flex-direction: column; */
     align-items: flex-start;
-    height: 100vh;
+    flex-wrap: wrap;
+    -webkit-overflow-scrolling: touch;
     background-color: ${({ theme }) => theme.colors.grey1};
-    z-index: 9998;
     width: 100%;
-    max-width: 375px;
+    height: 100%;
+    z-index: 999;
     padding: 2rem;
     overflow: scroll;
     box-shadow: ${({ theme }) => theme.shadows.huge};
@@ -100,11 +100,15 @@ const MenuToggle = styled.button`
   width: 24px;
   height: 24px;
   padding: 0px;
+
   :focus {
     outline: none;
   }
   @media (max-width: 960px) {
     display: initial;
+    position: ${({ open }) => (open ? 'fixed' : 'relative')};
+    right: ${({ open }) => (open ? '1.5rem' : 'initial')};
+    top: ${({ open }) => (open ? '1.5rem' : 'initial')};
   }
 `
 
@@ -158,7 +162,7 @@ const VersionLabel = styled.p`
 `
 
 const Header = props => {
-  const matches = useMediaQuery('only screen and (max-width: 960px)')
+  const matches = useMediaQuery('only screen and (max-width: 1024px)')
   const node = useRef()
   const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
@@ -181,6 +185,18 @@ const Header = props => {
     }
   `)
 
+  useLayoutEffect(() => {
+    // Get original body overflow
+    const originalStyle = window.getComputedStyle(document.body).overflow
+    // Prevent scrolling on mount
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.maxHeight = '-webkit-fill-available'
+    }
+    // Re-enable scrolling when component unmounts
+    return () => (document.body.style.overflow = originalStyle)
+  }, [isMenuOpen]) // Empty array ensures effect is only run on mount and unmount
+
   useEffect(() => {
     const handleClickOutside = e => {
       if (node.current.contains(e.target) || button.current.contains(e.target)) {
@@ -197,7 +213,7 @@ const Header = props => {
   }, [isMenuOpen, updateIsMenuOpen, matches])
 
   return (
-    <StyledHeader>
+    <StyledHeader open={isMenuOpen}>
       <StyledNavTitleWrapper>
         <StyledHomeLink
           to="/"
@@ -228,7 +244,7 @@ const Header = props => {
           </>
         )}
       </StyledNavTitleWrapper>
-      <MenuToggle ref={button} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
+      <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
       </MenuToggle>
       <StyledNav ref={node} open={isMenuOpen}>

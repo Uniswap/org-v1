@@ -6,7 +6,7 @@ import TableofContents from '../components/toc'
 import styled from 'styled-components'
 
 import { useStaticQuery, graphql } from 'gatsby'
-import SEO from '../components/seo2'
+import SEO from '../components/seo'
 import '../styles/prism-github.css'
 
 const path = '/guides/'

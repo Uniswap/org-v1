@@ -1,94 +1,78 @@
-import * as React from 'react'
+/**
+ * SEO component that queries for data with
+ *  Gatsby's useStaticQuery React hook
+ *
+ * See: https://www.gatsbyjs.org/docs/use-static-query/
+ */
+
+import React from 'react'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ path, description, ogImageProp, lang = 'en', keywords = [], title, site }) {
-  const data = useStaticQuery(graphql`
-    query DefaultSEOQuery {
-      site {
-        siteMetadata {
-          title
-          description
-          author
-          siteUrl
+function SEO({ description, lang, title, path }) {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            siteUrl
+            title
+            description
+            author
+          }
         }
       }
-    }
-  `)
+    `
+  )
 
-  const metaDescription = description || data.site.siteMetadata.description
-  const metaTitle = title || data.site.siteMetadata.title
-  const author = data.site.siteMetadata.author
-  const metaSite = site || data.site.siteMetadata.title
-  const ogImage = `${data.site.siteMetadata.siteUrl}${path ? path : '/'}twitter-card.jpg`
+  const metaDescription = description || site.siteMetadata.description
 
   return (
     <Helmet
       htmlAttributes={{
         lang
       }}
-      title={metaTitle}
-      titleTemplate={`%s | ${metaSite}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription
-        },
-        {
-          property: `og:title`,
-          content: title
-        },
-        {
-          property: `og:description`,
-          content: metaDescription
-        },
-        {
-          property: `og:type`,
-          content: `website`
-        },
-        {
-          name: `og:image`,
-          content: ogImage
-        },
-        {
-          name: `image`,
-          property: `og:image`,
-          content: ogImage
-        },
-        {
-          name: `author`,
-          content: author
-        },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`
-        },
-        {
-          name: `twitter:creator`,
-          content: author
-        },
-        {
-          name: `twitter:title`,
-          content: title
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription
-        },
-        {
-          name: `twitter:image`,
-          content: ogImage
-        }
-      ].concat(
-        keywords.length > 0
-          ? {
-              content: keywords.join(`, `),
-              name: `keywords`
-            }
-          : []
-      )}
-    />
+      title={title}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
+    >
+      <meta charSet="utf-8" />
+      <html lang="en" />
+      <meta name="title" content={title} />
+      <meta name="description" content={metaDescription} />
+      <meta name="keywords" content={title}></meta>
+
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content={'website'} />
+      <meta property="og:url" content={site.siteMetadata.siteUrl + path} />
+      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/'}twitter-card.jpg`} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content="@UniswapExchange"></meta>
+      <meta name="twitter:title" content={title}></meta>
+      <meta name="twitter:description" content={metaDescription}></meta>
+      <meta name="twitter:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/'}twitter-card.jpg`}></meta>
+
+      <meta name="twitter:site" content="@UniswapExchange" />
+      <meta name="twitter:url" content={site.siteMetadata.siteUrl + path} />
+
+      <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+    </Helmet>
   )
+}
+
+SEO.defaultProps = {
+  lang: `en`,
+  meta: [],
+  description: ``
+}
+
+SEO.propTypes = {
+  description: PropTypes.string,
+  lang: PropTypes.string,
+  meta: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string.isRequired
 }
 
 export default SEO
