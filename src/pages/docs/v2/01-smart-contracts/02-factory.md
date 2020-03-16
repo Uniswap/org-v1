@@ -10,7 +10,7 @@ import { Link } from "gatsby"
 
 # Address
 
-The `UniswapV2Factory` contract is deployed at `...` on the Ethereum mainnet, and the Ropsten, Rinkeby, Görli, and Kovan testnets.
+`UniswapV2Factory` is deployed at `0xE9DFfc628C6933f2c74356430099bD7639F25D5C` on the [Ropsten](https://ropsten.etherscan.io/address/0xe9dffc628c6933f2c74356430099bd7639f25d5c), [Rinkeby](https://rinkeby.etherscan.io/address/0xe9dffc628c6933f2c74356430099bd7639f25d5c), [Görli](https://goerli.etherscan.io/address/0xe9dffc628c6933f2c74356430099bd7639f25d5c), and [Kovan](https://kovan.etherscan.io/address/0xe9dffc628c6933f2c74356430099bd7639f25d5c) testnets.
 
 # Read-Only Functions
 
