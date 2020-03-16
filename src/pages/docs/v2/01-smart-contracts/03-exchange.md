@@ -22,9 +22,7 @@ See <Link to='/docs/v2/technical-considerations/exchange-addresses'>Exchange Add
 function MINIMUM_LIQUIDITY() external pure returns (uint);
 ```
 
-Returns `1000` for all exchanges.
-
-- See <Link to='/docs/v2/smart-contracts/architecture/#minimum-liquidity'>Minimum Liquidity</Link>.
+Returns `1000` for all exchanges. See <Link to='/docs/v2/smart-contracts/architecture/#minimum-liquidity'>Minimum Liquidity</Link>.
 
 ## factory
 
@@ -56,9 +54,7 @@ Returns the address of the pair token with the higher sort order.
 function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
 ```
 
-The reserves of token0 and token1 used to price trades and distribute liquidity. Updated after every contract interaction.
-
-- See <Link to='/docs/v2/smart-contracts/architecture/#pricing'>Pricing</Link>.
+The reserves of token0 and token1 used to price trades and distribute liquidity. See <Link to='/docs/v2/smart-contracts/architecture/#pricing'>Pricing</Link>.
 
 ## price0CumulativeLast
 
@@ -66,7 +62,7 @@ The reserves of token0 and token1 used to price trades and distribute liquidity.
 function price0CumulativeLast() external view returns (uint);
 ```
 
-- See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
+See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
 
 ## price1CumulativeLast
 
@@ -74,7 +70,7 @@ function price0CumulativeLast() external view returns (uint);
 function price1CumulativeLast() external view returns (uint);
 ```
 
-- See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
+See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
 
 ## kLast
 
@@ -82,9 +78,7 @@ function price1CumulativeLast() external view returns (uint);
 function kLast() external view returns (uint);
 ```
 
-Stores the product of the reserves as of the most recent liquidity event. Only updated if the protocol charge is active, and only then during [mint](#mint) and [burn](#burn).
-
-- See <Link to='/docs/v2/smart-contracts/architecture/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
+Stores the product of the reserves as of the most recent liquidity event. See <Link to='/docs/v2/smart-contracts/architecture/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
 
 # State-Changing Functions
 
@@ -114,10 +108,9 @@ Destroys pool tokens.
 function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
 ```
 
-Swaps tokens.
+Swaps tokens. For regular swaps, `data.length` must be `0`. Also see <Link to='/docs/v2/technical-considerations/flash-swaps'>Flash Swaps</Link>.
 
-- See <Link to='/docs/v2/technical-considerations/flash-swaps'>Flash Swaps</Link>.
-- Emits [Burn](#burn-1), [Sync](#sync-1).
+- Emits [Swap](#swap-1), [Sync](#sync-1).
 
 ## skim
 

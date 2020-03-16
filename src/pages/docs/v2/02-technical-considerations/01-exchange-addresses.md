@@ -8,7 +8,7 @@ import { Link } from "gatsby"
 
 The most obvious way to get the exchange address for a pair is to call <Link to='/docs/v2/smart-contracts/factory/#getexchange'>getExchange</Link> on the factory. If the exchange exists, this function will return its address, else `address(0)` (`0x0000000000000000000000000000000000000000`).
 
-- The simplest way to determine whether or not an exchange exists on-chain or not.
+- The "canonical" way to determine whether or not an exchange exists.
 - Requires an on-chain lookup.
 
 # CREATE2
@@ -31,7 +31,7 @@ Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswa
 ### Solidity
 
 ```solidity
-address factory = 0xF231A51299c872040C002f3E1918D806F951Efcb;
+address factory = 0xE9DFfc628C6933f2c74356430099bD7639F25D5C;
 address token0 = 0xCAFE000000000000000000000000000000000000; // change me!
 address token1 = 0xc0FFee0000000000000000000000000000000000; // change me!
 
@@ -49,7 +49,7 @@ address exchange = address(uint(keccak256(abi.encodePacked(
 import { pack, keccak256 } from '@ethersproject/solidity'
 import { getCreate2Address } from '@ethersproject/address'
 
-const factory = '0xF231A51299c872040C002f3E1918D806F951Efcb'
+const factory = '0xE9DFfc628C6933f2c74356430099bD7639F25D5C'
 const token0 = '0xCAFE000000000000000000000000000000000000' // change me!
 const token1 = '0xc0FFee0000000000000000000000000000000000' // change me!
 
