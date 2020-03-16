@@ -31,7 +31,7 @@ export const theme = darkMode => ({
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.4)',
   menuBG: darkMode ? 'rgba(10,10,10, 0.8)' : 'rgba(255, 255, 255, 0.6)',
-  marqueeBG: darkMode ? '#00FF85' : '#191B1F',
+  marqueeBG: darkMode ? '#010101' : '#010101',
 
   inputBackground: darkMode ? '#202124' : white,
   placeholderGray: darkMode ? '#5F5F5F' : '#E1E1E1',
@@ -169,7 +169,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     @media (min-width: 1441px) {
-        padding: 0 1.5rem;
+        padding: 0;
         overflow-x: visible;
     }
   }

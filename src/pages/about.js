@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import Layout from '../layouts'
-import SEO from '../components/seo2'
+import SEO from '../components/seo'
 import BG from '../components/bg'
 
 const SecondPage = props => (

@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/react-hooks'
 import styled, { keyframes } from 'styled-components'
 
 const moveHorizontally = () => keyframes`
-100% { transform: translateX(-50%); }
+100% { transform: translateX(-100%); }
 `
 
 const MarqueeWrapper = styled.a`
@@ -15,18 +15,25 @@ const MarqueeWrapper = styled.a`
   bottom: 0px;
   left: 0px;
   display: flex;
+  max-width: 150vw;
   flex-direction: row;
   flex-wrap: no-wrap;
+  transform: translateX(-50%);
   animation: ${props => moveHorizontally(props)} ${props => props.time}s linear infinite;
   font-size: 1rem;
+
+  @media (max-width: 960px) {
+    max-width: 100vw;
+    animation: ${props => moveHorizontally(props)} 10s linear infinite;
+  }
 
   :hover {
     animation-play-state: paused;
   }
 `
 
-const Stats = styled.div`
-  color: ${({ theme }) => theme.invertedTextColor};
+const Stats = styled.span`
+  color: ${({ theme }) => theme.colors.white};
   background-color: black;
   padding: 0rem 0.5rem;
   background-color: ${({ theme }) => theme.marqueeBG};
@@ -84,8 +91,9 @@ export default function Ticker() {
   dayjs.extend(utc)
   const utcCurrentTime = dayjs()
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day')
+  const [initialized, updateInitialized] = useState(false)
 
-  const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 500 })
+  const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 1000 })
 
   const { loading: loadingHistoric, error: errorHistoric, data: dataHistorical } = useQuery(
     UNISWAP_GLOBALS_24HOURS_AGO_QUERY,
@@ -97,19 +105,13 @@ export default function Ticker() {
   )
 
   const node = useRef()
-  const [totalElements, setTotalElements] = useState(20)
+  const [totalElements, setTotalElements] = useState(2)
 
   let UniStats = {
     key: function(n) {
       return this[Object.keys(this)[n]]
     }
   }
-
-  useEffect(() => {
-    if (window.innerWidth > node.current.offsetWidth) {
-      setTotalElements(totalElements + 1)
-    }
-  }, [totalElements, setTotalElements])
 
   if (!loading && !error && !loadingHistoric && !errorHistoric) {
     const volume24Hour = data.uniswap.totalVolumeUSD - dataHistorical.uniswapHistoricalDatas[0].totalVolumeUSD
@@ -119,8 +121,8 @@ export default function Ticker() {
         style: 'currency',
         currency: 'USD',
         notation: 'compact',
-        compactDisplay: 'short',
-        maximumSignificantDigits: 5
+        compactDisplay: 'short'
+        // maximumSignificantDigits: 5
       }).format(volume24Hour),
       ' 24h Volume'
     ]
@@ -129,8 +131,8 @@ export default function Ticker() {
         style: 'currency',
         currency: 'USD',
         notation: 'compact',
-        compactDisplay: 'short',
-        maximumSignificantDigits: 5
+        compactDisplay: 'short'
+        // maximumSignificantDigits: 5
       }).format(data.uniswap.totalLiquidityUSD),
       ' Total Liquidity'
     ]
@@ -156,6 +158,16 @@ export default function Ticker() {
   }
 
   useEffect(() => {
+    !loading && updateInitialized(true)
+  }, [loading])
+
+  useEffect(() => {
+    if (window.innerWidth > node.current.offsetWidth) {
+      setTotalElements(totalElements + 1)
+    }
+  }, [totalElements, setTotalElements])
+
+  useEffect(() => {
     /**
      *
      * could trigger some animation here on, we know the price changed
@@ -167,7 +179,7 @@ export default function Ticker() {
      */
   }, [UniStats.ETHprice])
 
-  return loading || error ? (
+  return (loading && !initialized) || error ? (
     <MarqueeWrapper href="https://uniswap.info" ref={node} />
   ) : (
     <MarqueeWrapper href="https://uniswap.info" ref={node} time={100}>

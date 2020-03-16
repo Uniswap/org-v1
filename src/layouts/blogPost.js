@@ -5,7 +5,7 @@ import Moment from 'react-moment'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 
 import BG from '../components/bg'
-import SEO from '../components/seo2'
+import SEO from '../components/seo'
 
 import '../styles/prism-github.css'
 

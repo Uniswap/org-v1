@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from 'react'
 import { Link } from 'gatsby'
 
 import styled from 'styled-components'
@@ -25,7 +25,6 @@ const StyledMenu = styled.button`
   text-align: left;
   list-style: none;
   padding-right: 2rem;
-  z-index: 9999;
   background: none;
   @media (max-width: 960px) {
     font-size: 1.5rem;
@@ -33,7 +32,7 @@ const StyledMenu = styled.button`
     flex-direction: column;
     align-items: flex-start;
     padding: 0;
-    padding-bottom: 2rem;
+    /* height: 100%; */
   }
 
   :hover {
@@ -59,6 +58,7 @@ const MenuFlyout = styled.span`
   flex-direction: column;
   position: absolute;
   top: 3rem;
+  left: -1rem;
   min-width: 196px;
   padding: 1rem 1rem 0.75rem 1rem;
   border-radius: 12px;
@@ -66,14 +66,16 @@ const MenuFlyout = styled.span`
   backdrop-filter: blur(20px);
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.04);
+  z-index: 4;
 
   @media (max-width: 960px) {
     font-size: 1rem;
-    position: relative;
+    position: initial;
     box-shadow: none;
+    top: unset;
+    left: unset;
     padding: 0;
-    top: 0;
-    left: 0;
+    margin-top: 1rem;
     backdrop-filter: 'none';
     background-color: rgba(255, 255, 255, 0);
   }
@@ -148,6 +150,17 @@ const StyledDescription = styled.p`
     padding: 0;
   }
 `
+
+// function useLockBodyScroll() {
+//   useLayoutEffect(() => {
+//     // Get original body overflow
+//     const originalStyle = window.getComputedStyle(document.body).overflow
+//     // Prevent scrolling on mount
+//     document.body.style.overflow = 'hidden'
+//     // Re-enable scrolling when component unmounts
+//     return () => (document.body.style.overflow = originalStyle)
+//   }, []) // Empty array ensures effect is only run on mount and unmount
+// }
 
 export default function Menu(props) {
   const matches = useMediaQuery('only screen and (max-width: 960px)')

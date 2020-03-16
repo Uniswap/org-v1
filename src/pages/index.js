@@ -6,7 +6,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import Layout from '../layouts'
-import SEO from '../components/seo2'
+import SEO from '../components/seo'
 import Ticker from '../components/ticker'
 import BG from '../components/bg'
 
@@ -19,28 +19,16 @@ const StyledBody = styled.div`
   align-items: center;
 `
 
-const loadTitle = keyframes`
-  from {
-    transform: translateY(-10px) ;
-  }
-
-  to {
-    transform: translateY(0px);
-  }
-`
-
 const StyledTitle = styled.div`
   display: flex;
-  /* width: 60%;
-  max-width: 730px; */
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  /* animation: ${loadTitle} 0.7s ease; */
   will-change: transform;
   margin: 4rem 0;
-  /* margin-top: -150px; */
-  /* mix-blend-mode: overlay; */
+  @media (max-width: 960px) {
+    margin: 3rem 0 1rem 0;
+  }
 `
 
 const StyledBodyTitle = styled.h1`
@@ -52,52 +40,33 @@ const StyledBodyTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 800px;
-
   text-align: center;
   letter-spacing: -0.03em;
-  /* @media (min-width: 1441px) {
-    font-size: 5.5vw;
-    line-height: 5.25vw;
-  }
+
   @media (max-width: 960px) {
-    font-size: 3.5rem;
-    line-height: 3.75rem;
+    width: 100%;
+    font-size: 4rem;
+    line-height: 4.5rem;
+    margin: 2rem 0 2rem 0;
   }
   @media (max-width: 356px) {
+    width: 100%;
     font-size: 2.25rem;
     line-height: 2.5rem;
-  } */
+  }
 `
-
-// const loadInfo = keyframes`
-//   from {
-//     transform: rotate(-4.5deg) scale(0.97) translateY(10px) ;
-//   }
-
-//   to {
-//     transform: rotate(-4deg) scale(0.98) translateY(0px);
-//   }
-// `
 
 const StyledUnicornImage = styled(Img)`
   width: 100%;
   height: 100%;
+  min-width: 450px;
   background-color: none;
   margin-top: 1rem;
   border-radius: 12px;
   box-shadow: ${({ theme }) => theme.shadows.huge};
-`
-
-const NewPill = styled.span`
-  float: left;
-  color: ${({ theme }) => theme.invertedTextColor};
-  background-color: ${({ theme }) => theme.textColor};
-  padding: 0rem 0.75rem;
-  border-radius: 0.5em;
-  text-align: center;
-  margin: 0;
-  margin-right: 1rem;
-  font-size: 16px;
+  @media (max-width: 960px) {
+    min-width: unset;
+  }
 `
 
 const StyledSectionFlex = styled.div`
@@ -143,10 +112,7 @@ const StyledTradeLink = styled.a`
   @media (max-width: 960px) {
     margin-right: 0.5rem;
     text-align: center;
-    /* border: 1px solid ${({ theme }) => theme.colors.pink1}; */
     text-decoration: none;
-    /* color: ${({ theme }) => theme.colors.pink1}; */
-    /* background-color: rgba(255, 255, 255, 0); */
     font-size: 1rem;
     padding: 0.5rem 1.25rem;
   }
@@ -175,28 +141,6 @@ const StyledTradeLinkOutlined = styled(Link)`
     padding: 0.5rem 1.25rem;
   }
 `
-
-// const rotate = keyframes`
-//   from {
-//     transform: rotate(0deg);
-//   }
-
-//   to {
-//     transform: rotate(9000deg);
-//   }
-// `
-
-// const StyledCircle = styled(Circle)`
-//   margin: 0;
-//   max-width: 200px;
-//   position: absolute;
-//   animation: ${rotate} 700s linear infinite;
-//   opacity: 0.2;
-//   width: 200;
-//   right: 10vw;
-//   top: 80vh;
-//   position: 'absolute';
-// `
 
 const IndexPage = props => {
   const data = useStaticQuery(graphql`
@@ -276,8 +220,6 @@ const StyledImgSection = styled.div`
   font-size: 20px;
   margin: 1rem 3rem;
   @media (max-width: 960px) {
-    /* min-width: 0px;
-    max-width: 768px; */
     width: 100%;
     margin: 0;
     p {
@@ -296,7 +238,7 @@ const MiniNewInfo = styled(Link)`
   font-size: 16px;
   color: ${({ theme }) => theme.textColor};
   display: inline-block;
-  width: 450px;
+  /* width: 450px; */
   height: 600px;
 
   transition: transform 0.3s ease;
@@ -307,11 +249,31 @@ const MiniNewInfo = styled(Link)`
   a {
     color: ${({ theme }) => theme.textColor};
   }
+
   @media (max-width: 960px) {
     position: relative;
+    max-width: 410px;
     width: 100%;
     height: 100%;
     margin: 4rem 0;
+  }
+`
+
+const NewPill = styled.span`
+  float: left;
+  color: ${({ theme }) => theme.invertedTextColor};
+  background-color: ${({ theme }) => theme.textColor};
+  padding: 0rem 0.75rem;
+  border-radius: 0.5em;
+  text-align: center;
+  margin: 0;
+  margin-right: 1rem;
+  font-size: 16px;
+`
+
+const LinkTitle = styled.span`
+  @media (max-width: 960px) {
+    display: none;
   }
 `
 
@@ -320,7 +282,10 @@ const SummarySection = props => {
     <StyledSectionFlex>
       <StyledImgSection>
         <MiniNewInfo to="/blog/uniswap-v2/">
-          <NewPill>V2 Announced</NewPill>Learn what’s new ↗
+          <NewPill>
+            V2 <LinkTitle>Announced</LinkTitle>
+          </NewPill>
+          Learn what’s new ↗
           <StyledUnicornImage fadeIn={false} fluid={props.data.unicornImage.childImageSharp.fluid} />
         </MiniNewInfo>
       </StyledImgSection>
@@ -334,7 +299,7 @@ const SummarySection = props => {
         <p>The protocol aligns developers, market makers to design markets that are open and accessible to all.</p>
 
         <Link to="/docs/v2#how-it-all-works">
-          <u>Learn More</u>
+          <u>How it works</u>
         </Link>
       </StyledImgSection>
     </StyledSectionFlex>
@@ -429,6 +394,12 @@ const StyledGoal = styled.div`
     line-height: 155%;
     margin-bottom: 2rem;
     max-width: 450px;
+  }
+  @media (max-width: 960px) {
+    margin-top: 2rem;
+    p {
+      max-width: 410px;
+    }
   }
  
 `
