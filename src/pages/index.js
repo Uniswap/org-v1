@@ -33,15 +33,17 @@ const StyledTitle = styled.div`
 
 const StyledBodyTitle = styled.h1`
   color: ${({ theme }) => theme.colors.link};
-  font-weight: 400;
+  font-weight: 600;
   font-size: 96px;
   margin: 4rem 0 3rem 0;
   pointer-events: none;
   white-space: wrap;
   overflow-wrap: normal;
-  max-width: 800px;
+  max-width: 900px;
   text-align: center;
-  letter-spacing: -0.03em;
+  font-family: 'Times Ten LT Std', 'Times New Roman', serif;
+
+  /* letter-spacing: -0.03em; */
 
   @media (max-width: 960px) {
     width: 100%;
@@ -198,7 +200,7 @@ const IndexPage = props => {
       </Helmet>
       <StyledBody>
         <StyledTitle>
-          <StyledBodyTitle>Automated Token Exchange.</StyledBodyTitle>
+          <StyledBodyTitle>Automated Exchange Protocol.</StyledBodyTitle>
           <span>
             <StyledTradeLink href="https://uniswap.exchange/">Trade Now</StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
@@ -387,9 +389,6 @@ const StyledGoal = styled.div`
   color: ${({ theme }) => theme.colors.link};
   border-radius: 0.5rem;
   font-size: 20px;
-  h1 {
-    font-family: 'EB Garamond';
-  }
   p{
     line-height: 155%;
     margin-bottom: 2rem;

@@ -39,16 +39,7 @@ const StyledMDX = styled.div`
     color: ${({ theme }) => theme.colors.link};
   }
 
-  h1 {
-    margin: 2em 0 1rem 0;
-    font-size: 2rem;
-  }
 
-  h2 {
-    margin-top: 2rem !important;
-    margin-bottom: 1.5rem;
-    font-size: 1.25rem;
-  }
 
   /* h1:before {
     top: -32px;
@@ -105,16 +96,16 @@ const StyledPageTitle = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  margin-bottom: 2rem;
   align-items: center;
 
   h1 {
-    font-size: 3rem !important;
-    padding-bottom: 0.5rem;
+    font-size: 2.5rem !important;
+    /* margin: 2.5em 0 1rem 0; */
     margin-top: 0px !important;
+    font-family: 'Times Ten LT Std', 'Times New Roman', serif;
   }
 
-  :after {
+  /* :after {
     bottom: 0px;
     left: 0;
     width: 100%;
@@ -122,8 +113,9 @@ const StyledPageTitle = styled.div`
 
     content: ' ';
     position: absolute;
-    background-color: ${({ theme }) => theme.textColor};
-  }
+    background-color: ${({ theme }) => theme.colors.grey9};
+    opacity: 0.2;
+  } */
 
   a {
     color: ${({ theme }) => theme.colors.grey6};
@@ -138,6 +130,17 @@ const StyledGithubIcon = styled(Github)`
   path {
     fill: ${({ theme }) => theme.colors.grey9};
   }
+
+  :before {
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+
+    content: ' ';
+    position: absolute;
+    background-color: ${({ theme }) => theme.colors.grey9};
+    opacity: 0.2;
 `
 
 const Docs = props => {
@@ -217,29 +220,29 @@ const Docs = props => {
         <StyledMDX>
           <StyledPageTitle>
             <h1>{props.pageContext.frontmatter.title}</h1>
-            {data.allMdx.edges
-              .filter(({ node }) => {
-                return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
-              })
-              .map(({ node }) => {
-                return (
-                  <a
-                    key={node.id}
-                    href={
-                      data.site.siteMetadata.repository +
-                      '/tree/' +
-                      data.site.siteMetadata.commit +
-                      '/src/pages' +
-                      node.fields.rawSlug.slice(0, -1) +
-                      '.md'
-                    }
-                  >
-                    <StyledGithubIcon /> Edit on Github
-                  </a>
-                )
-              })}
           </StyledPageTitle>
           {props.children}
+          {data.allMdx.edges
+            .filter(({ node }) => {
+              return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
+            })
+            .map(({ node }) => {
+              return (
+                <a
+                  key={node.id}
+                  href={
+                    data.site.siteMetadata.repository +
+                    '/tree/' +
+                    data.site.siteMetadata.commit +
+                    '/src/pages' +
+                    node.fields.rawSlug.slice(0, -1) +
+                    '.md'
+                  }
+                >
+                  <StyledGithubIcon /> Edit on Github
+                </a>
+              )
+            })}
           {data.allMdx.edges
             .filter(({ node }) => {
               return node.fields.slug === props.path

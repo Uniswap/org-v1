@@ -49,7 +49,7 @@ const StyledTOC = styled.ul`
   max-height: 70vh;
   font-size: 0.75rem;
   margin: 0 4rem;
-  opacity: 0.2;
+  opacity: 0.6;
   transition: opacity 0.3s ease;
   list-style: none;
   text-decoration: none;

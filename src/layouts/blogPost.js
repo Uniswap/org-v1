@@ -26,10 +26,6 @@ const StyledMDX = styled.div`
     color: ${({ theme }) => theme.colors.link};
   }
 
-  h1 {
-    margin-bottom: 2rem;
-    font-size: 2rem;
-  }
   figcaption {
     padding: 0.25rem;
     font-style: italic;
@@ -39,6 +35,17 @@ const StyledMDX = styled.div`
   @media (max-width: 960px) {
     min-width: 100%;
     max-width: 100%;
+  }
+
+  h1 {
+    margin-top: 4rem;
+  }
+  h2 {
+    margin-top: 2rem;
+  }
+  blockquote h1 {
+    margin-top: unset;
+    font-style: italic;
   }
 `
 
@@ -50,7 +57,7 @@ const PostHeader = styled.div`
   text-align: center;
   min-width: 550px;
   max-width: 650px;
-  padding: 8rem 0;
+  padding: 8rem 0 5rem 0;
   @media (max-width: 960px) {
     min-width: 100%;
     max-width: 100%;
@@ -61,9 +68,11 @@ const PostMetaData = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
-  color: ${({ theme }) => theme.colors.grey6};
+  /* font-size: .75rem */
+  
+  /* color: ${({ theme }) => theme.colors.grey6}; */
   width: 100%;
   @media (max-width: 960px) {
     flex-direction: column;
@@ -72,8 +81,10 @@ const PostMetaData = styled.div`
 
 const PostTitle = styled.h1`
   font-size: 4rem;
-  font-weight: 800 !important;
-  margin-bottom: 2rem;
+  font-weight: 600 !important;
+  margin-bottom: 1rem;
+  /* letter-spacing: 0.04rem; */
+  font-family: 'Times Ten LT Std', 'Times New Roman', serif;
 
   /* text-align: center; */
   @media (max-width: 960px) {

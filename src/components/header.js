@@ -60,8 +60,8 @@ const StyledNavTitle = styled(Link)`
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.link};
-  margin-left: 0.25rem;
-  margin-top: 2px;
+  margin-left: 0.35rem;
+  margin-top: 8px;
   z-index: 999;
   vertical-align: bottom;
 `
@@ -117,9 +117,10 @@ const StyledUni = styled(Uni)`
     fill: ${({ theme }) => theme.colors.link};
   }
   margin: 0;
-  width: 30px;
-  margin-right: 0.5rem;
-  margin-top: -6px;
+  width: 36px;
+  /* height: 36px; */
+  margin-right: 0.75rem;
+  margin-top: -5px;
   transform: rotate(0deg);
   transition: transform 0.2s linear;
   :hover {
@@ -156,9 +157,9 @@ const VersionLabel = styled.p`
   color: ${({ theme }) => theme.invertedTextColor};
   font-size: 0.75rem;
   margin: 0;
-  margin-left: 0.5rem;
+  margin-left: 0.75rem;
   opacity: 0.4;
-  margin-top: 4px;
+  margin-top: 8px;
 `
 
 const Header = props => {

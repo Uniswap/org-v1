@@ -30,10 +30,10 @@ const Posts = styled.div`
   border: 1px solid ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)};
 
   :hover {
-    transform: scale(1);
+    transform: scale(1.02);
   }
 
-  transform: scale(0.99);
+  transform: scale(1);
   transition: transform 0.25s ease;
 
   a {
@@ -58,6 +58,9 @@ const PostLinkWrapper = styled(Link)`
 
 const PostTitleWrapper = styled.div`
   min-width: 150px;
+  h1 {
+    font-family: 'Times Ten LT Std', 'Times New Roman', serif;
+  }
 `
 
 const PostMetaData = styled.p`
@@ -155,7 +158,7 @@ const Blog = props => {
               <PostLinkWrapper to={node.fields.slug}>
                 {index === 0 && <NewPill>New</NewPill>}
                 <PostTitleWrapper>
-                  <h1>{node.frontmatter.title}</h1>
+                  <h1 style={{ marginTop: '0px' }}>{node.frontmatter.title}</h1>
 
                   {node.frontmatter.previewText ? <p>{node.frontmatter.previewText} </p> : ''}
 

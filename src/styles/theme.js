@@ -185,15 +185,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-weight: 400;
-    font-family: 'Times Ten LT Std', 'Times New Roman', serif;
-    margin-top: 2rem;
+    /* margin: 2.5em 0 1rem 0; */
+    font-size: 1.75rem;
+    font-weight: 300;
   }
-  h2, h3{
-    font-weight: 400;
-    /* font-family: 'Times Ten LT Std'; */
 
-    margin-top: 3rem;
+  h2 {
+    /* margin: 2.5em 0 1rem 0 !important; */
+    font-size: 1.5rem;
+    font-weight: 300;
   }
 
   #gatsby-focus-wrapper{

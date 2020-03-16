@@ -8,9 +8,9 @@ previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much muc
 
 # Introduction
 
-**Uniswap V1 **was the proof-of-concept for a new type of decentralized exchange protocol.
+Uniswap V1 was the proof-of-concept for a new type of decentralized exchange protocol.
 
-Combining automated market-making with on-chain liquidity pools on Ethereum allows Uniswap to function without maintenance, providing an unstoppable and fully decentralized exchange. **Uniswap V1 will work for as long as Ethereum exists**, and so far it has worked very nicely for a wide variety of use cases.
+Combining automated market-making with on-chain liquidity pools on Ethereum allows Uniswap to function without maintenance, providing an unstoppable and fully decentralized exchange. Uniswap V1 will work for as long as Ethereum exists, and so far it has worked very nicely for a wide variety of use cases.
 
 ![Uniswap V1 Liquidity Growth](https://cdn-images-1.medium.com/max/4004/1*-pykU7ahDEhYb9DUPB70YA.png)_Uniswap V1 Liquidity Growth_
 
