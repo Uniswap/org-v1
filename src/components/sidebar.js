@@ -24,6 +24,7 @@ const StyledSidebar = styled.div`
     position: relative;
     padding: 0rem;
     width: 100%;
+    margin-bottom: 1rem;
   }
 `
 
@@ -86,8 +87,22 @@ const StyledMobileMenu = styled.div`
   }
 `
 
+const StaticLink = styled.a`
+  margin-top: 2rem;
+  opacity: 0.8;
+  max-width: 190px;
+  font-size: 825rem;
+  line-height: 125%;
+  @media (max-width: 960px) {
+    display: none;
+  }
+`
+
 const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
+  @media (max-width: 960px) {
+    margin-bottom: 1rem;
+  }
 `
 
 const CollapsibleList = ({ node, listData, path, parent }) => {
@@ -245,7 +260,7 @@ const SideBar = props => {
       <ListWrapper open={isMenuOpen && matches}>
         <StyledLink
           isActive={props.path === '/docs/v2/'}
-          style={{ marginBottom: '.75rem', display: 'inline-block', padding: props.path !== '/docs/v2/' && '0px' }}
+          style={{ marginBottom: '.25rem', display: 'inline-block', padding: props.path !== '/docs/v2/' && '0px' }}
           to={'/docs/v2/'}
         >
           Intro
@@ -255,23 +270,9 @@ const SideBar = props => {
         ))}
       </ListWrapper>
 
-      <a
-        href="https://docs.uniswap.io/"
-        target="_blank"
-        rel="noreferrer noopener"
-        style={{
-          marginTop: '2rem',
-          opacity: 0.8,
-          maxWidth: '190px',
-          fontSize: '.825rem',
-          lineHeight: '125%'
-          // backgroundColor: 'rgba(0,0,0,0.05)',
-          // borderRadius: '8px',
-          // padding: '1rem'
-        }}
-      >
+      <StaticLink href="https://docs.uniswap.io/" target="_blank" rel="noreferrer noopener">
         V1 Documentation
-      </a>
+      </StaticLink>
     </StyledSidebar>
   )
 }

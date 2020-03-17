@@ -27,6 +27,7 @@ const StyledDocs = styled.div`
 
   @media (max-width: 960px) {
     flex-direction: column;
+    margin-top: 0rem;
   }
 `
 

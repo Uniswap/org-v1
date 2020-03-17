@@ -159,7 +159,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.75;
     max-width: 1440px;
     width: 100vw;
-    padding: 0 3rem;
+    padding: 0 2rem;
     margin: 0px auto;
     color: ${({ theme }) => theme.textColor};
 

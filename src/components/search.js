@@ -9,6 +9,7 @@ const SearchWrapper = styled.div`
   position: relative;
   width: 100%;
   @media (max-width: 960px) {
+    display: none;
     form {
       margin-bottom: 0px;
     }

@@ -41,7 +41,7 @@ const StyledBodyTitle = styled.h1`
   overflow-wrap: normal;
   max-width: 900px;
   text-align: center;
-  font-family: 'Times New Roman', serif;
+  font-family: 'Times Ten LT Std', 'Times New Roman', serif;
 
   /* letter-spacing: -0.03em; */
 
@@ -51,10 +51,12 @@ const StyledBodyTitle = styled.h1`
     line-height: 4.5rem;
     margin: 2rem 0 2rem 0;
   }
-  @media (max-width: 356px) {
+  @media (max-width: 375px) {
     width: 100%;
     font-size: 2.25rem;
     line-height: 2.5rem;
+    margin: 2rem 0 4rem 0;
+    font-weight: 400;
   }
 `
 
@@ -115,8 +117,8 @@ const StyledTradeLink = styled.a`
     margin-right: 0.5rem;
     text-align: center;
     text-decoration: none;
-    font-size: 1rem;
-    padding: 0.5rem 1.25rem;
+    font-size: 0.825rem;
+    padding: 0.25rem 1rem;
   }
 `
 
@@ -139,8 +141,8 @@ const StyledTradeLinkOutlined = styled(Link)`
     margin-right: 0.5rem;
     text-align: center;
     text-decoration: none;
-    font-size: 1rem;
-    padding: 0.5rem 1.25rem;
+    font-size: 0.825rem;
+    padding: 0.25rem 1rem;
   }
 `
 
@@ -207,8 +209,9 @@ const IndexPage = props => {
           </span>
         </StyledTitle>
         <SummarySection data={data} />
-        <GoalSection />
+
         <ProductsSection data={data} />
+        <GoalSection />
       </StyledBody>
     </Layout>
   )
@@ -341,7 +344,7 @@ const StyledCardBG = styled(Img)`
   /* z-index: -1; */
 `
 
-const StyledMiniCardHeader = styled.h1`
+const StyledMiniCardHeader = styled.h2`
   color: ${({ theme }) => theme.textColor};
   max-width: 160px;
   line-height: 120%;
@@ -356,29 +359,37 @@ const StyledMiniCardDesc = styled.p`
 
 const ProductsSection = props => {
   return (
-    <StyledSectionFlex wrapSmall={false}>
-      <StyledMiniCards href="https://uniswap.exchange">
-        <StyledMiniCardHeader>
-          Uniswap
-          <br /> Exchange
-          <StyledCardBG fluid={props.data.swap.childImageSharp.fluid} />
-        </StyledMiniCardHeader>
-        <StyledMiniCardDesc>Trade tokens, add liquidity and create exchanges.</StyledMiniCardDesc>
-      </StyledMiniCards>
-      <StyledMiniCards href="https://uniswap.info" style={{ backgroundColor: '#F3BE1E' }}>
-        <StyledCardBG fluid={props.data.info.childImageSharp.fluid} />
-        <StyledMiniCardHeader>
-          Uniswap <br />
-          Info{' '}
-        </StyledMiniCardHeader>
-        <StyledMiniCardDesc>In depth Uniswap protocol market data.</StyledMiniCardDesc>
-      </StyledMiniCards>
-      <StyledMiniCards href="https://unisocks.exchange" style={{ backgroundColor: '#000000', color: 'white' }}>
-        <StyledCardBG fluid={props.data.socks.childImageSharp.fluid} />
-        <StyledMiniCardHeader style={{ color: 'white' }}>Unisocks</StyledMiniCardHeader>
-        <StyledMiniCardDesc>Experimental speculative fashion.</StyledMiniCardDesc>
-      </StyledMiniCards>
-    </StyledSectionFlex>
+    <>
+      <StyledSectionFlex style={{ paddingBottom: '0px' }}>
+        <StyledGoal style={{ width: '100%', maxWidth: '410px;' }}>
+          <h1>Products</h1>
+          <p>We build open tools and experimental products that interact with the Uniswap protocol.</p>
+        </StyledGoal>
+      </StyledSectionFlex>
+      <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
+        <StyledMiniCards href="https://uniswap.exchange">
+          <StyledMiniCardHeader>
+            Uniswap
+            <br /> Exchange
+            <StyledCardBG fluid={props.data.swap.childImageSharp.fluid} />
+          </StyledMiniCardHeader>
+          <StyledMiniCardDesc>Trade tokens, add liquidity and create exchanges.</StyledMiniCardDesc>
+        </StyledMiniCards>
+        <StyledMiniCards href="https://uniswap.info" style={{ backgroundColor: '#F3BE1E' }}>
+          <StyledCardBG fluid={props.data.info.childImageSharp.fluid} />
+          <StyledMiniCardHeader>
+            Uniswap <br />
+            Info{' '}
+          </StyledMiniCardHeader>
+          <StyledMiniCardDesc>In depth Uniswap protocol market data.</StyledMiniCardDesc>
+        </StyledMiniCards>
+        <StyledMiniCards href="https://unisocks.exchange" style={{ backgroundColor: '#000000', color: 'white' }}>
+          <StyledCardBG fluid={props.data.socks.childImageSharp.fluid} />
+          <StyledMiniCardHeader style={{ color: 'white' }}>Unisocks</StyledMiniCardHeader>
+          <StyledMiniCardDesc>Experimental speculative fashion.</StyledMiniCardDesc>
+        </StyledMiniCards>
+      </StyledSectionFlex>
+    </>
   )
 }
 
