@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Link } from 'gatsby'
 
 import styled from 'styled-components'

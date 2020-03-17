@@ -9,11 +9,11 @@ import SEO from '../components/seo'
 
 const PostsWrapper = styled.div`
   color: ${({ theme }) => theme.textColor};
-
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   padding-top: 2rem;
   max-width: 960px;
 `
@@ -150,7 +150,7 @@ const Blog = props => {
     <Layout path={props.location.pathname}>
       <BG />
       <SEO title="Uniswap Blog" path={props.location.pathname} />
-      <h2>Latest Posts</h2>
+      <h1 style={{ maxWidth: '960px' }}>Latest Posts</h1>
 
       <PostsWrapper>
         {data.allMdx.edges.map(({ node }, index) => {

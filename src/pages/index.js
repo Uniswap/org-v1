@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
@@ -9,6 +9,7 @@ import Layout from '../layouts'
 import SEO from '../components/seo'
 import Ticker from '../components/ticker'
 import BG from '../components/bg'
+import MiniCard from '../components/minicard'
 
 const StyledBody = styled.div`
   /* font-size: 1.125rem; */
@@ -41,7 +42,7 @@ const StyledBodyTitle = styled.h1`
   overflow-wrap: normal;
   max-width: 900px;
   text-align: center;
-  font-family: 'Inferi Book', 'Times New Roman', serif;
+  font-family: 'Inferi Normal', 'Times New Roman', serif;
 
   /* letter-spacing: -0.03em; */
 
@@ -50,6 +51,7 @@ const StyledBodyTitle = styled.h1`
     font-size: 4rem;
     line-height: 4.5rem;
     margin: 2rem 0 2rem 0;
+    max-width: 600px;
   }
   @media (max-width: 375px) {
     width: 100%;
@@ -104,11 +106,12 @@ const StyledTradeLink = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.invertedTextColor};
   border-radius: 12px;
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
   display: inline-block;
   transform: scale(0.98);
   transition: transform 0.25s ease;
   box-sizing: border-box;
+  font-weight: 400;
 
   :hover {
     transform: scale(1);
@@ -133,6 +136,7 @@ const StyledTradeLinkOutlined = styled(Link)`
   transform: scale(0.98);
   transition: transform 0.25s ease;
   box-sizing: border-box;
+  font-weight: 400;
 
   :hover {
     transform: scale(1);
@@ -243,6 +247,11 @@ const StyledImgSection = styled.div`
     max-width: 450px;
     line-height: 1.3;
   }
+  h2 {
+    max-width: 450px;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
 `
 
 const MiniNewInfo = styled(Link)`
@@ -280,6 +289,7 @@ const NewPill = styled.span`
   text-align: center;
   margin: 0;
   margin-right: 1rem;
+  font-weight: 400;
   /* font-size: 20px; */
 `
 
@@ -302,9 +312,9 @@ const SummarySection = props => {
         </MiniNewInfo>
       </StyledImgSection>
       <StyledImgSection>
-        <h1>
+        <h2>
           <b>Uniswap</b> is a fully decentralized protocol for automated market making on Ethereum.
-        </h1>
+        </h2>
 
         <p>A simple formalized equation drives unstoppable liquidity for thousands of exchanges.</p>
 
@@ -313,9 +323,7 @@ const SummarySection = props => {
           all.
         </p>
 
-        <Link to="/docs/v2#how-it-all-works">
-          <u>Read more</u>
-        </Link>
+        <StyledTradeLinkOutlined to="/docs/v2#how-it-all-works">Read more</StyledTradeLinkOutlined>
       </StyledImgSection>
     </StyledSectionFlex>
   )
@@ -360,50 +368,52 @@ const StyledCardBG = styled(Img)`
   /* z-index: -1; */
 `
 
-const StyledMiniCardHeader = styled.h2`
+const StyledMiniCardHeader = styled.h3`
   color: ${({ theme }) => theme.textColor};
   max-width: 160px;
-  line-height: 120%;
+  line-height: 130%;
   margin-top: 0px;
+  font-weight: 400;
+  font-family: 'Inter';
 `
 
 const StyledMiniCardDesc = styled.p`
   font-size: 1rem;
   line-height: 130%;
-  max-width: 80%;
+  max-width: 90%;
 `
 
 const ProductsSection = props => {
   return (
     <>
       <StyledSectionFlex style={{ paddingBottom: '0px' }}>
-        <StyledGoal style={{ width: '100%', maxWidth: '410px;' }}>
+        <StyledGoal style={{ width: '100%', maxWidth: '450px' }}>
           <h1>Products</h1>
           <p>We build open tools and experimental products that interact with the Uniswap protocol.</p>
         </StyledGoal>
       </StyledSectionFlex>
       <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
-        <StyledMiniCards href="https://uniswap.exchange">
-          <StyledMiniCardHeader>
-            Uniswap
-            <br /> Exchange
-            <StyledCardBG fluid={props.data.swap.childImageSharp.fluid} />
-          </StyledMiniCardHeader>
-          <StyledMiniCardDesc>Trade tokens, add liquidity and create exchanges.</StyledMiniCardDesc>
-        </StyledMiniCards>
-        <StyledMiniCards href="https://uniswap.info" style={{ backgroundColor: '#F3BE1E' }}>
-          <StyledCardBG fluid={props.data.info.childImageSharp.fluid} />
-          <StyledMiniCardHeader>
-            Uniswap <br />
-            Info{' '}
-          </StyledMiniCardHeader>
-          <StyledMiniCardDesc>In depth Uniswap protocol market data.</StyledMiniCardDesc>
-        </StyledMiniCards>
-        <StyledMiniCards href="https://unisocks.exchange" style={{ backgroundColor: '#000000', color: 'white' }}>
-          <StyledCardBG fluid={props.data.socks.childImageSharp.fluid} />
-          <StyledMiniCardHeader style={{ color: 'white' }}>Unisocks</StyledMiniCardHeader>
-          <StyledMiniCardDesc>Experimental speculative fashion.</StyledMiniCardDesc>
-        </StyledMiniCards>
+        <MiniCard
+          href="https://uniswap.exchange"
+          title={'Uniswap Exchange'}
+          image={props.data.swap.childImageSharp.fluid}
+          desc={'Trade tokens, add liquidity and create exchanges.'}
+        />
+        <MiniCard
+          href="https://uniswap.info"
+          title={'Uniswap Info'}
+          image={props.data.info.childImageSharp.fluid}
+          desc={'In depth Uniswap protocol market data.'}
+          backgroundColor={'#F3BE1E'}
+        />
+        <MiniCard
+          href="https://uniswap.exchange"
+          title={'Unisocks'}
+          image={props.data.socks.childImageSharp.fluid}
+          desc={'Experimental speculative fashion.'}
+          backgroundColor={'#000000'}
+          color={'white'}
+        />
       </StyledSectionFlex>
     </>
   )

@@ -1,34 +1,25 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import gql from 'graphql-tag'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { useQuery } from '@apollo/react-hooks'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
-const moveHorizontally = () => keyframes`
-100% { transform: translateX(-100%); }
-`
+import Marquee3k from 'marquee3000'
 
 const MarqueeWrapper = styled.a`
   position: fixed;
   z-index: 99;
   bottom: 0px;
   left: 0px;
-  display: flex;
-  max-width: 150vw;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-  transform: translateX(-50%);
-  animation: ${props => moveHorizontally(props)} ${props => props.time}s linear infinite;
+  width: 100%;
   font-size: 1rem;
 
-  @media (max-width: 960px) {
-    max-width: 100vw;
-    animation: ${props => moveHorizontally(props)} 10s linear infinite;
+  .marquee3k__wrapper {
+    will-change: transform;
   }
-
-  :hover {
-    animation-play-state: paused;
+  .ticker__copy {
+    background-color: black;
   }
 `
 
@@ -42,7 +33,6 @@ const Stats = styled.span`
   letter-spacing: -0.03rem;
   white-space: pre;
   font-weight: 300;
-  transform: translateX(0%);
 `
 
 const NP = styled.span`
@@ -50,10 +40,8 @@ const NP = styled.span`
 `
 
 const AnimatingEl = props => {
-  const ref = useRef()
-
   return (
-    <Stats ref={ref}>
+    <Stats>
       <NP>{props.stat && props.stat[0]}</NP>
       {props.stat && props.stat[1]}
     </Stats>
@@ -93,7 +81,10 @@ export default function Ticker() {
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day')
   const [initialized, updateInitialized] = useState(false)
 
-  const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 1000 })
+  // const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 5000 })
+  const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 10000 })
+
+  // const { loading, error, data } = useQuery(APOLLO_QUERY)
 
   const { loading: loadingHistoric, error: errorHistoric, data: dataHistorical } = useQuery(
     UNISWAP_GLOBALS_24HOURS_AGO_QUERY,
@@ -104,8 +95,7 @@ export default function Ticker() {
     }
   )
 
-  const node = useRef()
-  const [totalElements, setTotalElements] = useState(2)
+  const [totalElements] = useState(8)
 
   let UniStats = {
     key: function(n) {
@@ -122,7 +112,6 @@ export default function Ticker() {
         currency: 'USD',
         notation: 'compact',
         compactDisplay: 'short'
-        // maximumSignificantDigits: 5
       }).format(volume24Hour),
       ' 24h Volume'
     ]
@@ -157,35 +146,29 @@ export default function Ticker() {
     ]
   }
 
-  useEffect(() => {
-    !loading && updateInitialized(true)
-  }, [loading])
-
-  useEffect(() => {
-    if (window.innerWidth > node.current.offsetWidth) {
-      setTotalElements(totalElements + 1)
+  useLayoutEffect(() => {
+    if (loading === false && UniStats.volume !== undefined) {
+      updateInitialized(true)
     }
-  }, [totalElements, setTotalElements])
+  }, [loading, UniStats.volume])
 
-  useEffect(() => {
-    /**
-     *
-     * could trigger some animation here on, we know the price changed
-     *
-     * usually the price change is so small that it actualy
-     * doesnt display the display amount, so many we'd want to
-     * detect a price percent change
-     *
-     */
-  }, [UniStats.ETHprice])
+  useLayoutEffect(() => {
+    initialized &&
+      Marquee3k.init({
+        selector: 'ticker' // define a custom classname
+      })
+  }, [initialized])
 
-  return (loading && !initialized) || error ? (
-    <MarqueeWrapper href="https://uniswap.info" ref={node} />
-  ) : (
-    <MarqueeWrapper href="https://uniswap.info" ref={node} time={100}>
-      {Array.from({ length: totalElements }).map((_, idx) => {
-        return <AnimatingEl stat={UniStats.key((idx % 4) + 1)} key={idx} />
-      })}
-    </MarqueeWrapper>
+  return (
+    initialized && (
+      <MarqueeWrapper className="ticker" data-speed="0.25" data-pausable="true">
+        <div>
+          {Array.from({ length: totalElements }).map((_, idx) => {
+            console.log('rendering...')
+            return <AnimatingEl stat={UniStats.key((idx % 4) + 1)} key={idx} />
+          })}
+        </div>
+      </MarqueeWrapper>
+    )
   )
 }

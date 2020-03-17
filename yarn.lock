@@ -8753,6 +8753,11 @@ markdown-table@^1.1.0:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.3.tgz#9fcb69bcfdb8717bfd0398c6ec2d93036ef8de60"
   integrity sha512-1RUZVgQlpJSPWYbFSpmudq5nHY1doEIv89gBtF0s4gW1GF2XorxcA/70M5vq7rLv0a6mhOUccRsqkwhwLCIQ2Q==
 
+marquee3000@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/marquee3000/-/marquee3000-1.1.1.tgz#a4d7ec6a341a905758f5f8dafe1febe4e84f4550"
+  integrity sha512-XAZdVIdunQT2EdHdMmkbXh5i728KxwGmvY1w60WZdYmF3WgyBr4dcdyufTGfFPR1Rogr35Y9zST0vUsNN3WKPg==
+
 md5-file@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/md5-file/-/md5-file-3.2.3.tgz#f9bceb941eca2214a4c0727f5e700314e770f06f"
