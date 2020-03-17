@@ -151,11 +151,6 @@ export default function Ticker() {
       updateInitialized(true)
     }
 
-    initialized &&
-      Marquee3k.init({
-        selector: 'ticker' // define a custom classname
-      })
-
     /**
      *
      * could trigger some animation here on, we know the price changed
@@ -166,7 +161,14 @@ export default function Ticker() {
      *
      */
     // !loading && Marquee3k.refreshAll()
-  }, [loading, initialized, UniStats.volume])
+  }, [loading, UniStats.volume])
+
+  useLayoutEffect(() => {
+    initialized &&
+      Marquee3k.init({
+        selector: 'ticker' // define a custom classname
+      })
+  }, [initialized])
 
   return (
     initialized && (
