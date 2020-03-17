@@ -121,7 +121,7 @@ const About = props => {
         </StyledSectionFlex>
         <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
           <MiniCard
-            href="https://uniswap.exchange"
+            href="https://discord.gg/Y7TF6QA"
             title={'Discord'}
             image={data.discord.childImageSharp.fluid}
             desc={'Real time discussion.'}
@@ -129,15 +129,15 @@ const About = props => {
             backgroundColor={'#7289da'}
           />
           <MiniCard
-            href="https://uniswap.info"
+            href="https://twitter.com/UniswapExchange"
             title={'Twitter'}
             image={data.twitter.childImageSharp.fluid}
             desc={'Updates from the Uniswap team.'}
             backgroundColor={'#B0D8F0'}
-            color={'white'}
+            color={'black'}
           />
           <MiniCard
-            href="https://uniswap.exchange"
+            href="https://www.reddit.com/r/Uniswap"
             title={'Reddit'}
             image={data.reddit.childImageSharp.fluid}
             desc={'Slow form discussion'}
