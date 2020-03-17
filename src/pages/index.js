@@ -11,7 +11,7 @@ import Ticker from '../components/ticker'
 import BG from '../components/bg'
 
 const StyledBody = styled.div`
-  /* font-size: 18px; */
+  /* font-size: 1.125rem; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ const StyledBodyTitle = styled.h1`
   overflow-wrap: normal;
   max-width: 900px;
   text-align: center;
-  font-family: 'Times Ten LT Std', 'Times New Roman', serif;
+  font-family: 'Inferi Book', 'Times New Roman', serif;
 
   /* letter-spacing: -0.03em; */
 
@@ -100,7 +100,7 @@ const StyledSectionFlex = styled.div`
 
 const StyledTradeLink = styled.a`
   padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.colors.pink1};
+  background-color: ${({ theme }) => theme.colors.link};
   text-decoration: none;
   color: ${({ theme }) => theme.invertedTextColor};
   border-radius: 12px;
@@ -124,9 +124,9 @@ const StyledTradeLink = styled.a`
 
 const StyledTradeLinkOutlined = styled(Link)`
   padding: 0.25rem 0.75rem;
-  border: 1px solid ${({ theme }) => theme.colors.pink1};
+  border: 1px solid ${({ theme }) => theme.colors.link};
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.pink1};
+  color: ${({ theme }) => theme.colors.link};
   border-radius: 12px;
   margin-right: 1.5rem;
   display: inline-block;
@@ -230,11 +230,18 @@ const StyledImgSection = styled.div`
     p {
       max-width: 450px;
     }
+    h1 {
+      max-width: 450px;
+    }
   }
   p {
     line-height: 155%;
     margin-bottom: 2rem;
-    max-width: 410px;
+    max-width: 450px;
+  }
+  h1 {
+    max-width: 450px;
+    line-height: 1.3;
   }
 `
 
@@ -244,7 +251,7 @@ const MiniNewInfo = styled(Link)`
   color: ${({ theme }) => theme.textColor};
   display: inline-block;
   /* width: 450px; */
-  height: 600px;
+  height: 500px;
 
   transition: transform 0.3s ease;
   will-change: transform;
@@ -257,7 +264,7 @@ const MiniNewInfo = styled(Link)`
 
   @media (max-width: 960px) {
     position: relative;
-    max-width: 410px;
+    max-width: 450px;
     width: 100%;
     height: 100%;
     margin: 4rem 0;
@@ -295,13 +302,16 @@ const SummarySection = props => {
         </MiniNewInfo>
       </StyledImgSection>
       <StyledImgSection>
-        <p>
+        <h1>
           <b>Uniswap</b> is a fully decentralized protocol for automated market making on Ethereum.
-        </p>
+        </h1>
 
         <p>A simple formalized equation drives unstoppable liquidity for thousands of exchanges.</p>
 
-        <p>The protocol aligns developers, market makers to design markets that are open and accessible to all.</p>
+        <p>
+          The protocol aligns developers, market makers and traders to design markets that are open and accessible to
+          all.
+        </p>
 
         <Link to="/docs/v2#how-it-all-works">
           <u>Read more</u>
@@ -331,6 +341,12 @@ const StyledMiniCards = styled.a`
   will-change: transform;
   :hover {
     transform: scale(1.03);
+  }
+
+  @media (max-width: 960px) {
+    width: 100%;
+    max-width: 450px;
+    height: 200px;
   }
 `
 const StyledCardBG = styled(Img)`
@@ -405,7 +421,7 @@ const StyledGoal = styled.div`
   @media (max-width: 960px) {
     margin-top: 2rem;
     p {
-      max-width: 410px;
+      max-width: 450px;
     }
   }
 `

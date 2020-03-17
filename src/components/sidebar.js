@@ -91,7 +91,7 @@ const StaticLink = styled.a`
   margin-top: 2rem;
   opacity: 0.8;
   max-width: 190px;
-  font-size: 825rem;
+  font-size: 0.825rem;
   line-height: 125%;
   @media (max-width: 960px) {
     display: none;

@@ -21,7 +21,7 @@ const StyledHeader = styled.header`
   width: 100%;
   /* font-size: 1.125rem; */
   z-index: 3;
-  font-weight: 500;
+  /* font-weight: 500; */
   @media (max-width: 960px) {
     padding: 1rem 0px;
     height: ${({ open }) => (open ? '100vh' : '100%')};
@@ -58,7 +58,7 @@ const StyledNavTitleWrapper = styled.nav`
 
 const StyledNavTitle = styled(Link)`
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  /* font-weight: 500; */
   color: ${({ theme }) => theme.colors.link};
   margin-left: 0.35rem;
   margin-top: 8px;
@@ -124,7 +124,7 @@ const StyledUni = styled(Uni)`
   }
   margin: 0;
   width: 36px;
-  /* height: 36px; */
+  height: 36px;
   margin-right: 0.75rem;
   margin-top: -5px;
   transform: rotate(0deg);

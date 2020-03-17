@@ -117,6 +117,18 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Times Ten LT Std";
     src: url("/fonts/TimesTenLTStd-Roman.otf");
   }
+  @font-face {
+    font-family: "Inferi Book";
+    src: url("/fonts/Inferi-Book.otf");
+  }
+  @font-face {
+    font-family: "Inferi Light";
+    src: url("/fonts/Inferi-Light.otf");
+  }
+  @font-face {
+    font-family: "Inferi Normal";
+    src: url("/fonts/Inferi-Normal.otf");
+  }
 /* 
   @font-face {
     font-family: "Principal Trial Semibold";
@@ -161,6 +173,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
     padding: 0 2rem;
     margin: 0px auto;
+    font-weight: 300 !important;
     color: ${({ theme }) => theme.textColor};
 
     @media (max-width: 1024px) {
@@ -185,15 +198,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
+    font-family: "Inferi Normal";
     margin-top: 1rem ;
-    font-size: 1.75rem;
+    font-size: 1.875rem;
     font-weight: 500;
   }
 
   h2 {
     /* margin: 2.5em 0 1rem 0 !important; */
+    /* font-family: "Times Ten LT Std"; */
     font-size: 1.5rem;
     font-weight: 300;
+    font-family: "Inferi Book";
   }
 
   #gatsby-focus-wrapper{
@@ -218,7 +234,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   strong{
-    font-weight: 600;
+    font-weight: 500;
     color: ${({ theme }) => theme.colors.grey9};
   }
 

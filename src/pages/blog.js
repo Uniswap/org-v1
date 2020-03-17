@@ -15,6 +15,7 @@ const PostsWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   padding-top: 2rem;
+  max-width: 960px;
 `
 
 const Posts = styled.div`

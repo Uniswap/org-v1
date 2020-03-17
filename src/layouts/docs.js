@@ -141,6 +141,7 @@ const StyledGithubIcon = styled(Github)`
     position: absolute;
     background-color: ${({ theme }) => theme.colors.grey9};
     opacity: 0.2;
+  }
 `
 
 const Docs = props => {

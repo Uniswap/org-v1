@@ -33,6 +33,20 @@ const StyledFooter = styled.footer`
   justify-content: space-between;
   /* background-color: ${({ theme }) => theme.colors.grey9}; */
   color: ${({ theme }) => theme.colors.link};
+  position: relative;
+
+ :before {
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+
+    content: ' ';
+    position: absolute;
+    background-color: ${({ theme }) => theme.colors.link};
+    opacity: 1;
+  }
+
   @media  (max-width: 960px) {
     flex-direction: column;
     padding: 2rem 1rem;
@@ -166,7 +180,7 @@ const Footer = () => {
         {data.site.siteMetadata.menulinks.map(item => {
           return (
             <StyledFooterSectionNav key={item.name}>
-              <h4 style={{ fontWeight: 600, marginBottom: '1rem' }}>{item.name}</h4>
+              <h4 style={{ fontWeight: 500, marginBottom: '1rem' }}>{item.name}</h4>
               <Dropdown links={item.sublinks} />
             </StyledFooterSectionNav>
           )
