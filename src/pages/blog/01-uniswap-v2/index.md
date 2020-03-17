@@ -1,5 +1,5 @@
 ---
-title: 'Uniswap V2'
+title: 'Uniswap V2 Announcement'
 date: '2020-03-11'
 author: 'Hayden Adams'
 featuredImage: ./featured.jpg

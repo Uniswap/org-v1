@@ -329,60 +329,6 @@ const SummarySection = props => {
   )
 }
 
-// const StyledMiniCardContainer = styled.li`
-
-const StyledMiniCards = styled.a`
-  padding: 1.5rem;
-  /* font-size: 20px; */
-  color: ${({ theme }) => theme.textColor};
-  width: 260px;
-  height: 360px;
-  margin: 1rem;
-  box-shadow: ${({ theme }) => theme.shadows.huge};
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-  will-change: transform;
-  :hover {
-    transform: scale(1.03);
-  }
-
-  @media (max-width: 960px) {
-    width: 100%;
-    max-width: 450px;
-    height: 200px;
-  }
-`
-const StyledCardBG = styled(Img)`
-  width: 80px;
-  height: 250px;
-  position: absolute !important;
-  top: 0px;
-  right: 0px;
-  background-size: auto;
-  background-position: center;
-  /* z-index: -1; */
-`
-
-const StyledMiniCardHeader = styled.h3`
-  color: ${({ theme }) => theme.textColor};
-  max-width: 160px;
-  line-height: 130%;
-  margin-top: 0px;
-  font-weight: 400;
-  font-family: 'Inter';
-`
-
-const StyledMiniCardDesc = styled.p`
-  font-size: 1rem;
-  line-height: 130%;
-  max-width: 90%;
-`
-
 const ProductsSection = props => {
   return (
     <>

@@ -8,14 +8,11 @@ import BG from '../components/bg'
 import SEO from '../components/seo'
 
 const PostsWrapper = styled.div`
-  color: ${({ theme }) => theme.textColor};
+  position: relative;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 2rem;
-  max-width: 960px;
 `
 
 const Posts = styled.div`
@@ -23,6 +20,7 @@ const Posts = styled.div`
   padding: 2rem;
   margin: 0.5rem;
   width: 100%;
+  max-width: 960px;
   box-shadow: ${({ theme, index }) => (index === 0 ? theme.shadows.huge : 'none')};
   backdrop-filter: blur(40px);
   border-radius: 20px;
@@ -36,6 +34,10 @@ const Posts = styled.div`
 
   transform: scale(1);
   transition: transform 0.25s ease;
+
+  h1 {
+    max-width: 960px;
+  }
 
   a {
     color: ${({ theme }) => theme.textColor};
@@ -150,9 +152,10 @@ const Blog = props => {
     <Layout path={props.location.pathname}>
       <BG />
       <SEO title="Uniswap Blog" path={props.location.pathname} />
-      <h1 style={{ maxWidth: '960px' }}>Latest Posts</h1>
 
       <PostsWrapper>
+        <h1>Latest Posts</h1>
+
         {data.allMdx.edges.map(({ node }, index) => {
           return (
             <Posts wide={index} key={node.id}>

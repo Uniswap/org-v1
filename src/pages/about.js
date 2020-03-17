@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Layout from '../layouts'
 import SEO from '../components/seo'
@@ -42,7 +42,7 @@ const StyledSectionFlex = styled.div`
     max-width: 650px;
   }
   p {
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
     max-width: 650px;
   }
 `
@@ -65,23 +65,23 @@ const Title = styled.h1`
 const About = props => {
   const data = useStaticQuery(graphql`
     {
-      swap: file(relativePath: { eq: "swap.png" }) {
+      twitter: file(relativePath: { eq: "twitter.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid(maxWidth: 960) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      info: file(relativePath: { eq: "info.png" }) {
+      discord: file(relativePath: { eq: "discord.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid(maxWidth: 960) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      socks: file(relativePath: { eq: "socks.png" }) {
+      reddit: file(relativePath: { eq: "reddit.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid(maxWidth: 960) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -98,12 +98,12 @@ const About = props => {
         <StyledSectionFlex style={{ flexDirection: 'column', paddingBottom: '0px' }}>
           <Title style={{ width: '100%' }}>About</Title>
           <p>
-            Uniswap is built by a small team in Brooklyn, NY with additional contributions from many people all across
-            the world.
+            Uniswap is built by a small team in Brooklyn, NY with additional contributions from our collaborators all
+            across the world.
           </p>
           <p>We are commited to free and open source software and building on the decentralized web.</p>
           <p>
-            You can read about how Uniswap started
+            You can read about how Uniswap got started
             <a href="https://medium.com/uniswap/uniswap-birthday-blog-v0-7a91f3f6a1ba"> here.</a>
           </p>
         </StyledSectionFlex>
@@ -123,7 +123,7 @@ const About = props => {
           <MiniCard
             href="https://uniswap.exchange"
             title={'Discord'}
-            // image={data.swap.childImageSharp.fluid}
+            image={data.discord.childImageSharp.fluid}
             desc={'Real time discussion.'}
             color={'white'}
             backgroundColor={'#7289da'}
@@ -131,15 +131,15 @@ const About = props => {
           <MiniCard
             href="https://uniswap.info"
             title={'Twitter'}
-            // image={data.info.childImageSharp.fluid}
+            image={data.twitter.childImageSharp.fluid}
             desc={'Updates from the Uniswap team.'}
-            backgroundColor={'#08a0e9'}
+            backgroundColor={'#B0D8F0'}
             color={'white'}
           />
           <MiniCard
             href="https://uniswap.exchange"
             title={'Reddit'}
-            // image={data.socks.childImageSharp.fluid}
+            image={data.reddit.childImageSharp.fluid}
             desc={'Slow form discussion'}
             backgroundColor={'white'}
             color={'black'}

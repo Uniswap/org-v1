@@ -42,9 +42,13 @@ const menu = [
   {
     name: 'Info',
     sublinks: [
-      { name: 'Blog', link: '/blog' },
-      { name: 'About', link: '/about' },
-      { name: 'FAQ', link: '/faq' }
+      { name: 'Blog', link: '/blog', description: 'Discussing all things Uniswap' },
+      {
+        name: 'FAQ',
+        link: '/',
+        description: 'Coming soon!'
+      },
+      { name: 'About', link: '/about' }
     ]
   }
 ]

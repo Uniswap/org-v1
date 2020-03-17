@@ -35,17 +35,6 @@ const StyledFooter = styled.footer`
   color: ${({ theme }) => theme.colors.link};
   position: relative;
 
- :before {
-    top: 0px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-
-    content: ' ';
-    position: absolute;
-    background-color: ${({ theme }) => theme.colors.link};
-    opacity: 1;
-  }
 
   @media  (max-width: 960px) {
     flex-direction: column;

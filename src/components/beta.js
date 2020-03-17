@@ -10,6 +10,7 @@ const StyledFooter = styled.p`
   max-width: 200px;
   opacity: 0.4;
   color: ${({ theme }) => theme.colors.link};
+  z-index: -99;
   @media (max-width: 960px) {
     position: relative;
     width: 100%;
