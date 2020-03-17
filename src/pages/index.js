@@ -246,6 +246,11 @@ const StyledImgSection = styled.div`
     max-width: 450px;
     line-height: 1.3;
   }
+  h2 {
+    max-width: 450px;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
 `
 
 const MiniNewInfo = styled(Link)`
@@ -306,9 +311,9 @@ const SummarySection = props => {
         </MiniNewInfo>
       </StyledImgSection>
       <StyledImgSection>
-        <h1>
+        <h2>
           <b>Uniswap</b> is a fully decentralized protocol for automated market making on Ethereum.
-        </h1>
+        </h2>
 
         <p>A simple formalized equation drives unstoppable liquidity for thousands of exchanges.</p>
 
@@ -317,9 +322,7 @@ const SummarySection = props => {
           all.
         </p>
 
-        <Link to="/docs/v2#how-it-all-works">
-          <u>Read more</u>
-        </Link>
+        <StyledTradeLinkOutlined to="/docs/v2#how-it-all-works">Read more</StyledTradeLinkOutlined>
       </StyledImgSection>
     </StyledSectionFlex>
   )

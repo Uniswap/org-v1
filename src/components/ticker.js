@@ -81,7 +81,8 @@ export default function Ticker() {
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day')
   const [initialized, updateInitialized] = useState(false)
 
-  const { loading, error, data } = useQuery(APOLLO_QUERY)
+  // const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 5000 })
+  const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 10000 })
 
   // const { loading, error, data } = useQuery(APOLLO_QUERY)
 
@@ -150,10 +151,10 @@ export default function Ticker() {
       updateInitialized(true)
     }
 
-    initialized
-    Marquee3k.init({
-      selector: 'ticker' // define a custom classname
-    })
+    initialized &&
+      Marquee3k.init({
+        selector: 'ticker' // define a custom classname
+      })
 
     /**
      *
@@ -164,7 +165,7 @@ export default function Ticker() {
      * detect a price percent change
      *
      */
-    // Marquee3k.refreshAll()
+    // !loading && Marquee3k.refreshAll()
   }, [loading, initialized, UniStats.volume])
 
   return (
