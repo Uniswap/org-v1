@@ -133,7 +133,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: 16px;
+    font-size: 18px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
     -webkit-font-smoothing: antialiased;
@@ -185,9 +185,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    /* margin: 2.5em 0 1rem 0; */
+    margin-top: 1rem ;
     font-size: 1.75rem;
-    font-weight: 300;
+    font-weight: 500;
   }
 
   h2 {
@@ -215,5 +215,15 @@ export const GlobalStyle = createGlobalStyle`
   textarea {
     font: inherit;
     margin: 0;
+  }
+
+  strong{
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.grey9};
+  }
+
+  em{
+    color: ${({ theme }) => theme.colors.grey6};
+    font-size: 0.825rem;
   }
 `

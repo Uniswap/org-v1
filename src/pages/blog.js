@@ -59,7 +59,7 @@ const PostLinkWrapper = styled(Link)`
 const PostTitleWrapper = styled.div`
   min-width: 150px;
   h1 {
-    font-family: 'Times Ten LT Std', 'Times New Roman', serif;
+    /* font-family: 'Times Ten LT Std', 'Times New Roman', serif; */
   }
 `
 
@@ -149,7 +149,7 @@ const Blog = props => {
     <Layout path={props.location.pathname}>
       <BG />
       <SEO title="Uniswap Blog" path={props.location.pathname} />
-      <h1>Latest Posts</h1>
+      <h2>Latest Posts</h2>
 
       <PostsWrapper>
         {data.allMdx.edges.map(({ node }, index) => {

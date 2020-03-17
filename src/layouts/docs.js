@@ -23,6 +23,7 @@ const StyledDocs = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 4rem;
+  font-size: 0.825rem;
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -100,9 +101,7 @@ const StyledPageTitle = styled.div`
 
   h1 {
     font-size: 2.5rem !important;
-    /* margin: 2.5em 0 1rem 0; */
     margin-top: 0px !important;
-    font-family: 'Times Ten LT Std', 'Times New Roman', serif;
   }
 
   /* :after {

@@ -81,10 +81,19 @@ const PostMetaData = styled.div`
 
 const PostTitle = styled.h1`
   font-size: 4rem;
-  font-weight: 600 !important;
+  /* font-weight: 600 !important; */
   margin-bottom: 1rem;
   /* letter-spacing: 0.04rem; */
-  font-family: 'Times Ten LT Std', 'Times New Roman', serif;
+  /* font-family: 'Times Ten LT Std', 'Times New Roman', serif; */
+  /* font-weight: 00; */
+  font-size: 96px;
+  margin: 2rem 0 2rem 0;
+  pointer-events: none;
+  white-space: wrap;
+  overflow-wrap: normal;
+  max-width: 900px;
+  text-align: center;
+  font-family: 'Times New Roman', serif;
 
   /* text-align: center; */
   @media (max-width: 960px) {

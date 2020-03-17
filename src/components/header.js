@@ -19,7 +19,7 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   padding: 2rem 0;
   width: 100%;
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
   z-index: 3;
   font-weight: 500;
   @media (max-width: 960px) {
@@ -63,7 +63,13 @@ const StyledNavTitle = styled(Link)`
   margin-left: 0.35rem;
   margin-top: 8px;
   z-index: 999;
+  text-decoration: none;
+  opacity: 0.4;
   vertical-align: bottom;
+
+  :hover {
+    opacity: 1;
+  }
 `
 
 const StyledTradeLink = styled.a`
@@ -232,15 +238,7 @@ const Header = props => {
         </StyledHomeLink>
         {props.path && props.path !== '/' && props.path !== '' && (
           <>
-            <StyledNavTitle
-              to={'/' + props.path.split('/')[1]}
-              style={{
-                textDecoration: `none`,
-                opacity: '0.4'
-              }}
-            >
-              / {props.path.split('/')[1]}
-            </StyledNavTitle>
+            <StyledNavTitle to={'/' + props.path.split('/')[1]}>/ {props.path.split('/')[1]}</StyledNavTitle>
             <VersionLabel> {props.path.split('/')[1] == 'docs' && 'V2'}</VersionLabel>
           </>
         )}

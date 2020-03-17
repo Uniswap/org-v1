@@ -28,7 +28,7 @@ const StyledSidebar = styled.div`
 `
 
 const StyledSection = styled.div`
-  height: ${({ open }) => (open ? 'inital' : '2.5rem')};
+  height: ${({ open }) => (open ? 'inital' : '2rem')};
   overflow: hidden;
   cursor: pointer;
 `
@@ -38,7 +38,7 @@ const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
   font-weight: ${({ isActive }) => isActive && 600};
   background-color: ${({ isActive, theme }) => isActive && theme.cardBG};
   border-radius: 8px;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0rem;
   text-decoration: none;
   margin: 0;
   color: ${({ theme }) => theme.colors.link};

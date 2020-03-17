@@ -11,7 +11,7 @@ import Ticker from '../components/ticker'
 import BG from '../components/bg'
 
 const StyledBody = styled.div`
-  font-size: 18px;
+  /* font-size: 18px; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ const StyledTitle = styled.div`
   flex-direction: column;
   justify-content: center;
   will-change: transform;
-  margin: 4rem 0;
+  margin: 3rem 0 4rem 0;
   @media (max-width: 960px) {
     margin: 3rem 0 1rem 0;
   }
@@ -33,15 +33,15 @@ const StyledTitle = styled.div`
 
 const StyledBodyTitle = styled.h1`
   color: ${({ theme }) => theme.colors.link};
-  font-weight: 600;
-  font-size: 96px;
+  /* font-weight: 00; */
+  font-size: 104px;
   margin: 4rem 0 3rem 0;
   pointer-events: none;
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
   text-align: center;
-  font-family: 'Times Ten LT Std', 'Times New Roman', serif;
+  font-family: 'Times New Roman', serif;
 
   /* letter-spacing: -0.03em; */
 
@@ -219,7 +219,7 @@ export default IndexPage
 const StyledImgSection = styled.div`
   color: ${({ theme }) => theme.colors.link};
   position: relative;
-  font-size: 20px;
+  /* font-size: 20px; */
   margin: 1rem 3rem;
   @media (max-width: 960px) {
     width: 100%;
@@ -237,7 +237,7 @@ const StyledImgSection = styled.div`
 
 const MiniNewInfo = styled(Link)`
   transform: rotate(-4deg) scale(0.98);
-  font-size: 16px;
+  /* font-size: 20px; */
   color: ${({ theme }) => theme.textColor};
   display: inline-block;
   /* width: 450px; */
@@ -270,7 +270,7 @@ const NewPill = styled.span`
   text-align: center;
   margin: 0;
   margin-right: 1rem;
-  font-size: 16px;
+  /* font-size: 20px; */
 `
 
 const LinkTitle = styled.span`
@@ -301,7 +301,7 @@ const SummarySection = props => {
         <p>The protocol aligns developers, market makers to design markets that are open and accessible to all.</p>
 
         <Link to="/docs/v2#how-it-all-works">
-          <u>How it works</u>
+          <u>Read more</u>
         </Link>
       </StyledImgSection>
     </StyledSectionFlex>
@@ -312,7 +312,7 @@ const SummarySection = props => {
 
 const StyledMiniCards = styled.a`
   padding: 1.5rem;
-  font-size: 20px;
+  /* font-size: 20px; */
   color: ${({ theme }) => theme.textColor};
   width: 260px;
   height: 360px;
@@ -341,10 +341,10 @@ const StyledCardBG = styled(Img)`
   /* z-index: -1; */
 `
 
-const StyledMiniCardHeader = styled.h2`
+const StyledMiniCardHeader = styled.h1`
   color: ${({ theme }) => theme.textColor};
   max-width: 160px;
-  font-weight: 600;
+  line-height: 120%;
   margin-top: 0px;
 `
 
@@ -383,13 +383,10 @@ const ProductsSection = props => {
 }
 
 const StyledGoal = styled.div`
-  /* padding: 0.25rem 2rem 2rem 2rem; */
-  /* margin-top: 4rem; */
-  /* background-color: ${({ theme }) => theme.cardBG}; */
   color: ${({ theme }) => theme.colors.link};
   border-radius: 0.5rem;
-  font-size: 20px;
-  p{
+  /* font-size: 20px; */
+  p {
     line-height: 155%;
     margin-bottom: 2rem;
     max-width: 450px;
@@ -400,7 +397,6 @@ const StyledGoal = styled.div`
       max-width: 410px;
     }
   }
- 
 `
 
 const GoalSection = () => {

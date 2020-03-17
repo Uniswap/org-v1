@@ -51,16 +51,16 @@ const StyledMenu = styled.button`
 `
 
 const MenuFlyout = styled.span`
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
   background-color: ${({ theme }) => theme.inputBackground};
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 3rem;
+  top: 2.5rem;
   left: -1rem;
-  min-width: 196px;
-  padding: 1rem 1rem 0.75rem 1rem;
+  min-width: 216px;
+  padding: 0.75rem 0.75rem 0.5rem 0.75rem;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.menuBG};
   backdrop-filter: blur(20px);
@@ -145,7 +145,7 @@ const StyledDescription = styled.p`
   padding: 0;
   padding: 0px 0.5rem 0.25rem 0.5rem;
   min-width: 200px;
-  color: ${({ theme }) => theme.colors.grey8};
+  color: ${({ theme }) => theme.colors.grey6};
   @media (max-width: 960px) {
     padding: 0;
   }
