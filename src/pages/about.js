@@ -93,7 +93,7 @@ const About = props => {
     <Layout path={props.location.pathname}>
       <BG />
 
-      <SEO title="Page two" path={props.location.pathname} />
+      <SEO title="About" path={props.location.pathname} />
       <StyledAbout>
         <StyledSectionFlex style={{ flexDirection: 'column', paddingBottom: '0px' }}>
           <Title style={{ width: '100%' }}>About</Title>
