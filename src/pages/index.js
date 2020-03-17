@@ -90,8 +90,11 @@ const StyledSectionFlex = styled.div`
   @media (max-width: 960px) {
     padding: 1rem;
     margin-top: 0rem;
-    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    /* flex-direction: column; */
   }
+
   h2 {
     margin-bottom: 0.5rem;
   }
@@ -312,9 +315,9 @@ const SummarySection = props => {
         </MiniNewInfo>
       </StyledImgSection>
       <StyledImgSection>
-        <h2>
+        <h1>
           <b>Uniswap</b> is a fully decentralized protocol for automated market making on Ethereum.
-        </h2>
+        </h1>
 
         <p>A simple formalized equation drives unstoppable liquidity for thousands of exchanges.</p>
 

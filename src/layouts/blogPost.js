@@ -97,7 +97,18 @@ const PostTitle = styled.h1`
 
   /* text-align: center; */
   @media (max-width: 960px) {
-    font-size: 3rem;
+    width: 100%;
+    font-size: 4rem;
+    line-height: 4.5rem;
+    margin: 2rem 0 2rem 0;
+    max-width: 600px;
+  }
+  @media (max-width: 375px) {
+    width: 100%;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    margin: 2rem 0 4rem 0;
+    font-weight: 400;
   }
 `
 

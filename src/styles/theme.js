@@ -237,9 +237,4 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     color: ${({ theme }) => theme.colors.grey9};
   }
-
-  em{
-    color: ${({ theme }) => theme.colors.grey6};
-    font-size: 0.825rem;
-  }
 `

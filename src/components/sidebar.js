@@ -36,7 +36,7 @@ const StyledSection = styled.div`
 
 // eslint-disable-next-line no-unused-vars
 const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
-  font-weight: ${({ isActive }) => isActive && 600};
+  font-weight: ${({ isActive }) => isActive && 400};
   background-color: ${({ isActive, theme }) => isActive && theme.cardBG};
   border-radius: 8px;
   padding: 0.25rem 0rem;
@@ -82,7 +82,7 @@ const StyledMobileMenu = styled.div`
     justify-content: flex-start;
     align-items: center;
     padding: 1rem 0;
-    font-weight: 600;
+    font-weight: 400;
     margin: 1rem 0 0 0;
   }
 `

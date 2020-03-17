@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 
 # getExchange
 
-The most obvious way to get the exchange address for a pair is to call <Link to='/docs/v2/smart-contracts/factory/#getexchange'>getExchange</Link> on the factory. If the exchange exists, this function will return its address, else `address(0)` (`0x0000000000000000000000000000000000000000`).
+The most obvious way to get the exchange address for a pair is to call <Link to='/docs/v2/smart-contracts/factory/#getexchange'>getExchange</Link> on the factory. If the exchange exists, this function will return its address, else `address(0) (0x0000000000000000000000000000000000000000)`.
 
 - The "canonical" way to determine whether or not an exchange exists.
 - Requires an on-chain lookup.

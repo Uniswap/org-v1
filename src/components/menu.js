@@ -85,7 +85,7 @@ const StyledMenuTitle = styled.span`
   text-decoration: none;
   margin: 0px;
   border-radius: 0.5rem;
-  font-weight: 400;
+  /* font-weight: 400; */
   cursor: pointer;
   color: ${({ theme }) => theme.colors.link};
   @media (max-width: 960px) {
@@ -127,7 +127,7 @@ const StyledExternalLink = styled.a`
 
 const StyledTitle = styled.p`
   display: block;
-  font-weight: ${({ active }) => active && 600};
+  font-weight: ${({ active }) => active && 500};
   border-radius: 8px;
   text-decoration: none;
   margin: 0;

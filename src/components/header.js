@@ -23,7 +23,7 @@ const StyledHeader = styled.header`
   z-index: 3;
   /* font-weight: 500; */
   @media (max-width: 960px) {
-    padding: 1rem 0px;
+    padding: 1.5rem 0px;
     height: ${({ open }) => (open ? '100vh' : '100%')};
   }
 `
@@ -127,7 +127,7 @@ const StyledUni = styled(Uni)`
   width: 36px;
   height: 36px;
   margin-right: 0.35rem;
-  margin-top: -5px;
+  margin-top: -4px;
   transform: rotate(0deg);
   transition: transform 0.2s linear;
   :hover {

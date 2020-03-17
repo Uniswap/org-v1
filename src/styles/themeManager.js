@@ -20,15 +20,15 @@ export const StyledThemeProvider = props => {
     localStorage.setItem('dark', JSON.stringify(toggledTheme))
   }
 
-  useLayoutEffect(() => {
-    const themeFromLocalStorage = localStorage.getItem('dark')
+  // useLayoutEffect(() => {
+  //   const themeFromLocalStorage = localStorage.getItem('dark')
 
-    if (typeof themeFromLocalStorage === 'string') {
-      setIsDark(JSON.parse(themeFromLocalStorage))
-    } else if (supportsDarkMode()) {
-      setIsDark(true)
-    }
-  }, [isDark, setIsDark])
+  //   if (typeof themeFromLocalStorage === 'string') {
+  //     setIsDark(JSON.parse(themeFromLocalStorage))
+  //   } else if (supportsDarkMode()) {
+  //     setIsDark(true)
+  //   }
+  // }, [isDark, setIsDark])
 
   return (
     <ThemeManagerContext.Provider

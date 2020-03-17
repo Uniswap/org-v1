@@ -6,7 +6,7 @@ featuredImage: ./featured.jpg
 previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much much more. Launching April 2020.'
 ---
 
-# 🦄 Overview
+# Overview
 
 **Uniswap V1** was the proof-of-concept for a new type of decentralized marketplace.
 

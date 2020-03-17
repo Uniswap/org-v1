@@ -34,7 +34,9 @@ const StyledSectionFlex = styled.div`
   @media (max-width: 960px) {
     padding: 1rem;
     margin-top: 0rem;
-    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    /* flex-direction: column; */
   }
   h1,
   h2 {
