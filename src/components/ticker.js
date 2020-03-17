@@ -150,17 +150,6 @@ export default function Ticker() {
     if (loading === false && UniStats.volume !== undefined) {
       updateInitialized(true)
     }
-
-    /**
-     *
-     * could trigger some animation here on, we know the price changed
-     *
-     * usually the price change is so small that it actualy
-     * doesnt display the display amount, so many we'd want to
-     * detect a price percent change
-     *
-     */
-    // !loading && Marquee3k.refreshAll()
   }, [loading, UniStats.volume])
 
   useLayoutEffect(() => {
