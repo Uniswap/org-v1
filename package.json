@@ -52,6 +52,7 @@
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
     "lunr": "^2.3.8",
+    "marquee3000": "^1.1.1",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.19.0",
     "prop-types": "^15.7.2",

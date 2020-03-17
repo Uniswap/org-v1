@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
@@ -41,7 +41,7 @@ const StyledBodyTitle = styled.h1`
   overflow-wrap: normal;
   max-width: 900px;
   text-align: center;
-  font-family: 'Inferi Book', 'Times New Roman', serif;
+  font-family: 'Inferi Normal', 'Times New Roman', serif;
 
   /* letter-spacing: -0.03em; */
 
@@ -50,6 +50,7 @@ const StyledBodyTitle = styled.h1`
     font-size: 4rem;
     line-height: 4.5rem;
     margin: 2rem 0 2rem 0;
+    max-width: 600px;
   }
   @media (max-width: 375px) {
     width: 100%;
@@ -104,11 +105,12 @@ const StyledTradeLink = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.invertedTextColor};
   border-radius: 12px;
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
   display: inline-block;
   transform: scale(0.98);
   transition: transform 0.25s ease;
   box-sizing: border-box;
+  font-weight: 400;
 
   :hover {
     transform: scale(1);
@@ -133,6 +135,7 @@ const StyledTradeLinkOutlined = styled(Link)`
   transform: scale(0.98);
   transition: transform 0.25s ease;
   box-sizing: border-box;
+  font-weight: 400;
 
   :hover {
     transform: scale(1);
@@ -280,6 +283,7 @@ const NewPill = styled.span`
   text-align: center;
   margin: 0;
   margin-right: 1rem;
+  font-weight: 400;
   /* font-size: 20px; */
 `
 
@@ -365,6 +369,7 @@ const StyledMiniCardHeader = styled.h2`
   max-width: 160px;
   line-height: 120%;
   margin-top: 0px;
+  font-family: 'Inter';
 `
 
 const StyledMiniCardDesc = styled.p`
@@ -377,7 +382,7 @@ const ProductsSection = props => {
   return (
     <>
       <StyledSectionFlex style={{ paddingBottom: '0px' }}>
-        <StyledGoal style={{ width: '100%', maxWidth: '410px;' }}>
+        <StyledGoal style={{ width: '100%', maxWidth: '450px' }}>
           <h1>Products</h1>
           <p>We build open tools and experimental products that interact with the Uniswap protocol.</p>
         </StyledGoal>

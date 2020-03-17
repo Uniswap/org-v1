@@ -17,8 +17,8 @@ const StyledSidebar = styled.div`
   top: 4rem;
   align-self: flex-start;
   color: ${({ theme }) => theme.colors.link};
-  padding: 0rem 4rem 0 0;
-  min-width: 300px;
+  /* padding: 0rem 4rem 0 0; */
+  /* min-width: 300px; */
   @media (max-width: 960px) {
     top: 0px;
     position: relative;

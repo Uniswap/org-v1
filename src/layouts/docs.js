@@ -22,7 +22,7 @@ const StyledDocs = styled.div`
   justify-content: center;
   align-items: flex-start;
   justify-content: space-between;
-  margin-top: 4rem;
+  margin-top: 2rem;
   /* font-size: 0.825rem; */
 
   @media (max-width: 960px) {

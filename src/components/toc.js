@@ -8,6 +8,9 @@ const slugger = new Slugger()
 
 const StyledHeadingListElement = styled.li`
   margin-left: ${({ depth }) => depth && depth / 2 + 'rem'};
+  margin-bottom: 0px;
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
 `
 
 const StyledHeadingLink = styled.a`
@@ -54,7 +57,7 @@ const StyledTOC = styled.ul`
   list-style: none;
   text-decoration: none;
   overflow: scroll;
-  border-left: 1px solid ${({ theme }) => theme.colors.grey6};
+  border-left: 1px solid ${({ theme }) => theme.colors.grey2};
 
   :hover {
     opacity: 1;

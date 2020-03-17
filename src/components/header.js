@@ -82,6 +82,7 @@ const StyledTradeLink = styled.a`
   display: inline-block;
   transform: scale(0.98);
   transition: transform 0.25s ease;
+  font-weight: 400;
 
   :hover {
     transform: scale(1);
@@ -125,7 +126,7 @@ const StyledUni = styled(Uni)`
   margin: 0;
   width: 36px;
   height: 36px;
-  margin-right: 0.75rem;
+  margin-right: 0.35rem;
   margin-top: -5px;
   transform: rotate(0deg);
   transition: transform 0.2s linear;
