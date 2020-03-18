@@ -1,18 +1,59 @@
 ---
-title: Exchange
+title: Pair
 ---
 
 import { Link } from "gatsby"
 
-This documentation covers Uniswap-specific exchange functionality. For ERC-20 functionality, see <Link to='/docs/v2/smart-contracts/exchange-erc-20'>Exchange (ERC-20)</Link>.
+This documentation covers Uniswap-specific functionality. For ERC-20 functionality, see <Link to='/docs/v2/smart-contracts/pair-erc-20'>Pair (ERC-20)</Link>.
 
 # Code
 
-[`UniswapV2Exchange.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Exchange.sol)
+[`UniswapV2Pair.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Pair.sol)
 
 # Address
 
-See <Link to='/docs/v2/technical-considerations/exchange-addresses'>Exchange Addresses</Link>.
+See <Link to='/docs/v2/technical-considerations/pair-addresses'>Pair Addresses</Link>.
+
+# Events
+
+## Mint
+
+```solidity
+event Mint(address indexed sender, uint amount0, uint amount1);
+```
+
+Emitted each time liquidity tokens are created via [mint](#mint-1).
+
+## Burn
+
+```solidity
+event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
+```
+
+Emitted each time liquidity tokens are destroyed via [burn](#burn-1).
+
+## Swap
+
+```solidity
+event Swap(
+  address indexed sender,
+  uint amount0In,
+  uint amount1In,
+  uint amount0Out,
+  uint amount1Out,
+  address indexed to
+);
+```
+
+Emitted each time a swap occurs via [swap](#swap-1).
+
+## Sync
+
+```solidity
+event Sync(uint112 reserve0, uint112 reserve1);
+```
+
+Emitted each time reserves are updated via [mint](#mint-1), [burn](#burn-1), [swap](#swap-1), or [sync](#sync-1).
 
 # Read-Only Functions
 
@@ -22,7 +63,7 @@ See <Link to='/docs/v2/technical-considerations/exchange-addresses'>Exchange Add
 function MINIMUM_LIQUIDITY() external pure returns (uint);
 ```
 
-Returns `1000` for all exchanges. See <Link to='/docs/v2/smart-contracts/architecture/#minimum-liquidity'>Minimum Liquidity</Link>.
+Returns `1000` for all pairs. See <Link to='/docs/v2/smart-contracts/architecture/#minimum-liquidity'>Minimum Liquidity</Link>.
 
 ## factory
 
@@ -54,7 +95,7 @@ Returns the address of the pair token with the higher sort order.
 function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
 ```
 
-The reserves of token0 and token1 used to price trades and distribute liquidity. See <Link to='/docs/v2/smart-contracts/architecture/#pricing'>Pricing</Link>.
+Returns the reserves of token0 and token1 used to price trades and distribute liquidity. See <Link to='/docs/v2/smart-contracts/architecture/#pricing'>Pricing</Link>. Also returns the `block.timestamp` (mod `2**32`) of the last block during which an interaction occured for the pair.
 
 ## price0CumulativeLast
 
@@ -78,7 +119,7 @@ See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
 function kLast() external view returns (uint);
 ```
 
-Stores the product of the reserves as of the most recent liquidity event. See <Link to='/docs/v2/smart-contracts/architecture/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
+Returns the product of the reserves as of the most recent liquidity event. See <Link to='/docs/v2/smart-contracts/architecture/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
 
 # State-Changing Functions
 
@@ -90,7 +131,7 @@ function mint(address to) external returns (uint liquidity);
 
 Creates pool tokens.
 
-- Emits [Mint](#mint-1), [Sync](#sync-1), <Link to='/docs/v2/smart-contracts/exchange-erc-20#transfer-1'>Transfer</Link>.
+- Emits [Mint](#mint), [Sync](#sync), <Link to='/docs/v2/smart-contracts/pair-erc-20#transfer'>Transfer</Link>.
 
 ## burn
 
@@ -100,7 +141,7 @@ function burn(address to) external returns (uint amount0, uint amount1);
 
 Destroys pool tokens.
 
-- Emits [Burn](#burn-1), [Sync](#sync-1), <Link to='/docs/v2/smart-contracts/exchange-erc-20#transfer-1'>Transfer</Link>.
+- Emits [Burn](#burn), [Sync](#sync), <Link to='/docs/v2/smart-contracts/pair-erc-20#transfer'>Transfer</Link>.
 
 ## swap
 
@@ -110,7 +151,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 Swaps tokens. For regular swaps, `data.length` must be `0`. Also see <Link to='/docs/v2/technical-considerations/flash-swaps'>Flash Swaps</Link>.
 
-- Emits [Swap](#swap-1), [Sync](#sync-1).
+- Emits [Swap](#swap), [Sync](#sync).
 
 ## skim
 
@@ -118,54 +159,52 @@ Swaps tokens. For regular swaps, `data.length` must be `0`. Also see <Link to='/
 function skim(address to) external;
 ```
 
+See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
+
 ## sync
 
 ```solidity
 function sync() external;
 ```
 
-- Emits [Sync](#sync-1).
+See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
 
-# Events
+- Emits [Sync](#sync).
 
-## Mint
-
-```solidity
-event Mint(address indexed sender, uint amount0, uint amount1);
-```
-
-Emitted each time liquidity tokens are created via [mint](#mint).
-
-## Burn
+# Interface
 
 ```solidity
-event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
+interface IUniswapV2Pair {
+  event Mint(address indexed sender, uint amount0, uint amount1);
+  event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
+  event Swap(
+    address indexed sender,
+    uint amount0In,
+    uint amount1In,
+    uint amount0Out,
+    uint amount1Out,
+    address indexed to
+  );
+  event Sync(uint112 reserve0, uint112 reserve1);
+
+  function MINIMUM_LIQUIDITY() external pure returns (uint);
+  function factory() external view returns (address);
+  function token0() external view returns (address);
+  function token1() external view returns (address);
+  function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
+  function price0CumulativeLast() external view returns (uint);
+  function price1CumulativeLast() external view returns (uint);
+  function kLast() external view returns (uint);
+
+  function mint(address to) external returns (uint liquidity);
+  function burn(address to) external returns (uint amount0, uint amount1);
+  function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+  function skim(address to) external;
+  function sync() external;
+
+  function initialize(address, address) external;
+}
 ```
-
-Emitted each time liquidity tokens are destroyed via [burn](#burn).
-
-## Swap
-
-```solidity
-event Swap(
-  address indexed sender,
-  uint amount0In,
-  uint amount1In,
-  uint amount0Out,
-  uint amount1Out,
-  address indexed to
-);
-```
-
-Emitted each time a swap occurs via [swap](#swap).
-
-## Sync
-
-```solidity
-event Sync(uint112 reserve0, uint112 reserve1);
-```
-
-Emitted each time reserves are updated via [mint](#mint), [burn](#burn), [swap](#swap), or [sync](#sync).
 
 # ABI
 

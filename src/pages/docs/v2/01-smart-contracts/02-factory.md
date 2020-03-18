@@ -10,64 +10,99 @@ import { Link } from "gatsby"
 
 # Address
 
-`UniswapV2Factory` is deployed at `0xE9DFfc628C6933f2c74356430099bD7639F25D5C` on the [Ropsten](https://ropsten.etherscan.io/address/0xe9dffc628c6933f2c74356430099bd7639f25d5c), [Rinkeby](https://rinkeby.etherscan.io/address/0xe9dffc628c6933f2c74356430099bd7639f25d5c), [Görli](https://goerli.etherscan.io/address/0xe9dffc628c6933f2c74356430099bd7639f25d5c), and [Kovan](https://kovan.etherscan.io/address/0xe9dffc628c6933f2c74356430099bd7639f25d5c) testnets.
-
-# Read-Only Functions
-
-## getExchange
-
-```solidity
-function getExchange(address tokenA, address tokenB) external view returns (address exchange);
-```
-
-Returns the address of the exchange for `tokenA` and `tokenB`, if it has been created, else `address(0)` (`0x0000000000000000000000000000000000000000`).
-
-- `tokenA` and `tokenB` are interchangeable.
-- Exchange addresses can also be calculated deterministically, see <Link to='/docs/v2/technical-considerations/exchange-addresses'>Exchange Addresses</Link>.
-
-## allExchanges
-
-```solidity
-function allExchanges(uint) external view returns (address exchange);
-```
-
-Returns the address of the `n`th exchange (`0`-indexed) created through the factory, or `address(0)` (`0x0000000000000000000000000000000000000000`) if not enough exchanges have been created yet.
-
-- Pass `0` for the address of the first exchange created, `1` for the second, etc.
-
-## allExchangesLength
-
-```solidity
-function allExchangesLength() external view returns (uint);
-```
-
-Returns the total number of exchanges created through the factory so far.
-
-# State-Changing Functions
-
-## createExchange
-
-```solidity
-function createExchange(address tokenA, address tokenB) external returns (address exchange);
-```
-
-Creates an exchange for `tokenA` and `tokenB` if one doesn't exist already.
-
-- `tokenA` and `tokenB` are interchangeable.
-- Emits [ExchangeCreated](#exchangecreated).
+`UniswapV2Factory` is deployed at `0xe2f197885abe8ec7c866cFf76605FD06d4576218` on the [Ropsten](https://ropsten.etherscan.io/address/0xe2f197885abe8ec7c866cff76605fd06d4576218), [Rinkeby](https://rinkeby.etherscan.io/address/0xe2f197885abe8ec7c866cff76605fd06d4576218), [Görli](https://goerli.etherscan.io/address/0xe2f197885abe8ec7c866cff76605fd06d4576218), and [Kovan](https://kovan.etherscan.io/address/0xe2f197885abe8ec7c866cff76605fd06d4576218) testnets.
 
 # Events
 
-## ExchangeCreated
+## PairCreated
 
 ```solidity
-event ExchangeCreated(address indexed token0, address indexed token1, address exchange, uint);
+event PairCreated(address indexed token0, address indexed token1, address pair, uint);
 ```
 
-Emitted each time an exchange is created via [createExchange](#createexchange).
+Emitted each time a pair is created via [createPair](#createpair).
 
 - `token0` is guaranteed to be strictly less than `token1` by sort order.
-- The final `uint` log value will be `1` for the first exchange created, `2` for the second, etc. (see [allExchanges](#allexchanges)/[getExchange](#getexchange)).
+- The final `uint` log value will be `1` for the first pair created, `2` for the second, etc. (see [allPairs](#allpairs)/[getPair](#getpair)).
+
+# Read-Only Functions
+
+## getPair
+
+```solidity
+function getPair(address tokenA, address tokenB) external view returns (address pair);
+```
+
+Returns the address of the pair for `tokenA` and `tokenB`, if it has been created, else `address(0)` (`0x0000000000000000000000000000000000000000`).
+
+- `tokenA` and `tokenB` are interchangeable.
+- Pair addresses can also be calculated deterministically, see <Link to='/docs/v2/technical-considerations/pair-addresses'>Pair Addresses</Link>.
+
+## allPairs
+
+```solidity
+function allPairs(uint) external view returns (address pair);
+```
+
+Returns the address of the `n`th pairr (`0`-indexed) created through the factory, or `address(0)` (`0x0000000000000000000000000000000000000000`) if not enough pairs have been created yet.
+
+- Pass `0` for the address of the first pair created, `1` for the second, etc.
+
+## allPairsLength
+
+```solidity
+function allPairsLength() external view returns (uint);
+```
+
+Returns the total number of pairs created through the factory so far.
+
+## feeTo
+
+```solidity
+function feeTo() external view returns (address);
+```
+
+See <Link to='/docs/v2/smart-contracts/architecture/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
+
+## feeToSetter
+
+```solidity
+function feeToSetter() external view returns (address);
+```
+
+The address allowed to change [feeTo](#feeto).
+
+# State-Changing Functions
+
+## createPair
+
+```solidity
+function createPair(address tokenA, address tokenB) external returns (address pair);
+```
+
+Creates a pair for `tokenA` and `tokenB` if one doesn't exist already.
+
+- `tokenA` and `tokenB` are interchangeable.
+- Emits [PairCreated](#paircreated).
+
+# Interface
+
+```solidity
+pragma solidity =0.5.16;
+
+interface IUniswapV2Factory {
+  event PairCreated(address indexed token0, address indexed token1, address pair, uint);
+
+  function getPair(address tokenA, address tokenB) external view returns (address pair);
+  function allPairs(uint) external view returns (address pair);
+  function allPairsLength() external view returns (uint);
+
+  function feeTo() external view returns (address);
+  function feeToSetter() external view returns (address);
+
+  function createPair(address tokenA, address tokenB) external returns (address pair);
+}
+```
 
 # ABI
 
@@ -78,17 +113,17 @@ Emitted each time an exchange is created via [createExchange](#createexchange).
     "inputs": [
       { "indexed": true, "internalType": "address", "name": "token0", "type": "address" },
       { "indexed": true, "internalType": "address", "name": "token1", "type": "address" },
-      { "indexed": false, "internalType": "address", "name": "exchange", "type": "address" },
+      { "indexed": false, "internalType": "address", "name": "pair", "type": "address" },
       { "indexed": false, "internalType": "uint256", "name": "", "type": "uint256" }
     ],
-    "name": "ExchangeCreated",
+    "name": "PairCreated",
     "type": "event"
   },
   {
     "constant": true,
     "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "allExchanges",
-    "outputs": [{ "internalType": "address", "name": "exchange", "type": "address" }],
+    "name": "allPairs",
+    "outputs": [{ "internalType": "address", "name": "pair", "type": "address" }],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -96,7 +131,7 @@ Emitted each time an exchange is created via [createExchange](#createexchange).
   {
     "constant": true,
     "inputs": [],
-    "name": "allExchangesLength",
+    "name": "allPairsLength",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "payable": false,
     "stateMutability": "view",
@@ -108,10 +143,28 @@ Emitted each time an exchange is created via [createExchange](#createexchange).
       { "internalType": "address", "name": "tokenA", "type": "address" },
       { "internalType": "address", "name": "tokenB", "type": "address" }
     ],
-    "name": "createExchange",
-    "outputs": [{ "internalType": "address", "name": "exchange", "type": "address" }],
+    "name": "createPair",
+    "outputs": [{ "internalType": "address", "name": "pair", "type": "address" }],
     "payable": false,
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "feeTo",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "feeToSetter",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -120,8 +173,8 @@ Emitted each time an exchange is created via [createExchange](#createexchange).
       { "internalType": "address", "name": "tokenA", "type": "address" },
       { "internalType": "address", "name": "tokenB", "type": "address" }
     ],
-    "name": "getExchange",
-    "outputs": [{ "internalType": "address", "name": "exchange", "type": "address" }],
+    "name": "getPair",
+    "outputs": [{ "internalType": "address", "name": "pair", "type": "address" }],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
