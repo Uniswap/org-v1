@@ -10,12 +10,17 @@ const menu = [
       {
         name: 'Info',
         link: 'https://uniswap.info/',
-        description: 'Track Uniswap exchanges and token prices'
+        description: 'Track Uniswap pools and prices'
       },
       {
         name: 'Unisocks',
         link: 'https://unisocks.exchange/',
         description: 'Dynamically priced socks'
+      },
+      {
+        name: 'Unipig',
+        link: 'https://unipig.exchange/',
+        description: 'Ethereum layer 2 demo'
       }
     ]
   },

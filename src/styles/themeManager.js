@@ -1,4 +1,4 @@
-import React, { createContext, useLayoutEffect, useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from './theme'
 
@@ -9,7 +9,7 @@ const defaultState = {
 
 export const ThemeManagerContext = createContext(defaultState)
 
-const supportsDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches
+// const supportsDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches
 
 export const StyledThemeProvider = props => {
   const [isDark, setIsDark] = useState(false)

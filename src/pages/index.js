@@ -18,6 +18,9 @@ const StyledBody = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
 `
 
 const StyledTitle = styled.div`
@@ -209,7 +212,7 @@ const IndexPage = props => {
       </Helmet>
       <StyledBody>
         <StyledTitle>
-          <StyledBodyTitle>Automated Exchange Protocol.</StyledBodyTitle>
+          <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
           <span>
             <StyledTradeLink href="https://uniswap.exchange/">Trade Now</StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
@@ -316,14 +319,16 @@ const SummarySection = props => {
       </StyledImgSection>
       <StyledImgSection>
         <h1>
-          <b>Uniswap</b> is a fully decentralized protocol for automated market making on Ethereum.
+          <b>Uniswap</b> is a fully decentralized protocol for automated liquidity provision on Ethereum.
         </h1>
 
-        <p>A simple formalized equation drives unstoppable liquidity for thousands of exchanges.</p>
+        <p>
+          A simple formalized equation drives unstoppable liquidity for thousands of users and hundreds of Applications.
+        </p>
 
         <p>
-          The protocol aligns developers, market makers and traders to design markets that are open and accessible to
-          all.
+          Uniswa empowers developers, liquidity providers and traders to participate in markets that are open and
+          accessible to all.
         </p>
 
         <StyledTradeLinkOutlined to="/docs/v2#how-it-all-works">Read more</StyledTradeLinkOutlined>
@@ -344,9 +349,9 @@ const ProductsSection = props => {
       <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
         <MiniCard
           href="https://uniswap.exchange"
-          title={'Uniswap Exchange'}
+          title={'Uniswap Pools'}
           image={props.data.swap.childImageSharp.fluid}
-          desc={'Trade tokens, add liquidity and create exchanges.'}
+          desc={'Trade tokens, add liquidity and create new pools.'}
         />
         <MiniCard
           href="https://uniswap.info"
