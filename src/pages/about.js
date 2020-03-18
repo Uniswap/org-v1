@@ -103,7 +103,7 @@ const About = props => {
             Uniswap is built by a small team in Brooklyn, NY with additional contributions from our collaborators all
             across the world.
           </p>
-          <p>We are commited to free and open source software and building on the decentralized web.</p>
+          <p>We are committed to free and open source software and building on the decentralized web.</p>
           <p>
             You can read about how Uniswap got started
             <a href="https://medium.com/uniswap/uniswap-birthday-blog-v0-7a91f3f6a1ba"> here.</a>

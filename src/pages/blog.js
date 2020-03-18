@@ -13,6 +13,9 @@ const PostsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
 `
 
 const Posts = styled.div`
@@ -26,7 +29,7 @@ const Posts = styled.div`
   border-radius: 20px;
   text-decoration: none;
   background-color: ${({ theme }) => theme.cardBG};
-  border: 1px solid ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)};
+  /* border: 1px solid ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)}; */
 
   :hover {
     transform: scale(1.02);

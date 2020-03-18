@@ -24,7 +24,7 @@ const StyledMenu = styled.button`
   border: none;
   text-align: left;
   list-style: none;
-  padding-right: 2rem;
+  padding-right: 1.5rem;
   background: none;
   @media (max-width: 960px) {
     font-size: 1.5rem;
@@ -85,7 +85,7 @@ const StyledMenuTitle = styled.span`
   text-decoration: none;
   margin: 0px;
   border-radius: 0.5rem;
-  /* font-weight: 400; */
+  font-weight: 400;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.link};
   @media (max-width: 960px) {

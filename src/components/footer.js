@@ -26,17 +26,14 @@ function Dropdown(props) {
 }
 
 const StyledFooter = styled.footer`
-  padding: 4rem 0rem;
-  /* margin-bottom: 2rem; */
-  margin-top: 4rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
-  /* background-color: ${({ theme }) => theme.colors.grey9}; */
+  background-color: ${({ theme }) => theme.backgroundColor};
   color: ${({ theme }) => theme.colors.link};
   position: relative;
 
-
-  @media  (max-width: 960px) {
+  @media (max-width: 960px) {
     flex-direction: column;
     padding: 2rem 1rem;
   }

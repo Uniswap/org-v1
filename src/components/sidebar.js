@@ -36,10 +36,9 @@ const StyledSection = styled.div`
 
 // eslint-disable-next-line no-unused-vars
 const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
-  font-weight: ${({ isActive }) => isActive && 400};
-  background-color: ${({ isActive, theme }) => isActive && theme.cardBG};
+  font-weight: ${({ isActive }) => isActive && 500};
   border-radius: 8px;
-  padding: 0.25rem 0rem;
+  padding: 0.25rem 0;
   text-decoration: none;
   margin: 0;
   color: ${({ theme }) => theme.colors.link};
@@ -49,10 +48,11 @@ const StyledList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  font-weight: 400;
 `
 
 const StyledLisItem = styled.li`
-  margin-left: 1rem;
+  margin-left: 0.75rem;
 `
 
 const StyledSectionTitle = styled.p`
@@ -62,6 +62,7 @@ const StyledSectionTitle = styled.p`
   flex-direction: row;
   align-items: center;
   flex-wrap: no-wrap;
+  font-weight: 400;
 `
 
 const StyledArrow = styled.span`
