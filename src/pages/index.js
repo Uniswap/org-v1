@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql, Link } from 'gatsby'
@@ -213,6 +213,7 @@ const IndexPage = props => {
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
+
           <span>
             <StyledTradeLink href="https://uniswap.exchange/">Trade Now</StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
@@ -222,6 +223,7 @@ const IndexPage = props => {
 
         <ProductsSection data={data} />
         <GoalSection />
+        <EmailSection />
       </StyledBody>
     </Layout>
   )
@@ -407,6 +409,96 @@ const GoalSection = () => {
         {/* <div>
           <Link to="/">Read more about how we are working towards this future.</Link>
         </div> */}
+      </StyledGoal>
+    </StyledSectionFlex>
+  )
+}
+
+const EmailRow = styled.form`
+  display: flex;
+  flex-direction: row;
+`
+
+const InputButton = styled.input`
+  padding: 0.25rem 0.75rem;
+  background-color: ${({ theme }) => theme.colors.link};
+  text-decoration: none;
+  color: ${({ theme }) => theme.invertedTextColor};
+  border-radius: 12px;
+  margin-right: 0.5rem;
+  display: inline-block;
+  transform: scale(0.98);
+  transition: transform 0.25s ease;
+  box-sizing: border-box;
+  font-weight: 400;
+  border: none;
+
+  :hover {
+    transform: scale(1);
+    cursor: pointer;
+  }
+  @media (max-width: 960px) {
+    margin-right: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.825rem;
+    padding: 0.25rem 1rem;
+  }
+
+  outline-color: transparent;
+  outline-style: none;
+`
+
+const StyledInput = styled.input`
+  border-radius: 12px;
+  margin-right: 10px;
+  box-shadow: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid ${({ theme }) => theme.chaliceGray};
+  width: 280px;
+
+  padding: 4px 0 4px 10px;
+
+  :focus {
+    outline-color: transparent;
+    outline-style: none;
+    border: 1px solid ${({ theme }) => theme.colors.link};
+  }
+`
+
+const EmailSection = () => {
+  const [email, setEmail] = useState('')
+
+  return (
+    <StyledSectionFlex>
+      <StyledGoal style={{ width: '100%', maxWidth: '450px' }}>
+        <h1>Stay In Touch</h1>
+        <p>Signup for updates filler text.</p>
+        <EmailRow
+          action="https://uniswap.us19.list-manage.com/subscribe/post?u=0f8d44ba5b10667bfe8b58514&amp;id=15ef78d012"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          target="_blank"
+          novalidate
+        >
+          <StyledInput
+            type="email"
+            value={email}
+            name="EMAIL"
+            id="mce-EMAIL"
+            placeholder="email address"
+            required
+            onChange={val => setEmail(val.target.value)}
+          />
+          <div>
+            <InputButton type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" />
+          </div>
+        </EmailRow>
       </StyledGoal>
     </StyledSectionFlex>
   )
