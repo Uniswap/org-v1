@@ -18,4 +18,6 @@ The Uniswap SDK is meant to simplify the process of integrating Uniswap into you
 
 The SDK is written in TypeScript, has a robust test suite, supports rounding to both significant digits and fixed decimals, uses [JSBI](https://github.com/GoogleChromeLabs/jsbi) (and eventually native [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)s) for math operations, and supports all environments in which the <Link to='/docs/v2/smart-contracts/factory#address'>factory</Link> is deployed.
 
-More documentation coming soon...
+# Documentation
+
+Coming soon...

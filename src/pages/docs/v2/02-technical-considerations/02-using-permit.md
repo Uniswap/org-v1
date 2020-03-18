@@ -4,7 +4,7 @@ title: Using Permit
 
 import { Link } from "gatsby"
 
-All Uniswap V2 pool tokens support meta-transaction approvals via the <Link to='/docs/v2/smart-contracts/exchange-erc-20#permit'>permit</Link> function. This obviates the need for a blocking approve transaction before programmatic interactions with pool tokens can occur.
+All Uniswap V2 pool tokens support meta-transaction approvals via the <Link to='/docs/v2/smart-contracts/pair-erc-20#permit'>permit</Link> function. This obviates the need for a blocking approve transaction before programmatic interactions with pool tokens can occur.
 
 # ERC-712
 
@@ -24,9 +24,9 @@ keccak256(
 );
 ```
 
-- `name` is always `Uniswap V2`, see <Link to='/docs/v2/smart-contracts/exchange-erc-20#name'>name</Link>.
+- `name` is always `Uniswap V2`, see <Link to='/docs/v2/smart-contracts/pair-erc-20#name'>name</Link>.
 - `chainId` is determined from the [ERC-1344](https://ethereum-magicians.org/t/eip-1344-add-chain-id-opcode/1131) `chainid` opcode.
-- `address(this)` is the address of the exchange, see <Link to='/docs/v2/technical-considerations/exchange-addresses'>Exchange Addresses</Link>.
+- `address(this)` is the address of the pair, see <Link to='/docs/v2/technical-considerations/pair-addresses'>Pair Addresses</Link>.
 
 ## Permit Typehash
 
