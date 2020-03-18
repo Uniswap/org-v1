@@ -84,7 +84,7 @@ const StyledImage = styled(Img)`
   @media (max-width: 960px) {
     display: none;
   }
-  /* max-width: 256px; */
+  max-width: 256px;
 `
 
 const NewPill = styled.p`
@@ -112,13 +112,13 @@ const Blog = props => {
               date(formatString: "MMMM Do, YYYY")
               title
               previewText
-              # featuredImage {
-              #   childImageSharp {
-              #     fluid(maxWidth: 1200) {
-              #       ...GatsbyImageSharpFluid
-              #     }
-              #   }
-              # }
+              featuredImage {
+                childImageSharp {
+                  fluid(maxWidth: 1200) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
             fields {
               slug
@@ -168,9 +168,9 @@ const Blog = props => {
 
                   <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
                 </PostTitleWrapper>
-                {/* {node.frontmatter.featuredImage && (
-                  // <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
-                )} */}
+                {node.frontmatter.featuredImage && (
+                  <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
+                )}
               </PostLinkWrapper>
             </Posts>
           )
