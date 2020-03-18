@@ -29,7 +29,7 @@ const StyledFooter = styled.footer`
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.backgroundColor};
+  /* background-color: ${({ theme }) => theme.backgroundColor}; */
   color: ${({ theme }) => theme.colors.link};
   position: relative;
 
@@ -154,12 +154,12 @@ const Footer = () => {
             </code>
           </Commit>
           <p>© 2020 Uniswap</p>
-          <div>
+          {/* <div>
             <label>
               <input type="checkbox" onChange={() => themeContext.toggleDark()} checked={themeContext.isDark} /> Dark
               mode
             </label>
-          </div>
+          </div> */}
         </StyledFooterSection>
       </StyledSection>
       <StyledSection>

@@ -125,7 +125,7 @@ export default function Ticker() {
       }).format(data.uniswap.totalLiquidityUSD),
       ' Total Liquidity'
     ]
-    UniStats.exchanges = [Number.parseFloat(data.uniswap.exchangeCount), ' Total Exchanges']
+    UniStats.exchanges = [Number.parseFloat(data.uniswap.exchangeCount), ' Total Pools']
 
     let averagePrice = 0
     const usdcPrice = data && data.usdcPrice && data.usdcPrice[0].price
