@@ -59,10 +59,7 @@ const StyledMiniCardDesc = styled.p`
 
 const MiniCard = props => {
   return (
-    <StyledMiniCards
-      style={{ backgroundColor: props.backgroundColor, color: props.color }}
-      href="https://unisocks.exchange"
-    >
+    <StyledMiniCards style={{ backgroundColor: props.backgroundColor, color: props.color }} href={props.href}>
       <StyledCardBG fluid={props.image} />
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
       <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>

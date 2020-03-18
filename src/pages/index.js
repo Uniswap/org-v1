@@ -356,7 +356,7 @@ const ProductsSection = props => {
           backgroundColor={'#F3BE1E'}
         />
         <MiniCard
-          href="https://uniswap.exchange"
+          href="https://unisocks.exchange"
           title={'Unisocks'}
           image={props.data.socks.childImageSharp.fluid}
           desc={'Experimental speculative fashion.'}

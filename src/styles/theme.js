@@ -30,7 +30,7 @@ export const theme = darkMode => ({
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.4)',
-  menuBG: darkMode ? 'rgba(10,10,10, 0.8)' : 'rgba(255, 255, 255, 0.6)',
+  menuBG: darkMode ? 'rgba(10,10,10, 0.8)' : 'rgba(255, 255, 255, 0.9)',
   marqueeBG: darkMode ? '#010101' : '#010101',
 
   inputBackground: darkMode ? '#202124' : white,

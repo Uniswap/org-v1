@@ -100,6 +100,7 @@ const StaticLink = styled.a`
 
 const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
+  min-width: 240px;
   @media (max-width: 960px) {
     margin-bottom: 1rem;
   }
