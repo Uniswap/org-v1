@@ -26,28 +26,14 @@ function Dropdown(props) {
 }
 
 const StyledFooter = styled.footer`
-  padding: 4rem 0rem;
-  /* margin-bottom: 2rem; */
-  margin-top: 4rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
-  /* background-color: ${({ theme }) => theme.colors.grey9}; */
+  background-color: ${({ theme }) => theme.backgroundColor};
   color: ${({ theme }) => theme.colors.link};
   position: relative;
 
- :before {
-    top: 0px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-
-    content: ' ';
-    position: absolute;
-    background-color: ${({ theme }) => theme.colors.link};
-    opacity: 1;
-  }
-
-  @media  (max-width: 960px) {
+  @media (max-width: 960px) {
     flex-direction: column;
     padding: 2rem 1rem;
   }
@@ -180,7 +166,7 @@ const Footer = () => {
         {data.site.siteMetadata.menulinks.map(item => {
           return (
             <StyledFooterSectionNav key={item.name}>
-              <h4 style={{ fontWeight: 500, marginBottom: '1rem' }}>{item.name}</h4>
+              <h4 style={{ fontWeight: 400, marginBottom: '1rem' }}>{item.name}</h4>
               <Dropdown links={item.sublinks} />
             </StyledFooterSectionNav>
           )

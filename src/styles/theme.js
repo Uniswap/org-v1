@@ -29,7 +29,7 @@ export const theme = darkMode => ({
   backgroundColor: darkMode ? '#010101' : '#FFF',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
-  cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.4)',
+  cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)',
   menuBG: darkMode ? 'rgba(10,10,10, 0.8)' : 'rgba(255, 255, 255, 0.6)',
   marqueeBG: darkMode ? '#010101' : '#010101',
 
@@ -145,7 +145,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: 18px;
+    font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
     -webkit-font-smoothing: antialiased;
@@ -236,10 +236,5 @@ export const GlobalStyle = createGlobalStyle`
   strong{
     font-weight: 500;
     color: ${({ theme }) => theme.colors.grey9};
-  }
-
-  em{
-    color: ${({ theme }) => theme.colors.grey6};
-    font-size: 0.825rem;
   }
 `

@@ -18,6 +18,9 @@ const StyledBody = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
 `
 
 const StyledTitle = styled.div`
@@ -90,8 +93,11 @@ const StyledSectionFlex = styled.div`
   @media (max-width: 960px) {
     padding: 1rem;
     margin-top: 0rem;
-    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    /* flex-direction: column; */
   }
+
   h2 {
     margin-bottom: 0.5rem;
   }
@@ -206,7 +212,7 @@ const IndexPage = props => {
       </Helmet>
       <StyledBody>
         <StyledTitle>
-          <StyledBodyTitle>Automated Exchange Protocol.</StyledBodyTitle>
+          <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
           <span>
             <StyledTradeLink href="https://uniswap.exchange/">Trade Now</StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
@@ -312,15 +318,17 @@ const SummarySection = props => {
         </MiniNewInfo>
       </StyledImgSection>
       <StyledImgSection>
-        <h2>
-          <b>Uniswap</b> is a fully decentralized protocol for automated market making on Ethereum.
-        </h2>
-
-        <p>A simple formalized equation drives unstoppable liquidity for thousands of exchanges.</p>
+        <h1>
+          <b>Uniswap</b> is a fully decentralized protocol for automated liquidity provision on Ethereum.
+        </h1>
 
         <p>
-          The protocol aligns developers, market makers and traders to design markets that are open and accessible to
-          all.
+          A simple formalized equation drives unstoppable liquidity for thousands of users and hundreds of Applications.
+        </p>
+
+        <p>
+          Uniswa empowers developers, liquidity providers and traders to participate in markets that are open and
+          accessible to all.
         </p>
 
         <StyledTradeLinkOutlined to="/docs/v2#how-it-all-works">Read more</StyledTradeLinkOutlined>
@@ -328,60 +336,6 @@ const SummarySection = props => {
     </StyledSectionFlex>
   )
 }
-
-// const StyledMiniCardContainer = styled.li`
-
-const StyledMiniCards = styled.a`
-  padding: 1.5rem;
-  /* font-size: 20px; */
-  color: ${({ theme }) => theme.textColor};
-  width: 260px;
-  height: 360px;
-  margin: 1rem;
-  box-shadow: ${({ theme }) => theme.shadows.huge};
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-  will-change: transform;
-  :hover {
-    transform: scale(1.03);
-  }
-
-  @media (max-width: 960px) {
-    width: 100%;
-    max-width: 450px;
-    height: 200px;
-  }
-`
-const StyledCardBG = styled(Img)`
-  width: 80px;
-  height: 250px;
-  position: absolute !important;
-  top: 0px;
-  right: 0px;
-  background-size: auto;
-  background-position: center;
-  /* z-index: -1; */
-`
-
-const StyledMiniCardHeader = styled.h3`
-  color: ${({ theme }) => theme.textColor};
-  max-width: 160px;
-  line-height: 130%;
-  margin-top: 0px;
-  font-weight: 400;
-  font-family: 'Inter';
-`
-
-const StyledMiniCardDesc = styled.p`
-  font-size: 1rem;
-  line-height: 130%;
-  max-width: 90%;
-`
 
 const ProductsSection = props => {
   return (
@@ -395,9 +349,9 @@ const ProductsSection = props => {
       <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
         <MiniCard
           href="https://uniswap.exchange"
-          title={'Uniswap Exchange'}
+          title={'Uniswap Pools'}
           image={props.data.swap.childImageSharp.fluid}
-          desc={'Trade tokens, add liquidity and create exchanges.'}
+          desc={'Trade tokens, add liquidity and create new pools.'}
         />
         <MiniCard
           href="https://uniswap.info"
@@ -407,7 +361,7 @@ const ProductsSection = props => {
           backgroundColor={'#F3BE1E'}
         />
         <MiniCard
-          href="https://uniswap.exchange"
+          href="https://unisocks.exchange"
           title={'Unisocks'}
           image={props.data.socks.childImageSharp.fluid}
           desc={'Experimental speculative fashion.'}

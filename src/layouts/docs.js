@@ -23,7 +23,7 @@ const StyledDocs = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 2rem;
-  /* font-size: 0.825rem; */
+  /* font-size: 16px; */
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -34,7 +34,7 @@ const StyledDocs = styled.div`
 const StyledMDX = styled.div`
   /* width: 640px; */
   min-width: 550px;
-  max-width: 650px;
+  max-width: 700px;
   padding: 0;
   margin-bottom: 3rem;
   a {

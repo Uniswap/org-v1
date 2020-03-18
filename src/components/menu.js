@@ -24,7 +24,7 @@ const StyledMenu = styled.button`
   border: none;
   text-align: left;
   list-style: none;
-  padding-right: 2rem;
+  padding-right: 1.5rem;
   background: none;
   @media (max-width: 960px) {
     font-size: 1.5rem;
@@ -127,7 +127,7 @@ const StyledExternalLink = styled.a`
 
 const StyledTitle = styled.p`
   display: block;
-  font-weight: ${({ active }) => active && 600};
+  font-weight: ${({ active }) => active && 500};
   border-radius: 8px;
   text-decoration: none;
   margin: 0;

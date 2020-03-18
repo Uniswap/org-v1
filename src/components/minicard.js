@@ -54,6 +54,7 @@ const StyledMiniCardDesc = styled.p`
   font-size: 1rem;
   line-height: 130%;
   max-width: 90%;
+  margin-bottom: 0px;
 `
 
 const MiniCard = props => {
