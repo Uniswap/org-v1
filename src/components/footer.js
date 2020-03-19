@@ -180,7 +180,7 @@ export default Footer
 
 const EmailRow = styled.form`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `
 
 const InputButton = styled.input`
@@ -214,7 +214,7 @@ const InputButton = styled.input`
 `
 
 const StyledInput = styled.input`
-  border-radius: 12px;
+  border-radius: 8px;
   margin-right: 10px;
   box-shadow: none;
   background-image: none;
@@ -237,7 +237,7 @@ const StyledInput = styled.input`
 const StyledGoal = styled.div`
   color: ${({ theme }) => theme.colors.link};
   p {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     font-weight: 400;
   }
 `
@@ -274,10 +274,10 @@ const EmailSection = () => {
   const [email, setEmail] = useState('')
 
   return (
-    // <StyledSectionFlex>
     <StyledGoal style={{ width: '100%', maxWidth: '450px' }}>
       {/* <h1>Stay In Touch</h1> */}
-      <p>Signup for updates filler text.</p>
+      <p>Subscribe to our newsletter for updates</p>
+
       <EmailRow
         action="https://uniswap.us19.list-manage.com/subscribe/post?u=0f8d44ba5b10667bfe8b58514&amp;id=15ef78d012"
         method="post"
@@ -291,15 +291,14 @@ const EmailSection = () => {
           value={email}
           name="EMAIL"
           id="mce-EMAIL"
-          placeholder="email address"
+          placeholder="your@email.com"
           required
           onChange={val => setEmail(val.target.value)}
         />
         <div>
-          <InputButton type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" />
+          <InputButton type="submit" value="->" name="subscribe" id="mc-embedded-subscribe" />
         </div>
       </EmailRow>
     </StyledGoal>
-    // </StyledSectionFlex>
   )
 }

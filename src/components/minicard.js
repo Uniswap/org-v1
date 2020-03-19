@@ -40,13 +40,13 @@ const StyledCardBG = styled(Img)`
   /* z-index: -1; */
 `
 
-const StyledMiniCardHeader = styled.h3`
+const StyledMiniCardHeader = styled.p`
   color: ${({ theme }) => theme.textColor};
   max-width: 130px;
   line-height: 130%;
   margin-top: 0px;
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-weight: 500;
+  font-size: 1.25rem;
   font-family: 'Inter';
 `
 
