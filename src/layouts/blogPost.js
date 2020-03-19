@@ -55,6 +55,7 @@ const PostHeader = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
   min-width: 550px;
   max-width: 650px;
   padding: 8rem 0 5rem 0;

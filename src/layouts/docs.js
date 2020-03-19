@@ -24,6 +24,10 @@ const StyledDocs = styled.div`
   justify-content: space-between;
   margin-top: 2rem;
 
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+
   @media (max-width: 960px) {
     flex-direction: column;
     margin-top: 0rem;

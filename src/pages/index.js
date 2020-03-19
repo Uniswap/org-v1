@@ -112,12 +112,13 @@ const StyledTradeLink = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.invertedTextColor};
   border-radius: 12px;
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
   display: inline-block;
   transform: scale(0.98);
   transition: transform 0.25s ease;
   box-sizing: border-box;
   font-weight: 400;
+  font-size: 1.25rem;
 
   :hover {
     transform: scale(1);
@@ -142,6 +143,7 @@ const StyledTradeLinkOutlined = styled(Link)`
   transition: transform 0.25s ease;
   box-sizing: border-box;
   font-weight: 400;
+  font-size: 1.25rem;
 
   :hover {
     transform: scale(1);
@@ -213,7 +215,7 @@ const IndexPage = props => {
           <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
 
           <span>
-            <StyledTradeLink href="https://uniswap.exchange/">Trade Now</StyledTradeLink>
+            <StyledTradeLink href="https://uniswap.exchange/">Launch App</StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
           </span>
         </StyledTitle>
