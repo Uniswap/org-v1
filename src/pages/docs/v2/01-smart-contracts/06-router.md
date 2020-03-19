@@ -62,7 +62,6 @@ Adds liquidity to an ERC-20⇄ERC-20 pool.
 | amountB        | `uint`    | The amount of tokenB sent to the pool.                                                                         |
 | liquidity      | `uint`    | The amount of liquidity tokens minted.                                                                         |
 
-
 ## addLiquidityETH
 
 ```solidity

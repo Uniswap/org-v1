@@ -31,7 +31,7 @@ Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswa
 ```solidity
 address factory = 0xe2f197885abe8ec7c866cFf76605FD06d4576218;
 address token0 = 0xCAFE000000000000000000000000000000000000; // change me!
-address token1 = 0xc0FFee0000000000000000000000000000000000; // change me!
+address token1 = 0xF00D000000000000000000000000000000000000; // change me!
 
 address pair = address(uint(keccak256(abi.encodePacked(
   hex'ff',
@@ -43,17 +43,19 @@ address pair = address(uint(keccak256(abi.encodePacked(
 
 ### Typescript
 
+This example makes use of the <Link to='docs/v2/SDK/getting-started'>Uniswap SDK</Link>. In reality, the SDK computes pair addresses behind the scenes, obviating the need to compute them manually like this.
+
 ```typescript
+import { FACTORY_ADDRESS, INIT_CODE_HASH } from '@uniswap/sdk'
 import { pack, keccak256 } from '@ethersproject/solidity'
 import { getCreate2Address } from '@ethersproject/address'
 
-const factory = '0xe2f197885abe8ec7c866cFf76605FD06d4576218'
 const token0 = '0xCAFE000000000000000000000000000000000000' // change me!
-const token1 = '0xc0FFee0000000000000000000000000000000000' // change me!
+const token1 = '0xF00D000000000000000000000000000000000000' // change me!
 
 const pair = getCreate2Address(
-  factory,
+  FACTORY_ADDRESS,
   keccak256(['bytes'], [pack(['address', 'address'], [token0, token1])]),
-  '0x0b77fb54a078d9399fa29cac94f5b35b9f11611b456ab507c7f46754712b642b'
+  INIT_CODE_HASH'
 )
 ```
