@@ -2,8 +2,6 @@
 title: Factory
 ---
 
-import { Link } from "gatsby"
-
 # Code
 
 [`UniswapV2Factory.sol`](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Factory.sol)

@@ -2,8 +2,6 @@
 title: Using Permit
 ---
 
-import { Link } from "gatsby"
-
 All Uniswap V2 pool tokens support meta-transaction approvals via the <Link to='/docs/v2/smart-contracts/pair-erc-20#permit'>permit</Link> function. This obviates the need for a blocking approve transaction before programmatic interactions with pool tokens can occur.
 
 # ERC-712

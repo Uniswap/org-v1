@@ -2,8 +2,6 @@
 title: Pair Addresses
 ---
 
-import { Link } from "gatsby"
-
 # getPair
 
 The most obvious way to get the address for a pair is to call <Link to='/docs/v2/smart-contracts/factory/#getpair'>getPair</Link> on the factory. If the pair exists, this function will return its address, else `address(0)` (`0x0000000000000000000000000000000000000000`).

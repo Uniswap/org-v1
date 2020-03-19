@@ -2,8 +2,6 @@
 title: Getting Started
 ---
 
-import { Link } from "gatsby"
-
 # Code
 
 [uniswap-sdk](https://github.com/Uniswap/uniswap-sdk/tree/v2)
