@@ -2,8 +2,6 @@
 title: Architecture
 ---
 
-import { Link } from "gatsby"
-
 Uniswap V2 is a binary smart contract system. [Core](#core) contracts provide fundamental safety guarantees for all parties interacting with Uniswap. [Periphery](#periphery) contracts interact with one or more core contracts but are not themselves part of the core.
 
 # Core

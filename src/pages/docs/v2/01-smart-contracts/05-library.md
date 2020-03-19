@@ -2,8 +2,6 @@
 title: Library
 ---
 
-import { Link } from "gatsby"
-
 # Code
 
 [`UniswapV2Library.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Library.sol)
