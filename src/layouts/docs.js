@@ -226,7 +226,8 @@ const Docs = props => {
               return (
                 <StyledDocsNavWrapper key={node.id}>
                   <StyledDocsNav>
-                    {previous && (
+                    {/* index.md file is considered the "last" based on the sort order. Check to remove links when not relevent */}
+                    {previous && node.fields.slug !== '/docs/v2/' && (
                       <StyledLink style={{ alignItems: 'flex-end' }} to={previous.fields.slug} rel="prev">
                         <small>Previous</small>
                         <span>← {previous.frontmatter.title}</span>
@@ -234,10 +235,17 @@ const Docs = props => {
                     )}
                   </StyledDocsNav>
                   <StyledDocsNav>
-                    {next && (
+                    {/* index.md file is considered the "last" based on the sort order. Check to remove when not relevent */}
+                    {next && next.fields.slug !== '/docs/v2/' && (
                       <StyledLink style={{ alignItems: 'flex-start' }} to={next.fields.slug} rel="next">
                         <small>Next</small>
                         <span>{next.frontmatter.title} →</span>
+                      </StyledLink>
+                    )}
+                    {node.fields.slug === '/docs/v2/' && (
+                      <StyledLink style={{ alignItems: 'flex-start' }} to={'/docs/v2/smart-contracts/'} rel="next">
+                        <small>Next</small>
+                        <span>Smart Contracts →</span>
                       </StyledLink>
                     )}
                   </StyledDocsNav>
