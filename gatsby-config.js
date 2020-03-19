@@ -3,7 +3,7 @@ const menu = [
     name: 'Products',
     sublinks: [
       {
-        name: 'Exchange',
+        name: 'Interface',
         link: 'https://uniswap.exchange/',
         description: 'Swap tokens and supply liquidity'
       },

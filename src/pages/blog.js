@@ -87,7 +87,7 @@ const StyledImage = styled(Img)`
   @media (max-width: 960px) {
     display: none;
   }
-  /* max-width: 256px; */
+  max-width: 256px;
 `
 
 const NewPill = styled.p`

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql, Link } from 'gatsby'
@@ -213,6 +213,7 @@ const IndexPage = props => {
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
+
           <span>
             <StyledTradeLink href="https://uniswap.exchange/">Trade Now</StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
@@ -327,7 +328,7 @@ const SummarySection = props => {
         </p>
 
         <p>
-          Uniswa empowers developers, liquidity providers and traders to participate in markets that are open and
+          Uniswap empowers developers, liquidity providers and traders to participate in markets that are open and
           accessible to all.
         </p>
 
@@ -349,7 +350,7 @@ const ProductsSection = props => {
       <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
         <MiniCard
           href="https://uniswap.exchange"
-          title={'Uniswap Pools'}
+          title={'Uniswap Interface'}
           image={props.data.swap.childImageSharp.fluid}
           desc={'Trade tokens, add liquidity and create new pools.'}
         />

@@ -42,26 +42,25 @@ const StyledCardBG = styled(Img)`
 
 const StyledMiniCardHeader = styled.h3`
   color: ${({ theme }) => theme.textColor};
-  max-width: 160px;
+  max-width: 130px;
   line-height: 130%;
   margin-top: 0px;
   font-weight: 400;
+  font-size: 1.75rem;
   font-family: 'Inter';
 `
 
 const StyledMiniCardDesc = styled.p`
   font-size: 1rem;
-  line-height: 130%;
+  line-height: 140%;
+  font-weight: 400;
   max-width: 90%;
   margin-bottom: 0px;
 `
 
 const MiniCard = props => {
   return (
-    <StyledMiniCards
-      style={{ backgroundColor: props.backgroundColor, color: props.color }}
-      href="https://unisocks.exchange"
-    >
+    <StyledMiniCards style={{ backgroundColor: props.backgroundColor, color: props.color }} href={props.href}>
       <StyledCardBG fluid={props.image} />
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
       <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
