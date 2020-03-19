@@ -126,7 +126,6 @@ const StyledTradeLink = styled.a`
     margin-right: 0.5rem;
     text-align: center;
     text-decoration: none;
-    font-size: 0.825rem;
     padding: 0.25rem 1rem;
   }
 `
@@ -151,7 +150,6 @@ const StyledTradeLinkOutlined = styled(Link)`
     margin-right: 0.5rem;
     text-align: center;
     text-decoration: none;
-    font-size: 0.825rem;
     padding: 0.25rem 1rem;
   }
 `
@@ -312,9 +310,9 @@ const SummarySection = props => {
       <StyledImgSection>
         <MiniNewInfo to="/blog/uniswap-v2/">
           <NewPill>
-            V2 <LinkTitle>Announced</LinkTitle>
+            <LinkTitle>Uniswap</LinkTitle> V2
           </NewPill>
-          Learn what’s new ↗
+          Read the announcement ↗
           <StyledUnicornImage fadeIn={false} fluid={props.data.unicornImage.childImageSharp.fluid} />
         </MiniNewInfo>
       </StyledImgSection>

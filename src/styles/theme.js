@@ -112,11 +112,6 @@ export const GlobalStyle = createGlobalStyle`
   @supports (font-variation-settings: normal) {
     html { font-family: 'Inter var', sans-serif; }
   }
-
-  @font-face {
-    font-family: "Times Ten LT Std";
-    src: url("/fonts/TimesTenLTStd-Roman.otf");
-  }
   @font-face {
     font-family: "Inferi Book";
     src: url("/fonts/Inferi-Book.otf");
