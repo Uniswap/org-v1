@@ -6,6 +6,8 @@ title: Route
 constructor(pairs: Pair[], input: Token)
 ```
 
+The Route entity represents one or more ordered Uniswap pairs with a fully specified path from input token to output token.
+
 # Example
 
 ```typescript
@@ -26,11 +28,15 @@ const route = new Route([HOT_NOT], NOT)
 pairs: Pair[]
 ```
 
+The ordered pairs that the route is comprised of.
+
 ## path
 
 ```typescript
 path: Token[]
 ```
+
+The full path from input token to output token.
 
 ## input
 
@@ -38,14 +44,20 @@ path: Token[]
 input: string
 ```
 
+The input token.
+
 ## output
 
 ```typescript
 output: string
 ```
 
+The output token.
+
 ## midPrice
 
 ```typescript
 midPrice: Price
 ```
+
+Returns the current mid price along the route.

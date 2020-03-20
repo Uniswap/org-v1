@@ -6,6 +6,8 @@ title: Token
 constructor(chainId: ChainId, address: string, decimals: number, symbol?: string, name?: string)
 ```
 
+The Token entity represents an ERC-20 tokens at a specific address on a specific chain.
+
 # Example
 
 ```typescript
@@ -28,7 +30,7 @@ async fetchData(
 ): Promise<Token>
 ```
 
-Initializes a class instance from a chainId and token address. Decimals are fetched via an [ethers.js](https://github.com/ethers-io/ethers.js/) v5 provider.
+Initializes a class instance from a chainId and token address, if the decimals of the token are unknown and cannot be fetched externally. Decimals are fetched via an [ethers.js](https://github.com/ethers-io/ethers.js/) v5 provider. If not passed in, a default provider is used.
 
 # Properties
 
@@ -37,6 +39,8 @@ Initializes a class instance from a chainId and token address. Decimals are fetc
 ```typescript
 chainId: ChainId
 ```
+
+See <Link to='/docs/v2/SDK/other-exports/#chainid'>ChainId</Link>.
 
 ## address
 
@@ -70,7 +74,7 @@ name?: string
 equals(other: Token): boolean
 ```
 
-Checks if the current instance is equal to another.
+Checks if the current instance is equal to another (has an identical chainId and address).
 
 ## sortsBefore
 
@@ -78,4 +82,4 @@ Checks if the current instance is equal to another.
 sortsBefore(other: Token): boolean
 ```
 
-Checks if the current instance sorts before another.
+Checks if the current instance sorts before another, by address.
