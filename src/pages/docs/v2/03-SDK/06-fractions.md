@@ -97,7 +97,7 @@ See [toFixed](#tofixed).
 
 # TokenAmount
 
-```
+```typescript
 constructor(token: Token, amount: BigintIsh)
 ```
 
