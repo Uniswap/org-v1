@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
@@ -36,7 +36,7 @@ const StyledSection = styled.div`
 
 // eslint-disable-next-line no-unused-vars
 const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
-  font-weight: ${({ isActive }) => isActive && 500};
+  font-weight: ${({ isActive }) => (isActive ? 500 : 400)};
   border-radius: 8px;
   padding: 0.25rem 0;
   text-decoration: none;
@@ -101,13 +101,18 @@ const StaticLink = styled.a`
 
 const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
+  min-width: 240px;
   @media (max-width: 960px) {
     margin-bottom: 1rem;
   }
 `
 
 const CollapsibleList = ({ node, listData, path, parent }) => {
-  const [open, setOpen] = useState(node.name.replace(/\d+-/g, '') === path.split('/')[3])
+  const [open, setOpen] = useState(false)
+
+  useLayoutEffect(() => {
+    setOpen(node.name.replace(/\d+-/g, '') === path.split('/')[3])
+  }, [node.name, path, setOpen])
 
   const title = node.name
     .replace(/\d+-/g, '')
@@ -119,7 +124,7 @@ const CollapsibleList = ({ node, listData, path, parent }) => {
   return (
     <StyledSection trigger={title} transitionTime={250} open={open} onClick={() => setOpen(!open)} easing="ease">
       <StyledSectionTitle>{title}</StyledSectionTitle>
-      <List data={listData} parent={node.name} slug={parent} path={path} />
+      {open && <List data={listData} parent={node.name} slug={parent} path={path} />}
     </StyledSection>
   )
 }

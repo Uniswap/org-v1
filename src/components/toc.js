@@ -48,10 +48,10 @@ const StyledTOC = styled.ul`
   position: sticky;
   align-self: flex-start;
   top: 8rem;
-  width: 160px;
+  min-width: 160px;
   max-height: 70vh;
   font-size: 0.75rem;
-  margin: 0 4rem;
+  margin: 0 2rem;
   opacity: 0.6;
   transition: opacity 0.3s ease;
   list-style: none;

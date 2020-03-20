@@ -125,7 +125,7 @@ export default function Ticker() {
       }).format(data.uniswap.totalLiquidityUSD),
       ' Total Liquidity'
     ]
-    UniStats.exchanges = [Number.parseFloat(data.uniswap.exchangeCount), ' Total Exchanges']
+    UniStats.exchanges = [Number.parseFloat(data.uniswap.exchangeCount), ' Total Pools']
 
     let averagePrice = 0
     const usdcPrice = data && data.usdcPrice && data.usdcPrice[0].price
@@ -164,7 +164,6 @@ export default function Ticker() {
       <MarqueeWrapper className="ticker" data-speed="0.25" data-pausable="true">
         <div>
           {Array.from({ length: totalElements }).map((_, idx) => {
-            console.log('rendering...')
             return <AnimatingEl stat={UniStats.key((idx % 4) + 1)} key={idx} />
           })}
         </div>

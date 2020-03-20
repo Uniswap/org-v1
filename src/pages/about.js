@@ -10,12 +10,14 @@ import BG from '../components/bg'
 import MiniCard from '../components/minicard'
 
 const StyledAbout = styled.div`
-  /* font-size: 1.125rem; */
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
 `
 
 const StyledSectionFlex = styled.div`
@@ -24,8 +26,6 @@ const StyledSectionFlex = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  /* max-width: 450px; */
-  /* align-items: center; */
   @media (max-width: 1024px) {
     padding: 1rem;
     margin-top: 0rem;

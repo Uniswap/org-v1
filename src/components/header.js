@@ -256,7 +256,7 @@ const Header = props => {
           .map(item => {
             return <Menu key={item.name} data={item} />
           })}
-        {props.path !== undefined && <StyledTradeLink href="https://uniswap.exchange/">Trade tokens</StyledTradeLink>}
+        {props.path !== undefined && <StyledTradeLink href="https://uniswap.exchange/">Launch App</StyledTradeLink>}
       </StyledNav>
     </StyledHeader>
   )

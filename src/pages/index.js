@@ -112,12 +112,13 @@ const StyledTradeLink = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.invertedTextColor};
   border-radius: 12px;
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
   display: inline-block;
   transform: scale(0.98);
   transition: transform 0.25s ease;
   box-sizing: border-box;
   font-weight: 400;
+  font-size: 1.125rem;
 
   :hover {
     transform: scale(1);
@@ -126,7 +127,6 @@ const StyledTradeLink = styled.a`
     margin-right: 0.5rem;
     text-align: center;
     text-decoration: none;
-    font-size: 0.825rem;
     padding: 0.25rem 1rem;
   }
 `
@@ -143,6 +143,7 @@ const StyledTradeLinkOutlined = styled(Link)`
   transition: transform 0.25s ease;
   box-sizing: border-box;
   font-weight: 400;
+  font-size: 1.125rem;
 
   :hover {
     transform: scale(1);
@@ -151,7 +152,6 @@ const StyledTradeLinkOutlined = styled(Link)`
     margin-right: 0.5rem;
     text-align: center;
     text-decoration: none;
-    font-size: 0.825rem;
     padding: 0.25rem 1rem;
   }
 `
@@ -215,7 +215,7 @@ const IndexPage = props => {
           <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
 
           <span>
-            <StyledTradeLink href="https://uniswap.exchange/">Trade Now</StyledTradeLink>
+            <StyledTradeLink href="https://uniswap.exchange/">Launch App</StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
           </span>
         </StyledTitle>
@@ -313,9 +313,9 @@ const SummarySection = props => {
       <StyledImgSection>
         <MiniNewInfo to="/blog/uniswap-v2/">
           <NewPill>
-            V2 <LinkTitle>Announced</LinkTitle>
+            <LinkTitle>Uniswap</LinkTitle> V2
           </NewPill>
-          Learn what’s new ↗
+          Read the announcement ↗
           <StyledUnicornImage fadeIn={false} fluid={props.data.unicornImage.childImageSharp.fluid} />
         </MiniNewInfo>
       </StyledImgSection>
@@ -329,7 +329,7 @@ const SummarySection = props => {
         </p>
 
         <p>
-          Uniswa empowers developers, liquidity providers and traders to participate in markets that are open and
+          Uniswap empowers developers, liquidity providers and traders to participate in markets that are open and
           accessible to all.
         </p>
 
@@ -351,7 +351,7 @@ const ProductsSection = props => {
       <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
         <MiniCard
           href="https://uniswap.exchange"
-          title={'Uniswap Pools'}
+          title={'Uniswap Interface'}
           image={props.data.swap.childImageSharp.fluid}
           desc={'Trade tokens, add liquidity and create new pools.'}
         />

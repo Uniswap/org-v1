@@ -86,8 +86,8 @@ const StyledImage = styled(Img)`
   box-shadow: ${({ theme }) => theme.shadows.huge};
   @media (max-width: 960px) {
     display: none;
+    max-width: 256px;
   }
-  /* max-width: 256px; */
 `
 
 const NewPill = styled.p`

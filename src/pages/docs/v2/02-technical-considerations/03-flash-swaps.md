@@ -2,8 +2,6 @@
 title: Flash Swaps
 ---
 
-import { Link } from "gatsby"
-
 In Uniswap V2 swaps are executed "optimistically", meaning that if desired, tokens can be requested and sent to an address _before_ payment for said tokens is collected, as long as payment occurs by the end of the atomic transaction. See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> for more details.
 
 # Example

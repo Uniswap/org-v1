@@ -23,7 +23,10 @@ const StyledDocs = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 2rem;
-  /* font-size: 16px; */
+
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -32,7 +35,6 @@ const StyledDocs = styled.div`
 `
 
 const StyledMDX = styled.div`
-  /* width: 640px; */
   min-width: 550px;
   max-width: 700px;
   padding: 0;
@@ -40,18 +42,6 @@ const StyledMDX = styled.div`
   a {
     color: ${({ theme }) => theme.colors.link};
   }
-
-
-
-  /* h1:before {
-    top: -32px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    content: ' ';
-    position: absolute;
-    background-color: ${({ theme }) => theme.colors.grey2};
-  } */
 
   code {
     background-color: ${({ theme }) => theme.colors.grey2};
@@ -104,18 +94,6 @@ const StyledPageTitle = styled.div`
     font-size: 2.5rem !important;
     margin-top: 0px !important;
   }
-
-  /* :after {
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-
-    content: ' ';
-    position: absolute;
-    background-color: ${({ theme }) => theme.colors.grey9};
-    opacity: 0.2;
-  } */
 
   a {
     color: ${({ theme }) => theme.colors.grey6};
@@ -252,7 +230,8 @@ const Docs = props => {
               return (
                 <StyledDocsNavWrapper key={node.id}>
                   <StyledDocsNav>
-                    {previous && (
+                    {/* index.md file is considered the "last" based on the sort order. Check to remove links when not relevent */}
+                    {previous && node.fields.slug !== '/docs/v2/' && (
                       <StyledLink style={{ alignItems: 'flex-end' }} to={previous.fields.slug} rel="prev">
                         <small>Previous</small>
                         <span>← {previous.frontmatter.title}</span>
@@ -260,10 +239,17 @@ const Docs = props => {
                     )}
                   </StyledDocsNav>
                   <StyledDocsNav>
-                    {next && (
+                    {/* index.md file is considered the "last" based on the sort order. Check to remove when not relevent */}
+                    {next && next.fields.slug !== '/docs/v2/' && (
                       <StyledLink style={{ alignItems: 'flex-start' }} to={next.fields.slug} rel="next">
                         <small>Next</small>
                         <span>{next.frontmatter.title} →</span>
+                      </StyledLink>
+                    )}
+                    {node.fields.slug === '/docs/v2/' && (
+                      <StyledLink style={{ alignItems: 'flex-start' }} to={'/docs/v2/smart-contracts/'} rel="next">
+                        <small>Next</small>
+                        <span>Smart Contracts →</span>
                       </StyledLink>
                     )}
                   </StyledDocsNav>

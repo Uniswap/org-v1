@@ -2,8 +2,6 @@
 title: Pair
 ---
 
-import { Link } from "gatsby"
-
 This documentation covers Uniswap-specific functionality. For ERC-20 functionality, see <Link to='/docs/v2/smart-contracts/pair-erc-20'>Pair (ERC-20)</Link>.
 
 # Code

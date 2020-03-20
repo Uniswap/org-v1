@@ -6,7 +6,7 @@ For an in-depth discussion of Uniswap V2 oracles, see the <a href='/whitepaper.p
 
 # Example
 
-[`ExampleOracle.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/ExampleOracle.sol)
+[`ExampleOracleSimple.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/ExampleOracleSimple.sol)
 
 # Discussion
 
