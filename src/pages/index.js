@@ -12,7 +12,6 @@ import BG from '../components/bg'
 import MiniCard from '../components/minicard'
 
 const StyledBody = styled.div`
-  /* font-size: 1.125rem; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -46,8 +45,6 @@ const StyledBodyTitle = styled.h1`
   max-width: 900px;
   text-align: center;
   font-family: 'Inferi Normal', 'Times New Roman', serif;
-
-  /* letter-spacing: -0.03em; */
 
   @media (max-width: 960px) {
     width: 100%;
@@ -95,7 +92,6 @@ const StyledSectionFlex = styled.div`
     margin-top: 0rem;
     width: 100%;
     max-width: 450px;
-    /* flex-direction: column; */
   }
 
   h2 {
@@ -206,21 +202,20 @@ const IndexPage = props => {
     <Layout path={props.location.pathname}>
       <Ticker />
       <BG />
-      <SEO title="Home" path={props.location.pathname} />
-      <Helmet>
-        <meta name="twitter:image" content={`${data.site.siteMetadata.siteUrl}/images/twitter-card.jpg`} />
-      </Helmet>
+      <SEO
+        title="Home"
+        path={props.location.pathname}
+        description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
+      />
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
-
           <span>
             <StyledTradeLink href="https://uniswap.exchange/">Launch App</StyledTradeLink>
             <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
           </span>
         </StyledTitle>
         <SummarySection data={data} />
-
         <ProductsSection data={data} />
         <GoalSection />
       </StyledBody>
