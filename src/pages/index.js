@@ -118,7 +118,7 @@ const StyledTradeLink = styled.a`
   transition: transform 0.25s ease;
   box-sizing: border-box;
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 
   :hover {
     transform: scale(1);
@@ -143,7 +143,7 @@ const StyledTradeLinkOutlined = styled(Link)`
   transition: transform 0.25s ease;
   box-sizing: border-box;
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 
   :hover {
     transform: scale(1);
