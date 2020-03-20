@@ -207,6 +207,11 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Inferi Book";
   }
 
+  h3 {
+    font-weight: 300;
+    font-family: "Inferi Book";
+  }
+
   #gatsby-focus-wrapper{
     min-height: 100vh;
     position: relative;
