@@ -27,6 +27,7 @@ function SEO({ description, lang, title, path }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const uniTitle = 'Uniswap | ' + title
 
   return (
     <Helmet
@@ -42,7 +43,7 @@ function SEO({ description, lang, title, path }) {
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={title}></meta>
 
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={uniTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content={'website'} />
       <meta property="og:url" content={site.siteMetadata.siteUrl + path} />
@@ -50,15 +51,7 @@ function SEO({ description, lang, title, path }) {
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@UniswapExchange"></meta>
-      <meta name="twitter:title" content={title}></meta>
-      <meta name="twitter:description" content={metaDescription}></meta>
-      <meta
-        name="twitter:image"
-        content={`${site.siteMetadata.siteUrl}${path ? path : '/'}images/twitter-card.jpg`}
-      ></meta>
-
       <meta name="twitter:site" content="@UniswapExchange" />
-      <meta name="twitter:url" content={site.siteMetadata.siteUrl + path} />
 
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
     </Helmet>

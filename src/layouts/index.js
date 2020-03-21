@@ -16,7 +16,7 @@ import { StyledThemeProvider } from '../styles/themeManager'
 import '../styles/layout.css'
 import '../styles/prism-github.css'
 
-const Layout = ({ path, children }) => {
+const Layout = ({ path, children, nofooter }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -33,7 +33,7 @@ const Layout = ({ path, children }) => {
       <StyledThemeProvider>
         <Header path={path} siteTitle={data.site.siteMetadata.title} />
         <Mdx>{children}</Mdx>
-        <Footer />
+        {nofooter ? null : <Footer />}
         <Beta />
       </StyledThemeProvider>
     </>

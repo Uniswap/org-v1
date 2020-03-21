@@ -223,7 +223,7 @@ const StyledInput = styled.input`
   -moz-box-shadow: none;
   box-shadow: none;
   border: 1px solid ${({ theme }) => theme.chaliceGray};
-  width: 280px;
+  max-width: 280px;
 
   padding: 4px 0 4px 10px;
 
@@ -275,7 +275,6 @@ const EmailSection = () => {
 
   return (
     <StyledGoal style={{ width: '100%', maxWidth: '450px' }}>
-      {/* <h1>Stay In Touch</h1> */}
       <p>Subscribe to our newsletter for updates</p>
 
       <EmailRow

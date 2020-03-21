@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Helmet } from 'react-helmet'
+import styled, { css } from 'styled-components'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Img from 'gatsby-image'
@@ -10,6 +9,7 @@ import SEO from '../components/seo'
 import Ticker from '../components/ticker'
 import BG from '../components/bg'
 import MiniCard from '../components/minicard'
+import { Button } from '../components/button'
 
 const StyledBody = styled.div`
   position: relative;
@@ -19,7 +19,9 @@ const StyledBody = styled.div`
   align-items: center;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  @media (max-width: 375px) {
+    margin-bottom: 2rem;
+  }
 `
 
 const StyledTitle = styled.div`
@@ -45,6 +47,9 @@ const StyledBodyTitle = styled.h1`
   max-width: 900px;
   text-align: center;
   font-family: 'Inferi Normal', 'Times New Roman', serif;
+  @media (max-width: 1024px) {
+    margin: 2rem 0 3rem 0;
+  }
 
   @media (max-width: 960px) {
     width: 100%;
@@ -55,9 +60,9 @@ const StyledBodyTitle = styled.h1`
   }
   @media (max-width: 375px) {
     width: 100%;
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-    margin: 2rem 0 4rem 0;
+    /* font-size: 3rem;
+    line-height: 3.5rem; */
+    margin: 2rem 0 2rem 0;
     font-weight: 400;
   }
 `
@@ -99,56 +104,6 @@ const StyledSectionFlex = styled.div`
   }
   p {
     margin-bottom: 0.5rem;
-  }
-`
-
-const StyledTradeLink = styled.a`
-  padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.colors.link};
-  text-decoration: none;
-  color: ${({ theme }) => theme.invertedTextColor};
-  border-radius: 12px;
-  margin-right: 0.75rem;
-  display: inline-block;
-  transform: scale(0.98);
-  transition: transform 0.25s ease;
-  box-sizing: border-box;
-  font-weight: 400;
-  font-size: 1.125rem;
-
-  :hover {
-    transform: scale(1);
-  }
-  @media (max-width: 960px) {
-    margin-right: 0.5rem;
-    text-align: center;
-    text-decoration: none;
-    padding: 0.25rem 1rem;
-  }
-`
-
-const StyledTradeLinkOutlined = styled(Link)`
-  padding: 0.25rem 0.75rem;
-  border: 1px solid ${({ theme }) => theme.colors.link};
-  text-decoration: none;
-  color: ${({ theme }) => theme.colors.link};
-  border-radius: 12px;
-  margin-right: 1.5rem;
-  display: inline-block;
-  transform: scale(0.98);
-  transition: transform 0.25s ease;
-  box-sizing: border-box;
-  font-weight: 400;
-  font-size: 1.125rem;
-
-  :hover {
-    transform: scale(1);
-  }
-  @media (max-width: 960px) {
-    margin-right: 0.5rem;
-    text-align: center;
-    text-decoration: none;
-    padding: 0.25rem 1rem;
   }
 `
 
@@ -211,8 +166,10 @@ const IndexPage = props => {
         <StyledTitle>
           <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
           <span>
-            <StyledTradeLink href="https://uniswap.exchange/">Launch App</StyledTradeLink>
-            <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
+            <Button href="https://uniswap.exchange/">Launch App</Button>
+            <Button to="/docs" as={Link} outlined>
+              Read the docs
+            </Button>
           </span>
         </StyledTitle>
         <SummarySection data={data} />
@@ -327,7 +284,9 @@ const SummarySection = props => {
           accessible to all.
         </p>
 
-        <StyledTradeLinkOutlined to="/docs/v2#how-it-all-works">Read more</StyledTradeLinkOutlined>
+        <Button as={Link} outlined to="/docs/v2#how-it-all-works">
+          Read more
+        </Button>
       </StyledImgSection>
     </StyledSectionFlex>
   )
