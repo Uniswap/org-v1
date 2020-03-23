@@ -1,8 +1,8 @@
 import { Link } from 'gatsby'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
-import { ThemeManagerContext } from '../styles/themeManager'
+// import { ThemeManagerContext } from '../styles/themeManager'
 // import Uni from '../images/uni.inline.svg'
 
 function Dropdown(props) {
@@ -135,7 +135,7 @@ const Footer = () => {
     }
   `)
 
-  const themeContext = useContext(ThemeManagerContext)
+  // const themeContext = useContext(ThemeManagerContext)
 
   return (
     <StyledFooter>
@@ -242,33 +242,33 @@ const StyledGoal = styled.div`
   }
 `
 
-const StyledSectionFlex = styled.div`
-  padding: 4rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  @media (max-width: 1024px) {
-    padding: 1rem;
-    margin-top: 0rem;
-    flex-direction: ${({ wrapSmall }) => (!wrapSmall ? 'row' : 'column')};
-  }
-  @media (max-width: 960px) {
-    padding: 1rem;
-    margin-top: 0rem;
-    width: 100%;
-    max-width: 450px;
-    /* flex-direction: column; */
-  }
+// const StyledSectionFlex = styled.div`
+//   padding: 4rem 0;
+//   display: flex;
+//   flex-wrap: wrap;
+//   flex-direction: row;
+//   justify-content: space-evenly;
+//   align-items: center;
+//   @media (max-width: 1024px) {
+//     padding: 1rem;
+//     margin-top: 0rem;
+//     flex-direction: ${({ wrapSmall }) => (!wrapSmall ? 'row' : 'column')};
+//   }
+//   @media (max-width: 960px) {
+//     padding: 1rem;
+//     margin-top: 0rem;
+//     width: 100%;
+//     max-width: 450px;
+//     /* flex-direction: column; */
+//   }
 
-  h2 {
-    margin-bottom: 0.5rem;
-  }
-  p {
-    margin-bottom: 0.5rem;
-  }
-`
+//   h2 {
+//     margin-bottom: 0.5rem;
+//   }
+//   p {
+//     margin-bottom: 0.5rem;
+//   }
+// `
 
 const EmailSection = () => {
   const [email, setEmail] = useState('')

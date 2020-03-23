@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import styled, { css } from 'styled-components'
+import React from 'react'
+import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Img from 'gatsby-image'
@@ -274,7 +274,7 @@ const SummarySection = props => {
         </h1>
 
         <p>
-          A simple formalized equation drives unstoppable liquidity for thousands of users and hundreds of Applications.
+          A simple formalized equation drives unstoppable liquidity for thousands of users and hundreds of applications.
         </p>
 
         <p>
@@ -365,58 +365,58 @@ const GoalSection = () => {
   )
 }
 
-const EmailRow = styled.form`
-  display: flex;
-  flex-direction: row;
-`
+// const EmailRow = styled.form`
+//   display: flex;
+//   flex-direction: row;
+// `
 
-const InputButton = styled.input`
-  padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.colors.link};
-  text-decoration: none;
-  color: ${({ theme }) => theme.invertedTextColor};
-  border-radius: 12px;
-  margin-right: 0.5rem;
-  display: inline-block;
-  transform: scale(0.98);
-  transition: transform 0.25s ease;
-  box-sizing: border-box;
-  font-weight: 400;
-  border: none;
+// const InputButton = styled.input`
+//   padding: 0.25rem 0.75rem;
+//   background-color: ${({ theme }) => theme.colors.link};
+//   text-decoration: none;
+//   color: ${({ theme }) => theme.invertedTextColor};
+//   border-radius: 12px;
+//   margin-right: 0.5rem;
+//   display: inline-block;
+//   transform: scale(0.98);
+//   transition: transform 0.25s ease;
+//   box-sizing: border-box;
+//   font-weight: 400;
+//   border: none;
 
-  :hover {
-    transform: scale(1);
-    cursor: pointer;
-  }
-  @media (max-width: 960px) {
-    margin-right: 0.5rem;
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.825rem;
-    padding: 0.25rem 1rem;
-  }
+//   :hover {
+//     transform: scale(1);
+//     cursor: pointer;
+//   }
+//   @media (max-width: 960px) {
+//     margin-right: 0.5rem;
+//     text-align: center;
+//     text-decoration: none;
+//     font-size: 0.825rem;
+//     padding: 0.25rem 1rem;
+//   }
 
-  outline-color: transparent;
-  outline-style: none;
-`
+//   outline-color: transparent;
+//   outline-style: none;
+// `
 
-const StyledInput = styled.input`
-  border-radius: 12px;
-  margin-right: 10px;
-  box-shadow: none;
-  background-image: none;
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  border: 1px solid ${({ theme }) => theme.chaliceGray};
-  width: 280px;
+// const StyledInput = styled.input`
+//   border-radius: 12px;
+//   margin-right: 10px;
+//   box-shadow: none;
+//   background-image: none;
+//   background-color: transparent;
+//   -webkit-box-shadow: none;
+//   -moz-box-shadow: none;
+//   box-shadow: none;
+//   border: 1px solid ${({ theme }) => theme.chaliceGray};
+//   width: 280px;
 
-  padding: 4px 0 4px 10px;
+//   padding: 4px 0 4px 10px;
 
-  :focus {
-    outline-color: transparent;
-    outline-style: none;
-    border: 1px solid ${({ theme }) => theme.colors.link};
-  }
-`
+//   :focus {
+//     outline-color: transparent;
+//     outline-style: none;
+//     border: 1px solid ${({ theme }) => theme.colors.link};
+//   }
+// `
