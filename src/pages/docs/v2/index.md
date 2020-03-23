@@ -3,9 +3,7 @@ title: Uniswap Documentation
 ---
 
 <Info>
-Uniswap V2 is currently in a testnet release, and is slated to be deployed to mainnet in 2020 Q2, pending a successful formal verification. Please keep in mind that this is a target and not an announced release date.
-<br/><br/>
-Looking for <a href="https://docs.uniswap.io">V1 Docs</a>?
+Uniswap V2 is currently in a testnet release, and is slated to be deployed to mainnet in 2020 Q2, pending a successful formal verification. Looking for <a href="https://docs.uniswap.io">V1 documentation</a>?
 </Info>
 
 You've arrived! The pages that follow contain comprehensive documentation of the Uniswap V2 ecosystem. Briefly, Uniswap is a protocol for exchanging [ERC-20](https://eips.ethereum.org/EIPS/eip-20) tokens on [Ethereum](https://ethereum.org/). It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for **fast**, **efficient** trading. Where it makes tradeoffs **decentralization**, **censorship resistance**, and **security** are prioritized. Uniswap is **open-source software** licensed under [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License).
