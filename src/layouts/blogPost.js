@@ -3,8 +3,8 @@ import Layout from '.'
 import styled from 'styled-components'
 import Moment from 'react-moment'
 import { graphql, useStaticQuery, Link } from 'gatsby'
+import { Twitter, Facebook } from 'react-social-sharing'
 
-import BG from '../components/bg'
 import SEO from '../components/seo'
 
 import '../styles/prism-github.css'
@@ -207,9 +207,6 @@ const Blog = props => {
 
   return (
     <Layout path={props.location.pathname}>
-      <BG />
-
-      {/* <SEO title={pageContext.frontmatter.title} path={path} /> */}
       <SEO
         title={props.pageContext.frontmatter.title}
         site={'Uniswap Blog'}
@@ -226,7 +223,7 @@ const Blog = props => {
               {props.pageContext.frontmatter.date}
             </PostDate>
           </PostMetaData>
-          {/* <div>
+          <div>
             <Twitter
               style={{ padding: '0.5em 0.5em' }}
               solid
@@ -235,7 +232,7 @@ const Blog = props => {
               link={'https://uniswap.org' + props.path}
             />
             <Facebook style={{ padding: '0.5em 0.5em' }} solid small link="http://sharingbuttons.io" />
-          </div> */}
+          </div>
         </PostHeader>
 
         <StyledMDX>{props.children}</StyledMDX>
