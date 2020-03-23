@@ -147,7 +147,7 @@ Destroys pool tokens.
 function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
 ```
 
-Swaps tokens. For regular swaps, `data.length` must be `0`. Also see <Link to='/docs/v2/technical-considerations/flash-swaps'>Flash Swaps</Link>.
+Swaps tokens. For regular swaps, `data.length` must be `0`. Also see <Link to='/docs/v2/guides/flash-swaps'>Flash Swaps</Link>.
 
 - Emits [Swap](#swap), [Sync](#sync).
 
