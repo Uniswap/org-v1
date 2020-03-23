@@ -6,6 +6,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby'
 import { Twitter, Facebook } from 'react-social-sharing'
 
 import SEO from '../components/seo'
+import BG from '../components/bg'
 
 import '../styles/prism-github.css'
 
@@ -207,6 +208,7 @@ const Blog = props => {
 
   return (
     <Layout path={props.location.pathname}>
+      <BG />
       <SEO
         title={props.pageContext.frontmatter.title}
         site={'Uniswap Blog'}
