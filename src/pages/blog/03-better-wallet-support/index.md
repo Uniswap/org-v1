@@ -50,7 +50,7 @@ This is all built on the new v6.0 release of the [web3-react library](https://gi
 
 ---
 
-Do you use another wallet that’s not supported yet? [Let us know.](http://contact@uniswap.io)
+Do you use another wallet that’s not supported yet? [Let us know.](http://contact@uniswap.org)
 
 Happy Holidays from the Uniswap team!
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Layout from '../layouts'
 import SEO from '../components/seo'
@@ -106,7 +106,7 @@ const About = props => {
           <p>We are committed to open source software and building on the decentralized web.</p>
           <p>
             You can read about how Uniswap got started
-            <a href="https://medium.com/uniswap/uniswap-birthday-blog-v0-7a91f3f6a1ba"> here.</a>
+            <Link to="/blog/uniswap-history/"> here.</Link>
           </p>
         </StyledSectionFlex>
 

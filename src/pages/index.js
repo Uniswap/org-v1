@@ -19,6 +19,7 @@ const StyledBody = styled.div`
   align-items: center;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   @media (max-width: 375px) {
     margin-bottom: 2rem;
   }
@@ -59,8 +60,6 @@ const StyledBodyTitle = styled.h1`
   }
   @media (max-width: 375px) {
     width: 100%;
-    /* font-size: 3rem;
-    line-height: 3.5rem; */
     margin: 2rem 0 2rem 0;
     font-weight: 400;
   }
@@ -300,11 +299,11 @@ const SummarySection = props => {
         </p>
 
         <p>
-          Uniswap empowers developers, liquidity providers and traders to participate in markets that are open and
-          accessible to all.
+          Uniswap empowers developers, liquidity providers and traders to participate in a financial marketplace that is
+          open and accessible to all.
         </p>
 
-        <Button as={Link} outlined to="/docs/v2#how-it-all-works">
+        <Button as={Link} outlined to="/docs/v2">
           Read more
         </Button>
       </StyledImgSection>
@@ -323,7 +322,7 @@ const DeveloperSection = () => {
           as={Link}
           to="/docs/v2/SDK/getting-started"
           title={'Integrate Uniswap into your Frontend.'}
-          desc={'Use the new SDK for anything from a hackathon project to a production application.'}
+          desc={'Use the new SDK to access Uniswap from within a website'}
         />
         <MiniCard
           outlined
@@ -339,7 +338,7 @@ const DeveloperSection = () => {
           as={Link}
           to="/docs/v2/technical-considerations/oracles"
           title={'Build oracles on Uniswap.'}
-          desc={'New on chain price feeds makes building oracles easier than ever.'}
+          desc={'Reliable on-chain price feeds make building oracles easier than ever.'}
         />
       </StyledSectionFlex>
     </>
@@ -400,17 +399,16 @@ const StyledGoal = styled.div`
 
 const GoalSection = () => {
   return (
-    <StyledSectionFlex>
+    <StyledSectionFlex style={{ paddingBottom: '0px' }}>
       <StyledGoal>
         <h1>Mission</h1>
-        <p>Uniswap is transparent, censorship resistant infrastructure for the crypto economy.</p>
         <p>
-          We are reimagining financial markets and reinventing how users engage with liquidity. Uniswap removes barriers
-          to entry and single points of failure, leveling the playing field while improving security for all.
+          <b>Uniswap</b> is transparent, censorship-resistant financial infrastructure for Ethereum.
         </p>
+        <p>Uniswap lowers barriers of entry to financial participation and removes central points of failure.</p>
         <p>
-          We build unbreakable, unstoppable products that enable the creation of markets which could not have existed
-          before.
+          It enables anyone to create new markets, provide liquidity, and build financial applications that could not
+          have existed before.
         </p>
       </StyledGoal>
     </StyledSectionFlex>

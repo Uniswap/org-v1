@@ -12,7 +12,7 @@ previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much muc
 
 As a venue for pooled, automated liquidity provision on Ethereum, the Uniswap protocol (Uniswap) functions without upkeep, providing an unstoppable platform for ERC20 token conversion. **Uniswap V1 will continue to work for as long as Ethereum exists** , and so far, it has worked very nicely for a wide variety of use cases.
 
-![Uniswap V1 Liquidity Growth](/v1_liquidity.png)
+![Uniswap V1 Liquidity Growth](v1_liquidity.png)
 
 However, pooled automated liquidity remains nascent technology, and **we have only just begun to realize its potential**. For this reason, last year [we raised a seed round](https://finance.yahoo.com/news/paradigm-backs-decentralized-exchange-protocol-184824051.html) and formed a dedicated team to research and develop Uniswap alongside the broader Ethereum community.
 
@@ -39,7 +39,7 @@ In Uniswap V2, **any ERC20 token can be pooled directly with any other ERC20 tok
 
 In Uniswap V1, all liquidity pools are between ETH and a single ERC20 token. Having a constant numeraire provides a nice UX advantage — users can swap any ERC20 for any other ERC20 by routing through ETH. Since ETH is the most liquid Ethereum-based asset, and does not introduce any new platform risk, it was the best choice for Uniswap V1.
 
-![](/v1_DAI_USDC_swap.png)
+![](v1_DAI_USDC_swap.png)
 
 However, the introduction of ERC20 token/ERC20 token pools in Uniswap V2 can be **useful for liquidity providers, who can maintain more diverse ERC20 token denominated positions**, without mandatory exposure to ETH. One example would be a DAI/USDC pair, which should theoretically have little volatility for liquidity providers, but is useful for trading.
 
@@ -47,7 +47,7 @@ Having direct ERC20/ERC20 pairs can also improve prices because routing through 
 
 If two ERC20 tokens are not paired directly, and do not have a common pair between them, they can still be swapped as long as a path between them exists. Router contracts can be used to optimize between direct and multi-step swaps.
 
-![](/v2_swaps.png)
+![](v2_swaps.png)
 
 We still anticipate ETH pairs being very popular, but expect to see growth in other types of pairs over time.
 
@@ -95,13 +95,13 @@ In the meantime, check out our [example implementation](https://github.com/Unisw
 
 Liquidity provider fees are enforced by subtracting 0.3% from all input amounts, even if the input ERC20 tokens are being returned as part of a flash swap.
 
-![](/v2_flash_swaps.png)
+![](v2_flash_swaps.png)
 
 It is often the case that a series of transactions on Ethereum has a high upfront cost but ultimately a low net cost or is even net profitable by the end of the series. **Flash swaps** are incredibly useful because they **remove upfront capital requirements and unnecessary constraints on order-of-operations** for multi-step transactions that use Uniswap.
 
 One example is **arbitrage with no upfront capital**. Imagine a scenario where you can sell 200 DAI for 1 ETH on Uniswap and then sell that 1 ETH on Oasis for 220 DAI at a 20 DAI profit. But, unfortunately, you don&#39;t have any DAI in your wallet.
 
-![](/no_capital.gif)
+![](no_capital.gif)
 
 With flash swaps you could synchronously withdraw 1 ETH from Uniswap, sell it on Oasis for 220 DAI and then pay for the ETH on Uniswap with 200 of the DAI you just purchased.
 
@@ -119,7 +119,7 @@ With flash swaps this process is simplified to:
 3. borrow all DAI you need from Maker
 4. return DAI to the Uniswap protocol
 
-If the Uniswap pool does not receive enough DAI to cover the ETH withdrawn, then the entire transaction will revert.
+If the Uniswap pool does not receive enough DAI to cover the ETH withdrawn, then the entire transaction will revert; thus, all ERC20 tokens are returned or paid for at the end of the transaction.
 
 ## Core/Helper Architecture
 
@@ -185,7 +185,7 @@ Uniswap is an ideal candidate for exploring decentralized on-chain cash flows. *
 
 **This type of support boosts network effects from which Uniswap and its users benefit greatly.** Incentivized contributions lead to increased protocol functionality and usage. Usage generates fees which attracts liquidity. Increased liquidity further entrenches Uniswap, attracting additional users, contributors, and integrations.
 
-![](/graph.jpeg)
+![](graph.jpeg)
 
 For more details, please refer to the technical <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> or code.
 

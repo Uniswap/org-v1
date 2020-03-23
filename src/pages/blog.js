@@ -157,6 +157,9 @@ const Blog = props => {
 
       <PostsWrapper>
         <h1>Latest Posts</h1>
+        <a style={{ paddingBottom: '1rem' }} href="/rss.xml" target="_blank">
+          Subscibe
+        </a>
 
         {data.allMdx.edges.map(({ node }, index) => {
           return (
