@@ -8,14 +8,14 @@ Uniswap V2 is currently in a testnet release, and is slated to be deployed to ma
 
 You may be wondering: what about Uniswap V1? The first version of the protocol, [launched in November 2018](https://twitter.com/haydenzadams/status/1058376395108376577) at Devcon 4, is still around. In fact, because of its permissionless nature, it will exist for as long as Ethereum does! However, V2 includes a number of tangible improvements over V1, which this documentation will explore in depth.
 
-# V2 Features
+# Dive In
 
 See the <Link to='/blog/uniswap-v2'>introductory blog post</Link> for a walkthrough of the following V2 features and more!
 
-- ERC-20⇄ERC-20 pairs
-- Decentralized, manipulation-resistant price oracles
-- Flash Swaps
-- Broad support for standard and non-conformant ERC20 tokens
+- <Link to='/docs/v2/smart-contracts/architecture'>Smart contract architecture</Link>
+- <Link to='/docs/v2/guides/oracles'>Decentralized oracles</Link>
+- <Link to='/docs/v2/guides/flash-swaps'>Flash swaps</Link>
+- <Link to='/docs/v2/SDK/getting-started'>SDK</Link>
 
 # Resources
 

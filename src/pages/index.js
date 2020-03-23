@@ -337,7 +337,7 @@ const DeveloperSection = () => {
           outlined
           small
           as={Link}
-          to="/docs/v2/technical-considerations/oracles"
+          to="/docs/v2/guides/oracles"
           title={'Build oracles on Uniswap.'}
           desc={'New on chain price feeds makes building oracles easier than ever.'}
         />
