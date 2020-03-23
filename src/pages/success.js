@@ -91,8 +91,13 @@ const Success = props => {
       <StyledAbout>
         <StyledSectionFlex style={{ flexDirection: 'column', paddingBottom: '0px' }}>
           <StyledCardBG fluid={data.unicornImage.childImageSharp.fluid} />
-          <Title style={{ width: '100%' }}>Confirmed.</Title>
-          <p>{"We'll be in touch soon."}</p>
+          <Title style={{ width: '100%' }}>You are now subscribed.</Title>
+          <p>
+            {"We'll be in touch soon. You can always unsubscribe"}
+            <a href="https://uniswap.us19.list-manage.com/unsubscribe?u=c93471c1443f1e6365b5ca093&id=7d591bff13">
+              {' here.'}
+            </a>
+          </p>
           <Link to="/">Back home</Link>
         </StyledSectionFlex>
       </StyledAbout>

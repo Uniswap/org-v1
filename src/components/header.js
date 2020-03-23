@@ -19,9 +19,7 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   padding: 2rem 0;
   width: 100%;
-  /* font-size: 1.125rem; */
   z-index: 3;
-  /* font-weight: 500; */
   @media (max-width: 960px) {
     padding: 1.5rem 0px;
     height: ${({ open }) => (open ? '100vh' : '100%')};
@@ -37,7 +35,6 @@ const StyledNav = styled.nav`
     position: fixed;
     top: 0px;
     right: ${({ open }) => (open ? '0px' : '-100%')};
-    /* flex-direction: column; */
     align-items: flex-start;
     flex-wrap: wrap;
     -webkit-overflow-scrolling: touch;
@@ -58,7 +55,6 @@ const StyledNavTitleWrapper = styled.nav`
 
 const StyledNavTitle = styled(Link)`
   font-family: 'Inter', sans-serif;
-  /* font-weight: 500; */
   color: ${({ theme }) => theme.colors.link};
   margin-left: 0.35rem;
   margin-top: 8px;
@@ -66,6 +62,7 @@ const StyledNavTitle = styled(Link)`
   text-decoration: none;
   opacity: 0.4;
   vertical-align: bottom;
+  font-weight: 500;
 
   :hover {
     opacity: 1;
