@@ -278,7 +278,7 @@ const EmailSection = () => {
       <p>Subscribe to our newsletter for updates</p>
 
       <EmailRow
-        action="https://uniswap.us19.list-manage.com/subscribe/post?u=0f8d44ba5b10667bfe8b58514&amp;id=15ef78d012"
+        action="https://uniswap.us19.list-manage.com/subscribe/post?u=c93471c1443f1e6365b5ca093&amp;id=7d591bff13"
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"

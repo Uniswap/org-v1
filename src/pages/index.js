@@ -215,10 +215,8 @@ const StyledImgSection = styled.div`
 
 const MiniNewInfo = styled(Link)`
   transform: rotate(-4deg) scale(0.98);
-  /* font-size: 20px; */
   color: ${({ theme }) => theme.textColor};
   display: inline-block;
-  /* width: 450px; */
   height: 500px;
 
   transition: transform 0.3s ease;
@@ -366,3 +364,59 @@ const GoalSection = () => {
     </StyledSectionFlex>
   )
 }
+
+const EmailRow = styled.form`
+  display: flex;
+  flex-direction: row;
+`
+
+const InputButton = styled.input`
+  padding: 0.25rem 0.75rem;
+  background-color: ${({ theme }) => theme.colors.link};
+  text-decoration: none;
+  color: ${({ theme }) => theme.invertedTextColor};
+  border-radius: 12px;
+  margin-right: 0.5rem;
+  display: inline-block;
+  transform: scale(0.98);
+  transition: transform 0.25s ease;
+  box-sizing: border-box;
+  font-weight: 400;
+  border: none;
+
+  :hover {
+    transform: scale(1);
+    cursor: pointer;
+  }
+  @media (max-width: 960px) {
+    margin-right: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.825rem;
+    padding: 0.25rem 1rem;
+  }
+
+  outline-color: transparent;
+  outline-style: none;
+`
+
+const StyledInput = styled.input`
+  border-radius: 12px;
+  margin-right: 10px;
+  box-shadow: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid ${({ theme }) => theme.chaliceGray};
+  width: 280px;
+
+  padding: 4px 0 4px 10px;
+
+  :focus {
+    outline-color: transparent;
+    outline-style: none;
+    border: 1px solid ${({ theme }) => theme.colors.link};
+  }
+`
