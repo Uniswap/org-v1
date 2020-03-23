@@ -231,9 +231,14 @@ const Blog = props => {
               solid
               small
               message={props.pageContext.frontmatter.title}
-              link={'https://uniswap.org' + props.path}
+              link={'https://uniswap.org' + props.location.pathname}
             />
-            <Facebook style={{ padding: '0.5em 0.5em' }} solid small link="http://sharingbuttons.io" />
+            <Facebook
+              style={{ padding: '0.5em 0.5em' }}
+              solid
+              small
+              link={'https://uniswap.org' + props.location.pathname}
+            />
           </div>
         </PostHeader>
 
