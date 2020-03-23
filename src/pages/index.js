@@ -403,14 +403,14 @@ const GoalSection = () => {
     <StyledSectionFlex>
       <StyledGoal>
         <h1>Mission</h1>
+        <p>Uniswap is transparent, censorship resistant infrastructure for the crypto economy.</p>
         <p>
-          Uniswap is important infrastructure for the emerging crypto economy and enables markets to be created that
-          couldn{"'"}t have existed before.
+          We are reimagining financial markets and reinventing how users engage with liquidity. Uniswap removes barriers
+          to entry and single points of failure, leveling the playing field while improving security for all.
         </p>
         <p>
-          As more assets become tokenized, public blockchains and protocols like Uniswap provide the opportunity to
-          establish a new financial stack that is more efficient, transparent, and equitable than any system in the
-          past.
+          We build unbreakable, unstoppable products that enable the creation of markets which could not have existed
+          before.
         </p>
       </StyledGoal>
     </StyledSectionFlex>

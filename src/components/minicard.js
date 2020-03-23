@@ -11,7 +11,7 @@ const StyledMiniCards = styled.a`
   max-width: 450px;
   margin: 1rem;
   box-shadow: ${({ theme, outlined }) => (!outlined ? theme.shadows.huge : 'none')};
-  border: 1px solid ${({ outlined }) => (!outlined ? 'rgba(0, 0)' : 'rgba(255, 0, 122, 0.3)')};
+  border: 1px solid ${({ outlined }) => (!outlined ? 'rgba(0, 0)' : 'rgba(255, 0, 122, 0.4)')};
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -27,7 +27,9 @@ const StyledMiniCards = styled.a`
   @media (max-width: 960px) {
     width: 100%;
     max-width: 450px;
-    height: 200px;
+    margin: 1rem 0;
+    height: ${({ small }) => !small && '200px'};
+    /* height: 200px; */
   }
 `
 const StyledCardBG = styled(Img)`
@@ -63,7 +65,6 @@ const StyledArrow = styled.span`
 `
 
 const MiniCard = props => {
-  console.log(props.image)
   return (
     <StyledMiniCards
       {...props}

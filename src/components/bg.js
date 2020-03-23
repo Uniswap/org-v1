@@ -12,6 +12,15 @@ const fallIn = keyframes`
     transform: translateY(-70vh);
   }
 `
+const fallInSmall = keyframes`
+  from {
+    transform:translateY(-100vh);
+  }
+
+  to {
+    transform: translateY(-90vh);
+  }
+`
 
 const StyledRed = styled.div`
   width: 100%;
@@ -25,6 +34,13 @@ const StyledRed = styled.div`
   opacity: 0.2;
   animation: ${fallIn} 0.3s ease;
   transform: translateY(-70vh);
+
+  @media (max-width: 960px) {
+    animation: ${fallInSmall} 0.3s ease;
+    height: 300px;
+    width: 150%;
+    transform: translateY(-150px);
+  }
 `
 
 const StyledBG = styled.div`
@@ -33,6 +49,7 @@ const StyledBG = styled.div`
   top: 0;
   left: 0;
   width: 100%;
+  overflow: hidden;
   background-color: ${({ theme }) => theme.backgroundColor};
   -webkit-transform: translate3d(0, 0, 0);
 `
@@ -45,7 +62,6 @@ const StyledNoise = styled(BackgroundImage)`
   top: 0px;
   background-repeat: repeat;
   left: 0px;
-  width: 100%;
   background-size: auto;
   background-position: center;
 `
@@ -55,7 +71,7 @@ const BG = () => {
     {
       noise: file(relativePath: { eq: "noise.png" }) {
         childImageSharp {
-          fluid(quality: 100, maxWidth: 400) {
+          fluid(quality: 100, maxWidth: 800) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }

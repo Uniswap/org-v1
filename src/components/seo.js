@@ -47,11 +47,12 @@ function SEO({ description, lang, title, path }) {
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content={'website'} />
       <meta property="og:url" content={site.siteMetadata.siteUrl + path} />
-      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/'}images/twitter-card.jpg`} />
+      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}twitter-card.jpg`} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@UniswapExchange"></meta>
       <meta name="twitter:site" content="@UniswapExchange" />
+      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}twitter-card.jpg`} />
 
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
     </Helmet>

@@ -636,3 +636,7 @@ pre tt:after {
   opacity: 1;
   transform: translateX(0px);
 }
+
+.twitter-tweet-rendered {
+  margin: 0 auto;
+}
