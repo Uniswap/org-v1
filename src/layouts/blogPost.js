@@ -15,6 +15,7 @@ const StyledBlog = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 2rem;
 `
 
 const StyledMDX = styled.div`
@@ -127,9 +128,13 @@ const StyledDocsNavWrapper = styled.ul`
   justify-content: space-between;
   list-style: none;
   margin: 0;
-  margin-top: 2rem;
+  margin-bottom: 2rem;  
   padding-top: 3rem;
-  border-top: 1px solid ${({ theme }) => theme.colors.grey2};
+
+  padding-bottom: 3rem;
+  /* border-top: 1px solid ${({ theme }) => theme.colors.grey2}; */
+
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   width: 100%;
   flex-wrap: wrap;
 `
@@ -162,7 +167,7 @@ const StyledLink = styled(Link)`
 const Blog = props => {
   const data = useStaticQuery(graphql`
     {
-      allMdx(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { order: ASC, fields: fields___slug }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/blog/" } }, sort: { order: DESC, fields: frontmatter___date }) {
         edges {
           node {
             id

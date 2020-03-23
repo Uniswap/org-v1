@@ -71,7 +71,7 @@ const StyledCardBG = styled(Img)`
   /* z-index: -1; */
 `
 
-const Confirm = props => {
+const Success = props => {
   const data = useStaticQuery(graphql`
     {
       unicornImage: file(relativePath: { eq: "uni_image.jpg" }) {
@@ -87,11 +87,11 @@ const Confirm = props => {
   return (
     <Layout path={props.location.pathname} nofooter={true}>
       <BG />
-      <SEO title="Confirm" path={props.location.pathname} />
+      <SEO title="Success" path={props.location.pathname} />
       <StyledAbout>
         <StyledSectionFlex style={{ flexDirection: 'column', paddingBottom: '0px' }}>
           <StyledCardBG fluid={data.unicornImage.childImageSharp.fluid} />
-          <Title style={{ width: '100%' }}>Check your email to confirm.</Title>
+          <Title style={{ width: '100%' }}>Confirmed.</Title>
           <p>{"We'll be in touch soon."}</p>
           <Link to="/">Back home</Link>
         </StyledSectionFlex>
@@ -100,4 +100,4 @@ const Confirm = props => {
   )
 }
 
-export default Confirm
+export default Success
