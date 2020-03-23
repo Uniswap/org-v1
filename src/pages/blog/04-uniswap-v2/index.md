@@ -1,16 +1,16 @@
 ---
-title: 'Uniswap V2 Announcement'
+title: '🦄 Uniswap V2'
 date: '2020-03-23'
 author: 'Hayden Adams'
 featuredImage: ./featured.jpg
 previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much much more. Launching April 2020.'
 ---
 
-# 🦄 Uniswap V2 — Overview
+# Overview
 
 **Uniswap V1** was the proof-of-concept for a new type of decentralized marketplace.
 
-As a venue for pooled, automated liquidity provision on Ethereum, the Uniswap protocol (Uniswap) functions without upkeep, providing an unstoppable platform for ERC20 token conversion. **Uniswap V1 will continue to work for as long as Ethereum exists** , and so far, it has worked very nicely for a wide variety of use cases.
+As a venue for pooled, automated liquidity provision on Ethereum, the Uniswap protocol (Uniswap) functions without upkeep, providing an unstoppable platform for ERC20 token conversion. **Uniswap V1 will continue to work for as long as Ethereum exists**, and so far, it has worked very nicely for a wide variety of use cases.
 
 ![Uniswap V1 Liquidity Growth](v1_liquidity.png)
 

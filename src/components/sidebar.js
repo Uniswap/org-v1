@@ -88,16 +88,16 @@ const StyledMobileMenu = styled.div`
   }
 `
 
-const StaticLink = styled.a`
-  margin-top: 2rem;
-  opacity: 0.8;
-  max-width: 190px;
-  font-size: 0.825rem;
-  line-height: 125%;
-  @media (max-width: 960px) {
-    display: none;
-  }
-`
+// const StaticLink = styled.a`
+//   margin-top: 2rem;
+//   opacity: 0.8;
+//   max-width: 190px;
+//   font-size: 0.825rem;
+//   line-height: 125%;
+//   @media (max-width: 960px) {
+//     display: none;
+//   }
+// `
 
 const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
@@ -275,10 +275,10 @@ const SideBar = props => {
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
       </ListWrapper>
-
+      {/* 
       <StaticLink href="https://docs.uniswap.io/" target="_blank" rel="noreferrer noopener">
         V1 Documentation
-      </StaticLink>
+      </StaticLink> */}
     </StyledSidebar>
   )
 }

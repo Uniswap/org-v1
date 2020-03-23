@@ -44,7 +44,7 @@ const StyledSection = styled.section`
   @media (max-width: 960px) {
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 2rem;
+    margin-bottom: 0em;
   }
 `
 
@@ -55,7 +55,7 @@ const StyledFooterSection = styled.section`
   margin: 0;
   @media (max-width: 960px) {
     padding-left: 0rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0rem;
   }
 `
 
@@ -67,7 +67,7 @@ const StyledFooterSectionNav = styled.section`
   padding-left: 5rem;
   @media (max-width: 960px) {
     padding-left: 0rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0rem;
     display: none;
   }
 `

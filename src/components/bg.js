@@ -38,7 +38,7 @@ const StyledRed = styled.div`
   @media (max-width: 960px) {
     animation: ${fallInSmall} 0.3s ease;
     height: 300px;
-    width: 150%;
+    width: 100%;
     transform: translateY(-150px);
   }
 `
