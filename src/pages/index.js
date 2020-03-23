@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import styled, { css } from 'styled-components'
+import React from 'react'
+import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Img from 'gatsby-image'
@@ -38,7 +38,6 @@ const StyledTitle = styled.div`
 
 const StyledBodyTitle = styled.h1`
   color: ${({ theme }) => theme.colors.link};
-  /* font-weight: 00; */
   font-size: 104px;
   margin: 4rem 0 3rem 0;
   pointer-events: none;
@@ -87,6 +86,7 @@ const StyledSectionFlex = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  /* max-width: 650px; */
   @media (max-width: 1024px) {
     padding: 1rem;
     margin-top: 0rem;
@@ -173,6 +173,7 @@ const IndexPage = props => {
           </span>
         </StyledTitle>
         <SummarySection data={data} />
+        <DeveloperSection data={data} />
         <ProductsSection data={data} />
         <GoalSection />
       </StyledBody>
@@ -185,7 +186,6 @@ export default IndexPage
 const StyledImgSection = styled.div`
   color: ${({ theme }) => theme.colors.link};
   position: relative;
-  /* font-size: 20px; */
   margin: 1rem 3rem;
   @media (max-width: 960px) {
     width: 100%;
@@ -247,12 +247,34 @@ const NewPill = styled.span`
   margin: 0;
   margin-right: 1rem;
   font-weight: 400;
-  /* font-size: 20px; */
 `
 
 const LinkTitle = styled.span`
   @media (max-width: 960px) {
     display: none;
+  }
+`
+
+const StyledSectionTitle = styled.h1`
+  color: ${({ theme }) => theme.colors.link};
+  font-size: 48px;
+  white-space: wrap;
+  overflow-wrap: normal;
+  max-width: 900px;
+  text-align: center;
+  font-family: 'Inferi Normal', 'Times New Roman', serif;
+
+  @media (max-width: 960px) {
+    width: 100%;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    max-width: 600px;
+    margin-top: 4rem;
+  }
+  @media (max-width: 375px) {
+    width: 100%;
+    font-weight: 400;
+    margin-top: 4rem;
   }
 `
 
@@ -274,7 +296,7 @@ const SummarySection = props => {
         </h1>
 
         <p>
-          A simple formalized equation drives unstoppable liquidity for thousands of users and hundreds of Applications.
+          A simple formalized equation drives unstoppable liquidity for thousands of users and hundreds of applications.
         </p>
 
         <p>
@@ -290,12 +312,46 @@ const SummarySection = props => {
   )
 }
 
+const DeveloperSection = () => {
+  return (
+    <>
+      <StyledSectionTitle>Build with Uniswap</StyledSectionTitle>
+      <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
+        <MiniCard
+          outlined
+          small
+          as={Link}
+          to="/docs/v2/SDK/getting-started"
+          title={'Integrate Uniswap into your Frontend.'}
+          desc={'Use the new SDK for anything from a hackathon project to a production application.'}
+        />
+        <MiniCard
+          outlined
+          small
+          as={Link}
+          to="/docs/v2/smart-contracts/architecture"
+          title={'Use Uniswap in your Smart Contracts.'}
+          desc={'Token Swaps, Flash swaps, Token Liquidity and so much more.'}
+        />
+        <MiniCard
+          outlined
+          small
+          as={Link}
+          to="/docs/v2/technical-considerations/oracles"
+          title={'Build oracles on Uniswap.'}
+          desc={'New on chain price feeds makes building oracles easier than ever.'}
+        />
+      </StyledSectionFlex>
+    </>
+  )
+}
+
 const ProductsSection = props => {
   return (
     <>
       <StyledSectionFlex style={{ paddingBottom: '0px' }}>
         <StyledGoal style={{ width: '100%', maxWidth: '450px' }}>
-          <h1>Products</h1>
+          <h1>Use Uniswap</h1>
           <p>We build open tools and experimental products that interact with the Uniswap protocol.</p>
         </StyledGoal>
       </StyledSectionFlex>
@@ -329,7 +385,6 @@ const ProductsSection = props => {
 const StyledGoal = styled.div`
   color: ${({ theme }) => theme.colors.link};
   border-radius: 0.5rem;
-  /* font-size: 20px; */
   p {
     line-height: 155%;
     margin-bottom: 2rem;
@@ -357,66 +412,7 @@ const GoalSection = () => {
           establish a new financial stack that is more efficient, transparent, and equitable than any system in the
           past.
         </p>
-        {/* <div>
-          <Link to="/">Read more about how we are working towards this future.</Link>
-        </div> */}
       </StyledGoal>
     </StyledSectionFlex>
   )
 }
-
-const EmailRow = styled.form`
-  display: flex;
-  flex-direction: row;
-`
-
-const InputButton = styled.input`
-  padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.colors.link};
-  text-decoration: none;
-  color: ${({ theme }) => theme.invertedTextColor};
-  border-radius: 12px;
-  margin-right: 0.5rem;
-  display: inline-block;
-  transform: scale(0.98);
-  transition: transform 0.25s ease;
-  box-sizing: border-box;
-  font-weight: 400;
-  border: none;
-
-  :hover {
-    transform: scale(1);
-    cursor: pointer;
-  }
-  @media (max-width: 960px) {
-    margin-right: 0.5rem;
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.825rem;
-    padding: 0.25rem 1rem;
-  }
-
-  outline-color: transparent;
-  outline-style: none;
-`
-
-const StyledInput = styled.input`
-  border-radius: 12px;
-  margin-right: 10px;
-  box-shadow: none;
-  background-image: none;
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  border: 1px solid ${({ theme }) => theme.chaliceGray};
-  width: 280px;
-
-  padding: 4px 0 4px 10px;
-
-  :focus {
-    outline-color: transparent;
-    outline-style: none;
-    border: 1px solid ${({ theme }) => theme.colors.link};
-  }
-`

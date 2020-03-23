@@ -1,9 +1,8 @@
 import { Link } from 'gatsby'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
-import { ThemeManagerContext } from '../styles/themeManager'
-// import Uni from '../images/uni.inline.svg'
+// import { ThemeManagerContext } from '../styles/themeManager'
 
 function Dropdown(props) {
   const items = props.links.map(node => {
@@ -29,7 +28,6 @@ const StyledFooter = styled.footer`
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
-  /* background-color: ${({ theme }) => theme.backgroundColor}; */
   color: ${({ theme }) => theme.colors.link};
   position: relative;
 
@@ -100,18 +98,6 @@ const StyledFooterLink = styled.li`
   }
 `
 
-// const StyledUni = styled(Uni)`
-//   path {
-//     fill: ${({ theme }) => theme.textColor};
-//   }
-//   margin-bottom: 3rem;
-//   transform: rotate(0deg);
-//   transition: transform 0.2s linear;
-//   :hover {
-//     transform: rotate(-10deg);
-//   }
-// `
-
 const Commit = styled.div``
 
 const Footer = () => {
@@ -135,7 +121,7 @@ const Footer = () => {
     }
   `)
 
-  const themeContext = useContext(ThemeManagerContext)
+  // const themeContext = useContext(ThemeManagerContext)
 
   return (
     <StyledFooter>
@@ -239,34 +225,6 @@ const StyledGoal = styled.div`
   p {
     margin-bottom: 0.5rem;
     font-weight: 400;
-  }
-`
-
-const StyledSectionFlex = styled.div`
-  padding: 4rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  @media (max-width: 1024px) {
-    padding: 1rem;
-    margin-top: 0rem;
-    flex-direction: ${({ wrapSmall }) => (!wrapSmall ? 'row' : 'column')};
-  }
-  @media (max-width: 960px) {
-    padding: 1rem;
-    margin-top: 0rem;
-    width: 100%;
-    max-width: 450px;
-    /* flex-direction: column; */
-  }
-
-  h2 {
-    margin-bottom: 0.5rem;
-  }
-  p {
-    margin-bottom: 0.5rem;
   }
 `
 

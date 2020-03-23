@@ -10,7 +10,7 @@ const menu = [
       {
         name: 'Info',
         link: 'https://uniswap.info/',
-        description: 'Track Uniswap pools and prices'
+        description: 'Uniswap analytics and historical data'
       },
       {
         name: 'Unisocks',
@@ -20,7 +20,7 @@ const menu = [
       {
         name: 'Unipig',
         link: 'https://unipig.exchange/',
-        description: 'Ethereum layer 2 demo'
+        description: 'Optimistic rollup demo'
       }
     ]
   },
@@ -30,7 +30,7 @@ const menu = [
       {
         name: 'Documentation',
         link: '/docs',
-        description: 'Comprehensive smart contract and integration docs'
+        description: 'Comprehensive smart contract and frontend integration docs'
       },
       { name: 'Github', link: 'https://github.com/Uniswap' },
       { name: 'Whitepaper', link: '/whitepaper.pdf' }
@@ -47,7 +47,7 @@ const menu = [
   {
     name: 'Info',
     sublinks: [
-      { name: 'Blog', link: '/blog', description: 'Discussing all things Uniswap' },
+      { name: 'Blog', link: '/blog', description: 'Stay up to date on Uniswap' },
       {
         name: 'FAQ',
         link: '/',
@@ -93,7 +93,7 @@ module.exports = {
     author: `@UniswapExchange`,
     menulinks: menu,
     cardlinks: cards,
-    siteUrl: `https://uniswap-site-v2.uniswap.now.sh`,
+    siteUrl: `https://uniswap.org`,
     repository: `https://github.com/Uniswap/uniswap-site-v2`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },

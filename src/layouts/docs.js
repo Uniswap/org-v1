@@ -172,6 +172,7 @@ const Docs = props => {
 
   return (
     <Layout path={props.location.pathname}>
+      <SEO title={props.pageContext.frontmatter.title} path={props.location.pathname} />
       <GlobalStyle />
       {data.allMdx.edges
         .filter(({ node }) => {
