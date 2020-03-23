@@ -4,13 +4,13 @@ import styled from 'styled-components'
 const StyledFooter = styled.p`
   position: fixed;
   right: 2rem;
-  bottom: 4px;
+  bottom: 12px;
   font-size: 14px;
   font-style: italic;
   max-width: 200px;
   color: ${({ theme }) => theme.colors.link};
-  padding: 0.75rem;
-  border-radius: 12px 12px 0 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
   background-color: ${({ theme }) => theme.menuBG};
   border: 1px solid ${({ theme }) => theme.colors.grey2};
 
