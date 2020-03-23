@@ -275,10 +275,10 @@ const SideBar = props => {
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
       </ListWrapper>
-
+      {/* 
       <StaticLink href="https://docs.uniswap.io/" target="_blank" rel="noreferrer noopener">
         V1 Documentation
-      </StaticLink>
+      </StaticLink> */}
     </StyledSidebar>
   )
 }
