@@ -84,6 +84,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "dev": "gatsby develop",
+    "devlocal": "gatsby develop -H 0.0.0.0",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",

@@ -60,7 +60,7 @@ const MenuFlyout = styled.span`
   top: 2.5rem;
   left: -1rem;
   min-width: 196px;
-  padding: 1rem 1rem 0.75rem 1rem;
+  padding: 1rem 0.75rem 0.75rem 1rem;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.menuBG};
   /* backdrop-filter: blur(20px); */
@@ -153,17 +153,6 @@ const StyledDescription = styled.p`
     padding: 0;
   }
 `
-
-// function useLockBodyScroll() {
-//   useLayoutEffect(() => {
-//     // Get original body overflow
-//     const originalStyle = window.getComputedStyle(document.body).overflow
-//     // Prevent scrolling on mount
-//     document.body.style.overflow = 'hidden'
-//     // Re-enable scrolling when component unmounts
-//     return () => (document.body.style.overflow = originalStyle)
-//   }, []) // Empty array ensures effect is only run on mount and unmount
-// }
 
 export default function Menu(props) {
   const matches = useMediaQuery('only screen and (max-width: 960px)')
