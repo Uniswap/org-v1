@@ -1,6 +1,6 @@
 ---
 title: 'Uniswap V2 Announcement'
-date: '2020-03-11'
+date: '2020-03-23'
 author: 'Hayden Adams'
 featuredImage: ./featured.jpg
 previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much much more. Launching April 2020.'
