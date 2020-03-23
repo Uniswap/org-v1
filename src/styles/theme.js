@@ -109,6 +109,11 @@ export const theme = darkMode => ({
 })
 
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Inter Roman';
+    src:  url("/fonts/Inter-roman.otf") format('opentype');
+    font-weight: 100 600;
+  }
   @supports (font-variation-settings: normal) {
     html { font-family: 'Inter var', sans-serif; }
   }
@@ -162,7 +167,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "Inter Roman", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.75;
     max-width: 1440px;
     width: 100vw;
@@ -203,6 +208,11 @@ export const GlobalStyle = createGlobalStyle`
     /* margin: 2.5em 0 1rem 0 !important; */
     /* font-family: "Times Ten LT Std"; */
     font-size: 1.5rem;
+    font-weight: 300;
+    font-family: "Inferi Book";
+  }
+
+  h3 {
     font-weight: 300;
     font-family: "Inferi Book";
   }

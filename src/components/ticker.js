@@ -14,7 +14,9 @@ const MarqueeWrapper = styled.a`
   left: 0px;
   width: 100%;
   font-size: 1rem;
-
+  @media (max-width: 375px) {
+    font-size: 1.75rem;
+  }
   .marquee3k__wrapper {
     will-change: transform;
   }
@@ -36,7 +38,7 @@ const Stats = styled.span`
 `
 
 const NP = styled.span`
-  font-weight: 600;
+  font-weight: 500;
 `
 
 const AnimatingEl = props => {

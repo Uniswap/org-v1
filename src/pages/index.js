@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Helmet } from 'react-helmet'
+import styled, { css } from 'styled-components'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Img from 'gatsby-image'
@@ -10,9 +9,9 @@ import SEO from '../components/seo'
 import Ticker from '../components/ticker'
 import BG from '../components/bg'
 import MiniCard from '../components/minicard'
+import { Button } from '../components/button'
 
 const StyledBody = styled.div`
-  /* font-size: 1.125rem; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -20,7 +19,9 @@ const StyledBody = styled.div`
   align-items: center;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  @media (max-width: 375px) {
+    margin-bottom: 2rem;
+  }
 `
 
 const StyledTitle = styled.div`
@@ -46,8 +47,9 @@ const StyledBodyTitle = styled.h1`
   max-width: 900px;
   text-align: center;
   font-family: 'Inferi Normal', 'Times New Roman', serif;
-
-  /* letter-spacing: -0.03em; */
+  @media (max-width: 1024px) {
+    margin: 2rem 0 3rem 0;
+  }
 
   @media (max-width: 960px) {
     width: 100%;
@@ -58,9 +60,9 @@ const StyledBodyTitle = styled.h1`
   }
   @media (max-width: 375px) {
     width: 100%;
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-    margin: 2rem 0 4rem 0;
+    /* font-size: 3rem;
+    line-height: 3.5rem; */
+    margin: 2rem 0 2rem 0;
     font-weight: 400;
   }
 `
@@ -95,7 +97,6 @@ const StyledSectionFlex = styled.div`
     margin-top: 0rem;
     width: 100%;
     max-width: 450px;
-    /* flex-direction: column; */
   }
 
   h2 {
@@ -103,56 +104,6 @@ const StyledSectionFlex = styled.div`
   }
   p {
     margin-bottom: 0.5rem;
-  }
-`
-
-const StyledTradeLink = styled.a`
-  padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.colors.link};
-  text-decoration: none;
-  color: ${({ theme }) => theme.invertedTextColor};
-  border-radius: 12px;
-  margin-right: 0.75rem;
-  display: inline-block;
-  transform: scale(0.98);
-  transition: transform 0.25s ease;
-  box-sizing: border-box;
-  font-weight: 400;
-  font-size: 1.125rem;
-
-  :hover {
-    transform: scale(1);
-  }
-  @media (max-width: 960px) {
-    margin-right: 0.5rem;
-    text-align: center;
-    text-decoration: none;
-    padding: 0.25rem 1rem;
-  }
-`
-
-const StyledTradeLinkOutlined = styled(Link)`
-  padding: 0.25rem 0.75rem;
-  border: 1px solid ${({ theme }) => theme.colors.link};
-  text-decoration: none;
-  color: ${({ theme }) => theme.colors.link};
-  border-radius: 12px;
-  margin-right: 1.5rem;
-  display: inline-block;
-  transform: scale(0.98);
-  transition: transform 0.25s ease;
-  box-sizing: border-box;
-  font-weight: 400;
-  font-size: 1.125rem;
-
-  :hover {
-    transform: scale(1);
-  }
-  @media (max-width: 960px) {
-    margin-right: 0.5rem;
-    text-align: center;
-    text-decoration: none;
-    padding: 0.25rem 1rem;
   }
 `
 
@@ -206,24 +157,24 @@ const IndexPage = props => {
     <Layout path={props.location.pathname}>
       <Ticker />
       <BG />
-      <SEO title="Home" path={props.location.pathname} />
-      <Helmet>
-        <meta name="twitter:image" content={`${data.site.siteMetadata.siteUrl}/images/twitter-card.jpg`} />
-      </Helmet>
+      <SEO
+        title="Home"
+        path={props.location.pathname}
+        description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
+      />
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
-
           <span>
-            <StyledTradeLink href="https://uniswap.exchange/">Launch App</StyledTradeLink>
-            <StyledTradeLinkOutlined to="/docs">Read the docs</StyledTradeLinkOutlined>
+            <Button href="https://uniswap.exchange/">Launch App</Button>
+            <Button to="/docs" as={Link} outlined>
+              Read the docs
+            </Button>
           </span>
         </StyledTitle>
         <SummarySection data={data} />
-
         <ProductsSection data={data} />
         <GoalSection />
-        <EmailSection />
       </StyledBody>
     </Layout>
   )
@@ -264,10 +215,8 @@ const StyledImgSection = styled.div`
 
 const MiniNewInfo = styled(Link)`
   transform: rotate(-4deg) scale(0.98);
-  /* font-size: 20px; */
   color: ${({ theme }) => theme.textColor};
   display: inline-block;
-  /* width: 450px; */
   height: 500px;
 
   transition: transform 0.3s ease;
@@ -333,7 +282,9 @@ const SummarySection = props => {
           accessible to all.
         </p>
 
-        <StyledTradeLinkOutlined to="/docs/v2#how-it-all-works">Read more</StyledTradeLinkOutlined>
+        <Button as={Link} outlined to="/docs/v2#how-it-all-works">
+          Read more
+        </Button>
       </StyledImgSection>
     </StyledSectionFlex>
   )
@@ -469,37 +420,3 @@ const StyledInput = styled.input`
     border: 1px solid ${({ theme }) => theme.colors.link};
   }
 `
-
-const EmailSection = () => {
-  const [email, setEmail] = useState('')
-
-  return (
-    <StyledSectionFlex>
-      <StyledGoal style={{ width: '100%', maxWidth: '450px' }}>
-        <h1>Stay In Touch</h1>
-        <p>Signup for updates filler text.</p>
-        <EmailRow
-          action="https://uniswap.us19.list-manage.com/subscribe/post?u=c93471c1443f1e6365b5ca093&amp;id=7d591bff13"
-          method="post"
-          id="mc-embedded-subscribe-form"
-          name="mc-embedded-subscribe-form"
-          target="_blank"
-          novalidate
-        >
-          <StyledInput
-            type="email"
-            value={email}
-            name="EMAIL"
-            id="mce-EMAIL"
-            placeholder="email address"
-            required
-            onChange={val => setEmail(val.target.value)}
-          />
-          <div>
-            <InputButton type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" />
-          </div>
-        </EmailRow>
-      </StyledGoal>
-    </StyledSectionFlex>
-  )
-}

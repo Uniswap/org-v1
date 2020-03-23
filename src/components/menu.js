@@ -148,7 +148,6 @@ const StyledDescription = styled.p`
   margin: 0;
   padding: 0;
   padding: 0px 0.5rem 0.25rem 0.5rem;
-  /* min-width: 200px; */
   color: ${({ theme }) => theme.colors.grey6};
   @media (max-width: 960px) {
     padding: 0;
@@ -213,7 +212,8 @@ export default function Menu(props) {
         }}
         isOpen={isOpen}
       >
-        {props.data.name} {!matches && <DropdownArrow />}
+        <span style={{ marginRight: '0.25rem' }}>{props.data.name} </span>
+        {!matches && <DropdownArrow />}
         {isOpen ? (
           <MenuFlyout>
             {props.data.sublinks.map((item, index) => {

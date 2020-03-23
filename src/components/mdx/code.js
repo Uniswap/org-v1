@@ -75,7 +75,11 @@ export default ({ children, className }) => {
         <Wrapper>
           <Pre className={className} style={{ ...style, padding: '20px' }}>
             {tokens.map((line, i) => {
-              return line.length === 1 && line[0].empty ? null : (
+              return line[0].empty ? (
+                i === tokens.length - 1 ? null : (
+                  <br />
+                )
+              ) : (
                 <div key={i} {...getLineProps({ line, key: i })}>
                   {/* <LineNo>{i + 1}</LineNo> */}
                   {line.map((token, key) => (
