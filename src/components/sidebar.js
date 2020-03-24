@@ -189,7 +189,7 @@ const SideBar = props => {
       }
       docsV1: allMdx(
         filter: { fileAbsolutePath: { regex: "/docs/v1/" } }
-        sort: { order: ASC, fields: fields___slug }
+        sort: { order: ASC, fields: fileAbsolutePath }
       ) {
         edges {
           node {
@@ -225,7 +225,10 @@ const SideBar = props => {
           }
         }
       }
-      guides: allMdx(filter: { fileAbsolutePath: { regex: "/guides/" } }, sort: { order: ASC, fields: fields___slug }) {
+      guides: allMdx(
+        filter: { fileAbsolutePath: { regex: "/guides/" } }
+        sort: { order: ASC, fields: fileAbsolutePath }
+      ) {
         edges {
           node {
             id
@@ -253,6 +256,8 @@ const SideBar = props => {
   const matches = useMediaQuery('only screen and (max-width: 960px)')
   const [isMenuOpen, updateIsMenuOpen] = useState(true)
 
+  const atTopLevel = props.path === '/docs/v1/' || props.path === '/docs/v2/'
+
   return (
     <StyledSidebar>
       <Search isDocs={isDocs} isV1={isV1} isV2={isDocs && !isV1} />
@@ -265,11 +270,11 @@ const SideBar = props => {
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
         <StyledLink
-          isActive={props.path === '/docs/v2/'}
-          style={{ marginBottom: '.25rem', display: 'inline-block', padding: props.path !== '/docs/v2/' && '0px' }}
-          to={'/docs/v2/'}
+          isActive={atTopLevel}
+          style={{ marginBottom: '.25rem', display: 'inline-block', padding: !atTopLevel && '0px' }}
+          to={`/docs/${isV1 ? 'v1' : 'v2'}/`}
         >
-          Intro
+          Introduction
         </StyledLink>
         {navData.edges.map(({ node }) => (
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />

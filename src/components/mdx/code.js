@@ -11,6 +11,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 require('prismjs/components/prism-solidity')
 require('prismjs/components/prism-typescript')
+require('prismjs/components/prism-python')
 
 const Wrapper = styled.div`
   position: relative;
