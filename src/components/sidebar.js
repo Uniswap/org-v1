@@ -99,6 +99,27 @@ const StyledMobileMenu = styled.div`
 //   }
 // `
 
+const VersionLabel = styled.span`
+  padding: 0.01rem 0.5rem 0 0.5rem;
+  border-radius: 12px;
+  background: ${({ theme, active }) => (active ? theme.colors.link : 'none')};
+  color: ${({ theme, active }) => (active ? theme.invertedTextColor : theme.colors.link)};
+
+  font-size: 0.825rem;
+  font-weight: 400;
+`
+
+const VersionToggle = styled(Link)`
+  border-radius: 14px;
+
+  margin-bottom: 1rem;
+  border: 1px solid ${({ theme }) => theme.colors.pink3};
+  color: ${({ theme }) => theme.invertedTextColor};
+  display: flex;
+  width: fit-content;
+  cursor: pointer;
+`
+
 const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
   min-width: 240px;
@@ -261,7 +282,6 @@ const SideBar = props => {
   return (
     <StyledSidebar>
       <Search isDocs={isDocs} isV1={isV1} isV2={isDocs && !isV1} />
-
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -269,6 +289,10 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
+        <VersionToggle to={props.path.split('/')[2] === 'v2' ? '/docs/v1' : '/docs/v2'}>
+          <VersionLabel active={props.path.split('/')[2] === 'v2'}> V2</VersionLabel>
+          <VersionLabel active={props.path.split('/')[2] === 'v1'}>V1</VersionLabel>
+        </VersionToggle>
         <StyledLink
           isActive={atTopLevel}
           style={{ marginBottom: '.25rem', display: 'inline-block', padding: !atTopLevel && '0px' }}
