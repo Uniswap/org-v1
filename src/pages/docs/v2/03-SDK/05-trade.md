@@ -72,13 +72,3 @@ slippage: Percent
 The slippapge incurred by the trade.
 
 - Strictly > .30%.
-
-## midPricePercentChange
-
-```typescript
-midPricePercentChange: Percent
-```
-
-The percent change in the current mid price and mid price if the trade were to execute.
-
-- Strictly > 0%.
