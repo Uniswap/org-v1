@@ -3,7 +3,7 @@ title: Getting Started
 ---
 
 <Info>
-Uniswap V2 is currently in a testnet release, and is slated to be deployed to mainnet in 2020 Q2, pending a successful formal verification. Looking for <a href="https://docs.uniswap.io">V1 documentation</a>?
+Uniswap V2 is currently in a testnet release, and is slated to be deployed to mainnet in 2020 Q2, pending a successful formal verification. Looking for <Link to='/docs/v1/'>V1 documentation</Link>?
 </Info>
 
 # Code

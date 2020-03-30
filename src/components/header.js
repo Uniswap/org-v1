@@ -154,19 +154,6 @@ const StyledMenuIcon = styled(MenuIcon)`
   }
 `
 
-const VersionLabel = styled.p`
-  padding: 0.1rem 0.35rem 0 0.35rem;
-  border-radius: 12px;
-  background: ${({ theme }) => theme.colors.link};
-  color: ${({ theme }) => theme.invertedTextColor};
-  font-size: 0.625rem;
-  margin: 0;
-  margin-left: 0.75rem;
-  opacity: 0.8;
-  margin-top: 8px;
-  font-weight: 400;
-`
-
 const Header = props => {
   const matches = useMediaQuery('only screen and (max-width: 1024px)')
   const node = useRef()
@@ -238,7 +225,6 @@ const Header = props => {
         {props.path && props.path !== '/' && props.path !== '' && (
           <>
             <StyledNavTitle to={'/' + props.path.split('/')[1]}>/ {props.path.split('/')[1]}</StyledNavTitle>
-            {props.path.split('/')[1] === 'docs' && <VersionLabel> V2</VersionLabel>}
           </>
         )}
       </StyledNavTitleWrapper>

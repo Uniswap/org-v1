@@ -59,7 +59,7 @@ We still anticipate ETH pairs being very popular, but expect to see growth in ot
 
 Uniswap V2 includes a number of improvements for price feeds built on top of it. First, every pair measures (but does not store) the market price at the beginning of each block, before any trades take place. This price is expensive to manipulate because it was set by the last transaction in a previous block.
 
-**To set the measured price to one that is out of sync with the global market price, an attacker has to make a bad trade at the end of a previous block** , typically with no guarantee that they will be able to arbitrage it back in the next block. Attackers will lose money to arbitrageurs, unless they can &quot;selfishly&quot; mine two blocks in a row. This type of attack presents a number of challenges and [has not been observed to date](https://arxiv.org/abs/1912.01798).
+**To set the measured price to one that is out of sync with the global market price, an attacker has to make a bad trade at the end of a previous block** , typically with no guarantee that they will be able to arbitrage it back in the next block. Attackers will lose money to arbitrageurs, unless they can "selfishly" mine two blocks in a row. This type of attack presents a number of challenges and [has not been observed to date](https://arxiv.org/abs/1912.01798).
 
 This alone is not enough. If significant value settles based on the price resulting from this mechanism, then the profit of an attack likely can outweigh the loss.
 
@@ -99,7 +99,7 @@ Liquidity provider fees are enforced by subtracting 0.3% from all input amounts,
 
 It is often the case that a series of transactions on Ethereum has a high upfront cost but ultimately a low net cost or is even net profitable by the end of the series. **Flash swaps** are incredibly useful because they **remove upfront capital requirements and unnecessary constraints on order-of-operations** for multi-step transactions that use Uniswap.
 
-One example is **arbitrage with no upfront capital**. Imagine a scenario where you can sell 200 DAI for 1 ETH on Uniswap and then sell that 1 ETH on Oasis for 220 DAI at a 20 DAI profit. But, unfortunately, you don&#39;t have any DAI in your wallet.
+One example is **arbitrage with no upfront capital**. Imagine a scenario where you can sell 200 DAI for 1 ETH on Uniswap and then sell that 1 ETH on Oasis for 220 DAI at a 20 DAI profit. But, unfortunately, you don't have any DAI in your wallet.
 
 ![](no_capital.gif)
 
@@ -138,7 +138,7 @@ If the Uniswap pool does not receive enough DAI to cover the ETH withdrawn, then
 - [An example oracle contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/ExampleOracle.sol) that creates a simple TWAP from Uniswap V2 cumulative prices.
 - [An example flash swap contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/ExampleFlashSwap.sol) that withdraws ERC20 tokens, executes arbitrary code, and then pays for them.
 
-_Periphery contracts described as &quot;example&quot; are for illustrative purposes only and should not be used in actual transactions._
+_Periphery contracts described as "Example" are for illustrative purposes only and should not be used in actual transactions._
 
 While this is a huge improvement, there are some new smart contract patterns introduced which developers building on top of Uniswap should be aware of.
 
@@ -157,11 +157,11 @@ Uniswap V2 contains many other significant changes and improvements including th
 
 - Smart contracts are written in Solidity instead of Vyper
 - Use CREATE2 to make the pool address deterministic based on the ERC20 token pair
-- Uniswap V2 properly handles [&quot;missing return&quot; ERC20 tokens](https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca) that do not work on Uniswap V1, such as USDT and OMG
-- Built in metaTransaction &quot;approve&quot; function for liquidity tokens
+- Uniswap V2 properly handles ["missing return" ERC20 tokens](https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca) that do not work on Uniswap V1, such as USDT and OMG
+- Built in metaTransaction "approve" function for liquidity tokens
 - Increase re-entrancy protection using mutex (adds support for ERC777 and other non-standard ERC20 tokens)
 - Fix bug from Uniswap V1 that uses all remaining gas on failing transactions
-- More descriptive error messages. The above bug caused failing transactions to only return the error &quot;Bad Jump Destination&quot;
+- More descriptive error messages. The above bug caused failing transactions to only return the error "Bad Jump Destination"
 
 ## Path to Sustainability
 
@@ -173,11 +173,11 @@ This feature, including the exact percentage amounts, is hardcoded into the core
 
 [https://twitter.com/jessewldn/status/1135741055045967874](https://twitter.com/jessewldn/status/1135741055045967874)
 
-In the Classical Period of crypto (2014), [Vitalik described](https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/) decentralized autonomous organizations (DAOs) as &quot;automation at the center, humans at the edges&quot;:
+In the Classical Period of crypto (2014), [Vitalik described](https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/) decentralized autonomous organizations (DAOs) as "automation at the center, humans at the edges."
 
-an entity that lives on the internet and exists autonomously, but also heavily relies on hiring individuals to perform certain tasks that the automaton itself cannot do
+> an entity that lives on the internet and exists autonomously, but also heavily relies on hiring individuals to perform certain tasks that the automaton itself cannot do
 
-This perfectly describes the Uniswap protocol&#39;s path forward. In Uniswap V1 pricing, coordination, listing, and trade execution are fully automated while arbitrage and liquidity provision are incentivized.
+This perfectly describes the Uniswap protocol's path forward. In Uniswap V1 pricing, coordination, listing, and trade execution are fully automated while arbitrage and liquidity provision are incentivized.
 
 However, **the best version of Uniswap will be one that autonomously incentivizes contributions to its own growth and development** as well as to the broader ecosystem in which it exists--one that supports the contributions of the **incredible community** that has formed and continues to grow.
 

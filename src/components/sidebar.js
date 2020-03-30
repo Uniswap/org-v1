@@ -36,7 +36,7 @@ const StyledSection = styled.div`
 
 // eslint-disable-next-line no-unused-vars
 const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
-  font-weight: ${({ isActive }) => (isActive ? 500 : 400)};
+  font-weight: ${({ isActive }) => (isActive ? 600 : 400)};
   border-radius: 8px;
   padding: 0.25rem 0;
   text-decoration: none;
@@ -98,6 +98,27 @@ const StyledMobileMenu = styled.div`
 //     display: none;
 //   }
 // `
+
+const VersionLabel = styled.span`
+  padding: 0.01rem 0.5rem 0 0.5rem;
+  border-radius: 12px;
+  background: ${({ theme, active }) => (active ? theme.colors.link : 'none')};
+  color: ${({ theme, active }) => (active ? theme.invertedTextColor : theme.colors.link)};
+
+  font-size: 0.825rem;
+  font-weight: 400;
+`
+
+const VersionToggle = styled(Link)`
+  border-radius: 14px;
+
+  margin-bottom: 1rem;
+  border: 1px solid ${({ theme }) => theme.colors.pink3};
+  color: ${({ theme }) => theme.invertedTextColor};
+  display: flex;
+  width: fit-content;
+  cursor: pointer;
+`
 
 const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
@@ -189,7 +210,7 @@ const SideBar = props => {
       }
       docsV1: allMdx(
         filter: { fileAbsolutePath: { regex: "/docs/v1/" } }
-        sort: { order: ASC, fields: fields___slug }
+        sort: { order: ASC, fields: fileAbsolutePath }
       ) {
         edges {
           node {
@@ -225,7 +246,10 @@ const SideBar = props => {
           }
         }
       }
-      guides: allMdx(filter: { fileAbsolutePath: { regex: "/guides/" } }, sort: { order: ASC, fields: fields___slug }) {
+      guides: allMdx(
+        filter: { fileAbsolutePath: { regex: "/guides/" } }
+        sort: { order: ASC, fields: fileAbsolutePath }
+      ) {
         edges {
           node {
             id
@@ -253,10 +277,11 @@ const SideBar = props => {
   const matches = useMediaQuery('only screen and (max-width: 960px)')
   const [isMenuOpen, updateIsMenuOpen] = useState(true)
 
+  const atTopLevel = props.path === '/docs/v1/' || props.path === '/docs/v2/'
+
   return (
     <StyledSidebar>
       <Search isDocs={isDocs} isV1={isV1} isV2={isDocs && !isV1} />
-
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -264,12 +289,16 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
+        <VersionToggle to={props.path.split('/')[2] === 'v2' ? '/docs/v1' : '/docs/v2'}>
+          <VersionLabel active={props.path.split('/')[2] === 'v1'}>V1</VersionLabel>
+          <VersionLabel active={props.path.split('/')[2] === 'v2'}>V2</VersionLabel>
+        </VersionToggle>
         <StyledLink
-          isActive={props.path === '/docs/v2/'}
-          style={{ marginBottom: '.25rem', display: 'inline-block', padding: props.path !== '/docs/v2/' && '0px' }}
-          to={'/docs/v2/'}
+          isActive={atTopLevel}
+          style={{ marginBottom: '.25rem', display: 'inline-block', padding: !atTopLevel && '0px' }}
+          to={`/docs/${isV1 ? 'v1' : 'v2'}/`}
         >
-          Intro
+          Introduction
         </StyledLink>
         {navData.edges.map(({ node }) => (
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
