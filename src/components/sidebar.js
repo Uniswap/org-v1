@@ -36,7 +36,7 @@ const StyledSection = styled.div`
 
 // eslint-disable-next-line no-unused-vars
 const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
-  font-weight: ${({ isActive }) => (isActive ? 500 : 400)};
+  font-weight: ${({ isActive }) => (isActive ? 600 : 400)};
   border-radius: 8px;
   padding: 0.25rem 0;
   text-decoration: none;
@@ -290,8 +290,8 @@ const SideBar = props => {
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
         <VersionToggle to={props.path.split('/')[2] === 'v2' ? '/docs/v1' : '/docs/v2'}>
-          <VersionLabel active={props.path.split('/')[2] === 'v2'}> V2</VersionLabel>
           <VersionLabel active={props.path.split('/')[2] === 'v1'}>V1</VersionLabel>
+          <VersionLabel active={props.path.split('/')[2] === 'v2'}>V2</VersionLabel>
         </VersionToggle>
         <StyledLink
           isActive={atTopLevel}
