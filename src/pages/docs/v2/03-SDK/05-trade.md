@@ -6,7 +6,7 @@ title: Trade
 constructor(route: Route, amount: TokenAmount, tradeType: TradeType)
 ```
 
-The Trade entity represents a fully specified trade along a route.
+The Trade entity represents a fully specified trade along a route. This entity supplies all the information necessary to craft a router transaction.
 
 # Example
 
@@ -29,11 +29,15 @@ const trade = new Trade(NOT_TO_HOT, new TokenAmount(NOT, '1000000000000000'), Tr
 route: Route
 ```
 
+The <Link to='/docs/v2/SDK/route#path'>path</Link> property of the route should be passed as the path parameter to router functions.
+
 ## tradeType
 
 ```typescript
 tradeType: TradeType
 ```
+
+`TradeType.EXACT_INPUT` corresponds to `swapExact*For*` router functions. `TradeType.EXACT_OUTPUT` corresponds to `swap*ForExact*` router functions.
 
 ## inputAmount
 
@@ -41,11 +45,15 @@ tradeType: TradeType
 inputAmount: TokenAmount
 ```
 
+For exact input trades, this value should be passed as amountIn to router functions. For exact output trades, this value should be multiplied by a factor >1, representing slippage tolerance, and passed as amountInMax to router functions.
+
 ## outputAmount
 
 ```typescript
 outputAmount: TokenAmount
 ```
+
+For exact output trades, this value should be passed as amountOut to router functions. For exact input trades, this value should be multiplied by a factor <1, representing slippage tolerance, and passed as amountOutMin to router functions.
 
 ## executionPrice
 

@@ -270,6 +270,7 @@ const SideBar = props => {
 
   const isDocs = props.parent === '/docs/'
   const isV1 = isDocs && props.path.slice(0, 8) === '/docs/v1'
+  const isV2 = isDocs && props.path.slice(0, 8) === '/docs/v2'
 
   const navData = isDocs ? (isV1 ? data.topNavDocsV1 : data.topNavDocsV2) : data.topNavGuides
   const listData = isDocs ? (isV1 ? data.docsV1 : data.docsV2) : data.guides
@@ -281,7 +282,7 @@ const SideBar = props => {
 
   return (
     <StyledSidebar>
-      <Search isDocs={isDocs} isV1={isV1} isV2={isDocs && !isV1} />
+      <Search isDocs={isDocs} isV1={isV1} isV2={isV2} />
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -289,9 +290,9 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
-        <VersionToggle to={props.path.split('/')[2] === 'v2' ? '/docs/v1' : '/docs/v2'}>
-          <VersionLabel active={props.path.split('/')[2] === 'v1'}>V1</VersionLabel>
-          <VersionLabel active={props.path.split('/')[2] === 'v2'}>V2</VersionLabel>
+        <VersionToggle to={isV1 ? '/docs/v2' : '/docs/v1'}>
+          <VersionLabel active={isV1}>V1</VersionLabel>
+          <VersionLabel active={isV2}>V2</VersionLabel>
         </VersionToggle>
         <StyledLink
           isActive={atTopLevel}
