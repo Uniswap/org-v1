@@ -155,6 +155,13 @@ const About = props => {
             {"If you think you'd be a good fit for a job at Uniswap"}{' '}
             <a href="mailto:contact@uniswap.org">get in touch.</a>
           </p>
+
+          <h1 id="brand-assets" style={{ width: '100%' }}>
+            Brand Assets
+          </h1>
+          <p>
+            Download the logo and other brand assets samples <a href="/Uniswap_brand_assets.zip">here</a>.
+          </p>
         </StyledSectionFlex>
       </StyledAbout>
     </Layout>

@@ -25,13 +25,14 @@ function Dropdown(props) {
 }
 
 const StyledFooter = styled.footer`
-  margin-bottom: 2rem;
+  margin-bottom: 7rem;
   display: flex;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.link};
   position: relative;
 
   @media (max-width: 960px) {
+    margin-bottom: 2rem;
     flex-direction: column;
     padding: 2rem 1rem;
   }
