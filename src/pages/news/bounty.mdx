@@ -1,0 +1,67 @@
+---
+title: Uniswap Bug Bounty Program
+---
+
+As an open source, on-chain protocol, Uniswap has often benefited from community member participation in our testing and debugging processes. As we move toward the launch of Uniswap V2, we would like to formalize that process and reward the dedicated security engineers who help keep DeFi safe.
+
+**Scope**
+
+[Uniswap Core](https://github.com/Uniswap/uniswap-v2-core)
+
+[Periphery Contracts](https://github.com/Uniswap/uniswap-v2-periphery)\*
+
+\*All the contracts here are in scope except example contracts and those within the test folder. Bugs in Periphery Contracts will be considered less severe than those found in Uniswap Core.
+
+**Bug Bounty Rewards**
+
+We will assess the severity of any bug using the [CVSS Risk Rating](https://www.first.org/cvss/calculator/3.0) model based on both impact and likelihood.
+
+- Critical- Up to \$20,000
+- High- Up to \$5,000
+- Medium- Up to \$2,000
+- Low- Up to \$1000
+
+BONUS: Prior to the launch of Uniswap V2 (expected: May 2020), successful bug reporters will receive a 20% bonus on their bounty pay out. This is to incentivize hackers to come forward before launch.
+
+**What We&#39;re Looking For**
+
+We are mainly interested in any security vulnerabilities at the smart contract level that would result in a loss of funds while interacting with Uniswap\*. This includes any vulnerability where a user can siphon assets from other users or the platform in an unintended way. If for example a user was able to take ETH, tokens, or Liquidity pool shares that they were not entitled to this would be a loss of funds bug.
+
+Also included in this would be any bug allowing someone to lock up funds in such a way that they are irrecoverable.
+
+\*Note that this does not include loss of funds on any third party platforms when interacting with Uniswap features, e.g. flash swaps.
+
+**A bug report may qualify for a reward only when:**
+
+- It makes our team aware of the bug for the first time
+- The reporter discloses it privately and gives us a reasonable amount of time to address the bug and report on it publicly
+- A bug is reported without any conditions, demands, or threats
+- The investigation method and vulnerability report must adhere to the guidelines in this document
+- The reporter makes a good faith effort to avoid privacy violations, destruction of data, and interruption or degradation of our service
+- A detailed report increases the likelihood of a reward payout and may also increase the reward amount. Please include as much information about the vulnerability as possible, including:
+  - The conditions on which reproducing the bug is contingent.
+  - The steps needed to reproduce the bug or, better yet, a proof of concept. If the amount of detail is not sufficient to reproduce the bug, no reward will be paid.
+  - The potential implications of the vulnerability being abused.
+- Multiples or duplicates
+  - Submit one vulnerability per report, unless you need to chain vulnerabilities to provide impact.
+  - When duplicates occur, we only award the first report that was received (provided that it can be fully reproduced).
+  - Multiple vulnerabilities caused by one underlying issue will be awarded one bounty.
+- Rewards amounts mentioned in this document are the minimum bounties we will pay per bug based on severity. We aim to be fair; all reward amounts are at our discretion.
+
+# **Ineligible methods**
+
+Vulnerabilities contingent on any of the following activities do not qualify for a reward in the bug bounty program:
+
+- Front end bugs
+- DDOS attack
+- Spamming
+- Automated tools
+- Compromising or misusing third party systems or services
+
+# **Ineligible bugs**
+
+- Vulnerabilities already known to the public or to our team including previous findings from another participants in the bug bounty program
+- Any of the issues which were outlined as a result of our security audit, here **(link)**
+- Bugs that are not reproducible
+- Bugs disclosed to other parties without consent from our team
+- Issues which we cannot reasonably be expected to be able to do anything about
