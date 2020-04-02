@@ -53,7 +53,8 @@ const menu = [
         link: '/',
         description: 'Coming soon!'
       },
-      { name: 'About', link: '/about' }
+      { name: 'About', link: '/about' },
+      { name: 'Brand Assets', link: '/about#brand-assets' }
     ]
   }
 ]

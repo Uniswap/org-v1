@@ -213,7 +213,7 @@ export default function Menu(props) {
                       <StyledTitle>{item.name}</StyledTitle>
                       {item.description && <StyledDescription>{item.description}</StyledDescription>}
                     </StyledExternalLink>
-                  ) : item.link.split('/')[0] === '' ? (
+                  ) : item.link === '/about#brand-assets' ? null : item.link.split('/')[0] === '' ? (
                     <StyledLink to={item.link}>
                       <StyledTitle>{item.name}</StyledTitle>
                       {item.description && <StyledDescription>{item.description}</StyledDescription>}
