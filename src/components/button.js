@@ -26,7 +26,7 @@ const ButtonStyles = css`
   border: ${({ outlined, theme }) => (outlined ? `1px solid ${theme.colors.link}` : 'initial')};
 `
 
-const Button = styled.a`
+export const Button = styled.a`
   ${ButtonStyles};
 `
 

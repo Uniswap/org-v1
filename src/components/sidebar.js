@@ -269,11 +269,16 @@ const SideBar = props => {
   `)
 
   const isDocs = props.parent === '/docs/'
-  const isV1 = isDocs && props.path.slice(0, 8) === '/docs/v1'
-  const isV2 = isDocs && props.path.slice(0, 8) === '/docs/v2'
+  let isV1 = isDocs && props.path.slice(0, 8) === '/docs/v1'
+  let isV2 = isDocs && props.path.slice(0, 8) === '/docs/v2'
 
   const navData = isDocs ? (isV1 ? data.topNavDocsV1 : data.topNavDocsV2) : data.topNavGuides
   const listData = isDocs ? (isV1 ? data.docsV1 : data.docsV2) : data.guides
+
+  useLayoutEffect(() => {
+    isV1 = isDocs && props.path.slice(0, 8) === '/docs/v1'
+    isV2 = isDocs && props.path.slice(0, 8) === '/docs/v2'
+  }, [isV1, isV2, isDocs])
 
   const matches = useMediaQuery('only screen and (max-width: 960px)')
   const [isMenuOpen, updateIsMenuOpen] = useState(true)
@@ -305,10 +310,6 @@ const SideBar = props => {
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
       </ListWrapper>
-      {/* 
-      <StaticLink href="https://docs.uniswap.io/" target="_blank" rel="noreferrer noopener">
-        V1 Documentation
-      </StaticLink> */}
     </StyledSidebar>
   )
 }

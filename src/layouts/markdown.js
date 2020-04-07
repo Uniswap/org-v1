@@ -1,8 +1,6 @@
 import React from 'react'
 import Layout from '.'
 import styled from 'styled-components'
-import { graphql, useStaticQuery, Link } from 'gatsby'
-import { Twitter, Facebook } from 'react-social-sharing'
 
 import SEO from '../components/seo'
 import BG from '../components/bg'
@@ -91,46 +89,6 @@ const PostTitle = styled.h1`
 `
 
 const Markdown = props => {
-  const data = useStaticQuery(graphql`
-    {
-      allMdx(filter: { fileAbsolutePath: { regex: "/Markdown/" } }, sort: { order: DESC, fields: frontmatter___date }) {
-        edges {
-          node {
-            id
-            headings {
-              value
-              depth
-            }
-            frontmatter {
-              title
-            }
-            fields {
-              slug
-              topLevelDir
-              subDir
-            }
-          }
-          next {
-            frontmatter {
-              title
-            }
-            fields {
-              slug
-            }
-          }
-          previous {
-            frontmatter {
-              title
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
-
   return (
     <Layout path={props.location.pathname}>
       <BG />

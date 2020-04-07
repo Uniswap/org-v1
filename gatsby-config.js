@@ -33,7 +33,8 @@ const menu = [
         description: 'Comprehensive smart contract and frontend integration docs'
       },
       { name: 'Github', link: 'https://github.com/Uniswap' },
-      { name: 'Whitepaper', link: '/whitepaper.pdf' }
+      { name: 'Whitepaper', link: '/whitepaper.pdf' },
+      { name: 'Bounty', link: '/news/bounty' }
     ]
   },
   {
@@ -187,8 +188,10 @@ module.exports = {
               separator: '|', // default
               author: '@UniswapExchange',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
-              fontFile: require.resolve('./static/fonts/Inferi-Book.otf'), // will override fontStyle - path to custom TTF font
-              fontColor: '#FF3093' // defaults to white (#ffffff)
+              fontColor: '#FF3093', // defaults to white (#ffffff)
+              fontStyle: 'sans-serif', // default
+              titleFontSize: 124, // default
+              fontFile: require.resolve('./static/fonts/Inferi-Normal.ttf') // will override fontStyle - path to custom TTF font
             }
           },
           `gatsby-remark-smartypants`,

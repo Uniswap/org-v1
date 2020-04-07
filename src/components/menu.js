@@ -120,6 +120,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   margin-bottom: 0.5rem;
   width: 100%;
+  cursor: pointer;
 `
 const StyledExternalLink = styled.a`
   margin: 0;
@@ -127,6 +128,7 @@ const StyledExternalLink = styled.a`
   text-decoration: none;
   margin-bottom: 0.5rem;
   width: 100%;
+  cursor: pointer;
 `
 
 const StyledTitle = styled.p`
