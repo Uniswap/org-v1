@@ -11,6 +11,8 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Beta from '../components/beta'
 import Mdx from '../components/mdx'
+import BG from '../components/bg'
+
 import { StyledThemeProvider } from '../styles/themeManager'
 
 import '../styles/layout.css'
@@ -31,6 +33,7 @@ const Layout = ({ path, children, nofooter }) => {
   return (
     <>
       <StyledThemeProvider>
+        <BG />
         <Header path={path} siteTitle={data.site.siteMetadata.title} />
         <Mdx>{children}</Mdx>
         {nofooter ? null : <Footer />}

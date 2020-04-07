@@ -34,7 +34,7 @@ const menu = [
       },
       { name: 'Github', link: 'https://github.com/Uniswap' },
       { name: 'Whitepaper', link: '/whitepaper.pdf' },
-      { name: 'Bounty', link: '/news/bounty' }
+      { name: 'Bug Bounty', link: '/bug-bounty' }
     ]
   },
   {
@@ -118,13 +118,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `news`,
-        path: `${__dirname}/src/pages/news/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `docs`,
         path: `${__dirname}/src/pages/docs/`
       }
@@ -173,7 +166,6 @@ module.exports = {
           default: require.resolve('./src/layouts'),
           docs: require.resolve(`./src/layouts/docs`),
           blog: require.resolve(`./src/layouts/blogPost`),
-          news: require.resolve(`./src/layouts/markdown`),
           guides: require.resolve(`./src/layouts/guides`)
         },
         gatsbyRemarkPlugins: [
