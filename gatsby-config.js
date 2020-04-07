@@ -90,7 +90,7 @@ const cards = [
 module.exports = {
   siteMetadata: {
     title: `Uniswap`,
-    description: `Automated token exchange on Ethereum`,
+    description: `Automated liquidity protocol on Ethereum`,
     author: `@UniswapExchange`,
     menulinks: menu,
     cardlinks: cards,
@@ -186,7 +186,8 @@ module.exports = {
               title: 'Uniswap', // website title
               separator: '|', // default
               author: '@UniswapExchange',
-              background: require.resolve('./src/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
+              background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
+              fontFile: require.resolve('./static/fonts/Inferi-Book.otf'), // will override fontStyle - path to custom TTF font
               fontColor: '#FF3093' // defaults to white (#ffffff)
             }
           },

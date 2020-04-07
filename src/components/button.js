@@ -11,6 +11,7 @@ const ButtonStyles = css`
   box-sizing: border-box;
   font-weight: 400;
   font-size: 1.125rem;
+  cursor: pointer;
   @media (max-width: 960px) {
     margin-right: 0.5rem;
     text-align: center;
@@ -25,6 +26,8 @@ const ButtonStyles = css`
   border: ${({ outlined, theme }) => (outlined ? `1px solid ${theme.colors.link}` : 'initial')};
 `
 
-export const Button = styled.a`
+const Button = styled.a`
   ${ButtonStyles};
 `
+
+export default Button
