@@ -60,7 +60,7 @@ const MenuFlyout = styled.span`
   top: 2.5rem;
   left: -1rem;
   min-width: 196px;
-  padding: 1rem 0.75rem 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.menuBG};
   /* backdrop-filter: blur(20px); */
@@ -101,7 +101,6 @@ const StyledMenuTitle = styled.span`
 const StyledMenuItem = styled.span`
   text-decoration: none;
   margin: 0px;
-  margin-bottom: 0.5rem;
   border-radius: 0.5rem;
   :hover {
     border-radius: 8px;
@@ -118,7 +117,8 @@ const StyledLink = styled(Link)`
   margin: 0;
   padding: 0;
   text-decoration: none;
-  margin-bottom: 0.5rem;
+  margin: 0.25rem 0;
+  display: block;
   width: 100%;
   cursor: pointer;
 `
@@ -126,7 +126,8 @@ const StyledExternalLink = styled.a`
   margin: 0;
   padding: 0;
   text-decoration: none;
-  margin-bottom: 0.5rem;
+  display: block;
+  margin: 0.25rem 0;
   width: 100%;
   cursor: pointer;
 `

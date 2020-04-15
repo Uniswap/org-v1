@@ -1,5 +1,8 @@
 
 import Button from '../components/button'
+import BG from '../components/bg'
+
+<BG />
 
 <div style={{maxWidth: '650px', margin: '0px auto'}}>
 <h1 style={{fontSize: "96px", margin: '4rem 0 2rem 0', textAlign: 'center'}}>Uniswap Bug Bounty</h1>
@@ -15,74 +18,86 @@ import Button from '../components/button'
 
 # Overview
 
-As an open source, on-chain protocol, Uniswap has often benefited from community member participation in our testing and debugging processes. As we move toward the launch of Uniswap V2, we would like to formalize that process and reward the dedicated security engineers who help keep DeFi safe.
+As an open source, on-chain protocol, the Uniswap protocol (“Uniswap”) has benefited from community member participation in testing and debugging the smart contracts. As the launch of version 2 of Uniswap (“Uniswap V2”) approaches, it is beneficial to formalize the program incentivizing those dedicated security engineers who can help make Uniswap V2 safer (the “Program”). The Program will bolster the professional audits and formal verification Uniswap V2 has undergone.
 
 # Scope
 
+This Program is limited to the vulnerabilities affecting Uniswap V2 in the following contracts:
+
 [Uniswap Core](https://github.com/Uniswap/uniswap-v2-core) <br/>
-[Periphery Contracts](https://github.com/Uniswap/uniswap-v2-periphery)\*
+[Periphery Contracts](https://github.com/Uniswap/uniswap-v2-periphery)
 
-<sup>
-  *All the contracts here are in scope except example contracts and those within the test folder. Bugs in Periphery
-  Contracts will be considered less severe than those found in Uniswap Core.
-</sup>
+For purposes of the Program, bugs in Periphery Contracts will be considered less severe than those found in Uniswap V2 Core.
+ 
+The following are not within the scope of the Program:
+ 
+- The example contracts and the contracts in the test folder for the Periphery Contracts link set forth above; 
+- Any contract removed from the list of contracts in the Periphery Contracts link set forth above (such list may change from time to time without notice); 
+- Bugs in any third party contract or platform that interacts with Uniswap V2;
+- Vulnerabilities already reported and/or discovered in contracts built by third parties on Uniswap V2; and
+- Any already-reported bugs.
+ 
+Vulnerabilities contingent upon the occurrence of any of the following activities also are outside the scope of this Program:
+ 
+Front end bugs;
+- DDOS attack;
+- Spamming;
+- Automated tools; and
+- Compromising or misusing third party systems or services.
 
-# **Bug Bounty Rewards**
 
-We will assess the severity of any bug using the [CVSS Risk Rating](https://www.first.org/cvss/calculator/3.0) model based on both impact and likelihood.
+# **Program Rewards**
 
-- Critical- Up to \$50,000
-- High- Up to \$5,000
-- Medium- Up to \$2,000
-- Low- Up to \$1,000
+Severity of bugs will be assessed under the [CVSS Risk Rating](https://www.first.org/cvss/calculator/3.0) scale, as follows:   
+ 
+- Critical (9.0-10.0): Up to $40,000
+- High (7.0-8.9): Up to $10,000
+- Medium (4.0-6.9): Up to $2,000
+- Low (0.1-3.9): Up to $1,000
+ 
+In addition to assessing severity, rewards will be considered based on the impact of the discovered vulnerability as well as the level of difficulty in discovering such vulnerability.
+ 
+Prior to the deployment of Uniswap V2 to the Ethereum mainnet, which is expected to occur in May 2020, successful bug reporters will receive a 20% bonus on their bounty pay out. This is to incentivize hackers to come forward before launch. 
 
-BONUS: Prior to the launch of Uniswap V2 (expected: May 2020), successful bug reporters will receive a 20% bonus on their bounty pay out. This is to incentivize hackers to come forward before launch.
 
-# **What We&#39;re Looking For**
+# **Disclosure**
 
-We are mainly interested in any security vulnerabilities at the smart contract level that would result in a loss of funds while interacting with Uniswap\*. This includes any vulnerability where a user can siphon assets from other users or the platform in an unintended way. If for example a user was able to take ETH, tokens, or Liquidity pool shares that they were not entitled to this would be a loss of funds bug.
+Any vulnerability or bug discovered must be reported only to the following email: contact@uniswap.org; must not be disclosed publicly; must not be disclosed to any other person, entity or email address prior to disclosure to the [contact@uniswap.org](mailto:contact@uniswap.org) email; and must not be disclosed in any way other than to the contact@uniswap.org email.  In addition, disclosure to contact@uniswap.org must be made promptly following discovery of the vulnerability.
+Please include as much information about the vulnerability as possible, including:
+ 
+- The conditions on which reproducing the bug is contingent.
+- The steps needed to reproduce the bug or, preferably, a proof of concept.
+- The potential implications of the vulnerability being abused.
 
-Also included in this would be any bug allowing someone to lock up funds in such a way that they are irrecoverable.
+A detailed report of a vulnerability increases the likelihood of a reward and may increase the reward amount. 
+ 
+Anyone who reports a unique, previously-unreported vulnerability that results in a change to the code or a configuration change and who keeps such vulnerability confidential until it has been resolved by our engineers will be recognized publicly for their contribution, if agreed.
 
-<small>
-  *Note that this does not include loss of funds on any third party platforms when interacting with Uniswap features,
-  e.g. flash swaps.
-</small>
 
-# **A bug report may qualify for a reward only when:**
+# **Eligibility**
 
-- It makes our team aware of the bug for the first time
-- The reporter discloses it privately and gives us a reasonable amount of time to address the bug and report on it publicly
-- A bug is reported without any conditions, demands, or threats
-- The investigation method and vulnerability report must adhere to the guidelines in this document
-- The reporter makes a good faith effort to avoid privacy violations, destruction of data, and interruption or degradation of our service
-- A detailed report increases the likelihood of a reward payout and may also increase the reward amount. Please include as much information about the vulnerability as possible, including:
-  - The conditions on which reproducing the bug is contingent.
-  - The steps needed to reproduce the bug or, better yet, a proof of concept. If the amount of detail is not sufficient to reproduce the bug, no reward will be paid.
-  - The potential implications of the vulnerability being abused.
-- Multiples or duplicates
-  - Submit one vulnerability per report, unless you need to chain vulnerabilities to provide impact.
-  - When duplicates occur, we only award the first report that was received (provided that it can be fully reproduced).
-  - Multiple vulnerabilities caused by one underlying issue will be awarded one bounty.
-- Rewards amounts mentioned in this document are the minimum bounties we will pay per bug based on severity. We aim to be fair; all reward amounts are at our discretion.
+Eligibility
+To be eligible for a reward under this Program, you must:
+- Discover a previously unreported, non-public vulnerability that would result in a loss of or a lock on any ERC-20 token on Uniswap (but not on any third party platform interacting with Uniswap V2) and that is within the scope of this Program.
+- Be the first to disclose the unique vulnerability to contact@uniswap.org, in compliance with the disclosure requirements above. 
+- Provide sufficient information to enable our engineers to reproduce and fix the vulnerability.
+- Not engage in any unlawful conduct when disclosing the bug to contact@uniswap.org, including through threats, demands or any other coercive tactics.
+- Not exploit the vulnerability in any way, including through making it public or by obtaining a profit (other than a reward under this Program).
+- Make a good faith effort to avoid privacy violations, destruction of data, interruption or degradation of Uniswap V2.
+- Submit only one vulnerability per submission, unless you need to chain vulnerabilities to provide impact regarding any of the vulnerabilities.
+- Not submit a vulnerability caused by an underlying issue that is the same as an issue on which a reward has been paid under this Program.
+- Be at least 18 years of age.
+- Not be subject to US sanctions or reside in a US-embargoed country.
+- Not be one of our current or former employees, vendors, or contractors or an employee of any of those vendors or contractors.
+- Comply with all the eligibility requirements of the Program.
 
-# **Ineligible methods**
 
-Vulnerabilities contingent on any of the following activities do not qualify for a reward in the bug bounty program:
+# **Other Terms**
 
-- Front end bugs
-- DDOS attack
-- Spamming
-- Automated tools
-- Compromising or misusing third party systems or services
-
-# **Ineligible bugs**
-
-- Vulnerabilities already known to the public or to our team including previous findings from another participants in the bug bounty program
-- Any of the issues which were outlined as a result of our security audit, here **(link)**
-- Bugs that are not reproducible
-- Bugs disclosed to other parties without consent from our team
-- Issues which we cannot reasonably be expected to be able to do anything about
+All reward decisions, including eligibility for and amounts of the rewards and the manner in which such rewards will be paid, are made at our sole discretion.  
+ 
+The terms and conditions of this Program may be altered at any time.
+ 
 
 <br/>
 <br/>
