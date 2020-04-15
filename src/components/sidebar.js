@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
@@ -269,11 +269,16 @@ const SideBar = props => {
   `)
 
   const isDocs = props.parent === '/docs/'
-  const isV1 = isDocs && props.path.slice(0, 8) === '/docs/v1'
-  const isV2 = isDocs && props.path.slice(0, 8) === '/docs/v2'
+  const isV1 = useRef(isDocs && props.path.slice(0, 8) === '/docs/v1')
+  const isV2 = useRef(isDocs && props.path.slice(0, 8) === '/docs/v2')
 
-  const navData = isDocs ? (isV1 ? data.topNavDocsV1 : data.topNavDocsV2) : data.topNavGuides
-  const listData = isDocs ? (isV1 ? data.docsV1 : data.docsV2) : data.guides
+  const navData = isDocs ? (isV1.current ? data.topNavDocsV1 : data.topNavDocsV2) : data.topNavGuides
+  const listData = isDocs ? (isV1.current ? data.docsV1 : data.docsV2) : data.guides
+
+  useLayoutEffect(() => {
+    isV1.current = isDocs && props.path.slice(0, 8) === '/docs/v1'
+    isV2.current = isDocs && props.path.slice(0, 8) === '/docs/v2'
+  })
 
   const matches = useMediaQuery('only screen and (max-width: 960px)')
   const [isMenuOpen, updateIsMenuOpen] = useState(true)
@@ -282,7 +287,7 @@ const SideBar = props => {
 
   return (
     <StyledSidebar>
-      <Search isDocs={isDocs} isV1={isV1} isV2={isV2} />
+      <Search isDocs={isDocs} isV1={isV1.current} isV2={isV2.current} />
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -290,14 +295,14 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
-        <VersionToggle to={isV1 ? '/docs/v2' : '/docs/v1'}>
-          <VersionLabel active={isV1}>V1</VersionLabel>
-          <VersionLabel active={isV2}>V2</VersionLabel>
+        <VersionToggle to={isV1.current ? '/docs/v2' : '/docs/v1'}>
+          <VersionLabel active={isV1.current}>V1</VersionLabel>
+          <VersionLabel active={isV2.current}>V2</VersionLabel>
         </VersionToggle>
         <StyledLink
           isActive={atTopLevel}
           style={{ marginBottom: '.25rem', display: 'inline-block', padding: !atTopLevel && '0px' }}
-          to={`/docs/${isV1 ? 'v1' : 'v2'}/`}
+          to={`/docs/${isV1.current ? 'v1' : 'v2'}/`}
         >
           Introduction
         </StyledLink>
@@ -305,10 +310,6 @@ const SideBar = props => {
           <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
         ))}
       </ListWrapper>
-      {/* 
-      <StaticLink href="https://docs.uniswap.io/" target="_blank" rel="noreferrer noopener">
-        V1 Documentation
-      </StaticLink> */}
     </StyledSidebar>
   )
 }

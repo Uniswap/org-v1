@@ -11,6 +11,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Beta from '../components/beta'
 import Mdx from '../components/mdx'
+
 import { StyledThemeProvider } from '../styles/themeManager'
 
 import '../styles/layout.css'
