@@ -42,7 +42,7 @@ Returns the address of the pair for `tokenA` and `tokenB`, if it has been create
 function allPairs(uint) external view returns (address pair);
 ```
 
-Returns the address of the `n`th pairr (`0`-indexed) created through the factory, or `address(0)` (`0x0000000000000000000000000000000000000000`) if not enough pairs have been created yet.
+Returns the address of the `n`th pair (`0`-indexed) created through the factory, or `address(0)` (`0x0000000000000000000000000000000000000000`) if not enough pairs have been created yet.
 
 - Pass `0` for the address of the first pair created, `1` for the second, etc.
 
