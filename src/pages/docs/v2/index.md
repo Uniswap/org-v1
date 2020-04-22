@@ -24,7 +24,7 @@ See the <Link to='/blog/uniswap-v2'>introductory blog post</Link> for a walkthro
 - <Link to='/'>Protocol Website</Link>
 - <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>Whitepaper</a>
 - [GitHub](https://github.com/Uniswap)
-- [Twitter](https://twitter.com/UniswapExchange)
+- [Twitter](https://twitter.com/UniswapProtocol)
 - [Discord](https://discord.gg/Y7TF6QA)
 - [Reddit](https://reddit.com/r/Uniswap)
 - [Email](mailto:contact@uniswap.org)
