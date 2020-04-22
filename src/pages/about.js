@@ -131,7 +131,7 @@ const About = props => {
             backgroundColor={'#7289da'}
           />
           <MiniCard
-            href="https://twitter.com/UniswapExchange"
+            href="https://twitter.com/UniswapProtocol"
             title={'Twitter'}
             image={data.twitter.childImageSharp.fluid}
             desc={'Updates from the Uniswap team.'}

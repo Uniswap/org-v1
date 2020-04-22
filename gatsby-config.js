@@ -40,7 +40,7 @@ const menu = [
   {
     name: 'Community',
     sublinks: [
-      { name: 'Twitter', link: 'https://twitter.com/UniswapExchange' },
+      { name: 'Twitter', link: 'https://twitter.com/UniswapProtocol' },
       { name: 'Discord', link: 'https://discord.gg/Y7TF6QA' },
       { name: 'Reddit', link: 'https://www.reddit.com/r/Uniswap' }
     ]
