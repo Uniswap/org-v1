@@ -40,10 +40,28 @@ Performs floor division.
 invert(): Fraction
 ```
 
+### add
+
+```typescript
+add(other: Fraction | BigintIsh): Fraction
+```
+
+### subtract
+
+```typescript
+subtract(other: Fraction | BigintIsh): Fraction
+```
+
 ### multiply
 
 ```typescript
 multiply(other: Fraction | BigintIsh): Fraction
+```
+
+### divide
+
+```typescript
+divide(other: Fraction | BigintIsh): Fraction
 ```
 
 ### toSignificant
