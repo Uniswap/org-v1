@@ -505,4 +505,4 @@ interface IUniswapV2Router01 {
 import IUniswapV2Router01 from '@uniswap/v2-periphery/build/IUniswapV2Router01.json'
 ```
 
-[https://unpkg.com/@uniswap/v2-periphery@1.0.0-beta.0/build/IUniswapV2Router01.json](https://unpkg.com/@uniswap/v2-core@1.0.0-beta.0/build/IUniswapV2Router01.json)
+[https://unpkg.com/@uniswap/v2-periphery@1.0.0-beta.0/build/IUniswapV2Router01.json](https://unpkg.com/@uniswap/v2-periphery@1.0.0-beta.0/build/IUniswapV2Router01.json)
