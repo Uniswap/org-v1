@@ -1,0 +1,2258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-05-05 Tue 00:54 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Uniswap V2 Audit Report</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="dapp.org" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style> body { line-height: 1.6; font-size: 18px; padding: 0 10px;text-align: justify;text-justify: inter-word; margin: 60px auto; max-width: 900px;} h2,h2,h3{line-height:1.2} a:link { color: blue; } a:visited { color: purple; } code, .code { font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 1.125rem; line-height: 1.6; padding: 0; padding-top: 0; padding-bottom: 0; margin: 0; font-size: 85%; background-color: rgba(0,0,0,0.04); border-radius: 3px; } h2 { border-bottom: 3px solid #444; } h3 { text-decoration: underline; } h4 { font-style: italic } </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class="title">Uniswap V2 Audit Report</h1>
+	  <p class="subtitle"><i>dapp.org</i></p>
+	  <p class="subtitle"><a href="mailto:fv@dapp.org.uk">fv@dapp.org.uk</a></p>
+	  <p class="subtitle"> </p><br></br>
+</div>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7ebc9d8">Summary</a>
+<ul>
+<li><a href="#orgf971a33">Scope</a>
+<ul>
+<li><a href="#orgbb77c0a">Formal verification of the core smart contracts</a></li>
+<li><a href="#orgdb3a411">Code review of core smart contracts</a></li>
+<li><a href="#org56963b6">Numerical error analysis</a></li>
+<li><a href="#org8bc9a33">Code review of periphery smart contracts (during ongoing development)</a></li>
+</ul>
+</li>
+<li><a href="#orga882e47">Team</a></li>
+</ul>
+</li>
+<li><a href="#orgbd4e765">Findings</a>
+<ul>
+<li><a href="#orgad58039">Bugs</a>
+<ul>
+<li><a href="#orgd15839d">Router: incompatible with token with fees on transfer</a></li>
+<li><a href="#orgc7f8ae1">Pair: fix to liquidity deflation introduces race condition</a></li>
+<li><a href="#org61accdf">Math: integer overflow in <code>sqrt</code></a></li>
+</ul>
+</li>
+<li><a href="#orga5bab0e">Improvements</a>
+<ul>
+<li><a href="#orgfcab87c">ERC20: make <code>name</code>, <code>decimals</code>, <code>symbol</code> constant</a></li>
+<li><a href="#org5fb728c">ERC20: remove <code>forfeit</code></a></li>
+<li><a href="#orgba9020b">Factory: use <code>.creationCode</code> when retrieving Pair bytecode</a></li>
+<li><a href="#org794ac51">Pair: replace block height with timestamp</a></li>
+<li><a href="#orgac67987">Factory: replace <code>allPairs</code> array with a counter</a></li>
+<li><a href="#orgd1ef768">Meta: replace math libraries with an inherited contract</a></li>
+<li><a href="#org18727f6">Pair: divide by zero in <code>burn</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgac7a1df">Design Comments</a>
+<ul>
+<li><a href="#orga1aca00">Front-Running and Transaction Reordering</a>
+<ul>
+<li><a href="#orgbaba79b">Moving the market against the trader</a></li>
+<li><a href="#org8a14920">Sandwiching large trades with <code>mint</code> and <code>burn</code></a></li>
+</ul>
+</li>
+<li><a href="#org87c8b91">Oracle Integrity</a></li>
+<li><a href="#org0863525">Swap Composability</a></li>
+<li><a href="#orgc9b3190">Timestamp and Accumulator Overflows</a></li>
+<li><a href="#org8ba55be">Expectations of Token Behaviour</a>
+<ul>
+<li><a href="#org4ac4f60">Tokens with balance changes outside of transfers</a></li>
+<li><a href="#orgd8052eb"><code>transfer</code> fees</a></li>
+<li><a href="#orgf902e8f">Extreme precision</a></li>
+</ul>
+</li>
+<li><a href="#org6f533fe">Core / Periphery Seperation</a></li>
+<li><a href="#org5c44063">Optimistic Swaps</a>
+<ul>
+<li><a href="#orgba7dc35">Security properties</a></li>
+<li><a href="#orgd5ea496">Balances vs reserves</a></li>
+<li><a href="#org82e15c8">Correctness of solidity implementation</a></li>
+<li><a href="#orga113652">Attacker controlled code execution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org61bdde5">Numerical Error Analysis</a>
+<ul>
+<li><a href="#orgf6f3722">Locations With Possible Numerical Error</a>
+<ul>
+<li><a href="#orgaaa8a41"><code>_update</code></a></li>
+<li><a href="#orgaa27d7f"><code>_mintFee</code></a></li>
+<li><a href="#org53a8c01"><code>mint</code></a></li>
+<li><a href="#orgcf20761"><code>burn</code></a></li>
+<li><a href="#org201ad67"><code>swap</code></a></li>
+</ul>
+</li>
+<li><a href="#org16ece60">Proof of Correctness of <code>sqrt</code></a></li>
+</ul>
+</li>
+<li><a href="#org9e3fc7f">Formal Verification</a>
+<ul>
+<li><a href="#org80395e1">Caveats &amp; Assumptions</a>
+<ul>
+<li><a href="#orgc503978">Contract level invariants</a></li>
+<li><a href="#org5dc2346">Token implementation</a></li>
+<li><a href="#orga65000e"><code>sqrt</code> implementation</a></li>
+<li><a href="#org2b6ea48">External call in <code>swap</code></a></li>
+<li><a href="#orgf6f6f2b">Reentrancy lock</a></li>
+<li><a href="#orga6058ee">Exhaustiveness</a></li>
+<li><a href="#org86bf733">Soundness of software stack</a></li>
+<li><a href="#org65367f9">Soundness of lemmas</a></li>
+<li><a href="#org8aca6ba">Gas</a></li>
+</ul>
+</li>
+<li><a href="#org6128b68">Future Work</a>
+<ul>
+<li><a href="#orge88e5fa">Contract level invariants</a></li>
+<li><a href="#orgd8b71ec">Verification of external calls to unknown code</a></li>
+<li><a href="#orgaf2b366">Verification of <code>sqrt</code> bytecode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd236d19">Appendix A. Bug Classifications</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7ebc9d8" class="outline-2">
+<h2 id="org7ebc9d8">Summary</h2>
+<div class="outline-text-2" id="text-org7ebc9d8">
+<p>
+From January 8th to April 30th 2020, a team of six engineers reviewed and formally
+verified crucial components of the smart contracts for the second version of the
+Uniswap decentralized trading protocol.
+</p>
+
+<p>
+This work was carried out against the following git repositories:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/Uniswap/uniswap-v2-core"><code>uniswap-v2-core</code></a> at commit <code>8160750</code></li>
+<li><a href="https://github.com/Uniswap/uniswap-v2-periphery"><code>uniswap-v2-periphery</code></a> during ongoing development</li>
+</ul>
+
+<p>
+During this period, two medium severity issues were discovered:
+</p>
+
+<ul class="org-ul">
+<li><a href="#orgc7f8ae1">Pair: fix to liquidity deflation introduces race condition</a></li>
+<li><a href="#orgd15839d">Router: incompatible with token with fees on transfer</a></li>
+</ul>
+
+<p>
+and a number of small fixes and gas efficiency improvements were made.
+</p>
+
+<p>
+The full list of findings can be found <a href="#orgbd4e765">here</a>.
+</p>
+
+<p>
+All issues discovered in the <code>uniswap-v2-core</code> repository during the course of this
+engagement have been addressed in the commit <code>8160750</code>.
+</p>
+
+<p>
+The team recommends more analysis and review to be performed for the final versions
+of the peripheral contracts before launch.
+</p>
+</div>
+
+<div id="outline-container-orgf971a33" class="outline-3">
+<h3 id="orgf971a33">Scope</h3>
+<div class="outline-text-3" id="text-orgf971a33">
+</div>
+<div id="outline-container-orgbb77c0a" class="outline-4">
+<h4 id="orgbb77c0a">Formal verification of the core smart contracts</h4>
+<div class="outline-text-4" id="text-orgbb77c0a">
+<p>
+Formal specifications and proofs of method-level correctness for the smart
+contracts in the <code>uniswap-v2-core</code> repository (namely <code>UniswapV2Pair</code> and
+<code>UniswapV2Factory</code>) were produced using the <code>act</code> specification language
+and K framework.
+</p>
+
+<p>
+An overview of the formal specifications and their proof status can be found in the
+audit teams CI system at <a href="https://dapp.ci/k-uniswap">dapp.ci/k-uniswap</a>, and a discussion on the nature of the
+proofs produced can be found in the <a href="#org9e3fc7f">Formal Verification</a> section of this report.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdb3a411" class="outline-4">
+<h4 id="orgdb3a411">Code review of core smart contracts</h4>
+<div class="outline-text-4" id="text-orgdb3a411">
+<p>
+The audit team carried out a general code review and security analysis of the smart
+contracts of <code>uniswap-v2-core</code>, finding 2 bugs:
+</p>
+
+<ul class="org-ul">
+<li>1 medium severity issue <a href="#orgc7f8ae1">Pair: fix to liquidity deflation introduces race condition</a></li>
+<li>1 low severity issue <a href="#org61accdf">Math: integer overflow in <code>sqrt</code></a></li>
+</ul>
+
+<p>
+along with several recommendations regarding gas optimisation and code clarity,
+which are presented in detail in the <a href="#orgbd4e765">Findings</a>.
+</p>
+
+<p>
+Most of these improvements were adopted by the Uniswap development team.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org56963b6" class="outline-4">
+<h4 id="org56963b6">Numerical error analysis</h4>
+<div class="outline-text-4" id="text-org56963b6">
+<p>
+The audit team performed a review of the numerical error incurred during contract
+execution, with a focus on the desirable invariants proposed by the Uniswap
+development team (e.g. the rounding error, if any, in a swap, favours the pool).
+</p>
+
+<p>
+The team did not find any locations where numeric errors violated these
+invariants, and additionally produced a novel <a href="#org16ece60">manual proof of correctness</a>
+for the Babylonian square root algorithm in the fixed precision setting.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8bc9a33" class="outline-4">
+<h4 id="org8bc9a33">Code review of periphery smart contracts (during ongoing development)</h4>
+<div class="outline-text-4" id="text-org8bc9a33">
+<p>
+The audit team also committed to carry out a general code review and security
+analysis of the smart contracts in the <code>uniswap-v2-periphery</code> repository.
+</p>
+
+<p>
+Another suite of tests, including property based fuzzing tests using the
+<a href="https://github.com/dapphub/dapptools">dapp testing framework</a> were developed during this process and are available <a href="https://github.com/dapp-org/uniswap-v2-test">here</a>.
+These tests are targeting a now outdated version of the periphery contracts.
+</p>
+
+<p>
+This work was carried out on a best effort basis, and the rate of change and
+state of active development in the periphery means that the review was performed
+on a cursory level only.
+</p>
+
+<p>
+The team recommends more analysis and review to be performed for the final versions
+of the peripheral contracts before launch.
+</p>
+
+<p>
+One medium severity issue was identified in the Router:
+</p>
+
+<ul class="org-ul">
+<li><a href="#orgd15839d">Router: incompatible with token with fees on transfer</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga882e47" class="outline-3">
+<h3 id="orga882e47">Team</h3>
+<div class="outline-text-3" id="text-orga882e47">
+<p>
+The team included the authors of <a href="https://github.com/dapphub/klab">klab</a>, an interactive proof explorer and
+verification tool chain, and <a href="https://github.com/ethereum/act">act</a>, a literate formal specification language for
+smart contracts. The team was also responsible for smart contract development
+and formal verification at MakerDAO: work that culminated in the
+implementation and formal verification of multi collateral Dai.
+</p>
+
+<ul class="org-ul">
+<li>David Currin</li>
+<li>David Terry</li>
+<li>Denis Erfurt</li>
+<li>Lev Livnev</li>
+<li>Lorenzo Manacorda</li>
+<li>Martin Lundfall</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd4e765" class="outline-2">
+<h2 id="orgbd4e765">Findings</h2>
+<div class="outline-text-2" id="text-orgbd4e765">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Recommendation</b></th>
+<th scope="col" class="org-left"><b>Type</b></th>
+<th scope="col" class="org-left"><b>Severity</b></th>
+<th scope="col" class="org-left"><b>Likelihood</b></th>
+<th scope="col" class="org-left"><b>Accepted</b></th>
+<th scope="col" class="org-left"><b>Commit</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="#orgd15839d">Router: incompatible with token with fees on transfer</a></td>
+<td class="org-left">Bug</td>
+<td class="org-left">Medium</td>
+<td class="org-left">High</td>
+<td class="org-left">Yes</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#orgc7f8ae1">Pair: fix to liquidity deflation introduces race condition</a></td>
+<td class="org-left">Bug</td>
+<td class="org-left">Medium</td>
+<td class="org-left">Medium</td>
+<td class="org-left">Yes</td>
+<td class="org-left"><a href="https://github.com/Uniswap/uniswap-v2-core/commit/cbe801b5"><code>uniswap-v2-core@cbe801b</code></a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#org61accdf">Math: integer overflow in <code>sqrt</code></a></td>
+<td class="org-left">Bug</td>
+<td class="org-left">Low</td>
+<td class="org-left">Low</td>
+<td class="org-left">Yes</td>
+<td class="org-left"><a href="https://github.com/Uniswap/uniswap-v2-core/commit/d1c8612e"><code>uniswap-v2-core@d1c8612</code></a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#orgfcab87c">ERC20: make <code>name</code>, <code>decimals</code>, <code>symbol</code> constant</a></td>
+<td class="org-left">Improvement</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Yes</td>
+<td class="org-left"><a href="https://github.com/Uniswap/uniswap-v2-core/commit/cbe801b5"><code>uniswap-v2-core@cbe801b</code></a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#org5fb728c">ERC20: remove <code>forfeit</code></a></td>
+<td class="org-left">Improvement</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Yes</td>
+<td class="org-left"><a href="https://github.com/Uniswap/uniswap-v2-core/commit/cbe801b5"><code>uniswap-v2-core@cbe801b</code></a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#orgba9020b">Factory: use <code>.creationCode</code> when retrieving Pair bytecode</a></td>
+<td class="org-left">Improvement</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Yes</td>
+<td class="org-left"><a href="https://github.com/Uniswap/uniswap-v2-core/commit/f2d40214"><code>uniswap-v2-core@f2d4021</code></a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#org794ac51">Pair: replace block height with timestamp</a></td>
+<td class="org-left">Improvement</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">Yes</td>
+<td class="org-left"><a href="https://github.com/Uniswap/uniswap-v2-core/commit/a55aa4bf"><code>uniswap-v2-core@a55aa4b</code></a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#orgac67987">Factory: replace <code>allPairs</code> array with a counter</a></td>
+<td class="org-left">Improvement</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">No</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#orgd1ef768">Meta: replace math libraries with an inherited contract</a></td>
+<td class="org-left">Improvement</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">No</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><a href="#org18727f6">Pair: divide by zero in <code>burn</code></a></td>
+<td class="org-left">Improvement</td>
+<td class="org-left">-</td>
+<td class="org-left">-</td>
+<td class="org-left">No</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgad58039" class="outline-3">
+<h3 id="orgad58039">Bugs</h3>
+<div class="outline-text-3" id="text-orgad58039">
+</div>
+<div id="outline-container-orgd15839d" class="outline-4">
+<h4 id="orgd15839d">Router: incompatible with token with fees on transfer</h4>
+<div class="outline-text-4" id="text-orgd15839d">
+<p>
+The user facing contract <a href="https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Router01.sol">UniswapV2Router01.sol</a> calculates the amount a user
+needs to transfer to <code>UniswapV2Pair.sol</code> in order to perform a mint, swap or
+burn.
+</p>
+
+<p>
+In cases dealing with a token which subtracts a fee on <code>transferFrom</code>,
+the amount received by <code>UniswapV2Pair</code> is smaller than the required amount to perform
+a successful swap, causing the whole call to fail when the fee adjusted
+invariant is checked at the end of <code>swap</code>.
+</p>
+
+<p>
+This is only a problem with the router, and additional routers or token wrappers
+can be used to mitigate this issue.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc7f8ae1" class="outline-4">
+<h4 id="orgc7f8ae1">Pair: fix to liquidity deflation introduces race condition</h4>
+<div class="outline-text-4" id="text-orgc7f8ae1">
+<p>
+Dan Robinson discovered a vector by which an early liquidity provider can
+make it very costly for other liquidity providers to enter, allowing them to monopolize
+the liquidity pool:
+</p>
+
+<ol class="org-ol">
+<li>Before there is any liquidity in the pool, the attacker sends a small amount of both tokens of the Pair, receiving a small amount of liquidity pool shares ("LP Tokens").</li>
+<li>They then send a very large amount of the Pair tokens to the contract, and invokes <code>sync</code>.</li>
+</ol>
+
+<p>
+This deflates the LP token to be worth a large amount of Pair tokens, which can
+increase the barrier to entry for other liquidity providers to the point where submitting
+enough tokens to yield 1 wei of LP tokens can cost millions of dollars.
+</p>
+
+<p>
+The Uniswap team suggested a fix to this issue which would force the minimum supply of the LP
+tokens to be 10,000 units, imposing this constraint in both <code>mint</code> and <code>burn</code>.
+The reasoning was that this would ensure that the liquidity token would allow for enough
+granularity, even after someone attempted to increase the barrier to entry.
+</p>
+
+<p>
+However, this fix introduced another problem, where a malicious liquidity provider could sacrifice
+1 wei of LP tokens to effectively render the last 9,999 LP tokens of the contract irredeemable.
+In other words, the suggested fix could render liquidity providers unable to exit the contract
+and redeem their original liquidity and fees.
+</p>
+
+<p>
+After discussions with the Uniswap team, another solution was finally settled on:
+</p>
+
+<p>
+When providing the initial liquidity to the contract (i.e. when <code>totalSupply</code> is 0 in <code>mint</code>),
+the liquidity provider must sacrifice 1000 LP tokens (by sending them to <code>address(0)</code>).
+</p>
+
+<p>
+This mitigates the issue in two ways:
+</p>
+<ul class="org-ul">
+<li>The granularity of the LP tokens is always at least 1000</li>
+<li>The cost of performing the LP inflation attack increases significantly, as the attacker is now not the sole holder of LP tokens.</li>
+</ul>
+
+<p>
+This mitigation comes at the expense of introducing an additional cost
+for the initial liquidity provider, but this cost is expected to be low enough to be acceptable
+for most tokens. For tokens with a reasonable value per minimum denomination, 1000 wei does not
+have more than a modest economic value. Note however, that in the extreme case of a Pair for
+two tokens that are both worth around $1.00 per wei, the up-front cost for the initial
+liquidity provider will be around $2,000.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org61accdf" class="outline-4">
+<h4 id="org61accdf">Math: integer overflow in <code>sqrt</code></h4>
+<div class="outline-text-4" id="text-org61accdf">
+<p>
+The <code>sqrt</code> function of the <code>Math</code> library contract implements the Babylonian
+method for calculating the integer square root of <code>y</code>, i.e. the largest integer
+ <code>z</code> such that <code>z^2 &lt;= y</code>.
+</p>
+
+<p>
+Before <a href="https://github.com/Uniswap/uniswap-v2-core/commit/d1c8612ea3f44eb770012028b174cb63efe4046f">uniswap-v2-core@d1c8612e</a>, the initial value to the iteration was
+given as <code>x = (y + 1) / 2</code>, which results in an integer overflow when <code>y = uint(-1)</code>,
+setting <code>x</code> to zero, leading to a division by zero in the calculation of <code>x_(n+1)</code>.
+</p>
+
+<p>
+This does not result in incorrect return value for <code>sqrt</code>, but does cause the
+function to revert unnecessarily. We suggested to change the initial value to
+<code>x = y / 2 + 1</code>, making <code>sqrt</code> well defined over its entire domain.
+</p>
+
+<p>
+A manual proof of correctness of this algorithm is given <a href="#org16ece60">here</a>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga5bab0e" class="outline-3">
+<h3 id="orga5bab0e">Improvements</h3>
+<div class="outline-text-3" id="text-orga5bab0e">
+</div>
+<div id="outline-container-orgfcab87c" class="outline-4">
+<h4 id="orgfcab87c">ERC20: make <code>name</code>, <code>decimals</code>, <code>symbol</code> constant</h4>
+<div class="outline-text-4" id="text-orgfcab87c">
+<p>
+The <code>name</code>, <code>decimals</code> and <code>symbol</code> attributes of the <code>UniswapV2ERC20</code> contract were set
+dynamically in the constructor. However, they were always set to the same value
+by the inheriting <code>UniswapV2Pair</code> contract, resulting in unnecessary
+bytecode complexity and gas consumption.
+</p>
+
+<p>
+The audit team recommended that either each Pair should be given a unique
+name and symbol, or these attributes should be set as hard-coded <code>constant</code> in the
+<code>UniswapV2ERC20</code> contract.
+</p>
+
+<p>
+Based on the following factors, the Uniswap team decided to make the attributes
+in question <code>constant</code>:
+</p>
+
+<ul class="org-ul">
+<li>String manipulation in Solidity is cumbersome and error-prone</li>
+<li>Uniswap V1 exchanges all have the same <code>name</code> and <code>symbol</code>, and no major
+issues have been observed in the wild</li>
+</ul>
+
+<p>
+This change was implemented in <code>uniswap-v2-core@cbe801b5</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5fb728c" class="outline-4">
+<h4 id="org5fb728c">ERC20: remove <code>forfeit</code></h4>
+<div class="outline-text-4" id="text-org5fb728c">
+<p>
+The <code>forfeit</code> method of <code>UniswapV2ERC20</code> allowed anyone to burn their liquidity
+tokens without receiving tokens from the pool in return. It functioned
+effectively as a donation to all other members of the pool.
+</p>
+
+<p>
+While in some situations such donations to the pool are desirable (e.g.
+Synthetix used token inflation rewards to incentivise liquidity providers in
+their Uniswap V1 exchanges), the same outcome can be achieved by transferring
+tokens to the Pair and calling <code>sync</code> to force the reserves to match the
+balances.
+</p>
+
+<p>
+In the interests of minimizing the number of allowed state transitions in the
+core <code>UniswapV2Pair</code> contract, the audit team therefore recommended that the
+<code>forfeit</code> and <code>forfeitFrom</code> methods be removed.
+</p>
+
+<p>
+The Uniswap team accepted this recommendation in <code>uniswap-v2-core@cbe801b5</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgba9020b" class="outline-4">
+<h4 id="orgba9020b">Factory: use <code>.creationCode</code> when retrieving Pair bytecode</h4>
+<div class="outline-text-4" id="text-orgba9020b">
+<p>
+The <code>createPair</code> method of <code>UniswapV2Factory</code> stored the bytecode for a Pair
+as a raw <code>bytes</code> value set during construction. When deploying a new Pair,
+the bytecode would have to be loaded into memory from storage, word-by-word.
+The audit team recommended that this storage variable be removed, and replaced
+with the <a href="https://solidity.readthedocs.io/en/v0.5.15/units-and-global-variables.html#type-information"><code>.creationCode</code></a> attribute of the <code>UniswapV2Pair</code> contract,
+simplifying the code and clarifying intent.
+</p>
+
+<p>
+Moving the bytecode out of storage also resulted in a significant gas
+saving (millions of gas) when creating Pairs, due to the reduction in the
+amount of expensive <code>SLOAD</code> operations required.
+</p>
+
+<p>
+The Uniswap team accepted this recommendation in <code>uniswap-v2-core@f2d40214</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org794ac51" class="outline-4">
+<h4 id="org794ac51">Pair: replace block height with timestamp</h4>
+<div class="outline-text-4" id="text-org794ac51">
+<p>
+<code>UniswapV2Pair</code> used the number of blocks elapsed between price updates in
+order to calculate block-weighted cumulative price. While there are valid
+arguments that block height is a more "objective" variable than the block
+timestamp, the audit team suggested that this be changed to use the time
+elapsed, measured by the change in block timestamp since the last price
+update.
+</p>
+
+<p>
+For consumers that sample the Pair's price accumulators less frequently,
+e.g. oracles seeking to calculate time-weighted average prices over windows
+of weeks or months, the choice to use block-weighting or timestamp-weighting
+could result in material differences. Therefore, using block-weighting might
+create unexpected results for oracles targeting a time-weighted average (which,
+at least outside of the blockchain setting, is a more economically meaningful
+figure)
+</p>
+
+<p>
+As a concrete example: the mean Ethereum block time has been known to spike by
+up to double that of its typical level in the weeks leading up to a
+"difficulty bomb" hard fork. A block-weighted price accumulator could cause an
+oracle price with a long averaging window to diverge substantially from the
+time-weighted average price, as computed by other, off-chain sources. To avoid
+unnecessarily exposing users to these implementation-related quirks, it may be
+better to use simple time-weighting.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgac67987" class="outline-4">
+<h4 id="orgac67987">Factory: replace <code>allPairs</code> array with a counter</h4>
+<div class="outline-text-4" id="text-orgac67987">
+<p>
+The <code>allPairs</code> array in the Factory is primarily used to maintain a count
+of all created Pairs and the audit team noted that it could be replaced by
+a simple counter. The Uniswap team decided to keep the array implementation in
+case iteration over the array might be required. They were also advised that
+any code which iterates over the <code>allPairs</code> array should paginate, or
+otherwise break up the access into constant-gas chunks, and moreover that
+iterating over the array from an external contract would be very costly,
+requiring one call per element read.
+</p>
+
+<p>
+Since Solidity uses the hash of the slot as the starting position for storage
+arrays, their maximum length before integer overflow of the array size depends
+on the slot number at which they are located: <code>maxUInt256 - keccak(uint256(slot)) + 1</code>
+</p>
+
+<p>
+For the sake of completeness, and since it is an unusual property for overflow
+behaviour to depend on the order in which variables are declared in source
+code, we note that that Solidity provides no protection against the
+(negligible probability) overflow of <code>allPairs</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd1ef768" class="outline-4">
+<h4 id="orgd1ef768">Meta: replace math libraries with an inherited contract</h4>
+<div class="outline-text-4" id="text-orgd1ef768">
+<p>
+The <code>UniswapV2Pair</code> contract depends on three libraries, <code>UQ112x112</code>, <code>SafeMath</code> and <code>Math</code>,
+providing additional <code>internal</code> functions and custom syntax for <code>uint256</code> safemath. Including
+these internal methods in the <code>UniswapV2Pair</code> directly (or inheriting them from another contract)
+instead makes creating new pairs about 15000 gas cheaper.
+</p>
+
+<p>
+Since this change would make the use of custom syntax for <code>uint256</code> safemath impossible, the Uniswap
+team decided to not implement this suggestion.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org18727f6" class="outline-4">
+<h4 id="org18727f6">Pair: divide by zero in <code>burn</code></h4>
+<div class="outline-text-4" id="text-org18727f6">
+<p>
+If <code>burn</code> is called when <code>totalSupply</code> is <code>0</code>, then the call will fail due to a
+divide by zero when calculating the amounts to be returned to the caller.
+</p>
+
+<p>
+When a divide by zero is encountered, Solidity "throws" by executing the <code>INVALID</code> opcode,
+consuming all of the gas in the initiating call (unlike <code>REVERT</code>),
+resulting in an unnecessary monetary loss if <code>burn</code> is accidentally called before
+any LP shares have been minted. Additionally, this division by zero behaviour
+in Solidity might not be widely known, since it differs from other languages
+(like the EVM, in which <code>DIV</code> by <code>0</code> returns <code>0</code>).
+</p>
+
+<p>
+Additionally, some analysis tools treat an INVALID opcode as an assertion violation, whereas
+here it is more akin to an unmet precondition. This can lead to false error reporting or
+otherwise complicate the analysis of the Uniswap contracts using these tools.
+</p>
+
+<p>
+As the divide by zero occurs in such a limited set of circumstances, and has such a
+limited impact, the audit team presented it for informational purposes only and no
+change was made by the Uniswap team.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac7a1df" class="outline-2">
+<h2 id="orgac7a1df">Design Comments</h2>
+<div class="outline-text-2" id="text-orgac7a1df">
+</div>
+<div id="outline-container-orga1aca00" class="outline-3">
+<h3 id="orga1aca00">Front-Running and Transaction Reordering</h3>
+<div class="outline-text-3" id="text-orga1aca00">
+<p>
+An actor who can influence the order in which transactions are included in a
+block can affect the economic outcome of trades. The audit team is aware of two
+strategies for profitably exploiting this fact. Such strategies can be used not
+only by miners but also by any party who is able to observe unconfirmed
+transactions and submit their own transactions with carefully chosen gas
+prices. The router includes some features that provide some degree of protection
+against the first strategy, but no such mitigations exist for the second.
+</p>
+
+<p>
+These issues are well known, and are also present in Uniswap V1. Transaction
+reordering and front-running attacks can arguably be viewed as a broader structural
+problem inherent to many trading venues with on-chain clearing and settlement.
+As has been extensively documented in Daian et al.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, such strategies have
+been widespread in Ethereum for many years, and the rents accruing to miners
+from the transaction reordering privilege (miner extractable value) can even
+pose a threat to the security of the blockchain consensus layer.
+</p>
+</div>
+
+<div id="outline-container-orgbaba79b" class="outline-4">
+<h4 id="orgbaba79b">Moving the market against the trader</h4>
+<div class="outline-text-4" id="text-orgbaba79b">
+<p>
+In this variant, an actor who can observe unconfirmed transactions can attempt to insert
+trades before and after the target trade, manipulating the Pair's price in a way that
+will result in a profit for the front-runner, and a worse price for the trader.
+</p>
+
+<p>
+As an example, consider a Pair for ETH/DAI. Suppose a trader sends a transaction to sell
+1 ETH. If a front-runner is able to sandwich the trader's transaction between two trades
+which sell and buy ETH respectively, then it is clear that the state of the Pair when the
+trader's transaction is executed will result in a lower price of ETH for the trader, due
+to the front-runner's sale, and that the extent of the price deterioration will depend on the
+size of the front-runner's first trade (it can be shown by considering the constant
+product invariant that the relationship is quadratic). After the target trade has executed,
+the front-runner's second trade is executed, buying back a sufficient amount of ETH to
+return the Pair's price to roughly where it started.
+</p>
+
+<p>
+By following the flow of balances, we observe that the aggregate economic effect of the
+sandwiching was equivalent to a trade between the front-runner and the trader (with the
+pool ending up back where they started, having only collected fees from the 3
+transactions), however the front-runner was able to effectively choose the price at
+which the trade happens by choosing the size of their first trade, and so is able to set
+the price arbitrarily in their own favour. To see that this can still be profitable in
+the presence of LP fees, it suffices to observe that while LP fees paid by the
+front-runner are proportional to the size of the sandwich trade, the price impact of the
+sandwich trade on the Pair's price is quadratic in the size of the sandwich trade,
+meaning that the sandwich can be made profitable with a sufficiently large manipulating
+trade, and the trader's loss is only limited by the value of their trade.
+</p>
+
+<p>
+A similar method can be used against a liquidity provider who is entering the pool.
+</p>
+
+<p>
+The methods exposed on the user-facing <code>UniswapV2Router01</code> contract contain
+arguments that allow callers to impose off-chain slippage limits on their orders
+(<code>AmountOutMin</code>, <code>AmountOutMax</code>), and when set appropriately these parameters
+can limit the losses to trader front-running. Note however that it might not be
+possible to eliminate front-running entirely with this technique, since setting
+the slippage limit too tightly to the market could result in a poor success rate,
+with the market moving against the trader.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8a14920" class="outline-4">
+<h4 id="org8a14920">Sandwiching large trades with <code>mint</code> and <code>burn</code></h4>
+<div class="outline-text-4" id="text-org8a14920">
+<p>
+In this second variant, the attacker watches for large trades, and sandwiches
+the target trade with calls to <code>mint</code> and <code>burn</code> with a very large position
+relative to the initial size of the pool. The attacker is therefore able to
+extract a sizeable proportion of the LP fees for that trade without exposing
+themselves to the price risk inherent to providing liquidity on Uniswap.
+</p>
+
+<p>
+Neither the core nor the periphery contracts contain guards against this attack,
+and the audit team is not aware of any straightforward solution. A minimum lock
+lock time for liquidity providers, imposed in the core, could potentially help
+to reduce the profits siphonable with this attack.
+</p>
+
+<p>
+Liquidity providers should monitor the activity on Pairs in which they
+participate to evaluate their exposure to activity of this kind, since it could
+result in diminished returns.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org87c8b91" class="outline-3">
+<h3 id="org87c8b91">Oracle Integrity</h3>
+<div class="outline-text-3" id="text-org87c8b91">
+<p>
+Even though AMM (automated market maker) systems such as the Uniswap protocol,
+by way of their automatic price discovery mechanism, seem to offer a compelling
+way forward for constructing a trust-minimised on-chain price oracle, this turns
+out to be non-trivial to implement safely. For instance, the naïve approach of
+simply querying the current price for a Pair from a smart contract turns out to
+be insecure in the majority of practical situations, since the cost of price
+manipulation is often low compared to the value that is at stake. To make
+matters worse, by synchronously executing a "de-manipulation" trade afterwards,
+the attacker can often recoup most of their manipulation costs: see samczsun's
+article<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> for a practical discussion of this class of oracle attacks.
+</p>
+
+<p>
+As a result, constructing a safe price oracle on top of the V1 Uniswap protocol is highly
+non-trivial. For this reason, the V2 protocol introduces the time-weighted average price
+accumulators <code>price0CumulativeLast</code>, <code>price1CumulativeLast</code>. The accumulators track
+the Pair cumulative time-price at the end of each block. Sampling the
+accumulator at two points in time, taking the difference, and dividing by the elapsed
+time yields the time-weighted average price of the price in that Pair at the ends of the
+blocks during that time interval. From a robustness perspective, this differs from
+the instantaneous price in two crucial ways:
+</p>
+
+<ul class="org-ul">
+<li>the averaged price depends on prices that appeared in the past, proportionally to how long they appeared for, and the oracle consumer can choose the length of the period for averaging.</li>
+
+<li>the averaged price is not influenced by prices the appeared within a block, but only by the final price at the end of a block. In particular, the average is not affected by prices arising during synchronous execution of multiple trades within a block.</li>
+</ul>
+
+<p>
+The first point means that in order to manipulate an oracle which uses a longer
+averaging period, an attacker would need to maintain a manipulated price for a
+longer period of time. The second means that an attacker must maintain the
+manipulated price at the end of a block in order to have an effect on the average,
+which is expected to maximise the attacker's cost by reducing the likelihood that
+they will be the one to "de-manipulate" the price.
+</p>
+
+<p>
+As a reference example, a contract called <code>ExampleOracleSimple</code> samples the
+accumulators for a Pair at most once per hour. Therefore, in order to manipulate
+the price provided by this oracle to be higher or lower than the true market
+price, an attacker would have to create a situation where the available price in
+a Uniswap Pair at the beginning of many blocks during a 1-hour period was
+significantly higher or lower than the market price.
+</p>
+
+<p>
+Given that in most cases the attacker would not have a guarantee of recouping
+their costs by "de-manipulating", the costs of this manipulation could be roughly
+estimated by considering the required trade size to move the price to a given level
+(as a function of the pool size), and the number of blocks over the period. A
+possible starting point for such an analysis could be the calculations in Angeris et al.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>.
+There are some technical and economic nuances that should be considered when
+performing this analysis, including but not limited to:
+</p>
+
+<ul class="org-ul">
+<li>the oracle consumer should check that the oracle has been recently updated (and call <code>update()</code> if it hasn't), to avoid reading stale data</li>
+<li>the basic cost estimate does not take into account liquidity effects. Namely, there is likely to be a limit to the on-chain capital that is available to arbitrageurs in the time-frame of a few blocks. For example, the attacker could manipulate the price, wait for one or more blocks to pass, before recouping some of their initial manipulation cost by performing the reversing trade. This would result in an impact on the time-weighted average price but possibly at lower cost than in a naïve estimate.</li>
+<li>the basic cost estimate does not take into account network congestion and network transaction cost effects. In a similar way to liquidity effects, network congestion and costs could decrease the throughput of competing arbitrageur transactions and similarly decrease manipulation costs.</li>
+<li>this analysis does not consider the possibility that an attacker has the ability to mine or censor blocks. An attacker who can censor or manipulate blocks can give priority to their own transactions, and perform the manipulation at a much lower cost. As a concrete example, a miner can attempt a selfish mining-style attack where they aim to mine two or more blocks in a row before revealing them to the network: in those blocks they could include transactions leaving the price manipulated to extreme values, which could be so large as to have a meaningful impact on the time-weighted average price even if the manipulation occurs for a small number of blocks. In the worst case, the in-protocol attack cost could be limited to the LP fee levied on the size of the manipulating trade (in addition to the external costs of mining the blocks, etc.)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0863525" class="outline-3">
+<h3 id="org0863525">Swap Composability</h3>
+<div class="outline-text-3" id="text-org0863525">
+<p>
+Similarly to using a Uniswap Pair as a price oracle, smart contract developers may
+find it convenient to rely on a Uniswap Pair for on-chain liquidity. For example,
+a contract selling Cryptokitties might offer to accept payment in any token,
+immediately converting all proceeds from a sale to DAI via the corresponding
+Uniswap Pair. Similarly, a contract charging a fee for some interaction might
+choose to accept fees in multiple assets, provided that they can be swapped to DAI
+after payment.
+</p>
+
+<p>
+Due to a synthesis of the "Oracle integrity" design comment above and the
+transaction ordering issue mentioned earlier in the report, such integrations should
+be designed with care, in order to prevent siphoning of funds. In particular, if the
+proceeds from a <code>swap</code> are not checked against a reliable, external price reference,
+then the contract doing the trade is effectively relying on the Pair's current price
+as a price oracle, in a way that is monetisable by an attacker using an atomic variant
+of the <code>swap</code> "sandwiching" techniques outlined above. To make matters worse, the
+attack against an incorrectly designed contract is practically easier to execute than
+the transaction sandwiching attack, since atomicity means that there is little to no
+execution risk and the manipulation can be funded entirely with on-chain "flash loans".
+</p>
+
+<p>
+The best mitigation for this issue is for the consumer of <code>swap</code> to check the
+price of the resulting trade against a reliable price reference.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc9b3190" class="outline-3">
+<h3 id="orgc9b3190">Timestamp and Accumulator Overflows</h3>
+<div class="outline-text-3" id="text-orgc9b3190">
+<p>
+Calculations involving the cached timestamp (<code>blockTimestampLast</code>) and price
+accumulators (<code>price0CumulativeLast</code>, <code>price1CumulativeLast</code>), do not use safe
+math and are designed to roll over on overflow.
+</p>
+
+<p>
+In the case of the timestamps, this is a performance optimisation, allowing the
+timestamp to be stored as a <code>uint32</code> in a single storage slot alongside the two
+reserves, saving two <code>SSTORE</code> operations on every call to <code>_update</code>. The
+timestamp will overflow once every 136 years, with the next overflow point
+occurring in 2106.
+</p>
+
+<p>
+In the case of the accumulators, it is instead a safety measure: a revert on
+overflow could cause a liveness failure (a revert in <code>_update</code> would block
+trades, and LP entry and exit).
+</p>
+
+<p>
+Although the risk of overflow is remote enough that it is not a concern for
+pairs of 18 decimal tokens, it can become a practical concern in pairs with
+tokens of mixed precision.
+</p>
+
+<p>
+We can find an approximation for the time until overflow for a given pair:
+</p>
+
+\begin{align*}
+    2^{256} & = P_{cumulative} \\
+    \iff 2^{256} & = 2^{112} \cdot \frac{Reserve_1}{Reserve_0} \cdot \Delta T \\
+    \iff \Delta T & = 2^{144} \cdot \left(\frac{Reserve_0}{Reserve_1}\right)
+\end{align*}
+
+<p>
+Assuming that the ratio of the reserves in a given pair will be the same as the
+ratio of the dollar prices of one wei of each token, we can solve for a example
+pair consisting of a 36 decimal token and a 2 decimal token where the unit value
+of the 2 decimal token is 100 times that of the 36 decimal token: giving
+~8 months until overflow:
+</p>
+
+\begin{align*}
+    \Delta T & = 2^{144} \cdot \left(\frac{Reserve_0}{Reserve_1}\right) \\
+    & = 2^{144} \cdot 10^{-36} \\
+    & \approx 2.23 \times 10^7 \\
+    & \approx 8.52 \, months \\
+\end{align*}
+
+<p>
+Authors of oracles that build upon the price accumulator functionality in the
+core should therefore take care that the their oracles do not introduce spikes or
+discontinuities in the reported price at the overflow point, if price accumulator
+overflow is a realistic possibility for the assets involved.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8ba55be" class="outline-3">
+<h3 id="org8ba55be">Expectations of Token Behaviour</h3>
+<div class="outline-text-3" id="text-org8ba55be">
+<p>
+A <code>UniswapV2Pair</code> contract directly interacts with its underlying pool tokens,
+and as such makes certain assumptions about the semantics of the <code>transfer</code> and
+<code>balanceOf</code> methods exposed by those tokens.
+</p>
+
+<p>
+Care has been taken to make these interactions defensively, and in contrast to
+the V1 contracts, the V2 contracts are intended to be safe to use with:
+</p>
+
+<ul class="org-ul">
+<li>Potentially reentrant tokens</li>
+<li>Tokens that do not return from <code>transfer</code></li>
+</ul>
+
+<p>
+There are of course still ways in which a token could violate the assumptions
+made by the Uniswap contracts. While a full formal description of a "good" token
+is out of scope for this report, the audit team is aware of the following token
+behaviours that could cause issues with V2:
+</p>
+</div>
+
+<div id="outline-container-org4ac4f60" class="outline-4">
+<h4 id="org4ac4f60">Tokens with balance changes outside of transfers</h4>
+<div class="outline-text-4" id="text-org4ac4f60">
+<p>
+Some tokens may mutate an account's balance even when that account was not
+involved in a token transfer. For example, this may be used to implement
+(positive or negative) interest paid in-kind. An example of such a token is
+<a href="https://etherscan.io/token/0xd46ba6d942050d489dbd938a2c909a5d5039a161">Ampleforth</a>.
+</p>
+
+<p>
+This may fail to have the expected economic effect on a <code>UniswapV2Pair</code>. For
+example, if its balance in a token were to increase outside of the usual
+interactions, the surplus tokens would be claimable by any account that calls
+<code>skim</code> (and would not result in the surplus tokens accruing to the pool, as
+might be expected). The same will occur if someone "airdrops" tokens on a
+pool by transferring tokens to it. In order to have the tokens accrue to the
+pool, <code>sync</code> must be called synchronously with the balance update or transfer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd8052eb" class="outline-4">
+<h4 id="orgd8052eb"><code>transfer</code> fees</h4>
+<div class="outline-text-4" id="text-orgd8052eb">
+<p>
+Tokens that charge a fee on <code>transfer</code> break assumptions in the router, and will
+result in a revert when traded. Depending on their implementation they may also
+enable a griefing attack in the core.
+</p>
+
+<p>
+Transaction fees can be implemented in two ways:
+</p>
+
+<ol class="org-ol">
+<li>Deduct the fee from the amount credited to the transfer recipient</li>
+<li>Transfer the full amount and deduct the fee from the sender's balance</li>
+</ol>
+
+<p>
+The audit team is currently not aware of any popular tokens using the second
+approach, but at least PAXG is known to use the first.
+</p>
+
+<p>
+Although the core is able to handle tokens of either type, both approaches are
+incompatible with the current implementation of the router in
+<code>uniswap-v2-periphery</code>. The specifics are discussed in <a href="#orgd15839d">Router: incompatible with token with fees on transfer</a>.
+</p>
+
+<p>
+Additionally, if tokens of the second type charge fees for zero balance
+transfers, a griefing attack will become possible where repeated calls to
+<code>skim</code> would allow an attacker to deplete all of the tokens in the pool as fees.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf902e8f" class="outline-4">
+<h4 id="orgf902e8f">Extreme precision</h4>
+<div class="outline-text-4" id="text-orgf902e8f">
+<p>
+The Pair stores its reserves as <code>uint112</code>, but expects the <code>balanceOf</code> method
+of the underlying token to return a <code>uint256</code>. The internal method (<code>_update</code>)
+responsible for synchronising balances to reserves therefore reverts if the
+balances are greater than <code>uint112(-1)</code>. This method is called during <code>mint</code>,
+<code>burn</code>, <code>swap</code>, and <code>sync</code>, meaning that a balance of 112 bits or more would
+block those methods, until <code>skim</code> is called to siphon off the excess balances.
+This limits the functionality of the contract for tokens where a balance in
+excess of \( 2^{112} \) may be realistically achieved.
+</p>
+
+<p>
+For a normal 18 digit token, <code>uint112(-1)</code> represents a balance of
+19,807,040,628,566,084,398,385,987,584 (\(1.9 \times 10^{19}\) or 19
+octillion), well in excess of the total supply of any mainstream token.
+</p>
+
+<p>
+This limit could however become problematic should a token with a very large
+number of decimals be used within a <code>UniswapV2Pair</code>. The audit team is unaware
+of any tokens in wide use with such high precision.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6f533fe" class="outline-3">
+<h3 id="org6f533fe">Core / Periphery Seperation</h3>
+<div class="outline-text-3" id="text-org6f533fe">
+<p>
+The Uniswap V2 contracts introduce a separation between the core and periphery
+contracts, where the core contracts are responsible for supporting liquidity
+providers, providing time weighted price feeds and enforcing core accounting
+invariants. Features designed to support or protect traders are implemented with
+separate contracts in the periphery that call into the core.
+</p>
+
+<p>
+This separation has a few benefits:
+</p>
+
+<ul class="org-ul">
+<li>Less code with direct access to pool tokens</li>
+<li>Reduced audit surface area for key invariants</li>
+<li>Increased amenability to the application of formal methods</li>
+</ul>
+
+<p>
+However, care must be taken to correctly use either the "canonical" periphery
+contracts, or correctly implemented custom wrapper contracts, whenever interacting
+with the core. Attempting to transfer tokens to the core directly, in a separate
+transaction, is incorrect and could result in loss of funds.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5c44063" class="outline-3">
+<h3 id="org5c44063">Optimistic Swaps</h3>
+<div class="outline-text-3" id="text-org5c44063">
+<p>
+The implementation of swap in UniswapV2Pair adds the ability to withdraw tokens
+and use them provided they are returned or paid for by the end of the
+transaction. At a high level, this is implemented with the following sequence of
+actions:
+</p>
+
+<ol class="org-ol">
+<li>transfer requested output amounts to recipient</li>
+<li>if the <code>data</code> argument is non-empty, call into recipient with user provided calldata</li>
+<li>calculate inputs</li>
+<li>check the fee adjusted constant product invariant</li>
+</ol>
+
+<p>
+Notably, this sequence:
+</p>
+
+<ul class="org-ul">
+<li>contains a call to a user-provided account, with user-provided call-data</li>
+<li>transfers tokens away from the Pair before checking if it has been provided with sufficient inputs</li>
+</ul>
+
+<p>
+The call into untrusted code made the application of formal methods challenging
+(more discussion in <a href="#org2b6ea48">External call in <code>swap</code></a>) meaning that an exhaustive formal
+specification of <code>swap</code> was not produced. The audit team therefore paid
+particular attention to the potential for misuse in <code>swap</code>.
+</p>
+
+<p>
+We are unaware of any sequence of state transitions that could lead to a
+violation of the fee adjusted constant product invariant as a result of a call
+to <code>swap</code>, for non-pathological tokens. An outline of our analysis is presented
+below:
+</p>
+</div>
+
+<div id="outline-container-orgba7dc35" class="outline-4">
+<h4 id="orgba7dc35">Security properties</h4>
+<div class="outline-text-4" id="text-orgba7dc35">
+<p>
+In order to extract pool tokens using swap, an attacker would have to leave the
+Pair in a state where the product of the Pair's reserves is less at the end
+of the call than it was at the start. Additionally, it should be impossible to
+make a successful call to <code>swap</code> that fails to compensate liquidity providers
+for the usage of their funds.
+</p>
+
+<p>
+Specifically the following formula must be satisfied:
+</p>
+
+\begin{equation}
+    (x_1 - 0.003 \cdot x_{in}) \cdot (y_1 - 0.003 \cdot y_{in}) \geq x_0 \cdot y_0
+\end{equation}
+
+<p>
+This ensures that:
+</p>
+
+<ul class="org-ul">
+<li>The constant product invariant is not violated</li>
+<li>Liquidity providers are paid 0.3% of the value of the inputs to the swap</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd5ea496" class="outline-4">
+<h4 id="orgd5ea496">Balances vs reserves</h4>
+<div class="outline-text-4" id="text-orgd5ea496">
+<p>
+It should be noted that the above invariant is defined over the Pair's
+<i>reserves</i>, instead of its <i>balances</i>.
+</p>
+
+<p>
+This check is similar, but not exactly equivalent. Semantically reserves can be
+thought of as "last recorded balances". This has the potential to be problematic
+as balances are arguably the thing that the <code>UniswapV2Pair</code> really cares about.
+</p>
+
+<p>
+All methods that modify reserves or balances (<code>skim</code>, <code>sync</code>, <code>mint</code>, <code>burn</code>,
+<code>swap</code>) ensure that both are exactly matched at the end of the call. Assuming a
+non deflationary token, the only way to force a divergence is to transfer tokens
+into the Pair.
+</p>
+
+<p>
+We can therefore infer a system invariant for well behaved tokens: <i>balances
+are always greater than or equal to reserves at the end of every call to</i>
+<code>UniswapV2Pair</code>.
+</p>
+
+<p>
+Assuming that both of the above invariants hold we can also make some (weaker)
+statements about the behaviour of the constant product invariant over balances:
+although it is possible for the product of balances to decrease, these
+violations are bounded by the product of the reserves, and will in normal
+operation only manifest themselves through improper usage of the core (token
+transfer to the pool outside of an atomic sequence of transactions).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org82e15c8" class="outline-4">
+<h4 id="org82e15c8">Correctness of solidity implementation</h4>
+<div class="outline-text-4" id="text-org82e15c8">
+<p>
+The solidity implementation of the invariant check differs from the idealised
+invariant above in two important ways:
+</p>
+
+<ol class="org-ol">
+<li><p>
+<i>Arithmetic Overflow and Numeric Range</i>
+</p>
+
+<p>
+The solidity implementation operates on unsigned integers, and all
+calculations (except that for the input amounts discussed below) revert on
+overflow.
+</p>
+
+<p>
+This poses no concern to safety: the invariant check is correct over the
+domains for which it is defined, and the domain is large enough that liveness
+is not threatened.
+</p></li>
+
+<li><p>
+<i>Calculation of Inputs</i>
+</p>
+
+<p>
+The calculation of input amounts does not revert on underflow. Negative
+inputs are instead coerced to zero. This is a design decision made to ensure
+that the core can handle tokens that deflate the sender's balance on
+transfer (perhaps as an implementation of some transfer fee). Neither the
+audit or Uniswap dev teams are aware of any mainstream token implemented in
+this manner.
+</p>
+
+<p>
+Semantically a negative input amount means that either:
+</p>
+
+<ul class="org-ul">
+<li>balances were less than reserves at the start of the call</li>
+<li>more than <code>amount{0,1}Out</code> tokens were transferred away from the Pair during the call</li>
+</ul>
+
+<p>
+Since a negative input represents a net outflow from the contract, it is not
+appropriate to charge fees on them, so their coercion to zero (and the
+associated zero fee adjustment term) does not represent a loss for the
+liquidity providers.
+</p>
+
+<p>
+The balances at the end of the call will reflect any unexpected shortfall or
+additional outflow, and the fee adjusted product of the balances at the end
+of the call must still exceed the product of the reserves at the start of the
+call. This coercion to zero does not therefore provide an avenue for a malicious
+caller to exploit the Pair.
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga113652" class="outline-4">
+<h4 id="orga113652">Attacker controlled code execution</h4>
+<div class="outline-text-4" id="text-orga113652">
+<p>
+For the purposes of this analysis, we assume that the attacker is able to modify
+all blockchain state during execution of their code, except that which is
+protected by the mutex in the Pair.
+</p>
+
+<p>
+This means that the following state transitions are unavailable during the
+execution of the callback:
+</p>
+
+<ul class="org-ul">
+<li><code>skim</code></li>
+<li><code>sync</code></li>
+<li><code>mint</code></li>
+<li><code>burn</code></li>
+<li><code>swap</code></li>
+</ul>
+
+<p>
+Malicious code is therefore unable to:
+</p>
+
+<ul class="org-ul">
+<li>modify reserves</li>
+<li>mint or burn LP shares</li>
+<li>transfer pool tokens away from the Pair</li>
+</ul>
+
+<p>
+It should be noted that not all methods on the Pair are protected by the
+reentrancy lock. Reentrant calls into the various LP share ERC20 methods
+(<code>approve</code>, <code>transfer</code>, <code>transferFrom</code>, <code>permit</code>) are possible. These methods do
+not modify state that is important for the invariant check.
+</p>
+
+<p>
+The audit teams believes that these limitations are enough to ensure that an
+attacker cannot use reentrancy to subvert the fee adjusted invariant check: all
+inputs to the calculation are either fixed at the start of the call (output
+amounts), or protected by the mutex (reserves, balances).
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org61bdde5" class="outline-2">
+<h2 id="org61bdde5">Numerical Error Analysis</h2>
+<div class="outline-text-2" id="text-org61bdde5">
+</div>
+<div id="outline-container-orgf6f3722" class="outline-3">
+<h3 id="orgf6f3722">Locations With Possible Numerical Error</h3>
+<div class="outline-text-3" id="text-orgf6f3722">
+<p>
+Rounding error can only occur when flooring division is used. There may also be
+numerical error when <code>sqrt</code> is used. With flooring division, as provided by <code>/</code>
+and <code>uqdiv</code>, the numerical result (interpreted as a rational number) will be
+less than or equal to the true ratio of the arguments (interpreted as rational
+numbers). With <code>sqrt</code>, the numerical result is also guaranteed to be less than
+or equal to the true square root.
+</p>
+
+<p>
+In each case, we use this fact to determine the economic effect of any numerical
+error. The main properties we wish to ensure are:
+</p>
+
+<ul class="org-ul">
+<li>when entering the pool, numerical error should always be in favour of the liquidity providers who were already in the pool</li>
+<li>when leaving the pool, numerical error should always be in favour of the liquidity providers who remain in the pool</li>
+<li>when trading with the pool, numerical error should always be in favour of the liquidity providers</li>
+<li>when charging the liquidity providers with a fee, the numerical error should always be in favour of the liquidity providers</li>
+</ul>
+
+<p>
+Below, we list every method where numerical error may occur:
+</p>
+</div>
+
+<div id="outline-container-orgaaa8a41" class="outline-4">
+<h4 id="orgaaa8a41"><code>_update</code></h4>
+<div class="outline-text-4" id="text-orgaaa8a41">
+<p>
+There is numerical error when computing the price accumulators, which has no
+direct economic impact on the pool itself. Consumers of accumulator data, such
+as oracles, should take care to ensure that the error is within acceptable
+bounds for their use case. Note that if a token has very low granularity, and
+the Pair's token balances are low, the effect of rounding down could be too
+high to viably use the Pair as a price oracle.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaa27d7f" class="outline-4">
+<h4 id="orgaa27d7f"><code>_mintFee</code></h4>
+<div class="outline-text-4" id="text-orgaa27d7f">
+<p>
+There are two square root computations, used to calculate the change in the \( k
+\) invariant since the last call to <code>_mintFee</code>. In principle, this can result in
+liquidity providers being charged a slightly higher fee than what they should be
+charged "in theory", if the second <code>sqrt</code> calculation happens to have a larger
+error than the first. However, this is not economically significant since the
+error is small, and most importantly does not accumulate and is bounded in time.
+</p>
+
+<p>
+There is also division which rounds against the fee recipient, i.e. in favour of
+the existing liquidity providers.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org53a8c01" class="outline-4">
+<h4 id="org53a8c01"><code>mint</code></h4>
+<div class="outline-text-4" id="text-org53a8c01">
+<p>
+<code>sqrt</code> is used to set the initial LP token supply to the geometric mean of the
+initial supplied token amounts. Numerical error in this situation doesn't appear
+to have any economically relevant impact, especially in the presence of the
+minimum supply mitigation.
+</p>
+
+<p>
+There is a division when calculating the amount of LP tokens to grant to a new
+contributor to the pool. The possible error here is in favour of the existing
+liquidity providers in the pool.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcf20761" class="outline-4">
+<h4 id="orgcf20761"><code>burn</code></h4>
+<div class="outline-text-4" id="text-orgcf20761">
+<p>
+There is division when calculating the amounts of tokens to return to a user
+leaving the pool. The possible error is against the user, i.e. in favour of the
+liquidity providers who remain in the pool.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org201ad67" class="outline-4">
+<h4 id="org201ad67"><code>swap</code></h4>
+<div class="outline-text-4" id="text-org201ad67">
+<p>
+There are no operations that can introduce numerical error in <code>swap</code>. Instead of
+computing the amount to pay in exchange for the amount received (or vice-versa),
+the user is allowed to choose both quantities and the contract simply checks
+that the constant product invariant has increased by the desired amount as a
+result. This pushes potential rounding errors out to the caller, ensuring that
+numerical error cannot cause the invariant to be violated.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org16ece60" class="outline-3">
+<h3 id="org16ece60">Proof of Correctness of <code>sqrt</code></h3>
+<div class="outline-text-3" id="text-org16ece60">
+<p>
+Below we prove that <code>sqrt</code> will terminate within 255 loop iterations, when called with any input from \( 0 \) to \( 2^{256} - 1 \) (the actual maximum number of loop iterations appears to be 135), and that return value <code>z</code> is the largest integer such that <code>z^2 &lt;= y</code>, i.e. that <code>z</code> is the square root of <code>y</code> rounded down to the nearest integer.
+</p>
+
+<p>
+Some care must be taken when handling truncating division, which is the only difference from the standard proof: let \( {\tt div(x, y)} \) denote the integer result of dividing \(x\) by \(y\) without remainder. Given an integer \( y \) greater than 3, define the sequence \( \left(z_n\right) \) of positive integers by as follows:
+</p>
+
+\begin{equation*}
+    \begin{split}
+    z_0 &= y \\
+    z_1 &= {\tt div}(y,2) + 1 \\
+    \end{split}
+\end{equation*}
+<p>
+and for all other \(n\):
+</p>
+\begin{equation*}
+    z_{n+1} =
+    \begin{cases}
+    {\tt div}({\tt div}(y, z_n) + z_n, 2) & \text{if } {\tt div}({\tt div}(y, z_n) + z_n, 2) < z_n \\
+      z_{n}                               & \text{otherwise}
+    \end{cases}
+\end{equation*}
+
+<p>
+It is obvious that this sequence stabilises at some \( z_N \), since its tail is a sequence of monotonically decreasing positive integers. Furthermore, whenever \( z_n > \sqrt{y} \), we have \( z_{n+1} < z_n \), since:
+</p>
+
+\begin{align*}
+ {\tt div}({\tt div}(y, z_n) + z_n, 2) & \leq \frac{1}{2}({\tt div}(y, z_n) + z_n) \\
+ & \leq \frac{\frac{y}{z_n} + z_n}{2} \\
+ & \lt \frac{\frac{z_n^2}{z_n} + z_n}{2} = z_n
+\end{align*}
+
+<p>
+From this it follows that the limit must satisfy \(z_N \leq \sqrt{y} \).
+</p>
+
+<p>
+It's clear enough that this sequence models precisely the computation in <code>sqrt</code> (which we have thus proved terminates), that the limit is the return value, and \( N \) the number of iterations that the loop runs for.
+</p>
+
+<p>
+It is easy to see that \( N \leq y - \sqrt{y} \). We can strengthen this to a more useful bound by defining the error sequence \( \epsilon_n = z_n - \sqrt{y} \), and proving that \( \epsilon_n \lt 2^{-n}  \epsilon_1\) for \( n \lt N \) (the proof is essentially the same as in the infinite-precision setting). Thus, as \( \epsilon_1 \leq 2^{255} \), we can conclude that \( N < 255 \) for all inputs \( y \lt 2^{256} \).
+</p>
+
+<p>
+It remains only to bound the final error \( \sqrt{y} - z_N \). We do this by defining the sequence of integers \( r_n \) such that \( y = z_n \cdot {\tt div}(y, z_n) + r_n \), so that \( 0 \leq r_n < z_n \) for each \(n\), and decomposing \( z_N \) as a sum:
+</p>
+
+\begin{align*}
+z_N & = \frac{1}{2}\left( \frac{y - r_{N-1}}{z_{N-1}} + z_{N-1} \right) \\
+& = \frac{1}{2}\left(\frac{y}{z_{N-1}} + z_{N-1}\right) - \frac{z_{N-1} + r_{N-1}}{2z_{N-1}}
+\end{align*}
+
+<p>
+The first term is strictly greater than \( \sqrt{y} \), by the AM-GM inequality. The second term is strictly less than \( 1 \), due to the fact that \( r_{N-1} \lt z_{N-1} \). This proves that \( \epsilon_N  \lt 1 \), or in other words, the result <code>z</code> is the largest integer such that <code>z^2 &lt;= y</code>. \( \blacksquare \)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9e3fc7f" class="outline-2">
+<h2 id="org9e3fc7f">Formal Verification</h2>
+<div class="outline-text-2" id="text-org9e3fc7f">
+<p>
+The Solidity compiler has <a href="https://solidity.readthedocs.io/en/latest/bugs.html">introduced vulnerabilities</a> to contracts in the past
+and may do so again in the future. While possible, writing bytecode by
+hand is arduous and prone to error. In the absence of verified compilers, formal
+specification of the intended behaviours of code and verification of the
+resulting bytecode gives strong claims of safety in areas that are not covered
+by non-formal code review and conventional testing.
+</p>
+
+<p>
+Formal specifications for the contracts in <code>uniswap-v2-core</code> were written in the
+<a href="https://github.com/dapphub/klab/blob/master/acts.md"><code>act</code></a> specification language. These specifications are then compiled into
+reachability claims in the K language, and proved using the K framework prover
+against the bytecode produced by the build system in the <code>uniswap-v2-core</code>
+repository.
+</p>
+
+<p>
+The <code>act</code> specifications represent a rigorous mathematical description of
+(almost) every possible state transition in the system. The generation of this
+description required a close examination of the run-time behaviour of the
+contract at the bytecode level. Both the specification and the process of its
+creation form a valuable base for higher level reasoning.
+</p>
+
+<p>
+The specifications can be found in the <a href="https://github.com/dapp-org/k-uniswap-v2">dapp-org/k-uniswap-v2</a> git repo.
+The proof status of those specs is visible in the audit team's CI system at
+<a href="https://dapp.ci/k-uniswap/">dapp.ci/k-uniswap</a>.
+</p>
+</div>
+
+<div id="outline-container-org80395e1" class="outline-3">
+<h3 id="org80395e1">Caveats &amp; Assumptions</h3>
+<div class="outline-text-3" id="text-org80395e1">
+</div>
+<div id="outline-container-orgc503978" class="outline-4">
+<h4 id="orgc503978">Contract level invariants</h4>
+<div class="outline-text-4" id="text-orgc503978">
+<p>
+The specs as written define the functional behaviour of the invocation of a single
+call to a method of the contract (functional specifications).
+</p>
+
+<p>
+They do not, <i>per se</i>, make claims about invariants that should hold across multiple
+calls (contract level invariants), such as the \( x y = k \) constant product
+invariant (or its fee-adjusted counterpart).
+</p>
+
+<p>
+The team believes that the specifications could in principle be extended to make
+claims about invariants at the contract level (see <a href="#org6128b68">here</a> for more details), but
+time contraints meant that such claims were not pursued as part of this engagement.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5dc2346" class="outline-4">
+<h4 id="org5dc2346">Token implementation</h4>
+<div class="outline-text-4" id="text-org5dc2346">
+<p>
+<code>UniswapV2Pair</code> calls into untrusted external contracts to get token balances
+(<code>balanceOf</code>) and to make token transfers (<code>transfer</code>). These calls could result
+in any behaviour, and in order to simplify the proof work, a token
+implementation that semantically matches the one in
+<code>uniswap-v2-core/contracts/UniswapV2ERC20.sol</code> has been assumed.
+</p>
+
+<p>
+The proof claims are known to be valid in this context only, and in order to
+make formal statements about the properties of individual Pairs whose tokens
+may semantically deviate from this assumption, one would have to generate a new
+set of proofs for that token.
+</p>
+
+<p>
+It should be noted that a malicious token could confiscate or burn the reserves
+of a Pair that included that specific token. The scope of such an attack is
+limited to Pairs for which the malicious token is one of the two tokens in
+the Pair. The loss would fall on the liquidity providers for that Pair,
+therefore liquidity providers should carefully audit the token implementations
+for each Pair that they participate in before contributing funds.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga65000e" class="outline-4">
+<h4 id="orga65000e"><code>sqrt</code> implementation</h4>
+<div class="outline-text-4" id="text-orga65000e">
+<p>
+There are both theoretical and practical challenges with formally verifying implementations
+of iterative or recursive numerical algorithms. To verify the correctness of the
+<code>sqrt</code> implementation, one would have to check numerical error and convergence,
+in a fixed-precision setting, while also proving convergence and termination.
+A full bytecode level proof of <code>sqrt</code> would therefore be difficult and time-consuming
+to produce.
+</p>
+
+<p>
+Due to time constraints, its implementation has not been formally verified. Instead,
+in proofs relying on the result of <code>sqrt</code>, a formal symbolic expression was used, meaning
+that the specs assert only that storage has been updated with the result of
+calling <code>sqrt</code>, but do not make any claims about what that result is. Note that this
+also assumes that the computation always terminates, assuming an adequate amount of gas
+was provided.
+</p>
+
+<p>
+Particular care and attention has been paid to the implementation of <code>sqrt</code>,
+including fuzz testing, manual review, and a <a href="#org16ece60">manual proof of correctness</a> of the chosen
+algorithm in a fixed precision setting. The team discovered one subtle overflow issue.
+After this issue was resolved, the team is confident that the implementation is
+suitable for use.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2b6ea48" class="outline-4">
+<h4 id="org2b6ea48">External call in <code>swap</code></h4>
+<div class="outline-text-4" id="text-org2b6ea48">
+<p>
+If callers of <code>swap</code> provide a non empty byte array as the <code>data</code> argument, a
+call into a user provided address will be carried out from the Pair as part of
+the execution of the swap.
+</p>
+
+<p>
+Calls into unknown code pose a significant challenge for the K prover. Without
+knowledge of the bytecode at the target of the call, the prover is unable to
+proceed with symbolic execution and can no longer reason about the state of the
+blockchain. In fact, speaking formally, one must assume that potentially
+<i>all blockchain state</i> could have been modified in some way by a call into
+unknown code. Making formal statements about blockchain state after such a call is
+therefore quite challenging, and to the team's knowledge, full formal
+verification of an Ethereum smart contract containing a call into unknown code
+has never been completed.
+</p>
+
+<p>
+The team believes that the presence of the reentrancy mutex in <code>UniswapV2Pair</code>
+in combination with some custom lemmas should allow for the generation of such a
+proof (see <a href="#orgd8b71ec">Verification of external calls to unknown code</a>), but time constraints
+meant that it was not pursued as part of this engagement.
+</p>
+
+<p>
+The team has paid careful attention, and devoted much time to considering the
+potential misuse of this facility, and are unaware of any cases where its use
+could result in a violation of the fee adjusted constant product invariant,
+barring pathological token behaviours.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf6f6f2b" class="outline-4">
+<h4 id="orgf6f6f2b">Reentrancy lock</h4>
+<div class="outline-text-4" id="text-orgf6f6f2b">
+<p>
+The formal specifications make claims only about the state of the blockchain at
+the start and end of a call into the Uniswap contracts. They do not make claims
+about the particulars of any state transitions during a call. This means that
+the behaviour of the reentrancy mutex is not fully specified. The team has
+generated proofs of the following:
+</p>
+
+<ul class="org-ul">
+<li>The mutex is in the unlocked state at the start and end of all calls</li>
+<li>Calls into the contract will fail if the mutex is in the locked state</li>
+</ul>
+
+<p>
+The specifications do not however make any claims about the transition from the
+unlocked to the locked state and back again within the call.
+</p>
+
+<p>
+The team has paid close attention to the implementation of the mutex at the
+source code level, and in the resulting bytecode. Additionally, tests showing the
+correct functioning of the reentrancy lock have been written and observed to
+pass.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga6058ee" class="outline-4">
+<h4 id="orga6058ee">Exhaustiveness</h4>
+<div class="outline-text-4" id="text-orga6058ee">
+<p>
+Proofs of so called <i>ABI exhaustiveness</i> have been generated, meaning that
+the specs are known to cover all methods on the contract. Proofs of full
+exhaustiveness (that the specs cover the behaviour of the contract with all
+possible calldata values) are however not currently generated.
+</p>
+
+<p>
+The team is aware of the following instances of unspecified behaviour:
+</p>
+
+<ul class="org-ul">
+<li>The implementation of <code>sqrt</code></li>
+<li>The call into unknown code in <code>swap</code></li>
+<li>Overflow of the nonces counter in <code>permit</code></li>
+<li>Overflow of the <code>allPairs</code> array</li>
+<li>Calls to <code>swap</code> when <code>token0 == token1</code></li>
+<li>Calls to <code>swap</code> when the <code>to</code> address is the address of the Pair itself</li>
+<li>Calls to <code>swap</code> when <code>blockTimestampLast</code> overflows</li>
+<li>Calls to <code>burn</code> when <code>totalSupply == 0</code></li>
+<li>Calls to <code>burn</code> when the caller is the <code>feeTo</code> address</li>
+<li>Calls to <code>burn</code> when the <code>to</code> address is the address of the Pair, when <code>feeTo =/= 0</code> or <code>kLast == 0</code></li>
+</ul>
+
+<p>
+The <code>sqrt</code> and call into unknown code in <code>swap</code> cases are discussed in their own
+sections above. In the remaining cases, the decision was taken to deprioritise
+coverage of unlikely situations to both simplify specification and focus the
+teams effort on cases that were considered to be the most critical.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org86bf733" class="outline-4">
+<h4 id="org86bf733">Soundness of software stack</h4>
+<div class="outline-text-4" id="text-org86bf733">
+<p>
+A bug in <code>klab</code> or any of its dependencies could invalidate the proof results, or
+result in faulty specs being incorrectly accepted by the prover. The correctness
+of the generated proofs relies on the correctness of all of:
+</p>
+
+<ul class="org-ul">
+<li>The implementation of the <a href="https://github.com/dapphub/klab/blob/master/acts.md">act</a> specification language within <a href="https://github.com/dapphub/klab/">klab</a></li>
+<li>The <a href="https://github.com/kframework/evm-semantics">K EVM semantics</a></li>
+<li>The <a href="https://github.com/kframework/k">K Framework Theorem Prover</a></li>
+<li>The <a href="https://github.com/Z3Prover/z3">Z3 SMT Prover</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org65367f9" class="outline-4">
+<h4 id="org65367f9">Soundness of lemmas</h4>
+<div class="outline-text-4" id="text-org65367f9">
+<p>
+Generating the proofs required in many cases the introduction of various
+additional assumptions (sometimes referred to as lemmas). These assumptions
+are typically very narrow technical lemmas, which are infeasible to reason about
+with SMT solvers, but which can be easily proven mathematically. Although the team
+has taken care to document and justify these assumptions, an error here could
+potentially invalidate any proof.
+</p>
+
+<p>
+The lemmas and their supporting documentation can be found in
+<a href="https://github.com/dapp-org/k-uniswap-v2/blob/master/src/lemmas.k.md">k-uniswap-v2/src/lemmas.k.md</a> and <a href="https://github.com/dapp-org/k-uniswap-v2/blob/master/src/prelude.smt2.md">k-uniswap-v2/src/prelude.smt2.md</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8aca6ba" class="outline-4">
+<h4 id="org8aca6ba">Gas</h4>
+<div class="outline-text-4" id="text-org8aca6ba">
+<p>
+Three proof objects are generated for each method:
+</p>
+
+<ul class="org-ul">
+<li><code>pass_rough</code></li>
+<li><code>fail_rough</code></li>
+<li><code>pass</code></li>
+</ul>
+
+<p>
+The <code>*_rough</code> proofs assume that the method is executed using a very large
+amount of gas (currently <code>3000000</code>). Once the <code>pass_rough</code> spec has been
+successfully proven, the trace of the symbolic execution in the proof is used
+to produce a symbolic expression (<code>G</code>) for the exact amount of gas used by the
+method (as a function of the state, calldata, etc.). This gas expression is then
+used to produce the <code>pass</code> proof, which proves the spec under all of the same
+conditions as the <code>pass_rough</code> spec, but additionally strengthens its claim to
+say that the amount of gas provided is <code>&gt;= G</code>.
+</p>
+
+<p>
+Due to performance constraints in the <code>K</code> prover, a proof that the method will
+fail if called with a gas value <code>&lt; G</code> is currently not generated. However, the
+team believes that this claim should in principle be provable.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6128b68" class="outline-3">
+<h3 id="org6128b68">Future Work</h3>
+<div class="outline-text-3" id="text-org6128b68">
+<p>
+The audit team believes that the existing formal specifications could be
+extended or built upon in several valuable directions, and encourages the
+Uniswap team to investigate the following in the future:
+</p>
+</div>
+
+<div id="outline-container-orge88e5fa" class="outline-4">
+<h4 id="orge88e5fa">Contract level invariants</h4>
+<div class="outline-text-4" id="text-orge88e5fa">
+<p>
+The audit team believes that the act specs generated as part of this engagement
+could be extended to prove that core accounting invariants are maintained for
+every possible combination of calls into a V2 Pair.
+</p>
+
+<p>
+The team believes that two potential approaches are viable:
+</p>
+
+<ol class="org-ol">
+<li>Compilation of the act specs into some high level proof language (e.g. Coq, Agda)</li>
+<li>An inductive proof implemented using post-conditions in the generated K specs</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgd8b71ec" class="outline-4">
+<h4 id="orgd8b71ec">Verification of external calls to unknown code</h4>
+<div class="outline-text-4" id="text-orgd8b71ec">
+<p>
+The team believes that the addition of lemmas resetting all EVM state that could
+potentially have been affected by the call (essentially all state not guarded by
+the reentrancy mutex) to an abstract value after the conclusion of the call
+should allow for a successful proof of correctness of the relevant code paths in
+<code>swap</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaf2b366" class="outline-4">
+<h4 id="orgaf2b366">Verification of <code>sqrt</code> bytecode</h4>
+<div class="outline-text-4" id="text-orgaf2b366">
+<p>
+The team believes that it should be possible to prove a loop invariant by
+coïnduction showing the EVM implementation of <code>sqrt</code> agrees with the model used
+in the <a href="#org16ece60">manual proof of convergence</a>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd236d19" class="outline-2">
+<h2 id="orgd236d19">Appendix A. Bug Classifications</h2>
+<div class="outline-text-2" id="text-orgd236d19">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Severity</b></th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><i>informational</i></td>
+<td class="org-left">The issue does not have direct implications for functionality, but could be relevant for understanding.</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>low</i></td>
+<td class="org-left">The issue has no security implications, but could affect some behaviour in an unexpected way.</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>medium</i></td>
+<td class="org-left">The issue affects some functionality, but does not result in economically significant loss of user funds.</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>high</i></td>
+<td class="org-left">The issue can cause loss of user funds.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Likelihood</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><i>low</i></td>
+<td class="org-left">The system is unlikely to be in a state where the bug would occur or could be made to occur by any party.</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>medium</i></td>
+<td class="org-left">It is fairly likely that the issue could occur or be made to occur by some party.</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>high</i></td>
+<td class="org-left">It is very likely that the issue could occur or could be exploited by some parties.</td>
+</tr>
+</tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+<script> anchors.add(); </script>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://pdaian.com/flashboys2.pdf">Flash Boys 2.0: Frontrunning, Transaction Reordering, and Consensus Instability in Decentralized Exchange</a> - Philip Daian
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://samczsun.com/taking-undercollateralized-loans-for-fun-and-for-profit/">Taking undercollateralised loans for fun and profit</a> - samczsun
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://arxiv.org/abs/1911.03380">An Analysis of Uniswap Markets</a> - Angeris, Kao, Chiang, Noyes, Chitra
+</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>
