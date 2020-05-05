@@ -2,17 +2,13 @@
 title: Getting Started
 ---
 
-<Info>
-Uniswap V2 is currently in a testnet release, and is slated to be deployed to mainnet in 2020 Q2, pending a successful formal verification. Looking for <Link to='/docs/v1/'>V1 documentation</Link>?
-</Info>
-
 # Code
 
-[uniswap-sdk](https://github.com/Uniswap/uniswap-sdk/tree/v2)
+[uniswap-sdk](https://github.com/Uniswap/uniswap-sdk)
 
 # Install
 
-`yarn add @uniswap/sdk@next`
+`yarn add @uniswap/sdk`
 
 # Overview
 

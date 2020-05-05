@@ -4,22 +4,28 @@ title: Router
 
 Because routers are stateless and do not hold token balances, they can be replaced safely and trustlessly, if necessary. This may happen if more efficient smart contract patterns are discovered, or if additional functionality is desired. For this reason, routers have _release numbers_, starting at `01`.
 
-Routers also contain all <Link to='/docs/v2/smart-contracts/library'>Library</Link> functions.
-
 # Code
 
 [`UniswapV2Router01.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Router01.sol)
 
 # Address
 
-`UniswapV2Router01` is deployed at `0xcDbE04934d89e97a24BCc07c3562DC8CF17d8167` on the [Ropsten](https://ropsten.etherscan.io/address/0xcdbe04934d89e97a24bcc07c3562dc8cf17d8167), [Rinkeby](https://rinkeby.etherscan.io/address/0xcdbe04934d89e97a24bcc07c3562dc8cf17d8167), [Görli](https://goerli.etherscan.io/address/0xcdbe04934d89e97a24bcc07c3562dc8cf17d8167), and [Kovan](https://kovan.etherscan.io/address/0xcdbe04934d89e97a24bcc07c3562dc8cf17d8167) testnets.
+`UniswapV2Router01` is deployed at `0xf164fC0Ec4E93095b804a4795bBe1e041497b92a` on the Ethereum [mainnet](https://etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a), and the [Ropsten](https://ropsten.etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a), [Rinkeby](https://rinkeby.etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a), [Görli](https://goerli.etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a), and [Kovan](https://kovan.etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a) testnets. It was built from commit [2ad7da2](https://github.com/Uniswap/uniswap-v2-periphery/tree/2ad7da28a6f70ec4299364bc1608af8f30e7646b).
 
 # Read-Only Functions
+
+## factory
+
+```solidity
+function factory() external pure returns (address);
+```
+
+Returns <Link to='/docs/v2/smart-contracts/factory/#address'>factory address</Link>.
 
 ## WETH
 
 ```solidity
-function WETH() external view returns (address);
+function WETH() external pure returns (address);
 ```
 
 Returns the [canonical WETH address](https://blog.0xproject.com/canonical-weth-a9aa7d0279dd) on the Ethereum [mainnet](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2), or the [Ropsten](https://ropsten.etherscan.io/address/0xc778417e063141139fce010982780140aa0cd5ab), [Rinkeby](https://rinkeby.etherscan.io/address/0xc778417e063141139fce010982780140aa0cd5ab), [Görli](https://goerli.etherscan.io/address/0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6), or [Kovan](https://kovan.etherscan.io/address/0xd0a1e359811322d97991e03f863a0c30c2cf029c) testnets.
@@ -361,325 +367,142 @@ Receive an exact amount of tokens for as little ETH as possible, along the route
 |                           |                      |                                                                                                                                      |
 | amounts                   | `uint[] memory`      | The input token amount and all subsequent output token amounts.                                                                      |
 
+## quote
+
+See <Link to='/docs/v2/smart-contracts/library#quote'>quote</Link>.
+
+## getAmountOut
+
+See <Link to='/docs/v2/smart-contracts/library#getamountout'>getAmountOut</Link>.
+
+## getAmountIn
+
+See <Link to='/docs/v2/smart-contracts/library#getamountin'>getAmountIn</Link>.
+
+## getAmountsOut
+
+```solidity
+function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts);
+```
+
+See <Link to='/docs/v2/smart-contracts/library#getamountsout'>getAmountsOut</Link>.
+
+## getAmountsIn
+
+```solidity
+function getAmountsIn(uint amountOut, address[] memory path) public view returns (uint[] memory amounts);
+```
+
+See <Link to='/docs/v2/smart-contracts/library#getamountsin'>getAmountsIn</Link>.
+
 # Interface
 
 ```solidity
+import '@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol';
+```
+
+```solidity
+pragma solidity >=0.6.2;
+
 interface IUniswapV2Router01 {
-  function WETH() external view returns (address);
+  function factory() external pure returns (address);
+  function WETH() external pure returns (address);
 
   function addLiquidity(
-    address tokenA,
-    address tokenB,
-    uint amountADesired,
-    uint amountBDesired,
-    uint amountAMin,
-    uint amountBMin,
-    address to,
-    uint deadline
+      address tokenA,
+      address tokenB,
+      uint amountADesired,
+      uint amountBDesired,
+      uint amountAMin,
+      uint amountBMin,
+      address to,
+      uint deadline
   ) external returns (uint amountA, uint amountB, uint liquidity);
   function addLiquidityETH(
-    address token,
-    uint amountTokenDesired,
-    uint amountTokenMin,
-    uint amountETHMin,
-    address to,
-    uint deadline
+      address token,
+      uint amountTokenDesired,
+      uint amountTokenMin,
+      uint amountETHMin,
+      address to,
+      uint deadline
   ) external payable returns (uint amountToken, uint amountETH, uint liquidity);
   function removeLiquidity(
-    address tokenA,
-    address tokenB,
-    uint liquidity,
-    uint amountAMin,
-    uint amountBMin,
-    address to,
-    uint deadline
+      address tokenA,
+      address tokenB,
+      uint liquidity,
+      uint amountAMin,
+      uint amountBMin,
+      address to,
+      uint deadline
   ) external returns (uint amountA, uint amountB);
   function removeLiquidityETH(
-    address token,
-    uint liquidity,
-    uint amountTokenMin,
-    uint amountETHMin,
-    address to,
-    uint deadline
+      address token,
+      uint liquidity,
+      uint amountTokenMin,
+      uint amountETHMin,
+      address to,
+      uint deadline
   ) external returns (uint amountToken, uint amountETH);
   function removeLiquidityWithPermit(
-    address tokenA,
-    address tokenB,
-    uint liquidity,
-    uint amountAMin,
-    uint amountBMin,
-    address to,
-    uint deadline,
-    bool approveMax, uint8 v, bytes32 r, bytes32 s
+      address tokenA,
+      address tokenB,
+      uint liquidity,
+      uint amountAMin,
+      uint amountBMin,
+      address to,
+      uint deadline,
+      bool approveMax, uint8 v, bytes32 r, bytes32 s
   ) external returns (uint amountA, uint amountB);
   function removeLiquidityETHWithPermit(
-    address token,
-    uint liquidity,
-    uint amountTokenMin,
-    uint amountETHMin,
-    address to,
-    uint deadline,
-    bool approveMax, uint8 v, bytes32 r, bytes32 s
+      address token,
+      uint liquidity,
+      uint amountTokenMin,
+      uint amountETHMin,
+      address to,
+      uint deadline,
+      bool approveMax, uint8 v, bytes32 r, bytes32 s
   ) external returns (uint amountToken, uint amountETH);
   function swapExactTokensForTokens(
-    uint amountIn,
-    uint amountOutMin,
-    address[] calldata path,
-    address to,
-    uint deadline
+      uint amountIn,
+      uint amountOutMin,
+      address[] calldata path,
+      address to,
+      uint deadline
   ) external returns (uint[] memory amounts);
   function swapTokensForExactTokens(
-    uint amountOut,
-    uint amountInMax,
-    address[] calldata path,
-    address to,
-    uint deadline
+      uint amountOut,
+      uint amountInMax,
+      address[] calldata path,
+      address to,
+      uint deadline
   ) external returns (uint[] memory amounts);
   function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
-    external
-    payable
-    returns (uint[] memory amounts);
+      external
+      payable
+      returns (uint[] memory amounts);
   function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
-    external
-    returns (uint[] memory amounts);
+      external
+      returns (uint[] memory amounts);
   function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
-    external
-    returns (uint[] memory amounts);
+      external
+      returns (uint[] memory amounts);
   function swapETHForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline)
-    external
-    payable
-    returns (uint[] memory amounts);
+      external
+      payable
+      returns (uint[] memory amounts);
+
+  function quote(uint amountA, uint reserveA, uint reserveB) external pure returns (uint amountB);
+  function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) external pure returns (uint amountOut);
+  function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) external pure returns (uint amountIn);
+  function getAmountsOut(uint amountIn, address[] calldata path) external view returns (uint[] memory amounts);
+  function getAmountsIn(uint amountOut, address[] calldata path) external view returns (uint[] memory amounts);
 }
 ```
 
 # ABI
 
-```json
-[
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "WETH",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "address", "name": "tokenA", "type": "address" },
-      { "internalType": "address", "name": "tokenB", "type": "address" },
-      { "internalType": "uint256", "name": "amountADesired", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountBDesired", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountAMin", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountBMin", "type": "uint256" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "addLiquidity",
-    "outputs": [
-      { "internalType": "uint256", "name": "amountA", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountB", "type": "uint256" },
-      { "internalType": "uint256", "name": "liquidity", "type": "uint256" }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "address", "name": "token", "type": "address" },
-      { "internalType": "uint256", "name": "amountTokenDesired", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountTokenMin", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountETHMin", "type": "uint256" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "addLiquidityETH",
-    "outputs": [
-      { "internalType": "uint256", "name": "amountToken", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountETH", "type": "uint256" },
-      { "internalType": "uint256", "name": "liquidity", "type": "uint256" }
-    ],
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "address", "name": "tokenA", "type": "address" },
-      { "internalType": "address", "name": "tokenB", "type": "address" },
-      { "internalType": "uint256", "name": "liquidity", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountAMin", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountBMin", "type": "uint256" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "removeLiquidity",
-    "outputs": [
-      { "internalType": "uint256", "name": "amountA", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountB", "type": "uint256" }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "address", "name": "token", "type": "address" },
-      { "internalType": "uint256", "name": "liquidity", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountTokenMin", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountETHMin", "type": "uint256" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "removeLiquidityETH",
-    "outputs": [
-      { "internalType": "uint256", "name": "amountToken", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountETH", "type": "uint256" }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "address", "name": "token", "type": "address" },
-      { "internalType": "uint256", "name": "liquidity", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountTokenMin", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountETHMin", "type": "uint256" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" },
-      { "internalType": "bool", "name": "approveMax", "type": "bool" },
-      { "internalType": "uint8", "name": "v", "type": "uint8" },
-      { "internalType": "bytes32", "name": "r", "type": "bytes32" },
-      { "internalType": "bytes32", "name": "s", "type": "bytes32" }
-    ],
-    "name": "removeLiquidityETHWithPermit",
-    "outputs": [
-      { "internalType": "uint256", "name": "amountToken", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountETH", "type": "uint256" }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "address", "name": "tokenA", "type": "address" },
-      { "internalType": "address", "name": "tokenB", "type": "address" },
-      { "internalType": "uint256", "name": "liquidity", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountAMin", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountBMin", "type": "uint256" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" },
-      { "internalType": "bool", "name": "approveMax", "type": "bool" },
-      { "internalType": "uint8", "name": "v", "type": "uint8" },
-      { "internalType": "bytes32", "name": "r", "type": "bytes32" },
-      { "internalType": "bytes32", "name": "s", "type": "bytes32" }
-    ],
-    "name": "removeLiquidityWithPermit",
-    "outputs": [
-      { "internalType": "uint256", "name": "amountA", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountB", "type": "uint256" }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "uint256", "name": "amountOut", "type": "uint256" },
-      { "internalType": "address[]", "name": "path", "type": "address[]" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "swapETHForExactTokens",
-    "outputs": [{ "internalType": "uint256[]", "name": "amounts", "type": "uint256[]" }],
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "uint256", "name": "amountOutMin", "type": "uint256" },
-      { "internalType": "address[]", "name": "path", "type": "address[]" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "swapExactETHForTokens",
-    "outputs": [{ "internalType": "uint256[]", "name": "amounts", "type": "uint256[]" }],
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "uint256", "name": "amountIn", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountOutMin", "type": "uint256" },
-      { "internalType": "address[]", "name": "path", "type": "address[]" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "swapExactTokensForETH",
-    "outputs": [{ "internalType": "uint256[]", "name": "amounts", "type": "uint256[]" }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "uint256", "name": "amountIn", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountOutMin", "type": "uint256" },
-      { "internalType": "address[]", "name": "path", "type": "address[]" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "swapExactTokensForTokens",
-    "outputs": [{ "internalType": "uint256[]", "name": "amounts", "type": "uint256[]" }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "uint256", "name": "amountOut", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountInMax", "type": "uint256" },
-      { "internalType": "address[]", "name": "path", "type": "address[]" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "swapTokensForExactETH",
-    "outputs": [{ "internalType": "uint256[]", "name": "amounts", "type": "uint256[]" }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "uint256", "name": "amountOut", "type": "uint256" },
-      { "internalType": "uint256", "name": "amountInMax", "type": "uint256" },
-      { "internalType": "address[]", "name": "path", "type": "address[]" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "uint256", "name": "deadline", "type": "uint256" }
-    ],
-    "name": "swapTokensForExactTokens",
-    "outputs": [{ "internalType": "uint256[]", "name": "amounts", "type": "uint256[]" }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
-]
+```typescript
+import IUniswapV2Router01 from '@uniswap/v2-periphery/build/IUniswapV2Router01.json'
 ```
+
+[https://unpkg.com/@uniswap/v2-periphery@1.0.0-beta.0/build/IUniswapV2Router01.json](https://unpkg.com/@uniswap/v2-core@1.0.0-beta.0/build/IUniswapV2Router01.json)

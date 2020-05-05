@@ -6,7 +6,7 @@ In Uniswap V2 swaps are executed "optimistically", meaning that if desired, toke
 
 # Example
 
-[`ExampleFlashSwap.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/ExampleFlashSwap.sol)
+[`ExampleFlashSwap.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleFlashSwap.sol)
 
 # Discussion
 
@@ -16,10 +16,18 @@ Flash swaps must be repayed from within a _callback_ function that's triggered b
 function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
 ```
 
-In a typical swap, payment of token0 for token1 or vice versa must be completed _before_ the swap function is called (see <Link to='/docs/v2/smart-contracts/architecture/#sending-tokens'>Sending Tokens</Link>), and `data.length` must be `0`. In a flash swap, prepayment need not occur if `data.length` is > `0`, indicating that the pair should call the following function on the to address:
+In a typical swap, payment of token0 for token1 or vice versa must be completed _before_ the swap function is called (see <Link to='/docs/v2/smart-contracts/architecture/#sending-tokens'>Sending Tokens</Link>), and `data.length` must be `0`. In a flash swap, prepayment need not occur if `data.length` is > `0`, indicating that the pair should call the function documented below on the to address. This function is then responsible for returning enough tokens to the pair to satisfy the invariant (accounting for fees).
+
+# Interface
 
 ```solidity
-function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) external;
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Callee.sol';
 ```
 
-This function is then responsible for returning enough tokens to the pair to satisfy the invariant (accounting for fees).
+```solidity
+pragma solidity >=0.5.0;
+
+interface IUniswapV2Callee {
+  function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) external;
+}
+```

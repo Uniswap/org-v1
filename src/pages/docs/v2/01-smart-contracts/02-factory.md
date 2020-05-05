@@ -8,7 +8,7 @@ title: Factory
 
 # Address
 
-`UniswapV2Factory` is deployed at `0xe2f197885abe8ec7c866cFf76605FD06d4576218` on the [Ropsten](https://ropsten.etherscan.io/address/0xe2f197885abe8ec7c866cff76605fd06d4576218), [Rinkeby](https://rinkeby.etherscan.io/address/0xe2f197885abe8ec7c866cff76605fd06d4576218), [Görli](https://goerli.etherscan.io/address/0xe2f197885abe8ec7c866cff76605fd06d4576218), and [Kovan](https://kovan.etherscan.io/address/0xe2f197885abe8ec7c866cff76605fd06d4576218) testnets.
+`UniswapV2Factory` is deployed at `0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f` on the Ethereum [mainnet](https://etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f), and the [Ropsten](https://ropsten.etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f), [Rinkeby](https://rinkeby.etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f), [Görli](https://goerli.etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f), and [Kovan](https://kovan.etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f) testnets. It was built from commit [8160750](https://github.com/Uniswap/uniswap-v2-core/tree/816075049f811f1b061bca81d5d040b96f4c07eb).
 
 # Events
 
@@ -86,7 +86,11 @@ Creates a pair for `tokenA` and `tokenB` if one doesn't exist already.
 # Interface
 
 ```solidity
-pragma solidity =0.5.16;
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
+```
+
+```solidity
+pragma solidity >=0.5.0;
 
 interface IUniswapV2Factory {
   event PairCreated(address indexed token0, address indexed token1, address pair, uint);
@@ -104,78 +108,8 @@ interface IUniswapV2Factory {
 
 # ABI
 
-```json
-[
-  {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "token0", "type": "address" },
-      { "indexed": true, "internalType": "address", "name": "token1", "type": "address" },
-      { "indexed": false, "internalType": "address", "name": "pair", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "", "type": "uint256" }
-    ],
-    "name": "PairCreated",
-    "type": "event"
-  },
-  {
-    "constant": true,
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "allPairs",
-    "outputs": [{ "internalType": "address", "name": "pair", "type": "address" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "allPairsLength",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "address", "name": "tokenA", "type": "address" },
-      { "internalType": "address", "name": "tokenB", "type": "address" }
-    ],
-    "name": "createPair",
-    "outputs": [{ "internalType": "address", "name": "pair", "type": "address" }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "feeTo",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "feeToSetter",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      { "internalType": "address", "name": "tokenA", "type": "address" },
-      { "internalType": "address", "name": "tokenB", "type": "address" }
-    ],
-    "name": "getPair",
-    "outputs": [{ "internalType": "address", "name": "pair", "type": "address" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  }
-]
+```typescript
+import IUniswapV2Factory from '@uniswap/v2-core/build/IUniswapV2Factory.json'
 ```
+
+[https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2Factory.json](https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2Factory.json)

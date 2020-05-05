@@ -172,16 +172,42 @@ See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whit
 # Interface
 
 ```solidity
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
+```
+
+```solidity
+pragma solidity >=0.5.0;
+
 interface IUniswapV2Pair {
+  event Approval(address indexed owner, address indexed spender, uint value);
+  event Transfer(address indexed from, address indexed to, uint value);
+
+  function name() external pure returns (string memory);
+  function symbol() external pure returns (string memory);
+  function decimals() external pure returns (uint8);
+  function totalSupply() external view returns (uint);
+  function balanceOf(address owner) external view returns (uint);
+  function allowance(address owner, address spender) external view returns (uint);
+
+  function approve(address spender, uint value) external returns (bool);
+  function transfer(address to, uint value) external returns (bool);
+  function transferFrom(address from, address to, uint value) external returns (bool);
+
+  function DOMAIN_SEPARATOR() external view returns (bytes32);
+  function PERMIT_TYPEHASH() external pure returns (bytes32);
+  function nonces(address owner) external view returns (uint);
+
+  function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
+
   event Mint(address indexed sender, uint amount0, uint amount1);
   event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
   event Swap(
-    address indexed sender,
-    uint amount0In,
-    uint amount1In,
-    uint amount0Out,
-    uint amount1Out,
-    address indexed to
+      address indexed sender,
+      uint amount0In,
+      uint amount1In,
+      uint amount0Out,
+      uint amount1Out,
+      address indexed to
   );
   event Sync(uint112 reserve0, uint112 reserve1);
 
@@ -199,186 +225,13 @@ interface IUniswapV2Pair {
   function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
   function skim(address to) external;
   function sync() external;
-
-  function initialize(address, address) external;
 }
 ```
 
 # ABI
 
-```json
-[
-  {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "sender", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "amount0", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "amount1", "type": "uint256" },
-      { "indexed": true, "internalType": "address", "name": "to", "type": "address" }
-    ],
-    "name": "Burn",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "sender", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "amount0", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "amount1", "type": "uint256" }
-    ],
-    "name": "Mint",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "sender", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "amount0In", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "amount1In", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "amount0Out", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "amount1Out", "type": "uint256" },
-      { "indexed": true, "internalType": "address", "name": "to", "type": "address" }
-    ],
-    "name": "Swap",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": false, "internalType": "uint112", "name": "reserve0", "type": "uint112" },
-      { "indexed": false, "internalType": "uint112", "name": "reserve1", "type": "uint112" }
-    ],
-    "name": "Sync",
-    "type": "event"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "MINIMUM_LIQUIDITY",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [{ "internalType": "address", "name": "to", "type": "address" }],
-    "name": "burn",
-    "outputs": [
-      { "internalType": "uint256", "name": "amount0", "type": "uint256" },
-      { "internalType": "uint256", "name": "amount1", "type": "uint256" }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "factory",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getReserves",
-    "outputs": [
-      { "internalType": "uint112", "name": "reserve0", "type": "uint112" },
-      { "internalType": "uint112", "name": "reserve1", "type": "uint112" },
-      { "internalType": "uint32", "name": "blockTimestampLast", "type": "uint32" }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "kLast",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [{ "internalType": "address", "name": "to", "type": "address" }],
-    "name": "mint",
-    "outputs": [{ "internalType": "uint256", "name": "liquidity", "type": "uint256" }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "price0CumulativeLast",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "price1CumulativeLast",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [{ "internalType": "address", "name": "to", "type": "address" }],
-    "name": "skim",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "internalType": "uint256", "name": "amount0Out", "type": "uint256" },
-      { "internalType": "uint256", "name": "amount1Out", "type": "uint256" },
-      { "internalType": "address", "name": "to", "type": "address" },
-      { "internalType": "bytes", "name": "data", "type": "bytes" }
-    ],
-    "name": "swap",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [],
-    "name": "sync",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "token0",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "token1",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  }
-]
+```typescript
+import IUniswapV2Pair from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 ```
+
+[https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2Pair.json](https://unpkg.com/@uniswap/v2-core@1.0.0/build/IUniswapV2Pair.json)

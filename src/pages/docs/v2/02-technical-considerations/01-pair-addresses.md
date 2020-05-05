@@ -17,7 +17,7 @@ Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswa
 | :--------------------- | :------------------------------------------------------------------------------ |
 | `address`              | The <Link to='/docs/v2/smart-contracts/factory/#address'>factory address</Link> |
 | `salt`                 | `keccak256(abi.encodePacked(token0, token1))`                                   |
-| `keccak256(init_code)` | `0x0b77fb54a078d9399fa29cac94f5b35b9f11611b456ab507c7f46754712b642b`            |
+| `keccak256(init_code)` | `0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f`            |
 
 - `token0` must be strictly less than `token1` by sort order.
 
@@ -29,7 +29,7 @@ Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswa
 ### Solidity
 
 ```solidity
-address factory = 0xe2f197885abe8ec7c866cFf76605FD06d4576218;
+address factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
 address token0 = 0xCAFE000000000000000000000000000000000000; // change me!
 address token1 = 0xF00D000000000000000000000000000000000000; // change me!
 
@@ -37,7 +37,7 @@ address pair = address(uint(keccak256(abi.encodePacked(
   hex'ff',
   factory,
   keccak256(abi.encodePacked(token0, token1)),
-  hex'0b77fb54a078d9399fa29cac94f5b35b9f11611b456ab507c7f46754712b642b'
+  hex'96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f'
 ))));
 ```
 

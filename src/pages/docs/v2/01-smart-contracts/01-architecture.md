@@ -2,10 +2,6 @@
 title: Architecture
 ---
 
-<Info>
-Uniswap V2 is currently in a testnet release, and is slated to be deployed to mainnet in 2020 Q2, pending a successful formal verification. Looking for <Link to='/docs/v1/'>V1 documentation</Link>?
-</Info>
-
 Uniswap V2 is a binary smart contract system. [Core](#core) contracts provide fundamental safety guarantees for all parties interacting with Uniswap. [Periphery](#periphery) contracts interact with one or more core contracts but are not themselves part of the core.
 
 # Core
@@ -38,13 +34,13 @@ The periphery is a constellation of smart contracts designed to support domain-s
 
 <Link to='/docs/v2/smart-contracts/library'>Reference documentation</Link>
 
-The library is a contract that can be inherited from to provide access to a variety of convenience functions for fetching data and pricing.
+The library provides a variety of convenience functions for fetching data and pricing.
 
 ## Router
 
 <Link to='/docs/v2/smart-contracts/router'>Reference documentation</Link>
 
-The router, which inherits the library, fully supports all the basic requirements of a front-end offering trading and liquidity management functionality. Notably, it natively supports multi-pair trades (e.g. x to y to z), treats ETH as a first-class citizen, and offers meta-transactions for removing liquidity.
+The router, which uses the library, fully supports all the basic requirements of a front-end offering trading and liquidity management functionality. Notably, it natively supports multi-pair trades (e.g. x to y to z), treats ETH as a first-class citizen, and offers meta-transactions for removing liquidity.
 
 # Design Decisions
 
