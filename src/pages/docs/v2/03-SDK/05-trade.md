@@ -80,3 +80,40 @@ slippage: Percent
 The slippapge incurred by the trade.
 
 - Strictly > .30%.
+
+# Static methods
+
+These static methods provide ways to construct ideal trades from lists of pairs.
+Note these methods do not perform any aggregation across routes, as routes are linear. 
+It's possible that a better price can be had by combining multiple trades across
+different routes.
+
+## bestTradeExactIn
+
+Given a list of pairs, a fixed amount in, and token amount out, 
+this method returns the best `maxNumResults` trades that swap 
+an input token amount to an output token, making at most `maxHops` hops.
+The returned trades are sorted by output amount, in decreasing order, and
+all share the given input amount.  
+
+```typescript
+Trade.bestTradeExactIn(
+    pairs: Pair[],
+    amountIn: TokenAmount,
+    tokenOut: Token,
+    { maxNumResults = 3, maxHops = 3 }: BestTradeOptions = {}): Trade[]
+```
+
+## bestTradeExactOut
+
+Similar to the above method, but targets a fixed output token amount.
+The returned trades are sorted by input amount, in increasing order, 
+and all share the given output amount.
+
+```typescript
+Trade.bestTradeExactOut(
+    pairs: Pair[],
+    tokenIn: Token,
+    amountOut: TokenAmount,
+    { maxNumResults = 3, maxHops = 3 }: BestTradeOptions = {}): Trade[]
+```
