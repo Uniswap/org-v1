@@ -78,7 +78,7 @@ export default ({ children, className }) => {
             {tokens.map((line, i) => {
               return line[0].empty ? (
                 i === tokens.length - 1 ? null : (
-                  <br />
+                  <br key={i} />
                 )
               ) : (
                 <div key={i} {...getLineProps({ line, key: i })}>

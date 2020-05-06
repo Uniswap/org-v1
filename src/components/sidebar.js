@@ -17,8 +17,6 @@ const StyledSidebar = styled.div`
   top: 4rem;
   align-self: flex-start;
   color: ${({ theme }) => theme.colors.link};
-  /* padding: 0rem 4rem 0 0; */
-  /* min-width: 300px; */
   @media (max-width: 960px) {
     top: 0px;
     position: relative;
@@ -111,7 +109,6 @@ const VersionLabel = styled.span`
 
 const VersionToggle = styled(Link)`
   border-radius: 14px;
-
   margin-bottom: 1rem;
   border: 1px solid ${({ theme }) => theme.colors.pink3};
   color: ${({ theme }) => theme.invertedTextColor};

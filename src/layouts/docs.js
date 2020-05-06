@@ -258,13 +258,17 @@ const Docs = props => {
               )
             })}
         </StyledMDX>
-        {data.allMdx.edges
-          .filter(({ node }) => {
-            return node.fields.slug === props.path
-          })
-          .map(({ node }) => {
-            return <TableofContents path={props.path} key={node.id} headings={node.headings} />
-          })}
+        {data ? (
+          data.allMdx.edges
+            .filter(({ node }) => {
+              return node.fields.slug === props.path
+            })
+            .map(({ node }) => {
+              return <TableofContents path={props.path} key={node.id} headings={node.headings} />
+            })
+        ) : (
+          <div style={{ width: '160px', height: '60px' }}></div>
+        )}
       </StyledDocs>
     </Layout>
   )

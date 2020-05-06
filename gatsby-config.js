@@ -93,7 +93,7 @@ module.exports = {
   siteMetadata: {
     title: `Uniswap`,
     description: `Automated liquidity protocol on Ethereum`,
-    author: `@UniswapExchange`,
+    author: `@UniswapProtocol`,
     menulinks: menu,
     cardlinks: cards,
     siteUrl: `https://uniswap.org`,
