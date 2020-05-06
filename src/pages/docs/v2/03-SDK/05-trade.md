@@ -77,7 +77,7 @@ What the new mid price would be if the trade were to execute.
 slippage: Percent
 ```
 
-The slippapge incurred by the trade.
+The slippage incurred by the trade.
 
 - Strictly > .30%.
 
