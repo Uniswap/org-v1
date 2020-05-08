@@ -83,7 +83,7 @@ A few notes:
 
 There are some nuances that are good to be aware of when using Uniswap V2 as an oracle, especially where manipulation resistance is concerned. The <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> elaborates on some of them. Additional oracle-focused developer guides and documentation will be released soon.
 
-In the meantime, check out our [example implementation](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/ExampleOracleSimple.sol) of a 24 hr TWAP Oracle built on Uniswap V2!
+In the meantime, check out our [example implementation](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol) of a 24 hr TWAP Oracle built on Uniswap V2!
 
 ## Flash Swaps
 
@@ -134,9 +134,9 @@ If the Uniswap pool does not receive enough DAI to cover the ETH withdrawn, then
 
 - [A router contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Router01.sol) that performs the safety checks needed for safely swapping, adding, and removing liquidity.
 - [A migrator contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Migrator.sol) that can remove liquidity from Uniswap V1 and deposit it into Uniswap V2 in a single transaction.
-- [A library contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Library.sol) that can be used in the creation of other helper contracts.
-- [An example oracle contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/ExampleOracle.sol) that creates a simple TWAP from Uniswap V2 cumulative prices.
-- [An example flash swap contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/ExampleFlashSwap.sol) that withdraws ERC20 tokens, executes arbitrary code, and then pays for them.
+- [A library contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2Library.sol) that can be used in the creation of other helper contracts.
+- [An example oracle contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol) that creates a simple TWAP from Uniswap V2 cumulative prices.
+- [An example flash swap contract](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleFlashSwap.sol) that withdraws ERC20 tokens, executes arbitrary code, and then pays for them.
 
 _Periphery contracts described as "Example" are for illustrative purposes only and should not be used in actual transactions._
 
