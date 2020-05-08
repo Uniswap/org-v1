@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
@@ -107,6 +108,14 @@ const StyledSectionFlex = styled.div`
 `
 
 const IndexPage = props => {
+  if (process.env.NODE_ENV === 'production') {
+    ReactGA.initialize('UA-128182339-3')
+  } else {
+    ReactGA.initialize('test', { testMode: true })
+  }
+
+  ReactGA.pageview(window.location.pathname + window.location.search)
+
   const data = useStaticQuery(graphql`
     {
       site {
