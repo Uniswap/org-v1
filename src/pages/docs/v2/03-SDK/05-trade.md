@@ -81,6 +81,29 @@ The slippage incurred by the trade.
 
 - Strictly > .30%.
 
+# Methods
+
+In the context of the following two methods, slippage refers to the percent difference between
+the actual price and the trade `executionPrice`.
+
+## minimumAmountOut (since 2.0.4)
+
+```typescript
+minimumAmountOut(slippageTolerance: Percent): TokenAmount
+```
+
+Returns the minimum amount of the output token that should be received from a trade, given the slippage tolerance.
+Useful when constructing a transaction for a trade of type `EXACT_IN`.
+
+## maximumAmountIn (since 2.0.4)
+
+```typescript
+maximumAmountIn(slippageTolerance: Percent): TokenAmount
+```
+
+Returns the maximum amount of the input token that should be spent on the trade, given the slippage tolerance. 
+Useful when constructing a transaction for a trade of type `EXACT_OUT`.
+
 # Static methods
 
 These static methods provide ways to construct ideal trades from lists of pairs.
