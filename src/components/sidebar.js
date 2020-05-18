@@ -291,7 +291,7 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
-        <VersionToggle to={v2Toggle ? '/docs/v2' : '/docs/v1'}>
+        <VersionToggle to={v2Toggle ? '/docs/v1' : '/docs/v2'}>
           <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
           <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
         </VersionToggle>
