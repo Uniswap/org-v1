@@ -18,25 +18,25 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const StyledDocs = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 280px 1fr 160px;
   justify-content: space-between;
   margin-top: 2rem;
-
+  padding: 0 2rem;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
 
   @media (max-width: 960px) {
     flex-direction: column;
+    grid-template-columns: 1fr;
     margin-top: 0rem;
   }
 `
 
 const StyledMDX = styled.div`
   min-width: 550px;
-  max-width: 700px;
+  max-width: 768px;
   padding: 0;
   margin-bottom: 3rem;
   a {

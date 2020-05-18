@@ -16,6 +16,7 @@ const StyledDocs = styled.div`
   justify-content: center;
   align-items: flex-start;
   justify-content: space-between;
+  padding: 0 2rem;
 `
 
 const StyledMDX = styled.div`

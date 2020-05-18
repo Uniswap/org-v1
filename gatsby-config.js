@@ -65,13 +65,13 @@ const cards = [
   {
     slug: 'http://uniswap.exchange',
     cardTitle: 'Swap any token on Ethereum',
-    cardDesc: 'Use uniswap.exchange or integrate into your project using the SDK.',
+    cardDesc: 'Use the Uniswap interface or integrate into your project using the SDK.',
     cardButton: 'Swap now'
   },
   {
     slug: '/docs',
     cardTitle: 'Add liquidity for any project',
-    cardDesc: 'Add liquidity or create an exchange for any ERC20 token.',
+    cardDesc: 'Add liquidity or create an pool for any ERC20 token.',
     cardButton: 'Integrate your project'
   },
   {
@@ -179,7 +179,7 @@ module.exports = {
             options: {
               title: 'Uniswap', // website title
               separator: '|', // default
-              author: '@UniswapExchange',
+              author: '@UniswapProtocol',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: '#FF3093', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default

@@ -1,12 +1,10 @@
 ---
-title: 'Uniswap V2'
+title: 'Uniswap V2 Overview'
 date: '2020-03-23'
 author: 'Hayden Adams'
 featuredImage: ./featured.jpg
 previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much much more. Launching April 2020.'
 ---
-
-# Overview
 
 **Uniswap V1** was the proof-of-concept for a new type of decentralized marketplace.
 
