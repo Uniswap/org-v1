@@ -54,7 +54,7 @@ Two parameters, exactField and exactAmount can be used to set specific token amo
 
 ### Example Usage
 
-`https://v1.uniswap.exchange/swap?exactField=input?exactAmount=10?inputCurrency=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
+`https://v1.uniswap.exchange/swap?exactField=input&exactAmount=10&inputCurrency=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
 
 ## Send Page
 
@@ -82,7 +82,7 @@ The Pool page is made up of 3 subroutes: `add-liquidity`, `remove-liquidity`, `c
 
 ### Example Usage
 
-`https://v1.uniswap.exchange/add-liquidity?ethAmount=2.34?token=0x42456D7084eacF4083f1140d3229471bbA2949A8?tokenAmount=300`
+`https://v1.uniswap.exchange/add-liquidity?ethAmount=2.34&token=0x42456D7084eacF4083f1140d3229471bbA2949A8&tokenAmount=300`
 
 ## Remove Liquidity
 
@@ -111,4 +111,4 @@ Custom token routes can still be used in combination with URL paramters. URL par
 
 An example using custom token route and URL paramters.
 
-`https://v1.uniswap.exchange/swap/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942?exactField=input?exactAmount=10`
+`https://v1.uniswap.exchange/swap/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942?exactField=input&exactAmount=10`
