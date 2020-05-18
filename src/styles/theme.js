@@ -45,7 +45,7 @@ export const theme = darkMode => ({
   doveGray: darkMode ? '#C4C4C4' : '#737373',
 
   colors: {
-    blue1: darkMode ? '#DC6BE5' : '#D4E4FA',
+    blue1: darkMode ? '#FF007A' : '#D4E4FA',
     blue2: darkMode ? '#1966D2' : '#A9C8F5',
     blue3: darkMode ? '#165BBB' : '#7DACF0',
     blue4: darkMode ? '#2D47A6' : '#5190EB',
@@ -171,18 +171,17 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.75;
     max-width: 1440px;
     width: 100vw;
-    padding: 0 2rem;
     margin: 0px auto;
     font-weight: 300 !important;
     color: ${({ theme }) => theme.textColor};
 
     @media (max-width: 1024px) {
-        padding: 0 1.5rem;
+        /* padding: 0 1.5rem; */
 
     }
     
     @media (min-width: 1441px) {
-        padding: 0;
+        /* padding: 0; */
         overflow-x: visible;
     }
   }

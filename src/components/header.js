@@ -17,11 +17,11 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 2rem 0;
+  padding: 2rem;
   width: 100%;
   z-index: 3;
   @media (max-width: 960px) {
-    padding: 1.5rem 0px;
+    padding: 1.5rem 2rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
   }
 `

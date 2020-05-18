@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useRef } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
@@ -100,8 +100,8 @@ const StyledMobileMenu = styled.div`
 const VersionLabel = styled.span`
   padding: 0.01rem 0.5rem 0 0.5rem;
   border-radius: 12px;
-  background: ${({ theme, active }) => (active ? theme.colors.link : 'none')};
-  color: ${({ theme, active }) => (active ? theme.invertedTextColor : theme.colors.link)};
+  background: ${({ theme, toggled }) => (toggled ? theme.colors.link : 'none')};
+  color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.colors.link)};
 
   font-size: 0.825rem;
   font-weight: 400;
@@ -266,16 +266,15 @@ const SideBar = props => {
   `)
 
   const isDocs = props.parent === '/docs/'
-  const isV1 = useRef(isDocs && props.path.slice(0, 8) === '/docs/v1')
-  const isV2 = useRef(isDocs && props.path.slice(0, 8) === '/docs/v2')
 
-  const navData = isDocs ? (isV1.current ? data.topNavDocsV1 : data.topNavDocsV2) : data.topNavGuides
-  const listData = isDocs ? (isV1.current ? data.docsV1 : data.docsV2) : data.guides
+  const [v2Toggle, setV2Toggle] = useState(true)
+
+  const navData = isDocs ? (v2Toggle ? data.topNavDocsV2 : data.topNavDocsV1) : data.topNavGuides
+  const listData = isDocs ? (v2Toggle ? data.docsV2 : data.docsV1) : data.guides
 
   useLayoutEffect(() => {
-    isV1.current = isDocs && props.path.slice(0, 8) === '/docs/v1'
-    isV2.current = isDocs && props.path.slice(0, 8) === '/docs/v2'
-  })
+    isDocs && props.path.slice(0, 8) === '/docs/v2' ? setV2Toggle(true) : setV2Toggle(false)
+  }, [setV2Toggle])
 
   const matches = useMediaQuery('only screen and (max-width: 960px)')
   const [isMenuOpen, updateIsMenuOpen] = useState(true)
@@ -284,7 +283,7 @@ const SideBar = props => {
 
   return (
     <StyledSidebar>
-      <Search isDocs={isDocs} isV1={isV1.current} isV2={isV2.current} />
+      <Search isDocs={isDocs} isV1={!v2Toggle} isV2={v2Toggle} />
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -292,14 +291,14 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
-        <VersionToggle to={isV1.current ? '/docs/v2' : '/docs/v1'}>
-          <VersionLabel active={isV1.current}>V1</VersionLabel>
-          <VersionLabel active={isV2.current}>V2</VersionLabel>
+        <VersionToggle to={v2Toggle ? '/docs/v2' : '/docs/v1'}>
+          <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
+          <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
         </VersionToggle>
         <StyledLink
           isActive={atTopLevel}
           style={{ marginBottom: '.25rem', display: 'inline-block', padding: !atTopLevel && '0px' }}
-          to={`/docs/${isV1.current ? 'v1' : 'v2'}/`}
+          to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
         >
           Introduction
         </StyledLink>

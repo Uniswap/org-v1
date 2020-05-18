@@ -14,6 +14,7 @@ const PostsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding-bottom: 4rem;
+  padding: 2rem;
   margin-bottom: 4rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
 `
