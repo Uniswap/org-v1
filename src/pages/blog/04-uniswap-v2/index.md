@@ -6,8 +6,6 @@ featuredImage: ./featured.jpg
 previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much much more. Launching April 2020.'
 ---
 
-# Overview
-
 **Uniswap V1** was the proof-of-concept for a new type of decentralized marketplace.
 
 As a venue for pooled, automated liquidity provision on Ethereum, the Uniswap protocol (Uniswap) functions without upkeep, providing an unstoppable platform for ERC20 token conversion. **Uniswap V1 will continue to work for as long as Ethereum exists**, and so far, it has worked very nicely for a wide variety of use cases.

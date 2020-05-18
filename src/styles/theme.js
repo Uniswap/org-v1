@@ -172,7 +172,7 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 1440px;
     width: 100vw;
     margin: 0px auto;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     color: ${({ theme }) => theme.textColor};
 
     @media (max-width: 1024px) {
