@@ -57,7 +57,7 @@ const StyledNavTitle = styled(Link)`
   font-family: 'Inter', sans-serif;
   color: ${({ theme }) => theme.colors.link};
   margin-left: 0.35rem;
-  margin-top: 8px;
+  margin-top: 12px;
   z-index: 999;
   text-decoration: none;
   opacity: 0.4;
@@ -215,11 +215,7 @@ const Header = props => {
           }}
         >
           <StyledUni />
-          {/* <span
-            style={{ fontFamily: 'GT Super Ds Trial', margin: '0px !important', fontWeight: 'Lt', fontSize: '18px' }}
-          >
-            UNISWAP
-          </span> */}
+
           <StyledWordmark />
         </StyledHomeLink>
         {props.path && props.path !== '/' && props.path !== '' && (
