@@ -30,11 +30,12 @@ const StyledFooter = styled.footer`
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.link};
   position: relative;
+  padding: 0 2rem;
 
   @media (max-width: 960px) {
     margin-bottom: 2rem;
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 0rem 1rem;
   }
 `
 

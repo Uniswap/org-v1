@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledTitle = styled.h1`
-  font-size: 96px;
+  font-size: 64px;
   margin: 2rem 0 4rem 0;
   pointer-events: none;
   white-space: wrap;
