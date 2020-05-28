@@ -8,6 +8,8 @@ Wow new docs
 
 ## Start with a sample project
 
+Denis is able to edit.
+
 <div style={{display: 'flex', flexDirection: 'row', justifyContent:'flex-start'}}>
 <InlineCard title="Trading from an interface" description="Trade tokens, add liquidity and create pools." to="docs/v2/token-swaps/guides/trading-from-an-interface/" />
 <InlineCard title="Trading from an interface" description="Trade tokens, add liquidity and create pools." to="docs/v2/token-swaps/guides/trading-from-an-interface/" />
