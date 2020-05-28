@@ -48,13 +48,11 @@ const StyledList = styled.ul`
   font-weight: 400;
 `
 
-const StyledLisItem = styled.li`
-  margin-left: 0.75rem;
+const StyledListItem = styled.li`
+  margin-bottom: 0rem;
 `
 
-const StyledInset = styled.div`
-  /* margin-left: 0.75rem; */
-`
+const StyledInset = styled.div``
 
 const StyledSectionTitle = styled.p`
   margin: 0;
@@ -64,19 +62,21 @@ const StyledSectionTitle = styled.p`
   align-items: center;
   flex-wrap: no-wrap;
   font-weight: 400;
-  cursor: pointer;
+  font-size: 24px;
 `
 
 const StyledCategoryTitle = styled.p`
   margin: 0;
   margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: no-wrap;
   font-weight: 400;
   user-select: none;
-  font-size: 14px;
+  font-size: 10px;
+  opacity: 0.8;
   text-transform: uppercase;
 `
 
@@ -147,7 +147,9 @@ const CollapsibleList = ({ node, listData, path, parent, topLevel, atTopLevel })
       return t.toUpperCase()
     })
   return (
-    <StyledSection trigger={title} transitionTime={250} open={open} onClick={() => setOpen(!open)} easing="ease">
+    // <StyledSection trigger={title} transitionTime={250} open={open} onClick={() => setOpen(!open)} easing="ease">
+
+    <StyledSection trigger={title} transitionTime={250} open={open} easing="ease">
       {atTopLevel && (
         <StyledLink
           style={{ marginBottom: '.75rem', display: 'inline-block', padding: '0px' }}
@@ -159,8 +161,9 @@ const CollapsibleList = ({ node, listData, path, parent, topLevel, atTopLevel })
       )}
       {open && (
         <StyledInset>
+          {/* <StyledSectionTitle>{title}</StyledSectionTitle> */}
           <StyledLink
-            style={{ marginBottom: '.75rem', display: 'inline-block', padding: '0px' }}
+            style={{ marginBottom: '0rem', display: 'inline-block', padding: '0px' }}
             to={`${topLevel}/${section}`}
             isActive={path.split('/')[4] === ''}
           >
@@ -186,11 +189,11 @@ function List(props) {
       const title = node.frontmatter.title || node.fields.slug
       const activePath = node.fields.slug
       return (
-        <StyledLisItem key={node.id}>
+        <StyledListItem key={node.id}>
           <StyledLink onClick={() => scrollTo('#docs-header')} isActive={props.path === activePath} to={activePath}>
             {title}
           </StyledLink>
-        </StyledLisItem>
+        </StyledListItem>
       )
     })
   return <StyledList>{items}</StyledList>
@@ -280,7 +283,7 @@ const SideBar = props => {
 
   return (
     <StyledSidebar>
-      <Search isV1={!v2Toggle} isV2={v2Toggle} />
+      {/* <Search isV1={!v2Toggle} isV2={v2Toggle} /> */}
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -308,7 +311,7 @@ const SideBar = props => {
             style={{ marginBottom: '1rem', display: 'inline-block', padding: !atTopLevel && '0px', fontSize: '14px' }}
             to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
           >
-            {'<- Back to overview'}
+            {'<- Home'}
           </StyledLink>
         )}
         {navData.edges
@@ -328,6 +331,19 @@ const SideBar = props => {
             />
           ))}
       </ListWrapper>
+      {atTopLevel && (
+        <StyledList style={{ marginTop: '1rem' }}>
+          <StyledListItem>
+            <StyledLink to={'/'}>API Reference</StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink to={'/'}>Architecture</StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink to={'/'}>Whitepaper</StyledLink>
+          </StyledListItem>
+        </StyledList>
+      )}
     </StyledSidebar>
   )
 }

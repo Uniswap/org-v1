@@ -86,9 +86,10 @@ const StyledLink = styled(Link)`
 
 const StyledPageTitle = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   position: relative;
-  align-items: center;
+  /* align-items: center; */
 
   h1 {
     font-size: 2.5rem !important;
@@ -147,6 +148,7 @@ const Docs = props => {
               slug
               subDir
               rawSlug
+              parentDir
             }
           }
           next {
@@ -199,6 +201,19 @@ const Docs = props => {
         <SideBar parent={'/docs/'} {...props} />
         <StyledMDX>
           <StyledPageTitle>
+            {data.allMdx.edges
+              .filter(({ node }) => {
+                return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
+              })
+              .map(({ node }) => {
+                const title = node.fields.parentDir
+                  .replace(/\d+-/g, '')
+                  .replace(/-/g, ' ')
+                  .replace(/(^|\s)\S/g, function(t) {
+                    return t.toUpperCase()
+                  })
+                return <p key={node.id}>{title}</p>
+              })}
             <h1>{props.pageContext.frontmatter.title}</h1>
           </StyledPageTitle>
           {props.children}

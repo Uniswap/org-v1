@@ -207,12 +207,12 @@ export const GlobalStyle = createGlobalStyle`
     /* margin: 2.5em 0 1rem 0 !important; */
     /* font-family: "Times Ten LT Std"; */
     font-size: 1.5rem;
-    font-weight: 300;
+    font-weight: 400;
     font-family: "Inferi Book";
   }
 
   h3 {
-    font-weight: 300;
+    font-weight: 400;
     font-family: "Inferi Book";
   }
 
