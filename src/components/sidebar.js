@@ -5,7 +5,6 @@ import scrollTo from 'gatsby-plugin-smoothscroll'
 import { useMediaQuery } from '@react-hook/media-query'
 
 import Search from '../components/search'
-
 import { useStaticQuery, graphql } from 'gatsby'
 import DropdownArrow from './dropdownArrow.js'
 
@@ -29,7 +28,7 @@ const StyledSidebar = styled.div`
 const StyledSection = styled.div`
   height: ${({ open }) => (open ? 'inital' : '2rem')};
   overflow: hidden;
-  cursor: pointer;
+  /* cursor: pointer; */
 `
 
 // eslint-disable-next-line no-unused-vars
@@ -53,6 +52,10 @@ const StyledLisItem = styled.li`
   margin-left: 0.75rem;
 `
 
+const StyledInset = styled.div`
+  /* margin-left: 0.75rem; */
+`
+
 const StyledSectionTitle = styled.p`
   margin: 0;
   margin-bottom: 0.5rem;
@@ -61,6 +64,20 @@ const StyledSectionTitle = styled.p`
   align-items: center;
   flex-wrap: no-wrap;
   font-weight: 400;
+  cursor: pointer;
+`
+
+const StyledCategoryTitle = styled.p`
+  margin: 0;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: no-wrap;
+  font-weight: 400;
+  user-select: none;
+  font-size: 14px;
+  text-transform: uppercase;
 `
 
 const StyledArrow = styled.span`
@@ -85,17 +102,6 @@ const StyledMobileMenu = styled.div`
     margin: 1rem 0 0 0;
   }
 `
-
-// const StaticLink = styled.a`
-//   margin-top: 2rem;
-//   opacity: 0.8;
-//   max-width: 190px;
-//   font-size: 0.825rem;
-//   line-height: 125%;
-//   @media (max-width: 960px) {
-//     display: none;
-//   }
-// `
 
 const VersionLabel = styled.span`
   padding: 0.01rem 0.5rem 0 0.5rem;
@@ -125,12 +131,14 @@ const ListWrapper = styled.span`
   }
 `
 
-const CollapsibleList = ({ node, listData, path, parent }) => {
-  const [open, setOpen] = useState(false)
+const CollapsibleList = ({ node, listData, path, parent, topLevel, atTopLevel }) => {
+  const [open, setOpen] = useState(true)
 
   useLayoutEffect(() => {
     setOpen(node.name.replace(/\d+-/g, '') === path.split('/')[3])
   }, [node.name, path, setOpen])
+
+  const section = node.name.replace(/\d+-/g, '')
 
   const title = node.name
     .replace(/\d+-/g, '')
@@ -138,11 +146,31 @@ const CollapsibleList = ({ node, listData, path, parent }) => {
     .replace(/(^|\s)\S/g, function(t) {
       return t.toUpperCase()
     })
-
   return (
     <StyledSection trigger={title} transitionTime={250} open={open} onClick={() => setOpen(!open)} easing="ease">
-      <StyledSectionTitle>{title}</StyledSectionTitle>
-      {open && <List data={listData} parent={node.name} slug={parent} path={path} />}
+      {atTopLevel && (
+        <StyledLink
+          style={{ marginBottom: '.75rem', display: 'inline-block', padding: '0px' }}
+          to={`${topLevel}/${section}`}
+          isActive={path.split('/')[4] === ''}
+        >
+          {title}
+        </StyledLink>
+      )}
+      {open && (
+        <StyledInset>
+          <StyledLink
+            style={{ marginBottom: '.75rem', display: 'inline-block', padding: '0px' }}
+            to={`${topLevel}/${section}`}
+            isActive={path.split('/')[4] === ''}
+          >
+            Overview
+          </StyledLink>
+          <StyledCategoryTitle>Guides</StyledCategoryTitle>
+          <List data={listData} parent={node.name} slug={parent} path={path} />
+          <StyledCategoryTitle>Reference</StyledCategoryTitle>
+        </StyledInset>
+      )}
     </StyledSection>
   )
 }
@@ -150,7 +178,9 @@ const CollapsibleList = ({ node, listData, path, parent }) => {
 function List(props) {
   const items = props.data.edges
     .filter(({ node }) => {
-      return node.fields.slug.split('/')[3] === props.parent.replace(/\d+-/g, '')
+      return (
+        node.fields.slug.split('/')[3] === props.parent.replace(/\d+-/g, '') && node.fields.slug.split('/')[4] !== ''
+      )
     })
     .map(({ node }) => {
       const title = node.frontmatter.title || node.fields.slug
@@ -183,18 +213,6 @@ const SideBar = props => {
       }
       topNavDocsV2: allDirectory(
         filter: { sourceInstanceName: { eq: "docs" }, relativeDirectory: { eq: "v2" } }
-        sort: { fields: name, order: ASC }
-      ) {
-        edges {
-          node {
-            name
-            id
-            relativePath
-          }
-        }
-      }
-      topNavGuides: allDirectory(
-        filter: { sourceInstanceName: { eq: "guides" }, relativeDirectory: { eq: "" } }
         sort: { fields: name, order: ASC }
       ) {
         edges {
@@ -243,37 +261,16 @@ const SideBar = props => {
           }
         }
       }
-      guides: allMdx(
-        filter: { fileAbsolutePath: { regex: "/guides/" } }
-        sort: { order: ASC, fields: fileAbsolutePath }
-      ) {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-            }
-            fields {
-              slug
-              subDir
-              topLevelDir
-            }
-            fileAbsolutePath
-          }
-        }
-      }
     }
   `)
 
-  const isDocs = props.parent === '/docs/'
-
   const [v2Toggle, setV2Toggle] = useState(true)
 
-  const navData = isDocs ? (v2Toggle ? data.topNavDocsV2 : data.topNavDocsV1) : data.topNavGuides
-  const listData = isDocs ? (v2Toggle ? data.docsV2 : data.docsV1) : data.guides
+  const navData = v2Toggle ? data.topNavDocsV2 : data.topNavDocsV1
+  const listData = v2Toggle ? data.docsV2 : data.docsV1
 
   useLayoutEffect(() => {
-    isDocs && props.path.slice(0, 8) === '/docs/v2' ? setV2Toggle(true) : setV2Toggle(false)
+    props.path.slice(0, 8) === '/docs/v2' ? setV2Toggle(true) : setV2Toggle(false)
   }, [setV2Toggle])
 
   const matches = useMediaQuery('only screen and (max-width: 960px)')
@@ -283,7 +280,7 @@ const SideBar = props => {
 
   return (
     <StyledSidebar>
-      <Search isDocs={isDocs} isV1={!v2Toggle} isV2={v2Toggle} />
+      <Search isV1={!v2Toggle} isV2={v2Toggle} />
       <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
         <StyledArrow open={isMenuOpen}>
@@ -291,20 +288,45 @@ const SideBar = props => {
         </StyledArrow>
       </StyledMobileMenu>
       <ListWrapper open={isMenuOpen && matches}>
-        <VersionToggle to={v2Toggle ? '/docs/v1' : '/docs/v2'}>
-          <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
-          <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
-        </VersionToggle>
-        <StyledLink
-          isActive={atTopLevel}
-          style={{ marginBottom: '.25rem', display: 'inline-block', padding: !atTopLevel && '0px' }}
-          to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
-        >
-          Introduction
-        </StyledLink>
-        {navData.edges.map(({ node }) => (
-          <CollapsibleList key={node.id} node={node} listData={listData} path={props.path} parent={props.parent} />
-        ))}
+        {atTopLevel && (
+          <VersionToggle to={v2Toggle ? '/docs/v1' : '/docs/v2'}>
+            <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
+            <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
+          </VersionToggle>
+        )}
+        {atTopLevel ? (
+          <StyledLink
+            isActive={atTopLevel}
+            style={{ marginBottom: '.25rem', display: 'inline-block', padding: !atTopLevel && '0px' }}
+            to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
+          >
+            Introduction
+          </StyledLink>
+        ) : (
+          <StyledLink
+            isActive={atTopLevel}
+            style={{ marginBottom: '1rem', display: 'inline-block', padding: !atTopLevel && '0px', fontSize: '14px' }}
+            to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
+          >
+            {'<- Back to overview'}
+          </StyledLink>
+        )}
+        {navData.edges
+          .filter(({ node }) => {
+            console.log(props.path.split('/')[3], node.name.replace(/\d+-/g, ''))
+            return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+          })
+          .map(({ node }) => (
+            <CollapsibleList
+              key={node.id}
+              node={node}
+              listData={listData}
+              path={props.path}
+              parent={props.parent}
+              atTopLevel={atTopLevel}
+              topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
+            />
+          ))}
       </ListWrapper>
     </StyledSidebar>
   )

@@ -112,13 +112,6 @@ const IndexPage = props => {
       site {
         siteMetadata {
           siteUrl
-          cardlinks {
-            cardButton
-            cardDesc
-            cardTitle
-            type
-            slug
-          }
         }
       }
       unicornImage: file(relativePath: { eq: "uni_image.jpg" }) {

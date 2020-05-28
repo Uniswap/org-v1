@@ -61,41 +61,12 @@ const menu = [
   }
 ]
 
-const cards = [
-  {
-    slug: 'http://uniswap.exchange',
-    cardTitle: 'Swap any token on Ethereum',
-    cardDesc: 'Use the Uniswap interface or integrate into your project using the SDK.',
-    cardButton: 'Swap now'
-  },
-  {
-    slug: '/docs',
-    cardTitle: 'Add liquidity for any project',
-    cardDesc: 'Add liquidity or create an pool for any ERC20 token.',
-    cardButton: 'Integrate your project'
-  },
-  {
-    slug: '/docs',
-    cardTitle: 'Earn fees through passive market making',
-    cardDesc: 'Provide liquidity to earn 0.3% of all spread fees for adding market depth.',
-    cardButton: 'How pooling works'
-  },
-  {
-    slug: '/docs',
-    cardTitle: 'Build decentralized price feeds',
-    cardDesc: 'Perfect time-weighted average prices on chain, customizable to your risk profile.',
-    type: 'New',
-    cardButton: 'Read the SDK'
-  }
-]
-
 module.exports = {
   siteMetadata: {
     title: `Uniswap`,
     description: `Automated liquidity protocol on Ethereum`,
     author: `@UniswapProtocol`,
     menulinks: menu,
-    cardlinks: cards,
     siteUrl: `https://uniswap.org`,
     repository: `https://github.com/Uniswap/uniswap-site-v2`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
@@ -173,20 +144,20 @@ module.exports = {
           `gatsby-remark-embedder`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
-          `gatsby-remark-check-links`,
-          {
-            resolve: `gatsby-remark-twitter-cards`,
-            options: {
-              title: 'Uniswap', // website title
-              separator: '|', // default
-              author: '@UniswapProtocol',
-              background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
-              fontColor: '#FF3093', // defaults to white (#ffffff)
-              fontStyle: 'sans-serif', // default
-              titleFontSize: 124, // default
-              fontFile: require.resolve('./static/fonts/Inferi-Normal.ttf') // will override fontStyle - path to custom TTF font
-            }
-          },
+          // `gatsby-remark-check-links`,
+          // {
+          //   resolve: `gatsby-remark-twitter-cards`,
+          //   options: {
+          //     title: 'Uniswap', // website title
+          //     separator: '|', // default
+          //     author: '@UniswapProtocol',
+          //     background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
+          //     fontColor: '#FF3093', // defaults to white (#ffffff)
+          //     fontStyle: 'sans-serif', // default
+          //     titleFontSize: 124, // default
+          //     fontFile: require.resolve('./static/fonts/Inferi-Normal.ttf') // will override fontStyle - path to custom TTF font
+          //   }
+          // },
           `gatsby-remark-smartypants`,
           {
             resolve: `gatsby-remark-images`,
