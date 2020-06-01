@@ -6,7 +6,7 @@ import Info from './info'
 import Title from './title'
 import Code from './code'
 import InlineCode from './inlineCode'
-import InlineCard from '../inlineCArd'
+import InlineCard from '../inlineCard'
 
 const components = {
   Info,
