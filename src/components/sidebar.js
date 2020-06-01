@@ -316,7 +316,6 @@ const SideBar = props => {
         )}
         {navData.edges
           .filter(({ node }) => {
-            console.log(props.path.split('/')[3], node.name.replace(/\d+-/g, ''))
             return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
           })
           .map(({ node }) => (
