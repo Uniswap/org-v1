@@ -1,79 +1,62 @@
 ---
-title: Architecture
+title: Anatomy of a pool
 ---
 
-Uniswap V2 is a binary smart contract system. [Core](#core) contracts provide fundamental safety guarantees for all parties interacting with Uniswap. [Periphery](#periphery) contracts interact with one or more core contracts but are not themselves part of the core.
+So let’s assume that after adding 10,000 DAI and 100 ETH (total market value of \$20,000), the liquidity pool is now 100,000 DAI and 1,000 ETH in total. Because the amount supplied is equal to 10% of the total liquidity, the contract mints and sends the market maker “liquidity tokens” which entitle them to 10% of the liquidity available in the pool. These are not speculative tokens to be traded. They are merely an accounting or bookkeeping tool to keep track of how much the liquidity providers are owed. If others subsequently add/withdraw coins, new liquidity tokens are minted/burned such that the everyone’s relative percentage share of the liquidity pool remains the same.
 
-# Core
+**Now let’s assume the price trades on Coinbase from $100 to $150. The Uniswap contract should reflect this change as well after some arbitrage. Traders will add DAI and remove ETH until the new ratio is now 150:1.** What happens to the liquidity provider? The contract reflects something closer to 122,400 DAI and 817 ETH (to check these numbers are accurate, 122,400 \* 817 = 100,000,000 (our constant product) and 122,400 / 817 = 150, our new price). Withdrawing the 10% that we are entitled to would now yield 12,240 DAI and 81.7 ETH. The total market value here is $24,500. Roughly $500 worth of profit was missed out on as a result of the market making.
 
-[Source code](https://github.com/Uniswap/uniswap-v2-core)
+**Obviously no one wants to provide liquidity out of charitable means, and the revenue isn’t dependent on the ability to flip out of good trades (there is no flipping). Instead, 0.3% of all trade volume is distributed proportionally to all liquidity providers. By default, these fees are put back into the liquidity pool, but can be collected any any time. It’s difficult to know what the trade off is between revenues from fees and losses from directional movements without knowing the amount of in-between trades. The more chop and back and forth, the better.**
 
-The core consists of a singleton [factory](#factory) and many [pairs](#pairs), which the factory is responsible for creating and indexing. These contracts are quite minimal, even brutalist. The simple rationale for this is that contracts with a smaller surface area are easier to reason about, less bug-prone, and more functionally elegant. Perhaps the biggest upside of this design is that many desired properties of the system can be asserted directly in the code, leaving little room for error. One downside, however, is that core contracts are somewhat user-unfriendly. In fact, interacting directly with these contracts is not recommended for most use cases. Instead, a periphery contract should be used.
+When an Exchange contract is first created for a token, both the token and Ether pools are empty. The first person that deposits into the contract is the one that determines the ratio between the token and Ether. If they deposit a ratio that is different from what the current market rate is, then an arbitrage opportunity is available. When liquidity providers are adding to an established pool, they should add a proportional amount of token and Ether to the pool. If they don’t, the liquidity they added is at risk of being arbitraged as well.
 
-## Factory
+Lastly, special ERC20 tokens known as liquidity tokens are minted to the provider’s address in proportion to how much liquidity they contributed to the pool. The tokens are burned when the user wants to receive the liquidity they contributed plus the fees that we accumulated while their liquidity was locked.
 
-<Link to='/docs/v2/smart-contracts/factory'>Reference documentation</Link>
+The first liquidity provider to add liquidity to an exchange contract will initially set the exchange rate between ETH and the exchange contract’s associated ERC20 token. The liquidity provider does this by depositing what they believe to be an equivalent value between ETH and the exchange contract’s ERC20 token. If the value set by the liquidity provider is not consistent with the wider market, then arbitrage traders will bring the value between ETH and the ERC20 token to an exchange rate that the market deems correct. All subsequent liquidity providers thereafter will then deposit liquidity using the exchange rate at the time of their deposit.
 
-The factory holds the generic bytecode responsible for powering pairs. Its primary job is to create one and only one smart contract per unique token pair. It also contains logic to turn on the protocol charge.
+Uniswap also makes use of so called ‘liquidity tokens’, which are in themselves ERC20 compliant. These tokens can be thought of as being a representation of a liquidity provider’s contribution to an exchange contract.
 
-## Pairs
+Uniswap will mint liquidity tokens in order to track the relative proportion of total reserves that each liquidity provider has contributed. Liquidity providers are able to burn their liquidity tokens at a time of their choosing, so that they can withdraw their proportional share of ETH and ERC20 tokens from the exchange contract.
 
-<Link to='/docs/v2/smart-contracts/pair'>Reference documentation</Link>
-<br />
-<Link to='/docs/v2/smart-contracts/pair-erc-20'>Reference documentation (ERC-20)</Link>
+Liquidity providers can also choose to sell or transfer their liquidity tokens between accounts without having to remove liquidity from the exchange contract.
 
-Pairs have two primary purposes: serving as automated market makers and keeping track of pool token balances. They also expose data which can be used to build decentralized price oracles.
+## Why is my liquidity worth less than I put in?
 
-# Periphery
+To understand why the value of a liquidity provider’s stake can go down despite income from fees, we need to look a bit more closely at the formula used by Uniswap to govern trading. The formula really is very simple. If we neglect trading fees, we have the following:
 
-[Source code](https://github.com/Uniswap/uniswap-v2-periphery)
+- `eth_liquidity_pool * token_liquidity_pool = constant_product`
 
-The periphery is a constellation of smart contracts designed to support domain-specific interactions with the core. Because of Uniswap's permissionless nature, the contracts described below have no special privileges, and are in fact only a small subset of the universe of possible periphery-like contracts. However, they are useful examples of how to safely and efficiently interact with Uniswap V2.
+In other words, the number of tokens a trader receives for their ETH and vice versa is calculated such that after the trade, the product of the two liquidity pools is the same as it was before the trade. The consequence of this formula is that for trades which are very small in value compared to the size of the liquidity pool we have:
 
-## Library
+- `eth_price = token_liquidity_pool / eth_liquidity_pool`
 
-<Link to='/docs/v2/smart-contracts/library'>Reference documentation</Link>
+Combining these two equations, we can work out the size of each liquidity pool at any given price, assuming constant total liquidity:
 
-The library provides a variety of convenience functions for fetching data and pricing.
+- `eth_liquidity_pool = sqrt(constant_product / eth_price)`
+- `token_liquidity_pool = sqrt(constant_product * eth_price)`
 
-## Router
+So let’s look at the impact of a price change on a liquidity provider. To keep things simple, let’s imagine our liquidity provider supplies 1 ETH and 100 DAI to the Uniswap DAI exchange, giving them 1% of a liquidity pool which contains 100 ETH and 10,000 DAI. This implies a price of 1 ETH = 100 DAI. Still neglecting fees, let’s imagine that after some trading, the price has changed; 1 ETH is now worth 120 DAI. What is the new value of the liquidity provider’s stake? Plugging the numbers into the formulae above, we have:
 
-<Link to='/docs/v2/smart-contracts/router'>Reference documentation</Link>
+- `eth_liquidity_pool = 91.2871`
+- `dai_liquidity_pool = 10954.4511`
 
-The router, which uses the library, fully supports all the basic requirements of a front-end offering trading and liquidity management functionality. Notably, it natively supports multi-pair trades (e.g. x to y to z), treats ETH as a first-class citizen, and offers meta-transactions for removing liquidity.
+"Since our liquidity provider has 1% of the liquidity tokens, this means they can now claim 0.9129 ETH and 109.54 DAI from the liquidity pool. But since DAI is approximately equivalent to USD, we might prefer to convert the entire amount into DAI to understand the overall impact of the price change. At the current price then, our liquidity is worth a total of 219.09 DAI. What if the liquidity provider had just held onto their original 1 ETH and 100 DAI? Well, now we can easily see that, at the new price, the total value would be 220 DAI. So our liquidity provider lost out by 0.91 DAI by providing liquidity to Uniswap instead of just holding onto their initial ETH and DAI."
 
-# Design Decisions
+"Of course, if the price were to return to the same value as when the liquidity provider added their liquidity, this loss would disappear. **For this reason, we can call it an **impermanent loss**.** Using the equations above, we can derive a formula for the size of the impermanent loss in terms of the price ratio between when liquidity was supplied and now. We get the following:"
 
-The following sections describe some of the notable design decisions made in Uniswap V2. These are safe to skip unless you're interested in gaining a deep technical understanding of how V2 works under the hood, or writing smart contract integrations!
+- "`impermanent_loss = 2 * sqrt(price_ratio) / (1+price_ratio) — 1`"
 
-## Sending Tokens
+- "Which we can plot out to get a general sense of the scale of the impermanent loss at different price ratios:"
+  ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fdnazarov%2FOscQ_nmzbA.png?alt=media&token=4dff866e-a740-4121-9da4-9c9105baa404)
 
-Typically, smart contracts which need tokens to perform some functionality require would-be interactors to first make an approval on the token contract, then call a function that in turn calls transferFrom on the token contract. This is _not_ how V2 pairs accept tokens. Instead, pairs check their token balances at the _end_ of every interaction. Then, at the beginning of the _next_ interaction, current balances are differenced against the stored values to determine the amount of tokens that were sent by the current interactor. See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> for a justification of why this is the case, but the takeaway is that **tokens must be transferred to the pair before calling any token-requiring method** (the one exception to this rule is <Link to='/docs/v2/guides/flash-swaps'>Flash Swaps</Link>).
+- "Or to put it another way:"
 
-## Pricing
+  - "a 1.25x price change results in a 0.6% loss relative to HODL"
+  - "a 1.50x price change results in a 2.0% loss relative to HODL"
+  - "a 1.75x price change results in a 3.8% loss relative to HODL"
+  - "a 2x price change results in a 5.7% loss relative to HODL"
+  - "a 3x price change results in a 13.4% loss relative to HODL"
+  - "a 4x price change results in a 20.0% loss relative to HODL"
+  - "a 5x price change results in a 25.5% loss relative to HODL"
 
-In Uniswap V1, trades are always executed at the "best possible" price, calcuated at execution time. Somewhat confusingly, this calculation is actually accomplished with one of two different formulas, depending on whether the trade specifies an exact _input_ or _output_ amount. Functionally, the difference between these two functions is fairly miniscule, but the very existence of a difference increases conceptual complexity. Initial attempts to support both functions in V2 proved inelegant, and the decision was made to **not provide any pricing functions in the core**. Instead, pairs directly check whether the invariant was satisfied (accounting for fees) after every trade. This means that rather than relying on a pricing fuction to _also_ enforce the invariant, V2 pairs simply and transparently ensure their own safety, a nice separation of concerns. One downstream benefit is that V2 pairs will more naturally support other flavors of trades which may emerge, (e.g. trading to a specific price at execution time).
-
-A similar pattern exists for adding liquidity. V2 pairs **do not return tokens added at an incorrect price**. As an example, if the ratio of x:y in a pair is 10:2 (i.e. the price is 5), and someone naively adds liquidity at 5:2 (a price of 2.5), the contract will simply accept all tokens (changing the price to 3.75 and opening up the market to arbitrage), but only issue pool tokens entitling the sender to the amount of assets sent at the proper ratio, in this case 5:1. To avoid donating to arbitrageurs, it is imperative to add liquidity at the current price.
-
-So, in Uniswap V2, trades and liquidity provisions must be priced in the periphery. The good news is that the library provides a variety of functions designed to make this quite simple, and the router does this by default.
-
-## Oracles
-
-See <Link to='/docs/v2/guides/oracles'>Oracles</Link>.
-
-## WETH
-
-Unlike Uniswap V1 exchanges, V2 pairs do not support ETH directly, so ETH⇄ERC-20 pairs must be emulated with WETH. The motivation behind this choice was to remove ETH-specific code in the core, resulting in a leaner codebase. End users can be kept fully ignorant of this implementation detail, however, by simply wrapping/unwrapping ETH in the periphery.
-
-The router fully supports interacting with any WETH pair via ETH.
-
-## Minimum Liquidity
-
-To ameliorate rounding errors and increase the theoretical minimum tick size for liquidity provision, pairs burn the first <Link to='/docs/v2/smart-contracts/pair#minimum_liquidity'>MINIMUM_LIQUIDITY</Link> pool tokens. For the vast majority of pairs, this will represent a trivial value. The burning happens automatically during the first liquidity provision, after which point the <Link to='/docs/v2/smart-contracts/pair-erc-20#totalsupply'>totalSupply</Link> is forevermore bounded.
-
-## Protocol Charge Calculation
-
-In the future, it is possible that a protocol-wide charge of 0.05% per trade will take effect. This represents ⅙th (16.6̅%) of the 0.30% fee. The fee is in effect if <Link to='/docs/v2/smart-contracts/factory/#feeto'>feeTo</Link> is not `address(0)` (`0x0000000000000000000000000000000000000000`), indicating that feeTo is the recipient of the charge.
-
-Rather than calculating this charge on swaps, which would significantly increase gas costs for all users, the charge is instead calculated when liquidity is added or removed. See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> for more details.
+- "N.B. The loss is the same whichever direction the price change occurs in (i.e. a doubling in price results in the same loss as a halving)."
