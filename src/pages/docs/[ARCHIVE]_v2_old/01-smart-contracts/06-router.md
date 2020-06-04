@@ -377,7 +377,9 @@ See <Link to='/docs/v2/smart-contracts/library#getamountout'>getAmountOut</Link>
 
 ## getAmountIn
 
-See <Link to='/docs/v2/smart-contracts/library#getamountin'>getAmountIn</Link>.
+**The implementation of this method in the deployed router is incorrect.** Please do not use this method until a fix is released.
+
+See <Link to='/docs/v2/smart-contracts/library#getamountin'>getAmountIn</Link> for what the function should (but does not) do.
 
 ## getAmountsOut
 
