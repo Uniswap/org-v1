@@ -15,6 +15,7 @@ import { StyledThemeProvider } from '../styles/themeManager'
 
 import '../styles/layout.css'
 import '../styles/prism-github.css'
+import '../styles/fonts.css'
 
 const Layout = ({ path, children, nofooter }) => {
   const data = useStaticQuery(graphql`
