@@ -5,12 +5,13 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const StyledMiniCards = styled(Link)`
-  padding: 1rem;
+  padding: 1.25rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
   background-color: ${({ theme }) => theme.invertedTextColor};
   height: 300px;
   max-width: 450px;
   min-width: 260px;
+  width: 260px;
   margin-right: 1rem;
   /* border: 1px solid rgba(255, 0, 122, 0.4); */
   box-shadow: ${({ theme }) => theme.shadows.huge};
@@ -50,7 +51,7 @@ const StyledMiniCardHeader = styled.p`
   line-height: 130%;
   margin-top: 0px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-family: 'Inter Roman';
 `
 

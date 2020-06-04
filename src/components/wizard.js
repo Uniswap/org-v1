@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import InlineCard from './inlineCard'
@@ -36,13 +36,68 @@ const links = [
         description: 'A high level technical overview of the Uniswap protocol'
       }
     ]
+  },
+  {
+    name: 'Traders',
+    sublinks: [
+      {
+        title: 'Anatomy of a Uniswap Trade',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      },
+      {
+        title: 'Using the interface',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      }
+    ]
+  },
+  {
+    name: 'Liquidity',
+    sublinks: [
+      {
+        title: 'Anatomy of a Uniswap Pool',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      },
+      {
+        title: 'Pooling liquidity on the interface',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      },
+      {
+        title: 'Understanding Liquidity Returns',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      }
+    ]
+  },
+  {
+    name: 'Tokens',
+    sublinks: [
+      {
+        title: 'Core Concepts',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      },
+      {
+        title: 'Creating a pool for your token',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      },
+      {
+        title: 'Introduction to Token lists',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      }
+    ]
   }
 ]
 
 const StyledWizard = styled.div`
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
   width: 100%;
-  background-color: ${({ theme }) => theme.cardBG};
+  border: 1px solid ${({ theme }) => theme.colors.grey2};
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -101,22 +156,24 @@ const CardWrapper = styled.div`
 `
 
 const Wizard = props => {
+  const [currentCategory, setCurrentCategory] = useState('Developers')
+
   return (
     <StyledWizard>
       <Nav>
-        <NavTabs isActive={true}>
+        <NavTabs onClick={() => setCurrentCategory('Developers')} isActive={currentCategory === 'Developers'}>
           <Code size="16" style={{ marginRight: '8px' }} />
           Developers
         </NavTabs>
-        <NavTabs>
+        <NavTabs onClick={() => setCurrentCategory('Traders')} isActive={currentCategory === 'Traders'}>
           <TrendingUp size="16" style={{ marginRight: '8px' }} />
           Traders
         </NavTabs>
-        <NavTabs>
+        <NavTabs onClick={() => setCurrentCategory('Liquidity')} isActive={currentCategory === 'Liquidity'}>
           <Repeat size="16" style={{ marginRight: '8px' }} />
           Liquidity Providers
         </NavTabs>
-        <NavTabs>
+        <NavTabs onClick={() => setCurrentCategory('Tokens')} isActive={currentCategory === 'Tokens'}>
           <Circle size="16" style={{ marginRight: '8px' }} />
           Token Projects
         </NavTabs>
@@ -124,7 +181,7 @@ const Wizard = props => {
       <CardWrapper>
         {links
           .filter(category => {
-            return category.name === 'Developers'
+            return category.name === currentCategory
           })
           .map(category => {
             return category.sublinks.map((sublink, i) => {

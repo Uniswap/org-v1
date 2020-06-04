@@ -7,10 +7,10 @@ import styled from 'styled-components'
 const StyledBoxLink = styled(Link)`
   padding: 1rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
-  background-color: ${({ theme }) => theme.invertedTextColor};
+  border: 1px solid ${({ theme }) => theme.colors.grey2};
   width: 100%;
-  height: 96px;
   margin-right: 1rem;
+  margin-bottom: 1rem;
   /* border: 1px solid rgba(255, 0, 122, 0.4); */
   box-shadow: ${({ theme }) => theme.shadows.huge};
 
@@ -18,7 +18,7 @@ const StyledBoxLink = styled(Link)`
   overflow: hidden;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   transition: transform 0.3s ease;
   will-change: transform;
@@ -46,11 +46,12 @@ const StyledCardBG = styled(Img)`
 `
 
 const StyledMiniCardHeader = styled.p`
-  line-height: 130%;
+  /* line-height: 130%; */
   margin-top: 0px;
   font-weight: 500;
   font-size: 1.25rem;
   font-family: 'Inter Roman';
+  margin: 0;
 `
 
 const StyledMiniCardDesc = styled.p`
@@ -62,8 +63,8 @@ const StyledMiniCardDesc = styled.p`
 
 const StyledArrow = styled.span`
   position: absolute;
-  left: 1.5rem;
-  bottom: 1rem;
+  right: 1.5rem;
+  top: 1rem;
 `
 
 const InlineCard = props => {
@@ -71,7 +72,7 @@ const InlineCard = props => {
     <StyledBoxLink {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
       {props.image && <StyledCardBG fluid={props.image} />}
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
-      <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
+      {props.desc && <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>}
       <StyledArrow>{'->'}</StyledArrow>
     </StyledBoxLink>
   )
