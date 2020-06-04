@@ -2,6 +2,8 @@
 title: 'Trading: Contract'
 ---
 
+<Github link="">View the Token swap in a smart contract example.</Github>
+
 We are ready to swap tokens using Uniswap right now!
 
 In our first testing, ETH is sent to the exchange contract, which will be automatically converted into ERC20 tokens. The Javascript source file is here.

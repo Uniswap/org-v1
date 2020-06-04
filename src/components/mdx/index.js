@@ -3,16 +3,22 @@ import { MDXProvider } from '@mdx-js/react'
 import { Link } from 'gatsby'
 
 import Info from './info'
+import Github from './github'
 import Title from './title'
 import Code from './code'
 import InlineCode from './inlineCode'
 import InlineCard from '../inlineCard'
+import InlineBoxLink from '../inlineBoxLink'
+import Wizard from '../wizard'
 
 const components = {
   Info,
+  Github,
   Link,
   Title,
   InlineCard,
+  InlineBoxLink,
+  Wizard,
   code: Code,
   inlineCode: InlineCode
 }

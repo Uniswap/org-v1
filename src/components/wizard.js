@@ -1,28 +1,55 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
+import InlineCard from './inlineCard'
+import { Code, TrendingUp, Repeat, Circle } from 'react-feather'
 
 import styled from 'styled-components'
 
-const StyledMiniCards = styled(Link)`
-  padding: 1.5rem;
+const links = [
+  {
+    name: 'Developers',
+    sublinks: [
+      {
+        title: 'Core Concepts',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol.'
+      },
+      {
+        title: 'Implement a token swap',
+        link: '/docs/v2/core-concepts',
+        description: 'A step by step guide to swapping tokens in your smart contracts.'
+      },
+      {
+        title: 'Uniswap SDK',
+        link: '/docs/v2/core-concepts',
+        description: 'Check out the full SDK for all of Uniswaps capabilities.'
+      },
+      {
+        title: 'Introduction to Flash Swaps',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol'
+      },
+      {
+        title: 'Introduction to Oracles',
+        link: '/docs/v2/core-concepts',
+        description: 'A high level technical overview of the Uniswap protocol'
+      }
+    ]
+  }
+]
+
+const StyledWizard = styled.div`
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
-  width: 200px;
-  height: 220px;
-  max-width: 450px;
-  margin-right: 1rem;
-  border: 1px solid rgba(255, 0, 122, 0.4);
+  width: 100%;
+  background-color: ${({ theme }) => theme.cardBG};
   border-radius: 20px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease;
-  will-change: transform;
-  :hover {
-    transform: scale(1.03);
-  }
+  margin-bottom: 1.5rem;
 
   @media (max-width: 960px) {
     width: 100%;
@@ -32,46 +59,81 @@ const StyledMiniCards = styled(Link)`
     /* height: 200px; */
   }
 `
-const StyledCardBG = styled(Img)`
-  width: 80px;
-  height: 220px;
-  position: absolute !important;
-  top: 0px;
-  right: 0px;
-  background-size: auto;
-  background-position: center;
-  z-index: -1;
+
+const Nav = styled.ul`
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 1.5rem 1.5rem 0 1.5rem;
 `
 
-const StyledMiniCardHeader = styled.p`
-  line-height: 130%;
-  margin-top: 0px;
+const NavTabs = styled.li`
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  margin-right: 0.5rem;
   font-weight: 500;
-  font-size: 1.25rem;
-  font-family: 'Inter Roman';
+  background-color: ${({ theme, isActive }) => (isActive ? theme.colors.pink1 : '')};
+  color: ${({ theme, isActive }) => (isActive ? theme.invertedTextColor : theme.colors.pink1)};
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  cursor: pointer;
+  :hover {
+    transform: scale(1.03);
+  }
 `
 
-const StyledMiniCardDesc = styled.p`
-  font-size: 1rem;
-  line-height: 140%;
-  font-weight: 400;
-  padding-bottom: 1.5rem;
-`
-
-const StyledArrow = styled.span`
-  position: absolute;
-  left: 1.5rem;
-  bottom: 1rem;
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: no-wrap;
+  padding: 1.5rem;
+  overflow-x: scroll;
+  overflow-y: visible;
+  *::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 const Wizard = props => {
   return (
-    <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
-      {props.image && <StyledCardBG fluid={props.image} />}
-      <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
-      <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
-      <StyledArrow>{'->'}</StyledArrow>
-    </StyledMiniCards>
+    <StyledWizard>
+      <Nav>
+        <NavTabs isActive={true}>
+          <Code size="16" style={{ marginRight: '8px' }} />
+          Developers
+        </NavTabs>
+        <NavTabs>
+          <TrendingUp size="16" style={{ marginRight: '8px' }} />
+          Traders
+        </NavTabs>
+        <NavTabs>
+          <Repeat size="16" style={{ marginRight: '8px' }} />
+          Liquidity Providers
+        </NavTabs>
+        <NavTabs>
+          <Circle size="16" style={{ marginRight: '8px' }} />
+          Token Projects
+        </NavTabs>
+      </Nav>
+      <CardWrapper>
+        {links
+          .filter(category => {
+            return category.name === 'Developers'
+          })
+          .map(category => {
+            return category.sublinks.map((sublink, i) => {
+              console.log(sublink.title, i)
+              return <InlineCard key={i} title={sublink.title} desc={sublink.description} to={sublink.link} />
+            })
+          })}
+      </CardWrapper>
+    </StyledWizard>
   )
 }
 

@@ -102,7 +102,7 @@ const Header = props => {
         </StyledHomeLink>
         {props.path && props.path !== '/' && props.path !== '' && (
           <>
-            <StyledNavTitle to={'/' + props.path.split('/')[1]}>Docs /</StyledNavTitle>
+            <StyledNavTitle to={'/' + props.path.split('/')[1]}>Uniswap Docs /</StyledNavTitle>
             <StyledNavTitle to={'/docs/' + props.path.split('/')[2]}>
               {props.path.split('/')[2].replace(/(^|\s)\S/g, function(t) {
                 return t.toUpperCase()

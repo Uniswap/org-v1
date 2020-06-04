@@ -168,7 +168,7 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel
       {atTopLevel ? (
         <StyledSectionTitle onClick={() => setOpen(!open)}>{title}</StyledSectionTitle>
       ) : (
-        <StyledSectionTitle style={{ fontWeight: '800' }}>{title}</StyledSectionTitle>
+        <StyledSectionTitle style={{ fontSize: '18px' }}>{title}</StyledSectionTitle>
       )}
       {open && (
         <StyledInset style={{ marginLeft: atTopLevel ? '.75rem' : '0rem' }}>

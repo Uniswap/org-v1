@@ -4,13 +4,12 @@ import { Link } from 'gatsby'
 
 import styled from 'styled-components'
 
-const StyledMiniCards = styled(Link)`
+const StyledBoxLink = styled(Link)`
   padding: 1rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
   background-color: ${({ theme }) => theme.invertedTextColor};
-  height: 300px;
-  max-width: 450px;
-  min-width: 260px;
+  width: 100%;
+  height: 96px;
   margin-right: 1rem;
   /* border: 1px solid rgba(255, 0, 122, 0.4); */
   box-shadow: ${({ theme }) => theme.shadows.huge};
@@ -49,8 +48,8 @@ const StyledCardBG = styled(Img)`
 const StyledMiniCardHeader = styled.p`
   line-height: 130%;
   margin-top: 0px;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.25rem;
   font-family: 'Inter Roman';
 `
 
@@ -63,19 +62,18 @@ const StyledMiniCardDesc = styled.p`
 
 const StyledArrow = styled.span`
   position: absolute;
-  /* left: 1.5rem; */
-  font-size: 0.825rem;
+  left: 1.5rem;
   bottom: 1rem;
 `
 
 const InlineCard = props => {
   return (
-    <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
+    <StyledBoxLink {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
       {props.image && <StyledCardBG fluid={props.image} />}
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
       <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
-      <StyledArrow>{'Learn more ->'}</StyledArrow>
-    </StyledMiniCards>
+      <StyledArrow>{'->'}</StyledArrow>
+    </StyledBoxLink>
   )
 }
 
