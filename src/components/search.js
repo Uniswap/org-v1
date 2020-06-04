@@ -8,6 +8,9 @@ import CloseIcon from '../images/x.inline.svg'
 const SearchWrapper = styled.div`
   position: relative;
   width: 100%;
+  form {
+    margin-bottom: 0px;
+  }
   @media (max-width: 960px) {
     display: none;
     form {

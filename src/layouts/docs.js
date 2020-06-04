@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '.'
-import SideBar from '../components/sidebar'
+import SidebarV2 from '../components/sidebarV2'
+import SidebarV1 from '../components/sidebarV1'
 import SEO from '../components/seo'
 import TableofContents from '../components/toc'
 import Github from '../images/githubicon.inline.svg'
@@ -21,11 +22,13 @@ const StyledDocs = styled.div`
   display: grid;
   grid-template-columns: 280px 1fr 160px;
   justify-content: space-between;
-  margin-top: 2rem;
   padding: 0 2rem;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
+  padding-top: 2rem;
+
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  border-top: 1px solid ${({ theme }) => theme.colors.grey2};
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -172,8 +175,10 @@ const Docs = props => {
     }
   `)
 
+  const isV1 = props.path === '/docs/v1/'
+
   return (
-    <Layout path={props.location.pathname}>
+    <Layout path={props.location.pathname} isDocs={true}>
       <SEO title={props.pageContext.frontmatter.title} path={props.location.pathname} />
       <GlobalStyle />
       {data.allMdx.edges
@@ -198,22 +203,9 @@ const Docs = props => {
           )
         })}
       <StyledDocs id="docs-header">
-        <SideBar parent={'/docs/'} {...props} />
+        {isV1 ? <SidebarV1 parent={'/docs/'} {...props} /> : <SidebarV2 parent={'/docs/'} {...props} />}
         <StyledMDX>
           <StyledPageTitle>
-            {data.allMdx.edges
-              .filter(({ node }) => {
-                return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
-              })
-              .map(({ node }) => {
-                const title = node.fields.parentDir
-                  .replace(/\d+-/g, '')
-                  .replace(/-/g, ' ')
-                  .replace(/(^|\s)\S/g, function(t) {
-                    return t.toUpperCase()
-                  })
-                return <p key={node.id}>{title}</p>
-              })}
             <h1>{props.pageContext.frontmatter.title}</h1>
           </StyledPageTitle>
           {props.children}

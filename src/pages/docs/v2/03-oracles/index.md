@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Introduction to Oracles
 ---
 
 Uniswap V2 enables building highly decentralized and manipulation-resistant on-chain price feeds.

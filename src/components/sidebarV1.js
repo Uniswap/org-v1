@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import { useMediaQuery } from '@react-hook/media-query'
 
-import Search from '../components/search'
+import Search from './search'
 import { useStaticQuery, graphql } from 'gatsby'
 import DropdownArrow from './dropdownArrow.js'
 

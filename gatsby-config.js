@@ -95,13 +95,6 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `guides`,
-        path: `${__dirname}/src/pages/guides/`
-      }
-    },
-    {
       resolve: `gatsby-plugin-page-creator`,
       options: {
         path: `${__dirname}/src/pages`
@@ -137,8 +130,7 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
           docs: require.resolve(`./src/layouts/docs`),
-          blog: require.resolve(`./src/layouts/blogPost`),
-          guides: require.resolve(`./src/layouts/guides`)
+          blog: require.resolve(`./src/layouts/blogPost`)
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-embedder`,

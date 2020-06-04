@@ -10,6 +10,7 @@ const StyledHeadingListElement = styled.li`
   margin-left: ${({ depth }) => depth && depth / 2 + 'rem'};
   margin-bottom: 0px;
   margin-top: 0.125rem;
+
   margin-bottom: 0.125rem;
 `
 
@@ -47,11 +48,11 @@ const StyledTOC = styled.ul`
   position: -webkit-sticky;
   position: sticky;
   align-self: flex-start;
-  top: 8rem;
+  top: 3rem;
   min-width: 160px;
   max-height: 70vh;
   font-size: 0.75rem;
-  margin: 0 2rem;
+  margin: 0 2rem 0 0;
   opacity: 0.6;
   transition: opacity 0.3s ease;
   list-style: none;

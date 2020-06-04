@@ -11,3 +11,4 @@ node_modules/
 .now
 .nvmrc
 yarn-error.log
+.vercel
