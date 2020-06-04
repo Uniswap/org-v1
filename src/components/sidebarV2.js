@@ -165,7 +165,11 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel
     // )}
 
     <StyledSection trigger={title} transitionTime={250} open={open} easing="ease">
-      {atTopLevel && <StyledSectionTitle onClick={() => setOpen(!open)}>{title}</StyledSectionTitle>}
+      {atTopLevel ? (
+        <StyledSectionTitle onClick={() => setOpen(!open)}>{title}</StyledSectionTitle>
+      ) : (
+        <StyledSectionTitle style={{ fontWeight: '800' }}>{title}</StyledSectionTitle>
+      )}
       {open && (
         <StyledInset style={{ marginLeft: atTopLevel ? '.75rem' : '0rem' }}>
           <StyledLink
@@ -176,8 +180,12 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel
             Overview
           </StyledLink>
           <List data={listData} parent={node.name} slug={parent} path={path} />
-          {referenceData && <StyledCategoryTitle>Related</StyledCategoryTitle>}
-          <ReferenceList data={referenceData} parent={node.name} slug={parent} path={path} />
+          {!atTopLevel && (
+            <>
+              {referenceData && <StyledCategoryTitle>Related</StyledCategoryTitle>}
+              <ReferenceList data={referenceData} parent={node.name} slug={parent} path={path} />
+            </>
+          )}
         </StyledInset>
       )}
     </StyledSection>
@@ -375,13 +383,13 @@ const SideBar = props => {
       {atTopLevel && (
         <StyledList style={{ marginTop: '1rem' }}>
           <StyledListItem>
-            <StyledLink to={'/docs/v2/SDK'}>SDK Docs</StyledLink>
+            <StyledLink to={'/docs/v2/SDK'}>SDK</StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink to={'/docs/v2/API'}>API</StyledLink>
           </StyledListItem>
           <StyledListItem>
             <StyledLink to={'/docs/v2/smart-contracts'}>Smart Contracts</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to={'/docs/v2/API'}>API Docs</StyledLink>
           </StyledListItem>
           <StyledListItem>
             <StyledLink to={'/'}>Whitepaper</StyledLink>

@@ -4,15 +4,9 @@ title: Uniswap Documentation
 
 Uniswap is an on-chain marketplace for swapping ERC-20 tokens built on Ethereum.
 
-It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for fast, efficient exchange.
-
-Under the hood, Uniswap is a protocol-powered token exchange marketplace, operated by a community of participants using smart contracts running autonomously on Ethereum.
+It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for fast, efficient exchange. Under the hood, Uniswap is a protocol-powered token exchange marketplace, operated by a community of participants using smart contracts running autonomously on Ethereum.
 
 Uniswap doesn't have external dependencies and doesn't rely on central operators.
-
-This portal is meant to introduce end-users to using Uniswap, developers to building on it, and liquidity providers to make markets.
-
-The portal also aims to explain how Uniswap works practically and how it is implemented.
 
 ## Quickstart
 
