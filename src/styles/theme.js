@@ -109,37 +109,6 @@ export const theme = darkMode => ({
 })
 
 export const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Inter Roman';
-    src:  url("/fonts/Inter-roman.otf") format('opentype');
-    font-weight: 100 600;
-  }
-  @supports (font-variation-settings: normal) {
-    html { font-family: 'Inter var', sans-serif; }
-  }
-  @font-face {
-    font-family: "Inferi Book";
-    src: url("/fonts/Inferi-Book.otf");
-  }
-  @font-face {
-    font-family: "Inferi Light";
-    src: url("/fonts/Inferi-Light.otf");
-  }
-  @font-face {
-    font-family: "Inferi Normal";
-    src: url("/fonts/Inferi-Normal.otf");
-  }
-/* 
-  @font-face {
-    font-family: "Principal Trial Semibold";
-    src: url("/fonts/Principal-Trial-Semibold.otf");
-  }
-  @font-face {
-    font-family: "Principal Trial Black";
-    src: url("/fonts/Principal-Trial-Black.otf");
-  } */
-
-
   *, *:before, *:after {
     box-sizing: inherit;
   }

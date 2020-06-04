@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Inter Roman';
+    src: url("/fonts/Inter-roman.otf") format('opentype');
+    font-weight: normal
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
+}
+
+@font-face {
+    font-family: "Inferi Book";
+    src: url("/fonts/Inferi-Book.otf");
+}
+
+@font-face {
+    font-family: "Inferi Light";
+    src: url("/fonts/Inferi-Light.otf");
+}
+
+@font-face {
+    font-family: "Inferi Normal";
+    src: url("/fonts/Inferi-Normal.otf");
+}
