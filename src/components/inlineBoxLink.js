@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 
 import styled from 'styled-components'
@@ -12,7 +12,7 @@ const StyledBoxLink = styled(Link)`
   margin-right: 1rem;
   margin-bottom: 1rem;
   /* border: 1px solid rgba(255, 0, 122, 0.4); */
-  box-shadow: ${({ theme }) => theme.shadows.huge};
+  /* box-shadow: ${({ theme }) => theme.shadows.huge}; */
 
   border-radius: 12px;
   overflow: hidden;
@@ -23,7 +23,7 @@ const StyledBoxLink = styled(Link)`
   transition: transform 0.3s ease;
   will-change: transform;
   :hover {
-    transform: scale(1.03);
+    transform: scale(1.01);
   }
 
   @media (max-width: 960px) {
@@ -34,7 +34,7 @@ const StyledBoxLink = styled(Link)`
     /* height: 200px; */
   }
 `
-const StyledCardBG = styled(Img)`
+const StyledCardBG = styled.img`
   width: 80px;
   height: 220px;
   position: absolute !important;
@@ -70,10 +70,11 @@ const StyledArrow = styled.span`
 const InlineCard = props => {
   return (
     <StyledBoxLink {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
-      {props.image && <StyledCardBG fluid={props.image} />}
+      {props.image && <StyledCardBG src={props.image} />}
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
       {props.desc && <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>}
       <StyledArrow>{'->'}</StyledArrow>
+      {props.children}
     </StyledBoxLink>
   )
 }

@@ -3,6 +3,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { Link } from 'gatsby'
 
 import Info from './info'
+import Iframe from './iframe'
 import Github from './github'
 import Title from './title'
 import Code from './code'
@@ -15,6 +16,7 @@ const components = {
   Info,
   Github,
   Link,
+  Iframe,
   Title,
   InlineCard,
   InlineBoxLink,

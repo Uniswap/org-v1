@@ -1,5 +1,0 @@
----
-title: Manipulation resistance
----
-
-TODO

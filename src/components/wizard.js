@@ -11,24 +11,22 @@ const links = [
     name: 'Developers',
     sublinks: [
       {
-        title: 'Core Concepts',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.'
-      },
-      {
         title: 'Implement a token swap',
         link: '/docs/v2/core-concepts',
-        description: 'A step by step guide to swapping tokens in your smart contracts.'
+        description: 'A step by step guide to swapping tokens in your smart contracts.',
+        tags: ['tutorial', 'swaps']
       },
       {
         title: 'Uniswap SDK',
         link: '/docs/v2/core-concepts',
-        description: 'Check out the full SDK for all of Uniswaps capabilities.'
+        description: 'Check out the full SDK for all of Uniswaps capabilities.',
+        tags: ['reference']
       },
       {
         title: 'Introduction to Flash Swaps',
         link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol'
+        description: 'A high level technical overview of the Uniswap protocol',
+        tags: ['guide']
       },
       {
         title: 'Introduction to Oracles',
@@ -186,7 +184,15 @@ const Wizard = props => {
           .map(category => {
             return category.sublinks.map((sublink, i) => {
               console.log(sublink.title, i)
-              return <InlineCard key={i} title={sublink.title} desc={sublink.description} to={sublink.link} />
+              return (
+                <InlineCard
+                  key={i}
+                  title={sublink.title}
+                  desc={sublink.description}
+                  to={sublink.link}
+                  tags={sublink.tags}
+                />
+              )
             })
           })}
       </CardWrapper>

@@ -48,11 +48,20 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
-  margin-bottom: 0rem;
+  margin-bottom: 0.25rem;
+  transition: transform 0.3s ease;
+  will-change: transform;
+  list-style: none;
+  :hover {
+    a {
+      text-decoration: underline;
+    }
+  }
 `
 
 const StyledInset = styled.div`
   /* margin-left: 0.75rem; */
+  border-left: 1px solid ${({ theme }) => theme.colors.grey2};
   margin-bottom: 0.75rem;
 `
 
@@ -66,7 +75,11 @@ const StyledSectionTitle = styled.p`
   font-weight: ${({ open }) => (open ? 500 : 400)};
   font-size: 16px;
 
-  cursor: pointer;
+  :hover {
+    a {
+      text-decoration: underline;
+    }
+  }
 `
 
 const StyledCategoryTitle = styled.p`
@@ -77,7 +90,7 @@ const StyledCategoryTitle = styled.p`
   flex-direction: row;
   align-items: center;
   flex-wrap: no-wrap;
-  font-weight: 400;
+  font-weight: 500;
   user-select: none;
   font-size: 10px;
   opacity: 0.8;
@@ -166,27 +179,35 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel
 
     <StyledSection trigger={title} transitionTime={250} open={open} easing="ease">
       {atTopLevel ? (
-        <StyledSectionTitle onClick={() => setOpen(!open)}>{title}</StyledSectionTitle>
+        <StyledSectionTitle onClick={() => setOpen(!open)} style={{ cursor: 'pointer' }}>
+          {title}
+          <div style={{ marginLeft: '6px', opacity: '0.2', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+            <DropdownArrow />
+          </div>
+        </StyledSectionTitle>
       ) : (
-        <StyledSectionTitle style={{ fontSize: '18px' }}>{title}</StyledSectionTitle>
+        <StyledSectionTitle style={{ fontSize: '16px' }}>{title}</StyledSectionTitle>
       )}
       {open && (
-        <StyledInset style={{ marginLeft: atTopLevel ? '.75rem' : '0rem' }}>
-          <StyledLink
-            style={{ marginBottom: '0rem', display: 'inline-block', padding: '0px' }}
-            to={`/${topLevel}/${section}`}
-            isActive={path.split('/')[4] === ''}
-          >
-            Overview
-          </StyledLink>
-          <List data={listData} parent={node.name} slug={parent} path={path} />
-          {!atTopLevel && (
+        <>
+          <StyledInset style={{ paddingLeft: '.5rem' }}>
+            <StyledListItem>
+              <StyledLink
+                style={{ marginBottom: '0rem', display: 'inline-block', padding: '0px' }}
+                to={`/${topLevel}/${section}`}
+                isActive={path.split('/')[4] === ''}
+              >
+                Overview
+              </StyledLink>
+            </StyledListItem>
+            <List data={listData} parent={node.name} slug={parent} path={path} />
+          </StyledInset>
+          {!atTopLevel && referenceData && (
             <>
-              {referenceData && <StyledCategoryTitle>Related</StyledCategoryTitle>}
               <ReferenceList data={referenceData} parent={node.name} slug={parent} path={path} />
             </>
           )}
-        </StyledInset>
+        </>
       )}
     </StyledSection>
   )
@@ -213,7 +234,13 @@ function ReferenceList(props) {
         </StyledListItem>
       )
     })
-  return <StyledList>{items}</StyledList>
+
+  return (
+    <>
+      {items.length > 0 && <StyledCategoryTitle>Related</StyledCategoryTitle>}
+      <StyledList>{items}</StyledList>
+    </>
+  )
 }
 
 function List(props) {
@@ -363,7 +390,9 @@ const SideBar = props => {
           })
           .map(({ node }) => {
             const hideRender =
-              (node.name.split('-')[1] === 'SDK' && atTopLevel) || (node.name.split('-')[1] === 'smart' && atTopLevel)
+              (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
+              (node.name.split('-')[1] === 'smart' && atTopLevel) ||
+              (node.name === 'images' && atTopLevel)
             return (
               !hideRender && (
                 <CollapsibleList

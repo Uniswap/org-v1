@@ -13,7 +13,7 @@ const StyledMiniCards = styled(Link)`
   min-width: 260px;
   width: 260px;
   margin-right: 1rem;
-  /* border: 1px solid rgba(255, 0, 122, 0.4); */
+  border: 1px solid ${({ theme }) => theme.colors.grey2};
   box-shadow: ${({ theme }) => theme.shadows.huge};
 
   border-radius: 12px;
@@ -47,6 +47,49 @@ const StyledCardBG = styled(Img)`
   z-index: -1;
 `
 
+const TagWrapper = styled.ul`
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 1.5rem 0 0 0;
+`
+
+const handleTagType = (tag, theme) => {
+  console.log(theme)
+  switch (tag) {
+    case 'guide':
+      return theme.colors.blue1
+    case 'tutorial':
+      return theme.colors.pink1
+    case 'reference':
+      return theme.colors.green1
+    default:
+      return theme.colors.pink1
+  }
+}
+
+const Tag = styled.li`
+  list-style: none;
+  margin: 0;
+  padding: 0.15rem 0.5rem;
+  margin-right: 0.5rem;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  background-color: ${({ theme, tag }) => handleTagType(tag, theme)};
+  color: ${({ theme }) => theme.invertedTextColor};
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  cursor: pointer;
+  :hover {
+    transform: scale(1.03);
+  }
+`
+
 const StyledMiniCardHeader = styled.p`
   line-height: 130%;
   margin-top: 0px;
@@ -64,18 +107,31 @@ const StyledMiniCardDesc = styled.p`
 
 const StyledArrow = styled.span`
   position: absolute;
-  /* left: 1.5rem; */
+  right: 1.5rem;
   font-size: 0.825rem;
   bottom: 1rem;
 `
 
 const InlineCard = props => {
+  const Tags = props.tags
+    ? props.tags.map((tag, i) => {
+        return (
+          <Tag tag={tag} key={i}>
+            {tag}
+          </Tag>
+        )
+      })
+    : ''
+
   return (
     <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
       {props.image && <StyledCardBG fluid={props.image} />}
-      <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
-      <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
-      <StyledArrow>{'Learn more ->'}</StyledArrow>
+      <span>
+        <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
+        <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
+      </span>
+      {props.tags && <TagWrapper>{Tags}</TagWrapper>}
+      <StyledArrow>{'->'}</StyledArrow>
     </StyledMiniCards>
   )
 }

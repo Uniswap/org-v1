@@ -137,7 +137,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     font-family: "Inter Roman", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    line-height: 1.75;
+    line-height: 1.55;
     max-width: 1440px;
     width: 100vw;
     margin: 0px auto;

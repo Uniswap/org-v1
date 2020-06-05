@@ -3,28 +3,38 @@ title: Core concepts
 subtitle: Learn about the core functionality of the uniswap protocol. Token Swaps.
 ---
 
-Token swaps are a simple way to exchange one ERC-20 token for another.
+## How Uniswap works
 
-For end-users, swapping is intuitive: pick an input token, an output token, an input amount, and execute a market-price swap with one click.
+Uniswap's core functionality enables users to swap between any ERC-20 tokens on Ethereum.
 
-[Trading via Interface](/trading-via-interface/) guides users looking to swap tokens in a Uniswap interface.
+[Token swaps](/token-swaps)
 
-Beneath the surface, token swaps are fulfilled by a system of smart contracts used by marketplace of participants.
+Uniswap uses a novel mechanism called a **liquidity pool** to enable exchange between two tokens.
 
-[Anatomy of a Swap](/docs/v2/token-swaps/guides/anatomy-of-a-swap/) describes the lifecycle of an exchange between two tokens and illustrates the mechanisms and agents in play.
+[Liquidity pools](/liquidity-pools)
 
-Swaps can also be executed between programs, enabled by developers writing code that interacts directly with the Uniswap smart contracts.
+In practice, a liquidity pool is an instance of a Uniswap smart contract template that enforces certain rules about the balance of the two tokens being deposited in the contract.
 
-[Trading via Contract](https://www.notion.so/Trading-Contract-3cf098e5dabd4f8a905d783585cb8258) guides developers looking to integrate swaps into their projects.
+These rules, known as an **automated market maker formula**, enable Uniswap to always quote a price to an end-user and provide liquidity, as well as incentivize arbitrageurs to keep prices on Uniswap in line with broader markets.
 
-Unlike traditional exchanges, Uniswap does not use an order book to represent liquidity or determine prices. Uniswap uses an automated market maker mechanism to provide instant feedback on exchange rates and slippage.
+[Anatomy of a pool](/liquidity-pools)
 
-[Determining prices](https://www.notion.so/Determining-prices-576d5169a6b34448aa240b1bb670928e) explains how the constant product formula affects prices and how the mechanism behaves under different market conditions.
+Because a liquidity pool is just a smart contract, anyone using Ethereum can register a liquidity pool between any two tokens using the Uniswap factory contract.
 
-[Flash swaps](https://www.notion.so/flash-swaps-ff298fea281241ddb500104cdd21d46c) are a new feature in uniswap that removes upfront capital requirements for multi-step transactions, enabling powerful new exchange strategies.
+There are no listing fees and no permission necessary to add a token to Uniswap.
 
-<div style={{display: 'flex', flexDirection: 'row', justifyContent:'flex-start'}}>
-<InlineCard title="Trading from an interface" description="Trade tokens, add liquidity and create pools." to="docs/v2/token-swaps/guides/trading-from-an-interface/" />
-<InlineCard title="Trading from an interface" description="Trade tokens, add liquidity and create pools." to="docs/v2/token-swaps/guides/trading-from-an-interface/" />
-<InlineCard title="Trading from an interface" description="Trade tokens, add liquidity and create pools." to="docs/v2/token-swaps/guides/trading-from-an-interface/" />
-</div>
+[Creating a pool](/liquidity-pools)
+
+Uniswap democratizes participation in market making for liquidity providers. While traditional exchanges typically present high barriers to entry and technical complexity for market makers, Uniswap makes market making as simple as sending tokens to a liquidity pools.
+
+[Providing liquidity](/liquidity-pools)
+
+Because Uniswap liquidity pools are instances of smart contracts running on Ethereum, it is easy for developers to interact with the code and utilize or extend their functionality.
+
+Developers can integrate token swap functionality, or any other Uniswap features, into to their applications or smart contracts in the same way they can interact with all code running on Ethereum.
+
+[Interface development](/liquidity-pools)
+
+Uniswap is permissionless and open source. It has no central operators and is sustained by a community of participants. There is no central token or platform fee. No special treatment is given to early investors, adopters, or developers.
+
+<Github link="">View the Token swap in a smart contract example.</Github>
