@@ -1,15 +1,10 @@
 ---
 title: Integrating an oracle
 ---
-
-Once you have written the oracle, the oracle must be deployed,
-and the oracle must have a way of observing cumulative price at the beginning
-of the relevant periods.
-
 ## Oracle maintenance
 
 In order to measure average prices over a period, the oracle must have a way
-of referencing the cumulative price at the start of a period.
+of referencing the cumulative price at the start and end of a period.
 The recommended way of doing this is by storing these prices in the oracle contract,
 and calling the oracle frequently to store the latest cumulative price.
 
@@ -20,21 +15,22 @@ critical calls of your own smart contracts, or incentivize oracle
 maintenance calls by other parties.
 
 While it is possible to avoid regularly storing this cumulative price at the
-start of the period within another smart contract, it has limitations,
+start of the period using storage proofs, this approach has limitations,
 especially in regard to gas cost and maximum length of the time period.
 If you wish to try this approach, you can follow 
 [this repository by Keydonix](https://github.com/Keydonix/uniswap-oracle/). 
 
 ## Computing average prices
 
-To compute the average price given two cumulative price observations, simply take the difference and 
+To compute the average price given two cumulative price observations, take the difference between
+the cumulative price at the beginning and end of the period, and 
 divide by the elapsed time between them in seconds. This will produce a 
 [fixed point Q112x112](https://en.wikipedia.org/wiki/Fixed-point_arithmetic#Notation)
 number that represents the price of one asset relative to the other.
 
 Note we have both `price0CumulativeLast` and `price1CumulativeLast` in the pair contract, which are ratios of reserves
-of 1/0 and 0/1 respectively. I.e. the price of `token0` is expressed in terms of `token1`/`token0`, while the price of 
-`token1` is expressed in terms of `token0`/`token1`.
+of `token1`/`token0` and `token0`/`token1` respectively. I.e. the price of `token0` is expressed in terms of 
+`token1`/`token0`, while the price of `token1` is expressed in terms of `token0`/`token1`.
 
 ## Average price between cumulative price and now
 
@@ -45,5 +41,6 @@ counterfactually.
 
 We provide a library for use in oracle contracts that has the method
 [UniswapV2OracleLibrary#currentCumulativePrices](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2OracleLibrary.sol#L16)
-for getting the current cumulative price.
+for getting the current cumulative price. The current cumulative price returned by this method is computed counterfactually.
+That means it is correct regardless of whether a swap has already executed for the current block. 
 

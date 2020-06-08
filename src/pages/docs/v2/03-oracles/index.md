@@ -20,7 +20,7 @@ becoming an evermore valuable, accurate, and robust source of price information.
 
 This insight has been formalized into the Price Oracle mechanism in Uniswap V2.
 
-<InlineBoxLink title="How Uniswap V2 oracles work" to="/docs/v2/oracles/guides/how-do-uniswap-oracles-work/" />
+<InlineBoxLink title="How Uniswap V2 Oracles Work" to="/docs/v2/oracles/guides/how-uniswap-oracles-work/" />
 
 <InlineBoxLink title="Building an oracle on Uniswap V2" to="/docs/v2/oracles/guides/how-to-build-an-oracle-on-top-of-uniswap/" />
 

@@ -3,10 +3,11 @@ title: Building an oracle on Uniswap V2
 ---
 
 To build a price oracle on Uniswap V2, you must first understand the 
-requirements for the oracle. Once you understand the requirements,
-it is a matter of saving the cumulative price variable from the pair 
-as often as necessary, and doing a calculation of average price
-using two or more observations of the cumulative price.
+requirements for the oracle. Once you understand the kind of price
+average you require, it is a matter of saving the cumulative price 
+variable from the pair as often as necessary, and computing
+the average price using two or more observations of the 
+cumulative price variable.
 
 ## Understanding requirements
 
@@ -18,6 +19,8 @@ I.e.: must the price average include the current price?
 - Are recent prices more important than historical prices? 
 I.e.: is the current price given more weight than historical prices?
 
+Note your answers for the following sections.
+
 ## Fixed windows
 
 In the case where data freshness is not important, and recent prices 
@@ -25,7 +28,7 @@ are weighted equally with historical prices, it is enough to
 collect the cumulative price once per period (e.g. once per 24 hours.)
 
 Computing the average price over these data points gives you 'fixed windows',
-which can be refreshed after the lapse of every period. We have built
+which can be refreshed after the lapse of each period. We have built
 an example of this kind of oracle 
 [here](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol).
 
@@ -36,7 +39,7 @@ it only requires that the window size is greater than 1 period (e.g. 24 hours).
 
 In the case where data freshness is important, you can use a sliding
 window in which the cumulative price variable is measured more often 
-than once per period, in order to compute moving averages that always
+than once per period. This enables you to compute moving averages that always
 include the most recent price.
 
 There are at least
@@ -58,6 +61,6 @@ than weighting all price measurements equally.
 
 ## Integrating the oracle
 
-Once you have determined your requirements, and written your oracle contract,
-you must integrate it into your own smart contracts. 
-For more details, continue on to the next section.
+Once you have determined your requirements, and written 
+your oracle contract, you must integrate it into your own
+smart contracts. For more details, continue on to the next section.
