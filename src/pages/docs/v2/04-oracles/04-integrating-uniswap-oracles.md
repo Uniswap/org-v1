@@ -22,8 +22,8 @@ maintenance calls by other parties.
 
 ## No-maintenance option
 
-While it is possible to avoid regularly storing this cumulative price at the
-start of the period using storage proofs, this approach has limitations,
-especially in regard to gas cost and maximum length of the time period.
+It is possible to avoid regularly storing this cumulative price at the
+start of the period by utilizing storage proofs. However, this approach has limitations,
+especially in regard to gas cost and maximum length of the time period over which the average price can be measured.
 If you wish to try this approach, you can follow 
 [this repository by Keydonix](https://github.com/Keydonix/uniswap-oracle/). 
