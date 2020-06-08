@@ -4,14 +4,14 @@ title: Building an oracle on Uniswap
 
 To build a price oracle on Uniswap V2, you must first understand the 
 requirements for your use case. Once you understand the kind of price
-average you require, it is a matter of saving the cumulative price 
+average you require, it is a matter of storing the cumulative price 
 variable from the pair as often as necessary, and computing
 the average price using two or more observations of the 
 cumulative price variables.
 
 ## Understanding requirements
 
-To understand your requirements, you must know the answer to the 
+To understand your requirements, you should first research the answer to the 
 following questions:
 
 - Is data freshness important? 
@@ -19,28 +19,27 @@ I.e.: must the price average include the current price?
 - Are recent prices more important than historical prices? 
 I.e.: is the current price given more weight than historical prices?
 
-Note your answers for the following sections.
+Note your answers for the following discussion.
 
 ## Fixed windows
 
 In the case where data freshness is not important and recent prices 
 are weighted equally with historical prices, it is enough to 
-collect the cumulative price once per period (e.g. once per 24 hours.)
+store the cumulative price once per period (e.g. once per 24 hours.)
 
 Computing the average price over these data points gives you 'fixed windows',
 which can be updated after the lapse of each period. We wrote
-an example of this kind of oracle 
+an example oracle of this kind 
 [here](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol).
 
-Note this example does not limit the maximum size of the fixed window, i.e.
+This example does not limit the maximum size of the fixed window, i.e.
 it only requires that the window size is greater than 1 period (e.g. 24 hours).
 
 ## Moving averages
 
 In the case where data freshness is important, you can use a sliding
 window in which the cumulative price variable is measured more often 
-than once per period. This enables you to compute moving averages that always
-include the most recent price.
+than once per period.
 
 There are at least
 [two kinds of moving averages](https://www.investopedia.com/terms/m/movingaverage.asp#types-of-moving-averages) 
@@ -55,10 +54,9 @@ an example of a sliding window oracle
 give more weight to the most recent price measurements.
 
 You may wish to use exponential moving averages where recent prices
-are more important than historical prices. However, note that
+are more important than historical prices, e.g. in case of liquidations. However, note that
 putting more weight on recent prices makes the oracle cheaper to manipulate
 than weighting all price measurements equally.
-
 
 ## Computing average prices
 
@@ -72,19 +70,19 @@ Note we have both `price0CumulativeLast` and `price1CumulativeLast` in the pair 
 of `token1`/`token0` and `token0`/`token1` respectively. I.e. the price of `token0` is expressed in terms of 
 `token1`/`token0`, while the price of `token1` is expressed in terms of `token0`/`token1`.
 
-## Average price between cumulative price and now
+## Getting the latest cumulative price
 
-If you wish to compute the average price between a given price cumulative observation and the current cumulative price,
-you should use the cumulative price values from the current block. If the cumulative price has not been updated in the
-current block, e.g. because there has not been any swap on the pair in the current block, you can compute the 
-cumulative price counterfactually.
+If you wish to compute the average price between a historical price cumulative observation and the current cumulative
+price, you should use the cumulative price values from the current block. If the cumulative price has not been updated 
+in the current block, e.g. because there has not been any liquidity event (mint/burn/swap) on the pair in the current
+block, you can compute the cumulative price counterfactually.
 
 We provide a library for use in oracle contracts that has the method
-[UniswapV2OracleLibrary#currentCumulativePrices](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2OracleLibrary.sol#L16)
+[`UniswapV2OracleLibrary#currentCumulativePrices`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2OracleLibrary.sol#L16)
 for getting the cumulative price as of the current block.
-The current cumulative price returned by this method is computed counterfactually. 
-That means it is correct regardless of whether a swap has already executed in the current block.
-Alternatively, you could call `#sync` on the pair before observing the cumulative price, but it would cost more gas. 
+The current cumulative price returned by this method is computed _counterfactually_, meaning it requires no call to 
+the relative gas-expensive `#sync` method on the pair. 
+It is correct regardless of whether a swap has already executed in the current block. 
 
 ## Integrating the oracle
 
