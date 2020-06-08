@@ -57,14 +57,14 @@ const TagWrapper = styled.ul`
 `
 
 const handleTagType = (tag, theme) => {
-  console.log(theme)
+  // console.log(theme)
   switch (tag) {
     case 'guide':
-      return theme.colors.blue1
+      return theme.colors.blue5
     case 'tutorial':
       return theme.colors.pink1
     case 'reference':
-      return theme.colors.green1
+      return theme.colors.green2
     default:
       return theme.colors.pink1
   }
@@ -78,16 +78,11 @@ const Tag = styled.li`
   font-weight: 500;
   font-size: 11px;
   text-transform: uppercase;
-  background-color: ${({ theme, tag }) => handleTagType(tag, theme)};
-  color: ${({ theme }) => theme.invertedTextColor};
+  border: 1px solid ${({ theme, tag }) => handleTagType(tag, theme)};
+  color: ${({ theme, tag }) => handleTagType(tag, theme)};
   border-radius: 8px;
   display: flex;
   align-items: center;
-  will-change: transform;
-  cursor: pointer;
-  :hover {
-    transform: scale(1.03);
-  }
 `
 
 const StyledMiniCardHeader = styled.p`
@@ -126,11 +121,11 @@ const InlineCard = props => {
   return (
     <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
       {props.image && <StyledCardBG fluid={props.image} />}
+      <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
       <span>
-        <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
         <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
+        {props.tags && <TagWrapper>{Tags}</TagWrapper>}
       </span>
-      {props.tags && <TagWrapper>{Tags}</TagWrapper>}
       <StyledArrow>{'->'}</StyledArrow>
     </StyledMiniCards>
   )

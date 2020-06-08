@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import { useMediaQuery } from '@react-hook/media-query'
 
-import Search from './search'
+// import Search from './search'
 import { useStaticQuery, graphql } from 'gatsby'
 import DropdownArrow from './dropdownArrow.js'
 
@@ -54,16 +54,16 @@ const StyledListItem = styled.li`
 
 const StyledInset = styled.div``
 
-const StyledSectionTitle = styled.p`
-  margin: 0;
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: no-wrap;
-  font-weight: 400;
-  font-size: 24px;
-`
+// const StyledSectionTitle = styled.p`
+//   margin: 0;
+//   margin-bottom: 0.5rem;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   flex-wrap: no-wrap;
+//   font-weight: 400;
+//   font-size: 24px;
+// `
 
 const StyledCategoryTitle = styled.p`
   margin: 0;

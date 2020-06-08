@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import { useMediaQuery } from '@react-hook/media-query'
 
-import Search from './search'
+// import Search from './search'
 import { useStaticQuery, graphql } from 'gatsby'
 import DropdownArrow from './dropdownArrow.js'
 
@@ -15,6 +15,7 @@ const StyledSidebar = styled.div`
   position: sticky;
   top: 3rem;
   align-self: flex-start;
+  padding-right: 1rem;
   color: ${({ theme }) => theme.colors.link};
   @media (max-width: 960px) {
     top: 0px;
@@ -120,42 +121,21 @@ const StyledMobileMenu = styled.div`
   }
 `
 
-const VersionLabel = styled.span`
-  padding: 0.01rem 0.5rem 0 0.5rem;
-  border-radius: 12px;
-  background: ${({ theme, toggled }) => (toggled ? theme.colors.link : 'none')};
-  color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.colors.link)};
-
-  font-size: 0.825rem;
-  font-weight: 400;
-`
-
-const VersionToggle = styled(Link)`
-  border-radius: 14px;
-  margin-bottom: 1rem;
-  border: 1px solid ${({ theme }) => theme.colors.pink3};
-  color: ${({ theme }) => theme.invertedTextColor};
-  display: flex;
-  width: fit-content;
-  cursor: pointer;
-`
-
 const ListWrapper = styled.span`
   display: ${({ open }) => (open ? 'none' : 'initial')};
-  min-width: 240px;
+  min-width: 200px;
+  width: 220px;
   @media (max-width: 960px) {
     margin-bottom: 1rem;
   }
 `
 
-const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel, atTopLevel }) => {
+const CollapsibleList = ({ node, listData, referenceData, path, parent, atTopLevel }) => {
   const [open, setOpen] = useState(true)
 
   useLayoutEffect(() => {
     setOpen(node.name.replace(/\d+-/g, '') === path.split('/')[3])
   }, [node.name, path, setOpen])
-
-  const section = node.name.replace(/\d+-/g, '')
 
   const title = node.name
     .replace(/\d+-/g, '')
@@ -191,7 +171,7 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel
       {open && (
         <>
           <StyledInset style={{ paddingLeft: '.5rem' }}>
-            <StyledListItem>
+            {/* <StyledListItem>
               <StyledLink
                 style={{ marginBottom: '0rem', display: 'inline-block', padding: '0px' }}
                 to={`/${topLevel}/${section}`}
@@ -199,7 +179,7 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel
               >
                 Overview
               </StyledLink>
-            </StyledListItem>
+            </StyledListItem> */}
             <List data={listData} parent={node.name} slug={parent} path={path} />
           </StyledInset>
           {!atTopLevel && referenceData && (
@@ -216,7 +196,10 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel
 function ReferenceList(props) {
   const items = props.data.edges
     .filter(({ node }) => {
-      return node.relativePath.replace(/\d+-/g, '').split('/')[1] === props.parent.replace(/\d+-/g, '')
+      return (
+        node.relativePath.replace(/\d+-/g, '').split('/')[1] === props.parent.replace(/\d+-/g, '') &&
+        node.relativePath.replace(/\d+-/g, '').split('/')[2] !== 'index.js'
+      )
     })
     .map(({ node }) => {
       const slug = node.relativeDirectory.replace(/\d+-/g, '')

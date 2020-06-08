@@ -12,6 +12,8 @@ import InlineCard from '../inlineCard'
 import InlineBoxLink from '../inlineBoxLink'
 import Wizard from '../wizard'
 
+import '../../styles/katex.css'
+
 const components = {
   Info,
   Github,

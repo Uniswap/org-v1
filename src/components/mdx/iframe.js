@@ -14,7 +14,7 @@ const StyledIframe = styled.iframe`
   pointer-events: none;
 `
 
-const Iframe = ({ children, src, height }) => (
+const Iframe = ({ src, height }) => (
   <>
     <StyledIframe style={{ height: height }} src={src} />
     <InlineBoxLink style={{ marginTop: '-120px' }} title="Read more" to={'src'} />

@@ -51,6 +51,7 @@
     "github-slugger": "^1.2.1",
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
+    "katex": "^0.11.1",
     "lunr": "^2.3.8",
     "marquee3000": "^1.1.1",
     "prism-react-renderer": "^1.0.2",
@@ -64,7 +65,9 @@
     "react-moment": "^0.9.7",
     "react-social-sharing": "^3.0.1",
     "react-use-clipboard": "1.0.0",
+    "rehype-katex": "^3.0.0",
     "remark": "^11.0.2",
+    "remark-math": "^2.0.1",
     "strip-markdown": "^3.1.1",
     "styled-components": "^5.0.1"
   },
