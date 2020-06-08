@@ -63,10 +63,11 @@ than weighting all price measurements equally.
 To compute the average price given two cumulative price observations, take the difference between
 the cumulative price at the beginning and end of the period, and 
 divide by the elapsed time between them in seconds. This will produce a 
-[fixed point Q112x112](https://en.wikipedia.org/wiki/Fixed-point_arithmetic#Notation)
-number that represents the price of one asset relative to the other.
+[fixed point unsigned Q112x112](https://en.wikipedia.org/wiki/Fixed-point_arithmetic#Notation)
+number that represents the price of one asset relative to the other. This number is represented as a `uint224` where
+the upper 112 bits represent the integer amount, and the lower 112 bits represent the fractional amount.
 
-Note we have both `price0CumulativeLast` and `price1CumulativeLast` in the pair contract, which are ratios of reserves
+Pairs contain both `price0CumulativeLast` and `price1CumulativeLast`, which are ratios of reserves
 of `token1`/`token0` and `token0`/`token1` respectively. I.e. the price of `token0` is expressed in terms of 
 `token1`/`token0`, while the price of `token1` is expressed in terms of `token0`/`token1`.
 
@@ -86,22 +87,23 @@ It is correct regardless of whether a swap has already executed in the current b
 
 ## Notes on overflow
 
-The Uniswap V2 cumulative price variables are designed to eventually overflow, i.e. `price0CumulativeLast` and `price1CumulativeLast`
-and `blockTimestampLast` will overflow through 0. 
-This should not pose an issue to your oracle design, as oracles are concerned with the difference (i.e. subtraction)
-between two separate observations of a cumulative price variable. Subtracting between two cumulative price values will
-always result in a number that fits within the range of `uint256`.
+The `UniswapV2Pair` cumulative price variables are designed to eventually overflow, 
+i.e. `price0CumulativeLast` and `price1CumulativeLast` and `blockTimestampLast` will overflow through 0.
+ 
+This should not pose an issue to your oracle design, as the price average computation is concerned with differences 
+(i.e. subtraction) between two separate observations of a cumulative price variable.
+Subtracting between two cumulative price values will result in a number that fits within the range of `uint256` as long
+as the observations are made for periods of max `2^32` seconds, or ~136 years.
 
-This does however impose a limitation that measuring average prices over periods greater than `2^32 - 1` seconds, or
-~136 years, is more difficult.
-
-Another variable that is designed to deliberately overflow is the `blockTimestampLast` stored only in a `uint32`. For the
-same reason as described above, the pair can save a single storage slot by storing only `block.timestamp % uint32(-1)`.
+`blockTimestampLast` is stored only in a `uint32`. For the same reason as described above, the pair can save a
+storage slot, and many SSTORES over the life of the pair, by storing only `block.timestamp % uint32(-1)`.
 This is feasible because the pair is only concerned with the time that elapses between each liquidity event when updating
-the cumulative prices.
+the cumulative prices, which is always expected to be less than `2^32` seconds.
 
-Note when computing `timeElapsed` within your own oracle, you can simply store the `block.timestamp` of the observation, 
-and avoid dealing with overflow math for computing `timeElapsed` between observations. 
+When computing time elapsed within your own oracle, you can simply store the `block.timestamp` of your observations
+as `uint256`, and avoid dealing with overflow math for computing the time elapsed between observations. This is how the 
+[ExampleSlidingWindowOracle](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleSlidingWindowOracle.sol) 
+handles observation timestamps. 
 
 ## Integrating the oracle
 
