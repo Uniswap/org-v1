@@ -17,11 +17,12 @@ For a detailed description of the solution introduced in Uniswap V2, see the sec
 
 In summary, Uniswap V2 introduces a 2 new variables in each pair, 
 `price0CumulativeLast` and `price1CumulativeLast`, that store the prices of `token0` and `token1` respectively, 
-multiplied by for how long they were observed (in seconds).
+multiplied by for how long they were observed (in seconds). These variables are cumulative, meaning they are 
+ever-increasing. They are updated with the first `swap`/`mint`/`burn` of each block.
 
-These variables can be used to build price oracles by taking the difference (i.e. subtraction) of two observations, 
-and dividing by the time elapsed between them. 
-The result is the average price between the time of the first observation and the time of the second observation.
+You can use these either of these new variables to compute an average price between 2 observations. 
+To do so, take the difference (i.e. subtraction) of two observations, and divide by the time elapsed between them. 
+This is the basis of building oracles on top of V2.
 
 ## Manipulation resistance
 

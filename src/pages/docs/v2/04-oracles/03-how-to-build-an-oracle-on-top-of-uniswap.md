@@ -51,7 +51,7 @@ an example of a sliding window oracle
 [here](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleSlidingWindowOracle.sol).
 
 [Exponential moving averages](https://www.investopedia.com/terms/e/ema.asp) 
-give more weight to the most recent price measurements.
+give more weight to the most recent price measurements. We do not yet have an example written for this type of oracle.
 
 You may wish to use exponential moving averages where recent prices
 are more important than historical prices, e.g. in case of liquidations. However, note that
@@ -74,7 +74,7 @@ of `token1`/`token0` and `token0`/`token1` respectively. I.e. the price of `toke
 
 If you wish to compute the average price between a historical price cumulative observation and the current cumulative
 price, you should use the cumulative price values from the current block. If the cumulative price has not been updated 
-in the current block, e.g. because there has not been any liquidity event (mint/burn/swap) on the pair in the current
+in the current block, e.g. because there has not been any liquidity event (`mint`/`burn`/`swap`) on the pair in the current
 block, you can compute the cumulative price counterfactually.
 
 We provide a library for use in oracle contracts that has the method
@@ -83,6 +83,25 @@ for getting the cumulative price as of the current block.
 The current cumulative price returned by this method is computed _counterfactually_, meaning it requires no call to 
 the relative gas-expensive `#sync` method on the pair. 
 It is correct regardless of whether a swap has already executed in the current block. 
+
+## Notes on overflow
+
+The Uniswap V2 cumulative price variables are designed to eventually overflow, i.e. `price0CumulativeLast` and `price1CumulativeLast`
+and `blockTimestampLast` will overflow through 0. 
+This should not pose an issue to your oracle design, as oracles are concerned with the difference (i.e. subtraction)
+between two separate observations of a cumulative price variable. Subtracting between two cumulative price values will
+always result in a number that fits within the range of `uint256`.
+
+This does however impose a limitation that measuring average prices over periods greater than `2^32 - 1` seconds, or
+~136 years, is more difficult.
+
+Another variable that is designed to deliberately overflow is the `blockTimestampLast` stored only in a `uint32`. For the
+same reason as described above, the pair can save a single storage slot by storing only `block.timestamp % uint32(-1)`.
+This is feasible because the pair is only concerned with the time that elapses between each liquidity event when updating
+the cumulative prices.
+
+Note when computing `timeElapsed` within your own oracle, you can simply store the `block.timestamp` of the observation, 
+and avoid dealing with overflow math for computing `timeElapsed` between observations. 
 
 ## Integrating the oracle
 

@@ -3,6 +3,7 @@ title: Introduction to Uniswap Oracles
 ---
 
 Uniswap V2 enables building highly decentralized and manipulation-resistant on-chain price oracles.
+
 Price oracles are a crucial to the viability and security of DeFi protocols. 
 Oracle designs between different projects have been implemented on an ad hoc basis, 
 with varying degrees of decentralization and security. 
