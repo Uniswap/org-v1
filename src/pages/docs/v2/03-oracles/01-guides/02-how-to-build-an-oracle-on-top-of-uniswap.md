@@ -40,7 +40,7 @@ There are at least
 that you can compute using the Uniswap cumulative price variable.
 
 [Simple moving averages](https://www.investopedia.com/terms/s/sma.asp) 
-gives equal weight to each price measurement. We have built
+give equal weight to each price measurement. We have built
 an example of a sliding window oracle 
 [here](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleSlidingWindowOracle.sol).
 

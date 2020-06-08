@@ -24,7 +24,7 @@ This price is expensive to manipulate because it was set by the last transaction
 
 For an attacker to manipulate the price measured at the beginning of the block, an attacker has to make a bad trade 
 at the _end_ of a previous block. An attacker that makes a bad trade at the end of the block has no guarantee that they
-will be able to arbitrage it back in the next block, for which they are competing with other skilled arbitrageurs.
+will be able to arbitrage it back in the next block.
 Attackers will often lose money to arbitrageurs, unless they can “selfishly” mine two blocks in a row.
 This type of attack presents a number of challenges and has not been observed to date.
 
@@ -33,13 +33,14 @@ of an attack likely can outweigh the loss.
 
 Instead, Uniswap V2 adds this end-of-block price to a single cumulative-price variable in the core contract weighted by
 the amount of time this price existed. This variable represents a sum of the Uniswap price for every second in the entire
-history of the contract.
+history of the contract. Smart contracts can measure this cumulative price variable at the beginning
+and end of any period to compute the time weighted average price for that period.
 
 ## Manipulation resistance
 
-The cost of manipulating a price for a measured time period can be roughly estimated as the cost of selling at the
-manipulated price for the entire period. For larger liquidity pools over longer time periods, this is impractical, as the 
-cost usually exceeds the capital it secures.
+The cost of manipulating the cumulative price variable for a specific time period can be roughly estimated as the cost 
+of selling at the manipulated price for the entire period. For larger liquidity pools and over longer time periods, 
+this is impractical, as the cost typically exceeds the value of the attack.
 
 Other factors such as network congestion can reduce the cost of attack.
 For a more in-depth review of the security of Uniswap V2 price oracles, read the 
@@ -48,7 +49,7 @@ For a more in-depth review of the security of Uniswap V2 price oracles, read the
 ## Using Uniswap V2 price oracles
 
 Importantly, Uniswap V2 is not opinionated on how you use the cumulative price variable. The cumulative price simply enables
-measurement of time weighted average prices. A single measurement it is not sufficient to measure the time weighted average price
+measurement of time weighted average prices. A single measurement is not sufficient to measure the time weighted average price
 across any period other than from the smart contract creation to the current time.
 
 In order to measure the time weighted average price, you must compare the cumulative price at the beginning and the end 
