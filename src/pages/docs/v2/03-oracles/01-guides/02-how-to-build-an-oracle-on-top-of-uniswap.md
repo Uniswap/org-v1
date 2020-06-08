@@ -1,13 +1,13 @@
 ---
-title: Building an oracle on Uniswap V2
+title: Building an oracle on Uniswap
 ---
 
 To build a price oracle on Uniswap V2, you must first understand the 
-requirements for the oracle. Once you understand the kind of price
+requirements for your use case. Once you understand the kind of price
 average you require, it is a matter of saving the cumulative price 
 variable from the pair as often as necessary, and computing
 the average price using two or more observations of the 
-cumulative price variable.
+cumulative price variables.
 
 ## Understanding requirements
 
@@ -23,12 +23,12 @@ Note your answers for the following sections.
 
 ## Fixed windows
 
-In the case where data freshness is not important, and recent prices 
+In the case where data freshness is not important and recent prices 
 are weighted equally with historical prices, it is enough to 
 collect the cumulative price once per period (e.g. once per 24 hours.)
 
 Computing the average price over these data points gives you 'fixed windows',
-which can be refreshed after the lapse of each period. We have built
+which can be updated after the lapse of each period. We wrote
 an example of this kind of oracle 
 [here](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol).
 
@@ -58,6 +58,33 @@ You may wish to use exponential moving averages where recent prices
 are more important than historical prices. However, note that
 putting more weight on recent prices makes the oracle cheaper to manipulate
 than weighting all price measurements equally.
+
+
+## Computing average prices
+
+To compute the average price given two cumulative price observations, take the difference between
+the cumulative price at the beginning and end of the period, and 
+divide by the elapsed time between them in seconds. This will produce a 
+[fixed point Q112x112](https://en.wikipedia.org/wiki/Fixed-point_arithmetic#Notation)
+number that represents the price of one asset relative to the other.
+
+Note we have both `price0CumulativeLast` and `price1CumulativeLast` in the pair contract, which are ratios of reserves
+of `token1`/`token0` and `token0`/`token1` respectively. I.e. the price of `token0` is expressed in terms of 
+`token1`/`token0`, while the price of `token1` is expressed in terms of `token0`/`token1`.
+
+## Average price between cumulative price and now
+
+If you wish to compute the average price between a given price cumulative observation and the current cumulative price,
+you should use the cumulative price values from the current block. If the cumulative price has not been updated in the
+current block, e.g. because there has not been any swap on the pair in the current block, you can compute the 
+cumulative price counterfactually.
+
+We provide a library for use in oracle contracts that has the method
+[UniswapV2OracleLibrary#currentCumulativePrices](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2OracleLibrary.sol#L16)
+for getting the cumulative price as of the current block.
+The current cumulative price returned by this method is computed counterfactually. 
+That means it is correct regardless of whether a swap has already executed in the current block.
+Alternatively, you could call `#sync` on the pair before observing the cumulative price, but it would cost more gas. 
 
 ## Integrating the oracle
 

@@ -1,5 +1,5 @@
 ---
-title: How Uniswap V2 oracles work
+title: How Uniswap oracles work
 ---
 
 ## Problem statement
@@ -15,6 +15,10 @@ In Uniswap V1, an attacker can simply manipulate the price just before it is mea
 For a good description of the solution introduced in Uniswap V2, see the section on price oracles in the 
 [Uniswap V2 Overview](/blog/uniswap-v2/#price-oracles).
 
+In summary, Uniswap V2 introduces a pair of variables, `price0CumulativeLast`, and `price1CumulativeLast`, that store
+the prices of `token0` and `token1` respectively, weighted by how long they were observed for the life of each pair. 
+These variables can be used to build price oracles by observing the differences over different time periods. 
+
 ## Manipulation resistance
 
 The cost of manipulating the price for a specific time period can be roughly estimated as the
@@ -27,5 +31,5 @@ For a more in-depth review of the security of Uniswap V2 price oracles, read the
 
 ## Using Uniswap V2 price oracles
 
-Importantly, Uniswap V2 is not opinionated on how you use the cumulative price variables, allowing you to build oracles
+Importantly, Uniswap V2 is not opinionated on how you use the new cumulative price variables, allowing you to build oracles
 that compute different kinds of price averages and over different periods. Continue to the next section to learn more.
