@@ -20,20 +20,24 @@ I.e.: is the current price given more weight than historical prices?
 
 ## Fixed windows
 
-In the case where data freshness is not important, and recent prices are
-equally weighted with historical prices, it is enough to 
-collect the cumulative price once per period, e.g. once per 24 hours.
+In the case where data freshness is not important, and recent prices 
+are weighted equally with historical prices, it is enough to 
+collect the cumulative price once per period (e.g. once per 24 hours.)
 
 Computing the average price over these data points gives you 'fixed windows',
-which can be refreshed at the lapse of every period. We have built
+which can be refreshed after the lapse of every period. We have built
 an example of this kind of oracle 
 [here](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol).
+
+Note this example does not limit the maximum size of the fixed window, i.e.
+it only requires that the window size is greater than 1 period (e.g. 24 hours).
 
 ## Moving averages
 
 In the case where data freshness is important, you can use a sliding
-window where the cumulative price variable is measured more often 
-than once per period.
+window in which the cumulative price variable is measured more often 
+than once per period, in order to compute moving averages that always
+include the most recent price.
 
 There are at least
 [two kinds of moving averages](https://www.investopedia.com/terms/m/movingaverage.asp#types-of-moving-averages) 
@@ -50,8 +54,10 @@ give more weight to the most recent price measurements.
 You may wish to use exponential moving averages where recent prices
 are more important than historical prices. However, note that
 putting more weight on recent prices makes the oracle cheaper to manipulate
-than weighting all measurements equally.
+than weighting all price measurements equally.
 
-## No-maintenance approach with storage proofs
+## Integrating the oracle
 
-TODO
+Once you have determined your requirements, and written your oracle contract,
+you must integrate it into your own smart contracts. 
+For more details, continue on to the next section.

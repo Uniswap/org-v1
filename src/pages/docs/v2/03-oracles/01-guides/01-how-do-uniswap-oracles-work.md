@@ -54,6 +54,3 @@ across any period other than from the smart contract creation to the current tim
 
 In order to measure the time weighted average price, you must compare the cumulative price at the beginning and the end 
 of the period. For more details, continue on to the next section.
-
-<InlineBoxLink title="Building an oracle on Uniswap V2" to="/docs/v2/oracles/guides/how-to-build-an-oracle-on-top-of-uniswap/" />
-
