@@ -35,7 +35,7 @@ import { ChainId } from '@uniswap/sdk'
 
 A enum denominating supported chain IDs.
 
-# ChainId
+# TradeType
 
 ```typescript
 import { TradeType } from '@uniswap/sdk'

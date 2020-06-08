@@ -1,16 +1,16 @@
 ---
-title: Router
+title: Router02
 ---
 
-Because routers are stateless and do not hold token balances, they can be replaced safely and trustlessly, if necessary. This may happen if more efficient smart contract patterns are discovered, or if additional functionality is desired. For this reason, routers have _release numbers_, starting at `01`.
+Because routers are stateless and do not hold token balances, they can be replaced safely and trustlessly, if necessary. This may happen if more efficient smart contract patterns are discovered, or if additional functionality is desired. For this reason, routers have _release numbers_, starting at `01`. This is currently recommended release, `02`.
 
 # Code
 
-[`UniswapV2Router01.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Router01.sol)
+[`UniswapV2Router02.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Router02.sol)
 
 # Address
 
-`UniswapV2Router01` is deployed at `0xf164fC0Ec4E93095b804a4795bBe1e041497b92a` on the Ethereum [mainnet](https://etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a), and the [Ropsten](https://ropsten.etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a), [Rinkeby](https://rinkeby.etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a), [Görli](https://goerli.etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a), and [Kovan](https://kovan.etherscan.io/address/0xf164fC0Ec4E93095b804a4795bBe1e041497b92a) testnets. It was built from commit [2ad7da2](https://github.com/Uniswap/uniswap-v2-periphery/tree/2ad7da28a6f70ec4299364bc1608af8f30e7646b).
+`UniswapV2Router02` is deployed at `0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D` on the Ethereum [mainnet](https://etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D), and the [Ropsten](https://ropsten.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D), [Rinkeby](https://rinkeby.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D), [Görli](https://goerli.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D), and [Kovan](https://kovan.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D) testnets. It was built from commit [6961711](https://github.com/Uniswap/uniswap-v2-periphery/tree/69617118cda519dab608898d62aaa79877a61004).
 
 # Read-Only Functions
 
@@ -229,6 +229,67 @@ Removes liquidity from an ERC-20⇄WETTH pool and receive ETH without pre-approv
 | amountToken    | `uint`    | The amount of token received.                                                        |
 | amountETH      | `uint`    | The amount of ETH received.                                                          |
 
+## removeLiquidityETHSupportingFeeOnTransferTokens
+
+```solidity
+function removeLiquidityETHSupportingFeeOnTransferTokens(
+  address token,
+  uint liquidity,
+  uint amountTokenMin,
+  uint amountETHMin,
+  address to,
+  uint deadline
+) external returns (uint amountETH);
+```
+
+Identical to [removeLiquidityETH](#removeliquidityeth), but succeeds for tokens that take a fee on transfer.
+
+- `msg.sender` should have already given the router an allowance of at least liquidity on the pool.
+
+| Name           | Type      |                                                                                      |
+| :------------- | :-------- | :----------------------------------------------------------------------------------- |
+| token          | `address` | A pool token.                                                                        |
+| liquidity      | `uint`    | The amount of liquidity tokens to remove.                                            |
+| amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
+| amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
+| to             | `address` | Recipient of the underlying assets.                                                  |
+| deadline       | `uint`    | Unix timestamp after which the transaction will revert.                              |
+|                |           |                                                                                      |
+| amountETH      | `uint`    | The amount of ETH received.                                                          |
+
+
+## removeLiquidityETHWithPermitSupportingFeeOnTransferTokens
+
+```solidity
+function removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(
+  address token,
+  uint liquidity,
+  uint amountTokenMin,
+  uint amountETHMin,
+  address to,
+  uint deadline,
+  bool approveMax, uint8 v, bytes32 r, bytes32 s
+) external returns (uint amountETH);
+```
+
+Identical to [removeLiquidityETHWithPermit](#removeliquidityethwithpermit), but succeeds for tokens that take a fee on transfer.
+
+| Name           | Type      |                                                                                      |
+| :------------- | :-------- | :----------------------------------------------------------------------------------- |
+| token          | `address` | A pool token.                                                                        |
+| liquidity      | `uint`    | The amount of liquidity tokens to remove.                                            |
+| amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
+| amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
+| to             | `address` | Recipient of the underlying assets.                                                  |
+| deadline       | `uint`    | Unix timestamp after which the transaction will revert.                              |
+| approveMax     | `bool`    | Whether or not the approval amount in the signature is for liquidity or `uint(-1)`.  |
+| v              | `uint8`   | The v component of the permit signature.                                             |
+| r              | `bytes32` | The r component of the permit signature.                                             |
+| s              | `bytes32` | The s component of the permit signature.                                             |
+|                |           |                                                                                      |
+| amountETH      | `uint`    | The amount of ETH received.                                                          |
+
+
 ## swapExactTokensForTokens
 
 ```solidity
@@ -313,6 +374,7 @@ function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calld
 Receive an exact amount of ETH for as few input tokens as possible, along the route determined by the path. The first element of path is the input token, the last must be [WETH](#weth), and any intermediate elements represent intermediate pairs to trade through (if, for example, a direct pair does not exist).
 
 - `msg.sender` should have already given the router an allowance of at least amountInMax on the input token.
+- If the to address is a smart contract, it must have the ability to receive ETH.
 
 | Name        | Type                 |                                                                                                                                      |
 | :---------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
@@ -333,6 +395,8 @@ function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calld
 ```
 
 Swaps an exact amount of tokens for as much ETH as possible, along the route determined by the path. The first element of path is the input token, the last must be [WETH](#weth), and any intermediate elements represent intermediate pairs to trade through (if, for example, a direct pair does not exist).
+
+- If the to address is a smart contract, it must have the ability to receive ETH.
 
 | Name         | Type                 |                                                                                                                                      |
 | :----------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
@@ -367,6 +431,75 @@ Receive an exact amount of tokens for as little ETH as possible, along the route
 |                           |                      |                                                                                                                                      |
 | amounts                   | `uint[] memory`      | The input token amount and all subsequent output token amounts.                                                                      |
 
+## swapExactTokensForTokensSupportingFeeOnTransferTokens
+
+```solidity
+function swapExactTokensForTokensSupportingFeeOnTransferTokens(
+  uint amountIn,
+  uint amountOutMin,
+  address[] calldata path,
+  address to,
+  uint deadline
+) external;
+```
+
+Identical to [swapExactTokensForTokens](#swapexacttokensfortokens), but succeeds for tokens that take a fee on transfer.
+
+- `msg.sender` should have already given the router an allowance of at least amountIn on the input token.
+
+| Name         | Type                 |                                                                                                                                      |
+| :----------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| amountIn     | `uint`               | The amount of input tokens to send.                                                                                                  |
+| amountOutMin | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
+| path         | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
+| to           | `address`            | Recipient of the output tokens.                                                                                                      |
+| deadline     | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+
+## swapExactETHForTokensSupportingFeeOnTransferTokens
+
+```solidity
+function swapExactETHForTokensSupportingFeeOnTransferTokens(
+  uint amountOutMin,
+  address[] calldata path,
+  address to,
+  uint deadline
+) external payable;
+```
+
+Identical to [swapExactETHForTokens](#swapexactethfortokens), but succeeds for tokens that take a fee on transfer.
+
+| Name                   | Type                 |                                                                                                                                      |
+| :--------------------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| `msg.value` (amountIn) | `uint`               | The amount of ETH to send.                                                                                                           |
+| amountOutMin           | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
+| path                   | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
+| to                     | `address`            | Recipient of the output tokens.                                                                                                      |
+| deadline               | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+
+## swapExactToswapExactTokensForETHSupportingFeeOnTransferTokenskensForETH
+
+```solidity
+function swapExactTokensForETHSupportingFeeOnTransferTokens(
+  uint amountIn,
+  uint amountOutMin,
+  address[] calldata path,
+  address to,
+  uint deadline
+) external;
+```
+
+Identical to [swapExactTokensForETH](#swapexacttokensforeth), but succeeds for tokens that take a fee on transfer.
+
+- If the to address is a smart contract, it must have the ability to receive ETH.
+
+| Name         | Type                 |                                                                                                                                      |
+| :----------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| amountIn     | `uint`               | The amount of input tokens to send.                                                                                                  |
+| amountOutMin | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
+| path         | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
+| to           | `address`            | Recipient of the ETH.                                                                                                                |
+| deadline     | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+
 ## quote
 
 See <Link to='/docs/v2/smart-contracts/library#quote'>quote</Link>.
@@ -377,9 +510,7 @@ See <Link to='/docs/v2/smart-contracts/library#getamountout'>getAmountOut</Link>
 
 ## getAmountIn
 
-**The implementation of this method in the deployed router is incorrect.** Please do not use this method until a fix is released.
-
-See <Link to='/docs/v2/smart-contracts/library#getamountin'>getAmountIn</Link> for what the function should (but does not) do.
+See <Link to='/docs/v2/smart-contracts/library#getamountin'>getAmountIn</Link>.
 
 ## getAmountsOut
 
@@ -400,111 +531,152 @@ See <Link to='/docs/v2/smart-contracts/library#getamountsin'>getAmountsIn</Link>
 # Interface
 
 ```solidity
-import '@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol';
+import '@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol';
 ```
 
 ```solidity
 pragma solidity >=0.6.2;
 
 interface IUniswapV2Router01 {
-  function factory() external pure returns (address);
-  function WETH() external pure returns (address);
+    function factory() external pure returns (address);
+    function WETH() external pure returns (address);
 
-  function addLiquidity(
-      address tokenA,
-      address tokenB,
-      uint amountADesired,
-      uint amountBDesired,
-      uint amountAMin,
-      uint amountBMin,
-      address to,
-      uint deadline
-  ) external returns (uint amountA, uint amountB, uint liquidity);
-  function addLiquidityETH(
-      address token,
-      uint amountTokenDesired,
-      uint amountTokenMin,
-      uint amountETHMin,
-      address to,
-      uint deadline
-  ) external payable returns (uint amountToken, uint amountETH, uint liquidity);
-  function removeLiquidity(
-      address tokenA,
-      address tokenB,
-      uint liquidity,
-      uint amountAMin,
-      uint amountBMin,
-      address to,
-      uint deadline
-  ) external returns (uint amountA, uint amountB);
-  function removeLiquidityETH(
-      address token,
-      uint liquidity,
-      uint amountTokenMin,
-      uint amountETHMin,
-      address to,
-      uint deadline
-  ) external returns (uint amountToken, uint amountETH);
-  function removeLiquidityWithPermit(
-      address tokenA,
-      address tokenB,
-      uint liquidity,
-      uint amountAMin,
-      uint amountBMin,
-      address to,
-      uint deadline,
-      bool approveMax, uint8 v, bytes32 r, bytes32 s
-  ) external returns (uint amountA, uint amountB);
-  function removeLiquidityETHWithPermit(
-      address token,
-      uint liquidity,
-      uint amountTokenMin,
-      uint amountETHMin,
-      address to,
-      uint deadline,
-      bool approveMax, uint8 v, bytes32 r, bytes32 s
-  ) external returns (uint amountToken, uint amountETH);
-  function swapExactTokensForTokens(
-      uint amountIn,
-      uint amountOutMin,
-      address[] calldata path,
-      address to,
-      uint deadline
-  ) external returns (uint[] memory amounts);
-  function swapTokensForExactTokens(
-      uint amountOut,
-      uint amountInMax,
-      address[] calldata path,
-      address to,
-      uint deadline
-  ) external returns (uint[] memory amounts);
-  function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
-      external
-      payable
-      returns (uint[] memory amounts);
-  function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
-      external
-      returns (uint[] memory amounts);
-  function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
-      external
-      returns (uint[] memory amounts);
-  function swapETHForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline)
-      external
-      payable
-      returns (uint[] memory amounts);
+    function addLiquidity(
+        address tokenA,
+        address tokenB,
+        uint amountADesired,
+        uint amountBDesired,
+        uint amountAMin,
+        uint amountBMin,
+        address to,
+        uint deadline
+    ) external returns (uint amountA, uint amountB, uint liquidity);
+    function addLiquidityETH(
+        address token,
+        uint amountTokenDesired,
+        uint amountTokenMin,
+        uint amountETHMin,
+        address to,
+        uint deadline
+    ) external payable returns (uint amountToken, uint amountETH, uint liquidity);
+    function removeLiquidity(
+        address tokenA,
+        address tokenB,
+        uint liquidity,
+        uint amountAMin,
+        uint amountBMin,
+        address to,
+        uint deadline
+    ) external returns (uint amountA, uint amountB);
+    function removeLiquidityETH(
+        address token,
+        uint liquidity,
+        uint amountTokenMin,
+        uint amountETHMin,
+        address to,
+        uint deadline
+    ) external returns (uint amountToken, uint amountETH);
+    function removeLiquidityWithPermit(
+        address tokenA,
+        address tokenB,
+        uint liquidity,
+        uint amountAMin,
+        uint amountBMin,
+        address to,
+        uint deadline,
+        bool approveMax, uint8 v, bytes32 r, bytes32 s
+    ) external returns (uint amountA, uint amountB);
+    function removeLiquidityETHWithPermit(
+        address token,
+        uint liquidity,
+        uint amountTokenMin,
+        uint amountETHMin,
+        address to,
+        uint deadline,
+        bool approveMax, uint8 v, bytes32 r, bytes32 s
+    ) external returns (uint amountToken, uint amountETH);
+    function swapExactTokensForTokens(
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external returns (uint[] memory amounts);
+    function swapTokensForExactTokens(
+        uint amountOut,
+        uint amountInMax,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external returns (uint[] memory amounts);
+    function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
+        external
+        payable
+        returns (uint[] memory amounts);
+    function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
+        external
+        returns (uint[] memory amounts);
+    function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
+        external
+        returns (uint[] memory amounts);
+    function swapETHForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline)
+        external
+        payable
+        returns (uint[] memory amounts);
 
-  function quote(uint amountA, uint reserveA, uint reserveB) external pure returns (uint amountB);
-  function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) external pure returns (uint amountOut);
-  function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) external pure returns (uint amountIn);
-  function getAmountsOut(uint amountIn, address[] calldata path) external view returns (uint[] memory amounts);
-  function getAmountsIn(uint amountOut, address[] calldata path) external view returns (uint[] memory amounts);
+    function quote(uint amountA, uint reserveA, uint reserveB) external pure returns (uint amountB);
+    function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) external pure returns (uint amountOut);
+    function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) external pure returns (uint amountIn);
+    function getAmountsOut(uint amountIn, address[] calldata path) external view returns (uint[] memory amounts);
+    function getAmountsIn(uint amountOut, address[] calldata path) external view returns (uint[] memory amounts);
+}
+
+interface IUniswapV2Router02 is IUniswapV2Router01 {
+    function removeLiquidityETHSupportingFeeOnTransferTokens(
+        address token,
+        uint liquidity,
+        uint amountTokenMin,
+        uint amountETHMin,
+        address to,
+        uint deadline
+    ) external returns (uint amountETH);
+    function removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(
+        address token,
+        uint liquidity,
+        uint amountTokenMin,
+        uint amountETHMin,
+        address to,
+        uint deadline,
+        bool approveMax, uint8 v, bytes32 r, bytes32 s
+    ) external returns (uint amountETH);
+
+    function swapExactTokensForTokensSupportingFeeOnTransferTokens(
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external;
+    function swapExactETHForTokensSupportingFeeOnTransferTokens(
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external payable;
+    function swapExactTokensForETHSupportingFeeOnTransferTokens(
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external;
 }
 ```
 
 # ABI
 
 ```typescript
-import IUniswapV2Router01 from '@uniswap/v2-periphery/build/IUniswapV2Router01.json'
+import IUniswapV2Router02 from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
 ```
 
-[https://unpkg.com/@uniswap/v2-periphery@1.0.0-beta.0/build/IUniswapV2Router01.json](https://unpkg.com/@uniswap/v2-periphery@1.0.0-beta.0/build/IUniswapV2Router01.json)
+[https://unpkg.com/@uniswap/v2-periphery@1.1.0-beta.0/build/IUniswapV2Router02.json](https://unpkg.com/@uniswap/v2-periphery@1.1.0-beta.0/build/IUniswapV2Router02.json)
