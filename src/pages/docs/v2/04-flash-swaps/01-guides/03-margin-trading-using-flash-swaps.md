@@ -1,5 +1,0 @@
----
-title: Margin trading
----
-
-TODO
