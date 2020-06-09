@@ -32,7 +32,7 @@ Users can view the current rates that they'll be adding liquidity at in the deta
 
 #### Approvals
 
-Users will need to approve the Uniswap router before adding liquidity. To learn more about the router contract and how it interacts with the core Uniswap contracts see [here](). To do this a user can click the 'Approve' button that automatically displays if an approval is needed. An approval is needed for any token beside ETH. Once all approvals have been made and confirmed the UI will update automatically and allow the user to confirm the transaction to add liquidity.
+Users will need to approve the Uniswap router before adding liquidity. To learn more about the router contract and how it interacts with the core Uniswap contracts see [here](/docs/v2/smart-contracts/architecture/). To do this a user can click the 'Approve' button that automatically displays if an approval is needed. An approval is needed for any token beside ETH. Once all approvals have been made and confirmed the UI will update automatically and allow the user to confirm the transaction to add liquidity.
 
 ![](./images/approve.png)
 
@@ -69,7 +69,7 @@ ETH is selected by default as one of the tokens, but users have the option to se
 
 #### Setting initial rates
 
-As the first liquidity provider a user is responsible for setting the initial rate for the pool. To set the rate the user can set the desired amount to provide for each token in the pair respectively. This ratio will be displayed in the details section of the page, and will be used as the initial rate within the pool. To learn more about pools and why this initial rate is important to set correctly see [here]().
+As the first liquidity provider a user is responsible for setting the initial rate for the pool. To set the rate the user can set the desired amount to provide for each token in the pair respectively. This ratio will be displayed in the details section of the page, and will be used as the initial rate within the pool. To learn more about pools and why this initial rate is important to set correctly see [here](/docs/v2/liquidity-pools/anatomy-of-a-liquidity-pool/).
 
 ![](./images/create-2.png)
 
@@ -107,6 +107,6 @@ The confirmation modal provides users with a summary of the transaction. It show
 
 ## Advanced Details
 
-On both add and remove pages users can click 'show advanced' to define custom settings for their transaction. Slippage tolerance defines a limit to how much the price on the pair can change before the transaction is reverted. The deadline defines how long after submission the transaction will remain valid (if the deadline is reached before the transaction is processed it will revert). The user can change these settings based on their preferences for adding and removing. For more detailed information on slippage and price impact see [here]().
+On both add and remove pages users can click 'show advanced' to define custom settings for their transaction. Slippage tolerance defines a limit to how much the price on the pair can change before the transaction is reverted. The deadline defines how long after submission the transaction will remain valid (if the deadline is reached before the transaction is processed it will revert). The user can change these settings based on their preferences for adding and removing. For more detailed information on slippage and price impact see [here](/docs/v2/token-swaps/how-prices-are-determined/).
 
 ![](./images/advanced.png)
