@@ -160,6 +160,9 @@ const Docs = props => {
             }
             fields {
               slug
+              subDir
+              parentDir
+              topLevelDir
             }
           }
           previous {
@@ -168,6 +171,9 @@ const Docs = props => {
             }
             fields {
               slug
+              parentDir
+              subDir
+              topLevelDir
             }
           }
         }
@@ -239,25 +245,27 @@ const Docs = props => {
                 <StyledDocsNavWrapper key={node.id}>
                   <StyledDocsNav>
                     {/* index.md file is considered the "last" based on the sort order. Check to remove links when not relevent */}
-                    {previous && node.fields.slug !== '/docs/v2/' && (
-                      <StyledLink style={{ alignItems: 'flex-end' }} to={previous.fields.slug} rel="prev">
-                        <small>Previous</small>
-                        <span>← {previous.frontmatter.title}</span>
-                      </StyledLink>
-                    )}
+                    {previous &&
+                      node.fields.slug !== '/docs/v2/' &&
+                      previous.fields.parentDir === node.fields.parentDir && (
+                        <StyledLink style={{ alignItems: 'flex-end' }} to={previous.fields.slug} rel="prev">
+                          <small>Previous</small>
+                          <span>← {previous.frontmatter.title}</span>
+                        </StyledLink>
+                      )}
                   </StyledDocsNav>
                   <StyledDocsNav>
                     {/* index.md file is considered the "last" based on the sort order. Check to remove when not relevent */}
-                    {next && next.fields.slug !== '/docs/v2/' && (
+                    {next && next.fields.slug !== '/docs/v2/' && next.fields.parentDir === node.fields.parentDir && (
                       <StyledLink style={{ alignItems: 'flex-start' }} to={next.fields.slug} rel="next">
                         <small>Next</small>
                         <span>{next.frontmatter.title} →</span>
                       </StyledLink>
                     )}
                     {node.fields.slug === '/docs/v2/' && (
-                      <StyledLink style={{ alignItems: 'flex-start' }} to={'/docs/v2/smart-contracts/'} rel="next">
+                      <StyledLink style={{ alignItems: 'flex-start' }} to={'/docs/v2/core-concepts/'} rel="next">
                         <small>Next</small>
-                        <span>Smart Contracts →</span>
+                        <span>How Uniswap works →</span>
                       </StyledLink>
                     )}
                   </StyledDocsNav>

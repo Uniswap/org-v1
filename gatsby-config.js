@@ -132,6 +132,8 @@ module.exports = {
           docs: require.resolve(`./src/layouts/docs`),
           blog: require.resolve(`./src/layouts/blogPost`)
         },
+        remarkPlugins: [require(`remark-math`)],
+        rehypePlugins: [require(`rehype-katex`)],
         gatsbyRemarkPlugins: [
           `gatsby-remark-embedder`,
           `gatsby-remark-copy-linked-files`,

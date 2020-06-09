@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Img from 'gatsby-image'
-import { Link } from 'gatsby'
+// import Img from 'gatsby-image'
+// import { Link } from 'gatsby'
 import InlineCard from './inlineCard'
 import { Code, TrendingUp, Repeat, Circle } from 'react-feather'
 
@@ -14,7 +14,7 @@ const links = [
         title: 'Implement a token swap',
         link: '/docs/v2/core-concepts',
         description: 'A step by step guide to swapping tokens in your smart contracts.',
-        tags: ['tutorial', 'swaps']
+        tags: ['tutorial']
       },
       {
         title: 'Uniswap SDK',
@@ -41,12 +41,14 @@ const links = [
       {
         title: 'Anatomy of a Uniswap Trade',
         link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.'
+        description: 'A high level technical overview of the Uniswap protocol.',
+        tags: ['guide']
       },
       {
         title: 'Using the interface',
         link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.'
+        description: 'A high level technical overview of the Uniswap protocol.',
+        tags: ['tutorial']
       }
     ]
   },
@@ -153,7 +155,7 @@ const CardWrapper = styled.div`
   }
 `
 
-const Wizard = props => {
+const Wizard = () => {
   const [currentCategory, setCurrentCategory] = useState('Developers')
 
   return (
@@ -183,7 +185,7 @@ const Wizard = props => {
           })
           .map(category => {
             return category.sublinks.map((sublink, i) => {
-              console.log(sublink.title, i)
+              // console.log(sublink.title, i)
               return (
                 <InlineCard
                   key={i}
