@@ -47,15 +47,6 @@ const StyledCardBG = styled(Img)`
   z-index: -1;
 `
 
-const TagWrapper = styled.ul`
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  padding: 1.5rem 0 0 0;
-`
-
 const handleTagType = (tag, theme) => {
   // console.log(theme)
   switch (tag) {
@@ -83,6 +74,7 @@ const Tag = styled.li`
   border-radius: 8px;
   display: flex;
   align-items: center;
+  width: fit-content;
 `
 
 const StyledMiniCardHeader = styled.p`
@@ -108,23 +100,13 @@ const StyledArrow = styled.span`
 `
 
 const InlineCard = props => {
-  const Tags = props.tags
-    ? props.tags.map((tag, i) => {
-        return (
-          <Tag tag={tag} key={i}>
-            {tag}
-          </Tag>
-        )
-      })
-    : ''
-
   return (
     <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
       {props.image && <StyledCardBG fluid={props.image} />}
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
       <span>
-        <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
-        {props.tags && <TagWrapper>{Tags}</TagWrapper>}
+        <StyledMiniCardDesc>{props.description || props.desc}</StyledMiniCardDesc>
+        {props.tag && <Tag tag={props.tag}>{props.tag}</Tag>}
       </span>
       <StyledArrow>{'->'}</StyledArrow>
     </StyledMiniCards>

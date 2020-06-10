@@ -14,19 +14,19 @@ const links = [
         title: 'Implement a token swap',
         link: '/docs/v2/core-concepts',
         description: 'A step by step guide to swapping tokens in your smart contracts.',
-        tags: ['tutorial']
+        tag: 'tutorial'
       },
       {
         title: 'Uniswap SDK',
         link: '/docs/v2/core-concepts',
         description: 'Check out the full SDK for all of Uniswaps capabilities.',
-        tags: ['reference']
+        tag: 'reference'
       },
       {
         title: 'Introduction to Flash Swaps',
         link: '/docs/v2/core-concepts',
         description: 'A high level technical overview of the Uniswap protocol',
-        tags: ['guide']
+        tag: 'guide'
       },
       {
         title: 'Introduction to Oracles',
@@ -42,13 +42,13 @@ const links = [
         title: 'Anatomy of a Uniswap Trade',
         link: '/docs/v2/core-concepts',
         description: 'A high level technical overview of the Uniswap protocol.',
-        tags: ['guide']
+        tag: 'guide'
       },
       {
         title: 'Using the interface',
         link: '/docs/v2/core-concepts',
         description: 'A high level technical overview of the Uniswap protocol.',
-        tags: ['tutorial']
+        tag: 'tutorial'
       }
     ]
   },
@@ -192,7 +192,7 @@ const Wizard = () => {
                   title={sublink.title}
                   desc={sublink.description}
                   to={sublink.link}
-                  tags={sublink.tags}
+                  tag={sublink.tag}
                 />
               )
             })

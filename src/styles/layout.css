@@ -623,7 +623,7 @@ pre tt:after {
   font-size: 100%;
   left: -1.5rem;
   letter-spacing: -1px;
-  width: 100%;
+  width: 24px;
 }
 
 .anchor svg {

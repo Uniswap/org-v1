@@ -1,0 +1,73 @@
+---
+title: Anatomy of Uniswap
+---
+
+Uniswap is an on-chain system of smart contracts on the Ethereum blockchain, implementing an automated liquidity protocol based on a “constant product formula” [1]. Each Uniswap v1 pair stores pooled reserves of two assets, and provides liquidity for those two assets, maintaining the invariant that the product of the reserves cannot decrease. Traders pay a 30-basis-point fee on trades, which goes to liquidity providers. The contracts are non-upgradeable.
+
+Uniswap v2 is a new implementation based on the same formula, with several new highlydesirable features. Most significantly, it enables the creation of arbitrary ERC20/ERC20 pairs, rather than supporting only pairs between ERC20 and ETH. It also provides a hardened price oracle that accumulates the relative price of the two assets at the beginning of each block. This allows other contracts on Ethereum to estimate the time-weighted average price for the two assets over arbitrary intervals. Finally, it enables “flash swaps” where users can receive assets freely and use them elsewhere on the chain, only paying for (or returning) those assets at the end of the transaction.
+
+While the contract is not generally upgradeable, there is a private key that has the ability to update a variable on the factory contract to turn on an on-chain 5-basis-point fee on trades. This fee will initially be turned off, but could be turned on in the future, after which liquidity providers would earn 25 basis points on every trade, rather than 30 basis points.
+
+As discussed in section 3, Uniswap v2 also fixes some minor issues with Uniswap v1, as well as rearchitecting the implementation, reducing Uniswap’s attack surface and making the system more easily upgradeable by minimizing the logic in the “core” contract that holds liquidity providers’ funds. 1 This paper describes the mechanics of that core contract, as well as the factory contract used to instantiate those contracts. Actually using Uniswap v2 will require calling the pair contract through a “router” contract that computes the trade or deposit amount and transfers funds to the pair contract.
+
+**Uniswap V2** is our second iteration of Uniswap and includes many new features and improvements.
+
+- [ERC20 / ERC20 Pairs](#erc20--erc20-pairs)
+- [Price Oracles](#price-oracles)
+- [Flash Swaps](#flash-swaps)
+- [Core/Helper Architecture](#corehelper-architecture)
+- [Technical Improvements](#technical-improvements)
+- [Path to Sustainability](#path-to-sustainability)
+- [Testnet and Launch Details](#testnet-and-launch-details)
+
+## ERC20 / ERC20 Pairs
+
+In Uniswap V2, **any ERC20 token can be pooled directly with any other ERC20 token**. Wrapped Ether (WETH) is used instead of native ETH in the core contracts, although end users can still use ETH through helper contracts.
+
+In Uniswap V1, all liquidity pools are between ETH and a single ERC20 token. Having a constant numeraire provides a nice UX advantage — users can swap any ERC20 for any other ERC20 by routing through ETH. Since ETH is the most liquid Ethereum-based asset, and does not introduce any new platform risk, it was the best choice for Uniswap V1.
+
+![](v1_DAI_USDC_swap.png)
+
+However, the introduction of ERC20 token/ERC20 token pools in Uniswap V2 can be **useful for liquidity providers, who can maintain more diverse ERC20 token denominated positions**, without mandatory exposure to ETH. One example would be a DAI/USDC pair, which should theoretically have little volatility for liquidity providers, but is useful for trading.
+
+Having direct ERC20/ERC20 pairs can also improve prices because routing through ETH for a swap between two other assets (say, DAI/USDC) involves paying fees and slippage on two separate pairs instead of one.
+
+If two ERC20 tokens are not paired directly, and do not have a common pair between them, they can still be swapped as long as a path between them exists. Router contracts can be used to optimize between direct and multi-step swaps.
+
+![](v2_swaps.png)
+
+We still anticipate ETH pairs being very popular, but expect to see growth in other types of pairs over time.
+
+## Price Oracles
+
+**Uniswap V2 implements new functionality that enables highly decentralized and manipulation-resistant on-chain price feeds.** This is achieved by measuring prices when they are expensive to manipulate, and cleverly accumulating historical data. This allows external smart contracts to create gas-efficient, time-weighted averages of Uniswap prices across **any** time interval.
+
+**On-chain price feeds are a critical component for many decentralized financial applications** including those similar to derivatives, lending, margin trading, prediction markets and more. Despite [closely tracking the real-world price](https://arxiv.org/abs/1911.03380) most of the time, Uniswap V1 cannot be used safely as a price oracle because the price can move significantly in a short period of time.
+
+Uniswap V2 includes a number of improvements for price feeds built on top of it. First, every pair measures (but does not store) the market price at the beginning of each block, before any trades take place. This price is expensive to manipulate because it was set by the last transaction in a previous block.
+
+There are some nuances that are good to be aware of when using Uniswap V2 as an oracle, especially where manipulation resistance is concerned. The <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> elaborates on some of them. Additional oracle-focused developer guides and documentation will be released soon.
+
+In the meantime, check out our [example implementation](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol) of a 24 hr TWAP Oracle built on Uniswap V2!
+
+## Flash Swaps
+
+**Uniswap V2 flash swaps** allow you to withdraw as much as you want of any ERC20 token on Uniswap at no upfront cost and do anything you want with them (execute arbitrary code), provided that by the end of the transaction execution, you either:
+
+- pay for all ERC20 tokens withdrawn
+- pay for a percentage of ERC20 tokens and return the rest
+- return all ERC20 tokens withdrawn
+
+Liquidity provider fees are enforced by subtracting 0.3% from all input amounts, even if the input ERC20 tokens are being returned as part of a flash swap.
+
+## Technical Improvements
+
+Uniswap V2 contains many other significant changes and improvements including the following:
+
+- Smart contracts are written in Solidity instead of Vyper
+- Use CREATE2 to make the pool address deterministic based on the ERC20 token pair
+- Uniswap V2 properly handles ["missing return" ERC20 tokens](https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca) that do not work on Uniswap V1, such as USDT and OMG
+- Built in metaTransaction "approve" function for liquidity tokens
+- Increase re-entrancy protection using mutex (adds support for ERC777 and other non-standard ERC20 tokens)
+- Fix bug from Uniswap V1 that uses all remaining gas on failing transactions
+- More descriptive error messages. The above bug caused failing transactions to only return the error "Bad Jump Destination"

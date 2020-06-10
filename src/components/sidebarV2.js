@@ -130,12 +130,14 @@ const ListWrapper = styled.span`
   }
 `
 
-const CollapsibleList = ({ node, listData, referenceData, path, parent, atTopLevel }) => {
+const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel, atTopLevel }) => {
   const [open, setOpen] = useState(true)
 
   useLayoutEffect(() => {
     setOpen(node.name.replace(/\d+-/g, '') === path.split('/')[3])
   }, [node.name, path, setOpen])
+
+  const section = node.name.replace(/\d+-/g, '')
 
   const title = node.name
     .replace(/\d+-/g, '')
@@ -145,18 +147,6 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, atTopLev
     })
 
   return (
-    // <StyledSection trigger={title} transitionTime={250} open={open} onClick={() => setOpen(!open)} easing="ease">
-    // {atTopLevel  (
-    //   <StyledLink
-    //     style={{ marginBottom: '.75rem', display: 'inline-block', padding: '0px' }}
-    //     to={`${topLevel}/${section}`}
-    //     isActive={path.split('/')[4] === ''}
-
-    //   >
-    //     {title}
-    //   </StyledLink>
-    // )}
-
     <StyledSection trigger={title} transitionTime={250} open={open} easing="ease">
       {atTopLevel ? (
         <StyledSectionTitle onClick={() => setOpen(!open)} style={{ cursor: 'pointer' }}>
@@ -171,7 +161,7 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, atTopLev
       {open && (
         <>
           <StyledInset style={{ paddingLeft: '.5rem' }}>
-            {/* <StyledListItem>
+            <StyledListItem>
               <StyledLink
                 style={{ marginBottom: '0rem', display: 'inline-block', padding: '0px' }}
                 to={`/${topLevel}/${section}`}
@@ -179,7 +169,7 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, atTopLev
               >
                 Overview
               </StyledLink>
-            </StyledListItem> */}
+            </StyledListItem>
             <List data={listData} parent={node.name} slug={parent} path={path} />
           </StyledInset>
           {!atTopLevel && referenceData && (

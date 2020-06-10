@@ -1,5 +1,0 @@
----
-title: Buying tokens
----
-
-TODO

@@ -1,5 +1,5 @@
 ---
-title: Determining prices
+title: How pricing works
 ---
 
 Let’s go through a simple numerical example using the ETH/DAI trading pair. Let’s assume market makers have collectively funded this pool with 100,000 DAI and 1,000 ETH. Uniswap takes these two quantities and multiplies them together (100,000 x 1,000 = 100,000,000).

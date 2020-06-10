@@ -1,5 +1,0 @@
----
-title: Accepting donations
----
-
-TODO
