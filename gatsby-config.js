@@ -52,8 +52,7 @@ const menu = [
       { name: 'Blog', link: '/blog', description: 'Stay up to date on Uniswap' },
       {
         name: 'FAQ',
-        link: '/',
-        description: 'Coming soon!'
+        link: '/faq'
       },
       { name: 'About', link: '/about' },
       { name: 'Brand Assets', link: '/about#brand-assets' }
@@ -90,8 +89,22 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `jobs`,
+        path: `${__dirname}/src/pages/jobs/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `docs`,
         path: `${__dirname}/src/pages/docs/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `faq`,
+        path: `${__dirname}/src/pages/faq/`
       }
     },
     {
@@ -130,7 +143,8 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
           docs: require.resolve(`./src/layouts/docs`),
-          blog: require.resolve(`./src/layouts/blogPost`)
+          blog: require.resolve(`./src/layouts/blogPost`),
+          faq: require.resolve(`./src/layouts/faq`)
         },
         remarkPlugins: [require(`remark-math`)],
         rehypePlugins: [require(`rehype-katex`)],
