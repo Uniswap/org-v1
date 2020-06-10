@@ -1,5 +1,5 @@
 ---
-title: Uniswap Math
+title: Math
 ---
 
 This is a test for $\KaTeX$ in MDX component. If $\zeta( s )$ is Riemann zeta function,

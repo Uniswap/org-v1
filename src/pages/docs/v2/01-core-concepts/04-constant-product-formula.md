@@ -1,3 +1,0 @@
----
-title: Constant product formula
----

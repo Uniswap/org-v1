@@ -10,10 +10,7 @@ const StyledBoxLink = styled(Link)`
   border: 1px solid ${({ theme }) => theme.colors.grey2};
   width: 100%;
   margin-right: 1rem;
-  margin-bottom: 1rem;
-  /* border: 1px solid rgba(255, 0, 122, 0.4); */
-  /* box-shadow: ${({ theme }) => theme.shadows.huge}; */
-
+  margin-bottom: 1.45rem;
   border-radius: 12px;
   overflow: hidden;
   position: relative;

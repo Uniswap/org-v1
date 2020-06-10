@@ -11,6 +11,7 @@ const StyledInfo = styled(Link)`
   color: #5a3800;
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
+  display: inline-block;
   font-weight: 350;
   a {
     color: #5a3800;

@@ -71,6 +71,8 @@ For further exploration of flash swaps, see the <a href='/whitepaper.pdf' target
 
 A fully functional example of flash swaps is available: [`ExampleFlashSwap.sol`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleFlashSwap.sol).
 
+<Github link="https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleSwapToPrice.sol">ExampleSwapToPrice.sol</Github>
+
 # Interface
 
 ```solidity
