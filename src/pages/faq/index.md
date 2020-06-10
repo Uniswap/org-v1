@@ -7,7 +7,7 @@ title: FAQ
 Uniswap is a protocol for exchanging ERC-20 tokens on Ethereum. It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for fast, efficient trading. Where it makes tradeoffs decentralization, censorship resistance, and security are prioritized. Uniswap is open-source software licensed under GPL.
 
 Want to read more about the core concepts?
-<InlineBoxLink title="Uniswap Documentation" />
+<InlineBoxLink title="Uniswap Documentation" to="/docs/v2" />
 
 # How does Uniswap work?
 
