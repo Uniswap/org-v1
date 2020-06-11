@@ -55,6 +55,10 @@ const menu = [
         link: '/faq'
       },
       { name: 'About', link: '/about' },
+      {
+        name: 'Jobs',
+        link: '/jobs'
+      },
       { name: 'Brand Assets', link: '/about#brand-assets' }
     ]
   }
@@ -144,6 +148,7 @@ module.exports = {
           default: require.resolve('./src/layouts'),
           docs: require.resolve(`./src/layouts/docs`),
           blog: require.resolve(`./src/layouts/blogPost`),
+          jobs: require.resolve(`./src/layouts/jobPost`),
           faq: require.resolve(`./src/layouts/faq`)
         },
         remarkPlugins: [require(`remark-math`)],
