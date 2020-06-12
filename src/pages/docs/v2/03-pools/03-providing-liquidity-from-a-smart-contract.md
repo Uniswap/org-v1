@@ -1,5 +1,5 @@
 ---
-title: 'Providing liquidity: Contract'
+title: 'Providing liquidity via smart contract'
 ---
 
 Liquidity providers are also able to deposit liquidity into an exchange contract by calling the ‘addLiquidity()’ function. In exchange for supplying liquidity, liquidity providers will receive a share of transaction fees when a trade is executed.

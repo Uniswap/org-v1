@@ -1,5 +1,5 @@
 ---
-title: 'Trading: Contract'
+title: 'Trading from a smart contract'
 ---
 
 <Github link="">View the Token swap in a smart contract example.</Github>
