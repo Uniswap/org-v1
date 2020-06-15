@@ -14,5 +14,16 @@
       "source": "/tokenlist.schema.json",
       "destination": "https://unpkg.com/@uniswap/token-lists@latest/src/tokenlist.schema.json"
     }
+  ],
+  "headers": [
+    {
+      "source": "/tokenlist.schema.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
   ]
 }
