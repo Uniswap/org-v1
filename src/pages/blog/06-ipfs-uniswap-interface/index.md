@@ -1,6 +1,6 @@
 ---
 title: 'Uniswap Interface + IPFS'
-date: '2020-06-15'
+date: '2020-06-16'
 featuredImage: ./featured.jpg
 author: 'Moody Salem, Hayden Adams'
 previewText: 'The Uniswap Interface is now hosted and served exclusively from IPFS!'
