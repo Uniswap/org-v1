@@ -1,9 +1,10 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect, useEffect } from 'react'
 import gql from 'graphql-tag'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { useQuery } from '@apollo/react-hooks'
 import styled from 'styled-components'
+import { client, blockClient } from '../apollo/client'
 
 import Marquee3k from 'marquee3000'
 
@@ -50,52 +51,96 @@ const AnimatingEl = props => {
   )
 }
 
+export const GET_BLOCK = gql`
+  query blocks($timestamp: Int!) {
+    blocks(first: 1, orderBy: timestamp, orderDirection: asc, where: { timestamp_gt: $timestamp }) {
+      id
+      number
+      timestamp
+    }
+  }
+`
+
+export const ETH_PRICE = block => {
+  const queryString = block
+    ? `
+    query bundles {
+      bundles(where: { id: ${1} } block: {number: ${block}}) {
+        id
+        ethPrice
+      }
+    }
+  `
+    : ` query bundles {
+      bundles(where: { id: ${1} }) {
+        id
+        ethPrice
+      }
+    }
+  `
+  return gql(queryString)
+}
+
 const APOLLO_QUERY = gql`
   {
-    uniswap(id: "1") {
+    uniswapFactory(id: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f") {
       totalVolumeUSD
       totalLiquidityUSD
-      exchangeCount
+      pairCount
     }
-
-    usdcPrice: exchanges(where: { tokenAddress: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48" }) {
-      price
-    }
-
-    daiPrice: exchanges(where: { tokenAddress: "0x6b175474e89094c44da98b954eedeac495271d0f" }) {
-      price
+    bundle(id: 1) {
+      ethPrice
     }
   }
 `
-export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = gql`
-  query uniswapHistoricalDatas($date: Int!) {
-    uniswapHistoricalDatas(where: { timestamp_lt: $date }, first: 1, orderBy: timestamp, orderDirection: desc) {
+
+export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = block => {
+  let queryString = `
+  query uniswapFactory {
+    uniswapFactory(id: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f", block: { number: ${block} }) {
       totalVolumeUSD
       totalLiquidityUSD
+      pairCount
+    
     }
   }
-`
+  `
+  return gql(queryString)
+}
 
 export default function Ticker() {
   //setup time constants
   dayjs.extend(utc)
   const utcCurrentTime = dayjs()
-  const utcOneDayBack = utcCurrentTime.subtract(1, 'day')
+  const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()
   const [initialized, updateInitialized] = useState(false)
 
-  // const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 5000 })
-  const { loading, error, data } = useQuery(APOLLO_QUERY, { pollInterval: 10000 })
+  const { data: blockData } = useQuery(GET_BLOCK, {
+    client: blockClient,
+    variables: {
+      timestamp: utcOneDayBack
+    }
+  })
+  const oneDayBackBlock = blockData?.blocks?.[0]?.number
+  const { loading, data } = useQuery(APOLLO_QUERY, { pollInterval: 10000, client: client })
 
-  // const { loading, error, data } = useQuery(APOLLO_QUERY)
+  const [oneDayResult, setOnedayResult] = useState()
 
-  const { loading: loadingHistoric, error: errorHistoric, data: dataHistorical } = useQuery(
-    UNISWAP_GLOBALS_24HOURS_AGO_QUERY,
-    {
-      variables: {
-        date: utcOneDayBack.unix()
+  useEffect(() => {
+    async function getData() {
+      let result = await client.query({
+        query: UNISWAP_GLOBALS_24HOURS_AGO_QUERY(oneDayBackBlock),
+
+        fetchPolicy: 'cache-first'
+      })
+      if (result) {
+        setOnedayResult(result?.data?.uniswapFactory)
       }
     }
-  )
+    if (oneDayBackBlock) {
+      getData()
+    }
+  }, [oneDayBackBlock])
 
   const [totalElements] = useState(8)
 
@@ -105,8 +150,8 @@ export default function Ticker() {
     }
   }
 
-  if (!loading && !error && !loadingHistoric && !errorHistoric) {
-    const volume24Hour = data.uniswap.totalVolumeUSD - dataHistorical.uniswapHistoricalDatas[0].totalVolumeUSD
+  if (data && oneDayResult) {
+    const volume24Hour = parseFloat(data?.uniswapFactory?.totalVolumeUSD) - parseFloat(oneDayResult?.totalVolumeUSD)
 
     UniStats.volume = [
       new Intl.NumberFormat('en-US', {
@@ -124,17 +169,10 @@ export default function Ticker() {
         notation: 'compact',
         compactDisplay: 'short'
         // maximumSignificantDigits: 5
-      }).format(data.uniswap.totalLiquidityUSD),
+      }).format(data.uniswapFactory.totalLiquidityUSD),
       ' Total Liquidity'
     ]
-    UniStats.exchanges = [Number.parseFloat(data.uniswap.exchangeCount), ' Total Pools']
-
-    let averagePrice = 0
-    const usdcPrice = data && data.usdcPrice && data.usdcPrice[0].price
-    const daiPrice = data && data.daiPrice && data.daiPrice[0].price
-    if (usdcPrice && daiPrice) {
-      averagePrice = (parseFloat(usdcPrice) + parseFloat(daiPrice)) / 2
-    }
+    UniStats.exchanges = [Number.parseFloat(data?.uniswapFactory?.pairCount), ' Total Pools']
 
     UniStats.ETHprice = [
       new Intl.NumberFormat('en-US', {
@@ -143,7 +181,7 @@ export default function Ticker() {
         notation: 'compact',
         compactDisplay: 'short',
         maximumSignificantDigits: 5
-      }).format(averagePrice),
+      }).format(parseFloat(data?.bundle?.ethPrice)),
       ' Uni ETH Price'
     ]
   }
