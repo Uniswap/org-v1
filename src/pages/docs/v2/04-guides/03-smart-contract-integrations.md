@@ -4,7 +4,7 @@ title: Smart Contract Integrations
 
 When integrating Uniswap V2 into another on-chain system, particular care must be taken to avoid security vulnerabilities, avenues for manipulations, and the potential loss of funds.
 
-As a preliminary note: smart contract integrations can happen at two levels: directly with <Link to='/docs/v2/smart-contracts/pair'>Pair</Link> contracts, or through the <Link to='/docs/v2/smart-contracts/router'>Router</Link>. Direct interactions offer maximal flexibility, but require the most work to get right. Mediated interactions offer more limited capabilities, but stronger safety guarantees.
+As a preliminary note: smart contract integrations can happen at two levels: directly with <Link to='/docs/v2/smart-contracts/pair'>Pair</Link> contracts, or through the <Link to='/docs/v2/smart-contracts/router02'>Router</Link>. Direct interactions offer maximal flexibility, but require the most work to get right. Mediated interactions offer more limited capabilities, but stronger safety guarantees.
 
 There are two primary categories of risk associated with Uniswap V2. The first involves so-called "static" errors: accidentally sending too many tokens to a pair during a swap (or requesting too few tokens back), allowing transactions to linger in the mempool long enough for the sender's expectations about prices to no longer be true, etc. These errors are typically addressed with fairly straightforward logic checks. _Performing these checks is the primary reason for the existence of routers_. Those who interact directly with pairs must perform these checks themselves (with the help of the <Link to='/docs/v2/smart-contracts/library'>Library</Link>).
 
