@@ -110,9 +110,9 @@ const PostTitle = styled.h1`
   }
 `
 
-const PostAuthor = styled.p`
-  margin: 0;
-`
+// const PostAuthor = styled.p`
+//   margin: 0;
+// `
 
 const PostDate = styled(Moment)`
   margin: 0;

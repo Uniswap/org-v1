@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 
 import Layout from '../layouts'
 import BG from '../components/bg'
@@ -81,29 +81,29 @@ const PostMetaData = styled.p`
   }
 `
 
-const StyledImage = styled(Img)`
-  width: 100%;
-  border-radius: 12px;
-  margin-left: 2rem;
-  box-shadow: ${({ theme }) => theme.shadows.huge};
-  @media (max-width: 960px) {
-    display: none;
-    max-width: 256px;
-  }
-`
+// const StyledImage = styled(Img)`
+//   width: 100%;
+//   border-radius: 12px;
+//   margin-left: 2rem;
+//   box-shadow: ${({ theme }) => theme.shadows.huge};
+//   @media (max-width: 960px) {
+//     display: none;
+//     max-width: 256px;
+//   }
+// `
 
-const NewPill = styled.p`
-  color: ${({ theme }) => theme.invertedTextColor};
-  background-color: ${({ theme }) => theme.colors.link};
-  padding: 0rem 0.5rem;
-  position: absolute;
-  left: -1rem;
-  top: -0.75rem;
-  border-radius: 1rem;
-  text-align: center;
-  margin: 0;
-  transform: rotateZ(-20deg);
-`
+// const NewPill = styled.p`
+//   color: ${({ theme }) => theme.invertedTextColor};
+//   background-color: ${({ theme }) => theme.colors.link};
+//   padding: 0rem 0.5rem;
+//   position: absolute;
+//   left: -1rem;
+//   top: -0.75rem;
+//   border-radius: 1rem;
+//   text-align: center;
+//   margin: 0;
+//   transform: rotateZ(-20deg);
+// `
 
 const Blog = props => {
   const data = useStaticQuery(graphql`
