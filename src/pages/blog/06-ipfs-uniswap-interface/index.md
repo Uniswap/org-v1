@@ -12,9 +12,10 @@ previewText: 'The Uniswap Interface is now hosted and served exclusively from IP
 - Once per day, the open-source [Uniswap Interface](https://github.com/Uniswap/uniswap-frontend) 
 built by our team and community is [automatically deployed](https://github.com/Uniswap/uniswap-frontend/releases) 
 to IPFS
-- The URL [uniswap.exchange](https://uniswap.exchange) now simply forwards to app.uniswap.org
+- The URL [uniswap.exchange](https://uniswap.exchange) now simply forwards to [app.uniswap.org](https://app.uniswap.org)
 - IPNS + DNSLink are used to point `/ipns/app.uniswap.org` to the latest IPFS release
-- The ENS contenthash for uniswap.eth now points to the latest IPFS release allowing the URL [uniswap.eth.link](https://uniswap.eth.link/) to be used
+- The ENS `contenthash` for `uniswap.eth` now points to the latest IPFS 
+release, enabling access to the Uniswap Interface via [uniswap.eth.link](https://uniswap.eth.link/)
 
 ## Interfaces and decentralization
 
@@ -34,7 +35,7 @@ it claims. If a user runs the code locally, they can make transactions with conf
 is hosted on a public website **it is difficult for users to verify the website they are interacting with is actually 
 hosting the code that they verified**.
 
-This is the problem that IPFS aims to solve.
+This is one of the problem that IPFS aims to solve.
 
 ## What we did
 
