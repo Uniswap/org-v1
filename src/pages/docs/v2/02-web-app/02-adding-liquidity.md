@@ -6,9 +6,9 @@ title: 'Adding liquidity'
 
 The Uniswap interface allows users to add and remove liquidity on Uniswap V2 pairs. After connecting with one of the supported wallet options, users can also see and manage their current positions. Users can also create new pools through the interface.
 
-The liquidity provider section of the interface can be found under the 'pool' tab here: https://uniswap.exchange/pool.
+The liquidity provider section of the interface can be found under the [pool](https://uniswap.exchange/pool) tab.
 
-<Info>You may want to read <Link to="/docs/v2/pools/understanding-lp-returns">Understanding returns</Link> before providing liquidity.</Info>
+<Info>You may want to read <Link to="/docs/v2/pools/understanding-lp-returns">understanding returns</Link> before providing liquidity.</Info>
 
 ## Joining A Pool
 
@@ -28,7 +28,7 @@ If a user can't find a pool they may need to manually import the pool. To do thi
 
 #### Inputting Amounts
 
-After finding the desired pool, a user can continue by selecting the amount of liquidity they want to provide. They can enter an amount of either token and the other amount will be populated automatically based on the current rate between tokens. (If the pool doesn't exist yet the user will need to input both amounts, see [Creating A New Pool]() for more.)
+After finding the desired pool, a user can continue by selecting the amount of liquidity they want to provide. They can enter an amount of either token and the other amount will be populated automatically based on the current rate between tokens. (If the pool doesn't exist yet the user will need to input both amounts, see [Creating A New Pool](/docs/v2/web-app/creating-a-pool/) for more.)
 
 Users can view the current rates that they'll be adding liquidity at in the details section below the inputs. They will also see a label called 'Share of Pool'. This percent represents how much of the entire pool they will own based on the amounts they've inputted. (If you are the first provider you will own 100% for example).
 
