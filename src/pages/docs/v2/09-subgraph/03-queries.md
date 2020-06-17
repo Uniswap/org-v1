@@ -1,0 +1,5 @@
+---
+title: Queries
+---
+
+Entities provide
