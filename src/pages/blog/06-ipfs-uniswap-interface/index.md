@@ -35,7 +35,7 @@ it claims. If a user runs the code locally, they can make transactions with conf
 is hosted on a public website **it is difficult for users to verify the website they are interacting with is actually 
 hosting the code that they verified**.
 
-This is one of the problem that IPFS aims to solve.
+This is one of the problem that IPFS [aims to solve](https://blog.cloudflare.com/e2e-integrity/).
 
 ## What we did
 
