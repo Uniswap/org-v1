@@ -2,8 +2,15 @@
 title: 'Troubleshooting'
 ---
 
-## Overview
+### Trading FAQ
 
-The Uniswap interface allows users to add and remove liquidity on Uniswap V2 pairs. After connecting with one of the supported wallet options, users can also see and manage their current positions. Users can also create new pools through the interface.
+**My transaction is stuck pending!**
+You probably need to check your transaction status in your wallet. Sometimes you can speed up or cancel transactions. You should try resubmitting with a higher gas cost to ensure your transaction is processed.
 
-The liquidity provider section of the interface can be found under the 'pool' tab here: https://uniswap.exchange/pool.
+If it show success in your wallet. Try opening up the account view on the uniswap interface and clicking `clear all`.
+
+**Why does my transaction cost X?**
+Transactions on ethereum cost gas.
+
+**Why is there an LP fee?**
+Check out the <Link to="/docs/v2/core-concepts/architecture/">Uniswap Overview</Link> to understand how the incentives on the protocol work.
