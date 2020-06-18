@@ -45,7 +45,3 @@ The interface will automatically detect when an approval is confirmed and allow 
 The last step to execute a swap through the interface is to click swap and review information in the confirmation modal. This view gives users a summary of the trade before actually submitting a transaction to their connected wallet for approval. Users can click 'confirm swap' and confirm the transaction in the UI of whatever wallet they have connected. Once the user approves the transaction a user can click on pending transactions in the top right and follow the links for more information on Etherscan.
 
 <Info>Having trouble swapping? Check out the <Link to="/docs/v2/web-app/troubleshooting/">troubleshooting</Link> page.</Info>
-
-### Related
-
-<InlineBoxLink title="Advanced" to="" />

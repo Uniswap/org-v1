@@ -4,7 +4,7 @@ title: 'Custom Links'
 
 Uniswap supports linking to specific tokens and functions on the frontend using query parameters.
 
-You can make custom links using query parameters by defining the input and output tokens and defining some values. For instance this iframe preselects `100 BAT` as the input and `DAI` as the output token based on the following <a href="https://uniswap.exchange/swap?inputCurrency=0x0d8775f648430679a709e98d2b0cb6250d2887ef&outputCurrency=0x6B175474E89094C44Da98b954EedeAC495271d0F&exactAmount=100&exactField=inPUT">link</a>:
+You can make custom links using query parameters by defining the input and output tokens and defining some values. For instance the `iframe` below preselects `100 BAT` as the input and `DAI` as the output token based on the following <a href="https://uniswap.exchange/swap?inputCurrency=0x0d8775f648430679a709e98d2b0cb6250d2887ef&outputCurrency=0x6B175474E89094C44Da98b954EedeAC495271d0F&exactAmount=100&exactField=inPUT">link</a>:
 
 ```
 https://uniswap.exchange/swap?inputCurrency=0x0d8775f648430679a709e98d2b0cb6250d2887ef&outputCurrency=0x6B175474E89094C44Da98b954EedeAC495271d0F&exactAmount=100&exactField=inPUT

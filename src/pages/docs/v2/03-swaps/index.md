@@ -3,7 +3,7 @@ title: Overview
 subtitle: Learn about the core functionality of the uniswap protocol. Token Swaps.
 ---
 
-<Info>Looking for help using the interface? &nbsp; <Link to="/docs/v2/web-app/trading/">Check out the web app guides</Link>.</Info>
+<Info>Looking for help using the interface? <Link to="/docs/v2/web-app/trading/">Check out the web app guides</Link></Info>
 
 Token swaps are a simple way to exchange one ERC-20 token for another.
 

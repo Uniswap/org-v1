@@ -2,8 +2,10 @@
 title: 'Embedding the web app'
 ---
 
-## Overview
+It's easy to embed the uniswap interface to your website using an iframe.
 
-The Uniswap interface allows users to add and remove liquidity on Uniswap V2 pairs. After connecting with one of the supported wallet options, users can also see and manage their current positions. Users can also create new pools through the interface.
+```
+<iframe width="375" height="550" src="https://uniswap.exchange/swap?inputCurrency=0x0d8775f648430679a709e98d2b0cb6250d2887ef&outputCurrency=0x6B175474E89094C44Da98b954EedeAC495271d0F&exactAmount=100&exactField=inPUT" />
+```
 
-The liquidity provider section of the interface can be found under the 'pool' tab here: https://uniswap.exchange/pool.
+The UI is designed to collapse to a small form and works very well if it appears in a modal view. You can combine the iframe with [custom links](/docs/v2/web-app/generating-custom-links/) to allow users to execute ALL the functionality of Uniswap on your site.
