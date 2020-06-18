@@ -355,6 +355,7 @@ const SideBar = props => {
           .map(({ node }) => {
             const hideRender =
               (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
+              (node.name.split('-')[1] === 'API' && atTopLevel) ||
               (node.name.split('-')[1] === 'smart' && atTopLevel) ||
               (node.name === 'images' && atTopLevel)
             return (
