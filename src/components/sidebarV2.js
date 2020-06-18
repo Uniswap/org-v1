@@ -161,15 +161,6 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel
       {open && (
         <>
           <StyledInset style={{ paddingLeft: '.5rem' }}>
-            <StyledListItem>
-              <StyledLink
-                style={{ marginBottom: '0rem', display: 'inline-block', padding: '0px' }}
-                to={`/${topLevel}/${section}`}
-                isActive={path.split('/')[4] === ''}
-              >
-                Overview
-              </StyledLink>
-            </StyledListItem>
             <List data={listData} parent={node.name} slug={parent} path={path} />
           </StyledInset>
           {!atTopLevel && referenceData && (

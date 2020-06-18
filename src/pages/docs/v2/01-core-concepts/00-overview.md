@@ -9,9 +9,9 @@ Check out some of the resources below to get a deeper look at how the protocol i
 ## Understanding Uniswap
 
 <div style={{display: 'flex', flexDirection: 'row', justifyContent:'flex-start', marginBottom: '2rem'}}>
-<InlineCard title="Protocol Architecture" tag="guide" description="Trade tokens, add liquidity and create pools." to="/docs/v2/flash-swaps/anatomy-of-a-flash-swap/" />
-<InlineCard title="Uniswap Math" tag="guide" description="Trade tokens, add liquidity and create pools." to="/docs/v2/flash-swaps/no-capital-arbitrage" />
-<InlineCard title="Glossary of terms" tag="reference" description="Trade tokens, add liquidity and create pools." to="/docs/v2/flash-swaps/instant-leverage" />
+<InlineCard title="Protocol Architecture" tag="guide" description="Trade tokens, add liquidity and create pools." to="/docs/v2/core-concepts/architecture/" />
+<InlineCard title="Uniswap Math" tag="guide" description="Trade tokens, add liquidity and create pools." to="/docs/v2/core-concepts/uniswap-math/" />
+<InlineCard title="Glossary of terms" tag="reference" description="Trade tokens, add liquidity and create pools." to="/docs/v2/core-concepts/glossary/" />
 
 </div>
 

@@ -8,7 +8,7 @@ The Uniswap interface allows users to add and remove liquidity on Uniswap V2 pai
 
 The liquidity provider section of the interface can be found under the [pool](https://uniswap.exchange/pool) tab.
 
-<Info>You may want to read <Link to="/docs/v2/pools/understanding-lp-returns">understanding returns</Link> before providing liquidity.</Info>
+<Info>You may want to read <Link to="/docs/v2/pools/understanding-returns/">understanding returns</Link> before providing liquidity.</Info>
 
 ## Joining A Pool
 

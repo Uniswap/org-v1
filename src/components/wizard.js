@@ -12,26 +12,28 @@ const links = [
     sublinks: [
       {
         title: 'Implement a token swap',
-        link: '/docs/v2/core-concepts',
+        link: '/docs/v2/swaps/trading-from-a-smart-contract/',
         description: 'A step by step guide to swapping tokens in your smart contracts.',
         tag: 'tutorial'
       },
       {
         title: 'Uniswap SDK',
-        link: '/docs/v2/core-concepts',
-        description: 'Check out the full SDK for all of Uniswaps capabilities.',
+        link: '/docs/v2/SDK/getting-started',
+        description: 'Simplifying the process of integrating Uniswap into your project',
         tag: 'reference'
       },
       {
         title: 'Introduction to Flash Swaps',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol',
+        link: '/docs/v2/flash-swaps/anatomy-of-a-flash-swap/',
+        description:
+          'Withdraw up to the full reserves of any ERC20 token on Uniswap and execute arbitrary logic at no upfront cost',
         tag: 'guide'
       },
       {
         title: 'Introduction to Oracles',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol'
+        link: '/docs/v2/oracles/how-uniswap-oracles-work/',
+        description:
+          'New functionality that enables highly decentralized and manipulation-resistant on-chain price feeds'
       }
     ]
   },
@@ -39,16 +41,22 @@ const links = [
     name: 'Traders',
     sublinks: [
       {
-        title: 'Anatomy of a Uniswap Trade',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.',
-        tag: 'guide'
+        title: 'Using the interface',
+        link: '/docs/v2/web-app/trading/',
+        description: 'The comprehensive web app user guide.',
+        tag: 'tutorial'
       },
       {
-        title: 'Using the interface',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.',
-        tag: 'tutorial'
+        title: 'Glossary',
+        link: '/docs/v2/core-concepts/glossary',
+        description: 'An overview of the terms used in these docs and on the interface',
+        tag: 'reference'
+      },
+      {
+        title: 'Understanding prices',
+        link: '/docs/v2/swaps/pricing/#pricing-trades',
+        description: 'How the interface calculates prices for swaps.',
+        tag: 'guide'
       }
     ]
   },
