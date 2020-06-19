@@ -1,14 +1,18 @@
 ---
-title: Implement a swap
+title: Implement a Swap
 ---
 
 When trading from a smart contract, the most important thing to keep in mind is that access to an external price source is _mandatory_. Without this, trades can be frontrun for considerable loss on your part.
+
+_Read [safety considerations](#safety-considerations) for more._
 
 # Using the Router
 
 The easiest way to safely swap with a pool is to use the <Link to='/docs/v2/smart-contracts/router02'>router</Link>, which provides a variety of methods to safely swap to and from different assets. You'll notice that there is a function for each permutation of swapping to/from an exact amount of ETH/tokens.
 
 Once you've used your external price source to calculate the safety parameters for the function you'd like to call, it's important to ensure that your contract a) controls at least as many ETH/tokens as were passed as `amount*Desired` parameters, and b) has granted approval to the router to withdraw this many tokens.
+
+_Check out the <Link to='/docs/v2/swaps/pricing/#pricing-trades'>Pricing</Link> page for a more in depth discussion on getting prices._
 
 # Example
 
