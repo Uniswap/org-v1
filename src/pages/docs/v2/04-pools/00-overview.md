@@ -31,4 +31,4 @@ In the same way end-users can interact with the Uniswap protocol through the Int
 
 In a similar fashion, new liquidity pools by can be deployed by any users without permission to support any unique pair of tokens.
 
-To understand how Liquidity Pools work in practice, you can proceed to the ![Anatomy of a Liquidity Pool]().
+To understand how Liquidity Pools work in practice, you can proceed to the [Anatomy of a Liquidity Pool]().
