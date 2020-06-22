@@ -52,8 +52,16 @@ The Uniswap team is responsible for driving the development of the protocol.
 
 Uniswap is made up of a series of smart contracts, each the venue for a unique ERC-20⇄ERC-20 pair. Pair smart contracts hold reserves (balances) of their constituent tokens, and define rules around how these reserves can be changed. Anyone can become a liquidity provider for a pair by depositing an equivalent value of each token in exchange for pool tokens. These tokens track liquidity providers’ pro-rata shares of the total reserves, and can be redeemed for the underlying assets at any time.
 
-Pairs act as automated liquidity providers, standing ready to accept one token for the other as long as the “constant product” formula is preserved. This formula, most simply expressed as x * y = k, states that trades must not change the product (k) of a pair’s reserve balances (x and y). Because k remains unchanged from the reference frame of a trade, it is often referred to as the invariant. This formula has the desirable property that larger trades (relative to reserves) execute at exponentially worse rates than smaller ones.
+Pairs act as automated liquidity providers, standing ready to accept one token for the other as long as the “constant product” formula is preserved. This formula, most simply expressed as `x * y = k`, states that trades must not change the product (`k`) of a pair’s reserve balances (`x` and `y`). Because `k` remains unchanged from the reference frame of a trade, it is often referred to as the invariant. This formula has the desirable property that larger trades (relative to reserves) execute at exponentially worse rates than smaller ones.
 
-In practice, Uniswap applies a 0.30% fee to trades, which is added to reserves. As a result, each trade actually increases k. This functions as a payout to liquidity providers, which is realized when they burn their pool tokens to withdraw their portion of total reserves. In the future, this fee may be reduced to 0.25%, with the remaining 0.05% withheld as a protocol-wide charge.
+In practice, Uniswap applies a 0.30% fee to trades, which is added to reserves. As a result, each trade actually increases `k`. This functions as a payout to liquidity providers, which is realized when they burn their pool tokens to withdraw their portion of total reserves. In the future, this fee may be reduced to 0.25%, with the remaining 0.05% withheld as a protocol-wide charge.
 
 Because the relative price of the two pair assets can only be changed through trading, divergences between the Uniswap price and external prices create arbitrage opportunities. This mechanism ensures that Uniswap prices always trend toward the market-clearing price.
+
+## Further reading
+
+To see how token swaps work in practice and to walk through the lifecycle of a swap, navigate to the [Swaps]() section of the documentation.
+
+Uniswap can also be understood from the perspective of Liquidity pools, which are the core mechanism for exchanging tokens, determining prices, and creating incentives. Liquidity pools are described in the [Pools]() section of the documentation.
+
+Ultimately, the Uniswap protocol is just smart contract code running on Ethereum. How the contracts are implemented is described in the [Smart contracts]() section.
