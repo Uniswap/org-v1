@@ -1,5 +1,6 @@
 ---
 title: Fees
+tags: core-concepts
 ---
 
 ## Liquidity provider fees
