@@ -1,8 +1,6 @@
 ---
 title: Pair
-tags:
-  - sdk
-  - documentation
+tags: sdk, documentation
 ---
 
 ```typescript

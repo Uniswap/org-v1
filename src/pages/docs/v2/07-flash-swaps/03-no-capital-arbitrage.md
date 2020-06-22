@@ -1,8 +1,6 @@
 ---
 title: No-Capital Arbitrage
-tags:
-  - oracles
-  - documentation
+tags: flash-swaps, documentation
 ---
 
 One particularly interesting use case for flash swaps is capital-free arbitrage. It's well-known that an integral part of Uniswap's design is to create incentives for arbitrageurs to trade the Uniswap price to a "fair" market price. While game-theoretically sound, this strategy is accessible only to those with sufficient capital to take advantage of arbitrage opportunities. Flash swaps remove this barrier entirely, effectively democratizing arbitrage.

@@ -1,8 +1,6 @@
 ---
 title: 'Adding liquidity'
-tags:
-  - user-guides
-  - documentation
+tags: user-guides, documentation
 ---
 
 ## Overview

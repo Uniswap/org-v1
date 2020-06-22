@@ -1,8 +1,6 @@
 ---
 title: Understanding Returns
-tags:
-  - pools
-  - documentation
+tags: pools, documentation
 ---
 
 ## Introduction

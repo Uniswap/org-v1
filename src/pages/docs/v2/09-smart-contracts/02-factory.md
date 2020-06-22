@@ -1,8 +1,6 @@
 ---
 title: Factory
-tags:
-  - smart-contracts
-  - documentation
+tags: smart-contracts, documentation
 ---
 
 # Code

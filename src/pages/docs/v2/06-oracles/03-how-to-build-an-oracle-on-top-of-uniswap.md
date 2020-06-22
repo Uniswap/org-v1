@@ -1,8 +1,6 @@
 ---
 title: Building an oracle on Uniswap
-tags:
-  - oracles
-  - documentation
+tags: oracles, documentation
 ---
 
 To build a price oracle on Uniswap V2, you must first understand the

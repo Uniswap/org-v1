@@ -1,8 +1,6 @@
 ---
 title: Overview
-tags:
-  - user-guides
-  - documentation
+tags: user-guides, documentation
 ---
 
 The Uniswap interface allows users to interact with the Uniswap smart contracts and perform key actions like swapping tokens, adding liquidity, removing liquidity. The interface is open sourced and source code can be found below.

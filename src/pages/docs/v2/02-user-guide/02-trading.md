@@ -1,8 +1,6 @@
 ---
 title: 'Making Trades'
-tags:
-  - user-guides
-  - documentation
+tags: user-guides, documentation
 ---
 
 ### Selecting Tokens

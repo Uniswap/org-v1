@@ -1,8 +1,6 @@
 ---
 title: Anatomy of a Swap
-tags:
-  - developer-guides
-  - documentation
+tags: swaps, documentation
 ---
 
 At the most basic level, all swaps in Uniswap V2 happen within a single function, aptly named `swap`:

@@ -1,8 +1,6 @@
 ---
 title: Trade
-tags:
-  - sdk
-  - documentation
+tags: sdk, documentation
 ---
 
 ```typescript

@@ -1,8 +1,6 @@
 ---
 title: Overview
-tags:
-  - api
-  - documentation
+tags: api, documentation
 ---
 
 The Uniswap subgraph indexes data from the Uniswap contracts over time. It organizes data about pairs, tokens, Uniswap as a whole, and more. The subgraph updates any time a transaction is made on Uniswap. The subgraph runs on [The Graph](https://thegraph.com/) protocol's hosted service and can be openly queried.

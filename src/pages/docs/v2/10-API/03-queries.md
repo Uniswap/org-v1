@@ -1,8 +1,6 @@
 ---
 title: Queries
-tags:
-  - api
-  - documentation
+tags: api, documentation
 ---
 
 The subgraph can be queried to retrieve important information about Uniswap, pairs, tokens, transactions, users, and more. This page will provide examples for common queries.

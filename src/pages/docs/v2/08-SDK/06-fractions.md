@@ -1,8 +1,6 @@
 ---
 title: Fractions
-tags:
-  - sdk
-  - documentation
+tags: sdk, documentation
 ---
 
 # Fraction

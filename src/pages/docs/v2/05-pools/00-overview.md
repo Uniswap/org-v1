@@ -1,8 +1,6 @@
 ---
 title: Overview
-tags:
-  - pools
-  - documentation
+tags: pools, documentation
 ---
 
 Uniswap is unique in that it doesn’t use an order book to derive the price of an asset or to match buyers and sellers of tokens. Instead, Uniswap uses what are called Liquidity Pools.

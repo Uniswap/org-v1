@@ -1,8 +1,6 @@
 ---
 title: Other Exports
-tags:
-  - sdk
-  - documentation
+tags: sdk, documentation
 ---
 
 # JSBI

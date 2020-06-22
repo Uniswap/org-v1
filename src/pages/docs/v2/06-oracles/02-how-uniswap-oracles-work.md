@@ -1,8 +1,6 @@
 ---
 title: How Uniswap oracles work
-tags:
-  - oracles
-  - documentation
+tags: oracles, documentation
 ---
 
 ## Problem statement

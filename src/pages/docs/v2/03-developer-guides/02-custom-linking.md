@@ -1,8 +1,6 @@
 ---
 title: Custom Linking
-tags:
-  - developer-guides
-  - documentation
+tags: developer-guides, documentation
 ---
 
 # Query Parameters

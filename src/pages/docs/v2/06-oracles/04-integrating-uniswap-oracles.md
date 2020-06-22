@@ -1,8 +1,6 @@
 ---
 title: Integrating an oracle
-tags:
-  - oracles
-  - documentation
+tags: oracles, documentation
 ---
 
 To integrate an oracle into your contracts, you must ensure the oracle's observations of the cumulative price variable

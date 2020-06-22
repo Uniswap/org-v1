@@ -1,8 +1,6 @@
 ---
 title: Token
-tags:
-  - sdk
-  - documentation
+tags: sdk, documentation
 ---
 
 ```typescript

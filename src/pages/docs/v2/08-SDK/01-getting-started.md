@@ -1,8 +1,6 @@
 ---
 title: Getting Started
-tags:
-  - sdk
-  - documentation
+tags: sdk, documentation
 ---
 
 # Code
