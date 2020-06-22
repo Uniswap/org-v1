@@ -27,7 +27,7 @@ const StyledSidebar = styled.div`
 `
 
 const StyledSection = styled.div`
-  height: ${({ open }) => (open ? 'inital' : '2rem')};
+  height: ${({ open }) => (open ? 'inital' : '1.75rem')};
   overflow: hidden;
   /* cursor: pointer; */
 `
@@ -68,7 +68,7 @@ const StyledInset = styled.div`
 
 const StyledSectionTitle = styled.p`
   margin: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   display: flex;
   flex-direction: row;
   align-items: center;

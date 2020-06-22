@@ -1,5 +1,5 @@
 ---
-title: Connect to Uniswap
+title: Quick start
 tags: developer-guides, documentation
 ---
 
