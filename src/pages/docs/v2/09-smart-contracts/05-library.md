@@ -1,5 +1,6 @@
 ---
 title: Library
+tags: smart-contracts, documentation
 ---
 
 # Code

@@ -1,5 +1,6 @@
 ---
 title: Router01
+tags: smart-contracts, documentation
 ---
 
 <Info>

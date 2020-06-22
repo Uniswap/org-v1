@@ -1,5 +1,6 @@
 ---
 title: Router02
+tags: smart-contracts, documentation
 ---
 
 Because routers are stateless and do not hold token balances, they can be replaced safely and trustlessly, if necessary. This may happen if more efficient smart contract patterns are discovered, or if additional functionality is desired. For this reason, routers have _release numbers_, starting at `01`. This is currently recommended release, `02`.
@@ -257,7 +258,6 @@ Identical to [removeLiquidityETH](#removeliquidityeth), but succeeds for tokens 
 |                |           |                                                                                      |
 | amountETH      | `uint`    | The amount of ETH received.                                                          |
 
-
 ## removeLiquidityETHWithPermitSupportingFeeOnTransferTokens
 
 ```solidity
@@ -288,7 +288,6 @@ Identical to [removeLiquidityETHWithPermit](#removeliquidityethwithpermit), but 
 | s              | `bytes32` | The s component of the permit signature.                                             |
 |                |           |                                                                                      |
 | amountETH      | `uint`    | The amount of ETH received.                                                          |
-
 
 ## swapExactTokensForTokens
 

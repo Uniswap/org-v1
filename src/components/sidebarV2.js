@@ -387,7 +387,7 @@ const SideBar = props => {
 
       {atTopLevel && (
         <StyledList style={{ marginTop: '.5rem' }}>
-          <SectionHeader>Products</SectionHeader>
+          <SectionHeader>Concepts</SectionHeader>
           {navData.edges
             .filter(({ node }) => {
               return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')

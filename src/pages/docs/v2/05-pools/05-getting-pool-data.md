@@ -1,5 +1,6 @@
 ---
 title: Getting pool data
+tags: pools, documentation
 ---
 
 ## Getting pool data with the router

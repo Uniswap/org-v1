@@ -1,5 +1,6 @@
 ---
 title: Architecture
+tags: protocol-overview, documentation
 ---
 
 ## Uniswap at a glance

@@ -1,5 +1,6 @@
 ---
 title: Implement a Swap
+tags: swaps, documentation
 ---
 
 When trading from a smart contract, the most important thing to keep in mind is that access to an external price source is _mandatory_. Without this, trades can be frontrun for considerable loss on your part.

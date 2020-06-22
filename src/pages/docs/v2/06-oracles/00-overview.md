@@ -1,5 +1,6 @@
 ---
 title: Overview
+tags: oracles, documentation
 ---
 
 Uniswap V2 enables building highly decentralized and manipulation-resistant on-chain price oracles.

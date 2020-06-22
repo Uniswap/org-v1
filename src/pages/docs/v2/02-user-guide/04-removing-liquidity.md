@@ -1,5 +1,6 @@
 ---
 title: 'Removing liquidity'
+tags: user-guides, documentation
 ---
 
 To remove liquidity from an existing position a user can click into their position on the main 'Pool' page and click remove.

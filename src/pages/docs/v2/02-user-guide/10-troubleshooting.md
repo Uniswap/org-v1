@@ -1,5 +1,6 @@
 ---
 title: 'Troubleshooting'
+tags: user-guides, documentation
 ---
 
 ### Trading FAQ
