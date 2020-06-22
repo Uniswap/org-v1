@@ -1,5 +1,8 @@
 ---
 title: Instant Leverage
+tags:
+  - flash-swaps
+  - documentation
 ---
 
 Flash swaps can be used to improve the efficiency of levering up using lending protocols and Uniswap.

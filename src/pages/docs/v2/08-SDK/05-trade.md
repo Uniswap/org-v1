@@ -1,5 +1,8 @@
 ---
 title: Trade
+tags:
+  - sdk
+  - documentation
 ---
 
 ```typescript
@@ -101,24 +104,24 @@ Useful when constructing a transaction for a trade of type `EXACT_IN`.
 maximumAmountIn(slippageTolerance: Percent): TokenAmount
 ```
 
-Returns the maximum amount of the input token that should be spent on the trade, given the slippage tolerance. 
+Returns the maximum amount of the input token that should be spent on the trade, given the slippage tolerance.
 
 Useful when constructing a transaction for a trade of type `EXACT_OUT`.
 
 # Static methods
 
 These static methods provide ways to construct ideal trades from lists of pairs.
-Note these methods do not perform any aggregation across routes, as routes are linear. 
+Note these methods do not perform any aggregation across routes, as routes are linear.
 It's possible that a better price can be had by combining multiple trades across
 different routes.
 
 ## bestTradeExactIn
 
-Given a list of pairs, a fixed amount in, and token amount out, 
-this method returns the best `maxNumResults` trades that swap 
+Given a list of pairs, a fixed amount in, and token amount out,
+this method returns the best `maxNumResults` trades that swap
 an input token amount to an output token, making at most `maxHops` hops.
 The returned trades are sorted by output amount, in decreasing order, and
-all share the given input amount.  
+all share the given input amount.
 
 ```typescript
 Trade.bestTradeExactIn(
@@ -131,7 +134,7 @@ Trade.bestTradeExactIn(
 ## bestTradeExactOut
 
 Similar to the above method, but targets a fixed output token amount.
-The returned trades are sorted by input amount, in increasing order, 
+The returned trades are sorted by input amount, in increasing order,
 and all share the given output amount.
 
 ```typescript

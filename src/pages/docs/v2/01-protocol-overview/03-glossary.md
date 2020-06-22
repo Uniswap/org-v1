@@ -1,5 +1,8 @@
 ---
 title: Glossary
+tags:
+  - protocol-concepts
+  - documentation
 ---
 
 This is a stub. Help us expand it by submitting a PR using the github link below!
@@ -49,7 +52,7 @@ Slippage is....
 
 Slippage is.... -->
 
-<!-- 
+<!--
 **Exchange**
 
 - Trade / Trading, Swap/Swapping (when used as a verb and referring to trading ERC20 tokens)

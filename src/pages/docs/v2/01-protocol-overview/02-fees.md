@@ -1,6 +1,8 @@
 ---
 title: Fees
-tags: core-concepts
+tags:
+  - protocol-concepts
+  - documentation
 ---
 
 ## Liquidity provider fees

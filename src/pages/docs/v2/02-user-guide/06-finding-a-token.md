@@ -1,5 +1,8 @@
 ---
 title: 'Finding a token'
+tags:
+  - user-guides
+  - documentation
 ---
 
 ## Finding a token address

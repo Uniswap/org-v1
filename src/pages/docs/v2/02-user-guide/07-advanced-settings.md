@@ -1,5 +1,8 @@
 ---
 title: 'Advanced Settings'
+tags:
+  - user-guides
+  - documentation
 ---
 
 ### Advanced Settings and Considerations

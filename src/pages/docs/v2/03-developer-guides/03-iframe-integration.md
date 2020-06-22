@@ -1,5 +1,8 @@
 ---
 title: Iframe Integration
+tags:
+  - developer-guides
+  - documentation
 ---
 
 Uniswap can be used within other sites as an iframe. An iframe shows an exact version of the v1.uniswap.exchange site and can have custom prefilled settings.

@@ -1,5 +1,8 @@
 ---
 title: Route
+tags:
+  - sdk
+  - documentation
 ---
 
 ```typescript

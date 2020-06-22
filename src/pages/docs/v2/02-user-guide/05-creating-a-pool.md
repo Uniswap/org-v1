@@ -1,5 +1,8 @@
 ---
 title: 'Creating a Pool'
+tags:
+  - user-guides
+  - documentation
 ---
 
 ## Pool quickstart
