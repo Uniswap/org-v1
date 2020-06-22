@@ -398,9 +398,9 @@ const SideBar = props => {
                 (node.name.split('-')[1] === 'API' && atTopLevel) ||
                 (node.name.split('-')[1] === 'smart' && atTopLevel) ||
                 (node.name.split('-')[1] === 'user' && atTopLevel) ||
-                (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
                 (node.name.split('-')[1] === 'core' && atTopLevel) ||
                 (node.name.split('-')[1] === 'advanced' && atTopLevel) ||
+                (node.name.split('-')[1] === 'integration' && atTopLevel) ||
                 (node.name === 'images' && atTopLevel)
               return (
                 !hideRender && (
