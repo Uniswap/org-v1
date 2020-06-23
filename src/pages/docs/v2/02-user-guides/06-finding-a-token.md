@@ -1,5 +1,5 @@
 ---
-title: 'Finding a token'
+title: 'Finding a Token'
 tags: user-guides, documentation
 ---
 

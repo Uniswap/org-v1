@@ -1,5 +1,5 @@
 ---
-title: Iframe Integration
+title: iframe Integration
 tags: developer-guides, documentation
 ---
 

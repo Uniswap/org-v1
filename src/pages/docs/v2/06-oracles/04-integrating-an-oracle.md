@@ -1,5 +1,5 @@
 ---
-title: Integrating an oracle
+title: Integrating an Oracle
 tags: oracles, documentation
 ---
 

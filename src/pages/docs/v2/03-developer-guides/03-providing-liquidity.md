@@ -1,5 +1,5 @@
 ---
-title: Providing Liquidity from a Smart Contract
+title: Providing Liquidity
 tags: pools, documentation
 ---
 
