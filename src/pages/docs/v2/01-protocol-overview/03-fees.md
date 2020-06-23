@@ -5,7 +5,7 @@ tags: protocol-overview, documentation
 
 ## Liquidity provider fees
 
-There is a **0.3%** fee for swapping tokens. **This fee is split by liquidity providers proportional to their contribution to liquidity reserves.**
+There is a **0.30%** fee for swapping tokens. **This fee is split by liquidity providers proportional to their contribution to liquidity reserves.**
 
 Swapping fees are immediately deposited into liquidity reserves. Since total reserves are increased without adding any additional share tokens, this increases that value of all share tokens equally. This functions as a payout to liquidity providers that can be collected by burning shares.
 
