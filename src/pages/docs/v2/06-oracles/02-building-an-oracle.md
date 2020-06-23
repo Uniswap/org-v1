@@ -108,6 +108,4 @@ handles observation timestamps.
 
 ## Integrating the oracle
 
-Once you have determined your requirements, and written
-your oracle contract, you must integrate it into your own
-smart contracts. For more details, continue on to the next section.
+Once you have determined your requirements, and written your oracle contract, you must integrate it into your own smart contracts. For more details, continue on to the next section.

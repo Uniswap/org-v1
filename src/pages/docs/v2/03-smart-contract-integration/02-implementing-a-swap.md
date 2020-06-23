@@ -5,7 +5,7 @@ tags: swaps, documentation
 
 When trading from a smart contract, the most important thing to keep in mind is that access to an external price source is _mandatory_. Without this, trades can be frontrun for considerable loss on your part.
 
-_Read [safety considerations](#safety-considerations) for more._
+*Read [safety considerations](#safety-considerations) for more details.*
 
 # Using the Router
 
@@ -13,7 +13,7 @@ The easiest way to safely swap with a pool is to use the <Link to='/docs/v2/smar
 
 Once you've used your external price source to calculate the safety parameters for the function you'd like to call, it's important to ensure that your contract a) controls at least as many ETH/tokens as were passed as `amount*Desired` parameters, and b) has granted approval to the router to withdraw this many tokens.
 
-_Check out the <Link to='/docs/v2/swaps/pricing/#pricing-trades'>Pricing</Link> page for a more in depth discussion on getting prices._
+_Check out the <Link to='/docs/v2/swaps/pricing/#pricing-trades'>Pricing</Link> page for an in-depth discussion on pricing._
 
 # Example
 
@@ -21,12 +21,14 @@ Imagine you want to swap 50 DAI for as much ETH as possible from your smart cont
 
 ## transferFrom
 
-Before swapping, our smart contracts needs to be in control of 50 DAI. The easiest way to accomplish this is by calling `transferFrom` on DAI with the owner set to `msg.sender`:
+Before swapping, our smart contract needs to be in control of 50 DAI. The easiest way to accomplish this is by calling `transferFrom` on DAI with the owner set to `msg.sender`:
 
 ```solidity
 uint amountIn = 50 * 10 ** DAI.decimals();
 require(DAI.transferFrom(msg.sender, address(this), amountIn), 'transferFrom failed.');
 ```
+
+Note that this requires the `msg.sender` to have granted approval to your contract to withdraw at least 50 DAI.
 
 ## approve
 
@@ -41,10 +43,10 @@ require(DAI.approve(address(UniswapV2Router02), amountIn), 'approve failed.');
 Now we're ready to swap:
 
 ```solidity
-// amountOutMin must be retrieved from an oracle of some kind
 address[] memory path = new address[](2);
 path[0] = address(DAI);
 path[1] = UniswapV2Router02.WETH();
+// amountOutMin must be retrieved from an oracle of some kind
 UniswapV2Router02.swapExactTokensForETH(amountIn, amountOutMin, path, msg.sender, block.timestamp);
 ```
 
