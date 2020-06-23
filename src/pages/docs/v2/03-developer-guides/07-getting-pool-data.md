@@ -1,5 +1,5 @@
 ---
-title: Getting pool data
+title: Getting Pool Data
 tags: pools, documentation
 ---
 

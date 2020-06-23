@@ -1,5 +1,5 @@
 ---
-title: Smart contracts
+title: Smart Contracts
 tags: protocol-overview, documentation
 ---
 
