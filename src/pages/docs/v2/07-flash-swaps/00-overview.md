@@ -10,22 +10,8 @@ Uniswap flash swaps allow you to withdraw up to the full reserves of any ERC20 
 
 Flash swaps are incredibly useful because they obviate upfront capital requirements and unnecessary order-of-operations constraints for multi-step transactions involving Uniswap.
 
-## Flash Swap Guides
+## Capital Free Arbitrage
 
-<div style={{display: 'flex', flexDirection: 'row', justifyContent:'flex-start', marginBottom: '2rem'}}>
-<InlineCard title="Anatony of a flash swap" tag="guide" description="Trade tokens, add liquidity and create pools." to="/docs/v2/flash-swaps/anatomy-of-a-flash-swap/" />
-<InlineCard title="No-Capital Arbitrage" tag="use case" description="Trade tokens, add liquidity and create pools." to="/docs/v2/flash-swaps/no-capital-arbitrage" />
-<InlineCard title="Instant Leverage" tag="use case" description="Trade tokens, add liquidity and create pools." to="/docs/v2/flash-swaps/instant-leverage" />
-
-</div>
-
-## Flash Swap Developer resources
-
-<InlineBoxLink title="Solidity Example" href="https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleFlashSwap.sol" />
-<InlineBoxLink title="SDK Swap reference" href="https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleFlashSwap.sol" />
-
-<!-- ## Capital Free Arbitrage -->
-<!--
 An example use case for flash swaps is capital-free arbitrage. Imagine a scenario where you could sell 200 DAI for 1 ETH on Uniswap, and 1 ETH for 220 DAI on Oasis for a profit of 20 DAI. Unfortunately, you don't have any DAI in your wallet.
 
 With flash swaps, you could optimistically withdraw 1 ETH from Uniswap, sell it on Oasis for 220 DAI, and then pay for the ETH on Uniswap with 200 of the DAI you just purchased (plus the standard 0.3% LP fee), all in one transaction.
@@ -45,4 +31,9 @@ Another example is improving the efficiency of repeated uses of lending protoco
 
 With flash swaps, you could pre-calculate exactly how much ETH the final leveraged position would require, subtract this from the principal, withdraw that from Uniswap, deposit it into Maker, draw DAI against the collateral, and repay Uniswap in a single transaction.
 
-<InlineBoxLink title="Guide to Instant Leverage" to="/docs/v2/flash-swaps/instant-leverage" /> -->
+<InlineBoxLink title="Guide to Instant Leverage" to="/docs/v2/flash-swaps/instant-leverage" />
+
+## Flash Swap Developer resources
+
+<InlineBoxLink title="Solidity Example" href="https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleFlashSwap.sol" />
+<InlineBoxLink title="SDK Swap reference" href="https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleFlashSwap.sol" />
