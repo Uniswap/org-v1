@@ -3,11 +3,9 @@ title: Fees
 tags: protocol-overview, documentation
 ---
 
-## Liquidity provider fees
+A **0.30%** fee is applied to input amounts when swapping tokens. **This fee is split by liquidity providers proportional to their contribution to liquidity reserves.**
 
-There is a **0.30%** fee for swapping tokens. **This fee is split by liquidity providers proportional to their contribution to liquidity reserves.**
-
-Swapping fees are immediately deposited into liquidity reserves. Since total reserves are increased without adding any additional share tokens, this increases that value of all share tokens equally. This functions as a payout to liquidity providers that can be collected by burning shares.
+Swap fees are deposited into liquidity reserves. This means that total reserves increase without any additional share tokens being added, which increases the value of all share tokens equally. This functions as a payout to liquidity providers that can be collected by burning shares.
 
 Since fees are added to liquidity pools, the invariant increases at the end of every trade. Within a single transaction, the invariant represents `token0_pool / token1_pool` at the end of the previous transaction.
 
@@ -15,7 +13,7 @@ There are many community developed tools to determine returns. You can also read
 
 <InlineBoxLink title="Understanding LP returns" to="/docs/v2/liquidity-pools/understanding-uniswap-returns/" />
 
-## Path to Sustainability
+# Path to Sustainability
 
 Decentralization is in many ways about increasing participation and removing central points of failure. Uniswap V1 is already highly decentralized, trustless, and censorship resistant. But for it to achieve its full potential as infrastructure in a fair and open financial system — **it must continue to grow and improve**.
 

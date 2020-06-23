@@ -9,7 +9,7 @@ New to Ethereum? To learn more about wallets [see here](https://ethereum.org/wal
 
 ![](images/connect.gif)
 
-## Supported wallets
+# Supported wallets
 
 Desktop:
 

@@ -3,21 +3,19 @@ title: Architecture
 tags: protocol-overview, documentation
 ---
 
-## Uniswap at a Glance
-
 Uniswap is an _automated liquidity protocol_ powered by a <Link to="/docs/v2/core-concepts/math">constant product formula</Link> and implemented in a system of non-upgradeable smart contracts on the [Ethereum](https://ethereum.org/) blockchain. It obviates the need for trusted intermediaries, prioritizing **decentralization**, **censorship resistance**, and **security**. Uniswap is **open-source software** licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License).
 
 Each Uniswap smart contract, or pair, manages a liquidity pool made up of reserves of two [ERC-20](https://eips.ethereum.org/EIPS/eip-20) tokens. Pairs act as **automated market makers**, facilitating trades of one token for the other as long as several basic conditions are met.
 
-## Sustainable Ecosystem
+# Sustainable Ecosystem
 
 The Uniswap ecosystem is primarily comprised of three types of users: liquidity providers, traders, and developers. Liquidity providers are incentivized to contribute [ERC-20](https://eips.ethereum.org/EIPS/eip-20) tokens to common liquidity pools. Traders can swap these tokens for one another for a fixed <Link to="/docs/v2/core-concepts/fees">0.30% fee</Link> (which goes to liquidity providers). Developers can integrate directly with Uniswap smart contracts to power new and exciting investment opportunities, trading interfaces, retail experiences, and more.
 
 In total, interactions between these classes create a positive feedback loop, fueling digital economies by DeFining a common language through which tokens can be pooled, traded and used.
 
-## Protocol Participants
+# Protocol Participants
 
-### Liquidity Providers
+## Liquidity Providers
 
 Liquidity providers, or LPs, are not a homogenous group:
 
@@ -29,7 +27,7 @@ Liquidity providers, or LPs, are not a homogenous group:
 
 - Finally, some DeFi pioneers are exploring complex LPs interactions like incentivized liquidity, liquidity locks, and other experimental strategies. Uniswap is the perfect protocol for projects to experiment with these kinds of ideas.
 
-### Traders
+## Traders
 
 There are a several categories of traders in the protocol ecosystem:
 
@@ -41,7 +39,7 @@ There are a several categories of traders in the protocol ecosystem:
 
 In all cases, trades are subject to the same flat fee for trading on the protocol. Each is important for increasing the accuracy of prices and incentivizing liquidity.
 
-### Developers/Projects
+## Developers/Projects
 
 There are far too many ways Uniswap is used in the wider Ethereum ecosystem to count, but a few stand out:
 
@@ -53,11 +51,11 @@ There are far too many ways Uniswap is used in the wider Ethereum ecosystem to c
 
 - Smart contract developers use the suite of functions available to invent new DeFi tools and other various experimental ideas. See projects like [Unisocks](https://unisocks.exchange/) or [Zora](https://ourzora.com/), among many, many others.
 
-### Uniswap Team
+## Uniswap Team
 
 The Uniswap team is responsible for driving the development of the protocol.
 
-## The Nitty-Gritty
+# The Nitty-Gritty
 
 Uniswap is made up of a series of smart contracts, each the venue for a unique ERC-20⇄ERC-20 pair. Pair smart contracts hold reserves (balances) of their constituent tokens and define rules around how these reserves can be changed. Anyone can become a liquidity provider for a pair by depositing an equivalent value of each underlying token in exchange for pool tokens. These tokens track pro-rata LP shares of the total reserves, and can be redeemed for the underlying assets at any time.
 
@@ -67,10 +65,8 @@ In practice, Uniswap applies a 0.30% fee to trades, which is added to reserves. 
 
 Because the relative price of the two pair assets can only be changed through trading, divergences between the Uniswap price and external prices create arbitrage opportunities. This mechanism ensures that Uniswap prices always trend toward the market-clearing price.
 
-## Further reading
+# Further reading
 
-To see how token swaps work in practice, and to walk through the lifecycle of a swap, check out <Link to="/docs/v2/swaps/overview">Swaps</Link>.
+To see how token swaps work in practice, and to walk through the lifecycle of a swap, check out <Link to="/docs/v2/swaps">Swaps</Link>. Or, to see how liquidity pools work, see <Link to="/docs/v2/pools">Pools</Link>.
 
-Uniswap can also be understood from the perspective of Liquidity Pools, which are the core mechanism for exchanging tokens, determining prices, and creating incentives. Liquidity Pools are described in the <Link to="/docs/v2/pools/overview">Pools</Link> section of the documentation.
-
-Ultimately, the Uniswap protocol is just smart contract code running on Ethereum. How the contracts are implemented is described in <Link to="/docs/v2/protocol-overview/smart-contracts/">Smart Contracts</Link>, the next section of this guide.
+Ultimately, of course, the Uniswap protocol is just smart contract code running on Ethereum. To understand how they work, head over to <Link to="/docs/v2/protocol-overview/smart-contracts/">Smart Contracts</Link>.

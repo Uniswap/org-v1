@@ -12,28 +12,28 @@ const links = [
     sublinks: [
       {
         title: 'Developer Quick Start',
-        link: '/docs/v2/quick-start/',
-        description: 'A step by step guide to getting started with Uniswap.',
+        link: '/docs/v2/smart-contract-integration/quick-start/',
+        description: 'A step-by-step guide to getting started with Uniswap.',
         tag: 'tutorial'
       },
       {
         title: 'Uniswap SDK',
-        link: '/docs/v2/SDK/getting-started',
-        description: 'Simplifying the process of integrating Uniswap into your project',
+        link: '/docs/v2/SDK/',
+        description: 'Simplify the process of integrating Uniswap into your project.',
         tag: 'reference'
       },
       {
         title: 'Introduction to Flash Swaps',
-        link: '/docs/v2/flash-swaps/anatomy-of-a-flash-swap/',
+        link: '/docs/v2/flash-swaps/',
         description:
-          'Withdraw up to the full reserves of any ERC20 token on Uniswap and execute arbitrary logic at no upfront cost',
+          'Withdraw up to the full reserves of any ERC20 token on Uniswap and execute arbitrary logic at no upfront cost.',
         tag: 'guide'
       },
       {
         title: 'Introduction to Oracles',
-        link: '/docs/v2/oracles/how-uniswap-oracles-work/',
+        link: '/docs/v2/oracles/',
         description:
-          'New functionality that enables highly decentralized and manipulation-resistant on-chain price feeds'
+          'New functionality that enables highly decentralized, manipulation-resistant, on-chain price feeds.'
       }
     ]
   },
@@ -42,19 +42,19 @@ const links = [
     sublinks: [
       {
         title: 'Using the interface',
-        link: '/docs/v2/web-app/trading/',
+        link: '/docs/v2/user-guide/',
         description: 'The comprehensive web app user guide.',
         tag: 'tutorial'
       },
       {
         title: 'Glossary',
-        link: '/docs/v2/core-concepts/glossary',
+        link: '/docs/v2/protocol-overview/glossary',
         description: 'An overview of the terms used in these docs and on the interface',
         tag: 'reference'
       },
       {
         title: 'Understanding prices',
-        link: '/docs/v2/swaps/pricing/#pricing-trades',
+        link: '/docs/v2/swaps/pricing/',
         description: 'How the interface calculates prices for swaps.',
         tag: 'guide'
       }
@@ -65,18 +65,13 @@ const links = [
     sublinks: [
       {
         title: 'Anatomy of a Uniswap Pool',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.'
-      },
-      {
-        title: 'Pooling liquidity on the interface',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.'
+        link: '/docs/v2/pools',
+        description: 'An overview of what a Uniswap liquidity pool.'
       },
       {
         title: 'Understanding Liquidity Returns',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.'
+        link: '/docs/v2/pools/understanding-returns',
+        description: 'Udnerstand the economics of your returns.'
       }
     ]
   },
@@ -85,17 +80,7 @@ const links = [
     sublinks: [
       {
         title: 'Core Concepts',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.'
-      },
-      {
-        title: 'Creating a pool for your token',
-        link: '/docs/v2/core-concepts',
-        description: 'A high level technical overview of the Uniswap protocol.'
-      },
-      {
-        title: 'Introduction to Token lists',
-        link: '/docs/v2/core-concepts',
+        link: '/docs/v2/protocol-overview',
         description: 'A high level technical overview of the Uniswap protocol.'
       }
     ]

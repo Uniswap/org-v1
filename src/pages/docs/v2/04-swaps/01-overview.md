@@ -6,7 +6,7 @@ tags: swaps, documentation
 
 _Looking for help using the interface? <Link to="/docs/v2/web-app/trading/">Check out the User Guides.</Link>_
 
-## Introduction
+# Introduction
 
 Token swaps are a simple way to exchange one ERC-20 token for another.
 
@@ -14,15 +14,15 @@ For end-users, swapping is intuitive: a user picks an input token and an output 
 
 Beneath the surface, token swaps are fulfilled by a system of smart contracts that are constantly being interacted with by a marketplace of participants. Interactions between liquidity providers, traders, and arbitrageurs create the incentives and feedback loops necessary to keep markets liquid and prices accurate to broader market rates.
 
-## Swaps at a glance
+# Swaps at a glance
 
 Swaps in Uniswap are different from trades on traditional exchanges. Uniswap does not use an order book to represent liquidity or determine prices. Uniswap uses an automated market maker mechanism to provide instant feedback on exchange rates and slippage.
 
-Each token exchange pair on Uniswap is implemented by an underlying Liquidity Pool. A Liquidity Pool is a smart contract that holds two unique tokens and enforces rules around depositing and withdrawing them. In Uniswap, the rules specify that tokens can only be deposited and withdraw in accordance to a specific formula, `x * y = k`. `x` and `y` represent the quantities of the two tokens and `k` is their constant product.
+Each token exchange pair on Uniswap is implemented by an underlying liquidity pool. A liquidity pool is a smart contract that holds two unique tokens and enforces rules around depositing and withdrawing them. In Uniswap, the rules specify that tokens can only be deposited and withdraw in accordance to a specific formula, `x * y = k`. `x` and `y` represent the quantities of the two tokens and `k` is their constant product.
 
 The consequence of using this formula to govern the balance of each token in the pool is that when a token is deposited, a proportional amount must be withdrawn to maintain the constant. Contrariwise, if a token is withdrawn, a proportional amount must instead be also deposited.
 
-## Unique properties of Swaps
+# Unique properties of Swaps
 
 This formula, known as an automated market maker, enables Uniswap to implement token exchange without needing an order book. This has a few important and novel consequences. An automated market maker obviates the need for active and explicit counterparties. Participants deposit tokens to the liquidity pool passively and asynchronously, at their convenience, and exchange is enabled autonomously by the Uniswap smart contract code running on Ethereum.
 
