@@ -367,6 +367,7 @@ const SideBar = props => {
               (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
               (node.name.split('-')[1] === 'API' && atTopLevel) ||
               (node.name.split('-')[1] === 'smart' && atTopLevel) ||
+              (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
               (node.name === 'images' && atTopLevel)
             return (
               !hideRender && (
@@ -387,6 +388,35 @@ const SideBar = props => {
 
       {atTopLevel && (
         <StyledList style={{ marginTop: '.5rem' }}>
+          <SectionHeader>Developer Guides</SectionHeader>
+          {navData.edges
+            .filter(({ node }) => {
+              return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+            })
+            .map(({ node }) => {
+              const showRender =
+                (node.name.split('-')[2] === 'integration' && atTopLevel) ||
+                (node.name.split('-')[3] === 'integration' && atTopLevel)
+              return (
+                showRender && (
+                  <CollapsibleList
+                    key={node.id}
+                    node={node}
+                    listData={listData}
+                    referenceData={data.v2Reference}
+                    path={props.path}
+                    parent={props.parent}
+                    atTopLevel={atTopLevel}
+                    topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
+                  />
+                )
+              )
+            })}
+        </StyledList>
+      )}
+
+      {atTopLevel && (
+        <StyledList style={{ marginTop: '.5rem' }}>
           <SectionHeader>Concepts</SectionHeader>
           {navData.edges
             .filter(({ node }) => {
@@ -400,7 +430,7 @@ const SideBar = props => {
                 (node.name.split('-')[1] === 'user' && atTopLevel) ||
                 (node.name.split('-')[1] === 'protocol' && atTopLevel) ||
                 (node.name.split('-')[1] === 'advanced' && atTopLevel) ||
-                (node.name.split('-')[1] === 'developer' && atTopLevel) ||
+                (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
                 (node.name === 'images' && atTopLevel)
               return (
                 !hideRender && (
