@@ -1,5 +1,5 @@
 ---
-title: Building an oracle on Uniswap
+title: Building an Oracle
 tags: oracles, documentation
 ---
 

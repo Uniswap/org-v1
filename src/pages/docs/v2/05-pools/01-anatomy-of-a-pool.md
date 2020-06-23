@@ -1,5 +1,5 @@
 ---
-title: Anatomy of Liquidity Pool
+title: Anatomy of a Pool
 tags: pools, documentation
 ---
 

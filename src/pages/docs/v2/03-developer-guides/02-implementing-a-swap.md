@@ -1,5 +1,5 @@
 ---
-title: Implement a Swap
+title: Implementing a Swap
 tags: swaps, documentation
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'Removing liquidity'
+title: 'Removing Liquidity'
 tags: user-guides, documentation
 ---
 

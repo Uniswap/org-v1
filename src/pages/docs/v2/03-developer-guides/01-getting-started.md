@@ -1,5 +1,5 @@
 ---
-title: Connect to Uniswap
+title: Connecting to Uniswap
 tags: developer-guides, documentation
 ---
 
