@@ -136,14 +136,14 @@ const SectionHeader = styled.div`
   margin: 0.5rem 0;
 `
 
-const CollapsibleList = ({ node, listData, referenceData, path, parent, topLevel, atTopLevel }) => {
+const CollapsibleList = ({ node, listData, referenceData, path, parent, atTopLevel }) => {
   const [open, setOpen] = useState(true)
 
   useLayoutEffect(() => {
     setOpen(node.name.replace(/\d+-/g, '') === path.split('/')[3])
   }, [node.name, path, setOpen])
 
-  const section = node.name.replace(/\d+-/g, '')
+  // const section = node.name.replace(/\d+-/g, '')
 
   const title = node.name
     .replace(/\d+-/g, '')
