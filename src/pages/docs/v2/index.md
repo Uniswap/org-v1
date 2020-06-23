@@ -4,7 +4,7 @@ title: Uniswap Documentation
 
 The pages that follow contain comprehensive documentation of the Uniswap V2 ecosystem. Briefly, Uniswap is a protocol for exchanging ERC-20 tokens on Ethereum. It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for fast, efficient trading. Where it makes tradeoffs decentralization, censorship resistance, and security are prioritized. Uniswap is open-source software licensed under GPL.
 
-If you are new to Uniswap, you might want to check out the <Link to="/faq">FAQ</Link> first. 
+If you are new to Uniswap, you might want to check out the <Link to="/faq">FAQ</Link> first.
 
 ## Getting started
 
@@ -31,11 +31,9 @@ The Uniswap codebase is comprised of an ecosystem of open source components.
 - [`uniswap-frontend`]()
 - [`uniswap-sdk`]()
 
-
 ### Reference materials
 
 Get to know the Uniswap SDK and smart contract API objects, methods, attributes, and responses.
-
 
 - <Link to="/docs/v2/SDK">SDK</Link>
 - <Link to="/docs/v2/API">API</Link>

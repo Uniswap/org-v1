@@ -11,9 +11,9 @@ const links = [
     name: 'Developers',
     sublinks: [
       {
-        title: 'Implement a token swap',
-        link: '/docs/v2/swaps/trading-from-a-smart-contract/',
-        description: 'A step by step guide to swapping tokens in your smart contracts.',
+        title: 'Developer Quick Start',
+        link: '/docs/v2/quick-start/',
+        description: 'A step by step guide to getting started with Uniswap.',
         tag: 'tutorial'
       },
       {

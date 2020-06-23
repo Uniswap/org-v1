@@ -263,7 +263,7 @@ const Docs = props => {
                       </StyledLink>
                     )}
                     {node.fields.slug === '/docs/v2/' && (
-                      <StyledLink style={{ alignItems: 'flex-start' }} to={'/docs/v2/core-concepts/'} rel="next">
+                      <StyledLink style={{ alignItems: 'flex-start' }} to={'/docs/v2/protocol-overview/'} rel="next">
                         <small>Next</small>
                         <span>How Uniswap works →</span>
                       </StyledLink>
