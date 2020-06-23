@@ -4,7 +4,7 @@ subtitle: Learn about the core functionality of the uniswap protocol. Token Swap
 tags: swaps, documentation
 ---
 
-_Looking for help using the interface? <Link to="/docs/v2/web-app/trading/">Check out the web app guides</Link>_
+_Looking for help using the interface? <Link to="/docs/v2/web-app/trading/">Check out the User Guides.</Link>_
 
 ## Introduction
 

@@ -62,6 +62,6 @@ Because the relative price of the two pair assets can only be changed through tr
 
 To see how token Swaps work in practice and to walk through the lifecycle of a Swap, navigate to the <Link to="/docs/v2/swaps/overview">Swaps</Link> section.
 
-Uniswap can also be understood from the perspective of Liquidity pools, which are the core mechanism for exchanging tokens, determining prices, and creating incentives. Liquidity pools are described in the <Link to="/docs/v2/pools/overview">Pools</Link> section of the documentation.
+Uniswap can also be understood from the perspective of Liquidity Pools, which are the core mechanism for exchanging tokens, determining prices, and creating incentives. Liquidity Pools are described in the <Link to="/docs/v2/pools/overview">Pools</Link> section of the documentation.
 
 Ultimately, the Uniswap protocol is just smart contract code running on Ethereum. How the contracts are implemented is described in <Link to="/docs/v2/protocol-overview/smart-contracts/">Smart Contracts</Link>, the next section of this guide.
