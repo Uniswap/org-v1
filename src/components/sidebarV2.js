@@ -457,7 +457,7 @@ const SideBar = props => {
             <StyledLink to={'/docs/v2/SDK'}>SDK</StyledLink>
           </StyledListItem>
           <StyledListItem>
-            <StyledLink to={'/docs/v2/API'}>API</StyledLink>
+            <StyledLink to={'/docs/v2/API'}>Subgraph API</StyledLink>
           </StyledListItem>
           <StyledListItem>
             <StyledLink to={'/docs/v2/smart-contracts'}>Smart Contracts</StyledLink>
