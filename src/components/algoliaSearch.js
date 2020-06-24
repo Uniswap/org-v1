@@ -1,0 +1,219 @@
+import React from 'react'
+import algoliasearch from 'algoliasearch/lite'
+import styled from 'styled-components'
+
+import { Link } from 'gatsby'
+
+import { InstantSearch, SearchBox, connectHits, Highlight } from 'react-instantsearch-dom'
+
+const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
+
+const SearchWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  form {
+    margin-bottom: 0px;
+  }
+  @media (max-width: 960px) {
+    display: none;
+    form {
+      margin-bottom: 0px;
+    }
+  }
+`
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  color: ${({ theme }) => theme.colors.grey1};
+  /* border: 1px solid ${({ theme }) => theme.colors.grey1}; */
+`
+
+const StyledInput = styled.input`
+  background-color: transparent;
+  color: ${({ theme }) => theme.textColor};
+  border-radius: 8px;
+  /* padding: 0.25rem 0.5rem; */
+  width: 100%;
+  border: none;
+  @media (max-width: 960px) {
+    padding: 0.5rem 0.75rem;
+  }
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.link};
+  }
+  :focus {
+    outline: none;
+  }
+`
+
+const SearchList = styled.div`
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  list-style: none;
+  margin: 0;
+  min-width: 256px;
+  width: 456px;
+  z-index: 99;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.menuBG};
+  backface-visibility: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
+    0px 24px 32px rgba(0, 0, 0, 0.04);
+  max-height: 400px;
+  overflow: scroll;
+  padding: 0.5rem;
+  a {
+    color: ${({ theme }) => theme.textColor};
+  }
+  mark {
+    color: rgba(0, 0, 0, 1);
+  }
+`
+
+const SearchListItemExcerpt = styled.div`
+  font-size: 0.75rem;
+  color: ${({ theme }) => theme.colors.grey6};
+  text-decoration: none;
+`
+
+const SearchListItemHeader = styled.h5`
+  margin-bottom: 0.25rem;
+  color: ${({ theme }) => theme.textColor};
+`
+
+const StyledLink = styled(Link)`
+  display: block;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 0;
+  color: ${({ theme }) => theme.colors.textColor};
+  border: 1px solid rgba(0, 0, 0, 0);
+
+  padding: 0.75rem;
+  margin: 0;
+  :hover {
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.backgroundColor};
+    border: 1px solid ${({ theme }) => theme.inputBackground};
+  }
+`
+
+const ClearButton = styled.button`
+  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
+  background-color: unset;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  path {
+    stroke: ${({ theme }) => theme.colors.textColor};
+  }
+  :focus {
+    outline: none;
+  }
+  :hover {
+    cursor: pointer;
+  }
+`
+
+const handleTagType = (tag, theme) => {
+  // console.log(theme)
+  switch (tag) {
+    case 'SDK':
+      return theme.colors.blue5
+    case 'API':
+      return theme.colors.yellow1
+    case 'smart-contracts':
+      return theme.colors.green2
+    default:
+      return theme.colors.pink1
+  }
+}
+
+const Tag = styled.li`
+  list-style: none;
+  margin: 0.25rem 0 0.25rem 0;
+  padding: 0.15rem 0.5rem;
+  margin-right: 0.5rem;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  border: 1px solid ${({ theme, tag }) => handleTagType(tag, theme)};
+  color: ${({ theme, tag }) => handleTagType(tag, theme)};
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+`
+
+const SmallLink = styled.small`
+  color: ${({ theme }) => theme.placeholderGray};
+`
+
+const Hits = connectHits(({ hits }) => (
+  <>
+    {hits.length ? (
+      <SearchList>
+        {/* Here is the crux of the component */}
+        {hits.map(hit => {
+          return (
+            <StyledLink key={hit.objectID} to={hit.path}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  width: '100%'
+                }}
+              >
+                <h4 style={{ marginBottom: 0 }}>
+                  <Highlight attribute="title" hit={hit} tagName="strong" />
+                </h4>
+                <Tag tag={hit.parentDir}>
+                  {hit.parentDir &&
+                    hit.parentDir
+                      .replace(/\d+-/g, '')
+                      .replace(/-/g, ' ')
+                      .replace(/(^|\s)\S/g, function(t) {
+                        return t.toUpperCase()
+                      })}
+                </Tag>
+              </div>
+
+              {hit.subtitle ? (
+                <h5 style={{ marginBottom: 0 }}>
+                  <Highlight attribute="subtitle" hit={hit} tagName="strong" />
+                </h5>
+              ) : null}
+              <div>
+                <Highlight attribute="excerpt" hit={hit} tagName="strong" />
+              </div>
+
+              <SmallLink>
+                <i>
+                  <Highlight attribute="path" hit={hit} tagName="strong" />
+                </i>
+              </SmallLink>
+            </StyledLink>
+          )
+        })}
+      </SearchList>
+    ) : (
+      <SearchListItemHeader>There were no results for your query. Please try again.</SearchListItemHeader>
+    )}
+  </>
+))
+
+export default function Search() {
+  return (
+    <InstantSearch indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME} searchClient={searchClient}>
+      <SearchBox />
+      <Hits />
+    </InstantSearch>
+  )
+}

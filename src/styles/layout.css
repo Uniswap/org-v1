@@ -54,6 +54,7 @@ h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+.ais-Highlight-highlighted,
 mark {
   background-color: #ff0;
   color: #000;

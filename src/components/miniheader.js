@@ -2,7 +2,9 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import Search from './search'
+// import Search from './search'
+
+import Search from './algoliaSearch'
 
 import Uni from '../images/uni.inline.svg'
 
@@ -123,7 +125,7 @@ const Header = props => {
         )}
       </StyledNavTitleWrapper>
       <StyledNav ref={node}>
-        <Search isV1={false} isV2={true} />
+        <Search />
       </StyledNav>
     </StyledHeader>
   )
