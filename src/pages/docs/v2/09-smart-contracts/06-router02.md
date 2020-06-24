@@ -475,7 +475,7 @@ Identical to [swapExactETHForTokens](#swapexactethfortokens), but succeeds for t
 | to                     | `address`            | Recipient of the output tokens.                                                                                                      |
 | deadline               | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
 
-## swapExactToswapExactTokensForETHSupportingFeeOnTransferTokenskensForETH
+## swapExactTokensForETHSupportingFeeOnTransferTokens
 
 ```solidity
 function swapExactTokensForETHSupportingFeeOnTransferTokens(
