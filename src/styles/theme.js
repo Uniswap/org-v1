@@ -187,7 +187,7 @@ export const GlobalStyle = createGlobalStyle`
 
   #gatsby-focus-wrapper{
     min-height: 100vh;
-    position: relative;
+    /* position: relative; */
   }
   a{
     color: ${({ theme }) => theme.colors.link};

@@ -10,6 +10,20 @@ import { X } from 'react-feather'
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
 
+const SearchWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  form {
+    margin-bottom: 0px;
+  }
+  @media (max-width: 960px) {
+    display: none;
+    form {
+      margin-bottom: 0px;
+    }
+  }
+`
+
 const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
@@ -223,13 +237,19 @@ const Results = connectStateResults(({ searchState, searchResults, children }) =
 
 export default function Search() {
   return (
-    <InstantSearch indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME} searchClient={searchClient}>
-      <CustomSearchBox />
-      <LoadingIndicator />
+    <SearchWrapper>
+      <InstantSearch
+        indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
+        searchClient={searchClient}
+        style={{ position: 'relative' }}
+      >
+        <CustomSearchBox />
+        <LoadingIndicator />
 
-      <Results>
-        <Hits />
-      </Results>
-    </InstantSearch>
+        <Results>
+          <Hits />
+        </Results>
+      </InstantSearch>
+    </SearchWrapper>
   )
 }
