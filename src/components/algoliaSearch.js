@@ -4,29 +4,19 @@ import styled from 'styled-components'
 
 import { Link } from 'gatsby'
 
-import { InstantSearch, SearchBox, connectHits, Highlight } from 'react-instantsearch-dom'
+import { InstantSearch, connectSearchBox, connectStateResults, connectHits, Highlight } from 'react-instantsearch-dom'
+
+import { X } from 'react-feather'
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
 
-const SearchWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  form {
-    margin-bottom: 0px;
-  }
-  @media (max-width: 960px) {
-    display: none;
-    form {
-      margin-bottom: 0px;
-    }
-  }
-`
 const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
   color: ${({ theme }) => theme.colors.grey1};
+  margin: 0px;
   /* border: 1px solid ${({ theme }) => theme.colors.grey1}; */
 `
 
@@ -58,7 +48,7 @@ const SearchList = styled.div`
   width: 456px;
   z-index: 99;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.menuBG};
+  background-color: ${({ theme }) => theme.colors.grey2};
   backface-visibility: hidden;
   backdrop-filter: blur(20px);
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
@@ -72,12 +62,6 @@ const SearchList = styled.div`
   mark {
     color: rgba(0, 0, 0, 1);
   }
-`
-
-const SearchListItemExcerpt = styled.div`
-  font-size: 0.75rem;
-  color: ${({ theme }) => theme.colors.grey6};
-  text-decoration: none;
 `
 
 const SearchListItemHeader = styled.h5`
@@ -137,8 +121,8 @@ const handleTagType = (tag, theme) => {
 const Tag = styled.li`
   list-style: none;
   margin: 0.25rem 0 0.25rem 0;
-  padding: 0.15rem 0.5rem;
-  margin-right: 0.5rem;
+  padding: 0.1rem 0.25rem 0rem 0.25rem;
+  margin-left: 0.5rem;
   font-weight: 500;
   font-size: 11px;
   text-transform: uppercase;
@@ -154,6 +138,30 @@ const SmallLink = styled.small`
   color: ${({ theme }) => theme.placeholderGray};
 `
 
+const SearchBox = ({ currentRefinement, refine }) => (
+  <StyledForm noValidate action="" role="search">
+    <StyledInput
+      type="text"
+      name="query"
+      autoComplete="off"
+      value={currentRefinement}
+      onChange={event => refine(event.currentTarget.value)}
+      placeholder="Search Docs.."
+    />
+    <ClearButton
+      disabled={currentRefinement === ''}
+      isActive={currentRefinement !== '' && currentRefinement}
+      onClick={() => refine('')}
+    >
+      <X size={16} />
+    </ClearButton>
+  </StyledForm>
+)
+
+const CustomSearchBox = connectSearchBox(SearchBox)
+
+const LoadingIndicator = connectStateResults(({ isSearchStalled }) => (isSearchStalled ? 'Loading...' : null))
+
 const Hits = connectHits(({ hits }) => (
   <>
     {hits.length ? (
@@ -167,7 +175,7 @@ const Hits = connectHits(({ hits }) => (
                   display: 'flex',
                   flexDirection: 'row',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
+                  justifyContent: 'start',
                   width: '100%'
                 }}
               >
@@ -209,11 +217,19 @@ const Hits = connectHits(({ hits }) => (
   </>
 ))
 
+const Results = connectStateResults(({ searchState, searchResults, children }) =>
+  searchState.query && searchResults && searchResults.nbHits !== 0 ? children : ''
+)
+
 export default function Search() {
   return (
     <InstantSearch indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME} searchClient={searchClient}>
-      <SearchBox />
-      <Hits />
+      <CustomSearchBox />
+      <LoadingIndicator />
+
+      <Results>
+        <Hits />
+      </Results>
     </InstantSearch>
   )
 }
