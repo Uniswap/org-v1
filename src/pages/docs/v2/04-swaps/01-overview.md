@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Swaps Overview
 subtitle: Learn about the core functionality of the uniswap protocol. Token Swaps.
 tags: swaps, documentation
 ---
