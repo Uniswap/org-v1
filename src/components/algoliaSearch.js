@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import algoliasearch from 'algoliasearch/lite'
 import styled from 'styled-components'
 
@@ -47,7 +47,7 @@ const StyledInput = styled.input`
     padding: 0.5rem 0.75rem;
   }
   ::placeholder {
-    color: ${({ theme }) => theme.colors.link};
+    /* color: ${({ theme }) => theme.colors.link}; */
   }
   :focus {
     outline: none;
@@ -117,7 +117,7 @@ const ClearButton = styled.button`
     outline: none;
   }
   :hover {
-    cursor: ${({ isActive }) => (isActive ? 'pointer' : 'none')};
+    cursor: ${({ isActive }) => (isActive ? 'pointer' : 'initial')};
   }
 `
 
@@ -237,22 +237,39 @@ const Hits = connectHits(({ hits }) => (
 ))
 
 const Results = connectStateResults(({ searchState, searchResults, children }) =>
-  searchState.query && searchResults && searchResults.nbHits !== 0 ? children : ''
+  searchState.query && searchResults && searchResults.nbHits !== 0 ? (
+    children
+  ) : searchState.query !== '' ? (
+    <SearchList>
+      <center>
+        <p style={{ padding: '1rem 2rem 0 2rem' }}>
+          <i>
+            There were no results for <code>{searchState.query}</code>
+          </i>
+        </p>
+      </center>
+    </SearchList>
+  ) : (
+    ''
+  )
 )
 
 export default function Search() {
+  const [activeSearch, setActiveSearch] = useState(false)
+
   return (
-    <SearchWrapper>
+    <SearchWrapper onClick={() => setActiveSearch(true)}>
       <InstantSearch
         indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
         searchClient={searchClient}
         style={{ position: 'relative' }}
       >
-        <CustomSearchBox />
-
-        <Results>
-          <Hits />
-        </Results>
+        <CustomSearchBox autoFocus={true} />
+        {activeSearch && (
+          <Results>
+            <Hits />
+          </Results>
+        )}
       </InstantSearch>
     </SearchWrapper>
   )
