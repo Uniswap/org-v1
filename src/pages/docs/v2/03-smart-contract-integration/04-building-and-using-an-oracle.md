@@ -1,4 +1,4 @@
 ---
-title: Building and Using Oracles
-tags: developer-guides, documentation
+title: Building + Using Oracles
+tags: smart contract integration, developer-guides, documentation
 ---
