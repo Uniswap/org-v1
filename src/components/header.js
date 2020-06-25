@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect, useContext } from 'react'
 import { useMediaQuery } from '@react-hook/media-query'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
@@ -10,6 +10,9 @@ import Uni from '../images/uni.inline.svg'
 import Wordmark from '../images/wordmark.inline.svg'
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
+
+import { Sun, Moon } from 'react-feather'
+import useDarkMode from 'use-dark-mode'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -89,6 +92,18 @@ const StyledTradeLink = styled.a`
   }
 `
 
+const StyledButton = styled.button`
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: ${({ theme }) => theme.colors.link};
+  :focus {
+    outline: none;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 const StyledHomeLink = styled(Link)`
   max-height: 48px;
   display: flex;
@@ -159,6 +174,7 @@ const Header = props => {
   const node = useRef()
   const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
+  const darkMode = useDarkMode(false)
 
   const data = useStaticQuery(graphql`
     {
@@ -235,6 +251,9 @@ const Header = props => {
           .map(item => {
             return <Menu key={item.name} data={item} />
           })}
+        <StyledButton type="button" onClick={darkMode.value ? darkMode.disable : darkMode.enable}>
+          {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
+        </StyledButton>
         {props.path !== undefined && <StyledTradeLink href="https://uniswap.exchange/">Launch App</StyledTradeLink>}
       </StyledNav>
     </StyledHeader>

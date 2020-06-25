@@ -2,16 +2,25 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import Search from './search'
+// import Search from './search'
+
+import Search from './algoliaSearch'
 
 import Uni from '../images/uni.inline.svg'
+import { Sun, Moon } from 'react-feather'
+
+import useDarkMode from 'use-dark-mode'
 
 const StyledHeader = styled.header`
   display: flex;
+  position: fixed;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  left: 0px;
   padding: 1rem 2rem;
   width: 100%;
   z-index: 3;
@@ -19,6 +28,17 @@ const StyledHeader = styled.header`
     padding: 1.5rem 2rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
   }
+`
+const StyledButton = styled.button`
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: ${({ theme }) => theme.colors.link};
+  :focus {
+    outline: none;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const StyledNav = styled.nav`
@@ -86,6 +106,7 @@ const StyledUni = styled(Uni)`
 
 const Header = props => {
   const node = useRef()
+  const darkMode = useDarkMode(false)
 
   return (
     <StyledHeader>
@@ -123,7 +144,10 @@ const Header = props => {
         )}
       </StyledNavTitleWrapper>
       <StyledNav ref={node}>
-        <Search isV1={false} isV2={true} />
+        <Search />
+        <StyledButton type="button" onClick={darkMode.value ? darkMode.disable : darkMode.enable}>
+          {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
+        </StyledButton>
       </StyledNav>
     </StyledHeader>
   )

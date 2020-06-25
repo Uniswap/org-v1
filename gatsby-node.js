@@ -31,7 +31,7 @@ exports.onCreateNode = ({ node, getNodesByType, actions }) => {
     createNodeField({
       node,
       name: 'parentDir',
-      value: slugPath[2]
+      value: slugPath ? slugPath[2] : ' '
     })
 
     createNodeField({
