@@ -1,46 +1,17 @@
-import React, { createContext, useState } from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from './theme'
-
-const defaultState = {
-  isDark: true,
-  toggleDark: () => undefined
-}
-
-export const ThemeManagerContext = createContext(defaultState)
+import useDarkMode from 'use-dark-mode'
 
 // const supportsDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches
 
 export const StyledThemeProvider = props => {
-  const [isDark, setIsDark] = useState(true)
-
-  const toggleDark = () => {
-    const toggledTheme = !isDark
-    setIsDark(toggledTheme)
-    localStorage.setItem('dark', JSON.stringify(toggledTheme))
-  }
-
-  // useLayoutEffect(() => {
-  //   const themeFromLocalStorage = localStorage.getItem('dark')
-
-  //   if (typeof themeFromLocalStorage === 'string') {
-  //     setIsDark(JSON.parse(themeFromLocalStorage))
-  //   } else if (supportsDarkMode()) {
-  //     setIsDark(true)
-  //   }
-  // }, [isDark, setIsDark])
+  const { value } = useDarkMode(false)
 
   return (
-    <ThemeManagerContext.Provider
-      value={{
-        isDark,
-        toggleDark
-      }}
-    >
-      <ThemeProvider theme={theme(isDark)}>
-        <GlobalStyle isDark={isDark} />
-        {props.children}
-      </ThemeProvider>
-    </ThemeManagerContext.Provider>
+    <ThemeProvider theme={theme(value)}>
+      <GlobalStyle isDark={value} />
+      {props.children}
+    </ThemeProvider>
   )
 }

@@ -13,7 +13,7 @@ const StyledSidebar = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   position: sticky;
-  top: 3rem;
+  top: 6rem;
   align-self: flex-start;
   padding-right: 1rem;
   color: ${({ theme }) => theme.colors.link};

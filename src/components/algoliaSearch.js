@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 
 import { InstantSearch, connectSearchBox, connectStateResults, connectHits, Highlight } from 'react-instantsearch-dom'
 
-import { X } from 'react-feather'
+import { X, Search as SearchIcon } from 'react-feather'
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
 
@@ -29,8 +29,10 @@ const StyledForm = styled.form`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  color: ${({ theme }) => theme.colors.grey1};
+  color: ${({ theme }) => theme.colors.grey2};
+  background-color: ${({ theme }) => theme.colors.grey1};
   margin: 0px;
+  margin-right: 12px;
   /* border: 1px solid ${({ theme }) => theme.colors.grey1}; */
 `
 
@@ -38,7 +40,7 @@ const StyledInput = styled.input`
   background-color: transparent;
   color: ${({ theme }) => theme.textColor};
   border-radius: 8px;
-  /* padding: 0.25rem 0.5rem; */
+  padding: 0.25rem 0.5rem;
   width: 100%;
   border: none;
   @media (max-width: 960px) {
@@ -62,7 +64,7 @@ const SearchList = styled.div`
   width: 456px;
   z-index: 99;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.grey2};
+  background-color: ${({ theme }) => theme.colors.grey1};
   backface-visibility: hidden;
   backdrop-filter: blur(20px);
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
@@ -95,18 +97,19 @@ const StyledLink = styled(Link)`
   margin: 0;
   :hover {
     border-radius: 8px;
-    background-color: ${({ theme }) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.colors.grey2};
     border: 1px solid ${({ theme }) => theme.inputBackground};
   }
 `
 
 const ClearButton = styled.button`
-  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
+  opacity: ${({ isActive }) => (isActive ? 1 : 0.2)};
   background-color: unset;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: ${({ isActive }) => (isActive ? 'initial' : 'none')};
   path {
     stroke: ${({ theme }) => theme.colors.textColor};
   }
@@ -114,7 +117,7 @@ const ClearButton = styled.button`
     outline: none;
   }
   :hover {
-    cursor: pointer;
+    cursor: ${({ isActive }) => (isActive ? 'pointer' : 'none')};
   }
 `
 
@@ -149,7 +152,7 @@ const Tag = styled.li`
 `
 
 const SmallLink = styled.small`
-  color: ${({ theme }) => theme.placeholderGray};
+  color: ${({ theme }) => theme.colors.grey4};
 `
 
 const SearchBox = ({ currentRefinement, refine }) => (
@@ -167,7 +170,7 @@ const SearchBox = ({ currentRefinement, refine }) => (
       isActive={currentRefinement !== '' && currentRefinement}
       onClick={() => refine('')}
     >
-      <X size={16} />
+      <X size={20} />
     </ClearButton>
   </StyledForm>
 )
@@ -181,6 +184,8 @@ const Hits = connectHits(({ hits }) => (
     {hits.length ? (
       <SearchList>
         {/* Here is the crux of the component */}
+        <LoadingIndicator />
+
         {hits.map(hit => {
           return (
             <StyledLink key={hit.objectID} to={hit.path}>
@@ -244,7 +249,6 @@ export default function Search() {
         style={{ position: 'relative' }}
       >
         <CustomSearchBox />
-        <LoadingIndicator />
 
         <Results>
           <Hits />

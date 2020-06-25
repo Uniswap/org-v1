@@ -42,6 +42,7 @@ const StyledMDX = styled.div`
   max-width: 768px;
   padding: 0;
   margin-bottom: 3rem;
+  margin-top: 5rem;
   a {
     color: ${({ theme }) => theme.colors.link};
   }
@@ -65,7 +66,6 @@ const StyledDocsNavWrapper = styled.ul`
   margin: 0;
   margin-top: 2rem;
   padding-top: 3rem;
-  border-top: 1px solid ${({ theme }) => theme.colors.grey2};
 `
 const StyledDocsNav = styled.li`
   a {
