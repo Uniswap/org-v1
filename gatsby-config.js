@@ -1,68 +1,9 @@
-const menu = [
-  {
-    name: 'Products',
-    sublinks: [
-      {
-        name: 'Interface',
-        link: 'https://uniswap.exchange/',
-        description: 'Swap tokens and supply liquidity'
-      },
-      {
-        name: 'Info',
-        link: 'https://uniswap.info/',
-        description: 'Uniswap analytics and historical data'
-      },
-      {
-        name: 'Unisocks',
-        link: 'https://unisocks.exchange/',
-        description: 'Dynamically priced socks'
-      },
-      {
-        name: 'Unipig',
-        link: 'https://unipig.exchange/',
-        description: 'Optimistic rollup demo'
-      }
-    ]
-  },
-  {
-    name: 'Developers',
-    sublinks: [
-      {
-        name: 'Documentation',
-        link: '/docs',
-        description: 'Comprehensive smart contract and frontend integration docs'
-      },
-      { name: 'Github', link: 'https://github.com/Uniswap' },
-      { name: 'Whitepaper', link: '/whitepaper.pdf' },
-      { name: 'Audit', link: '/audit.html' },
-      { name: 'Bug Bounty', link: '/bug-bounty' }
-    ]
-  },
-  {
-    name: 'Community',
-    sublinks: [
-      { name: 'Twitter', link: 'https://twitter.com/UniswapProtocol' },
-      { name: 'Discord', link: 'https://discord.gg/Y7TF6QA' },
-      { name: 'Reddit', link: 'https://www.reddit.com/r/Uniswap' }
-    ]
-  },
-  {
-    name: 'Info',
-    sublinks: [
-      { name: 'Blog', link: '/blog', description: 'Stay up to date on Uniswap' },
-      {
-        name: 'FAQ',
-        link: '/faq'
-      },
-      { name: 'About', link: '/about' },
-      {
-        name: 'Jobs',
-        link: '/jobs'
-      },
-      { name: 'Brand Assets', link: '/about#brand-assets' }
-    ]
-  }
-]
+const menu = require('./src/utils/menu')
+const queries = require('./src/utils/algolia')
+
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 
 module.exports = {
   siteMetadata: {
@@ -364,7 +305,17 @@ module.exports = {
           }))
       }
     },
-    'gatsby-plugin-eslint'
+    'gatsby-plugin-eslint',
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        queries,
+        chunkSize: 10000
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
