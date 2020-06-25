@@ -20,7 +20,7 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.backgroundColor};
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
-
+  left: 0px;
   padding: 1rem 2rem;
   width: 100%;
   z-index: 3;
