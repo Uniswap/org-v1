@@ -254,12 +254,16 @@ const Results = connectStateResults(({ searchState, searchResults, children }) =
   )
 )
 
+const StyledInputNew = styled.input`
+  color: black;
+`
+
 export default function Search() {
   const [activeSearch, setActiveSearch] = useState(false)
 
   return (
     <SearchWrapper onClick={() => setActiveSearch(true)}>
-      <InstantSearch
+      {/* <InstantSearch
         indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
         searchClient={searchClient}
         style={{ position: 'relative' }}
@@ -270,7 +274,9 @@ export default function Search() {
             <Hits />
           </Results>
         )}
-      </InstantSearch>
+      </InstantSearch> */}
+
+      <StyledInputNew className="docsearch" id="docusearch" />
     </SearchWrapper>
   )
 }
