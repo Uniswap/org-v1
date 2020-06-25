@@ -1,6 +1,6 @@
 ---
 title: Quick start
-tags: developer-guides, documentation
+tags: smart contract integration, documentation
 ---
 
 This is a stub. Help us expand it by submitting a PR using the github link below!
