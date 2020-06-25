@@ -1,15 +1,15 @@
 ---
-title: Custom Linking to Interface
-tags: developer-guides, documentation
+title: Custom Linking
+tags: frontend integration, documentation
 ---
 
 # Query Parameters
 
-The Uniswap front-end supports URL query parameters to allow for custom linking to the Uniswap exchange. Users and developers can use these query parameters to link to the Uniswap exchange with custom prefilled settings.
+The Uniswap front-end supports URL query parameters to allow for custom linking to the Uniswap frontend. Users and developers can use these query parameters to link to the Uniswap frontend with custom prefilled settings.
 
 Each Page has specific available URL parameters that can be set. Global parameters can be used on all pages.
 
-A parameter used on an incorrect page will have no effect on exchange settings. Parameters not set with a URL parameter will be set to standard exchange defaults.
+A parameter used on an incorrect page will have no effect on frontend settings. Parameters not set with a URL parameter will be set to standard frontend defaults.
 
 ## Global
 
@@ -41,7 +41,7 @@ ETH defaults as the input currency. When a different token is selected for eithe
 
 ### Constraints
 
-Addresses must be valid ERC20 addresses. Slippage and amount values must be valid numbers accepted by the exchange \(or error will prevent from swapping\). Slippage can 0, or within the range 10-&gt;9999 bips \(which converts to 0%, 0.01%-&gt;99%\)
+Addresses must be valid ERC20 addresses. Slippage and amount values must be valid numbers accepted by the frontend \(or error will prevent from swapping\). Slippage can 0, or within the range 10-&gt;9999 bips \(which converts to 0%, 0.01%-&gt;99%\)
 
 When selecting ETH as the output currency a user must also choose an inputCurrency that is not ETH \(to prevent ETH being populated in both fields\)
 
@@ -92,11 +92,11 @@ The Pool page is made up of 3 subroutes: `add-liquidity`, `remove-liquidity`, `c
 
 `https://uniswap.exchange/remove-liquidity?poolTokenAmount=1.23`
 
-## Create Exchange
+## Create Pair
 
 | Parameter    | Type      | Description                                                                                                |
 | :----------- | :-------- | :--------------------------------------------------------------------------------------------------------- |
-| tokenAddress | `address` | ERC20 token to create the exchange for. Must be valid ERC20 token for which there is no existing exchange. |
+| tokenAddress | `address` | ERC20 token to create the pair for. Must be valid ERC20 token for which there is no existing pair. |
 
 ### Example Usage
 
