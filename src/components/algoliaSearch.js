@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 
 import { InstantSearch, connectSearchBox, connectStateResults, connectHits, Highlight } from 'react-instantsearch-dom'
 
-import { X, Search as SearchIcon } from 'react-feather'
+import { X } from 'react-feather'
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
 

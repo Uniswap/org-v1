@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useState, useRef, useEffect, useLayoutEffect, useContext } from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { useMediaQuery } from '@react-hook/media-query'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
@@ -102,6 +102,9 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  :hover {
+    cursor: pointer;
+  }
 `
 
 const StyledHomeLink = styled(Link)`
