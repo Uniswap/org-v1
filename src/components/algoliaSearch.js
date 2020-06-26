@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import algoliasearch from 'algoliasearch/lite'
 import styled from 'styled-components'
 
@@ -260,6 +260,20 @@ const StyledInputNew = styled.input`
 
 export default function Search() {
   const [activeSearch, setActiveSearch] = useState(false)
+
+  // useEffect(() => {
+  //   if (window.docsearch) {
+  //     window.docsearch({
+  //       apiKey: '3d44be3728a9ae9799681c70a19a5179',
+  //       indexName: 'uniswap_v2_docs',
+  //       inputSelector: '.docsearch', // the selector of my search input
+  //       appId: 'VZ0CVS8XCW'
+  //     })
+  //   } else {
+  //     console.warn('Search has failed to load')
+  //     // do something here
+  //   }
+  // }, [])
 
   return (
     <SearchWrapper onClick={() => setActiveSearch(true)}>

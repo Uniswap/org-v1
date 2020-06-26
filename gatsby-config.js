@@ -39,7 +39,7 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-algolia-docsearch`,
+      resolve: `gatsby-plugin-algolia-docsearch-appid`,
       options: {
         apiKey: '3d44be3728a9ae9799681c70a19a5179', // required
         indexName: 'uniswap_v2_docs', // required
