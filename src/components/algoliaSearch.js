@@ -3,9 +3,7 @@ import algoliasearch from 'algoliasearch/lite'
 import styled from 'styled-components'
 
 import { Link } from 'gatsby'
-
 import { InstantSearch, connectSearchBox, connectStateResults, connectHits, Highlight } from 'react-instantsearch-dom'
-
 import { X } from 'react-feather'
 
 const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
@@ -15,12 +13,6 @@ const SearchWrapper = styled.div`
   width: 100%;
   form {
     margin-bottom: 0px;
-  }
-  @media (max-width: 960px) {
-    display: none;
-    form {
-      margin-bottom: 0px;
-    }
   }
 `
 
@@ -33,7 +25,9 @@ const StyledForm = styled.form`
   background-color: ${({ theme }) => theme.colors.grey1};
   margin: 0px;
   margin-right: 12px;
-  /* border: 1px solid ${({ theme }) => theme.colors.grey1}; */
+  @media (max-width: 960px) {
+    margin-right: 0;
+  }
 `
 
 const StyledInput = styled.input`
@@ -260,7 +254,7 @@ export default function Search() {
   return (
     <SearchWrapper onClick={() => setActiveSearch(true)}>
       <InstantSearch
-        indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
+        indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME || ''}
         searchClient={searchClient}
         style={{ position: 'relative' }}
       >
