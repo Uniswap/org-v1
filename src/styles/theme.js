@@ -210,4 +210,15 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     color: ${({ theme }) => theme.colors.grey9};
   }
+
+ .ds-dropdown-menu {
+    width: 100px;
+    max-height: 600px;
+    overflow: scroll;
+
+    @media screen and (max-width: 1080px) {
+      display: none;
+    }
+  }
+
 `
