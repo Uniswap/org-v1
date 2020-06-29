@@ -1,5 +1,5 @@
 ---
-title: Pools overview
+title: Pools
 tags: pools, documentation
 ---
 

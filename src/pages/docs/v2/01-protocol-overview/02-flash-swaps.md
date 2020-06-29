@@ -1,5 +1,5 @@
 ---
-title: Flash Swaps Overview
+title: Flash Swaps
 tags: flash-swaps, documentation
 ---
 
