@@ -39,6 +39,15 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-algolia-docsearch-appid`,
+      options: {
+        apiKey: '3d44be3728a9ae9799681c70a19a5179',
+        indexName: 'uniswap_v2_docs',
+        inputSelector: '.docsearch', // the selector of my search input
+        appId: 'VZ0CVS8XCW'
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `docs`,
