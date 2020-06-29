@@ -1,15 +1,19 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
-// import Search from './search'
 
 import Search from './algoliaSearch'
 
 import Uni from '../images/uni.inline.svg'
 import { Sun, Moon } from 'react-feather'
 
+import MenuIcon from '../images/menu.inline.svg'
+import CloseIcon from '../images/x.inline.svg'
+
 import useDarkMode from 'use-dark-mode'
+import SideBar from './sidebarV2'
+import { useMediaQuery } from '@react-hook/media-query'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -24,9 +28,11 @@ const StyledHeader = styled.header`
   padding: 1rem 2rem;
   width: 100%;
   z-index: 3;
+  height: 65px;
   @media (max-width: 960px) {
+    flex-direction: column;
     padding: 1.5rem 2rem;
-    height: ${({ open }) => (open ? '100vh' : '100%')};
+    height: ${({ open }) => (open ? '100vh' : '125px;')};
   }
 `
 const StyledButton = styled.button`
@@ -107,51 +113,112 @@ const StyledUni = styled(Uni)`
   }
 `
 
+const StyledCloseIcon = styled(CloseIcon)`
+  path {
+    stroke: ${({ theme }) => theme.colors.link};
+  }
+`
+
+const StyledMenuIcon = styled(MenuIcon)`
+  path {
+    stroke: ${({ theme }) => theme.colors.link};
+  }
+`
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`
+
+const MobileSearchWrapper = styled.div`
+  display: none;
+  @media (max-width: 960px) {
+    display: initial;
+    margin-top: 20px;
+    width: 100%;
+  }
+`
+
+const MenuToggle = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.grey9};
+  display: none;
+  z-index: 9999;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+
+  :focus {
+    outline: none;
+  }
+  @media (max-width: 960px) {
+    display: initial;
+    position: ${({ open }) => (open ? 'fixed' : 'relative')};
+    right: ${({ open }) => (open ? '1.5rem' : 'initial')};
+    top: ${({ open }) => (open ? '1.5rem' : 'initial')};
+  }
+`
+
 const Header = props => {
   const node = useRef()
   const darkMode = useDarkMode(false)
 
-  return (
-    <StyledHeader>
-      <StyledNavTitleWrapper>
-        <StyledHomeLink
-          to="/"
-          style={{
-            textDecoration: `none`
-          }}
-        >
-          <StyledUni />
+  const button = useRef()
+  const [isMenuOpen, updateIsMenuOpen] = useState(false)
 
-          {/* <StyledWordmark /> */}
-        </StyledHomeLink>
-        {props.path && props.path !== '/' && props.path !== '' && (
-          <>
-            <StyledNavTitle to={'/' + props.path.split('/')[1]}>Uniswap Docs /</StyledNavTitle>
-            <StyledNavTitle to={'/docs/' + props.path.split('/')[2]}>
-              {props.path.split('/')[2].replace(/(^|\s)\S/g, function(t) {
-                return t.toUpperCase()
-              })}
-            </StyledNavTitle>
-            <StyledNavTitle to={'/docs/' + props.path.split('/')[2] + '/' + props.path.split('/')[3]}>
-              {props.path.split('/')[3] &&
-                '/ ' +
-                  props.path
-                    .split('/')[3]
-                    .replace(/\d+-/g, '')
-                    .replace(/-/g, ' ')
-                    .replace(/(^|\s)\S/g, function(t) {
-                      return t.toUpperCase()
-                    })}
-            </StyledNavTitle>{' '}
-          </>
-        )}
-      </StyledNavTitleWrapper>
-      <StyledNav ref={node}>
+  const isMobile = useMediaQuery('(max-width: 960px)')
+
+  return (
+    <StyledHeader open={isMenuOpen}>
+      <Row>
+        <StyledNavTitleWrapper>
+          <StyledHomeLink
+            to="/"
+            style={{
+              textDecoration: `none`
+            }}
+          >
+            <StyledUni />
+          </StyledHomeLink>
+          {props.path && props.path !== '/' && props.path !== '' && (
+            <>
+              <StyledNavTitle to={'/' + props.path.split('/')[1]}>Uniswap Docs /</StyledNavTitle>
+              <StyledNavTitle to={'/docs/' + props.path.split('/')[2]}>
+                {props.path.split('/')[2].replace(/(^|\s)\S/g, function(t) {
+                  return t.toUpperCase()
+                })}
+              </StyledNavTitle>
+              <StyledNavTitle to={'/docs/' + props.path.split('/')[2] + '/' + props.path.split('/')[3]}>
+                {props.path.split('/')[3] &&
+                  '/ ' +
+                    props.path
+                      .split('/')[3]
+                      .replace(/\d+-/g, '')
+                      .replace(/-/g, ' ')
+                      .replace(/(^|\s)\S/g, function(t) {
+                        return t.toUpperCase()
+                      })}
+              </StyledNavTitle>{' '}
+            </>
+          )}
+        </StyledNavTitleWrapper>
+        <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
+        </MenuToggle>
+        <StyledNav ref={node} open={isMenuOpen}>
+          {!isMobile && <Search />}
+          {isMobile && <SideBar {...props} />}
+          <StyledButton type="button" onClick={darkMode.value ? darkMode.disable : darkMode.enable}>
+            {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
+          </StyledButton>
+        </StyledNav>
+      </Row>
+      <MobileSearchWrapper>
         <Search />
-        <StyledButton type="button" onClick={darkMode.value ? darkMode.disable : darkMode.enable}>
-          {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
-        </StyledButton>
-      </StyledNav>
+      </MobileSearchWrapper>
     </StyledHeader>
   )
 }

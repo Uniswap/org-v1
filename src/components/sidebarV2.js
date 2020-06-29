@@ -2,9 +2,6 @@ import React, { useState, useLayoutEffect } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
-import { useMediaQuery } from '@react-hook/media-query'
-
-// import Search from './search'
 import { useStaticQuery, graphql } from 'gatsby'
 import DropdownArrow from './dropdownArrow.js'
 
@@ -66,7 +63,7 @@ const StyledInset = styled.div`
   margin-bottom: 0.75rem;
 `
 
-const StyledSectionTitle = styled.p`
+const StyledSectionTitle = styled.div`
   margin: 0;
   margin-bottom: 0.25rem;
   display: flex;
@@ -83,7 +80,7 @@ const StyledSectionTitle = styled.p`
   }
 `
 
-const StyledCategoryTitle = styled.p`
+const StyledCategoryTitle = styled.div`
   margin: 0;
   margin-bottom: 0.5rem;
   margin-top: 1rem;
@@ -98,31 +95,7 @@ const StyledCategoryTitle = styled.p`
   text-transform: uppercase;
 `
 
-const StyledArrow = styled.span`
-  display: flex;
-  transform-origin: center;
-  transform: ${({ open }) => (open ? `rotateZ(0deg)` : `rotateZ(-180deg)`)};
-  width: 10px;
-  height: 10px;
-  margin-left: 0.5rem;
-  opacity: 1;
-`
-
-const StyledMobileMenu = styled.div`
-  display: none;
-
-  @media (max-width: 960px) {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 1rem 0;
-    font-weight: 400;
-    margin: 1rem 0 0 0;
-  }
-`
-
 const ListWrapper = styled.span`
-  display: ${({ open }) => (open ? 'none' : 'initial')};
   min-width: 200px;
   width: 220px;
   @media (max-width: 960px) {
@@ -322,21 +295,11 @@ const SideBar = props => {
     props.path.slice(0, 8) === '/docs/v2' ? setV2Toggle(true) : setV2Toggle(false)
   }, [setV2Toggle])
 
-  const matches = useMediaQuery('only screen and (max-width: 960px)')
-  const [isMenuOpen, updateIsMenuOpen] = useState(true)
-
   const atTopLevel = props.path === '/docs/v1/' || props.path === '/docs/v2/'
 
   return (
     <StyledSidebar>
-      {/* <Search isV1={!v2Toggle} isV2={v2Toggle} /> */}
-      <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
-        <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
-        <StyledArrow open={isMenuOpen}>
-          <DropdownArrow />
-        </StyledArrow>
-      </StyledMobileMenu>
-      <ListWrapper open={isMenuOpen && matches}>
+      <ListWrapper>
         {atTopLevel ? (
           <StyledLink
             isActive={atTopLevel}
@@ -384,89 +347,88 @@ const SideBar = props => {
               )
             )
           })}
+        {atTopLevel && (
+          <StyledList style={{ marginTop: '1rem' }}>
+            <SectionHeader>Developer Guides</SectionHeader>
+            {navData.edges
+              .filter(({ node }) => {
+                return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+              })
+              .map(({ node }) => {
+                const showRender =
+                  (node.name.split('-')[2] === 'integration' && atTopLevel) ||
+                  (node.name.split('-')[3] === 'integration' && atTopLevel)
+                return (
+                  showRender && (
+                    <CollapsibleList
+                      key={node.id}
+                      node={node}
+                      listData={listData}
+                      referenceData={data.v2Reference}
+                      path={props.path}
+                      parent={props.parent}
+                      atTopLevel={atTopLevel}
+                      topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
+                    />
+                  )
+                )
+              })}
+          </StyledList>
+        )}
+
+        {atTopLevel && (
+          <StyledList style={{ marginTop: '1rem' }}>
+            <SectionHeader>Concepts</SectionHeader>
+            {navData.edges
+              .filter(({ node }) => {
+                return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+              })
+              .map(({ node }) => {
+                const hideRender =
+                  (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'API' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'smart' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'user' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'protocol' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'advanced' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
+                  (node.name === 'images' && atTopLevel)
+                return (
+                  !hideRender && (
+                    <CollapsibleList
+                      key={node.id}
+                      node={node}
+                      listData={listData}
+                      referenceData={data.v2Reference}
+                      path={props.path}
+                      parent={props.parent}
+                      atTopLevel={atTopLevel}
+                      topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
+                    />
+                  )
+                )
+              })}
+          </StyledList>
+        )}
+
+        {atTopLevel && (
+          <StyledList style={{ marginTop: '1rem' }}>
+            <SectionHeader>Reference</SectionHeader>
+            <StyledListItem>
+              <StyledLink to={'/docs/v2/SDK'}>SDK</StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink to={'/docs/v2/API'}>Subgraph API</StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink to={'/docs/v2/smart-contracts'}>Smart Contracts</StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink to={'/'}>Whitepaper</StyledLink>
+            </StyledListItem>
+          </StyledList>
+        )}
       </ListWrapper>
-
-      {atTopLevel && (
-        <StyledList style={{ marginTop: '.5rem' }}>
-          <SectionHeader>Developer Guides</SectionHeader>
-          {navData.edges
-            .filter(({ node }) => {
-              return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
-            })
-            .map(({ node }) => {
-              const showRender =
-                (node.name.split('-')[2] === 'integration' && atTopLevel) ||
-                (node.name.split('-')[3] === 'integration' && atTopLevel)
-              return (
-                showRender && (
-                  <CollapsibleList
-                    key={node.id}
-                    node={node}
-                    listData={listData}
-                    referenceData={data.v2Reference}
-                    path={props.path}
-                    parent={props.parent}
-                    atTopLevel={atTopLevel}
-                    topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
-                  />
-                )
-              )
-            })}
-        </StyledList>
-      )}
-
-      {atTopLevel && (
-        <StyledList style={{ marginTop: '.5rem' }}>
-          <SectionHeader>Concepts</SectionHeader>
-          {navData.edges
-            .filter(({ node }) => {
-              return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
-            })
-            .map(({ node }) => {
-              const hideRender =
-                (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
-                (node.name.split('-')[1] === 'API' && atTopLevel) ||
-                (node.name.split('-')[1] === 'smart' && atTopLevel) ||
-                (node.name.split('-')[1] === 'user' && atTopLevel) ||
-                (node.name.split('-')[1] === 'protocol' && atTopLevel) ||
-                (node.name.split('-')[1] === 'advanced' && atTopLevel) ||
-                (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
-                (node.name === 'images' && atTopLevel)
-              return (
-                !hideRender && (
-                  <CollapsibleList
-                    key={node.id}
-                    node={node}
-                    listData={listData}
-                    referenceData={data.v2Reference}
-                    path={props.path}
-                    parent={props.parent}
-                    atTopLevel={atTopLevel}
-                    topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
-                  />
-                )
-              )
-            })}
-        </StyledList>
-      )}
-
-      {atTopLevel && (
-        <StyledList style={{ marginTop: '.5rem' }}>
-          <SectionHeader>Reference</SectionHeader>
-          <StyledListItem>
-            <StyledLink to={'/docs/v2/SDK'}>SDK</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to={'/docs/v2/API'}>Subgraph API</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to={'/docs/v2/smart-contracts'}>Smart Contracts</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to={'/'}>Whitepaper</StyledLink>
-          </StyledListItem>
-        </StyledList>
-      )}
 
       {/* {atTopLevel && (
         <VersionToggle to={v2Toggle ? '/docs/v1' : '/docs/v2'}>

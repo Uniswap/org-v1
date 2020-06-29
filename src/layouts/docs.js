@@ -10,6 +10,7 @@ import TableofContents from '../components/toc'
 import Github from '../images/githubicon.inline.svg'
 
 import '../styles/prism-github.css'
+import { useMediaQuery } from '@react-hook/media-query'
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -34,6 +35,7 @@ const StyledDocs = styled.div`
     flex-direction: column;
     grid-template-columns: 1fr;
     margin-top: 0rem;
+    padding-top: 80px;
   }
 `
 
@@ -183,6 +185,8 @@ const Docs = props => {
 
   const isV1 = props.path === '/docs/v1/'
 
+  const isMobile = useMediaQuery('(max-width: 960px)')
+
   return (
     <Layout path={props.location.pathname} isDocs={true}>
       <SEO title={props.pageContext.frontmatter.title} path={props.location.pathname} />
@@ -209,7 +213,7 @@ const Docs = props => {
           )
         })}
       <StyledDocs id="docs-header">
-        {isV1 ? <SidebarV1 parent={'/docs/'} {...props} /> : <SidebarV2 parent={'/docs/'} {...props} />}
+        {!isMobile && (isV1 ? <SidebarV1 parent={'/docs/'} {...props} /> : <SidebarV2 parent={'/docs/'} {...props} />)}
         <StyledMDX>
           <StyledPageTitle>
             <h1>{props.pageContext.frontmatter.title}</h1>
