@@ -113,6 +113,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  #algolia-autocomplete-listbox-0 {
+    /* max-width: 100px !important; */
+  }
+
   html {
     font-size: 16px;
     font-variant: none;

@@ -286,16 +286,13 @@ const SideBar = props => {
     }
   `)
 
-  const [v2Toggle, setV2Toggle] = useState(true)
+  const v2Toggle = props.path.slice(0, 8) === '/docs/v2'
 
   const navData = v2Toggle ? data.topNavDocsV2 : data.topNavDocsV1
   const listData = v2Toggle ? data.docsV2 : data.docsV1
 
-  useLayoutEffect(() => {
-    props.path.slice(0, 8) === '/docs/v2' ? setV2Toggle(true) : setV2Toggle(false)
-  }, [setV2Toggle])
-
-  const atTopLevel = props.path === '/docs/v1/' || props.path === '/docs/v2/'
+  const atTopLevel =
+    props.path === '/docs/v1/' || props.path === '/docs/v2/' || props.path === '/docs/v2' || props.path === '/docs/v1'
 
   return (
     <StyledSidebar>
@@ -319,7 +316,7 @@ const SideBar = props => {
         )}
         {navData.edges
           .filter(({ node }) => {
-            return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+            return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
           })
           .map(({ node }) => {
             const hideRender =
@@ -332,6 +329,7 @@ const SideBar = props => {
               (node.name.split('-')[1] === 'smart' && atTopLevel) ||
               (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
               (node.name === 'images' && atTopLevel)
+
             return (
               !hideRender && (
                 <CollapsibleList
@@ -352,7 +350,7 @@ const SideBar = props => {
             <SectionHeader>Developer Guides</SectionHeader>
             {navData.edges
               .filter(({ node }) => {
-                return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+                return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
               })
               .map(({ node }) => {
                 const showRender =
@@ -381,7 +379,7 @@ const SideBar = props => {
             <SectionHeader>Concepts</SectionHeader>
             {navData.edges
               .filter(({ node }) => {
-                return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+                return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
               })
               .map(({ node }) => {
                 const hideRender =
@@ -429,13 +427,6 @@ const SideBar = props => {
           </StyledList>
         )}
       </ListWrapper>
-
-      {/* {atTopLevel && (
-        <VersionToggle to={v2Toggle ? '/docs/v1' : '/docs/v2'}>
-          <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
-          <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
-        </VersionToggle>
-      )} */}
     </StyledSidebar>
   )
 }

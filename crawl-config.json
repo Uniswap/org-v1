@@ -1,0 +1,33 @@
+{
+  "index_name": "uniswap_v2_docs",
+  "start_urls": [
+    {
+      "url": "https://uniswap-org-git-fork-ianlapham-docsearch.uniswap.vercel.app/docs/v2",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://uniswap.org/docs/v1",
+      "extra_attributes": {
+        "version": ["v1"]
+      }
+    }
+  ],
+  "stop_urls": [],
+  "selectors": {
+    "lvl0": "h1",
+    "lvl1": "h2",
+    "lvl2": "h3",
+    "lvl3": "h4",
+    "lvl4": "h5",
+    "lvl5": "h6",
+    "text": "p, div, li"
+  },
+  "custom_settings": {
+    "attributesForFaceting": ["version"]
+  },
+  "conversation_id": ["1203516192"],
+  "js_render": true,
+  "nb_hits": 456
+}

@@ -6,7 +6,7 @@ tags: user-guides, documentation
 The Uniswap interface can be used to interact with the Uniswap smart contracts and perform key actions like swapping tokens, adding liquidity, and removing liquidity. The interface is open source and the code can be found below.
 
 - [Interface](https://uniswap.exchange/swap) (TK embed card from homepage)
-- [Interface Source Code] (https://github.com/Uniswap/uniswap-frontend) (TK embed card for repo)
+- [Interface Source Code](https://github.com/Uniswap/uniswap-frontend) (TK embed card for repo)
 
 The following guides will walk you through interacting with the interface. If you're new to Uniswap you might want to read the <Link to="/faq">FAQ</Link> first.
 

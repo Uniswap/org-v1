@@ -57,22 +57,37 @@ const ClearButton = styled.button`
   }
 `
 
-export default function Search() {
-  /**
-   * @todo move this to env, update with official account creds
-   */
+export default function Search(props) {
+  const isV2 = props.path.slice(0, 8) === '/docs/v2'
+
+  // based on version, reset docsearch to use right facet filter
   useEffect(() => {
-    if (window.docsearch) {
-      window.docsearch({
-        apiKey: '3d44be3728a9ae9799681c70a19a5179',
-        indexName: 'uniswap_v2_docs',
-        inputSelector: '.docsearch', // the selector of my search input
-        appId: 'VZ0CVS8XCW'
-      })
+    if (isV2) {
+      if (window.docsearch) {
+        window.docsearch({
+          apiKey: '3d44be3728a9ae9799681c70a19a5179',
+          indexName: 'uniswap_v2_docs',
+          inputSelector: '.docsearch', // the selector of my search input
+          appId: 'VZ0CVS8XCW',
+          algoliaOptions: {
+            facetFilters: ['version:v2'] // change facet to filter based on version
+          }
+        })
+      }
     } else {
-      console.warn('ERROR: Search input')
+      if (window.docsearch) {
+        window.docsearch({
+          apiKey: '3d44be3728a9ae9799681c70a19a5179',
+          indexName: 'uniswap_v2_docs',
+          inputSelector: '.docsearch', // the selector of my search input
+          appId: 'VZ0CVS8XCW',
+          algoliaOptions: {
+            facetFilters: ['version:v1'] // change facet to filter based on version
+          }
+        })
+      }
     }
-  }, [])
+  }, [isV2])
 
   return (
     <SearchWrapper>

@@ -178,7 +178,6 @@ const Wizard = () => {
           })
           .map(category => {
             return category.sublinks.map((sublink, i) => {
-              // console.log(sublink.title, i)
               return (
                 <InlineCard
                   key={i}
