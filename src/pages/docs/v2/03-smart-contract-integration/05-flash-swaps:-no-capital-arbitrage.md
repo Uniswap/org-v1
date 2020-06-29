@@ -1,5 +1,5 @@
 ---
-title: No-Capital Arbitrage
+title: Flash Swaps - No-Capital Arbitrage
 tags: smart contract integration, developer-guides, documentation
 ---
 

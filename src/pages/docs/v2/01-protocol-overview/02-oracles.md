@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Oracles Overview
 tags: oracles, documentation
 ---
 

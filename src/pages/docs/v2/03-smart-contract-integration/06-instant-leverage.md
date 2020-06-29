@@ -1,5 +1,5 @@
 ---
-title: Instant Leverage
+title: Flash swaps - Instant Leverage
 tags: flash-swaps, documentation
 ---
 
