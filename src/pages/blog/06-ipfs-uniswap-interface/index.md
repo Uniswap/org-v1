@@ -1,39 +1,37 @@
 ---
 title: 'Uniswap Interface + IPFS'
-date: '2020-06-17'
+date: '2020-06-29'
 featuredImage: ./featured.jpg
 author: 'Moody Salem, Hayden Adams'
 previewText: 'The Uniswap Interface is now hosted and served exclusively from IPFS!'
 ---
 
-## TL;DR
+# TL;DR
 
 - [app.uniswap.org](https://app.uniswap.org) is now hosted and served exclusively from IPFS!
 - Once per day, the open-source [Uniswap Interface](https://github.com/Uniswap/uniswap-frontend) 
 built by our team and community is [automatically deployed](https://github.com/Uniswap/uniswap-frontend/releases) 
 to IPFS
-- The URL [uniswap.exchange](https://uniswap.exchange) now simply forwards to [app.uniswap.org](https://app.uniswap.org)
-- IPNS + DNSLink are used to point `/ipns/app.uniswap.org` to the latest IPFS release
+- The URL [uniswap.exchange](https://uniswap.exchange) now forwards to [app.uniswap.org](https://app.uniswap.org)
+- We use IPNS + DNSLink to point `/ipns/app.uniswap.org` to the latest IPFS release
 - The ENS `contenthash` for `uniswap.eth` now points to the latest IPFS 
 release, enabling access to the Uniswap Interface via [uniswap.eth.link](https://uniswap.eth.link/)
 
 ## Interfaces and decentralization
 
-The Uniswap protocol is trustless and decentralized because it lives entirely on-chain. 
+The Uniswap **protocol** is trustless and decentralized because it lives entirely on-chain. 
 Anyone running an Ethereum node can interact with the contracts directly which will perform as programmed for as long as Ethereum exists.
-
 However, not everyone wants to run a node. Instead, many users choose to interact with Uniswap through web interfaces, 
 trade aggregators, wallets, or other DAPPs that have integrated Uniswap natively in their smart contracts. 
 
-When using an interface, if users do not verify every transaction they sign, they are taking the risk the interface 
-they are using does not do what it claims. This is why it is important to use reputable interfaces. We're thrilled to 
-see a growing ecosystem of high-quality interfaces for Uniswap, including Argent, 1inch, Rainbow, Paraswap, Zerion, 
-Instadapp, and many more. 
+When using a DAPP interface, users must verify every transaction they sign matches their intent.
+However, users rarely do this because wallets do not always present transactions in an easy to verify format. 
+This is why it is important to use reputable interfaces. We're thrilled to see a growing ecosystem of high-quality
+interfaces for Uniswap, including Argent, 1inch, Rainbow, Paraswap, Zerion, Instadapp, and many more.
 
 Open source interfaces (including many of the above) allow users to verify the code they are interacting with does what
 it claims. If a user runs the code locally, they can make transactions with confidence. However, as soon as the code 
-is hosted on a public website **it is difficult for users to verify the website they are interacting with is actually 
-hosting the code that they verified**.
+is hosted, **it is difficult for users to verify the website they are interacting has not been modified**.
 
 This is one of the problem that IPFS [aims to solve](https://blog.cloudflare.com/e2e-integrity/).
 
@@ -44,9 +42,10 @@ Our team has always cared about decentralization, security, and accessibility. T
 verify, and run directly. We’ve just taken another step forward by decentralizing the hosting and serving of
 the Uniswap Interface using IPFS.
 
-Using [Github Actions](https://github.com/features/actions), the [Uniswap Interface](https://github.com/Uniswap/uniswap-frontend)
-is now deployed at least once per day to IPFS if any new commits have been made. Each release is automatically 
-[pinned](https://docs.ipfs.io/concepts/persistence/) using [pinata.cloud](https://pinata.cloud), a free IPFS pinning service. 
+The [Uniswap Interface](https://github.com/Uniswap/uniswap-frontend) is now deployed to IPFS at least once per day via
+[GitHub Actions](https://github.com/uniswap/uniswap-frontend/actions?query=workflow%3ARelease).
+Each release is automatically [pinned](https://docs.ipfs.io/concepts/persistence/) using the 
+[pinata.cloud](https://pinata.cloud) IPFS pinning service. 
 The IPFS releases can be found [on GitHub](https://github.com/Uniswap/uniswap-frontend/releases).
 
 This means the Uniswap Interface can now be accessed via IPFS directly, through a gateway such as 
@@ -57,12 +56,14 @@ The domain [uniswap.exchange](https://uniswap.exchange) is now redirected to [ap
 which is an alias to the Cloudflare IPFS gateway that serves the Uniswap Interface from IPFS.
 
 ## How we did it
+
 The `app.uniswap.org` subdomain is given a CNAME record pointing at the domain `cloudflare-ipfs.com`. 
 
-When a user visits the domain `app.uniswap.org`, the browser looks up the DNS record and finds a CNAME to `cloudflare-ipfs.com`.
-Cloudflare’s IPFS gateway looks up the [DNSLink record](https://docs.ipfs.io/concepts/dnslink/) for the subdomain `_dnslink.app.uniswap.org`.
-That TXT record contains the IPFS hash of the latest release, which we update using a
-[custom GitHub action](https://github.com/Uniswap/replace-vercel-dns-records).
+When a user visits the domain `app.uniswap.org`, the browser first looks up the DNS record and finds a CNAME to `cloudflare-ipfs.com`.
+The server at `cloudflare-ipfs.com`, i.e. Cloudflare’s IPFS gateway, looks up the 
+[DNSLink record](https://docs.ipfs.io/concepts/dnslink/) for the subdomain at `_dnslink.app.uniswap.org`.
+That TXT record contains the IPFS hash of the latest release, which we update as part of the 
+[GitHub release workflow](https://github.com/uniswap/uniswap-frontend/actions?query=workflow%3ARelease) for the Uniswap Interface.
 
 Cloudflare’s IPFS gateway then fetches the content using the IPFS protocol and serves the interface to your browser via HTTPS.
 
@@ -99,6 +100,6 @@ the `x-ipfs-path` header.
 
 ## How you can help
 
-To keep Uniswap accessible, you can pin the hashes of each [daily release](https://github.com/Uniswap/uniswap-frontend/releases/latest).
+To keep Uniswap accessible, you can pin the hashes of the [latest release](https://github.com/Uniswap/uniswap-frontend/releases/latest).
 
 Does this work sound interesting? We're hiring! [Shoot us a message!](mailto:contact@uniswap.org)
