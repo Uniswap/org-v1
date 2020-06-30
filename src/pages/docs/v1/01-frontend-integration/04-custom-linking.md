@@ -26,7 +26,7 @@ Theme can be set as `light` or `dark`.
 
 ### Example Usage
 
-`https://v1.uniswap.exchange/swap?theme=dark`
+`https://app.uniswap.org/#/swap?theme=dark&use=v1`
 
 ## Swap Page
 
@@ -54,7 +54,7 @@ Two parameters, exactField and exactAmount can be used to set specific token amo
 
 ### Example Usage
 
-`https://v1.uniswap.exchange/swap?exactField=input&exactAmount=10&inputCurrency=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
+`https://app.uniswap.org/#/swap?exactField=input&exactAmount=10&inputCurrency=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942?use=v1`
 
 ## Send Page
 
@@ -66,7 +66,7 @@ The send page has the same options available as the Swap page, plus one addition
 
 ### Example Usage
 
-`https://v1.uniswap.exchange/send?recipient=0x74Aa01d162E6dC6A657caC857418C403D48E2D77`
+`https://app.uniswap.org/#/send?recipient=0x74Aa01d162E6dC6A657caC857418C403D48E2D77?use=v1`
 
 ## Pool Page
 
@@ -82,7 +82,7 @@ The Pool page is made up of 3 subroutes: `add-liquidity`, `remove-liquidity`, `c
 
 ### Example Usage
 
-`https://v1.uniswap.exchange/add-liquidity?ethAmount=2.34&token=0x42456D7084eacF4083f1140d3229471bbA2949A8&tokenAmount=300`
+`https://app.uniswap.org/#/add-liquidity?ethAmount=2.34&token=0x42456D7084eacF4083f1140d3229471bbA2949A8&tokenAmount=300?use=v1`
 
 ## Remove Liquidity
 
@@ -93,7 +93,7 @@ The Pool page is made up of 3 subroutes: `add-liquidity`, `remove-liquidity`, `c
 
 ### Example Usage
 
-`https://v1.uniswap.exchange/remove-liquidity?poolTokenAmount=1.23`
+`https://app.uniswap.org/#/remove-liquidity?poolTokenAmount=1.23&use=v1`
 
 ## Create Exchange
 
@@ -103,7 +103,7 @@ The Pool page is made up of 3 subroutes: `add-liquidity`, `remove-liquidity`, `c
 
 ### Example Usage
 
-`https://v1.uniswap.exchange/create-exchange?tokenAddress=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
+`https://app.uniswap.org/#/swap?use=v1&create-exchange?tokenAddress=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
 
 ## Custom Routes
 
@@ -111,4 +111,4 @@ Custom token routes can still be used in combination with URL paramters. URL par
 
 An example using custom token route and URL paramters.
 
-`https://v1.uniswap.exchange/swap/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942?exactField=input&exactAmount=10`
+`https://app.uniswap.org/#/swap/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942?exactField=input&exactAmount=10&use=v1`

@@ -300,7 +300,7 @@ This felt like an acceptable result — if a token was designed to attack Uniswa
 
 #### **Day 4**
 
-On November 2, 2018 — the final day of Devcon 4 — the smart contracts were deployed to the Ethereum mainet. Next, [uniswap.io](https://uniswap.io/) and [uniswap.exchange](https://uniswap.exchange/swap) were deployed. Finally, I reached out to anyone who had expressed interest in providing liquidity at launch.
+On November 2, 2018 — the final day of Devcon 4 — the smart contracts were deployed to the Ethereum mainet. Next, [uniswap.io](https://uniswap.io/) and [app.uniswap.org/#](https://app.uniswap.org/#/swap) were deployed. Finally, I reached out to anyone who had expressed interest in providing liquidity at launch.
 
 About $30,000 was deposited into the contracts by a single provider, split across 3 tokens. This allowed for swaps of about $100. There was nothing else left to do.
 
