@@ -78,14 +78,8 @@ rather than the _subdomain_
 (e.g. [bafybeig6hsm....cf-ipfs.com](https://bafybeig6hsm6lj74ertjf7hghsj2zrkzzpec5iyrt57vxiwxqltmgeeokm.cf-ipfs.com/)), 
 other sites accessed from the same IPFS gateway can view and change your settings in the Uniswap Interface.
 
-To avoid this possibility, you can use the subdomain format of IPFS gateway URLs, which are contained in [every release](https://github.com/Uniswap/uniswap-interface/releases) along with the path format.
-
-IPFS and IPNS gateways that use a subdomain format, such as:
-
-https://cloudflare-ipfs.com/ipns/app.uniswap.org/ and
-https://bafybeiftpceokfk7ufl7vin43m6gg5rgqcdbykavvf2aahtvvqyryee3by.ipfs.dweb.link/
-
-are not susceptible to this. 
+To avoid this possibility, you can use the subdomain format of IPFS gateway URLs, which are contained in 
+[every release](https://github.com/Uniswap/uniswap-interface/releases) along with the path format.
 
 ## Verifying a build
 
