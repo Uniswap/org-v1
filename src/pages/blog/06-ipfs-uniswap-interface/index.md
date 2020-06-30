@@ -9,12 +9,12 @@ previewText: 'The Uniswap Interface is now served exclusively from IPFS'
 # TL;DR
 
 - In an effort to continue decentralizing, we have created a mechanism for the community to host the Uniswap Interface
-- The open-source [Uniswap Interface](https://github.com/Uniswap/uniswap-frontend) built by our team and 
-community is [automatically deployed](https://github.com/Uniswap/uniswap-frontend/releases) daily to IPFS
+- The open-source [Uniswap Interface](https://github.com/Uniswap/uniswap-interface) built by our team and 
+community is [automatically deployed](https://github.com/Uniswap/uniswap-interface/releases) daily to IPFS
 - Community members can pin the IPFS hashes to ensure availability
-- We use IPNS + DNSLink to point `/ipns/app.uniswap.org` to the latest [IPFS release](https://github.com/Uniswap/uniswap-frontend/releases) 
+- We use IPNS + DNSLink to point `/ipns/app.uniswap.org` to the latest [IPFS release](https://github.com/Uniswap/uniswap-interface/releases) 
 - [app.uniswap.org](https://app.uniswap.org) is now served exclusively from the latest 
-[IPFS release](https://github.com/Uniswap/uniswap-frontend/releases), however any IPFS gateway can be used directly
+[IPFS release](https://github.com/Uniswap/uniswap-interface/releases), however any IPFS gateway can be used directly
 - The URL [uniswap.exchange](https://uniswap.exchange) now forwards to [app.uniswap.org](https://app.uniswap.org)
 - The ENS contenthash for `uniswap.eth` now points to the latest IPFS release allowing the URL [uniswap.eth.link](https://uniswap.eth.link/) to be used
 
@@ -39,13 +39,13 @@ This is one of the problem that IPFS [aims to solve](https://blog.cloudflare.com
 ## What we did
 
 Our team has always cared about decentralization, security, and accessibility. This is why we built an 
-[open-source interface](https://github.com/Uniswap/uniswap-frontend) for Uniswap that the community can directly run, 
+[open-source interface](https://github.com/Uniswap/uniswap-interface) for Uniswap that the community can directly run, 
 verify and build upon. We’ve just taken another step forward by decentralizing the hosting of the Uniswap Interface using IPFS.
 
-Using [Github Actions](https://github.com/features/actions), the [Uniswap Interface](https://github.com/Uniswap/uniswap-frontend) 
+Using [Github Actions](https://github.com/features/actions), the [Uniswap Interface](https://github.com/Uniswap/uniswap-interface) 
 is now deployed at least once per day to IPFS. Each release is automatically [pinned](https://docs.ipfs.io/concepts/persistence/) 
 using [pinata.cloud](https://pinata.cloud), a free IPFS pinning service. 
-The IPFS releases can be found [on GitHub](https://github.com/Uniswap/uniswap-frontend/releases).
+The IPFS releases can be found [on GitHub](https://github.com/Uniswap/uniswap-interface/releases).
 
 This means the Uniswap Interface can now be accessed via IPFS directly, through a gateway such as [cloudflare-ipfs.com](https://cloudflare-ipfs.com/ipns/app.uniswap.org/), or by an _alias_ to the Cloudflare gateway at [app.uniswap.org](https://app.uniswap.org).
 
@@ -74,7 +74,7 @@ Some settings on the Uniswap Interface use localstorage, which is shared across 
 
 When using an IPFS gateway and referencing an IPFS hash or IPNS name by the path (e.g. https://ipfs.io/ipfs/QmaREHiNYVn7uhfT8KepgGuufPHDQG29wpKTX7sHvc6Wys/#/swap) rather than the subdomain (e.g. [cloudflare-ipfs.com/ipns/app.uniswap.org/](https://cloudflare-ipfs.com/ipns/app.uniswap.org/)), it is possible others may change your settings in the Uniswap interface.
 
-To avoid this possibility, you can use the subdomain format of IPFS gateway URLs, which are contained in [every release](https://github.com/Uniswap/uniswap-frontend/releases) along with the path format.
+To avoid this possibility, you can use the subdomain format of IPFS gateway URLs, which are contained in [every release](https://github.com/Uniswap/uniswap-interface/releases) along with the path format.
 
 IPFS and IPNS gateways that use a subdomain format, such as:
 
@@ -93,6 +93,6 @@ Cloudflare's gateway uses the IPFS hash of the deployment in the `etag` header, 
 
 ## How you can help
 
-To keep the Uniswap Interface available, you can pin the hash of the [latest release](https://github.com/Uniswap/uniswap-frontend/releases/latest).
+To keep the Uniswap Interface available, you can pin the hash of the [latest release](https://github.com/Uniswap/uniswap-interface/releases/latest).
 
 If this sort of work sounds cool to you, we're hiring! [Shoot us a message!](mailto:contact@uniswap.org)

@@ -24,7 +24,7 @@ This site will serve as a project overview for Uniswap - explaining how it works
 - Support for private and custom uniswap exchanges
 - Buy ERC20 tokens from any wallet using ENS
 - [Partially verified](https://github.com/runtimeverification/verified-smart-contracts/tree/uniswap/uniswap) smart contracts written in Vyper
-- Mobile-optimized open source [frontend implementation](https://github.com/Uniswap/uniswap-frontend)
+- Mobile-optimized open source [frontend implementation](https://github.com/Uniswap/uniswap-interface)
 - Funded through an [Ethereum Foundation grant](https://blog.ethereum.org/2018/08/17/ethereum-foundation-grants-update-wave-3/)
 
 # Resources
