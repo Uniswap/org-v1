@@ -2,7 +2,7 @@
 title: 'Uniswap Interface + IPFS'
 date: '2020-06-30'
 author: 'Moody Salem, Hayden Adams'
-featuredImage: ./featured.png
+featuredImage: ./featured.jpg
 previewText: 'The Uniswap Interface is now served exclusively from IPFS'
 ---
 
