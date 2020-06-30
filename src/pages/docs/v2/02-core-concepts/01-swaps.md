@@ -6,24 +6,32 @@ tags: swaps, documentation
 
 # Introduction
 
-Token swaps are a simple way to exchange one ERC-20 token for another.
+Token swaps in Uniswap are a simple way to exchange one ERC-20 token for another.
 
-For end-users, swapping is intuitive: a user picks an input token and an output token. They specify an input amount, and the protocol calculates how much of the output token they'll receive. They then execute the swap with one click, receiving the output token in their wallet immediately.
+For end-users, swapping is intuitive: a user picks an input token and an output token. They specify an input amount, and the protocol calculates how much of the output token they’ll receive. They then execute the swap with one click, receiving the output token in their wallet immediately.
 
-Beneath the surface, token swaps are fulfilled by a system of smart contracts that are constantly being interacted with by a marketplace of participants. Interactions between liquidity providers, traders, and arbitrageurs create the incentives and feedback loops necessary to keep markets liquid and prices accurate to broader market rates.
-
-# Swaps at a glance
+In this guide, we’ll look at what happens during a swap at the protocol level in order to gain a deeper understanding of how Uniswap works.
 
 Swaps in Uniswap are different from trades on traditional exchanges. Uniswap does not use an order book to represent liquidity or determine prices. Uniswap uses an automated market maker mechanism to provide instant feedback on exchange rates and slippage.
 
-Each token exchange pair on Uniswap is implemented by an underlying liquidity pool. A liquidity pool is a smart contract that holds two unique tokens and enforces rules around depositing and withdrawing them. In Uniswap, the rules specify that tokens can only be deposited and withdraw in accordance to a specific formula, `x * y = k`. `x` and `y` represent the quantities of the two tokens and `k` is their constant product.
+As we learned in [Protocol Overview](h), each exchange pair on Uniswap is actually underpinned by a liquidity pool. Liquidity pools are smart contracts that hold balances of two unique tokens and enforces rules around depositing and withdrawing them.
 
-The consequence of using this formula to govern the balance of each token in the pool is that when a token is deposited, a proportional amount must be withdrawn to maintain the constant. Contrariwise, if a token is withdrawn, a proportional amount must instead be also deposited.
+This rule is the [constant product formula](asf). When a token is deposited (sold), a proportional amount must be withdrawn to maintain the constant. Contrariwise, if a token is withdrawn (purchased), a proportional amount must instead be also deposited.
 
-# Unique properties of Swaps
+## Anatomy of a swap
+At the most basic level, all swaps in Uniswap V2 happen within a single function, aptly named `swap`:
 
-This formula, known as an automated market maker, enables Uniswap to implement token exchange without needing an order book. This has a few important and novel consequences. An automated market maker obviates the need for active and explicit counterparties. Participants deposit tokens to the liquidity pool passively and asynchronously, at their convenience, and exchange is enabled autonomously by the Uniswap smart contract code running on Ethereum.
+```solidity
+function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data);
+```
 
-This means Uniswap's architecture is radically simplified and can run completely and natively on chain, giving it important properties equal to the underlying blockchain. Just like Ethereum, Uniswap is always online and doesn't require any centrally operated intermediary infrastructure. Because there is no order book, no external service is needed to match orders. Matching happens automatically by the contracts following the AMM formula.
+# Receiving tokens
+As is probably clear from the function signature, Uniswap requires `swap` callers to _specify how many output tokens they would like to receive_ via the `amount{0,1}Out` parameters, which correspond to the desired amount of `token{0,1}`.
 
-In sum, Uniswap is a token swap marketplace designed from first principles to run natively on a blockchain network.
+# Sending Tokens
+What’s not as clear is how Uniswap _receives_ tokens as payment for the swap. Typically, smart contracts which need tokens to perform some functionality require callers to first make an approval on the token contract, then call a function that in turn calls transferFrom on the token contract. This is _not_ how V2 pairs accept tokens. Instead, pairs check their token balances at the _end_ of every interaction. Then, at the beginning of the _next_ interaction, current balances are differenced against the stored values to determine the amount of tokens that were sent by the current interactor. See the <a href=‘/whitepaper.pdf’ target=‘_blank’ rel=‘noopener noreferrer’>whitepaper</a> for a justification of why this is the case.
+
+The takeaway is that **tokens must be transferred to pairs before swap is called** (the one exception to this rule is <Link to='/docs/v2/flash-swaps'>Flash Swaps</Link>). This means that to safely use the `swap` function, it must be called from _another smart contract_. The alternative (transferring tokens to the pair and then calling `swap`) is not safe to do non-atomically because the sent tokens would be vulnerable to arbitrage.
+
+At this point you may be wondering how to calculate the amount of tokens to send for a given output amount. This is explained in the next section: Pricing.
+
