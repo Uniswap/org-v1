@@ -64,12 +64,16 @@ const StyledDocsNavWrapper = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   margin-top: 2rem;
   padding-top: 3rem;
 `
 const StyledDocsNav = styled.li`
+  @media (max-width: 960px) {
+    width: 100%;
+  }
   a {
     color: ${({ theme }) => theme.textColor};
   }

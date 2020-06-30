@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: API Overview
 tags: api, documentation
 ---
 
@@ -13,7 +13,7 @@ The Uniswap subgraph indexes data from the Uniswap contracts over time. It organ
 
 ## Usage
 
-The subgraph provides a snapshot of the current state of Uniswap and also tracks historical data. It is currently used to power [uniswap.info](https://uniswap.info/). It is not intended to be used as a data source for structuring transactions (contracts should be referenced directly for the most reliable live data).
+The subgraph provides a snapshot of the current state of Uniswap and also tracks historical data. It is currently used to power [uniswap.info](https://uniswap.info/). **It is not intended to be used as a data source for structuring transactions (contracts should be referenced directly for the most reliable live data).**
 
 ## Making Queries
 

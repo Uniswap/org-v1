@@ -32,8 +32,8 @@ const StyledMiniCards = styled(Link)`
   @media (max-width: 960px) {
     width: 100%;
     max-width: 450px;
-    margin: 1rem 0;
-    height: ${({ small }) => !small && '200px'};
+    margin-bottom: 0.25rem;
+    height: ${({ small }) => !small && '120px'};
     /* height: 200px; */
   }
 `
@@ -48,19 +48,19 @@ const StyledCardBG = styled(Img)`
   z-index: -1;
 `
 
-const handleTagType = (tag, theme) => {
-  // console.log(theme)
-  switch (tag) {
-    case 'guide':
-      return theme.colors.blue5
-    case 'tutorial':
-      return theme.colors.pink1
-    case 'reference':
-      return theme.colors.green2
-    default:
-      return theme.colors.pink1
-  }
-}
+// const handleTagType = (tag, theme) => {
+//   // console.log(theme)
+//   switch (tag) {
+//     case 'guide':
+//       return theme.colors.blue5
+//     case 'tutorial':
+//       return theme.colors.pink1
+//     case 'reference':
+//       return theme.colors.green2
+//     default:
+//       return theme.colors.pink1
+//   }
+// }
 
 const Tag = styled.p`
   position: absolute;

@@ -356,7 +356,7 @@ const SideBar = props => {
                 const showRender =
                   (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
                   (node.name.split('-')[1] === 'other' && atTopLevel) ||
-                  (node.name.split('-')[2] === 'contracts' && atTopLevel)
+                  (node.name.split('-')[2] === 'contract' && atTopLevel)
                 return (
                   showRender && (
                     <CollapsibleList
@@ -382,13 +382,13 @@ const SideBar = props => {
               <StyledLink to={'/docs/v2/SDK'}>SDK</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/docs/v2/API'}>Subgraph API</StyledLink>
+              <StyledLink to={'/docs/v2/API'}>API</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/docs/v2/smart-contract-ABI'}>Smart Contract ABI</StyledLink>
+              <StyledLink to={'/docs/v2/smart-contracts'}>Smart Contracts</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/'}>Whitepaper</StyledLink>
+              <StyledLink to={'/whitepaper.pdf'}>Whitepaper</StyledLink>
             </StyledListItem>
           </StyledList>
         )}

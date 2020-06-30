@@ -10,6 +10,7 @@ import { Sun, Moon } from 'react-feather'
 
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
+import Discord from '../images/discord.inline.svg'
 
 import useDarkMode from 'use-dark-mode'
 import SideBar from './sidebarV2'
@@ -48,6 +49,12 @@ const StyledButton = styled.button`
   :hover {
     cursor: pointer;
   }
+  a {
+    height: 24px;
+  }
+  svg path {
+    fill: ${({ theme }) => theme.colors.link};
+  }
 `
 
 const StyledNav = styled.nav`
@@ -75,6 +82,7 @@ const StyledNav = styled.nav`
 const StyledNavTitleWrapper = styled.nav`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `
 
 const StyledNavTitle = styled(Link)`
@@ -85,6 +93,7 @@ const StyledNavTitle = styled(Link)`
   text-decoration: none;
   vertical-align: bottom;
   font-weight: 500;
+  white-space: pre;
 
   :hover {
     opacity: 1;
@@ -213,6 +222,11 @@ const Header = props => {
           {isMobile && <SideBar {...props} />}
           <StyledButton type="button" onClick={darkMode.value ? darkMode.disable : darkMode.enable}>
             {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
+          </StyledButton>
+          <StyledButton>
+            <a href="https://discord.gg/urNFyeB">
+              <Discord />
+            </a>
           </StyledButton>
         </StyledNav>
       </Row>
