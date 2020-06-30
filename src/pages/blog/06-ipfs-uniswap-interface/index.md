@@ -68,11 +68,15 @@ Because IPFS gateways will not default to serving `/index.html` as is expected b
 
 This means that links that contain paths, such as [app.uniswap.org/swap](https://app.uniswap.org) will no longer work, but [app.uniswap.org/#/pool](https://app.uniswap.org/#/swap) will work.
 
-## Disclaimer
+## Security Unicorn
 
 Some settings on the Uniswap Interface use localstorage, which is shared across users in some IPFS gateways.
 
-When using an IPFS gateway and referencing an IPFS hash or IPNS name by the path (e.g. https://ipfs.io/ipfs/QmaREHiNYVn7uhfT8KepgGuufPHDQG29wpKTX7sHvc6Wys/#/swap) rather than the subdomain (e.g. [cloudflare-ipfs.com/ipns/app.uniswap.org/](https://cloudflare-ipfs.com/ipns/app.uniswap.org/)), it is possible others may change your settings in the Uniswap interface.
+When using an IPFS gateway and referencing an IPFS hash or IPNS name by the _path_ 
+(e.g. [cloudflare-ipfs.com/ipfs/QmdJApBwfsGua9v.../](https://cloudflare-ipfs.com/ipfs/QmdJApBwfsGua9vKnMbswGFGA4y5Kj2VNNPhvcsc8NC7iA/)) 
+rather than the _subdomain_ 
+(e.g. [bafybeig6hsm....cf-ipfs.com](https://bafybeig6hsm6lj74ertjf7hghsj2zrkzzpec5iyrt57vxiwxqltmgeeokm.cf-ipfs.com/)), 
+other sites accessed from the same IPFS gateway can view and change your settings in the Uniswap Interface.
 
 To avoid this possibility, you can use the subdomain format of IPFS gateway URLs, which are contained in [every release](https://github.com/Uniswap/uniswap-interface/releases) along with the path format.
 
