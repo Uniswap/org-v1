@@ -56,9 +56,8 @@ The `app.uniswap.org` subdomain is given a CNAME record pointing at `cloudflare-
 
 When a user visits the domain `app.uniswap.org`, the browser first looks up the DNS record and finds a CNAME to `cloudflare-ipfs.com`.
 The server at `cloudflare-ipfs.com`, i.e. Cloudflare’s IPFS gateway, looks up the 
-[DNSLink record](https://docs.ipfs.io/concepts/dnslink/) for the subdomain at `_dnslink.app.uniswap.org`.
-That TXT record contains the IPFS hash of the latest release, which we update as part of the 
-[GitHub release workflow](https://github.com/uniswap/uniswap-frontend/actions?query=workflow%3ARelease) for the Uniswap Interface. 
+[DNSLink record](https://docs.ipfs.io/concepts/dnslink/) for the subdomain.
+That TXT record contains the IPFS hash of the latest release. 
 
 Cloudflare’s IPFS gateway then fetches the content using the IPFS protocol and serves the interface to your browser via HTTPS.
 
