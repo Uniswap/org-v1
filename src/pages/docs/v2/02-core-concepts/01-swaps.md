@@ -1,10 +1,8 @@
 ---
-title: Swaps Overview
+title: Swaps
 subtitle: Learn about the core functionality of the uniswap protocol. Token Swaps.
 tags: swaps, documentation
 ---
-
-_Looking for help using the interface? <Link to="/docs/v2/web-app/trading/">Check out the User Guides.</Link>_
 
 # Introduction
 
@@ -29,7 +27,3 @@ This formula, known as an automated market maker, enables Uniswap to implement t
 This means Uniswap's architecture is radically simplified and can run completely and natively on chain, giving it important properties equal to the underlying blockchain. Just like Ethereum, Uniswap is always online and doesn't require any centrally operated intermediary infrastructure. Because there is no order book, no external service is needed to match orders. Matching happens automatically by the contracts following the AMM formula.
 
 In sum, Uniswap is a token swap marketplace designed from first principles to run natively on a blockchain network.
-
-To learn more about how swaps work, you can follow the lifecycle of a specific swap in [Anatomy of a Swap]().
-
-Swaps can also be executed programatically by interacting directly with Uniswap's smart contracts.
