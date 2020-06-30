@@ -1,5 +1,5 @@
 ---
-title: Custom Linking
+title: Trading
 tags: frontend integration, documentation
 ---
 

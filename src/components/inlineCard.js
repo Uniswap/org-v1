@@ -32,8 +32,8 @@ const StyledMiniCards = styled(Link)`
   @media (max-width: 960px) {
     width: 100%;
     max-width: 450px;
-    margin: 1rem 0;
-    height: ${({ small }) => !small && '200px'};
+    margin-bottom: 0.25rem;
+    height: ${({ small }) => !small && '120px'};
     /* height: 200px; */
   }
 `
