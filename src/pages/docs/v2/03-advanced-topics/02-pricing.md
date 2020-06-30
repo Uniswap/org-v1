@@ -15,7 +15,7 @@ Say a smart contract naively wants to send 10 DAI to the DAI/WETH pair and recei
 
 To prevent these types of attacks, it's vital to submit swaps _that have access to knowledge about the "fair" price their swap should execute at_. In other words, swaps need access to an _oracle_, to be sure that the best execution they can get from Uniswap is close enough to what the oracle considers the "true" price. While this may sound complicated, the oracle can be as simple as an _off-chain observation of the current market price of a pair_. Because of arbitrage, it's typically the case that the ratio of the intra-block reserves of a pair is close to the "true" market price. So, if a user submits a trade with this knowledge in mind, they can ensure that the losses due to front-running are tightly bounded. This is how, for example, the Uniswap frontend ensure trade safety. It calculates the optimal input/output amounts given observed intra-block prices, and uses the router to perform the swap, which guarantees the swap will execute at a rate no less that `x`% worse than the observed intra-block rate, where `x` is a user-specified slippage tolerance (0.5% by default).
 
-There are, of course, other options for oracles, including <Link to='/docs/v2/oracles'>native Uniswap V2 oracles</Link>.
+There are, of course, other options for oracles, including <Link to='/docs/v2/core-concepts/oracles'>native Uniswap V2 oracles</Link>.
 
 ## Exact Input
 

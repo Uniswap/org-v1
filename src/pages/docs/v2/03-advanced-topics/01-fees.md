@@ -13,7 +13,7 @@ Since fees are added to liquidity pools, the invariant increases at the end of e
 
 There are many community developed tools to determine returns. You can also read more in the docs about how to think about LP returns:
 
-<InlineBoxLink title="Understanding LP returns" to="/docs/v2/liquidity-pools/understanding-uniswap-returns/" />
+<InlineBoxLink title="Understanding LP returns" to="/docs/v2/advanced-topics/returns/" />
 
 ## Protocol Fees
 

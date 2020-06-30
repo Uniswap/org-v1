@@ -10,7 +10,7 @@ For a high-level overview of V2, see the <Link to='/blog/uniswap-v2'>introductor
 
 <Wizard />
 
-Understand the design decisions behind Uniswap in the <Link to="/docs/v2/protocol-overview/architecture/">protocol architecture</Link> overview.
+Understand the design decisions behind Uniswap in the <Link to="/docs/v2/protocol-overview/how-it-works/">protocol architecture</Link> overview.
 
 The two main concepts that underpin Uniswap are <Link to="/docs/v2/core-concepts/swaps">Swaps</Link> and <Link to="/docs/v2/core-concepts/pools">Pools</Link>.
 
