@@ -1,6 +1,6 @@
 ---
 title: Pricing
-tags: frontend integration, documentation
+tags: SDK, developer-guides, documentation
 ---
 
-This is a stub. Help us expand it by submitting a PR using the github link below!
+Looking for a <Link to='/docs/v2/javascript-SDK/quick-start'>quickstart</Link>?
