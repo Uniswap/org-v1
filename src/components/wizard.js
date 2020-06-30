@@ -104,7 +104,7 @@ const StyledWizard = styled.div`
     width: 100%;
     max-width: 450px;
     margin: 1rem 0;
-    height: ${({ small }) => !small && '200px'};
+    /* height: ${({ small }) => !small && '200px'}; */
     /* height: 200px; */
   }
 `

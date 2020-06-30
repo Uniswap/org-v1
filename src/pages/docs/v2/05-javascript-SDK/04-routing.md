@@ -1,5 +1,5 @@
 ---
-title: Custom Linking
+title: Routing
 tags: frontend integration, documentation
 ---
 

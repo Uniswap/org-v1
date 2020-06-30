@@ -1,5 +1,5 @@
 ---
-title: Custom Linking
+title: Pricing
 tags: frontend integration, documentation
 ---
 
