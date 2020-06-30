@@ -63,29 +63,25 @@ export default function Search(props) {
   // based on version, reset docsearch to use right facet filter
   useEffect(() => {
     if (isV2) {
-      if (window.docsearch) {
-        window.docsearch({
-          apiKey: '3d44be3728a9ae9799681c70a19a5179',
-          indexName: 'uniswap_v2_docs',
-          inputSelector: '.docsearch', // the selector of my search input
-          appId: 'VZ0CVS8XCW',
-          algoliaOptions: {
-            facetFilters: ['version:v2'] // change facet to filter based on version
-          }
-        })
-      }
+      window.docsearch({
+        apiKey: '3d44be3728a9ae9799681c70a19a5179',
+        indexName: 'uniswap_v2_docs',
+        inputSelector: '.docsearch', // the selector of my search input
+        appId: 'VZ0CVS8XCW',
+        algoliaOptions: {
+          facetFilters: ['version:v2'] // change facet to filter based on version
+        }
+      })
     } else {
-      if (window.docsearch) {
-        window.docsearch({
-          apiKey: '3d44be3728a9ae9799681c70a19a5179',
-          indexName: 'uniswap_v2_docs',
-          inputSelector: '.docsearch', // the selector of my search input
-          appId: 'VZ0CVS8XCW',
-          algoliaOptions: {
-            facetFilters: ['version:v1'] // change facet to filter based on version
-          }
-        })
-      }
+      window.docsearch({
+        apiKey: '3d44be3728a9ae9799681c70a19a5179',
+        indexName: 'uniswap_v2_docs',
+        inputSelector: '.docsearch', // the selector of my search input
+        appId: 'VZ0CVS8XCW',
+        algoliaOptions: {
+          facetFilters: ['version:v1'] // change facet to filter based on version
+        }
+      })
     }
   }, [isV2])
 

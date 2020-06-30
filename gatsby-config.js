@@ -38,15 +38,7 @@ module.exports = {
         path: `${__dirname}/src/pages/jobs/`
       }
     },
-    {
-      resolve: `gatsby-plugin-algolia-docsearch-appid`,
-      options: {
-        apiKey: '3d44be3728a9ae9799681c70a19a5179',
-        indexName: 'uniswap_v2_docs',
-        inputSelector: '.docsearch', // the selector of my search input
-        appId: 'VZ0CVS8XCW'
-      }
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -324,6 +316,10 @@ module.exports = {
         queries,
         chunkSize: 10000
       }
+    },
+    {
+      resolve: `gatsby-plugin-algolia-docsearch-appid`,
+      options: {} // leave blank to inject into header
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

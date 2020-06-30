@@ -113,9 +113,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
-  #algolia-autocomplete-listbox-0 {
-    /* max-width: 100px !important; */
-  }
+
 
   html {
     font-size: 16px;
@@ -189,6 +187,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Inferi Book";
   }
 
+
+
   #gatsby-focus-wrapper{
     min-height: 100vh;
     /* position: relative; */
@@ -221,7 +221,7 @@ export const GlobalStyle = createGlobalStyle`
     overflow: scroll;
 
     @media screen and (max-width: 1080px) {
-      display: none;
+      min-width: 300px !important;
     }
   }
 

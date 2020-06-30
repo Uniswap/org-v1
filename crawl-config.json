@@ -2,7 +2,7 @@
   "index_name": "uniswap_v2_docs",
   "start_urls": [
     {
-      "url": "https://uniswap-org-git-fork-ianlapham-docsearch.uniswap.vercel.app/docs/v2",
+      "url": "https://uniswap.org/docs/v2",
       "extra_attributes": {
         "version": ["v2"]
       }
