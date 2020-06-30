@@ -1,5 +1,4 @@
 const menu = require('./src/utils/menu')
-const queries = require('./src/utils/algolia')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
@@ -306,21 +305,8 @@ module.exports = {
           }))
       }
     },
-    'gatsby-plugin-eslint',
-    {
-      resolve: 'gatsby-plugin-algolia',
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
-        queries,
-        chunkSize: 10000
-      }
-    },
-    {
-      resolve: `gatsby-plugin-algolia-docsearch-appid`,
-      options: {} // leave blank to inject into header
-    }
+    'gatsby-plugin-eslint'
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

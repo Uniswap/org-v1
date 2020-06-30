@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { useScript } from '../hooks'
+import { DOCSEARCH_CONTENT_URL } from '../utils/constants'
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -60,35 +62,37 @@ const ClearButton = styled.button`
 export default function Search(props) {
   const isV2 = props.path.slice(0, 8) === '/docs/v2'
 
+  // filter based on the version of the docs
+  function handleResults(hits) {
+    return hits.filter(hit => {
+      return isV2 ? hit.version[0] === 'v2' : hit.version[0] === 'v1'
+    })
+  }
+
+  // inject the docsearch library into the window
+  const docsearchLoaded = useScript(DOCSEARCH_CONTENT_URL, 'docsearch')
+
   // based on version, reset docsearch to use right facet filter
   useEffect(() => {
-    if (isV2) {
-      window.docsearch({
-        apiKey: '3d44be3728a9ae9799681c70a19a5179',
-        indexName: 'uniswap_v2_docs',
-        inputSelector: '.docsearch', // the selector of my search input
-        appId: 'VZ0CVS8XCW',
-        algoliaOptions: {
-          facetFilters: ['version:v2'] // change facet to filter based on version
-        }
-      })
-    } else {
-      window.docsearch({
-        apiKey: '3d44be3728a9ae9799681c70a19a5179',
-        indexName: 'uniswap_v2_docs',
-        inputSelector: '.docsearch', // the selector of my search input
-        appId: 'VZ0CVS8XCW',
-        algoliaOptions: {
-          facetFilters: ['version:v1'] // change facet to filter based on version
-        }
-      })
+    if (window.docsearch) {
+      try {
+        window.docsearch({
+          apiKey: '3d44be3728a9ae9799681c70a19a5179',
+          indexName: 'uniswap_v2_docs',
+          inputSelector: '.docsearch', // the selector of my search input
+          appId: 'VZ0CVS8XCW',
+          transformData: handleResults
+        })
+      } catch (e) {
+        console.log('Error loading algolia search')
+      }
     }
-  }, [isV2])
+  }, [docsearchLoaded])
 
   return (
     <SearchWrapper>
       <StyledForm>
-        <StyledInput className="docsearch" id="docusearch" placeholder="Search Docs..." />
+        <StyledInput className="docsearch" placeholder="Search Docs..." />
         <ClearButton />
       </StyledForm>
     </SearchWrapper>
