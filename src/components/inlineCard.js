@@ -8,11 +8,12 @@ const StyledMiniCards = styled(Link)`
   padding: 1.25rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
   background-color: ${({ theme }) => theme.invertedTextColor};
-  height: 300px;
-  max-width: 450px;
-  min-width: 260px;
+  height: 120px;
+  max-width: 100%;
+  min-width: 45%;
   width: 260px;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
   border: 1px solid ${({ theme }) => theme.colors.grey2};
   box-shadow: ${({ theme }) => theme.shadows.huge};
 
@@ -61,42 +62,25 @@ const handleTagType = (tag, theme) => {
   }
 }
 
-const Tag = styled.li`
-  list-style: none;
-  margin: 0;
-  padding: 0.15rem 0.5rem;
-  margin-right: 0.5rem;
-  font-weight: 500;
-  font-size: 11px;
-  text-transform: uppercase;
-  border: 1px solid ${({ theme, tag }) => handleTagType(tag, theme)};
-  color: ${({ theme, tag }) => handleTagType(tag, theme)};
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  width: fit-content;
+const Tag = styled.p`
+  position: absolute;
+  top: 16px;
+  right: 16px;
 `
 
 const StyledMiniCardHeader = styled.p`
   line-height: 130%;
   margin-top: 0px;
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-family: 'Inter Roman';
 `
 
 const StyledMiniCardDesc = styled.p`
-  font-size: 1rem;
+  font-size: 0.825rem;
   line-height: 140%;
   font-weight: 400;
   padding-bottom: 1.5rem;
-`
-
-const StyledArrow = styled.span`
-  position: absolute;
-  right: 1.5rem;
-  font-size: 0.825rem;
-  bottom: 1rem;
 `
 
 const InlineCard = props => {
@@ -106,9 +90,10 @@ const InlineCard = props => {
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
       <span>
         <StyledMiniCardDesc>{props.description || props.desc}</StyledMiniCardDesc>
-        {props.tag && <Tag tag={props.tag}>{props.tag}</Tag>}
+        <Tag>{props.icon}</Tag>
+        {/* {props.tag && <Tag tag={props.tag}>{props.tag}</Tag>} */}
       </span>
-      <StyledArrow>{'->'}</StyledArrow>
+      {/* <StyledArrow>{'->'}</StyledArrow> */}
     </StyledMiniCards>
   )
 }

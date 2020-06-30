@@ -14,9 +14,7 @@ Use the tool below to explore documentation by use case. If you're looking for m
 
 Understand the design decisions behind Uniswap in the <Link to="/docs/v2/protocol-overview/architecture/">protocol architecture</Link> overview.
 
-The two main concepts that underpin Uniswap are <Link to="/docs/v2/swaps/overview">Swaps</Link> and <Link to="/docs/v2/pools/overview">Pools</Link>.
-
-Learn how they work in practice in <Link to="/docs/v2/swaps/anatomy-of-a-swap">Anatomy of a Swap</Link> and <Link to="/docs/v2/pools/anatomy-of-a-pool">Anatomy of a Pool</Link>.
+The two main concepts that underpin Uniswap are <Link to="/docs/v2/core-concepts/swaps">Swaps</Link> and <Link to="/docs/v2/core-concepts/pools">Pools</Link>.
 
 Explore the sidebar to find more specific documentation covering other aspects of the protocol.
 
@@ -40,13 +38,12 @@ Get to know the Uniswap SDK and smart contract API objects, methods, attributes,
 
 ### Developer community
 
-Join the Uniswap developer community on [Discord]().
+Join the Uniswap developer community on [Discord](https://discord.gg/urNFyeB).
 
 ## Further Resources
 
 - <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>V2 Whitepaper</a>
 - [GitHub](https://github.com/Uniswap)
 - [Twitter](https://twitter.com/UniswapProtocol)
-- [Discord](https://discord.gg/Y7TF6QA)
 - [Reddit](https://reddit.com/r/Uniswap)
 - [Email](mailto:contact@uniswap.org)

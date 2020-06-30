@@ -171,7 +171,7 @@ function ReferenceList(props) {
         })
       return (
         <StyledListItem key={node.id}>
-          <StyledLink onClick={() => scrollTo('#docs-header')} to={'/docs/' + slug + '/' + title}>
+          <StyledLink onClick={() => scrollTo('#docs-header')} to={'/docs/' + slug + '/' + node.name}>
             {title}
           </StyledLink>
         </StyledListItem>
@@ -323,14 +323,12 @@ const SideBar = props => {
           })
           .map(({ node }) => {
             const hideRender =
-              (node.name.split('-')[1] === 'swaps' && atTopLevel) ||
-              (node.name.split('-')[1] === 'pools' && atTopLevel) ||
-              (node.name.split('-')[1] === 'flash' && atTopLevel) ||
-              (node.name.split('-')[1] === 'oracles' && atTopLevel) ||
               (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
               (node.name.split('-')[1] === 'API' && atTopLevel) ||
               (node.name.split('-')[1] === 'smart' && atTopLevel) ||
-              (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
+              (node.name.split('-')[1] === 'user' && atTopLevel) ||
+              (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
+              (node.name.split('-')[1] === 'other' && atTopLevel) ||
               (node.name === 'images' && atTopLevel)
             return (
               !hideRender && (
@@ -356,8 +354,9 @@ const SideBar = props => {
               })
               .map(({ node }) => {
                 const showRender =
-                  (node.name.split('-')[2] === 'integration' && atTopLevel) ||
-                  (node.name.split('-')[3] === 'integration' && atTopLevel)
+                  (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'other' && atTopLevel) ||
+                  (node.name.split('-')[2] === 'contracts' && atTopLevel)
                 return (
                   showRender && (
                     <CollapsibleList
@@ -386,7 +385,7 @@ const SideBar = props => {
               <StyledLink to={'/docs/v2/API'}>Subgraph API</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/docs/v2/smart-contracts'}>Smart Contracts</StyledLink>
+              <StyledLink to={'/docs/v2/smart-contract-ABI'}>Smart Contract ABI</StyledLink>
             </StyledListItem>
             <StyledListItem>
               <StyledLink to={'/'}>Whitepaper</StyledLink>
