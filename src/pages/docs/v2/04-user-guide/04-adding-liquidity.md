@@ -7,7 +7,7 @@ tags: user-guides, documentation
 
 The Uniswap interface allows users to add and remove liquidity on Uniswap V2 pairs. After connecting with one of the supported wallet options, users can also see and manage their current positions. Users can also create new pools through the interface.
 
-The liquidity provider section of the interface can be found under the [pool](https://uniswap.exchange/pool) tab.
+The liquidity provider section of the interface can be found under the [pool](https://app.uniswap.org/#/pool) tab.
 
 <Info>You may want to read <Link to="/docs/v2/pools/understanding-returns/">understanding returns</Link> before providing liquidity.</Info>
 

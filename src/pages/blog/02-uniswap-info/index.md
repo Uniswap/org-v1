@@ -32,11 +32,11 @@ We now show a sortable and filterable list of of all transactions in the last 24
 
 ![](https://cdn-images-1.medium.com/max/1900/1*keV-2_v_vCp-V7m_WTvVrQ.gif)
 
-Using a [Uniswap.exchange](http://Uniswap.exchange) iFrame integration, you can now directly buy and sell any token from the exchange info page. If you are a hardcore DAI trader you might consider bookmarking this page for a one stop shop for data, analytics and trading.
+Using a [app.uniswap.org](http://app.uniswap.org) iFrame integration, you can now directly buy and sell any token from the exchange info page. If you are a hardcore DAI trader you might consider bookmarking this page for a one stop shop for data, analytics and trading.
 
-Uniswap.info automatically shows all tokens on the Uniswap protocol as long as there is at least 0.1 ETH in liquidity. This means it can be used to trade tokens that are not shown on the default list of Uniswap.exchange. We highly recommend you verify the address of any tokens traded.
+Uniswap.info automatically shows all tokens on the Uniswap protocol as long as there is at least 0.1 ETH in liquidity. This means it can be used to trade tokens that are not shown on the default list of app.uniswap.org. We highly recommend you verify the address of any tokens traded.
 
-_If you’re interested in doing something similar on your site, you can [read more](https://docs.uniswap.io/frontend-integration/iframe) about how to embed uniswap.exchange)_
+_If you’re interested in doing something similar on your site, you can [read more](https://docs.uniswap.io/frontend-integration/iframe) about how to embed app.uniswap.org)_
 
 # Linking
 
