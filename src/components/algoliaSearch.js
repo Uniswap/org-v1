@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { DOCSEARCH_CONTENT_URL } from '../utils/constants'
-import { Helmet } from 'react-helmet'
 
 const SearchWrapper = styled.div`
   position: relative;

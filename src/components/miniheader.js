@@ -31,6 +31,8 @@ const StyledHeader = styled.header`
   width: 100%;
   z-index: 3;
   height: 65px;
+  max-width: 100vw;
+  min-width: 100vw;
   @media (max-width: 960px) {
     flex-direction: column;
     padding: 1.5rem 2rem;

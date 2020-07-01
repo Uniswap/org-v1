@@ -225,4 +225,6 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+
+
 `
