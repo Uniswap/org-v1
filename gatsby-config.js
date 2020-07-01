@@ -305,8 +305,16 @@ module.exports = {
           }))
       }
     },
-    'gatsby-plugin-eslint'
-
+    'gatsby-plugin-eslint',
+    {
+      resolve: `gatsby-plugin-algolia-docsearch-appid`,
+      options: {
+        apiKey: '3d44be3728a9ae9799681c70a19a5179',
+        indexName: 'uniswap_v2_docs',
+        inputSelector: 'blank', // use dummy selector to avoid double render
+        appId: 'VZ0CVS8XCW'
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

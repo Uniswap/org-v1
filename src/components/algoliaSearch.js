@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useScript } from '../hooks'
 import { DOCSEARCH_CONTENT_URL } from '../utils/constants'
+import { Helmet } from 'react-helmet'
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -69,9 +69,6 @@ export default function Search(props) {
     })
   }
 
-  // inject the docsearch library into the window
-  const docsearchLoaded = useScript(DOCSEARCH_CONTENT_URL, 'docsearch')
-
   // based on version, reset docsearch to use right facet filter
   useEffect(() => {
     if (window.docsearch) {
@@ -87,7 +84,7 @@ export default function Search(props) {
         console.log('Error loading algolia search')
       }
     }
-  }, [docsearchLoaded])
+  }, [])
 
   return (
     <SearchWrapper>
