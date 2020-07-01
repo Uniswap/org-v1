@@ -171,7 +171,7 @@ function ReferenceList(props) {
         })
       return (
         <StyledListItem key={node.id}>
-          <StyledLink onClick={() => scrollTo('#docs-header')} to={'/docs/' + slug + '/' + title}>
+          <StyledLink onClick={() => scrollTo('#docs-header')} to={'/docs/' + slug + '/' + node.name}>
             {title}
           </StyledLink>
         </StyledListItem>
@@ -320,14 +320,12 @@ const SideBar = props => {
           })
           .map(({ node }) => {
             const hideRender =
-              (node.name.split('-')[1] === 'swaps' && atTopLevel) ||
-              (node.name.split('-')[1] === 'pools' && atTopLevel) ||
-              (node.name.split('-')[1] === 'flash' && atTopLevel) ||
-              (node.name.split('-')[1] === 'oracles' && atTopLevel) ||
               (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
               (node.name.split('-')[1] === 'API' && atTopLevel) ||
               (node.name.split('-')[1] === 'smart' && atTopLevel) ||
-              (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
+              (node.name.split('-')[1] === 'user' && atTopLevel) ||
+              (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
+              (node.name.split('-')[1] === 'other' && atTopLevel) ||
               (node.name === 'images' && atTopLevel)
 
             return (
@@ -354,45 +352,11 @@ const SideBar = props => {
               })
               .map(({ node }) => {
                 const showRender =
-                  (node.name.split('-')[2] === 'integration' && atTopLevel) ||
-                  (node.name.split('-')[3] === 'integration' && atTopLevel)
+                  (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'other' && atTopLevel) ||
+                  (node.name.split('-')[2] === 'contract' && atTopLevel)
                 return (
                   showRender && (
-                    <CollapsibleList
-                      key={node.id}
-                      node={node}
-                      listData={listData}
-                      referenceData={data.v2Reference}
-                      path={props.path}
-                      parent={props.parent}
-                      atTopLevel={atTopLevel}
-                      topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
-                    />
-                  )
-                )
-              })}
-          </StyledList>
-        )}
-
-        {atTopLevel && (
-          <StyledList style={{ marginTop: '1rem' }}>
-            <SectionHeader>Concepts</SectionHeader>
-            {navData.edges
-              .filter(({ node }) => {
-                return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
-              })
-              .map(({ node }) => {
-                const hideRender =
-                  (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
-                  (node.name.split('-')[1] === 'API' && atTopLevel) ||
-                  (node.name.split('-')[1] === 'smart' && atTopLevel) ||
-                  (node.name.split('-')[1] === 'user' && atTopLevel) ||
-                  (node.name.split('-')[1] === 'protocol' && atTopLevel) ||
-                  (node.name.split('-')[1] === 'advanced' && atTopLevel) ||
-                  (node.name.split('-')[1] === 'frontend' && atTopLevel) ||
-                  (node.name === 'images' && atTopLevel)
-                return (
-                  !hideRender && (
                     <CollapsibleList
                       key={node.id}
                       node={node}
@@ -416,13 +380,13 @@ const SideBar = props => {
               <StyledLink to={'/docs/v2/SDK'}>SDK</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/docs/v2/API'}>Subgraph API</StyledLink>
+              <StyledLink to={'/docs/v2/API'}>API</StyledLink>
             </StyledListItem>
             <StyledListItem>
               <StyledLink to={'/docs/v2/smart-contracts'}>Smart Contracts</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/'}>Whitepaper</StyledLink>
+              <StyledLink to={'/whitepaper.pdf'}>Whitepaper</StyledLink>
             </StyledListItem>
           </StyledList>
         )}
