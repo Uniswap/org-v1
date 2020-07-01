@@ -11,14 +11,14 @@ const links = [
     sublinks: [
       {
         title: 'Getting started with the SDK',
-        link: '/docs/v2/smart-contract-integration/quick-start/',
+        link: '/docs/v2/javascript-SDK/quick-start/',
         description: 'A step-by-step guide to getting started building interfaces with Uniswap.',
         tag: 'tutorial',
         icon: '📌'
       },
       {
         title: 'Smart contract development',
-        link: '/docs/v2/SDK/',
+        link: '/docs/v2/smart-contract-integration/quick-start/',
         description: 'Simplify the process of integrating Uniswap into your project.',
         tag: 'reference',
         icon: '🖥️'

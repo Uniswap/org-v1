@@ -6,17 +6,17 @@ tags: swaps, documentation
 
 # Introduction
 
-Token swaps in Uniswap are a simple way to exchange one ERC-20 token for another.
+Token swaps in Uniswap are a simple way to trade one ERC-20 token for another.
 
 For end-users, swapping is intuitive: a user picks an input token and an output token. They specify an input amount, and the protocol calculates how much of the output token they’ll receive. They then execute the swap with one click, receiving the output token in their wallet immediately.
 
 In this guide, we’ll look at what happens during a swap at the protocol level in order to gain a deeper understanding of how Uniswap works.
 
-Swaps in Uniswap are different from trades on traditional exchanges. Uniswap does not use an order book to represent liquidity or determine prices. Uniswap uses an automated market maker mechanism to provide instant feedback on exchange rates and slippage.
+Swaps in Uniswap are different from trades on traditional platforms. Uniswap does not use an order book to represent liquidity or determine prices. Uniswap uses an automated market maker mechanism to provide instant feedback on rates and slippage.
 
-As we learned in [Protocol Overview](), each exchange pair on Uniswap is actually underpinned by a liquidity pool. Liquidity pools are smart contracts that hold balances of two unique tokens and enforces rules around depositing and withdrawing them.
+As we learned in [Protocol Overview](/docs/v2/protocol-overview), each pair on Uniswap is actually underpinned by a liquidity pool. Liquidity pools are smart contracts that hold balances of two unique tokens and enforces rules around depositing and withdrawing them.
 
-This rule is the [constant product formula](). When a token is deposited (sold), a proportional amount must be withdrawn to maintain the constant. Contrariwise, if a token is withdrawn (purchased), a proportional amount must instead be also deposited.
+This rule is the [constant product formula](/docs/v2/protocol-overview/glossary#constant-product-formula). When a token is deposited (sold), a proportional amount must be withdrawn to maintain the constant. Contrariwise, if a token is withdrawn (purchased), a proportional amount must instead be also deposited.
 
 ## Anatomy of a swap
 
@@ -36,4 +36,7 @@ What’s not as clear is how Uniswap _receives_ tokens as payment for the swap. 
 
 The takeaway is that **tokens must be transferred to pairs before swap is called** (the one exception to this rule is <Link to='/docs/v2/core-concepts/flash-swaps'>Flash Swaps</Link>). This means that to safely use the `swap` function, it must be called from _another smart contract_. The alternative (transferring tokens to the pair and then calling `swap`) is not safe to do non-atomically because the sent tokens would be vulnerable to arbitrage.
 
-At this point you may be wondering how to calculate the amount of tokens to send for a given output amount. This is explained in the next section: Pricing.
+# Developer resources
+
+- To see how to implement token swaps in a smart contract read [Trading from a smart contract](/docs/v2/smart-contract-integration/trading-from-a-smart-contract/).
+- To see how to execute a swap from an interface read [Trading (SDK)](/docs/v2/javascript-SDK/trading/)

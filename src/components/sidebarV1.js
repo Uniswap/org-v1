@@ -46,7 +46,7 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
-  margin-bottom: 0rem;
+  margin-bottom: 0.25rem;
 `
 
 const StyledInset = styled.div``
@@ -114,17 +114,7 @@ const CollapsibleList = ({ node, listData, path, parent, topLevel, atTopLevel })
       )}
       {open && (
         <StyledInset>
-          {/* <StyledSectionTitle>{title}</StyledSectionTitle> */}
-          <StyledLink
-            style={{ marginBottom: '0rem', display: 'inline-block', padding: '0px' }}
-            to={`${topLevel}/${section}`}
-            isActive={path.split('/')[4] === ''}
-          >
-            Overview
-          </StyledLink>
-          <StyledCategoryTitle>Guides</StyledCategoryTitle>
           <List data={listData} parent={node.name} slug={parent} path={path} />
-          <StyledCategoryTitle>Reference</StyledCategoryTitle>
         </StyledInset>
       )}
     </StyledSection>
@@ -264,19 +254,6 @@ const SideBar = props => {
             />
           ))}
       </ListWrapper>
-      {atTopLevel && (
-        <StyledList style={{ marginTop: '1rem' }}>
-          <StyledListItem>
-            <StyledLink to={'/'}>API Reference</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to={'/'}>Architecture</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to={'/'}>Whitepaper</StyledLink>
-          </StyledListItem>
-        </StyledList>
-      )}
     </StyledSidebar>
   )
 }

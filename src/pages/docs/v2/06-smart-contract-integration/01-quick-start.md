@@ -1,5 +1,5 @@
 ---
-title: Quick start
+title: Smart Contract Quick start
 tags: smart contract integration, documentation
 ---
 
