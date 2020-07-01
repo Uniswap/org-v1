@@ -46,36 +46,10 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
-  margin-bottom: 0rem;
+  margin-bottom: 0.25rem;
 `
 
 const StyledInset = styled.div``
-
-// const StyledSectionTitle = styled.p`
-//   margin: 0;
-//   margin-bottom: 0.5rem;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   flex-wrap: no-wrap;
-//   font-weight: 400;
-//   font-size: 24px;
-// `
-
-const StyledCategoryTitle = styled.p`
-  margin: 0;
-  margin-bottom: 0.5rem;
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: no-wrap;
-  font-weight: 400;
-  user-select: none;
-  font-size: 10px;
-  opacity: 0.8;
-  text-transform: uppercase;
-`
 
 const ListWrapper = styled.span`
   min-width: 240px;
@@ -114,17 +88,7 @@ const CollapsibleList = ({ node, listData, path, parent, topLevel, atTopLevel })
       )}
       {open && (
         <StyledInset>
-          {/* <StyledSectionTitle>{title}</StyledSectionTitle> */}
-          <StyledLink
-            style={{ marginBottom: '0rem', display: 'inline-block', padding: '0px' }}
-            to={`${topLevel}/${section}`}
-            isActive={path.split('/')[4] === ''}
-          >
-            Overview
-          </StyledLink>
-          <StyledCategoryTitle>Guides</StyledCategoryTitle>
           <List data={listData} parent={node.name} slug={parent} path={path} />
-          <StyledCategoryTitle>Reference</StyledCategoryTitle>
         </StyledInset>
       )}
     </StyledSection>
@@ -264,19 +228,6 @@ const SideBar = props => {
             />
           ))}
       </ListWrapper>
-      {atTopLevel && (
-        <StyledList style={{ marginTop: '1rem' }}>
-          <StyledListItem>
-            <StyledLink to={'/'}>API Reference</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to={'/'}>Architecture</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to={'/'}>Whitepaper</StyledLink>
-          </StyledListItem>
-        </StyledList>
-      )}
     </StyledSidebar>
   )
 }

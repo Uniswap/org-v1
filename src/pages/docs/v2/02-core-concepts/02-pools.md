@@ -49,3 +49,7 @@ Liquidity providers can earn fees by supplying an equal proportion of tokens to 
 It is important to reiterate that a Pool is just a smart contract, operated by users calling functions on it. Swapping tokens is calling `swap` on a Pool contract instance, while providing liquidity is calling `deposit`.
 
 Just how end-users can interact with the Uniswap protocol through the Interface (which in turn interacts with the underlying contracts), developers can interact directly with the smart contracts and integrate Uniswap functionality into their own applications without relying on intermediaries or needing permission.
+
+# Developer resources
+
+- To see how to pool tokens in a smart contract read [Providing Liquidity](/docs/v2/smart-contract-integration/providing-liquidity/).

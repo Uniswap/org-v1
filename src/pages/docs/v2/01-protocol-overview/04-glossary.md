@@ -10,6 +10,7 @@ An automated market maker is a smart contract on Ethereum that hold on-chain liq
 ### Constant product formula
 
 The automated market making algorithm used by Uniswap.
+See [x\*y=k](#x--y--k).
 
 ### ERC20
 

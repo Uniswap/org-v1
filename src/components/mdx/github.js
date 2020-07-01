@@ -5,9 +5,9 @@ import GithubIcon from '../../images/githubicon.inline.svg'
 
 const StyledInfo = styled(Link)`
   color: ${({ theme }) => theme.textColor};
-  padding: 1rem;
-  /* background-color: ${({ theme }) => theme.colors.grey1}; */
-  background-color: #FFF4D2;
+  padding: 0.25rem 0.5rem;
+  background-color: ${({ theme }) => theme.colors.yellow2};
+
   color: #5a3800;
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
@@ -21,7 +21,7 @@ const StyledGithubIcon = styled(GithubIcon)`
   width: 16px;
   margin-right: 6px;
   path {
-    fill: ${({ theme }) => theme.colors.grey9};
+    fill: ${({ theme }) => theme.colors.text1};
   }
 
   :before {
@@ -32,7 +32,7 @@ const StyledGithubIcon = styled(GithubIcon)`
 
     content: ' ';
     position: absolute;
-    background-color: ${({ theme }) => theme.colors.grey9};
+    background-color: ${({ theme }) => theme.colors.text1};
     opacity: 0.2;
   }
 `

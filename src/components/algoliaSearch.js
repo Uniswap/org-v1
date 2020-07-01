@@ -21,6 +21,16 @@ const StyledForm = styled.form`
   @media (max-width: 960px) {
     margin-right: 0;
   }
+
+  :hover {
+    color: ${({ theme }) => theme.colors.grey3};
+    background-color: ${({ theme }) => theme.colors.grey2};
+  }
+
+  :focus {
+    color: ${({ theme }) => theme.colors.grey3};
+    background-color: ${({ theme }) => theme.colors.grey2};
+  }
 `
 
 const StyledInput = styled.input`
@@ -63,7 +73,11 @@ export default function Search(props) {
   // filter based on the version of the docs
   function handleResults(hits) {
     return hits.filter(hit => {
-      return isV2 ? hit.version[0] === 'v2' : hit.version[0] === 'v1'
+      if (hit.version) {
+        return isV2 ? hit.version?.[0] === 'v2' : hit.version?.[0] === 'v1'
+      } else {
+        return isV2 ? hit.url.includes('v2') : hit.url.includes('v1')
+      }
     })
   }
 

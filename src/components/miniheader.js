@@ -175,7 +175,7 @@ const MenuToggle = styled.button`
 `
 
 const VersionLabel = styled.span`
-  padding: 0.01rem 0.5rem 0 0.5rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 12px;
   background: ${({ theme, toggled }) => (toggled ? theme.colors.link : 'none')};
   color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.colors.link)};
@@ -187,7 +187,8 @@ const VersionLabel = styled.span`
 const VersionToggle = styled(Link)`
   border-radius: 14px;
   margin-right: 1rem;
-  border: 1px solid ${({ theme }) => theme.colors.pink3};
+  background: ${({ theme }) => theme.colors.grey2};
+
   color: ${({ theme }) => theme.invertedTextColor};
   display: flex;
   width: fit-content;
@@ -246,13 +247,13 @@ const Header = props => {
           {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
         </MenuToggle>
         <StyledNav ref={node} open={isMenuOpen}>
+          {!isMobile && <Search {...props} />}
+          {isMobile &&
+            (v2Toggle ? <SidebarV2 parent={'/docs/'} {...props} /> : <SidebarV1 parent={'/docs/'} {...props} />)}
           <VersionToggle to={v2Toggle ? '/docs/v1/' : '/docs/v2/'}>
             <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
             <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
           </VersionToggle>
-          {!isMobile && <Search {...props} />}
-          {isMobile &&
-            (v2Toggle ? <SidebarV2 parent={'/docs/'} {...props} /> : <SidebarV1 parent={'/docs/'} {...props} />)}
           <StyledButton type="button" onClick={darkMode.value ? darkMode.disable : darkMode.enable}>
             {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
           </StyledButton>

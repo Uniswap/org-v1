@@ -3,6 +3,16 @@ title: Pricing
 tags: swaps, documentation
 ---
 
+# How are prices determined?
+
+As we learned in [Protocol Overview](/docs/v2/protocol-overview), each pair on Uniswap is actually underpinned by a liquidity pool. Liquidity pools are smart contracts that hold balances of two unique tokens and enforces rules around depositing and withdrawing them.
+
+This rule is the [constant product formula](/docs/v2/protocol-overview/glossary#constant-product-formula). When a token is deposited (sold), a proportional amount must be withdrawn to maintain the constant. Contrariwise, if a token is withdrawn (purchased), a proportional amount must instead be also deposited.
+
+In this way the pool itself has a "rate" thats is based on the protportion of the two token reserves which in turn determines the price.
+
+# How Uniswap handles prices
+
 In Uniswap V1, trades are always executed at the "best possible" price, calcuated at execution time. Somewhat confusingly, this calculation is actually accomplished with one of two different formulas, depending on whether the trade specifies an exact _input_ or _output_ amount. Functionally, the difference between these two functions is fairly miniscule, but the very existence of a difference increases conceptual complexity. Initial attempts to support both functions in V2 proved inelegant, and the decision was made to **not provide any pricing functions in the core**. Instead, pairs directly check whether the invariant was satisfied (accounting for fees) after every trade. This means that rather than relying on a pricing fuction to _also_ enforce the invariant, V2 pairs simply and transparently ensure their own safety, a nice separation of concerns. One downstream benefit is that V2 pairs will more naturally support other flavors of trades which may emerge, (e.g. trading to a specific price at execution time).
 
 At a high level, in Uniswap V2, _trades must be priced in the periphery_. The good news is that the <Link to='/docs/v2/smart-contracts/library'>library</Link> provides a variety of functions designed to make this quite simple, and all swapping functions in the <Link to='/docs/v2/smart-contracts/library'>router</Link> are designed with this in mind.

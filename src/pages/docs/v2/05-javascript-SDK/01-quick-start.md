@@ -1,5 +1,5 @@
 ---
-title: Quick start
+title: SDK Quick start
 tags: SDK, developer-guides, documentation
 ---
 

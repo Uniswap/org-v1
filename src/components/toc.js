@@ -57,7 +57,6 @@ const StyledTOC = styled.ul`
   transition: opacity 0.3s ease;
   list-style: none;
   text-decoration: none;
-  overflow: scroll;
   border-left: 1px solid ${({ theme }) => theme.colors.grey2};
 
   :hover {
