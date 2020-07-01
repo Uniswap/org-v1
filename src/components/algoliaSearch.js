@@ -75,7 +75,9 @@ export default function Search(props) {
     return hits.filter(hit => {
       if (hit.version) {
         return isV2 ? hit.version?.[0] === 'v2' : hit.version?.[0] === 'v1'
-      } else return true
+      } else {
+        return isV2 ? hit.url.includes('v2') : hit.url.includes('v1')
+      }
     })
   }
 
