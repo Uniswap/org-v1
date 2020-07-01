@@ -51,32 +51,6 @@ const StyledListItem = styled.li`
 
 const StyledInset = styled.div``
 
-// const StyledSectionTitle = styled.p`
-//   margin: 0;
-//   margin-bottom: 0.5rem;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   flex-wrap: no-wrap;
-//   font-weight: 400;
-//   font-size: 24px;
-// `
-
-const StyledCategoryTitle = styled.p`
-  margin: 0;
-  margin-bottom: 0.5rem;
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: no-wrap;
-  font-weight: 400;
-  user-select: none;
-  font-size: 10px;
-  opacity: 0.8;
-  text-transform: uppercase;
-`
-
 const ListWrapper = styled.span`
   min-width: 240px;
   @media (max-width: 960px) {

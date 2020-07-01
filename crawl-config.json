@@ -2,13 +2,13 @@
   "index_name": "uniswap_v2_docs",
   "start_urls": [
     {
-      "url": "https://uniswap-org-git-fork-ianlapham-docsearch-styled.uniswap.vercel.app/docs/v2",
+      "url": "https://uniswap-org-git-fork-ianlapham-docs-rework.uniswap.vercel.app/docs/v2/",
       "extra_attributes": {
         "version": ["v2"]
       }
     },
     {
-      "url": "https://uniswap-org-git-fork-ianlapham-docsearch-styled.uniswap.vercel.app/docs/v1 ",
+      "url": "https://uniswap-org-git-fork-ianlapham-docs-rework.uniswap.vercel.app/docs/v1/",
       "extra_attributes": {
         "version": ["v1"]
       }
@@ -28,6 +28,5 @@
     "attributesForFaceting": ["version"]
   },
   "conversation_id": ["1203516192"],
-  "js_render": true,
   "nb_hits": 456
 }
