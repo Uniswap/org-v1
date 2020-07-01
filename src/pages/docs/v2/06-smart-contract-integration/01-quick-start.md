@@ -1,778 +1,196 @@
 ---
 title: Smart Contract Quick start
-tags: smart contract integration, documentation
+tags: smart contract integration, documentation, quick start
 ---
 
-This is a stub. Help us expand it by submitting a PR using the github link below!
+Developing smart contracts for Ethereum involves a bevy of off-chain tools used for producing and testing bytecode 
+that runs on the [Ethereum Virtual Machine (EVM)](https://eth.wiki/en/concepts/evm/ethereum-virtual-machine-(evm)-awesome-list).
+Some tools also include workflows for deploying this bytecode to the Ethereum network and testnets.
+There are many options for these tools. This guide walks you through writing and testing a simple smart contract that
+interacts with the Uniswap Protocol using one specific set of tools (`truffle` + `npm` + `mocha`).
 
-<!--
-The Uniswap smart contracts exist on the Ethereum blockchain. Use [ethers.js](https://github.com/ethers-io/ethers.js/) or [web3.js](https://github.com/ethereum/web3.js) to connect your website to Ethereum. Users will need a web3-enabled browser. On desktop this means using the [MetaMask](https://metamask.io/) extension or something similar. On mobile, web3-compatible browsers include [Trust Wallet](https://trustwalletapp.com/) and [Coinbase Wallet](https://wallet.coinbase.com/). See [ethereum.org](https://ethereum.org/use/#_3-what-is-a-wallet-and-which-one-should-i-use) to learn more.
+## Requirements
 
-# Factory Contract
+To follow this guide, you must have the following installed:
 
-The Uniswap [factory contract](https://github.com/Uniswap/uniswap-v1/blob/master/contracts/uniswap_factory.vy) can be used to create exchange contracts for any ERC20 token that does not already have one. It also functions as a registry of ERC20 tokens that have been added to the system, and the exchange with which they are associated.
+- [nodejs >= v12.x & npm >= 6.x](https://nodejs.org/en/)
 
-The factory contract can be instantiated using the factory address and ABI:
+## Bootstrapping a project
 
-## [Factory Address](https://etherscan.io/address/0xc0a47dFe034B400B47bDaD5FecDa2621de6c4d95)
+You can start from scratch, but it's easier to use a tool like `truffle` to bootstrap an empty project. 
+Create an empty directory and run `npx truffle init` inside that directory to unbox the default 
+[Truffle box](https://www.trufflesuite.com/boxes).
 
-```javascript
-// mainnet
-const factory = '0xc0a47dFe034B400B47bDaD5FecDa2621de6c4d95'
-
-// testnets
-const ropsten = '0x9c83dCE8CA20E9aAF9D3efc003b2ea62aBC08351'
-const rinkeby = '0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36'
-const kovan = '0xD3E51Ef092B2845f10401a0159B2B96e8B6c3D30'
-const görli = '0x6Ce570d02D73d4c384b46135E87f8C592A8c86dA'
+```shell script
+mkdir demo
+cd demo
+npx truffle init
 ```
 
-### Factory Interface
+## Setting up NPM
 
-Creating the factory interface in web3 requires the **factory address** and the **factory ABI**:
+In order to reference the Uniswap V2 contracts, you should use the NPM artifacts we deploy containing the core and
+periphery smart contracts and interfaces. To add npm dependencies, we first initialize the NPM package. 
+We can run `npm init` in the same directory to create a `package.json` file. You can accept all the defaults and
+change it later.
 
-```javascript
-const factoryABI = [
-  {
-    name: 'NewExchange',
-    inputs: [
-      { type: 'address', name: 'token', indexed: true },
-      { type: 'address', name: 'exchange', indexed: true }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: 'initializeFactory',
-    outputs: [],
-    inputs: [{ type: 'address', name: 'template' }],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 35725
-  },
-  {
-    name: 'createExchange',
-    outputs: [{ type: 'address', name: 'out' }],
-    inputs: [{ type: 'address', name: 'token' }],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 187911
-  },
-  {
-    name: 'getExchange',
-    outputs: [{ type: 'address', name: 'out' }],
-    inputs: [{ type: 'address', name: 'token' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 715
-  },
-  {
-    name: 'getToken',
-    outputs: [{ type: 'address', name: 'out' }],
-    inputs: [{ type: 'address', name: 'exchange' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 745
-  },
-  {
-    name: 'getTokenWithId',
-    outputs: [{ type: 'address', name: 'out' }],
-    inputs: [{ type: 'uint256', name: 'token_id' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 736
-  },
-  {
-    name: 'exchangeTemplate',
-    outputs: [{ type: 'address', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 633
-  },
-  {
-    name: 'tokenCount',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 663
-  }
-]
+```shell script
+npm init
 ```
 
-```javascript
-const factoryContract = new web3.eth.Contract(factoryABI, factoryAddress)
+## Adding dependencies
+
+Now that we have an NPM package, we can add our dependencies. Let's add both the 
+[`@uniswap/v2-core`](https://www.npmjs.com/package/@uniswap/v2-core) and 
+[`@uniswap/v2-periphery`](https://www.npmjs.com/package/@uniswap/v2-periphery) packages.
+
+```shell script
+npm i --save @uniswap/v2-core
+npm i --save @uniswap/v2-periphery
 ```
 
-# Exchange Contracts
+If you check the `node_modules/@uniswap` directory, you can now find the Uniswap V2 contracts. 
 
-## Get Exchange Address
-
-There is a separate exchange contract for every ERC20 token. The `getExchange` method in the factory contract can be used to find the Ethereum address associated with an ERC20 token address.
-
-```javascript
-const exchangeAddress = factoryContract.methods.getExchange(tokenAddress)
+```shell script
+moody@MacBook-Pro ~/I/u/demo> ls node_modules/@uniswap/v2-core/contracts
+UniswapV2ERC20.sol    UniswapV2Pair.sol     libraries/
+UniswapV2Factory.sol  interfaces/           test/
+moody@MacBook-Pro ~/I/u/demo> ls node_modules/@uniswap/v2-periphery/contracts/
+UniswapV2Migrator.sol  examples/              test/
+UniswapV2Router01.sol  interfaces/
+UniswapV2Router02.sol  libraries/
 ```
 
-If the return value is `0x0000000000000000000000000000000000000000` the token does not yet have an exchange.
+These packages include both the smart contract source code and the build artifacts.
 
-## Exchange Interface
+## Writing our contract
 
-Creating an exchange interface in web3 requires the **exchange address** and the **exchange ABI**:
+We can now get started writing our example contract. 
+For writing Solidity, we recommend IntelliJ or VSCode with a solidity plugin, but you can use any text editor.
+Let's write a contract that returns the value of some amount of liquidity shares for a given token pair. 
+First create a couple of files:
 
-```javascript
-const exchangeABI = [
-  {
-    name: 'TokenPurchase',
-    inputs: [
-      { type: 'address', name: 'buyer', indexed: true },
-      { type: 'uint256', name: 'eth_sold', indexed: true },
-      { type: 'uint256', name: 'tokens_bought', indexed: true }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: 'EthPurchase',
-    inputs: [
-      { type: 'address', name: 'buyer', indexed: true },
-      { type: 'uint256', name: 'tokens_sold', indexed: true },
-      { type: 'uint256', name: 'eth_bought', indexed: true }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: 'AddLiquidity',
-    inputs: [
-      { type: 'address', name: 'provider', indexed: true },
-      { type: 'uint256', name: 'eth_amount', indexed: true },
-      { type: 'uint256', name: 'token_amount', indexed: true }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: 'RemoveLiquidity',
-    inputs: [
-      { type: 'address', name: 'provider', indexed: true },
-      { type: 'uint256', name: 'eth_amount', indexed: true },
-      { type: 'uint256', name: 'token_amount', indexed: true }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: 'Transfer',
-    inputs: [
-      { type: 'address', name: '_from', indexed: true },
-      { type: 'address', name: '_to', indexed: true },
-      { type: 'uint256', name: '_value', indexed: false }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: 'Approval',
-    inputs: [
-      { type: 'address', name: '_owner', indexed: true },
-      { type: 'address', name: '_spender', indexed: true },
-      { type: 'uint256', name: '_value', indexed: false }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: 'setup',
-    outputs: [],
-    inputs: [{ type: 'address', name: 'token_addr' }],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 175875
-  },
-  {
-    name: 'addLiquidity',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'min_liquidity' },
-      { type: 'uint256', name: 'max_tokens' },
-      { type: 'uint256', name: 'deadline' }
-    ],
-    constant: false,
-    payable: true,
-    type: 'function',
-    gas: 82605
-  },
-  {
-    name: 'removeLiquidity',
-    outputs: [
-      { type: 'uint256', name: 'out' },
-      { type: 'uint256', name: 'out' }
-    ],
-    inputs: [
-      { type: 'uint256', name: 'amount' },
-      { type: 'uint256', name: 'min_eth' },
-      { type: 'uint256', name: 'min_tokens' },
-      { type: 'uint256', name: 'deadline' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 116814
-  },
-  { name: '__default__', outputs: [], inputs: [], constant: false, payable: true, type: 'function' },
-  {
-    name: 'ethToTokenSwapInput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'min_tokens' },
-      { type: 'uint256', name: 'deadline' }
-    ],
-    constant: false,
-    payable: true,
-    type: 'function',
-    gas: 12757
-  },
-  {
-    name: 'ethToTokenTransferInput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'min_tokens' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'recipient' }
-    ],
-    constant: false,
-    payable: true,
-    type: 'function',
-    gas: 12965
-  },
-  {
-    name: 'ethToTokenSwapOutput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_bought' },
-      { type: 'uint256', name: 'deadline' }
-    ],
-    constant: false,
-    payable: true,
-    type: 'function',
-    gas: 50455
-  },
-  {
-    name: 'ethToTokenTransferOutput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_bought' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'recipient' }
-    ],
-    constant: false,
-    payable: true,
-    type: 'function',
-    gas: 50663
-  },
-  {
-    name: 'tokenToEthSwapInput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_sold' },
-      { type: 'uint256', name: 'min_eth' },
-      { type: 'uint256', name: 'deadline' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 47503
-  },
-  {
-    name: 'tokenToEthTransferInput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_sold' },
-      { type: 'uint256', name: 'min_eth' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'recipient' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 47712
-  },
-  {
-    name: 'tokenToEthSwapOutput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'eth_bought' },
-      { type: 'uint256', name: 'max_tokens' },
-      { type: 'uint256', name: 'deadline' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 50175
-  },
-  {
-    name: 'tokenToEthTransferOutput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'eth_bought' },
-      { type: 'uint256', name: 'max_tokens' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'recipient' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 50384
-  },
-  {
-    name: 'tokenToTokenSwapInput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_sold' },
-      { type: 'uint256', name: 'min_tokens_bought' },
-      { type: 'uint256', name: 'min_eth_bought' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'token_addr' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 51007
-  },
-  {
-    name: 'tokenToTokenTransferInput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_sold' },
-      { type: 'uint256', name: 'min_tokens_bought' },
-      { type: 'uint256', name: 'min_eth_bought' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'recipient' },
-      { type: 'address', name: 'token_addr' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 51098
-  },
-  {
-    name: 'tokenToTokenSwapOutput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_bought' },
-      { type: 'uint256', name: 'max_tokens_sold' },
-      { type: 'uint256', name: 'max_eth_sold' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'token_addr' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 54928
-  },
-  {
-    name: 'tokenToTokenTransferOutput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_bought' },
-      { type: 'uint256', name: 'max_tokens_sold' },
-      { type: 'uint256', name: 'max_eth_sold' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'recipient' },
-      { type: 'address', name: 'token_addr' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 55019
-  },
-  {
-    name: 'tokenToExchangeSwapInput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_sold' },
-      { type: 'uint256', name: 'min_tokens_bought' },
-      { type: 'uint256', name: 'min_eth_bought' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'exchange_addr' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 49342
-  },
-  {
-    name: 'tokenToExchangeTransferInput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_sold' },
-      { type: 'uint256', name: 'min_tokens_bought' },
-      { type: 'uint256', name: 'min_eth_bought' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'recipient' },
-      { type: 'address', name: 'exchange_addr' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 49532
-  },
-  {
-    name: 'tokenToExchangeSwapOutput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_bought' },
-      { type: 'uint256', name: 'max_tokens_sold' },
-      { type: 'uint256', name: 'max_eth_sold' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'exchange_addr' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 53233
-  },
-  {
-    name: 'tokenToExchangeTransferOutput',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'uint256', name: 'tokens_bought' },
-      { type: 'uint256', name: 'max_tokens_sold' },
-      { type: 'uint256', name: 'max_eth_sold' },
-      { type: 'uint256', name: 'deadline' },
-      { type: 'address', name: 'recipient' },
-      { type: 'address', name: 'exchange_addr' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 53423
-  },
-  {
-    name: 'getEthToTokenInputPrice',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [{ type: 'uint256', name: 'eth_sold' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 5542
-  },
-  {
-    name: 'getEthToTokenOutputPrice',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [{ type: 'uint256', name: 'tokens_bought' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 6872
-  },
-  {
-    name: 'getTokenToEthInputPrice',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [{ type: 'uint256', name: 'tokens_sold' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 5637
-  },
-  {
-    name: 'getTokenToEthOutputPrice',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [{ type: 'uint256', name: 'eth_bought' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 6897
-  },
-  {
-    name: 'tokenAddress',
-    outputs: [{ type: 'address', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1413
-  },
-  {
-    name: 'factoryAddress',
-    outputs: [{ type: 'address', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1443
-  },
-  {
-    name: 'balanceOf',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [{ type: 'address', name: '_owner' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1645
-  },
-  {
-    name: 'transfer',
-    outputs: [{ type: 'bool', name: 'out' }],
-    inputs: [
-      { type: 'address', name: '_to' },
-      { type: 'uint256', name: '_value' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 75034
-  },
-  {
-    name: 'transferFrom',
-    outputs: [{ type: 'bool', name: 'out' }],
-    inputs: [
-      { type: 'address', name: '_from' },
-      { type: 'address', name: '_to' },
-      { type: 'uint256', name: '_value' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 110907
-  },
-  {
-    name: 'approve',
-    outputs: [{ type: 'bool', name: 'out' }],
-    inputs: [
-      { type: 'address', name: '_spender' },
-      { type: 'uint256', name: '_value' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 38769
-  },
-  {
-    name: 'allowance',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'address', name: '_owner' },
-      { type: 'address', name: '_spender' }
-    ],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1925
-  },
-  {
-    name: 'name',
-    outputs: [{ type: 'bytes32', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1623
-  },
-  {
-    name: 'symbol',
-    outputs: [{ type: 'bytes32', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1653
-  },
-  {
-    name: 'decimals',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1683
-  },
-  {
-    name: 'totalSupply',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1713
-  }
-]
+```shell script
+mkdir contracts/interfaces
+touch contracts/interfaces/ILiquidityValueCalculator.sol
+touch contracts/LiquidityValueCalculator.sol
+``` 
+
+This will be the interface of the contract we implement. Put it in `contracts/interfaces/ILiquidityValueCalculator.sol`.
+
+```solidity
+interface ILiquidityValueCalculator {
+    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) returns (uint tokenAAmount, uint tokenBAmount);
+}
 ```
 
-```javascript
-const exchangeContract = new web3.eth.Contract(exchangeABI, exchangeAddress)
+Now let's start with the constructor. You need to know where the `UniswapV2Factory` is deployed in order to compute the
+address of the pair and look up the total supply of liquidity shares, plus the amounts for the reserves. 
+We can store this as an address passed to the constructor.
+
+The factory address is constant on mainnet and all testnets, so it may be tempting to make this value a constant in your contract,
+but since we need to unit test the contract it should be an argument. You can use solidity immutables to save on gas
+when accessing this variable.
+
+```solidity
+import './interfaces/ILiquidityValueCalculator.sol';
+
+contract LiquidityValueCalculator is ILiquidityValueCalculator {
+    address public factory;
+    constructor(address factory_) public {
+        factory = factory_;
+    }
+}
 ```
 
-# Token Contracts
+Now we need to be able to look up the total supply of liquidity for a pair, and its token balances. 
+Let's put this in a separate function. To implement it, we must:
 
-Some Uniswap interactions require making calls directly to ERC20 token contracts rather than the exchanges with which they are associated.
+1. Look up the pair address
+2. Get the reserves of the pair
+3. Get the total supply of the pair liquidity
+4. Sort the reserves in the order of tokenA, tokenB 
 
-## Get Token Address
+The [`UniswapV2Library`](/docs/v2/smart-contracts/library/) has some helpful methods for this.
 
-The `getToken` method in the factory contract can be used to find the ERC20 token address associated with an exchange contract. There is no barrier of entry for adding an ERC20 token to Uniswap or checks on the validity of the token contracts. Frontend interfaces should maintain a list of valid ERC20 tokens that users can safely trade or allow users to paste in arbitrary addresses.
+```solidity
+import '@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol';
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
 
-```javascript
-const tokenAddress = factoryContract.methods.getToken(exchangeAddress)
+contract LiquidityValueCalculator is ILiquidityValueCalculator {
+    function pairInfo(address tokenA, address tokenB) internal view returns (uint reserveA, uint reserveB, uint totalSupply) {
+        IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
+        totalSupply = pair.totalSupply();
+        (uint reserves0, uint reserves1,) = pair.getReserves();
+        (reserveA, reserveB) = tokenA == pair.token0() ? (reserve0, reserve1) : (reserve1, reserve0);
+    } 
+}
 ```
 
-If the return value is `0x0000000000000000000000000000000000000000` the input address is not a Uniswap exchange.
+Finally we just need to compute the share value. We will leave that as an exercise to the reader.
 
-## Token Interface
+```solidity
+import './interfaces/ILiquidityValueCalculator.sol';
+import '@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol';
+import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
 
-Creating a token interface in web3 requires the **token address** and the **token ABI**:
+contract LiquidityValueCalculator is ILiquidityValueCalculator {
+    address public factory;
+    constructor(address factory_) public {
+        factory = factory_;
+    }
+
+    function pairInfo(address tokenA, address tokenB) internal view returns (uint reserveA, uint reserveB, uint totalSupply) {
+        IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
+        totalSupply = pair.totalSupply();
+        (uint reserves0, uint reserves1,) = pair.getReserves();
+        (reserveA, reserveB) = tokenA == pair.token0() ? (reserve0, reserve1) : (reserve1, reserve0);
+    }
+ 
+    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) returns (uint tokenAAmount, uint tokenBAmount) {
+        revert('TODO');
+    }
+}
+``` 
+
+## Writing tests
+
+In order to test your contract, you need to:
+
+1. Bring up a testnet
+2. Deploy the UniswapV2Factory
+3. Deploy at least 2 ERC20 tokens
+4. Create a pair for the factory
+5. Deploy your `LiquidityValueCalculator` contract
+6. Call `LiquidityValueCalculator#computeLiquidityShareValue`
+7. Verify the result with an assertion
+
+\#1 is handled for you automatically by the `truffle test` command.
+
+Note you should only deploy the precompiled Uniswap contracts in the `build` directories for unit tests. 
+This is because solidity appends a metadata hash to compiled contract artifacts which includes the hash of the contract
+source code path, and compilations on other machines will not result in the exact same bytecode.
+This is problematic because in Uniswap V2 we use the hash of the bytecode in the v2-periphery
+[`UniswapV2Library`](https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/libraries/UniswapV2Library.sol#L24),
+to compute the pair address.
+
+To get the bytecode for deploying UniswapV2Factory, you can import the file via:
 
 ```javascript
-const tokenABI = [
-  {
-    name: 'Transfer',
-    inputs: [
-      { type: 'address', name: '_from', indexed: true },
-      { type: 'address', name: '_to', indexed: true },
-      { type: 'uint256', name: '_value', indexed: false }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: 'Approval',
-    inputs: [
-      { type: 'address', name: '_owner', indexed: true },
-      { type: 'address', name: '_spender', indexed: true },
-      { type: 'uint256', name: '_value', indexed: false }
-    ],
-    anonymous: false,
-    type: 'event'
-  },
-  {
-    name: '__init__',
-    outputs: [],
-    inputs: [
-      { type: 'bytes32', name: '_name' },
-      { type: 'bytes32', name: '_symbol' },
-      { type: 'uint256', name: '_decimals' },
-      { type: 'uint256', name: '_supply' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'constructor'
-  },
-  { name: 'deposit', outputs: [], inputs: [], constant: false, payable: true, type: 'function', gas: 74279 },
-  {
-    name: 'withdraw',
-    outputs: [{ type: 'bool', name: 'out' }],
-    inputs: [{ type: 'uint256', name: '_value' }],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 108706
-  },
-  {
-    name: 'totalSupply',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 543
-  },
-  {
-    name: 'balanceOf',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [{ type: 'address', name: '_owner' }],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 745
-  },
-  {
-    name: 'transfer',
-    outputs: [{ type: 'bool', name: 'out' }],
-    inputs: [
-      { type: 'address', name: '_to' },
-      { type: 'uint256', name: '_value' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 74698
-  },
-  {
-    name: 'transferFrom',
-    outputs: [{ type: 'bool', name: 'out' }],
-    inputs: [
-      { type: 'address', name: '_from' },
-      { type: 'address', name: '_to' },
-      { type: 'uint256', name: '_value' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 110600
-  },
-  {
-    name: 'approve',
-    outputs: [{ type: 'bool', name: 'out' }],
-    inputs: [
-      { type: 'address', name: '_spender' },
-      { type: 'uint256', name: '_value' }
-    ],
-    constant: false,
-    payable: false,
-    type: 'function',
-    gas: 37888
-  },
-  {
-    name: 'allowance',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [
-      { type: 'address', name: '_owner' },
-      { type: 'address', name: '_spender' }
-    ],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 1025
-  },
-  {
-    name: 'name',
-    outputs: [{ type: 'bytes32', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 723
-  },
-  {
-    name: 'symbol',
-    outputs: [{ type: 'bytes32', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 753
-  },
-  {
-    name: 'decimals',
-    outputs: [{ type: 'uint256', name: 'out' }],
-    inputs: [],
-    constant: true,
-    payable: false,
-    type: 'function',
-    gas: 783
-  }
-]
+const UniswapV2FactoryBytecode = require('@uniswap/v2-core/build/UniswapV2Factory.json').bytecode
 ```
 
-```javascript
-const tokenContract = new web3.eth.Contract(tokenABI, tokenAddress)
-``` -->
+We recommend using a standard ERC20 from `@openzeppelin/contracts` for deploying an ERC20.
+
+You can read more about deploying contracts and writing tests using Truffle 
+[here](https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript).
+
+## Compiling and deploying the contract
+
+Learn more about compiling and deploying contracts using Truffle 
+[here](https://www.trufflesuite.com/docs/truffle/getting-started/compiling-contracts) and
+[here](https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations) respectively.
+
+## WIP
+
+This guide is a WIP. Please contribute to this guide with the edit button below!
