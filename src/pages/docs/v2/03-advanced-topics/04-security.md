@@ -3,6 +3,29 @@ title: Security
 tags: advanced-topics, documentation
 ---
 
+# Audit & Formal Verification
+
+Between January 8 and April 30, a team of six engineers reviewed and formally verified crucial components of the smart contracts for Uniswap V2.
+
+Their past work includes smart contract development on and formal verification of multi-collateral DAI.
+
+The scope of work includes:
+
+- Formal verification of the core smart contracts
+- Code review of core smart contracts
+- Numerical error analysis
+- Code review of periphery smart contracts (during ongoing development)
+
+The report also has a "Design Comments" section that we highly recommend for gaining a deep technical understanding of some one the choices made in Uniswap V2.
+
+<InlineBoxLink title="Read the report" to="/audit.html" />
+
+# Bug Bounty
+
+Uniswap has an open and ogoing bug [bounty program](/bug-bounty).
+
+# Considerations when building on Uniswap
+
 When integrating Uniswap V2 into another on-chain system, particular care must be taken to avoid security vulnerabilities, avenues for manipulations, and the potential loss of funds.
 
 As a preliminary note: smart contract integrations can happen at two levels: directly with <Link to='/docs/v2/smart-contracts/pair'>Pair</Link> contracts, or through the <Link to='/docs/v2/smart-contracts/router'>Router</Link>. Direct interactions offer maximal flexibility, but require the most work to get right. Mediated interactions offer more limited capabilities, but stronger safety guarantees.

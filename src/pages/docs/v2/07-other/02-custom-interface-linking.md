@@ -31,7 +31,6 @@ Theme can be set as `light` or `dark`.
 | :------------- | :--------------- | :--------------------------------------------------------------------- |
 | inputCurrency  | `address`        | Input currency that will be swapped for output currency.               |
 | outputCurrency | `address or ETH` | Output currency that input currency will be swapped for.               |
-| slippage       | `number`         | Max slippage to be used during transaction \(in bips\)                 |
 | exactAmount    | `number`         | The custom token amount to buy or sell.                                |
 | exactField     | `string`         | The field to set custom token amount for. Must be `input` or `output`. |
 
@@ -53,59 +52,30 @@ Two parameters, exactField and exactAmount can be used to set specific token amo
 
 `https://app.uniswap.org/#/swap?exactField=input&exactAmount=10&inputCurrency=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
 
-## Send Page
-
-The send page has the same options available as the Swap page, plus one additional paramter, `recipient`.
-
-| Parameter | Type      | Description                                     |
-| :-------- | :-------- | :---------------------------------------------- |
-| recipient | `address` | Address of the recipient of a send transaction. |
-
-### Example Usage
-
-`https://app.uniswap.org/#/send?recipient=0x74Aa01d162E6dC6A657caC857418C403D48E2D77`
-
 ## Pool Page
 
-The Pool page is made up of 3 subroutes: `add-liquidity`, `remove-liquidity`, `create-exchange`.
+The Pool page is made up of 2 subroutes: `add`, `remove`.
 
 ### Add Liquidity
 
-| Parameter   | Type      | Description                                            |
-| :---------- | :-------- | :----------------------------------------------------- |
-| ethAmount   | `number`  | Amount of ETH to deposit into the pool.                |
-| token       | `address` | ERC20 address of the pool to add liquidity to.         |
-| tokenAmount | `number`  | Amount of the selected token to deposit into the pool. |
+| Parameter | Type      | Description                                                                          |
+| :-------- | :-------- | :----------------------------------------------------------------------------------- |
+| Token0    | `address` | Pool to withdraw liquidity from. \(Must be an ERC20 address with an existing token\) |
+| Token1    | `address` | Pool to withdraw liquidity from. \(Must be an ERC20 address with an existing token\) |
 
 ### Example Usage
 
-`https://app.uniswap.org/#/add-liquidity?ethAmount=2.34&token=0x42456D7084eacF4083f1140d3229471bbA2949A8&tokenAmount=300`
+`https://app.uniswap.org/#/add/0x6B175474E89094C44Da98b954EedeAC495271d0F-0xdAC17F958D2ee523a2206206994597C13D831ec7`
 
 ## Remove Liquidity
 
-| Parameter        | Type      | Description                                                                             |
-| :--------------- | :-------- | :-------------------------------------------------------------------------------------- |
-| poolTokenAddress | `address` | Pool to withdraw liquidity from. \(Must be an ERC20 address with an existing exchange\) |
-| poolTokenAmount  | `number`  | Amount of pool token to be withdrawn from liquidity pool.                               |
+| Parameter | Type      | Description                                                                          |
+| :-------- | :-------- | :----------------------------------------------------------------------------------- |
+| Token0    | `address` | Pool to withdraw liquidity from. \(Must be an ERC20 address with an existing token\) |
+| Token1    | `address` | Pool to withdraw liquidity from. \(Must be an ERC20 address with an existing token\) |
+
+Dash seperated.
 
 ### Example Usage
 
-`https://app.uniswap.org/#/remove-liquidity?poolTokenAmount=1.23`
-
-## Create Pair
-
-| Parameter    | Type      | Description                                                                                        |
-| :----------- | :-------- | :------------------------------------------------------------------------------------------------- |
-| tokenAddress | `address` | ERC20 token to create the pair for. Must be valid ERC20 token for which there is no existing pair. |
-
-### Example Usage
-
-`https://app.uniswap.org/#/create-exchange?tokenAddress=0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`
-
-## Custom Routes
-
-Custom token routes can still be used in combination with URL paramters. URL paramters are higher in the settings hierarchy than custom routes.
-
-An example using custom token route and URL paramters.
-
-`https://app.uniswap.org/#/swap/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942?exactField=input&exactAmount=10`
+`https://app.uniswap.org/#/remove/0x6B175474E89094C44Da98b954EedeAC495271d0F-0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`

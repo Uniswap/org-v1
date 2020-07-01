@@ -3,13 +3,21 @@ title: Understanding Returns
 tags: pools, documentation
 ---
 
-## Introduction
+# Introduction
 
 Uniswap incentivizes users to add liquidity to pools by rewarding providers with fees that are collected by the protocol. A 0.3% fee is taken on the input amount for all swaps.
 
 While, in the general sense, Uniswap market making is an interesting investment opportunity for retail investors, this doesn’t come without a catch. Market making, in general, is a complex activity which has the risk of losing money (compared to just **hodling**) in the case of big directional moves of the underlying asset price.
 
-## Example
+# Risks
+
+To understand the risks associated with providing liquidity you can read [https://medium.com/@pintail/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2](https://medium.com/@pintail/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2) to get a super in depth look at how to conceptualize a liquidity position.
+
+The main takeaway is that LPS should aim to enter and exit their positions at the same rate to maximize profits from fees. They should also seek larger volume pools to offset any change in rates that diverge from where they entered the position.
+
+# Example from the article
+
+<blockquote>
 
 Consider the case where a liquidity provider adds 10,000 DAI and 100 WETH to a pool (for a total value of \$20,000), the liquidity pool is now 100,000 DAI and 1,000 ETH in total. Because the amount supplied is equal to 10% of the total liquidity, the contract mints and sends the market maker “liquidity tokens” which entitle them to 10% of the liquidity available in the pool. These are not speculative tokens to be traded. They are merely an accounting or bookkeeping tool to keep track of how much the liquidity providers are owed. If others subsequently add/withdraw coins, new liquidity tokens are minted/burned such that the everyone’s relative percentage share of the liquidity pool remains the same.
 
@@ -58,4 +66,6 @@ So let’s look at the impact of a price change on a liquidity provider. To keep
   - "a 4x price change results in a 20.0% loss relative to HODL"
   - "a 5x price change results in a 25.5% loss relative to HODL"
 
-- "N.B. The loss is the same whichever direction the price change occurs in (i.e. a doubling in price results in the same loss as a halving)."
+- "N.B. The loss is the same whichever direction the price change occurs in (i.e. a doubling in price results in the same loss as a halving)." -->
+
+</blockquote>

@@ -63,6 +63,6 @@ Other factors such as network congestion can reduce the cost of attack. For a mo
 
 Importantly, Uniswap V2 is not opinionated on how you use the new cumulative price variables, allowing you to build oracles that compute different kinds of price averages and over different periods.
 
-### Building an oracle
+## Building an oracle
 
 To learn more about building oracles check out <Link to="/docs/v2/SDK">building an oracle</Link> in the developer guides.

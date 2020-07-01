@@ -1,5 +1,5 @@
 ---
-title: Quick start
+title: SDK Quick start
 tags: SDK, developer-guides, documentation
 ---
 
@@ -26,4 +26,3 @@ console.log(`The chainId of mainnet is ${ChainId.MAINNET}.`)
 const UNISWAP = require('@uniswap/sdk')
 console.log(`The chainId of mainnet is ${UNISWAP.ChainId.MAINNET}.`)
 ```
-

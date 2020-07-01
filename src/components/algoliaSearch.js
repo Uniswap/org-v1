@@ -21,6 +21,16 @@ const StyledForm = styled.form`
   @media (max-width: 960px) {
     margin-right: 0;
   }
+
+  :hover {
+    color: ${({ theme }) => theme.colors.grey3};
+    background-color: ${({ theme }) => theme.colors.grey2};
+  }
+
+  :focus {
+    color: ${({ theme }) => theme.colors.grey3};
+    background-color: ${({ theme }) => theme.colors.grey2};
+  }
 `
 
 const StyledInput = styled.input`
