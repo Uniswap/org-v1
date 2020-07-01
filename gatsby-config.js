@@ -1,5 +1,4 @@
 const menu = require('./src/utils/menu')
-const queries = require('./src/utils/algolia')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
@@ -38,15 +37,7 @@ module.exports = {
         path: `${__dirname}/src/pages/jobs/`
       }
     },
-    {
-      resolve: `gatsby-plugin-algolia-docsearch-appid`,
-      options: {
-        apiKey: '3d44be3728a9ae9799681c70a19a5179',
-        indexName: 'uniswap_v2_docs',
-        inputSelector: '.docsearch', // the selector of my search input
-        appId: 'VZ0CVS8XCW'
-      }
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -316,13 +307,12 @@ module.exports = {
     },
     'gatsby-plugin-eslint',
     {
-      resolve: 'gatsby-plugin-algolia',
+      resolve: `gatsby-plugin-algolia-docsearch-appid`,
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
-        queries,
-        chunkSize: 10000
+        apiKey: '3d44be3728a9ae9799681c70a19a5179',
+        indexName: 'uniswap_v2_docs',
+        inputSelector: 'blank', // use dummy selector to avoid double render
+        appId: 'VZ0CVS8XCW'
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -186,8 +186,7 @@ const Docs = props => {
       }
     }
   `)
-
-  const isV1 = props.path === '/docs/v1/'
+  const isV1 = props.path.slice(0, 8) === '/docs/v1'
 
   const isMobile = useMediaQuery('(max-width: 960px)')
 

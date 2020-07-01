@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-
 import Img from 'gatsby-image'
-
 import Layout from '../layouts'
 import SEO from '../components/seo'
 import Ticker from '../components/ticker'

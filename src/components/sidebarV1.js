@@ -1,12 +1,9 @@
 import React, { useState, useLayoutEffect } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import scrollTo from 'gatsby-plugin-smoothscroll'
-import { useMediaQuery } from '@react-hook/media-query'
 
 // import Search from './search'
 import { useStaticQuery, graphql } from 'gatsby'
-import DropdownArrow from './dropdownArrow.js'
 
 const StyledSidebar = styled.div`
   display: flex;
@@ -80,51 +77,7 @@ const StyledCategoryTitle = styled.p`
   text-transform: uppercase;
 `
 
-const StyledArrow = styled.span`
-  display: flex;
-  transform-origin: center;
-  transform: ${({ open }) => (open ? `rotateZ(0deg)` : `rotateZ(-180deg)`)};
-  width: 10px;
-  height: 10px;
-  margin-left: 0.5rem;
-  opacity: 1;
-`
-
-const StyledMobileMenu = styled.div`
-  display: none;
-
-  @media (max-width: 960px) {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 1rem 0;
-    font-weight: 400;
-    margin: 1rem 0 0 0;
-  }
-`
-
-const VersionLabel = styled.span`
-  padding: 0.01rem 0.5rem 0 0.5rem;
-  border-radius: 12px;
-  background: ${({ theme, toggled }) => (toggled ? theme.colors.link : 'none')};
-  color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.colors.link)};
-
-  font-size: 0.825rem;
-  font-weight: 400;
-`
-
-const VersionToggle = styled(Link)`
-  border-radius: 14px;
-  margin-bottom: 1rem;
-  border: 1px solid ${({ theme }) => theme.colors.pink3};
-  color: ${({ theme }) => theme.invertedTextColor};
-  display: flex;
-  width: fit-content;
-  cursor: pointer;
-`
-
 const ListWrapper = styled.span`
-  display: ${({ open }) => (open ? 'none' : 'initial')};
   min-width: 240px;
   @media (max-width: 960px) {
     margin-bottom: 1rem;
@@ -267,36 +220,17 @@ const SideBar = props => {
     }
   `)
 
-  const [v2Toggle, setV2Toggle] = useState(true)
+  // get global version and check if v2 or not
+  const v2Toggle = props.path.slice(0, 8) === '/docs/v2'
 
   const navData = v2Toggle ? data.topNavDocsV2 : data.topNavDocsV1
   const listData = v2Toggle ? data.docsV2 : data.docsV1
-
-  useLayoutEffect(() => {
-    props.path.slice(0, 8) === '/docs/v2' ? setV2Toggle(true) : setV2Toggle(false)
-  }, [setV2Toggle])
-
-  const matches = useMediaQuery('only screen and (max-width: 960px)')
-  const [isMenuOpen, updateIsMenuOpen] = useState(true)
 
   const atTopLevel = props.path === '/docs/v1/' || props.path === '/docs/v2/'
 
   return (
     <StyledSidebar>
-      {/* <Search isV1={!v2Toggle} isV2={v2Toggle} /> */}
-      <StyledMobileMenu onClick={() => updateIsMenuOpen(!isMenuOpen)}>
-        <span>{isMenuOpen ? 'Show Menu' : 'Hide Menu'}</span>
-        <StyledArrow open={isMenuOpen}>
-          <DropdownArrow />
-        </StyledArrow>
-      </StyledMobileMenu>
-      <ListWrapper open={isMenuOpen && matches}>
-        {atTopLevel && (
-          <VersionToggle to={v2Toggle ? '/docs/v1' : '/docs/v2'}>
-            <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
-            <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
-          </VersionToggle>
-        )}
+      <ListWrapper>
         {atTopLevel ? (
           <StyledLink
             isActive={atTopLevel}
@@ -316,7 +250,7 @@ const SideBar = props => {
         )}
         {navData.edges
           .filter(({ node }) => {
-            return props.path.split('/')[3] === '' || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+            return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
           })
           .map(({ node }) => (
             <CollapsibleList

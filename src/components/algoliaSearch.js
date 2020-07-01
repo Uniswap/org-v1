@@ -57,27 +57,37 @@ const ClearButton = styled.button`
   }
 `
 
-export default function Search() {
-  /**
-   * @todo move this to env, update with official account creds
-   */
+export default function Search(props) {
+  const isV2 = props.path.slice(0, 8) === '/docs/v2'
+
+  // filter based on the version of the docs
+  function handleResults(hits) {
+    return hits.filter(hit => {
+      return isV2 ? hit.version[0] === 'v2' : hit.version[0] === 'v1'
+    })
+  }
+
+  // based on version, reset docsearch to use right facet filter
   useEffect(() => {
     if (window.docsearch) {
-      window.docsearch({
-        apiKey: '3d44be3728a9ae9799681c70a19a5179',
-        indexName: 'uniswap_v2_docs',
-        inputSelector: '.docsearch', // the selector of my search input
-        appId: 'VZ0CVS8XCW'
-      })
-    } else {
-      console.warn('ERROR: Search input')
+      try {
+        window.docsearch({
+          apiKey: '3d44be3728a9ae9799681c70a19a5179',
+          indexName: 'uniswap_v2_docs',
+          inputSelector: '.docsearch', // the selector of my search input
+          appId: 'VZ0CVS8XCW',
+          transformData: handleResults
+        })
+      } catch (e) {
+        console.log('Error loading algolia search')
+      }
     }
   }, [])
 
   return (
     <SearchWrapper>
       <StyledForm>
-        <StyledInput className="docsearch" id="docusearch" placeholder="Search Docs..." />
+        <StyledInput className="docsearch" placeholder="Search Docs..." />
         <ClearButton />
       </StyledForm>
     </SearchWrapper>
