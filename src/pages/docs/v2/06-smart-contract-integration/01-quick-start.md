@@ -158,8 +158,8 @@ contract LiquidityValueCalculator is ILiquidityValueCalculator {
 In order to test your contract, you need to:
 
 1. Bring up a testnet
-2. Deploy the UniswapV2Factory
-3. Deploy at least 2 ERC20 tokens
+2. Deploy the `UniswapV2Factory`
+3. Deploy at least 2 ERC20 tokens for a pair
 4. Create a pair for the factory
 5. Deploy your `LiquidityValueCalculator` contract
 6. Call `LiquidityValueCalculator#computeLiquidityShareValue`
