@@ -21,4 +21,19 @@ Authors: Guillermo Angeris, Tarun Chitra
 
 - [Improved Price Oracles: Constant Function Market Makers](https://arxiv.org/abs/2003.10001)
 
+# Pintail research
+
+Published [medium](https://medium.com/@pintail) articles by Pintail.
+
+- [Understanding Uniswap Returns](https://medium.com/@pintail/understanding-uniswap-returns-cc593f3499ef)
+- [Uniswap: A Good Deal for Liquidity Providers?](https://medium.com/@pintail/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2)
+
+# Liquidity Provider Returns in Geometric Mean Markets
+
+Authors: Alex Evans
+
+> Geometric mean market makers (G3Ms), such as Uniswap and Balancer, comprise a popular class of automated market makers (AMMs) defined by the following rule: the reserves of the AMM before and after each trade must have the same (weighted) geometric mean. This paper extends several results known for constant-weight G3Ms to the general case of G3Ms with time-varying and potentially stochastic weights. These results include the returns and no-arbitrage prices of liquidity pool (LP) shares that investors receive for supplying liquidity to G3Ms. Using these expressions, we show how to create G3Ms whose LP shares replicate the payoffs of financial derivatives. The resulting hedges are model-independent and exact for derivative contracts whose payoff functions satisfy an elasticity constraint. These strategies allow LP shares to replicate various trading strategies and financial contracts, including standard options. G3Ms are thus shown to be capable of recreating a variety of active trading strategies through passive positions in LP shares.
+
+- [Liquidity Provider Returns in Geometric Mean Markets](https://arxiv.org/abs/2006.08806)
+
 This is a stub. Help us expand it by submitting a PR using the github link below!

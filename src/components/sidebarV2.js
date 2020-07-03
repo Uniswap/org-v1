@@ -353,7 +353,7 @@ const SideBar = props => {
               .map(({ node }) => {
                 const showRender =
                   (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
-                  (node.name.split('-')[1] === 'other' && atTopLevel) ||
+                  (node.name.split('-')[1] === 'interface' && atTopLevel) ||
                   (node.name.split('-')[2] === 'contract' && atTopLevel)
                 return (
                   showRender && (

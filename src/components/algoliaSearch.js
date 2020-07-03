@@ -15,7 +15,7 @@ const StyledForm = styled.form`
   align-items: center;
   border-radius: 12px;
   color: ${({ theme }) => theme.colors.grey2};
-  background-color: ${({ theme }) => theme.colors.grey1};
+  background-color: ${({ theme }) => theme.concreteGray};
   margin: 0px;
   margin-right: 12px;
   @media (max-width: 960px) {

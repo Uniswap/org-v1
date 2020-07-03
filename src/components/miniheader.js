@@ -175,7 +175,7 @@ const MenuToggle = styled.button`
 `
 
 const VersionLabel = styled.span`
-  padding: 0.3rem 0.6rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 12px;
   background: ${({ theme, toggled }) => (toggled ? theme.colors.link : 'none')};
   color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.colors.link)};
@@ -187,8 +187,7 @@ const VersionLabel = styled.span`
 const VersionToggle = styled(Link)`
   border-radius: 14px;
   margin-right: 1rem;
-  background: ${({ theme }) => theme.colors.grey2};
-
+  border: 1px solid ${({ theme }) => theme.colors.link};
   color: ${({ theme }) => theme.invertedTextColor};
   display: flex;
   width: fit-content;
