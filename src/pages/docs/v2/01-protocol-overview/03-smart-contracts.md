@@ -59,10 +59,6 @@ A similar pattern exists for adding liquidity. V2 pairs **do not return tokens a
 
 So, in Uniswap V2, trades and liquidity provisions must be priced in the periphery. The good news is that the library provides a variety of functions designed to make this quite simple, and the router does this by default.
 
-## Oracles
-
-See <Link to='/docs/v2/core-concepts/oracles'>Oracles</Link>.
-
 ## WETH
 
 Unlike Uniswap V1 pools, V2 pairs do not support ETH directly, so ETH⇄ERC-20 pairs must be emulated with WETH. The motivation behind this choice was to remove ETH-specific code in the core, resulting in a leaner codebase. End users can be kept fully ignorant of this implementation detail, however, by simply wrapping/unwrapping ETH in the periphery.
@@ -73,8 +69,4 @@ The router fully supports interacting with any WETH pair via ETH.
 
 To ameliorate rounding errors and increase the theoretical minimum tick size for liquidity provision, pairs burn the first <Link to='/docs/v2/smart-contracts/pair#minimum_liquidity'>MINIMUM_LIQUIDITY</Link> pool tokens. For the vast majority of pairs, this will represent a trivial value. The burning happens automatically during the first liquidity provision, after which point the <Link to='/docs/v2/smart-contracts/pair-erc-20#totalsupply'>totalSupply</Link> is forevermore bounded.
 
-## Protocol Charge Calculation
 
-In the future, it is possible that a protocol-wide charge of 0.05% per trade will take effect. This represents ⅙th (16.6̅%) of the 0.30% fee. The fee is in effect if <Link to='/docs/v2/smart-contracts/factory/#feeto'>feeTo</Link> is not `address(0)` (`0x0000000000000000000000000000000000000000`), indicating that feeTo is the recipient of the charge.
-
-Rather than calculating this charge on swaps, which would significantly increase gas costs for all users, the charge is instead calculated when liquidity is added or removed. See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> for more details.
