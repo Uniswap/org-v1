@@ -11,7 +11,7 @@ The easiest way to consume the SDK is via NPM. To install it in your project, si
 
 # Usage
 
-To run code from the SDK in your application, use the `import` or `require` statements, depending on which your environment supports. Note that the guides following this page will use ES6 syntax.
+To run code from the SDK in your application, use an `import` or `require` statement, depending on which your environment supports. Note that the guides following this page will use ES6 syntax.
 
 ## ES6 (import)
 
@@ -26,3 +26,7 @@ console.log(`The chainId of mainnet is ${ChainId.MAINNET}.`)
 const UNISWAP = require('@uniswap/sdk')
 console.log(`The chainId of mainnet is ${UNISWAP.ChainId.MAINNET}.`)
 ```
+
+# Reference
+
+Comprehensive reference material for the SDK is available <Link to='/docs/v2/SDK'>here</Link>.
