@@ -33,14 +33,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `jobs`,
-        path: `${__dirname}/src/pages/jobs/`
-      }
-    },
-
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `docs`,
         path: `${__dirname}/src/pages/docs/`
       }
@@ -89,7 +81,6 @@ module.exports = {
           default: require.resolve('./src/layouts'),
           docs: require.resolve(`./src/layouts/docs`),
           blog: require.resolve(`./src/layouts/blogPost`),
-          jobs: require.resolve(`./src/layouts/jobPost`),
           faq: require.resolve(`./src/layouts/faq`)
         },
         remarkPlugins: [require(`remark-math`)],
