@@ -33,4 +33,4 @@ If you'd like to receive an exact amount of output tokens for as few input token
 
 ## Swap to Price
 
-For more this more advanced use case see <Github link="https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleSwapToPrice.sol">ExampleSwapToPrice.sol</Github>.
+For more this more advanced use case see <Github href="https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/examples/ExampleSwapToPrice.sol">ExampleSwapToPrice.sol</Github>.
