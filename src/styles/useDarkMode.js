@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 
-const AppContext = React.createContext({ mode: 'light' })
-
 export const useDarkMode = () => {
   const [mode, setTheme] = useState('light')
 

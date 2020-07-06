@@ -4,7 +4,7 @@ import { theme, GlobalStyle } from './theme'
 import useDarkMode from 'use-dark-mode'
 
 export const StyledThemeProvider = props => {
-  const { value } = useDarkMode(false)
+  const { value } = useDarkMode()
 
   return (
     <ThemeProvider theme={theme(value)}>
