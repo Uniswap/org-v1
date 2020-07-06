@@ -4,15 +4,11 @@ tags: protocol-overview, documentation
 related: '/docs/v2/core-concepts/pools'
 ---
 
-# Sustainable Ecosystem
+The Uniswap ecosystem is primarily comprised of three types of users: liquidity providers, traders, and developers. Liquidity providers are incentivized to contribute [ERC-20](https://eips.ethereum.org/EIPS/eip-20) tokens to common liquidity pools. Traders can swap these tokens for one another for a fixed <Link to="/docs/v2/advanced-topics/fees">0.30% fee</Link> (which goes to liquidity providers). Developers can integrate directly with Uniswap smart contracts to power new and exciting interactions with tokens, trading interfaces, retail experiences, and more.
 
-The Uniswap ecosystem is primarily comprised of three types of users: liquidity providers, traders, and developers. Liquidity providers are incentivized to contribute [ERC-20](https://eips.ethereum.org/EIPS/eip-20) tokens to common liquidity pools. Traders can swap these tokens for one another for a fixed <Link to="/docs/v2/advanced-topics/fees">0.30% fee</Link> (which goes to liquidity providers). Developers can integrate directly with Uniswap smart contracts to power new and exciting investment opportunities, trading interfaces, retail experiences, and more.
+In total, interactions between these classes create a positive feedback loop, fueling digital economies by defining a common language through which tokens can be pooled, traded and used.
 
-In total, interactions between these classes create a positive feedback loop, fueling digital economies by DeFining a common language through which tokens can be pooled, traded and used.
-
-# Protocol Participants
-
-## Liquidity Providers
+# Liquidity Providers
 
 Liquidity providers, or LPs, are not a homogenous group:
 
@@ -24,7 +20,7 @@ Liquidity providers, or LPs, are not a homogenous group:
 
 - Finally, some DeFi pioneers are exploring complex LPs interactions like incentivized liquidity, liquidity locks, and other experimental strategies. Uniswap is the perfect protocol for projects to experiment with these kinds of ideas.
 
-## Traders
+# Traders
 
 There are a several categories of traders in the protocol ecosystem:
 
@@ -36,7 +32,7 @@ There are a several categories of traders in the protocol ecosystem:
 
 In all cases, trades are subject to the same flat fee for trading on the protocol. Each is important for increasing the accuracy of prices and incentivizing liquidity.
 
-## Developers/Projects
+# Developers/Projects
 
 There are far too many ways Uniswap is used in the wider Ethereum ecosystem to count, but a few stand out:
 
@@ -48,6 +44,6 @@ There are far too many ways Uniswap is used in the wider Ethereum ecosystem to c
 
 - Smart contract developers use the suite of functions available to invent new DeFi tools and other various experimental ideas. See projects like [Unisocks](https://unisocks.exchange/) or [Zora](https://ourzora.com/), among many, many others.
 
-## Uniswap Team
+# Uniswap Team
 
 The Uniswap team is responsible for driving the development of the protocol.
