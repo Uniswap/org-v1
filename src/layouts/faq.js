@@ -90,16 +90,9 @@ const StyledPageTitle = styled.div`
 const Docs = props => {
   const data = useStaticQuery(graphql`
     {
-      site {
-        siteMetadata {
-          commit
-          repository
-        }
-      }
-      allMdx(filter: { fileAbsolutePath: { regex: "/faq/" } }, sort: { order: ASC, fields: fileAbsolutePath }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/faq/" } }, sort: {}) {
         edges {
           node {
-            id
             headings {
               value
               depth
@@ -113,6 +106,7 @@ const Docs = props => {
               rawSlug
               parentDir
             }
+            id
           }
         }
       }
