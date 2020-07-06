@@ -3,12 +3,12 @@ const menu = [
     name: 'Products',
     sublinks: [
       {
-        name: 'Interface',
+        name: 'App',
         link: 'https://app.uniswap.org/#/',
         description: 'Swap tokens and supply liquidity'
       },
       {
-        name: 'Info',
+        name: 'Analytics',
         link: 'https://uniswap.info/',
         description: 'Uniswap analytics and historical data'
       },
@@ -42,7 +42,7 @@ const menu = [
     name: 'Community',
     sublinks: [
       { name: 'Twitter', link: 'https://twitter.com/UniswapProtocol' },
-      { name: 'Discord', link: 'https://discord.gg/Y7TF6QA' },
+      { name: 'Discord', link: 'https://discord.gg/XErMcTq' },
       { name: 'Reddit', link: 'https://www.reddit.com/r/Uniswap' }
     ]
   },
@@ -57,7 +57,7 @@ const menu = [
       { name: 'About', link: '/about' },
       {
         name: 'Jobs',
-        link: '/jobs'
+        link: '/About'
       },
       { name: 'Brand Assets', link: '/about#brand-assets' }
     ]

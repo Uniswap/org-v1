@@ -32,4 +32,4 @@ Get to know the Uniswap SDK and smart contract API objects, methods, attributes,
 
 ### Developer community
 
-Join the Uniswap developer community on [Discord](https://discord.gg/urNFyeB).
+Join the Uniswap developer community on [Discord](https://discord.gg/XErMcTq).
