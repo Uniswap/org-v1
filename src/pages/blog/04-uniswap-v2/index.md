@@ -208,6 +208,6 @@ In the meantime, developers can begin playing with Uniswap V2 today! The factory
 
 We will be releasing additional updates, information, and documentation over the coming months. We look forward to continued feedback and involvement from the fantastic Uniswap community. To get involved and stay up to date:
 
-- [Join the Uniswap community discord](https://discord.gg/Y7TF6QA)
+- [Join the Uniswap community discord](https://discord.gg/XErMcTq)
 - [Follow Uniswap on Twitter](https://twitter.com/UniswapProtocol)
 - Subscribe to the <Link to='/blog/'>Uniswap blog</Link>

@@ -326,6 +326,7 @@ const SideBar = props => {
               (node.name.split('-')[1] === 'user' && atTopLevel) ||
               (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
               (node.name.split('-')[1] === 'other' && atTopLevel) ||
+              (node.name.split('-')[1] === 'interface' && atTopLevel) ||
               (node.name === 'images' && atTopLevel)
 
             return (

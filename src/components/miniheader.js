@@ -257,7 +257,7 @@ const Header = props => {
             {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
           </StyledButton>
           <StyledButton>
-            <a href="https://discord.gg/urNFyeB">
+            <a href="https://discord.gg/XErMcTq">
               <Discord />
             </a>
           </StyledButton>

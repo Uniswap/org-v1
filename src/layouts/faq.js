@@ -100,7 +100,6 @@ const Docs = props => {
         edges {
           node {
             id
-            excerpt(pruneLength: 40)
             headings {
               value
               depth

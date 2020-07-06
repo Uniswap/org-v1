@@ -123,7 +123,7 @@ const About = props => {
         </StyledSectionFlex>
         <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
           <MiniCard
-            href="https://discord.gg/Y7TF6QA"
+            href="https://discord.gg/XErMcTq"
             title={'Discord'}
             image={data.discord.childImageSharp.fluid}
             desc={'Real time discussion.'}
