@@ -3,12 +3,12 @@ const menu = [
     name: 'Products',
     sublinks: [
       {
-        name: 'Interface',
+        name: 'App',
         link: 'https://app.uniswap.org/#/',
         description: 'Swap tokens and supply liquidity'
       },
       {
-        name: 'Info',
+        name: 'Analytics',
         link: 'https://uniswap.info/',
         description: 'Uniswap analytics and historical data'
       },
