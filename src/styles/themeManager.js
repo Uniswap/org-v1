@@ -5,6 +5,7 @@ import useDarkMode from 'use-dark-mode'
 
 export const StyledThemeProvider = props => {
   const { value } = useDarkMode()
+  console.log('value')
 
   return (
     <ThemeProvider theme={theme(value)}>
