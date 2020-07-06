@@ -378,13 +378,13 @@ const SideBar = props => {
           <StyledList style={{ marginTop: '1rem' }}>
             <SectionHeader>Reference</SectionHeader>
             <StyledListItem>
-              <StyledLink to={'/docs/v2/SDK'}>SDK</StyledLink>
+              <StyledLink to={'/docs/v2/SDK/getting-started'}>SDK</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/docs/v2/API'}>API</StyledLink>
+              <StyledLink to={'/docs/v2/API/overview'}>API</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/docs/v2/smart-contracts'}>Smart Contracts</StyledLink>
+              <StyledLink to={'/docs/v2/smart-contracts/factory'}>Smart Contracts</StyledLink>
             </StyledListItem>
             <StyledListItem>
               <StyledLink to={'/whitepaper.pdf'}>Whitepaper</StyledLink>
