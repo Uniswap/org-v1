@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const StyledBoxLink = styled(Link)`
   padding: 1rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
-  border: 1px solid ${({ theme }) => theme.colors.grey2};
+  border: 1px solid ${({ theme }) => theme.colors.pink2};
   width: 100%;
   margin-right: 1rem;
   margin-bottom: 1.45rem;

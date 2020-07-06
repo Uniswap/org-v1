@@ -3,17 +3,11 @@ title: Understanding Returns
 tags: pools, documentation
 ---
 
-# Introduction
-
-Uniswap incentivizes users to add liquidity to pools by rewarding providers with fees that are collected by the protocol. A 0.3% fee is taken on the input amount for all swaps.
-
-While, in the general sense, Uniswap market making is an interesting investment opportunity for retail investors, this doesn’t come without a catch. Market making, in general, is a complex activity which has the risk of losing money (compared to just **hodling**) in the case of big directional moves of the underlying asset price.
+Uniswap incentivizes users to add liquidity to pools by rewarding providers with fees on trades. Market making, in general, is a complex activity which has the risk of losing money (compared to just **hodling**) in the case of big directional moves of the underlying asset price.
 
 # Risks
 
-To understand the risks associated with providing liquidity you can read [https://medium.com/@pintail/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2](https://medium.com/@pintail/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2) to get a super in depth look at how to conceptualize a liquidity position.
-
-The main takeaway is that LPS should aim to enter and exit their positions at the same rate to maximize profits from fees. They should also seek larger volume pools to offset any change in rates that diverge from where they entered the position.
+To understand the risks associated with providing liquidity you can read [https://medium.com/@pintail/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2](https://medium.com/@pintail/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2) to get an in-depth look at how to conceptualize a liquidity position.
 
 # Example from the article
 
