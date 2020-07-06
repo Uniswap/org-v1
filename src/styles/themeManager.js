@@ -8,7 +8,7 @@ export const StyledThemeProvider = props => {
 
   return (
     <ThemeProvider theme={theme(value)}>
-      <GlobalStyle isDark={value} />
+      <GlobalStyle isDark={true} />
       {props.children}
     </ThemeProvider>
   )
