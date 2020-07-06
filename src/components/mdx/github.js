@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import GithubIcon from '../../images/githubicon.inline.svg'
 
-const StyledInfo = styled(Link)`
+const StyledInfo = styled.a`
   color: ${({ theme }) => theme.textColor};
   padding: 0.25rem 0.5rem;
   background-color: ${({ theme }) => theme.colors.yellow2};
@@ -15,6 +14,10 @@ const StyledInfo = styled(Link)`
   font-weight: 350;
   a {
     color: #5a3800;
+  }
+
+  :hover {
+    cursor: pointer;
   }
 `
 const StyledGithubIcon = styled(GithubIcon)`
@@ -37,8 +40,8 @@ const StyledGithubIcon = styled(GithubIcon)`
   }
 `
 
-const Github = ({ children, link }) => (
-  <StyledInfo to={link}>
+const Github = ({ children, link, ...rest }) => (
+  <StyledInfo to={link} {...rest} target="_blank">
     <StyledGithubIcon />
     {children}
   </StyledInfo>
