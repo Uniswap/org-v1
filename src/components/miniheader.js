@@ -196,7 +196,7 @@ const VersionToggle = styled(Link)`
 
 const Header = props => {
   const node = useRef()
-  const darkMode = useDarkMode(false)
+  const darkMode = useDarkMode()
 
   // get global version and check if v2 or not
   const v2Toggle = props.path.slice(0, 8) === '/docs/v2'
