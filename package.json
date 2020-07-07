@@ -50,7 +50,6 @@
     "gatsby-remark-smartypants": "^2.1.21",
     "gatsby-remark-twitter-cards": "^0.2.0",
     "gatsby-source-filesystem": "^2.3.18",
-    "gatsby-styled-components-dark-mode": "^1.2.0",
     "gatsby-transformer-sharp": "^2.5.3",
     "github-slugger": "^1.2.1",
     "graphql-tag": "^2.10.3",
