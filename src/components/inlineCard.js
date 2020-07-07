@@ -48,20 +48,6 @@ const StyledCardBG = styled(Img)`
   z-index: -1;
 `
 
-// const handleTagType = (tag, theme) => {
-//   // console.log(theme)
-//   switch (tag) {
-//     case 'guide':
-//       return theme.colors.blue5
-//     case 'tutorial':
-//       return theme.colors.pink1
-//     case 'reference':
-//       return theme.colors.green2
-//     default:
-//       return theme.colors.pink1
-//   }
-// }
-
 const Tag = styled.p`
   position: absolute;
   top: 16px;

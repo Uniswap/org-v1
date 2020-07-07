@@ -1,5 +1,4 @@
 import React from 'react'
-import { createGlobalStyle } from 'styled-components'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '.'
@@ -8,16 +7,9 @@ import SidebarV1 from '../components/sidebarV1'
 import SEO from '../components/seo'
 import TableofContents from '../components/toc'
 import Github from '../images/githubicon.inline.svg'
-
+import { GlobalStyle } from '../styles/theme'
 import '../styles/prism-github.css'
 import { useMediaQuery } from '@react-hook/media-query'
-
-const GlobalStyle = createGlobalStyle`
-  html {
-    background-image: none;
-    background-color: ${({ theme }) => theme.backgroundColor};
-}
-`
 
 const StyledDocs = styled.div`
   display: grid;

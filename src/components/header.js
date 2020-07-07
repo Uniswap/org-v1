@@ -12,7 +12,7 @@ import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 
 import { Sun, Moon } from 'react-feather'
-import useDarkMode from 'use-dark-mode'
+import { useDarkMode } from '../contexts/Application'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -177,7 +177,7 @@ const Header = props => {
   const node = useRef()
   const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
-  const darkMode = useDarkMode()
+  const [darkMode, toggleDarkMode] = useDarkMode()
 
   const data = useStaticQuery(graphql`
     {
@@ -254,8 +254,8 @@ const Header = props => {
           .map(item => {
             return <Menu key={item.name} data={item} />
           })}
-        <StyledButton type="button" onClick={darkMode.value ? darkMode.disable : darkMode.enable}>
-          {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
+        <StyledButton type="button" onClick={toggleDarkMode}>
+          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
         </StyledButton>
         {props.path !== undefined && <StyledTradeLink href="https://app.uniswap.org/">Launch App</StyledTradeLink>}
       </StyledNav>

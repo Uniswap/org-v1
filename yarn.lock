@@ -8722,7 +8722,7 @@ gatsby-plugin-smoothscroll@^1.1.0:
   dependencies:
     smoothscroll-polyfill "^0.4.4"
 
-gatsby-plugin-styled-components@^3.3.2:
+gatsby-plugin-styled-components@^3.3.9:
   version "3.3.9"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.3.9.tgz#862c600bdeccc8cf1b172d91eae00dd407a665d4"
   integrity sha512-edu7L5Xxf5yliXQEVOOfUqvlPN/ROuVMFDMt7ZCm9bgwzqlf6ku6PKMqSKWP6BBG5IFDu8ceWiRlbuspn5BnTQ==
@@ -8965,6 +8965,11 @@ gatsby-source-graphql@^2.5.2:
     invariant "^2.2.4"
     node-fetch "^1.7.3"
     uuid "^3.4.0"
+
+gatsby-styled-components-dark-mode@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-styled-components-dark-mode/-/gatsby-styled-components-dark-mode-1.2.0.tgz#9ecf32cac474b0142b86b508228c085fd8e16467"
+  integrity sha512-0umSV8eNoOInhP9LfRbvWGlEmgXyUlUVGzZyr9spK7HT+obNeCcnXb232gQ0PW47t4RCfL5LRrL2OHWB/7+dfw==
 
 gatsby-telemetry@^1.3.9:
   version "1.3.9"
