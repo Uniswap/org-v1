@@ -4,6 +4,8 @@ subtitle: Learn about the core functionality of the uniswap protocol. Token Swap
 tags: swaps, documentation
 ---
 
+![](/images/trade.jpg)
+
 # Introduction
 
 Token swaps in Uniswap are a simple way to trade one ERC-20 token for another.
