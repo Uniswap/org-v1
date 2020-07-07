@@ -37,3 +37,11 @@ Authors: Alex Evans
 - [Liquidity Provider Returns in Geometric Mean Markets](https://arxiv.org/abs/2006.08806)
 
 This is a stub. Help us expand it by submitting a PR using the github link below!
+
+# The Replicating Portfolio of a Constant Product Market
+
+Authors: Joseph Clark
+
+> We derive the replicating portfolio of a constant product market. This is structurally short volatility (selling options) which explains why positive transaction costs are needed to induce liquidity providers to participate. Where futures and options markets do not exist, this payoff can be used to create them.
+
+- [https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3550601](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3550601)
