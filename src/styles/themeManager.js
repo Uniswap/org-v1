@@ -1,13 +1,14 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { theme, GlobalStyle } from './theme'
-import useDarkMode from 'use-dark-mode'
+import { useDarkMode } from '../contexts/Application'
 
 export const StyledThemeProvider = props => {
-  const { value } = useDarkMode()
+  const [isDarkMode] = useDarkMode()
+
   return (
-    <ThemeProvider theme={theme(value)}>
-      <GlobalStyle isDark={value} />
+    <ThemeProvider theme={theme(isDarkMode)}>
+      <GlobalStyle isDark={isDarkMode} />
       {props.children}
     </ThemeProvider>
   )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '.'
@@ -181,14 +181,6 @@ const Docs = props => {
   const isV1 = props.path.slice(0, 8) === '/docs/v1'
 
   const isMobile = useMediaQuery('(max-width: 960px)')
-
-  const [, forceUpdate] = useState(0)
-  useEffect(() => {
-    // let react take care of dynamic styles
-    forceUpdate(1)
-    // after mounting, remove the class from body
-    // document.body.classList.remove('dark');
-  }, [])
 
   return (
     <Layout path={props.location.pathname} isDocs={true}>

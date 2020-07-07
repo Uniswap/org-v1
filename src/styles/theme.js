@@ -113,8 +113,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
-
-
   html {
     font-size: 16px;
     font-variant: none;

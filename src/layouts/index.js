@@ -32,17 +32,15 @@ const Layout = ({ path, children, nofooter, isDocs }) => {
   `)
 
   return (
-    <>
-      <StyledThemeProvider>
-        {isDocs ? (
-          <MiniHeader path={path} siteTitle={data.site.siteMetadata.title} />
-        ) : (
-          <Header path={path} siteTitle={data.site.siteMetadata.title} />
-        )}
-        <Mdx>{children}</Mdx>
-        {nofooter ? null : <Footer />}
-      </StyledThemeProvider>
-    </>
+    <StyledThemeProvider>
+      {isDocs ? (
+        <MiniHeader path={path} siteTitle={data.site.siteMetadata.title} />
+      ) : (
+        <Header path={path} siteTitle={data.site.siteMetadata.title} />
+      )}
+      <Mdx>{children}</Mdx>
+      {nofooter ? null : <Footer />}
+    </StyledThemeProvider>
   )
 }
 

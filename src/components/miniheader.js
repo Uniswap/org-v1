@@ -1,6 +1,7 @@
+import React, { useRef, useState } from 'react'
+
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 
 import Search from './algoliaSearch'
@@ -12,10 +13,11 @@ import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 import Discord from '../images/discord.inline.svg'
 
-import useDarkMode from 'use-dark-mode'
 import SidebarV2 from './sidebarV2'
 import SidebarV1 from './sidebarV1'
 import { useMediaQuery } from '@react-hook/media-query'
+
+import { useDarkMode } from '../contexts/Application'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -196,7 +198,7 @@ const VersionToggle = styled(Link)`
 
 const Header = props => {
   const node = useRef()
-  const darkMode = useDarkMode()
+  const [darkMode, toggleDarkMode] = useDarkMode()
 
   // get global version and check if v2 or not
   const v2Toggle = props.path.slice(0, 8) === '/docs/v2'
@@ -253,8 +255,8 @@ const Header = props => {
             <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
             <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
           </VersionToggle>
-          <StyledButton type="button" onClick={darkMode.value ? darkMode.disable : darkMode.enable}>
-            {darkMode.value ? <Sun size={20} /> : <Moon size={20} />}
+          <StyledButton type="button" onClick={toggleDarkMode}>
+            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </StyledButton>
           <StyledButton>
             <a href="https://discord.gg/XErMcTq">
