@@ -38,7 +38,7 @@ In all cases, trades are subject to the same flat fee for trading on the protoco
 
 # Developers/Projects
 
-There are far too many ways Uniswap is used in the wider Ethereum ecosystem to count, but some examples includet:
+There are far too many ways Uniswap is used in the wider Ethereum ecosystem to count, but some examples include:
 
 - The open-source, accessible nature of Uniswap means there are countless UX experiments and front-ends built to offer access to Uniswap functionality. You can find Uniswap functions in most of the major DeFi dashboard projects. There are also many [Uniswap-specific tools](https://github.com/Uniswap/universe) built by the community.
 
