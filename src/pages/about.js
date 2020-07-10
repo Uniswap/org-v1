@@ -149,6 +149,14 @@ const About = props => {
           </StyledHeadingLink>
           <StyledHeadingLink
             onClick={() => {
+              scrollTo('#jobs')
+              window.history.pushState({}, '', '#jobs')
+            }}
+          >
+            Jobs
+          </StyledHeadingLink>
+          <StyledHeadingLink
+            onClick={() => {
               scrollTo('#contact')
               window.history.pushState({}, '', '#contact')
             }}
@@ -163,14 +171,7 @@ const About = props => {
           >
             Community
           </StyledHeadingLink>
-          <StyledHeadingLink
-            onClick={() => {
-              scrollTo('#jobs')
-              window.history.pushState({}, '', '#jobs')
-            }}
-          >
-            Jobs
-          </StyledHeadingLink>
+
           <StyledHeadingLink
             onClick={() => {
               scrollTo('#brand')
@@ -196,7 +197,9 @@ const About = props => {
 
           <StyledSectionFlex id="jobs" style={{ flexDirection: 'column' }}>
             <h1 style={{ width: '100%' }}>Jobs</h1>
-            <p>We are looking for talented people to join our team! Browse the open roles below:</p>
+            <p>We are looking for talented people to join our team!</p>
+
+            <p>Browse the open roles below. </p>
             <span>
               <a href="https://angel.co/company/uniswap/jobs/888942-community-manager">
                 {' '}
@@ -215,6 +218,12 @@ const About = props => {
                 <h3>Data Engineer/Scientist</h3>
               </a>
             </span>
+            <p>
+              Uniswap welcomes all qualified persons to apply regardless of race, religion, gender, gender identity or
+              expression, sexual orientation, national origin, genetics, disability, age, or veteran status.
+              Compensation will be competitive and commensurate with experience. This is a full time role which includes
+              health insurance and other benefits.
+            </p>
           </StyledSectionFlex>
 
           <StyledSectionFlex id="contact" style={{ flexDirection: 'column' }}>
