@@ -7,6 +7,7 @@ import SEO from '../components/seo'
 import Ticker from '../components/ticker'
 import BG from '../components/bg'
 import MiniCard from '../components/minicard'
+import Wizard from '../components/wizard'
 import { Button } from '../components/button'
 
 const StyledBody = styled.div`
@@ -307,30 +308,7 @@ const DeveloperSection = () => {
     <>
       <StyledSectionTitle>Build with Uniswap</StyledSectionTitle>
       <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
-        <MiniCard
-          outlined
-          small
-          as={Link}
-          to="/docs/v2/SDK/getting-started"
-          title={'Integrate Uniswap into your Frontend.'}
-          desc={'Use the new SDK to access Uniswap from within a website'}
-        />
-        <MiniCard
-          outlined
-          small
-          as={Link}
-          to="/docs/v2/smart-contracts/architecture"
-          title={'Use Uniswap in your Smart Contracts.'}
-          desc={'Token Swaps, Flash swaps, Token Liquidity and so much more.'}
-        />
-        <MiniCard
-          outlined
-          small
-          as={Link}
-          to="/docs/v2/guides/oracles"
-          title={'Build oracles on Uniswap.'}
-          desc={'Reliable on-chain price feeds make building oracles easier than ever.'}
-        />
+        <Wizard />
       </StyledSectionFlex>
     </>
   )

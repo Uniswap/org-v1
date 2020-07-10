@@ -29,7 +29,7 @@ export const theme = darkMode => ({
   backgroundColor: darkMode ? '#191B1F' : '#FFF',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
-  cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)',
+  cardBG: darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.02)',
   menuBG: darkMode ? 'rgba(10,10,10, 0.8)' : 'rgba(255, 255, 255, 0.95)',
   marqueeBG: darkMode ? '#010101' : '#010101',
 
@@ -76,7 +76,7 @@ export const theme = darkMode => ({
     pink3: '#FFD7EA',
 
     yellow1: darkMode ? '#F3BE1E95' : '#F3BE1E',
-    yellow2: darkMode ? '#FFF4D295' : '#F7F2E3',
+    yellow2: darkMode ? '#FFF4D2' : '#F7F2E3',
 
     red1: '#FF6871',
 

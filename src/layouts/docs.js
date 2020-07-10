@@ -13,15 +13,12 @@ import { useMediaQuery } from '@react-hook/media-query'
 
 const StyledDocs = styled.div`
   display: grid;
-  grid-template-columns: 280px 1fr 160px;
+  grid-template-columns: 280px 1fr 180px;
   justify-content: space-between;
   padding: 0 2rem;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
   padding-top: 2rem;
-
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
-  border-top: 1px solid ${({ theme }) => theme.colors.grey2};
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -90,9 +87,6 @@ const StyledPageTitle = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
   /* align-items: center; */
 
   h1 {
@@ -125,6 +119,10 @@ const StyledGithubIcon = styled(Github)`
     background-color: ${({ theme }) => theme.colors.grey9};
     opacity: 0.2;
   }
+`
+
+const StyledGithubLink = styled.a`
+  padding-bottom: 1.5rem;
 `
 
 const Docs = props => {
@@ -237,7 +235,7 @@ const Docs = props => {
                 })
                 .map(({ node }) => {
                   return (
-                    <a
+                    <StyledGithubLink
                       key={node.id}
                       href={
                         data.site.siteMetadata.repository +
@@ -249,7 +247,7 @@ const Docs = props => {
                       }
                     >
                       <StyledGithubIcon /> Improve this article
-                    </a>
+                    </StyledGithubLink>
                   )
                 })}
             </div>
@@ -294,6 +292,7 @@ const Docs = props => {
               )
             })}
         </StyledMDX>
+
         {data ? (
           data.allMdx.edges
             .filter(({ node }) => {

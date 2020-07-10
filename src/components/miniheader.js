@@ -10,6 +10,7 @@ import { Sun, Moon, Home } from 'react-feather'
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 import Discord from '../images/discord.inline.svg'
+import Github from '../images/githubicon.inline.svg'
 
 import SidebarV2 from './sidebarV2'
 import SidebarV1 from './sidebarV1'
@@ -259,6 +260,11 @@ const Header = props => {
           <StyledButton fill>
             <a href="https://discord.gg/XErMcTq">
               <Discord />
+            </a>
+          </StyledButton>
+          <StyledButton fill>
+            <a href="https://github.com/Uniswap">
+              <Github width={20} />
             </a>
           </StyledButton>
           <StyledButton type="button">

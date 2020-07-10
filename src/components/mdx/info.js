@@ -17,12 +17,14 @@ const StyledInfo = styled.div`
 
   a {
     padding: 0 0.25rem;
+    display: contents;
   }
 `
 
 const StyledInfoIcon = styled(InfoIcon)`
   width: 16px;
   margin-right: 16px;
+  min-width: 16px;
   path {
     fill: ${({ theme }) => theme.colors.grey9};
   }
