@@ -3,9 +3,7 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import Search from './algoliaSearch'
-
 import Uni from '../images/uni.inline.svg'
 import { Sun, Moon } from 'react-feather'
 
@@ -145,7 +143,6 @@ const Row = styled.div`
   justify-content: space-between;
   width: 100%;
 `
-
 const MobileSearchWrapper = styled.div`
   display: none;
   @media (max-width: 960px) {

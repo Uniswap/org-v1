@@ -186,10 +186,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-algolia-docsearch-appid`,
       options: {
-        apiKey: '3d44be3728a9ae9799681c70a19a5179',
-        indexName: 'uniswap_v2_docs',
-        inputSelector: 'blank', // use dummy selector to avoid double render
-        appId: 'VZ0CVS8XCW'
+        apiKey: process.env.GATSBY_ALGOLIA_SEARCH_API_KEY,
+        indexName: process.env.GASTBY_ALGOLIA_INDEX,
+        appId: process.env.GASTBY_ALGOLIA_APP_ID,
+        inputSelector: 'blank' // use dummy selector to avoid double render
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

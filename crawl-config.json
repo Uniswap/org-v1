@@ -2,13 +2,13 @@
   "index_name": "uniswap_v2_docs",
   "start_urls": [
     {
-      "url": "https://uniswap-org-git-fork-ianlapham-docs-rework.uniswap.vercel.app/docs/v2/",
+      "url": "https://beta.uniswap.org/docs/v2/",
       "extra_attributes": {
         "version": ["v2"]
       }
     },
     {
-      "url": "https://uniswap-org-git-fork-ianlapham-docs-rework.uniswap.vercel.app/docs/v1/",
+      "url": "https://beta.uniswap.org/docs/v1/",
       "extra_attributes": {
         "version": ["v1"]
       }
@@ -22,11 +22,10 @@
     "lvl3": "h4",
     "lvl4": "h5",
     "lvl5": "h6",
-    "text": "p, div, li"
+    "text": "p, div, li, span"
   },
   "custom_settings": {
     "attributesForFaceting": ["version"]
   },
-  "conversation_id": ["1203516192"],
-  "nb_hits": 456
+  "js_render": true
 }

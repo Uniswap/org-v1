@@ -71,7 +71,6 @@ export const theme = darkMode => ({
     green1: '#E6F3EC',
     green2: '#27AE60',
 
-    // pink1: darkMode ? '#00FF85' : '#FF007A',
     pink1: darkMode ? '#2F80ED' : '#FF007A',
     pink2: '#FF8EC4',
     pink3: '#FFD7EA',
@@ -80,9 +79,6 @@ export const theme = darkMode => ({
     yellow2: darkMode ? '#FFF4D295' : '#F7F2E3',
 
     red1: '#FF6871',
-
-    // link: darkMode ? '#00FF85' : '#FF007A',
-    // invertedLink: darkMode ? '#FF007A' : '#00FF85'
 
     link: darkMode ? '#2F80ED' : '#FF007A',
     invertedLink: darkMode ? '#2F80ED' : '#FF007A'
@@ -112,8 +108,8 @@ export const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
     box-sizing: inherit;
   }
-
-  html {
+  
+    html {
     font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
@@ -122,7 +118,6 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    /* background-image: url(${({ isDark }) => (isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg')}); */
     background-size: contain;
     background-repeat: no-repeat;
     overflow-y: scroll;
@@ -144,13 +139,8 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400 !important;
     color: ${({ theme }) => theme.textColor};
 
-    @media (max-width: 1024px) {
-        /* padding: 0 1.5rem; */
-
-    }
     
     @media (min-width: 1441px) {
-        /* padding: 0; */
         overflow-x: visible;
     }
   }
@@ -173,8 +163,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h2 {
-    /* margin: 2.5em 0 1rem 0 !important; */
-    /* font-family: "Times Ten LT Std"; */
     font-size: 1.5rem;
     font-weight: 400;
     font-family: "Inferi Book";
@@ -189,7 +177,6 @@ export const GlobalStyle = createGlobalStyle`
 
   #gatsby-focus-wrapper{
     min-height: 100vh;
-    /* position: relative; */
   }
   a{
     color: ${({ theme }) => theme.colors.link};
