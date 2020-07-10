@@ -54,6 +54,7 @@ h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+.ais-Highlight-highlighted,
 mark {
   background-color: #ff0;
   color: #000;
@@ -425,7 +426,7 @@ fieldset {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-blockquote {
+/* blockquote {
   margin-left: 1.45rem;
   margin-right: 1.45rem;
   margin-top: 0;
@@ -434,7 +435,14 @@ blockquote {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
+} */
+blockquote {
+  border-left: 1px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  padding-left: 1rem;
 }
+
 form {
   margin-left: 0;
   margin-right: 0;
@@ -623,7 +631,7 @@ pre tt:after {
   font-size: 100%;
   left: -1.5rem;
   letter-spacing: -1px;
-  width: 100%;
+  width: 24px;
 }
 
 .anchor svg {

@@ -56,7 +56,7 @@ const CopyButton = styled.button`
 `
 
 export default ({ children, className }) => {
-  const language = className.replace(/language-/, '')
+  const language = className && className.replace(/language-/, '')
   const [isCopied, setCopied] = useClipboard(children, {
     successDuration: 1000
   })

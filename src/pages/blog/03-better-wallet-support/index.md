@@ -8,7 +8,7 @@ previewText: 'The Uniswap interface now supports a wide range of connection type
 
 ![](https://cdn-images-1.medium.com/max/5400/1*7wgRREUzm8paSw9ZrR4uYw.png)
 
-We’re improving wallet support on [Uniswap.exchange](https://uniswap.exchange/swap). To start we’ve added support for:
+We’re improving wallet support on [app.uniswap.org](https://app.uniswap.org/swap). To start we’ve added support for:
 
 - [WalletConnect](https://walletconnect.org/)
 
@@ -30,7 +30,7 @@ WalletConnect allows mobile wallets to connect to your desktop browser through a
 
 Adding WalletConnect support allows wallets such as [Rainbow Wallet](https://rainbow.me/), [Gnosis Safe](https://safe.gnosis.io/) and [Argent Wallet](https://www.argent.xyz/) (coming soon) to connect to Uniswap for the first time. MetaMask mobile and Trust Wallet can also be used with wallet connect.
 
-![Scan a QR code to connect your mobile wallet to Uniswap.exchange](https://cdn-images-1.medium.com/max/1920/1*8A9MDGkWmQnPi8g0LtVndA.gif)
+![Scan a QR code to connect your mobile wallet to app.uniswap.org](https://cdn-images-1.medium.com/max/1920/1*8A9MDGkWmQnPi8g0LtVndA.gif)
 
 # WalletLink
 

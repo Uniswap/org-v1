@@ -1,0 +1,139 @@
+{
+  "index_name": "uniswap_v2_docs",
+  "start_urls": [
+    {
+      "url": "https://beta.uniswap.org/docs/v2/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v1/",
+      "extra_attributes": {
+        "version": ["v1"]
+      }
+    },
+
+    {
+      "url": "https://beta.uniswap.org/docs/v2/protocol-overview/how-uniswap-works/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+
+    {
+      "url": "https://beta.uniswap.org/docs/v2/protocol-overview/ecosystem-participants/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+
+    {
+      "url": "https://beta.uniswap.org/docs/v2/protocol-overview/smart-contracts/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+
+    {
+      "url": "https://beta.uniswap.org/docs/v2/protocol-overview/glossary/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+
+    {
+      "url": "https://beta.uniswap.org/docs/v2/core-concepts/swaps/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+
+    {
+      "url": "https://beta.uniswap.org/docs/v2/core-concepts/pools/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/core-concepts/flash-swaps/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/core-concepts/oracles/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/advanced-topics/fees/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/advanced-topics/pricing/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/advanced-topics/understanding-returns/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/advanced-topics/security/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/advanced-topics/math/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/core-concepts/flash-swaps/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/advanced-topics/research/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/API/entities/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    },
+    {
+      "url": "https://beta.uniswap.org/docs/v2/API/queries/",
+      "extra_attributes": {
+        "version": ["v2"]
+      }
+    }
+  ],
+  "stop_urls": [],
+  "selectors": {
+    "lvl0": "h1",
+    "lvl1": "h2",
+    "lvl2": "h3",
+    "lvl3": "h4",
+    "lvl4": "h5",
+    "lvl5": "h6",
+    "text": "p, div, li, span"
+  },
+  "custom_settings": {
+    "attributesForFaceting": ["version"]
+  },
+  "js_render": true
+}

@@ -26,7 +26,7 @@ export const theme = darkMode => ({
   greyText: darkMode ? white : '#6C7284',
 
   // for setting css on <html>
-  backgroundColor: darkMode ? '#010101' : '#FFF',
+  backgroundColor: darkMode ? '#191B1F' : '#FFF',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)',
@@ -45,7 +45,7 @@ export const theme = darkMode => ({
   doveGray: darkMode ? '#C4C4C4' : '#737373',
 
   colors: {
-    blue1: darkMode ? '#FF007A' : '#D4E4FA',
+    blue1: darkMode ? '#2F80ED' : '#D4E4FA',
     blue2: darkMode ? '#1966D2' : '#A9C8F5',
     blue3: darkMode ? '#165BBB' : '#7DACF0',
     blue4: darkMode ? '#2D47A6' : '#5190EB',
@@ -71,28 +71,24 @@ export const theme = darkMode => ({
     green1: '#E6F3EC',
     green2: '#27AE60',
 
-    // pink1: darkMode ? '#00FF85' : '#FF007A',
-    pink1: darkMode ? '#FF007A' : '#FF007A',
+    pink1: darkMode ? '#2F80ED' : '#FF007A',
     pink2: '#FF8EC4',
     pink3: '#FFD7EA',
 
-    yellow1: '#F3BE1E',
-    yellow2: '#F7F2E3',
+    yellow1: darkMode ? '#F3BE1E95' : '#F3BE1E',
+    yellow2: darkMode ? '#FFF4D295' : '#F7F2E3',
 
     red1: '#FF6871',
 
-    // link: darkMode ? '#00FF85' : '#FF007A',
-    // invertedLink: darkMode ? '#FF007A' : '#00FF85'
-
-    link: darkMode ? '#FF007A' : '#FF007A',
-    invertedLink: darkMode ? '#FF007A' : '#FF007A'
+    link: darkMode ? '#2F80ED' : '#FF007A',
+    invertedLink: darkMode ? '#2F80ED' : '#FF007A'
   },
 
   shadows: {
     small: '0px 2px 4px rgba(0, 0, 0, 0.1)',
     large: '0px 6px 10px rgba(0, 0, 0, 0.15)',
     huge:
-      ' 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04)'
+      ' 0px 0px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px rgba(0, 0, 0, 0.02), 0px 16px 24px rgba(0, 0, 0, 0.02), 0px 24px 32px rgba(0, 0, 0, 0.02)'
   },
 
   // media queries
@@ -112,8 +108,8 @@ export const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
     box-sizing: inherit;
   }
-
-  html {
+  
+    html {
     font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
@@ -122,7 +118,6 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    /* background-image: url(${({ isDark }) => (isDark ? 'images/bg_radial_dark.jpg' : 'images/bg_radial.jpg')}); */
     background-size: contain;
     background-repeat: no-repeat;
     overflow-y: scroll;
@@ -137,20 +132,15 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     font-family: "Inter Roman", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    line-height: 1.75;
+    line-height: 1.55;
     max-width: 1440px;
     width: 100vw;
     margin: 0px auto;
     font-weight: 400 !important;
     color: ${({ theme }) => theme.textColor};
 
-    @media (max-width: 1024px) {
-        /* padding: 0 1.5rem; */
-
-    }
     
     @media (min-width: 1441px) {
-        /* padding: 0; */
         overflow-x: visible;
     }
   }
@@ -173,21 +163,20 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h2 {
-    /* margin: 2.5em 0 1rem 0 !important; */
-    /* font-family: "Times Ten LT Std"; */
     font-size: 1.5rem;
-    font-weight: 300;
+    font-weight: 400;
     font-family: "Inferi Book";
   }
 
   h3 {
-    font-weight: 300;
+    font-weight: 400;
     font-family: "Inferi Book";
   }
 
+
+
   #gatsby-focus-wrapper{
     min-height: 100vh;
-    position: relative;
   }
   a{
     color: ${({ theme }) => theme.colors.link};
@@ -210,4 +199,17 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: bold;
     color: ${({ theme }) => theme.colors.grey9};
   }
+
+ .ds-dropdown-menu {
+    width: 100px;
+    max-height: 600px;
+    overflow: scroll;
+
+    @media screen and (max-width: 1080px) {
+      min-width: 300px !important;
+    }
+  }
+
+
+
 `

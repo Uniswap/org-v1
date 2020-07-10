@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-
 import Img from 'gatsby-image'
-
 import Layout from '../layouts'
 import SEO from '../components/seo'
 import Ticker from '../components/ticker'
@@ -112,13 +110,6 @@ const IndexPage = props => {
       site {
         siteMetadata {
           siteUrl
-          cardlinks {
-            cardButton
-            cardDesc
-            cardTitle
-            type
-            slug
-          }
         }
       }
       unicornImage: file(relativePath: { eq: "uni_image.jpg" }) {
@@ -165,7 +156,7 @@ const IndexPage = props => {
         <StyledTitle>
           <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
           <span>
-            <Button href="https://uniswap.exchange/">Launch App</Button>
+            <Button href="https://app.uniswap.org/">Launch App</Button>
             <Button to="/docs" as={Link} outlined>
               Read the docs
             </Button>
@@ -356,7 +347,7 @@ const ProductsSection = props => {
       </StyledSectionFlex>
       <StyledSectionFlex wrapSmall={false} style={{ paddingTop: '2rem' }}>
         <MiniCard
-          href="https://uniswap.exchange"
+          href="https://app.uniswap.org"
           title={'Uniswap Interface'}
           image={props.data.swap.childImageSharp.fluid}
           desc={'Trade tokens, add liquidity and create new pools.'}

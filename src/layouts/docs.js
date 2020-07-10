@@ -1,36 +1,33 @@
 import React from 'react'
-import { createGlobalStyle } from 'styled-components'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '.'
-import SideBar from '../components/sidebar'
+import SidebarV2 from '../components/sidebarV2'
+import SidebarV1 from '../components/sidebarV1'
 import SEO from '../components/seo'
 import TableofContents from '../components/toc'
 import Github from '../images/githubicon.inline.svg'
-
+import { GlobalStyle } from '../styles/theme'
 import '../styles/prism-github.css'
-
-const GlobalStyle = createGlobalStyle`
-  html {
-    background-image: none;
-    background-color: ${({ theme }) => theme.backgroundColor};
-}
-`
+import { useMediaQuery } from '@react-hook/media-query'
 
 const StyledDocs = styled.div`
   display: grid;
   grid-template-columns: 280px 1fr 160px;
   justify-content: space-between;
-  margin-top: 2rem;
   padding: 0 2rem;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
+  padding-top: 2rem;
+
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  border-top: 1px solid ${({ theme }) => theme.colors.grey2};
 
   @media (max-width: 960px) {
     flex-direction: column;
     grid-template-columns: 1fr;
     margin-top: 0rem;
+    padding-top: 80px;
   }
 `
 
@@ -39,6 +36,7 @@ const StyledMDX = styled.div`
   max-width: 768px;
   padding: 0;
   margin-bottom: 3rem;
+  margin-top: 5rem;
   a {
     color: ${({ theme }) => theme.colors.link};
   }
@@ -58,13 +56,16 @@ const StyledDocsNavWrapper = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   margin-top: 2rem;
   padding-top: 3rem;
-  border-top: 1px solid ${({ theme }) => theme.colors.grey2};
 `
 const StyledDocsNav = styled.li`
+  @media (max-width: 960px) {
+    width: 100%;
+  }
   a {
     color: ${({ theme }) => theme.textColor};
   }
@@ -86,9 +87,13 @@ const StyledLink = styled(Link)`
 
 const StyledPageTitle = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   position: relative;
-  align-items: center;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  /* align-items: center; */
 
   h1 {
     font-size: 2.5rem !important;
@@ -147,6 +152,7 @@ const Docs = props => {
               slug
               subDir
               rawSlug
+              parentDir
             }
           }
           next {
@@ -155,6 +161,9 @@ const Docs = props => {
             }
             fields {
               slug
+              subDir
+              parentDir
+              topLevelDir
             }
           }
           previous {
@@ -163,15 +172,21 @@ const Docs = props => {
             }
             fields {
               slug
+              parentDir
+              subDir
+              topLevelDir
             }
           }
         }
       }
     }
   `)
+  const isV1 = props.path.slice(0, 8) === '/docs/v1'
+
+  const isMobile = useMediaQuery('(max-width: 960px)')
 
   return (
-    <Layout path={props.location.pathname}>
+    <Layout path={props.location.pathname} isDocs={true}>
       <SEO title={props.pageContext.frontmatter.title} path={props.location.pathname} />
       <GlobalStyle />
       {data.allMdx.edges
@@ -196,33 +211,52 @@ const Docs = props => {
           )
         })}
       <StyledDocs id="docs-header">
-        <SideBar parent={'/docs/'} {...props} />
+        {!isMobile && (isV1 ? <SidebarV1 parent={'/docs/'} {...props} /> : <SidebarV2 parent={'/docs/'} {...props} />)}
         <StyledMDX>
           <StyledPageTitle>
+            <small style={{ marginBottom: '.5rem' }}>
+              {data.allMdx.edges
+                .filter(({ node }) => {
+                  return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
+                })
+                .map(({ node }) => {
+                  return node.fields.rawSlug
+                    .split('/')[3]
+                    .replace(/\d+-/g, '')
+                    .replace(/-/g, ' ')
+                    .replace(/(^|\s)\S/g, function(t) {
+                      return t.toUpperCase()
+                    })
+                })}
+            </small>
             <h1>{props.pageContext.frontmatter.title}</h1>
+            <div style={{ display: 'flex' }}>
+              {data.allMdx.edges
+                .filter(({ node }) => {
+                  return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
+                })
+                .map(({ node }) => {
+                  return (
+                    <a
+                      key={node.id}
+                      href={
+                        data.site.siteMetadata.repository +
+                        '/tree/' +
+                        data.site.siteMetadata.commit +
+                        '/src/pages' +
+                        node.fields.rawSlug.slice(0, -1) +
+                        '.md'
+                      }
+                    >
+                      <StyledGithubIcon /> Improve this article
+                    </a>
+                  )
+                })}
+            </div>
           </StyledPageTitle>
+
           {props.children}
-          {data.allMdx.edges
-            .filter(({ node }) => {
-              return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
-            })
-            .map(({ node }) => {
-              return (
-                <a
-                  key={node.id}
-                  href={
-                    data.site.siteMetadata.repository +
-                    '/tree/' +
-                    data.site.siteMetadata.commit +
-                    '/src/pages' +
-                    node.fields.rawSlug.slice(0, -1) +
-                    '.md'
-                  }
-                >
-                  <StyledGithubIcon /> Edit on Github
-                </a>
-              )
-            })}
+
           {data.allMdx.edges
             .filter(({ node }) => {
               return node.fields.slug === props.path
@@ -232,25 +266,27 @@ const Docs = props => {
                 <StyledDocsNavWrapper key={node.id}>
                   <StyledDocsNav>
                     {/* index.md file is considered the "last" based on the sort order. Check to remove links when not relevent */}
-                    {previous && node.fields.slug !== '/docs/v2/' && (
-                      <StyledLink style={{ alignItems: 'flex-end' }} to={previous.fields.slug} rel="prev">
-                        <small>Previous</small>
-                        <span>← {previous.frontmatter.title}</span>
-                      </StyledLink>
-                    )}
+                    {previous &&
+                      node.fields.slug !== '/docs/v2/' &&
+                      previous.fields.parentDir === node.fields.parentDir && (
+                        <StyledLink style={{ alignItems: 'flex-end' }} to={previous.fields.slug} rel="prev">
+                          <small>Previous</small>
+                          <span>← {previous.frontmatter.title}</span>
+                        </StyledLink>
+                      )}
                   </StyledDocsNav>
                   <StyledDocsNav>
                     {/* index.md file is considered the "last" based on the sort order. Check to remove when not relevent */}
-                    {next && next.fields.slug !== '/docs/v2/' && (
+                    {next && next.fields.slug !== '/docs/v2/' && next.fields.parentDir === node.fields.parentDir && (
                       <StyledLink style={{ alignItems: 'flex-start' }} to={next.fields.slug} rel="next">
                         <small>Next</small>
                         <span>{next.frontmatter.title} →</span>
                       </StyledLink>
                     )}
                     {node.fields.slug === '/docs/v2/' && (
-                      <StyledLink style={{ alignItems: 'flex-start' }} to={'/docs/v2/smart-contracts/'} rel="next">
+                      <StyledLink style={{ alignItems: 'flex-start' }} to={'/docs/v2/protocol-overview/'} rel="next">
                         <small>Next</small>
-                        <span>Smart Contracts →</span>
+                        <span>How Uniswap works →</span>
                       </StyledLink>
                     )}
                   </StyledDocsNav>

@@ -11,6 +11,9 @@ import Wordmark from '../images/wordmark.inline.svg'
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 
+import { Sun, Moon } from 'react-feather'
+import { useDarkMode } from '../contexts/Application'
+
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
@@ -89,6 +92,21 @@ const StyledTradeLink = styled.a`
   }
 `
 
+const StyledButton = styled.button`
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: ${({ theme }) => theme.colors.link};
+  :focus {
+    outline: none;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :hover {
+    cursor: pointer;
+  }
+`
+
 const StyledHomeLink = styled(Link)`
   max-height: 48px;
   display: flex;
@@ -159,6 +177,7 @@ const Header = props => {
   const node = useRef()
   const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
+  const [darkMode, toggleDarkMode] = useDarkMode()
 
   const data = useStaticQuery(graphql`
     {
@@ -235,7 +254,10 @@ const Header = props => {
           .map(item => {
             return <Menu key={item.name} data={item} />
           })}
-        {props.path !== undefined && <StyledTradeLink href="https://uniswap.exchange/">Launch App</StyledTradeLink>}
+        <StyledButton type="button" onClick={toggleDarkMode}>
+          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+        </StyledButton>
+        {props.path !== undefined && <StyledTradeLink href="https://app.uniswap.org/">Launch App</StyledTradeLink>}
       </StyledNav>
     </StyledHeader>
   )

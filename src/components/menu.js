@@ -14,7 +14,7 @@ export function useToggle(initialState = false) {
 }
 
 const StyledMenu = styled.button`
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0rem;
   margin: 0;
   display: flex;
   box-sizing: border-box;
@@ -24,7 +24,7 @@ const StyledMenu = styled.button`
   border: none;
   text-align: left;
   list-style: none;
-  padding-right: 1.5rem;
+  padding-right: 2rem;
   background: none;
   @media (max-width: 960px) {
     font-size: 1.5rem;
@@ -157,6 +157,10 @@ const StyledDescription = styled.p`
   }
 `
 
+const StyledDropdownArrow = styled(DropdownArrow)`
+  opacity: 0.4;
+`
+
 export default function Menu(props) {
   const matches = useMediaQuery('only screen and (max-width: 960px)')
   const node = useRef()
@@ -205,7 +209,7 @@ export default function Menu(props) {
         isOpen={isOpen}
       >
         <span style={{ marginRight: '0.25rem' }}>{props.data.name} </span>
-        {!matches && <DropdownArrow />}
+        {!matches && <StyledDropdownArrow />}
         {isOpen ? (
           <MenuFlyout>
             {props.data.sublinks.map((item, index) => {

@@ -22,11 +22,16 @@ exports.onCreateNode = ({ node, getNodesByType, actions }) => {
   // Ensures we are processing only markdown files
   if (node.internal.type === 'Mdx' || node.internal.type === 'Md') {
     const slugPath = getSlugPath(node.fields.slug)
-
     createNodeField({
       node,
       name: 'topLevelDir',
       value: slugPath[0]
+    })
+
+    createNodeField({
+      node,
+      name: 'parentDir',
+      value: slugPath ? slugPath[2] : ' '
     })
 
     createNodeField({

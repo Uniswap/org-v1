@@ -1,93 +1,8 @@
-const menu = [
-  {
-    name: 'Products',
-    sublinks: [
-      {
-        name: 'Interface',
-        link: 'https://uniswap.exchange/',
-        description: 'Swap tokens and supply liquidity'
-      },
-      {
-        name: 'Info',
-        link: 'https://uniswap.info/',
-        description: 'Uniswap analytics and historical data'
-      },
-      {
-        name: 'Unisocks',
-        link: 'https://unisocks.exchange/',
-        description: 'Dynamically priced socks'
-      },
-      {
-        name: 'Unipig',
-        link: 'https://unipig.exchange/',
-        description: 'Optimistic rollup demo'
-      }
-    ]
-  },
-  {
-    name: 'Developers',
-    sublinks: [
-      {
-        name: 'Documentation',
-        link: '/docs',
-        description: 'Comprehensive smart contract and frontend integration docs'
-      },
-      { name: 'Github', link: 'https://github.com/Uniswap' },
-      { name: 'Whitepaper', link: '/whitepaper.pdf' },
-      { name: 'Audit', link: '/audit.html' },
-      { name: 'Bug Bounty', link: '/bug-bounty' }
-    ]
-  },
-  {
-    name: 'Community',
-    sublinks: [
-      { name: 'Twitter', link: 'https://twitter.com/UniswapProtocol' },
-      { name: 'Discord', link: 'https://discord.gg/EwFs3Pp' },
-      { name: 'Reddit', link: 'https://www.reddit.com/r/Uniswap' }
-    ]
-  },
-  {
-    name: 'Info',
-    sublinks: [
-      { name: 'Blog', link: '/blog', description: 'Stay up to date on Uniswap' },
-      {
-        name: 'FAQ',
-        link: '/',
-        description: 'Coming soon!'
-      },
-      { name: 'About', link: '/about' },
-      { name: 'Brand Assets', link: '/about#brand-assets' }
-    ]
-  }
-]
+const menu = require('./src/utils/menu')
 
-const cards = [
-  {
-    slug: 'http://uniswap.exchange',
-    cardTitle: 'Swap any token on Ethereum',
-    cardDesc: 'Use the Uniswap interface or integrate into your project using the SDK.',
-    cardButton: 'Swap now'
-  },
-  {
-    slug: '/docs',
-    cardTitle: 'Add liquidity for any project',
-    cardDesc: 'Add liquidity or create an pool for any ERC20 token.',
-    cardButton: 'Integrate your project'
-  },
-  {
-    slug: '/docs',
-    cardTitle: 'Earn fees through passive market making',
-    cardDesc: 'Provide liquidity to earn 0.3% of all spread fees for adding market depth.',
-    cardButton: 'How pooling works'
-  },
-  {
-    slug: '/docs',
-    cardTitle: 'Build decentralized price feeds',
-    cardDesc: 'Perfect time-weighted average prices on chain, customizable to your risk profile.',
-    type: 'New',
-    cardButton: 'Read the SDK'
-  }
-]
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 
 module.exports = {
   siteMetadata: {
@@ -95,7 +10,6 @@ module.exports = {
     description: `Automated liquidity protocol on Ethereum`,
     author: `@UniswapProtocol`,
     menulinks: menu,
-    cardlinks: cards,
     siteUrl: `https://uniswap.org`,
     repository: `https://github.com/Uniswap/uniswap-site-v2`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
@@ -126,8 +40,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `guides`,
-        path: `${__dirname}/src/pages/guides/`
+        name: `faq`,
+        path: `${__dirname}/src/pages/faq/`
       }
     },
     {
@@ -167,13 +81,15 @@ module.exports = {
           default: require.resolve('./src/layouts'),
           docs: require.resolve(`./src/layouts/docs`),
           blog: require.resolve(`./src/layouts/blogPost`),
-          guides: require.resolve(`./src/layouts/guides`)
+          faq: require.resolve(`./src/layouts/faq`)
         },
+        remarkPlugins: [require(`remark-math`)],
+        rehypePlugins: [require(`rehype-katex`)],
         gatsbyRemarkPlugins: [
           `gatsby-remark-embedder`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
-          `gatsby-remark-check-links`,
+          // `gatsby-remark-check-links`,
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
@@ -266,121 +182,16 @@ module.exports = {
         ]
       }
     },
+    'gatsby-plugin-eslint',
     {
-      resolve: 'gatsby-plugin-local-search',
+      resolve: `gatsby-plugin-algolia-docsearch-appid`,
       options: {
-        // A unique name for the search index. This should be descriptive of
-        // what the index contains. This is required.
-        name: 'V1',
-
-        // Set the search engine to create the index. This is required.
-        // The following engines are supported: flexsearch, lunr
-        engine: 'lunr',
-
-        // GraphQL query used to fetch all data for the search index. This is
-        // required.
-        query: `
-        {
-          allMdx(filter: {fileAbsolutePath: {regex: "/docs/v1/"}}) {
-            nodes {
-              id
-              frontmatter {
-                title
-              }
-              fields {
-                slug
-              }
-              rawBody
-            }
-          }
-        }
-        `,
-
-        // Field used as the reference value for each document.
-        // Default: 'id'.
-        ref: 'id',
-
-        // List of keys to index. The values of the keys are taken from the
-        // normalizer function below.
-        // Default: all fields
-        index: ['id', 'path', 'title', 'content'],
-
-        // List of keys to store and make available in your UI. The values of
-        // the keys are taken from the normalizer function below.
-        // Default: all fields
-        store: ['id', 'path', 'title'],
-
-        // Function used to map the result from the GraphQL query. This should
-        // return an array of items to index in the form of flat objects
-        // containing properties to index. The objects must contain the `ref`
-        // field above (default: 'id'). This is required.
-        normalizer: ({ data }) =>
-          data.allMdx.nodes.map(node => ({
-            id: node.id,
-            path: node.fields.slug,
-            title: node.frontmatter.title,
-            content: node.rawBody
-          }))
+        apiKey: process.env.GATSBY_ALGOLIA_SEARCH_API_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX,
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        inputSelector: 'blank' // use dummy selector to avoid double render
       }
-    },
-    {
-      resolve: 'gatsby-plugin-local-search',
-      options: {
-        // A unique name for the search index. This should be descriptive of
-        // what the index contains. This is required.
-        name: 'V2',
-
-        // Set the search engine to create the index. This is required.
-        // The following engines are supported: flexsearch, lunr
-        engine: 'lunr',
-
-        // GraphQL query used to fetch all data for the search index. This is
-        // required.
-        query: `
-        {
-          allMdx(filter: {fileAbsolutePath: {regex: "/docs/v2/"}}) {
-            nodes {
-              id
-              frontmatter {
-                title
-              }
-              fields {
-                slug
-              }
-              rawBody
-            }
-          }
-        }
-        `,
-
-        // Field used as the reference value for each document.
-        // Default: 'id'.
-        ref: 'id',
-
-        // List of keys to index. The values of the keys are taken from the
-        // normalizer function below.
-        // Default: all fields
-        index: ['id', 'path', 'title', 'content'],
-
-        // List of keys to store and make available in your UI. The values of
-        // the keys are taken from the normalizer function below.
-        // Default: all fields
-        store: ['id', 'path', 'title'],
-
-        // Function used to map the result from the GraphQL query. This should
-        // return an array of items to index in the form of flat objects
-        // containing properties to index. The objects must contain the `ref`
-        // field above (default: 'id'). This is required.
-        normalizer: ({ data }) =>
-          data.allMdx.nodes.map(node => ({
-            id: node.id,
-            path: node.fields.slug,
-            title: node.frontmatter.title,
-            content: node.rawBody
-          }))
-      }
-    },
-    'gatsby-plugin-eslint'
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
