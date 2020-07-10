@@ -187,8 +187,8 @@ module.exports = {
       resolve: `gatsby-plugin-algolia-docsearch-appid`,
       options: {
         apiKey: process.env.GATSBY_ALGOLIA_SEARCH_API_KEY,
-        indexName: process.env.GASTBY_ALGOLIA_INDEX,
-        appId: process.env.GASTBY_ALGOLIA_APP_ID,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX,
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
         inputSelector: 'blank' // use dummy selector to avoid double render
       }
     }
