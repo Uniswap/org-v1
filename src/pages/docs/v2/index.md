@@ -21,7 +21,7 @@ The Uniswap codebase is comprised of an ecosystem of open source components.
 - [`uniswap-frontend`](https://github.com/Uniswap/uniswap-frontend)
 - [`uniswap-sdk`](https://github.com/Uniswap/uniswap-sdk)
 
-### Reference materials
+## Reference materials
 
 Get to know the Uniswap SDK and smart contract API objects, methods, attributes, and responses.
 

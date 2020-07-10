@@ -15,7 +15,7 @@ First you must use an external price source to calculate the safety parameters f
 
 It is also important to ensure that your contract controls enough ETH/tokens to make the swap, and has granted approval to the router to withdraw this many tokens.
 
-_Check out the <Link to='/docs/v2/swaps/pricing/#pricing-trades'>Pricing</Link> page for a more in depth discussion on getting prices._
+_Check out the <Link to='/docs/v2/advanced-topics/pricing/#pricing-trades'>Pricing</Link> page for a more in depth discussion on getting prices._
 
 # Example
 
