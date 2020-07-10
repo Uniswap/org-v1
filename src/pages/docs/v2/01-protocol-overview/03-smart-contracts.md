@@ -60,5 +60,3 @@ The router fully supports interacting with any WETH pair via ETH.
 ## Minimum Liquidity
 
 To ameliorate rounding errors and increase the theoretical minimum tick size for liquidity provision, pairs burn the first <Link to='/docs/v2/smart-contracts/pair#minimum_liquidity'>MINIMUM_LIQUIDITY</Link> pool tokens. For the vast majority of pairs, this will represent a trivial value. The burning happens automatically during the first liquidity provision, after which point the <Link to='/docs/v2/smart-contracts/pair-erc-20#totalsupply'>totalSupply</Link> is forevermore bounded.
-
-

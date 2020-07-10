@@ -215,13 +215,19 @@ const Docs = props => {
         <StyledMDX>
           <StyledPageTitle>
             <small style={{ marginBottom: '.5rem' }}>
-              {props.path
-                .split('/')[3]
-                .replace(/\d+-/g, '')
-                .replace(/-/g, ' ')
-                .replace(/(^|\s)\S/g, function(t) {
-                  return t.toUpperCase()
-                })}{' '}
+              {data.allMdx.edges
+                .filter(({ node }) => {
+                  return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
+                })
+                .map(({ node }) => {
+                  return node.fields.rawSlug
+                    .split('/')[3]
+                    .replace(/\d+-/g, '')
+                    .replace(/-/g, ' ')
+                    .replace(/(^|\s)\S/g, function(t) {
+                      return t.toUpperCase()
+                    })
+                })}
             </small>
             <h1>{props.pageContext.frontmatter.title}</h1>
             <div style={{ display: 'flex' }}>
