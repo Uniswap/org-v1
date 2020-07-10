@@ -91,6 +91,7 @@ const links = [
 const StyledWizard = styled.div`
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
   width: 100%;
+  max-width: 720px;
   /* border: 1px solid ${({ theme }) => theme.colors.grey2}; */
   border-radius: 20px;
   /* overflow: hidden; */

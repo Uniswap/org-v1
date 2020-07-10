@@ -36,7 +36,7 @@ const StyledMDX = styled.div`
   max-width: 768px;
   padding: 0;
   margin-bottom: 3rem;
-  margin-top: 5rem;
+  margin-top: 4rem;
   a {
     color: ${({ theme }) => theme.colors.link};
   }

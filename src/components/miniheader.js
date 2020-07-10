@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Search from './algoliaSearch'
 import Uni from '../images/uni.inline.svg'
-import { Sun, Moon } from 'react-feather'
+import { Sun, Moon, Home } from 'react-feather'
 
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
@@ -56,7 +56,8 @@ const StyledButton = styled.button`
     height: 24px;
   }
   svg path {
-    fill: ${({ theme }) => theme.colors.link};
+    fill: ${({ theme, fill }) => fill && theme.colors.link};
+    stroke: ${({ theme }) => theme.colors.link};
   }
 `
 
@@ -174,7 +175,7 @@ const MenuToggle = styled.button`
 `
 
 const VersionLabel = styled.span`
-  padding: 0.2rem 0.4rem;
+  padding: 0.15rem 0.45rem;
   border-radius: 12px;
   background: ${({ theme, toggled }) => (toggled ? theme.colors.link : 'none')};
   color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.colors.link)};
@@ -187,6 +188,7 @@ const VersionToggle = styled(Link)`
   border-radius: 14px;
   margin-right: 1rem;
   color: ${({ theme }) => theme.invertedTextColor};
+  border: 1px solid ${({ theme }) => theme.colors.grey2};
   display: flex;
   width: fit-content;
   cursor: pointer;
@@ -254,10 +256,15 @@ const Header = props => {
           <StyledButton type="button" onClick={toggleDarkMode}>
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </StyledButton>
-          <StyledButton>
+          <StyledButton fill>
             <a href="https://discord.gg/XErMcTq">
               <Discord />
             </a>
+          </StyledButton>
+          <StyledButton type="button">
+            <Link to="/">
+              <Home size={20} />{' '}
+            </Link>
           </StyledButton>
         </StyledNav>
       </Row>

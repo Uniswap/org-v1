@@ -56,8 +56,12 @@ const menu = [
       },
       { name: 'About', link: '/about' },
       {
+        name: 'Community',
+        link: '/about#community'
+      },
+      {
         name: 'Jobs',
-        link: '/About'
+        link: '/about#jobs'
       },
       { name: 'Brand Assets', link: '/about#brand-assets' }
     ]

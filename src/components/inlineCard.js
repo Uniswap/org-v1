@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const StyledMiniCards = styled(Link)`
   padding: 1.25rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
-  background-color: ${({ theme }) => theme.invertedTextColor};
+  background-color: ${({ theme }) => theme.cardBG};
   height: 120px;
   max-width: 100%;
   min-width: 45%;
