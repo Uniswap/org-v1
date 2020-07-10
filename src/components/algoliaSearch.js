@@ -86,13 +86,14 @@ export default function Search(props) {
     if (window.docsearch) {
       try {
         window.docsearch({
-          apiKey: '3d44be3728a9ae9799681c70a19a5179',
-          indexName: 'uniswap_v2_docs',
+          apiKey: process.env.GATSBY_ALGOLIA_SEARCH_API_KEY,
+          indexName: process.env.GATSBY_ALGOLIA_INDEX,
+          appId: process.env.GATSBY_ALGOLIA_APP_ID,
           inputSelector: '.docsearch', // the selector of my search input
-          appId: 'VZ0CVS8XCW',
           transformData: handleResults
         })
       } catch (e) {
+        console.log(e)
         console.log('Error loading algolia search')
       }
     }
