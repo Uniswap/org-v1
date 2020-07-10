@@ -90,6 +90,9 @@ const StyledPageTitle = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
   /* align-items: center; */
 
   h1 {
@@ -211,30 +214,43 @@ const Docs = props => {
         {!isMobile && (isV1 ? <SidebarV1 parent={'/docs/'} {...props} /> : <SidebarV2 parent={'/docs/'} {...props} />)}
         <StyledMDX>
           <StyledPageTitle>
+            <small style={{ marginBottom: '.5rem' }}>
+              {props.path
+                .split('/')[3]
+                .replace(/\d+-/g, '')
+                .replace(/-/g, ' ')
+                .replace(/(^|\s)\S/g, function(t) {
+                  return t.toUpperCase()
+                })}{' '}
+            </small>
             <h1>{props.pageContext.frontmatter.title}</h1>
+            <div style={{ display: 'flex' }}>
+              {data.allMdx.edges
+                .filter(({ node }) => {
+                  return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
+                })
+                .map(({ node }) => {
+                  return (
+                    <a
+                      key={node.id}
+                      href={
+                        data.site.siteMetadata.repository +
+                        '/tree/' +
+                        data.site.siteMetadata.commit +
+                        '/src/pages' +
+                        node.fields.rawSlug.slice(0, -1) +
+                        '.md'
+                      }
+                    >
+                      <StyledGithubIcon /> Improve this article
+                    </a>
+                  )
+                })}
+            </div>
           </StyledPageTitle>
+
           {props.children}
-          {data.allMdx.edges
-            .filter(({ node }) => {
-              return node.fields.slug === props.path && node.fields.slug !== '/docs/v2/'
-            })
-            .map(({ node }) => {
-              return (
-                <a
-                  key={node.id}
-                  href={
-                    data.site.siteMetadata.repository +
-                    '/tree/' +
-                    data.site.siteMetadata.commit +
-                    '/src/pages' +
-                    node.fields.rawSlug.slice(0, -1) +
-                    '.md'
-                  }
-                >
-                  <StyledGithubIcon /> Edit on Github
-                </a>
-              )
-            })}
+
           {data.allMdx.edges
             .filter(({ node }) => {
               return node.fields.slug === props.path
