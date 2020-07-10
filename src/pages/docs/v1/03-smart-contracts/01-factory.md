@@ -43,7 +43,7 @@ createExchange(token: address): address
 ## Web3
 
 ```javascript
-factoryContract.methods.initializeFactory(token).send()
+factoryContract.methods.createExchange(token).send()
 ```
 
 # getExchange
