@@ -196,7 +196,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   strong{
-    font-weight: 500;
+    font-weight: bold;
     color: ${({ theme }) => theme.colors.grey9};
   }
 
