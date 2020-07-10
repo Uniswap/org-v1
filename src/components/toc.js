@@ -17,6 +17,8 @@ const StyledHeadingListElement = styled.li`
 const StyledHeadingLink = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.textColor};
+  white-space: pre;
+  text-overflow: ellipsis;
   cursor: pointer;
 
   :hover {
@@ -49,8 +51,9 @@ const StyledTOC = styled.ul`
   position: sticky;
   align-self: flex-start;
   top: 6rem;
-  min-width: 160px;
+  min-width: 180px;
   max-height: 70vh;
+  overflow: scroll;
   font-size: 0.75rem;
   margin: 0 2rem 0 0;
   opacity: 0.6;

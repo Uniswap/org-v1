@@ -6,10 +6,10 @@ import styled from 'styled-components'
 const StyledMiniCards = styled.a`
   padding: 1.5rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
-  width: 260px;
-  height: ${({ small }) => (small ? '260px' : '320px')};
+  width: 300px;
+  height: ${({ small }) => (small ? '160px' : '320px')};
   max-width: 450px;
-  margin: 1rem;
+  margin: 0.5rem;
   box-shadow: ${({ theme, outlined }) => (!outlined ? theme.shadows.huge : 'none')};
   border: 1px solid ${({ outlined }) => (!outlined ? 'rgba(0, 0)' : 'rgba(255, 0, 122, 0.4)')};
   border-radius: 20px;
