@@ -93,6 +93,7 @@ export default function Search(props) {
           transformData: handleResults
         })
       } catch (e) {
+        console.log(e)
         console.log('Error loading algolia search')
       }
     }
