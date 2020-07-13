@@ -21,7 +21,7 @@ Liquidity providers can also choose to sell, transfer, or otherwise use their li
 
 Learn more with advanced topics:
 
-<InlineBoxLink title="Understanding Returns" to="docs/v2/advanced-topics/returns" />
+<InlineBoxLink title="Understanding Returns" to="docs/v2/advanced-topics/understanding-returns" />
 <InlineBoxLink title="Fees" to="docs/v2/advanced-topics/fees" />
 
 # Why pools?
