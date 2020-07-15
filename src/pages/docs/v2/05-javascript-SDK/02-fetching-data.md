@@ -137,16 +137,16 @@ Note that these values can change as frequently as every block, and should be ke
 
 ### Fetched by the SDK
 
-If we don't want to look up the value ourselves, we can ask the SDK to look them up for us with <Link to='/docs/v2/SDK/token#fetchdata'>Pair.fetchData</Link>:
+If we don't want to look up the value ourselves, we can ask the SDK to look them up for us with <Link to='/docs/v2/SDK/token#fetchdata'>Fetcher.fetchPairData</Link>:
 
 ```typescript
-import { ChainId, Token, WETH, Pair } from '@uniswap/sdk'
+import { ChainId, Token, WETH, Fetcher } from '@uniswap/sdk'
 
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
 
 // note that you may want/need to handle this async code differently,
 // for example if top-level await is not an option
-const pair = await Pair.fetchData(DAI, WETH[DAI.chainId])
+const pair = await Fetcher.fetchPairData(DAI, WETH[DAI.chainId])
 ```
 
 By default, this method will use the [default provider defined by ethers.js](https://docs.ethers.io/v5/api/providers/#providers-getDefaultProvider). If you're already using ethers.js in your application, you may pass in your provider as a 3rd argument. If you're using another library, you'll have to fetch the data separately.
