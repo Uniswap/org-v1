@@ -52,7 +52,7 @@ import { Percent } from '@uniswap/sdk'
 const slippageTolerance = new Percent('50', '10000') // 50 bips, or 0.50%
 
 const amountOutMin = trade.minimumAmountOut(slippageTolerance).raw // needs to be converted to e.g. hex
-const path = [WETH.address, DAI.address]
+const path = [WETH[DAI.chainId].address, DAI.address]
 const to = '' // should be a checksummed recipient address
 const deadline = Math.floor(Date.now() / 1000) + 60 * 20 // 20 minutes from the current Unix time
 const value = trade.inputAmount.raw // // needs to be converted to e.g. hex
