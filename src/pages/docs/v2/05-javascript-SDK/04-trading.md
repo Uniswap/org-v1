@@ -26,7 +26,7 @@ const route = new Route([pair], WETH[DAI.chainId])
 
 const amountIn = '1000000000000000000' // 1 WETH
 
-const trade = new Trade(route, new TokenAmount(WETH, amountIn), TradeType.EXACT_INPUT)
+const trade = new Trade(route, new TokenAmount(WETH[DAI.chainId], amountIn), TradeType.EXACT_INPUT)
 ```
 
 So, we've constructed a trade entity, but how do we use it to actually send a transaction? There are still a few pieces we need to put in place.
