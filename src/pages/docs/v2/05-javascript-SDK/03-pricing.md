@@ -18,7 +18,7 @@ Let's consider the mid price for DAI-WETH (that is, the amount of DAI per 1 WETH
 The simplest way to get the DAI-WETH mid price is to observe the pair directly:
 
 ```typescript
-import { ChainId, Token, WETH, Fetcher } from '@uniswap/sdk'
+import { ChainId, Token, WETH, Fetcher, Route } from '@uniswap/sdk'
 
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
 
