@@ -1,5 +1,5 @@
 ---
-title: 'Series A - Uniswap Dev Team'
+title: 'Series A'
 date: '2020-08-06'
 author: 'Hayden Adams'
 featuredImage: ./banner.png
