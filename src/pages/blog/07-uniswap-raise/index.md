@@ -1,9 +1,9 @@
 ---
-title: 'Series A - Uniswap Dev Team'
+title: 'Series A'
 date: '2020-08-06'
 author: 'Hayden Adams'
 featuredImage: ./banner.png
-previewText: 'Series A - Uniswap Dev Team'
+previewText: 'Series A'
 ---
 
 Just over a year ago, we raised a seed round from Paradigm in order to advance research and development of the Uniswap protocol and other decentralized products on Ethereum.
