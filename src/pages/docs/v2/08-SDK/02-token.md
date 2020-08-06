@@ -17,22 +17,6 @@ import { ChainId, Token } from '@uniswap/sdk'
 const token = new Token(ChainId.MAINNET, '0xc0FFee0000000000000000000000000000000000', 18, 'HOT', 'Caffeine')
 ```
 
-# Static Methods
-
-## fetchData
-
-```typescript
-async fetchData(
-  chainId: ChainId,
-  address: string,
-  provider = getDefaultProvider(getNetwork(chainId)),
-  symbol?: string,
-  name?: string
-): Promise<Token>
-```
-
-Initializes a class instance from a chainId and token address, if the decimals of the token are unknown and cannot be fetched externally. Decimals are fetched via an [ethers.js](https://github.com/ethers-io/ethers.js/) v5 provider. If not passed in, a default provider is used.
-
 # Properties
 
 ## chainId

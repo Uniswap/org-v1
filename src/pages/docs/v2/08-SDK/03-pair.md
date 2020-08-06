@@ -30,18 +30,6 @@ getAddress(tokenA: Token, tokenB: Token): string
 
 Computes the pair address for the passed <Link to='/docs/v2/SDK/token'>Token</Link>s. See <Link to='/docs/v2/technical-considerations/pair-addresses'>Pair Addresses</Link>.
 
-## fetchData
-
-```typescript
-async fetchData(
-  tokenA: Token,
-  tokenB: Token,
-  provider = getDefaultProvider(getNetwork(tokenA.chainId))
-): Promise<Pair>
-```
-
-Initializes a class instance from two Tokens, if the pair's balances of these tokens are unknown and cannot be fetched externally. Token balances are fetched via an [ethers.js](https://github.com/ethers-io/ethers.js/) v5 provider. If not passed in, a default provider is used.
-
 # Properties
 
 ## liquidityToken

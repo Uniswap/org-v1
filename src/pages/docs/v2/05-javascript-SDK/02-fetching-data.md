@@ -5,7 +5,8 @@ tags: SDK, developer-guides, documentation
 
 Looking for a <Link to='/docs/v2/javascript-SDK/quick-start'>quickstart</Link>?
 
-While the SDK is fully self-contained, there are two cases where it needs _on-chain data_ to function. This guide will detail both of these cases, and offer some strategies that you can use to fetch this data.
+While the SDK is fully self-contained, there are two cases where it needs _on-chain data_ to function.
+This guide will detail both of these cases, and offer some strategies that you can use to fetch this data.
 
 # Case 1: Tokens
 
@@ -49,20 +50,22 @@ async function getDecimals(chainId: ChainId, tokenAddress: string): Promise<numb
 
 ### Fetched by the SDK
 
-If we don't want to provide or look up the value ourselves, we can ask the SDK to look it up for us with <Link to='/docs/v2/SDK/token#fetchdata'>Token.fetchData</Link>:
+If we don't want to provide or look up the value ourselves, we can ask the SDK to look it up for us with <Link to='/docs/v2/SDK/fetcher#fetchtokendata'>Fetcher.fetchTokenData</Link>:
 
 ```typescript
-import { ChainId, Token } from '@uniswap/sdk'
+import { ChainId, Token, Fetcher } from '@uniswap/sdk'
 
 const chainId = ChainId.MAINNET
 const tokenAddress = '0x6B175474E89094C44Da98b954EedeAC495271d0F' // must be checksummed
 
 // note that you may want/need to handle this async code differently,
 // for example if top-level await is not an option
-const DAI = await Token.fetchData(chainId, tokenAddress)
+const DAI: Token = await Fetcher.fetchTokenData(chainId, tokenAddress)
 ```
 
-By default, this method will use the [default provider defined by ethers.js](https://docs.ethers.io/v5/api/providers/#providers-getDefaultProvider). If you're already using ethers.js in your application, you may pass in your provider as a 3rd argument. If you're using another library, you'll have to fetch the data separately.
+By default, this method will use the [default provider defined by ethers.js](https://docs.ethers.io/v5/api/providers/#providers-getDefaultProvider). 
+If you're already using ethers.js in your application, you may pass in your provider as a 3rd argument.
+If you're using another library, you'll have to fetch the data separately.
 
 ## Optional Data
 
@@ -83,11 +86,11 @@ const DAI = new Token(
 or:
 
 ```typescript
-import { ChainId, Token } from '@uniswap/sdk'
+import { ChainId, Token, Fetcher } from '@uniswap/sdk'
 
 // note that you may want/need to handle this async code differently,
 // for example if top-level await is not an option
-const DAI = await Token.fetchData(
+const DAI = await Fetcher.fetchTokenData(
   ChainId.MAINNET,
   '0x6B175474E89094C44Da98b954EedeAC495271d0F',
   undefined,
@@ -137,7 +140,7 @@ Note that these values can change as frequently as every block, and should be ke
 
 ### Fetched by the SDK
 
-If we don't want to look up the value ourselves, we can ask the SDK to look them up for us with <Link to='/docs/v2/SDK/token#fetchdata'>Fetcher.fetchPairData</Link>:
+If we don't want to look up the value ourselves, we can ask the SDK to look them up for us with <Link to='/docs/v2/SDK/fetcher#fetchpairdata'>Fetcher.fetchPairData</Link>:
 
 ```typescript
 import { ChainId, Token, WETH, Fetcher } from '@uniswap/sdk'
