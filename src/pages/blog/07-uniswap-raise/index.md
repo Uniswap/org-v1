@@ -3,7 +3,7 @@ title: 'Series A'
 date: '2020-08-06'
 author: 'Hayden Adams'
 featuredImage: ./banner.png
-previewText: 'Series A'
+previewText: 'Series A announcement and details'
 ---
 
 Just over a year ago, we raised a seed round from Paradigm in order to advance research and development of the Uniswap protocol and other decentralized products on Ethereum.
