@@ -103,9 +103,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Uniswap/uniswap-site-v2"
+    "url": "https://github.com/Uniswap/uniswap-org"
   },
   "bugs": {
-    "url": "https://github.com/Uniswap/uniswap-site-v2/issues"
+    "url": "https://github.com/Uniswap/uniswap-org/issues"
   }
 }

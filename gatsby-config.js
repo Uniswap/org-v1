@@ -11,7 +11,7 @@ module.exports = {
     author: `@UniswapProtocol`,
     menulinks: menu,
     siteUrl: `https://uniswap.org`,
-    repository: `https://github.com/Uniswap/uniswap-site-v2`,
+    repository: `https://github.com/Uniswap/uniswap-org`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
   plugins: [
