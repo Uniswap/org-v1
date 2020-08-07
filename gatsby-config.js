@@ -16,6 +16,14 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'uniswap-org-assetsbucket-iesc1carns6u',
+        protocol: 'https',
+        hostname: 'uniswap.org'
+      },
+    },
+    {
       resolve: 'gatsby-plugin-replace-path',
       options: {
         pattern: /\d+-/g,

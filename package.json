@@ -85,6 +85,7 @@
     "eslint-plugin-react": "^7.18.3",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-replace-path": "^1.0.0",
+    "gatsby-plugin-s3": "^0.3.4",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -99,7 +100,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "format": "prettier --write \"src/**/*.{js,jsx,md,mdx}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,md,mdx}\"",
+    "deploy": "gatsby-plugin-s3 deploy"
   },
   "repository": {
     "type": "git",
