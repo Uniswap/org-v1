@@ -8,11 +8,5 @@
         "distDir": "public"
       }
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/tokenlist.schema.json",
-      "destination": "https://unpkg.com/@uniswap/token-lists@1.0.0-beta.8/src/tokenlist.schema.json"
-    }
   ]
 }
