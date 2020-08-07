@@ -233,12 +233,14 @@
           }
         ],
         "DistributionConfig": {
-          "CustomErrorResponses": {
-            "ResponseCode": 200,
-            "ErrorCode": 404,
-            "ErrorCachingMinTTL": 0,
-            "ResponsePagePath": "/"
-          },
+          "CustomErrorResponses": [
+            {
+              "ResponseCode": 200,
+              "ErrorCode": 404,
+              "ErrorCachingMinTTL": 0,
+              "ResponsePagePath": "/"
+            }
+          ],
           "Comment": "uniswap.org",
           "Enabled": true,
           "Aliases": [
