@@ -19,6 +19,8 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
       - name: Deploy
         run: yarn deploy
         env:
