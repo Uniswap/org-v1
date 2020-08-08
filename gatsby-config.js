@@ -18,9 +18,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: 'uniswap-org-assetsbucket-iesc1carns6u',
+        bucketName: process.env.AWS_S3_BUCKET,
         protocol: 'https',
-        hostname: 'uniswap.org'
+        hostname: 'uniswap.org',
+        acl: null
       },
     },
     {
