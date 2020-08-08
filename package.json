@@ -83,6 +83,7 @@
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.18.3",
+    "gatsby-plugin-canonical-urls": "^2.3.10",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-replace-path": "^1.0.0",
     "gatsby-plugin-s3": "^0.3.4",

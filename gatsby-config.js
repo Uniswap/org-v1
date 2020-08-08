@@ -25,6 +25,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://uniswap.org`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-replace-path',
       options: {
         pattern: /\d+-/g,

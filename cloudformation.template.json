@@ -106,11 +106,11 @@
       "Description": "Bucket containing the site deployed files",
       "Properties": {
         "VersioningConfiguration": {
-          "Status": "Enabled"
+          "Status": "Suspended"
         },
-        "AccessControl": "Private",
         "WebsiteConfiguration": {
-          "IndexDocument": "index.html"
+          "IndexDocument": "index.html",
+          "ErrorDocument": "404.html"
         },
         "Tags": [
           {
@@ -119,18 +119,12 @@
               "Ref": "AWS::StackName"
             }
           }
-        ],
-        "PublicAccessBlockConfiguration": {
-          "BlockPublicAcls": true,
-          "BlockPublicPolicy": true,
-          "IgnorePublicAcls": true,
-          "RestrictPublicBuckets": true
-        }
+        ]
       }
     },
     "AssetsBucketPolicy": {
       "Type": "AWS::S3::BucketPolicy",
-      "Description": "Policy that allows the CloudFront access identity to read from the bucket",
+      "Description": "Policy that makes the bucket public read",
       "Properties": {
         "Bucket": {
           "Ref": "AssetsBucket"
@@ -139,24 +133,12 @@
           "Version": "2012-10-17",
           "Statement": [
             {
-              "Sid": "AllowCloudFront",
+              "Sid": "PublicRead",
               "Effect": "Allow",
-              "Principal": {
-                "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ",
-                      {
-                        "Ref": "CloudFrontAccessIdentity"
-                      }
-                    ]
-                  ]
-                }
-              },
+              "Principal": "*",
               "Action": [
                 "s3:GetObject",
-                "s3:ListBucket"
+                "s3:GetObjectVersion"
               ],
               "Resource": [
                 {
@@ -171,12 +153,6 @@
                       },
                       "/*"
                     ]
-                  ]
-                },
-                {
-                  "Fn::GetAtt": [
-                    "AssetsBucket",
-                    "Arn"
                   ]
                 }
               ]
@@ -212,17 +188,6 @@
         }
       }
     },
-    "CloudFrontAccessIdentity": {
-      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
-      "Description": "Identity used to read from the assets bucket",
-      "Properties": {
-        "CloudFrontOriginAccessIdentityConfig": {
-          "Comment": {
-            "Ref": "AWS::StackName"
-          }
-        }
-      }
-    },
     "CloudFrontDistribution": {
       "Type": "AWS::CloudFront::Distribution",
       "Description": "Distribution that produces a CNAME for the assets bucket",
@@ -236,14 +201,6 @@
           }
         ],
         "DistributionConfig": {
-          "CustomErrorResponses": [
-            {
-              "ResponseCode": 200,
-              "ErrorCode": 404,
-              "ErrorCachingMinTTL": 0,
-              "ResponsePagePath": "/"
-            }
-          ],
           "Comment": "uniswap.org",
           "Enabled": true,
           "Aliases": [
@@ -253,26 +210,15 @@
           "HttpVersion": "http2",
           "Origins": [
             {
+              "Id": "assets-bucket",
               "DomainName": {
                 "Fn::GetAtt": [
                   "AssetsBucket",
                   "DomainName"
                 ]
               },
-              "Id": "assets-bucket",
-              "S3OriginConfig": {
-                "OriginAccessIdentity": {
-                  "Fn::Join": [
-                    "/",
-                    [
-                      "origin-access-identity",
-                      "cloudfront",
-                      {
-                        "Ref": "CloudFrontAccessIdentity"
-                      }
-                    ]
-                  ]
-                }
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "http-only"
               }
             }
           ],
