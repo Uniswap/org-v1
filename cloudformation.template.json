@@ -212,9 +212,19 @@
             {
               "Id": "assets-bucket",
               "DomainName": {
-                "Fn::GetAtt": [
-                  "AssetsBucket",
-                  "DomainName"
+                "Fn::Select": [
+                  1,
+                  {
+                    "Fn::Split": [
+                      "http://",
+                      {
+                        "Fn::GetAtt": [
+                          "AssetsBucket",
+                          "WebsiteURL"
+                        ]
+                      }
+                    ]
+                  }
                 ]
               },
               "CustomOriginConfig": {
