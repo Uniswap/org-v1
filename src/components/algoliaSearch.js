@@ -86,9 +86,9 @@ export default function Search(props) {
     if (window.docsearch) {
       try {
         window.docsearch({
-          apiKey: process.env.GATSBY_ALGOLIA_SEARCH_API_KEY,
-          indexName: process.env.GATSBY_ALGOLIA_INDEX,
-          appId: process.env.GATSBY_ALGOLIA_APP_ID,
+          apiKey: '8962240e69e6d23a88432f501c115470',
+          indexName: 'uniswap_v2_docs',
+          appId: 'VZ0CVS8XCW',
           inputSelector: '.docsearch', // the selector of my search input
           transformData: handleResults
         })
