@@ -3634,6 +3634,11 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@uniswap/token-lists@^1.0.0-beta.11":
+  version "1.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@uniswap/token-lists/-/token-lists-1.0.0-beta.11.tgz#365dd55d536c67fa550554c0658391bfbc2930b7"
+  integrity sha512-dGHdb58d+rN7G164ziPP6omb1R0hwBVgs95er83OzXKkVRlLKE/FLSdgpDaTxLj1war+P/hZXw2/ToYcKFsobQ==
+
 "@urql/core@^1.11.0":
   version "1.11.8"
   resolved "https://registry.yarnpkg.com/@urql/core/-/core-1.11.8.tgz#6a3186ac84d6b08752585f42e8ec81539338d7a9"
