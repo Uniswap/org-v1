@@ -11,7 +11,7 @@ This documentation covers Uniswap-specific functionality. For ERC-20 functionali
 
 # Address
 
-See <Link to='/docs/v2/technical-considerations/pair-addresses'>Pair Addresses</Link>.
+See <Link to='/docs/v2/smart-contract-integration/getting-pair-addresses/'>Pair Addresses</Link>.
 
 # Events
 
