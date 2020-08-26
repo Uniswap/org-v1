@@ -47,8 +47,6 @@ While gatekeepers often stifle innovation, they also serve to filter out low qua
 
 As we move towards mass tokenization, this process of filtering and curation becomes more important than ever before for Ethereum-based projects. The alternative is a UX nightmare, with users having to verify the legitimacy of assets on an ad hoc basis.
 
-![Uniswap warning for token URL imports](./image2.png "Uniswap warning for token URL imports")
-
 As the decentralized finance movement continues to remove gatekeepers, it is imperative that new systems for discovery and reputation do not devolve into centralized gatekeeping. 
 
 ## Current Approaches
@@ -61,7 +59,7 @@ Most projects opt for the easiest and most practical solution: maintaining a lis
 
 ## Long Live Token Lists
 
-Token Lists leverages Ethereum’s greatest strengths - its surplus of high quality projects and communities, their ability to share public infrastructure, and the ease of interoperability between them.
+Token Lists leverages Ethereum’s greatest strengths - its numerous high quality projects and communities, their ability to share public infrastructure, and the ease of interoperability between them.
 
 The idea is simple - any project on Ethereum that maintains a list of ERC20 tokens hosts this list publicly following a standard JSON schema. Projects attach their reputation to lists by hosting them on a domain they control.
 
