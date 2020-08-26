@@ -25,6 +25,8 @@ Token Lists can be used **right now** in the [Uniswap Interface](https://app.uni
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/pAQyBRB8Y74" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+This is another step forward in interface decentralization. Read Uniswap Interface + IPFS to learn how the Uniswap interface is now hosted by the community in a decentralized manner.
+
 We hope to continue iterating and improving Token Lists in collaboration with the broader community.
 
 ## Gatekeeping is Dead
