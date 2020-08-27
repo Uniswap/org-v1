@@ -147,7 +147,7 @@ While this is a huge improvement, there are some new smart contract patterns int
 - Core no longer returns the maximum number of ERC20 tokens for a given input amount. Instead, a router must specify the number of ERC20 tokens it wants. Core will send this number as long as the invariant is preserved after taking 0.3% off any input amount.
 - Routers should handle logic around slippage safety checks and multihop trades.
 
-For additional details please read the <Link to='/docs/v2/smart-contracts/architecture/'>architecture section</Link> of the in-progress Uniswap V2 docs or the core and periphery smart contracts themselves.
+For additional details please read the <Link to='/docs/v2/protocol-overview/smart-contracts/'>architecture section</Link> of the in-progress Uniswap V2 docs or the core and periphery smart contracts themselves.
 
 ## Technical Improvements
 
@@ -202,7 +202,7 @@ In the meantime, developers can begin playing with Uniswap V2 today! The factory
 
 **<Link to='/docs/v2/smart-contracts/factory/#address'>Uniswap V2 Factory (Testnet)</Link>**
 
-**<Link to='/docs/v2/smart-contracts/router/#address'>Uniswap V2 Router 01 (Testnet)</Link>**
+**<Link to='/docs/v2/smart-contracts/router01/#address'>Uniswap V2 Router 01 (Testnet)</Link>**
 
 **We want to hear from you!**
 

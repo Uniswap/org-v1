@@ -62,7 +62,7 @@ Emitted each time reserves are updated via [mint](#mint-1), [burn](#burn-1), [sw
 function MINIMUM_LIQUIDITY() external pure returns (uint);
 ```
 
-Returns `1000` for all pairs. See <Link to='/docs/v2/smart-contracts/architecture/#minimum-liquidity'>Minimum Liquidity</Link>.
+Returns `1000` for all pairs. See <Link to='/docs/v2/protocol-overview/smart-contracts/#minimum-liquidity'>Minimum Liquidity</Link>.
 
 ## factory
 
@@ -148,7 +148,7 @@ Destroys pool tokens.
 function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
 ```
 
-Swaps tokens. For regular swaps, `data.length` must be `0`. Also see <Link to='/docs/v2/guides/flash-swaps'>Flash Swaps</Link>.
+Swaps tokens. For regular swaps, `data.length` must be `0`. Also see <Link to='/docs/v2/core-concepts/flash-swaps/'>Flash Swaps</Link>.
 
 - Emits [Swap](#swap), [Sync](#sync).
 

@@ -11,7 +11,7 @@ Swapping fees are immediately deposited into liquidity reserves. This increases 
 
 Since fees are added to liquidity pools, the invariant increases at the end of every trade. Within a single transaction, the invariant represents `token0_pool / token1_pool` at the end of the previous transaction.
 
-There are many community developed tools to determine returns. You can also read more in the docs about how to think about [LP returns](/docs/v2/advanced-topics/returns/).
+There are many community developed tools to determine returns. You can also read more in the docs about how to think about [LP returns](/docs/v2/advanced-topics/understanding-returns/).
 
 ## Protocol Fees
 
