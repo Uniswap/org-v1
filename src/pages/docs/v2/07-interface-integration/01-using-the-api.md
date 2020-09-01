@@ -46,7 +46,7 @@ import { HttpLink } from "apollo-link-http"
 
 export const client = new ApolloClient({
  link: new HttpLink({
-   uri: "https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2,
+   uri: "https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2"
  }),
  cache: new InMemoryCache(),
 })
