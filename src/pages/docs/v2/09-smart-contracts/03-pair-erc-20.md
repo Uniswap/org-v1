@@ -25,7 +25,7 @@ Emitted each time an approval occurs via [approve](#approve) or [permit](#permit
 event Transfer(address indexed from, address indexed to, uint value);
 ```
 
-Emitted each time a transfer occurs via [transfer](#transfer-1), [transferFrom](#transferfrom), <Link to='/docs/v2/smart-contracts/exchange#mint-1'>mint</Link>, or <Link to='/docs/v2/smart-contracts/exchange#burn-1'>burn</Link>.
+Emitted each time a transfer occurs via [transfer](#transfer-1), [transferFrom](#transferfrom), <Link to='/docs/v2/smart-contracts/pair/#mint-1'>mint</Link>, or <Link to='/docs/v2/smart-contracts/pair/#burn-1'>burn</Link>.
 
 # Read-Only Functions
 

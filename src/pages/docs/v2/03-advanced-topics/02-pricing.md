@@ -25,11 +25,11 @@ There are, of course, other options for oracles, including <Link to='/docs/v2/co
 
 ## Exact Input
 
-If you'd like to send an exact amount of input tokens in exchange for as many output tokens as possible, you'll want to use <Link to='/docs/v2/smart-contracts/router02/#getamountsout'>getAmountsOut</Link>. The equivalent SDK function is <Link to='/docs/v2/sdk/pair/#getoutputamount'>getOutputAmount</Link>, or <Link to='/docs/v2/sdk/trade/#minimumamountout'>minimumAmountOut</Link> for slippage calculations.
+If you'd like to send an exact amount of input tokens in exchange for as many output tokens as possible, you'll want to use <Link to='/docs/v2/smart-contracts/router02/#getamountsout'>getAmountsOut</Link>. The equivalent SDK function is <Link to='/docs/v2/SDK/pair/#getoutputamount'>getOutputAmount</Link>, or <Link to='/docs/v2/SDK/trade/#minimumamountout-since-204'>minimumAmountOut</Link> for slippage calculations.
 
 ## Exact Output
 
-If you'd like to receive an exact amount of output tokens for as few input tokens as possible, you'll want to use <Link to='/docs/v2/smart-contracts/router02/#getamountsin'>getAmountsIn</Link>. The equivalent SDK function is <Link to='/docs/v2/sdk/pair/#getinputamount'>getInputAmount</Link>, or <Link to='/docs/v2/sdk/trade/#maximumamountin'>maximumAmountIn</Link> for slippage calculations.
+If you'd like to receive an exact amount of output tokens for as few input tokens as possible, you'll want to use <Link to='/docs/v2/smart-contracts/router02/#getamountsin'>getAmountsIn</Link>. The equivalent SDK function is <Link to='/docs/v2/SDK/pair/#getinputamount'>getInputAmount</Link>, or <Link to='/docs/v2/SDK/trade/#maximumamountin-since-204'>maximumAmountIn</Link> for slippage calculations.
 
 ## Swap to Price
 
