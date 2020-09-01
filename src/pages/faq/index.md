@@ -18,7 +18,7 @@ For a more in depth description. Check out the [How Uniswap works](/docs/v2/prot
 
 # How are prices determined?
 
-Prices are determined by the amount of each token in a pool. The smart contract maintains a constant using the following function: `x*y=k`. In this case `x = token0`, `y = token1`, `k = constant`. For each trade a certain amount of tokens are removed from the pool for an amount of the other token. During the execution of To maintain `k`, the balances update. So each trade will adjust the balances held by the smart contract therefor changing the price.
+Prices are determined by the amount of each token in a pool. The smart contract maintains a constant using the following function: `x*y=k`. In this case `x = token0`, `y = token1`, `k = constant`. For each trade a certain amount of tokens are removed from the pool for an amount of the other token. To maintain `k`, the balances held by the smart contract are adjusted during the execution of the trade, therefore changing the price.
 
 # Why is my swap failing or stuck?
 
