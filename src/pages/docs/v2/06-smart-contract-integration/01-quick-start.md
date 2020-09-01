@@ -79,8 +79,10 @@ touch contracts/LiquidityValueCalculator.sol
 This will be the interface of the contract we implement. Put it in `contracts/interfaces/ILiquidityValueCalculator.sol`.
 
 ```solidity
+pragma solidity =0.6.6;
+
 interface ILiquidityValueCalculator {
-    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) returns (uint tokenAAmount, uint tokenBAmount);
+    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) external returns (uint tokenAAmount, uint tokenBAmount);
 }
 ```
 
@@ -93,6 +95,8 @@ but since we need to unit test the contract it should be an argument. You can us
 when accessing this variable.
 
 ```solidity
+pragma solidity =0.6.6;
+
 import './interfaces/ILiquidityValueCalculator.sol';
 
 contract LiquidityValueCalculator is ILiquidityValueCalculator {
@@ -114,6 +118,8 @@ Let's put this in a separate function. To implement it, we must:
 The [`UniswapV2Library`](/docs/v2/smart-contracts/library/) has some helpful methods for this.
 
 ```solidity
+pragma solidity =0.6.6;
+
 import '@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol';
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
 
@@ -122,7 +128,7 @@ contract LiquidityValueCalculator is ILiquidityValueCalculator {
         IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
         totalSupply = pair.totalSupply();
         (uint reserves0, uint reserves1,) = pair.getReserves();
-        (reserveA, reserveB) = tokenA == pair.token0() ? (reserve0, reserve1) : (reserve1, reserve0);
+        (reserveA, reserveB) = tokenA == pair.token0() ? (reserves0, reserves1) : (reserves1, reserves0);
     } 
 }
 ```
@@ -130,6 +136,8 @@ contract LiquidityValueCalculator is ILiquidityValueCalculator {
 Finally we just need to compute the share value. We will leave that as an exercise to the reader.
 
 ```solidity
+pragma solidity =0.6.6;
+
 import './interfaces/ILiquidityValueCalculator.sol';
 import '@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol';
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
@@ -144,10 +152,10 @@ contract LiquidityValueCalculator is ILiquidityValueCalculator {
         IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factory, tokenA, tokenB));
         totalSupply = pair.totalSupply();
         (uint reserves0, uint reserves1,) = pair.getReserves();
-        (reserveA, reserveB) = tokenA == pair.token0() ? (reserve0, reserve1) : (reserve1, reserve0);
+        (reserveA, reserveB) = tokenA == pair.token0() ? (reserves0, reserves1) : (reserves1, reserves0);
     }
  
-    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) returns (uint tokenAAmount, uint tokenBAmount) {
+    function computeLiquidityShareValue(uint liquidity, address tokenA, address tokenB) external override returns (uint tokenAAmount, uint tokenBAmount) {
         revert('TODO');
     }
 }
