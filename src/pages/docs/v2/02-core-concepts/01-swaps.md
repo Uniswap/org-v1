@@ -18,7 +18,7 @@ Swaps in Uniswap are different from trades on traditional platforms. Uniswap doe
 
 As we learned in [Protocol Overview](/docs/v2/protocol-overview), each pair on Uniswap is actually underpinned by a liquidity pool. Liquidity pools are smart contracts that hold balances of two unique tokens and enforces rules around depositing and withdrawing them.
 
-This rule is the [constant product formula](/docs/v2/protocol-overview/glossary#constant-product-formula). When a token is deposited (sold), a proportional amount must be withdrawn to maintain the constant. Contrariwise, if a token is withdrawn (purchased), a proportional amount must instead be also deposited.
+This rule is the [constant product formula](/docs/v2/protocol-overview/glossary#constant-product-formula). When either token is withdrawn (purchased), a proportional amount of the other must be deposited (sold), in order to maintain the constant.
 
 ## Anatomy of a swap
 
