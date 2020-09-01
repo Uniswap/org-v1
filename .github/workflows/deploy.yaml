@@ -1,9 +1,12 @@
-name: Upload uniswap.org
+name: Deploy
 
 on:
-  push:
-    branches:
-      - master
+  # every morning
+  schedule:
+    - cron:  '0 12 * * 1-4'
+
+  # manual trigger
+  workflow_dispatch:
 
 jobs:
   deploy:
