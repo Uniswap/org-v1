@@ -53,7 +53,7 @@ Information about a pair. Includes references to each token within the pair, vol
 | factory              | UniswapFactory                        | reference to Uniswap factory entity                              |
 | token0               | Token                                 | reference to token0 as stored in pair contract                   |
 | token1               | Token                                 | reference to token1 as stored in pair contract                   |
-| reserve0             | BigDecima                             | reserve of token0                                                |
+| reserve0             | BigDecimal                            | reserve of token0                                                |
 | reserve1             | BigDecimal                            | reserve of token1                                                |
 | totalSupply          | BigDecimal                            | total supply of liquidity token distributed to LPs               |
 | reserveETH           | BigDecimal                            | total liquidity in pair stored as an amount of ETH               |
