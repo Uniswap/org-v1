@@ -36,7 +36,7 @@ Using a [app.uniswap.org](http://app.uniswap.org) iFrame integration, you can no
 
 Uniswap.info automatically shows all tokens on the Uniswap protocol as long as there is at least 0.1 ETH in liquidity. This means it can be used to trade tokens that are not shown on the default list of app.uniswap.org. We highly recommend you verify the address of any tokens traded.
 
-_If you’re interested in doing something similar on your site, you can [read more](https://docs.uniswap.io/frontend-integration/iframe) about how to embed app.uniswap.org)_
+_If you’re interested in doing something similar on your site, you can [read more](https://uniswap.org/docs/v2/interface-integration/iframe-integration/) about how to embed app.uniswap.org)_
 
 # Linking
 

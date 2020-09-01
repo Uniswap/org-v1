@@ -21,7 +21,7 @@ The `createExchange` function is used to deploy exchange contracts for ERC20 tok
 factory.methods.createExchange(tokenAddress).send()
 ```
 
-Once an exchange is created the address can be retrieved with [`getExchange`](connect-to-uniswap.md#get-exchange-address).
+Once an exchange is created the address can be retrieved with [`getExchange`](../connect-to-uniswap/#get-exchange-address).
 
 ## Exchange Reserves
 

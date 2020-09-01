@@ -56,4 +56,4 @@ Because Ethereum transactions occur in an adversarial environment, smart contrac
 
 The best way to protect against these attacks is to use an external price feed or "price oracle". The best "oracle" is simply _traders' off-chain observation of the current price_, which can be passed into the trade as a safety check. This strategy is best for situations _where users initiate trades on their own behalf_.
 
-However, when an off-chain price can't be used, an on-chain oracle should be used instead. Determining the best oracle for a given situation is a not part of this guid, but for more details on the Uniswap V2 approach to oracles, see <Link to='/docs/v2/core-concepts/oracles'>Oracles</Link>.
+However, when an off-chain price can't be used, an on-chain oracle should be used instead. Determining the best oracle for a given situation is a not part of this guide, but for more details on the Uniswap V2 approach to oracles, see <Link to='/docs/v2/core-concepts/oracles'>Oracles</Link>.

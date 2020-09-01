@@ -61,7 +61,7 @@ Returns the total number of pairs created through the factory so far.
 function feeTo() external view returns (address);
 ```
 
-See <Link to='/docs/v2/smart-contracts/architecture/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
+See <Link to='/docs/v2/advanced-topics/fees/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
 
 ## feeToSetter
 
