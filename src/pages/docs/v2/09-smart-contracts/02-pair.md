@@ -102,7 +102,7 @@ Returns the reserves of token0 and token1 used to price trades and distribute li
 function price0CumulativeLast() external view returns (uint);
 ```
 
-See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
+See <Link to='/docs/v2/core-concepts/oracles/'>Oracles</Link>.
 
 ## price1CumulativeLast
 
@@ -110,7 +110,7 @@ See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
 function price1CumulativeLast() external view returns (uint);
 ```
 
-See <Link to='/docs/v2/smart-contracts/architecture/#oracles'>Oracles</Link>.
+See <Link to='/docs/v2/core-concepts/oracles/'>Oracles</Link>.
 
 ## kLast
 
