@@ -83,7 +83,7 @@ See <Link to='/docs/v2/smart-contracts/factory/#address'>Pair Addresses</Link>.
 import { MINIMUM_LIQUIDITY } from '@uniswap/sdk'
 ```
 
-See <Link to='/docs/v2/smart-contracts/architecture/#minimum-liquidity'>Minimum Liquidity</Link>.
+See <Link to='/docs/v2/protocol-overview/smart-contracts/#minimum-liquidity'>Minimum Liquidity</Link>.
 
 # InsufficientReservesError
 
