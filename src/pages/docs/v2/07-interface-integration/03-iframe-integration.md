@@ -57,4 +57,4 @@ Linking to a ETH &lt;-&gt; DAI swap page would look something like this. To link
 />
 ```
 
-You can customize the selected page, selected custom tokens and more using URL query parameters. See <Link to='/docs/v2/frontend-integration/custom-linking'>Custom Linking</Link>.
+You can customize the selected page, selected custom tokens and more using URL query parameters. See <Link to='/docs/v2/interface-integration/custom-interface-linking'>Custom Linking</Link>.
