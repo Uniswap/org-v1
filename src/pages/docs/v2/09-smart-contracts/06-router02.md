@@ -31,6 +31,34 @@ function WETH() external pure returns (address);
 
 Returns the [canonical WETH address](https://blog.0xproject.com/canonical-weth-a9aa7d0279dd) on the Ethereum [mainnet](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2), or the [Ropsten](https://ropsten.etherscan.io/address/0xc778417e063141139fce010982780140aa0cd5ab), [Rinkeby](https://rinkeby.etherscan.io/address/0xc778417e063141139fce010982780140aa0cd5ab), [Görli](https://goerli.etherscan.io/address/0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6), or [Kovan](https://kovan.etherscan.io/address/0xd0a1e359811322d97991e03f863a0c30c2cf029c) testnets.
 
+## quote
+
+See <Link to='/docs/v2/smart-contracts/library#quote'>quote</Link>.
+
+## getAmountOut
+
+See <Link to='/docs/v2/smart-contracts/library#getamountout'>getAmountOut</Link>.
+
+## getAmountIn
+
+See <Link to='/docs/v2/smart-contracts/library#getamountin'>getAmountIn</Link>.
+
+## getAmountsOut
+
+```solidity
+function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts);
+```
+
+See <Link to='/docs/v2/smart-contracts/library#getamountsout'>getAmountsOut</Link>.
+
+## getAmountsIn
+
+```solidity
+function getAmountsIn(uint amountOut, address[] memory path) public view returns (uint[] memory amounts);
+```
+
+See <Link to='/docs/v2/smart-contracts/library#getamountsin'>getAmountsIn</Link>.
+
 # State-Changing Functions
 
 ## addLiquidity
@@ -498,34 +526,6 @@ Identical to [swapExactTokensForETH](#swapexacttokensforeth), but succeeds for t
 | path         | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to           | `address`            | Recipient of the ETH.                                                                                                                |
 | deadline     | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
-
-## quote
-
-See <Link to='/docs/v2/smart-contracts/library#quote'>quote</Link>.
-
-## getAmountOut
-
-See <Link to='/docs/v2/smart-contracts/library#getamountout'>getAmountOut</Link>.
-
-## getAmountIn
-
-See <Link to='/docs/v2/smart-contracts/library#getamountin'>getAmountIn</Link>.
-
-## getAmountsOut
-
-```solidity
-function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts);
-```
-
-See <Link to='/docs/v2/smart-contracts/library#getamountsout'>getAmountsOut</Link>.
-
-## getAmountsIn
-
-```solidity
-function getAmountsIn(uint amountOut, address[] memory path) public view returns (uint[] memory amounts);
-```
-
-See <Link to='/docs/v2/smart-contracts/library#getamountsin'>getAmountsIn</Link>.
 
 # Interface
 
