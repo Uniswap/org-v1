@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledTitle = styled.h1`
+const StyledTitle = styled.h2`
   font-size: 64px;
   margin: 2rem 0 4rem 0;
   pointer-events: none;

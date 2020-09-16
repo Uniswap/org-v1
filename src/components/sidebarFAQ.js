@@ -47,7 +47,7 @@ const StyledTOC = styled.ul`
   position: -webkit-sticky;
   position: sticky;
   align-self: flex-start;
-  top: 3rem;
+  top: 8rem;
   min-width: 160px;
   max-height: 70vh;
   font-size: 1rem;

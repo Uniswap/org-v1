@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 
 const StyledDocs = styled.div`
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 1fr 320px;
   justify-content: space-between;
   padding: 0 2rem;
   padding-bottom: 4rem;
@@ -33,6 +33,7 @@ const StyledDocs = styled.div`
     flex-direction: column;
     grid-template-columns: 1fr;
     margin-top: 0rem;
+    padding: 1rem;
   }
 `
 
@@ -140,6 +141,16 @@ const Docs = props => {
           )
         })}
       <StyledDocs id="docs-header">
+        <span>
+          <StyledPageTitle>
+            <h1 className={'title'} style={{ fontSize: '72px' }}>
+              {props.pageContext.frontmatter.title}
+            </h1>
+          </StyledPageTitle>
+          <span>
+            <StyledMDX>{props.children}</StyledMDX>
+          </span>
+        </span>
         {data ? (
           data.allMdx.edges
             .filter(({ node }) => {
@@ -151,12 +162,6 @@ const Docs = props => {
         ) : (
           <div style={{ width: '160px', height: '60px' }}></div>
         )}
-        <StyledMDX>
-          <StyledPageTitle>
-            <h1>{props.pageContext.frontmatter.title}</h1>
-          </StyledPageTitle>
-          {props.children}
-        </StyledMDX>
       </StyledDocs>
     </Layout>
   )

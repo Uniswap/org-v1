@@ -10,11 +10,11 @@ import Marquee3k from 'marquee3000'
 
 const MarqueeWrapper = styled.a`
   position: fixed;
-  z-index: 99;
+  z-index: 10000;
   bottom: 0px;
   left: 0px;
   width: 100%;
-  font-size: 1rem;
+
   @media (max-width: 375px) {
     font-size: 1.75rem;
   }
@@ -22,24 +22,31 @@ const MarqueeWrapper = styled.a`
     will-change: transform;
   }
   .ticker__copy {
-    background-color: black;
+    background-color: transparent;
+    color: ${({ theme }) => theme.textColor};
   }
 `
 
 const Stats = styled.span`
-  color: ${({ theme }) => theme.colors.white};
-  background-color: black;
+  color: ${({ theme }) => theme.textColor};
+  font-family: 'GT Haptik Regular';
+  background-color: transparent;
   padding: 0rem 0.5rem;
-  background-color: ${({ theme }) => theme.marqueeBG};
   align-items: center;
   text-transform: uppercase;
   letter-spacing: -0.03rem;
   white-space: pre;
   font-weight: 300;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 20px;
+  line-height: 145.23%;
 `
 
 const NP = styled.span`
   font-weight: 500;
+  background-color: transparent;
+  color: ${({ theme }) => theme.textColor};
 `
 
 const AnimatingEl = props => {
@@ -201,7 +208,7 @@ export default function Ticker() {
 
   return (
     initialized && (
-      <MarqueeWrapper className="ticker" data-speed="0.25" data-pausable="true">
+      <MarqueeWrapper href="https://uniswap.info/" className="ticker" data-speed="0.25" data-pausable="true">
         <div>
           {Array.from({ length: totalElements }).map((_, idx) => {
             return <AnimatingEl stat={UniStats.key((idx % 4) + 1)} key={idx} />

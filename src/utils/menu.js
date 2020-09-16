@@ -13,6 +13,11 @@ const menu = [
         description: 'Uniswap analytics and historical data'
       },
       {
+        name: 'Token Lists',
+        link: 'https://tokenlists.org/',
+        description: 'A new Ethereum token list standard.'
+      },
+      {
         name: 'Unisocks',
         link: 'https://unisocks.exchange/',
         description: 'Dynamically priced socks'
@@ -29,8 +34,7 @@ const menu = [
     sublinks: [
       {
         name: 'Documentation',
-        link: '/docs',
-        description: 'Comprehensive smart contract and frontend integration docs'
+        link: '/docs/v2'
       },
       { name: 'Github', link: 'https://github.com/Uniswap' },
       { name: 'Whitepaper', link: '/whitepaper.pdf' },
@@ -39,31 +43,47 @@ const menu = [
     ]
   },
   {
+    name: 'Governance',
+    sublinks: [
+      {
+        name: 'UNI Token',
+        link: '/blog/uni'
+      },
+      { name: 'Forum', link: 'https://discourse.com/uniswap' },
+      { name: 'Voting Portal', link: 'https://app.uniswap.org/vote/' }
+    ]
+  },
+  {
     name: 'Community',
     sublinks: [
-      { name: 'Twitter', link: 'https://twitter.com/UniswapProtocol' },
       { name: 'Discord', link: 'https://discord.gg/XErMcTq' },
+      { name: 'Twitter', link: 'https://twitter.com/UniswapProtocol' },
       { name: 'Reddit', link: 'https://www.reddit.com/r/Uniswap' }
     ]
   },
   {
-    name: 'Info',
+    name: 'About',
     sublinks: [
-      { name: 'Blog', link: '/blog', description: 'Stay up to date on Uniswap' },
+      {
+        name: 'Blog',
+        link: '/blog'
+      },
+      {
+        name: 'Info',
+        link: '/about'
+      },
       {
         name: 'FAQ',
         link: '/faq'
-      },
-      { name: 'About', link: '/about' },
-      {
-        name: 'Community',
-        link: '/about#community'
       },
       {
         name: 'Jobs',
         link: '/about#jobs'
       },
-      { name: 'Brand Assets', link: '/about#brand-assets' }
+      {
+        name: 'Logo & Brand',
+        link: '/about#brand'
+      }
     ]
   }
 ]

@@ -5,14 +5,13 @@ import styled from 'styled-components'
 
 const StyledMiniCards = styled.a`
   padding: 1.5rem;
-  color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
+  color: ${({ theme, outlined }) => (outlined ? theme.textColor : theme.textColor)};
   width: 300px;
   height: ${({ small }) => (small ? '160px' : '320px')};
   max-width: 450px;
   margin: 0.5rem;
   box-shadow: ${({ theme, outlined }) => (!outlined ? theme.shadows.huge : 'none')};
-  border: 1px solid ${({ outlined }) => (!outlined ? 'rgba(0, 0)' : 'rgba(255, 0, 122, 0.4)')};
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -30,6 +29,15 @@ const StyledMiniCards = styled.a`
     margin: 1rem 0;
     height: ${({ small }) => !small && '200px'};
     /* height: 200px; */
+  }
+
+  border: 1px solid ${({ theme }) => theme.colors.grey2};
+
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+
+  :hover {
+    transform: translate3d(2px, 2px, 10px);
+    border: 1px solid ${({ theme }) => theme.colors.grey3};
   }
 `
 const StyledCardBG = styled(Img)`
@@ -55,26 +63,14 @@ const StyledMiniCardDesc = styled.p`
   font-size: 1rem;
   line-height: 140%;
   font-weight: 400;
-  padding-bottom: 1.5rem;
-`
-
-const StyledArrow = styled.span`
-  position: absolute;
-  left: 1.5rem;
-  bottom: 1rem;
 `
 
 const MiniCard = props => {
   return (
-    <StyledMiniCards
-      {...props}
-      style={{ backgroundColor: props.backgroundColor, color: props.color }}
-      href={props.href}
-    >
+    <StyledMiniCards {...props} outlined={true} href={props.href}>
       {props.image && <StyledCardBG fluid={props.image} />}
-      <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
+      <StyledMiniCardHeader>{props.title}</StyledMiniCardHeader>
       <StyledMiniCardDesc>{props.desc}</StyledMiniCardDesc>
-      <StyledArrow>{'->'}</StyledArrow>
     </StyledMiniCards>
   )
 }
