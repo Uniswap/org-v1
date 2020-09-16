@@ -6,7 +6,6 @@ const StyledInfo = styled.div`
   color: ${({ theme }) => theme.textColor};
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.yellow2};
-  color: #5a3800;
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
   font-weight: 350;

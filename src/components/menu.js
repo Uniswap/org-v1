@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { Link } from 'gatsby'
 
 import styled from 'styled-components'
-import DropdownArrow from './dropdownArrow.js'
 
 import { useMediaQuery } from '@react-hook/media-query'
 
@@ -24,7 +22,9 @@ const StyledMenu = styled.button`
   border: none;
   text-align: left;
   list-style: none;
-  padding-right: 2rem;
+  font-family: 'GT Haptik Regular';
+
+  /* padding-right: 2rem; */
   background: none;
   @media (max-width: 960px) {
     font-size: 1.5rem;
@@ -36,14 +36,14 @@ const StyledMenu = styled.button`
   }
 
   :hover {
-    color: ${({ theme }) => theme.colors.link};
+    color: ${({ theme }) => theme.colors.grey7};
     @media (max-width: 960px) {
       color: ${({ theme }) => theme.textColor};
     }
   }
   :focus {
     outline: none;
-    color: ${({ theme }) => theme.colors.link};
+    /* color: ${({ theme }) => theme.colors.link}; */
     @media (max-width: 960px) {
       color: ${({ theme }) => theme.textColor};
     }
@@ -51,29 +51,29 @@ const StyledMenu = styled.button`
 `
 
 const MenuFlyout = styled.span`
-  /* font-size: 1.125rem; */
-  background-color: ${({ theme }) => theme.inputBackground};
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 2.5rem;
+  top: 2rem;
   left: -1rem;
-  min-width: 196px;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  background-color: ${({ theme }) => theme.menuBG};
-  /* backdrop-filter: blur(20px); */
+  min-width: 256px;
+  width: 100%;
+  width: fit-content;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.04);
-  z-index: 4;
+  z-index: 999;
+  backdrop-filter: blur(120px);
+  background-color: ${({ theme }) => theme.menuBG};
 
   p {
     padding: 0px;
   }
 
   @media (max-width: 960px) {
-    font-size: 1rem;
+    font-size: 1.125rem;
     position: initial;
     box-shadow: none;
     top: unset;
@@ -90,11 +90,22 @@ const StyledMenuTitle = styled.span`
   margin: 0px;
   border-radius: 0.5rem;
   font-weight: 400;
+  font-family: 'GT Haptik Regular';
+  width: fit-content;
+  font-size: 16px;
+
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.link};
+  :hover {
+    color: ${({ theme }) => theme.colors.grey7};
+  }
   @media (max-width: 960px) {
     margin-bottom: 1rem;
     user-select: none;
+  }
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+
+  :hover {
+    transform: translate3d(2px, 2px, 10px);
   }
 `
 
@@ -102,26 +113,17 @@ const StyledMenuItem = styled.span`
   text-decoration: none;
   margin: 0px;
   border-radius: 0.5rem;
+  font-family: 'GT Haptik Regular';
+  width: fit-content;
+
   :hover {
+    color: ${({ theme }) => theme.colors.grey7};
     border-radius: 8px;
-    color: ${({ theme }) => theme.colors.link};
-    p {
-      color: ${({ theme }) => theme.colors.link};
-    }
   }
   @media (max-width: 960px) {
   }
 `
 
-const StyledLink = styled(Link)`
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  margin: 0.25rem 0;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-`
 const StyledExternalLink = styled.a`
   margin: 0;
   padding: 0;
@@ -130,6 +132,11 @@ const StyledExternalLink = styled.a`
   margin: 0.25rem 0;
   width: 100%;
   cursor: pointer;
+  :hover {
+    * {
+      color: ${({ theme }) => theme.colors.grey5};
+    }
+  }
 `
 
 const StyledTitle = styled.p`
@@ -141,8 +148,14 @@ const StyledTitle = styled.p`
   padding: 0;
   padding: 0.125rem 0.5rem 0px 0.5rem;
   color: ${({ theme }) => theme.colors.grey9};
+  width: fit-content;
   @media (max-width: 960px) {
     padding: 0;
+  }
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+
+  :hover {
+    transform: translate3d(2px, 2px, 10px);
   }
 `
 
@@ -151,14 +164,11 @@ const StyledDescription = styled.p`
   margin: 0;
   padding: 0;
   padding: 0px 0.5rem 0.25rem 0.5rem;
+  width: fit-content;
   color: ${({ theme }) => theme.colors.grey6};
   @media (max-width: 960px) {
     padding: 0;
   }
-`
-
-const StyledDropdownArrow = styled(DropdownArrow)`
-  opacity: 0.4;
 `
 
 export default function Menu(props) {
@@ -209,7 +219,6 @@ export default function Menu(props) {
         isOpen={isOpen}
       >
         <span style={{ marginRight: '0.25rem' }}>{props.data.name} </span>
-        {!matches && <StyledDropdownArrow />}
         {isOpen ? (
           <MenuFlyout>
             {props.data.sublinks.map((item, index) => {
@@ -220,11 +229,6 @@ export default function Menu(props) {
                       <StyledTitle>{item.name}</StyledTitle>
                       {item.description && <StyledDescription>{item.description}</StyledDescription>}
                     </StyledExternalLink>
-                  ) : item.link === '/about#brand-assets' ? null : item.link.split('/')[0] === '' ? (
-                    <StyledLink to={item.link}>
-                      <StyledTitle>{item.name}</StyledTitle>
-                      {item.description && <StyledDescription>{item.description}</StyledDescription>}
-                    </StyledLink>
                   ) : (
                     <StyledExternalLink href={item.link}>
                       <StyledTitle>{item.name}</StyledTitle>

@@ -2,7 +2,6 @@ import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
-// import { ThemeManagerContext } from '../styles/themeManager'
 
 function Dropdown(props) {
   const items = props.links.map(node => {
@@ -25,17 +24,19 @@ function Dropdown(props) {
 }
 
 const StyledFooter = styled.footer`
-  margin-bottom: 7rem;
   display: flex;
   justify-content: space-between;
-  color: ${({ theme }) => theme.colors.link};
+  color: ${({ theme }) => theme.textColor};
   position: relative;
   padding: 0 2rem;
+  margin: 0 4rem 7rem 4rem;
+  font-family: 'GT Haptik Regular';
 
   @media (max-width: 960px) {
     margin-bottom: 2rem;
     flex-direction: column;
     padding: 0rem 1rem;
+    display: NONE;
   }
 `
 
@@ -66,7 +67,7 @@ const StyledFooterSectionNav = styled.section`
   flex-direction: column;
   align-items: flex-start;
   margin: 0;
-  padding-left: 5rem;
+  padding-right: 5rem;
   @media (max-width: 960px) {
     padding-left: 0rem;
     margin-bottom: 0rem;
@@ -91,7 +92,7 @@ const StyledFooterLink = styled.li`
   margin-bottom: 1rem;
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.link};
+    color: ${({ theme }) => theme.textColor};
   }
   :hover {
     a {
@@ -99,8 +100,6 @@ const StyledFooterLink = styled.li`
     }
   }
 `
-
-const Commit = styled.div``
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -123,43 +122,23 @@ const Footer = () => {
     }
   `)
 
-  // const themeContext = useContext(ThemeManagerContext)
-
   return (
     <StyledFooter>
-      <StyledSection>
-        <StyledFooterSection>
-          <EmailSection />
-          <Commit>
-            Deployed commit:{' '}
-            <code>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`${data.site.siteMetadata.repository}/commit/${data.site.siteMetadata.commit}`}
-              >
-                {data.site.siteMetadata.commit.substring(0, 7)}
-              </a>
-            </code>
-          </Commit>
-          <p>© 2020 Uniswap</p>
-          {/* <div>
-            <label>
-              <input type="checkbox" onChange={() => themeContext.toggleDark()} checked={themeContext.isDark} /> Dark
-              mode
-            </label>
-          </div> */}
-        </StyledFooterSection>
-      </StyledSection>
       <StyledSection>
         {data.site.siteMetadata.menulinks.map(item => {
           return (
             <StyledFooterSectionNav key={item.name}>
-              <h4 style={{ fontWeight: 400, marginBottom: '1rem' }}>{item.name}</h4>
+              <h4 style={{ fontWeight: 600, marginBottom: '1rem' }}>{item.name}</h4>
               <Dropdown links={item.sublinks} />
             </StyledFooterSectionNav>
           )
         })}
+      </StyledSection>
+      <StyledSection>
+        <StyledFooterSection>
+          <EmailSection />
+          <p>© 2020 Uniswap</p>
+        </StyledFooterSection>
       </StyledSection>
     </StyledFooter>
   )
@@ -169,6 +148,7 @@ export default Footer
 const EmailRow = styled.form`
   display: flex;
   flex-direction: row;
+  color: ${({ theme }) => theme.textColor};
 `
 
 const InputButton = styled.input`
@@ -223,7 +203,7 @@ const StyledInput = styled.input`
 `
 
 const StyledGoal = styled.div`
-  color: ${({ theme }) => theme.colors.link};
+  color: ${({ theme }) => theme.textColor};
   p {
     margin-bottom: 0.5rem;
     font-weight: 400;
@@ -255,7 +235,7 @@ const EmailSection = () => {
           onChange={val => setEmail(val.target.value)}
         />
         <div>
-          <InputButton type="submit" value="->" name="subscribe" id="mc-embedded-subscribe" />
+          <InputButton type="submit" value="→" name="subscribe" id="mc-embedded-subscribe" />
         </div>
       </EmailRow>
     </StyledGoal>

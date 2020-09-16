@@ -3,7 +3,6 @@ import Layout from '.'
 import styled from 'styled-components'
 import Moment from 'react-moment'
 import { graphql, useStaticQuery, Link } from 'gatsby'
-import { Twitter, Facebook } from 'react-social-sharing'
 
 import SEO from '../components/seo'
 import BG from '../components/bg'
@@ -13,12 +12,12 @@ import '../styles/prism-github.css'
 const StyledBlog = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  padding: 0 2rem;
-
+  padding: 2rem 5rem;
   margin-bottom: 2rem;
+  @media (max-width: 960px) {
+    padding: 1rem;
+  }
 `
 
 const StyledMDX = styled.div`
@@ -26,6 +25,7 @@ const StyledMDX = styled.div`
   max-width: 650px;
   padding: 0;
   margin-bottom: 3rem;
+  margin-left: 3rem;
   a {
     color: ${({ theme }) => theme.colors.link};
   }
@@ -39,6 +39,7 @@ const StyledMDX = styled.div`
   @media (max-width: 960px) {
     min-width: 100%;
     max-width: 100%;
+    margin-left: 0;
   }
 
   h1 {
@@ -51,6 +52,14 @@ const StyledMDX = styled.div`
     margin-top: unset;
     font-style: italic;
   }
+  img {
+    border-radius: 12px;
+    background-color: transparent;
+  }
+  .gatsby-resp-image-background-image {
+    border-radius: 12px;
+    background-color: transparent;
+  }
 `
 
 const PostHeader = styled.div`
@@ -58,10 +67,7 @@ const PostHeader = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  align-items: center;
   min-width: 550px;
-  max-width: 650px;
   padding: 4rem 0 5rem 0;
   @media (max-width: 960px) {
     min-width: 100%;
@@ -72,9 +78,9 @@ const PostHeader = styled.div`
 const PostMetaData = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
   font-size: 1rem;
   margin-bottom: 1rem;
+  opacity: 0.6;
 
   width: 100%;
   @media (max-width: 960px) {
@@ -91,9 +97,7 @@ const PostTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
-  text-align: center;
 
-  /* text-align: center; */
   @media (max-width: 960px) {
     width: 100%;
     font-size: 4rem;
@@ -124,11 +128,10 @@ const StyledDocsNavWrapper = styled.ul`
   justify-content: space-between;
   list-style: none;
   margin: 0;
-  margin-bottom: 2rem;  
+  margin-bottom: 2rem;
   padding-top: 3rem;
 
   padding-bottom: 3rem;
-  /* border-top: 1px solid ${({ theme }) => theme.colors.grey2}; */
 
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   width: 100%;
@@ -220,21 +223,6 @@ const Blog = props => {
               {props.pageContext.frontmatter.date}
             </PostDate>
           </PostMetaData>
-          <div>
-            <Twitter
-              style={{ padding: '0.5em 0.5em' }}
-              solid
-              small
-              message={props.pageContext.frontmatter.title}
-              link={'https://uniswap.org' + props.location.pathname}
-            />
-            <Facebook
-              style={{ padding: '0.5em 0.5em' }}
-              solid
-              small
-              link={'https://uniswap.org' + props.location.pathname}
-            />
-          </div>
         </PostHeader>
 
         <StyledMDX>{props.children}</StyledMDX>

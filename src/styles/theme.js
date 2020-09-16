@@ -25,12 +25,17 @@ export const theme = darkMode => ({
   invertedTextColor: darkMode ? '#010101' : white,
   greyText: darkMode ? white : '#6C7284',
 
+  heroBG: darkMode
+    ? 'radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%)'
+    : 'radial-gradient(76.02% 75.41% at 1.84% 0%, #FF3696 0%, #FFD8EB 100%);',
+  invertImage: darkMode ? 'filter: invert(0);' : 'filter: invert(1);',
+
   // for setting css on <html>
-  backgroundColor: darkMode ? '#191B1F' : '#FFF',
+  backgroundColor: darkMode ? '#0f1013' : '#FFF',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
-  cardBG: darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.02)',
-  menuBG: darkMode ? 'rgba(10,10,10, 0.8)' : 'rgba(255, 255, 255, 0.95)',
+  cardBG: darkMode ? 'rgba(0, 0, 0, .9)' : 'rgba(236, 236, 236, .9)',
+  menuBG: darkMode ? 'black' : 'white',
   marqueeBG: darkMode ? '#010101' : '#010101',
 
   inputBackground: darkMode ? '#202124' : white,
@@ -55,15 +60,21 @@ export const theme = darkMode => ({
     blue8: darkMode ? '#C4D9F8' : '#0E2F5E',
     blue9: darkMode ? '#C4D9F8' : '#191B1F',
 
-    grey1: darkMode ? '#191B1F' : '#F7F8FA',
-    grey2: darkMode ? '#2C2F36' : '#EDEEF2',
-    grey3: darkMode ? '#40444F' : '#CED0D9',
-    grey4: darkMode ? '#565A69' : '#888D9B',
-    grey5: darkMode ? '#6C7284' : '#6C7284',
+    // grey1: darkMode ? '#191B1F' : '#F7F8FA',
+    // grey2: darkMode ? '#2C2F36' : '#EDEEF2',
+    // grey3: darkMode ? '#40444F' : '#CED0D9',
+    // grey4: darkMode ? '#565A69' : '#888D9B',
+    // grey5: darkMode ? '#6C7284' : '#6C7284',
     grey6: darkMode ? '#888D9B' : '#565A69',
     grey7: darkMode ? '#CED0D9' : '#40444F',
     grey8: darkMode ? '#EDEEF2' : '#2C2F36',
     grey9: darkMode ? '#F7F8FA' : '#191B1F',
+
+    grey1: darkMode ? '#212429' : '#FFFFFF',
+    grey2: darkMode ? '#2C2F36' : '#F7F8FA',
+    grey3: darkMode ? '#40444F' : '#EDEEF2',
+    grey4: darkMode ? '#565A69' : '#CED0D9',
+    grey5: darkMode ? '#6C7284' : '#888D9B',
 
     white: '#FFFFFF',
     black: '#000000',
@@ -75,8 +86,8 @@ export const theme = darkMode => ({
     pink2: '#FF8EC4',
     pink3: '#FFD7EA',
 
-    yellow1: darkMode ? '#F3BE1E95' : '#F3BE1E',
-    yellow2: darkMode ? '#FFF4D2' : '#F7F2E3',
+    yellow1: darkMode ? '#F3BE1E60' : '#F3BE1E60',
+    yellow2: darkMode ? '#FFF4D260' : '#F7F2E360',
 
     red1: '#FF6871',
 
@@ -108,6 +119,8 @@ export const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
     box-sizing: inherit;
   }
+
+  
   
     html {
     font-size: 16px;
@@ -132,6 +145,8 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     font-family: "Inter Roman", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on;
+
     line-height: 1.55;
     max-width: 1440px;
     width: 100vw;
@@ -155,8 +170,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  .title{
+    letter-spacing: -0.05em;
+    font-family: 'Inferi Light','Times New Roman',serif;
+    font-size: 72px;
+  }
+
   h1 {
-    font-family: "Inferi Normal";
+    font-family: "GT Haptik Regular", 'Inferi Light','Times New Roman',serif;
     margin-top: 1rem ;
     font-size: 1.875rem;
     font-weight: 500;
@@ -165,18 +186,20 @@ export const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: 1.5rem;
     font-weight: 400;
-    font-family: "Inferi Book";
+    font-family: "GT Haptik Regular";
   }
 
   h3 {
     font-weight: 400;
-    font-family: "Inferi Book";
+    font-family: "GT Haptik Regular";
   }
 
 
 
   #gatsby-focus-wrapper{
     min-height: 100vh;
+    width: 100%;
+    position: relative;
   }
   a{
     color: ${({ theme }) => theme.colors.link};
@@ -209,7 +232,4 @@ export const GlobalStyle = createGlobalStyle`
       min-width: 300px !important;
     }
   }
-
-
-
 `

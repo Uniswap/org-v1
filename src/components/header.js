@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import Menu from './menu'
 
 import Uni from '../images/uni.inline.svg'
-import Wordmark from '../images/wordmark.inline.svg'
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 
@@ -23,6 +22,8 @@ const StyledHeader = styled.header`
   padding: 2rem;
   width: 100%;
   z-index: 3;
+  position: sticky;
+  top: 0;
   @media (max-width: 960px) {
     padding: 1.5rem 2rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
@@ -33,6 +34,8 @@ const StyledNav = styled.nav`
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 24px;
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     position: fixed;
@@ -56,37 +59,23 @@ const StyledNavTitleWrapper = styled.nav`
   align-items: center;
 `
 
-const StyledNavTitle = styled(Link)`
-  font-family: 'Inter', sans-serif;
-  color: ${({ theme }) => theme.colors.link};
-  margin-left: 0.35rem;
-  margin-top: 12px;
-  z-index: 999;
-  text-decoration: none;
-  opacity: 0.4;
-  vertical-align: bottom;
-  font-weight: 500;
-
-  :hover {
-    opacity: 1;
-  }
-`
-
 const StyledTradeLink = styled.a`
   padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.colors.link};
+  background-color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   color: ${({ theme }) => theme.invertedTextColor};
-  border-radius: 12px;
-  margin-left: 1.5rem;
+  border-radius: 8px;
   display: inline-block;
-  transform: scale(0.98);
   transition: transform 0.25s ease;
   font-weight: 400;
+  font-family: 'GT Haptik Regular';
+
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 
   :hover {
-    transform: scale(1);
+    transform: translate3d(2px, 2px, 10px);
   }
+
   @media (max-width: 960px) {
     display: none;
   }
@@ -95,7 +84,10 @@ const StyledTradeLink = styled.a`
 const StyledButton = styled.button`
   border: none;
   background-color: rgba(0, 0, 0, 0);
-  color: ${({ theme }) => theme.colors.link};
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  color: ${({ theme }) => theme.textColor};
   :focus {
     outline: none;
   }
@@ -136,11 +128,11 @@ const MenuToggle = styled.button`
 
 const StyledUni = styled(Uni)`
   path {
-    fill: ${({ theme }) => theme.colors.link};
+    fill: ${({ theme }) => theme.textColor};
   }
   margin: 0;
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   margin-right: 0.35rem;
   margin-top: -4px;
   transform: rotate(0deg);
@@ -150,25 +142,40 @@ const StyledUni = styled(Uni)`
   }
 `
 
-const StyledWordmark = styled(Wordmark)`
-  path {
-    fill: ${({ theme }) => theme.colors.link};
-  }
-  margin: 0;
-  margin-top: 6px;
-  /* height: 23px; */
-  width: 110px;
-`
-
 const StyledCloseIcon = styled(CloseIcon)`
   path {
-    stroke: ${({ theme }) => theme.colors.link};
+    stroke: ${({ theme }) => theme.textColor};
   }
 `
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
-    stroke: ${({ theme }) => theme.colors.link};
+    stroke: ${({ theme }) => theme.textColor};
+  }
+`
+
+const StyledLink = styled(Link)`
+  font-family: 'GT Haptik Regular';
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  margin: 0.25rem 0;
+  display: block;
+  width: fit-content;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  color: ${({ theme }) => theme.textColor};
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+
+  :hover {
+    transform: translate3d(2px, 2px, 10px);
+  }
+`
+
+const HideSmall = styled.span`
+  @media (max-width: 960px) {
+    display: none;
   }
 `
 
@@ -234,30 +241,22 @@ const Header = props => {
           }}
         >
           <StyledUni />
-
-          <StyledWordmark />
         </StyledHomeLink>
-        {props.path && props.path !== '/' && props.path !== '' && (
-          <>
-            <StyledNavTitle to={'/' + props.path.split('/')[1]}>/ {props.path.split('/')[1]}</StyledNavTitle>
-          </>
-        )}
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
       </MenuToggle>
       <StyledNav ref={node} open={isMenuOpen}>
-        {data.site.siteMetadata.menulinks
-          .filter(item => {
-            return item.name !== 'Community'
-          })
-          .map(item => {
-            return <Menu key={item.name} data={item} />
-          })}
-        <StyledButton type="button" onClick={toggleDarkMode}>
-          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-        </StyledButton>
-        {props.path !== undefined && <StyledTradeLink href="https://app.uniswap.org/">Launch App</StyledTradeLink>}
+        {data.site.siteMetadata.menulinks.map(item => {
+          return <Menu key={item.name} data={item} />
+        })}
+        <HideSmall>
+          <StyledButton type="button" onClick={toggleDarkMode}>
+            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </StyledButton>
+        </HideSmall>
+
+        {props.path !== undefined && <StyledTradeLink href="https://app.uniswap.org/">Launch App ↗</StyledTradeLink>}
       </StyledNav>
     </StyledHeader>
   )

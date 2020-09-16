@@ -7,37 +7,57 @@ import Layout from '../layouts'
 import BG from '../components/bg'
 import SEO from '../components/seo'
 
+const StyledBlog = styled.div`
+  padding: 0 2rem;
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+  padding-top: 2rem;
+
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    margin-top: 0rem;
+  }
+`
+
 const PostsWrapper = styled.div`
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 4rem;
-  padding: 2rem;
-  margin-bottom: 4rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+
+  max-width: 1200px;
+  margin: 0 auto;
 `
 
-const Posts = styled.div`
+const PageTitleWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  /* align-items: baseline; */
+  /* gap: 36px; */
+  padding-bottom: 4rem;
+`
+
+export const Posts = styled.div`
   position: relative;
   padding: 2rem;
-  margin: 0.5rem;
-  width: 100%;
-  max-width: 960px;
-  box-shadow: ${({ theme, index }) => (index === 0 ? theme.shadows.huge : 'none')};
-  border-radius: 20px;
+  width: ${({ wide }) => (wide === 0 ? '100%' : '32%')};
+  border-radius: 8px;
   text-decoration: none;
+
+  border: 1px solid ${({ theme }) => theme.colors.grey1};
   background-color: ${({ theme }) => theme.cardBG};
-  /* border: 1px solid ${({ theme, index }) => (index === 0 ? 'none' : theme.colors.grey2)}; */
+  backdrop-filter: blur(2px);
+
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 
   :hover {
-    transform: scale(1.02);
+    transform: translate3d(2px, 2px, 10px);
+    border: 1px solid ${({ theme }) => theme.colors.grey3};
   }
-
-  transform: scale(1);
-  transition: transform 0.25s ease;
-
   h1 {
     max-width: 960px;
   }
@@ -51,38 +71,46 @@ const Posts = styled.div`
   p:last-child {
     margin-bottom: 0;
   }
+
   @media (max-width: 960px) {
     width: 100%;
   }
 `
 
-const PostLinkWrapper = styled(Link)`
+export const PostLinkWrapper = styled(Link)`
   display: flex;
-  flex-direction: row;
   flex-wrap: no-wrap;
+  flex-direction: ${({ wide }) => (wide === 0 ? 'row' : 'column-reverse')};
+  justify-content: ${({ wide }) => (wide === 0 ? 'flex-start' : 'space-between')};
+  gap: 36px;
+  align-items: ${({ wide }) => (wide === 0 ? 'center' : 'flex-start')};
 `
 
-const PostTitleWrapper = styled.div`
-  min-width: 150px;
-  h1 {
-    /* font-family: 'Times Ten LT Std', 'Times New Roman', serif; */
+export const PostTitleWrapper = styled.div`
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  h2 {
+    font-size: 36px;
   }
 `
 
-const PostMetaData = styled.p`
+export const PostMetaData = styled.p`
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: ${({ theme }) => theme.colors.grey6};
   width: 100%;
+  justify-self: flex-end;
   p {
     width: initial;
   }
 `
 
-const StyledImage = styled(Img)`
+export const StyledImage = styled(Img)`
   width: 100%;
   border-radius: 12px;
-  margin-left: 2rem;
+  height: 250px;
   box-shadow: ${({ theme }) => theme.shadows.huge};
   @media (max-width: 960px) {
     display: none;
@@ -90,8 +118,8 @@ const StyledImage = styled(Img)`
   }
 `
 
-const NewPill = styled.p`
-  color: ${({ theme }) => theme.invertedTextColor};
+export const NewPill = styled.p`
+  color: ${({ theme }) => theme.white};
   background-color: ${({ theme }) => theme.colors.link};
   padding: 0rem 0.5rem;
   position: absolute;
@@ -156,32 +184,38 @@ const Blog = props => {
       <BG />
       <SEO title="Uniswap Blog" path={props.location.pathname} />
 
-      <PostsWrapper>
-        <h1>Latest Posts</h1>
-        <a style={{ paddingBottom: '1rem' }} href="/rss.xml" target="_blank">
-          Subscribe
-        </a>
+      <StyledBlog>
+        <PageTitleWrapper>
+          <h2 style={{ fontSize: '56px' }}>Uniswap Blog</h2>
+          <p>
+            News, stories, and announcements from Uniswap.{' '}
+            <a style={{ paddingBottom: '1rem' }} href="/rss.xml" target="_blank">
+              Subscribe
+            </a>
+          </p>
+        </PageTitleWrapper>
+        <PostsWrapper>
+          {data.allMdx.edges.map(({ node }, index) => {
+            return (
+              <Posts wide={index} key={node.id}>
+                <PostLinkWrapper wide={index} to={node.fields.slug}>
+                  {index === 0 && <NewPill>New</NewPill>}
+                  <PostTitleWrapper>
+                    <h2 style={{ marginTop: '0px' }}>{node.frontmatter.title}</h2>
 
-        {data.allMdx.edges.map(({ node }, index) => {
-          return (
-            <Posts wide={index} key={node.id}>
-              <PostLinkWrapper to={node.fields.slug}>
-                {index === 0 && <NewPill>New</NewPill>}
-                <PostTitleWrapper>
-                  <h1 style={{ marginTop: '0px' }}>{node.frontmatter.title}</h1>
+                    {node.frontmatter.previewText ? <p>{node.frontmatter.previewText} </p> : ''}
 
-                  {node.frontmatter.previewText ? <p>{node.frontmatter.previewText} </p> : ''}
-
-                  <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
-                </PostTitleWrapper>
-                {node.frontmatter.featuredImage && (
-                  <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
-                )}
-              </PostLinkWrapper>
-            </Posts>
-          )
-        })}
-      </PostsWrapper>
+                    <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
+                  </PostTitleWrapper>
+                  {node.frontmatter.featuredImage && (
+                    <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
+                  )}
+                </PostLinkWrapper>
+              </Posts>
+            )
+          })}
+        </PostsWrapper>
+      </StyledBlog>
     </Layout>
   )
 }

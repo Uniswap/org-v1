@@ -168,7 +168,7 @@ textarea {
   -webkit-appearance: none;
 }
 ::-webkit-input-placeholder {
-  color: inherit;
+  /* color: inherit; */
   opacity: 0.54;
 }
 ::-webkit-file-upload-button {
