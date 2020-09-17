@@ -109,7 +109,7 @@ An initial liquidity mining program will go live September 18 2020 12:00am UTC. 
 
 - 83,333.33 UNI per pool per day
 
-- 54 UNI per pool per block
+- 13.5 UNI UNI per pool per block
 
 These UNI are not subject to vesting or lock up.
 
