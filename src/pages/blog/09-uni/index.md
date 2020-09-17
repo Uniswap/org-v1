@@ -50,7 +50,7 @@ In doing so, **UNI officially enshrines Uniswap as publicly-owned and self-susta
 
 - .069% to advisors with 4-year vesting `6,899,000 UNI`
 
-A **perpetual inflation rate of 2% per year will start after 4 years** , ensuring continued participation and contribution to Uniswap at the expense of passive UNI holders.
+A **perpetual inflation rate of 2% per year will start after 4 years**, ensuring continued participation and contribution to Uniswap at the expense of passive UNI holders.
 
 ![](Genesis.png)
 
@@ -60,7 +60,7 @@ A **perpetual inflation rate of 2% per year will start after 4 years** , ensurin
 
 Uniswap owes its success to the thousands of community members that have joined its journey over the past two years. These early community members will naturally serve as responsible stewards of Uniswap.
 
-15% of UNI _`150,000,000 UNI`_ can immediately be claimed by **historical liquidity providers, users, and SOCKS redeemers/holders** based on a snapshot endingSeptember 1, 2020, at 12:00 am UTC.
+15% of UNI _`150,000,000 UNI`_ can immediately be claimed by **historical liquidity providers, users, and SOCKS redeemers/holders** based on a snapshot ending September 1, 2020, at 12:00 am UTC.
 
 _4.92% pro-rata to all_ _ **49,192** _ _historical LPs `49,166,400 UNI`_
 
@@ -80,7 +80,7 @@ _0.02% to_ _ **220 SOCKS** _ _holders/redeemers `220,000 UNI`_
 
 ![](Release_Schedule.png)
 
-With 15 **%** of tokens already available to be claimed by historical users and liquidity providers, the governance treasury will retain 43% [430,000,000 UNI] of UNI supply to distribute on an ongoing basis through **contributor grants, community initiatives, liquidity mining** , and other programs.
+With 15 **%** of tokens already available to be claimed by historical users and liquidity providers, the governance treasury will retain 43% [430,000,000 UNI] of UNI supply to distribute on an ongoing basis through **contributor grants, community initiatives, liquidity mining**, and other programs.
 
 UNI will vest to the governance treasury on a continuous basis according to the following schedule. Governance will have access to vested UNI starting October 18 2020 12:00am UTC.
 
@@ -191,4 +191,4 @@ Timelock:
 
 [https://etherscan.io/address/0x1a9c8182c09f50c8318d769245bea52c32be35bc](https://etherscan.io/address/0x1a9c8182c09f50c8318d769245bea52c32be35bc)
 
-P.S. [Uniswap Token icon](logo.uniswap.org)
+P.S. [Uniswap Token icon](https://logo.uniswap.org)

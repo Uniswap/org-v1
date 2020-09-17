@@ -263,10 +263,6 @@ const About = props => {
               Uniswap empowers developers, liquidity providers and traders to participate in a financial marketplace
               that is open and accessible to all.
             </p>
-            <p>
-              The Uniswap protocol is developed by a small team in Brooklyn, NY alongside collaborators all across the
-              world.
-            </p>
             <p>We are committed to open source software and building on the decentralized web.</p>
 
             <div style={{ display: 'flex', width: '100%', gap: '1rem', margin: 0 }}>
@@ -288,8 +284,8 @@ const About = props => {
             </p>
 
             <p>
-              As a small team <strong>we are unable to offer support</strong> in most cases but encourage anyone facing
-              issues with their wallet, transaction or Uniswap related question to join our active community discord.
+              We encourage anyone facing issues with their wallet, transaction or Uniswap related question to join our
+              active community discord.
             </p>
 
             <div style={{ display: 'flex', width: '100%', gap: '1rem', margin: 0 }}>
