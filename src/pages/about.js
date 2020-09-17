@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import styled from 'styled-components'
 
@@ -159,7 +159,6 @@ const About = props => {
   dayjs.extend(utc)
   const utcCurrentTime = dayjs()
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()
-  const [updateInitialized] = useState(false)
 
   const { data: blockData } = useQuery(GET_BLOCK, {
     client: blockClient,
@@ -168,7 +167,7 @@ const About = props => {
     }
   })
   const oneDayBackBlock = blockData?.blocks?.[0]?.number
-  const { loading, data } = useQuery(APOLLO_QUERY, { pollInterval: 10000, client: client })
+  const { data } = useQuery(APOLLO_QUERY, { pollInterval: 10000, client: client })
 
   const [oneDayResult, setOnedayResult] = useState()
 
@@ -227,12 +226,6 @@ const About = props => {
       '<small> Uni ETH Price </small>'
     ]
   }
-
-  useLayoutEffect(() => {
-    if (loading === false && UniStats.volume !== undefined) {
-      updateInitialized(true)
-    }
-  }, [loading, UniStats.volume])
 
   return (
     <Layout path={props.location.pathname}>
