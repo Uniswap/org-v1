@@ -22,7 +22,7 @@ All time volume in USD, total liquidity in USD, all time transaction count.
    totalLiquidityUSD
    txCount
  }
-}`
+}
 ```
 
 #### Global Historical lookup
@@ -36,7 +36,7 @@ To get a snapshot of past state, use The Graph's block query feature and query a
    totalLiquidityUSD
    txCount
  }
-}`
+}
 ```
 
 ### Pair Data
@@ -70,7 +70,7 @@ Fetch a snapshot of the current state of the pair with common values. This examp
      txCount
 
  }
-}`
+}
 ```
 
 #### All pairs in Uniswap
@@ -272,5 +272,4 @@ You can use the Bundle entity to query current USD price of ETH in Uniswap based
    ethPrice
  }
 }
-
 ```
