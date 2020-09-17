@@ -154,25 +154,6 @@ const StyledMenuIcon = styled(MenuIcon)`
   }
 `
 
-const StyledLink = styled(Link)`
-  font-family: 'GT Haptik Regular';
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  margin: 0.25rem 0;
-  display: block;
-  width: fit-content;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  color: ${({ theme }) => theme.textColor};
-  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
-
-  :hover {
-    transform: translate3d(2px, 2px, 10px);
-  }
-`
-
 const HideSmall = styled.span`
   @media (max-width: 960px) {
     display: none;

@@ -49,8 +49,8 @@ const menu = [
         name: 'UNI Token',
         link: '/blog/uni'
       },
-      { name: 'Forum', link: 'https://discourse.com/uniswap' },
-      { name: 'Voting Portal', link: 'https://app.uniswap.org/vote/' }
+      { name: 'Forum', link: 'https://gov.uniswap.org/' },
+      { name: 'Voting Portal', link: 'https://app.uniswap.org/#/vote/' }
     ]
   },
   {

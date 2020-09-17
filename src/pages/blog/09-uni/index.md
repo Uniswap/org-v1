@@ -42,13 +42,13 @@ In doing so, **UNI officially enshrines Uniswap as publicly-owned and self-susta
 
 1 billion UNI have been minted at genesis and will become accessible over the course of 4 years. The initial four year allocation is as follows:
 
-- 60.00% to Uniswap community members [600,000,000 UNI]
+- 60.00% to Uniswap community members `600,000,000 UNI`
 
-- 21.51% to team members and future employees with 4-year vesting [215,101,000 UNI]
+- 21.51% to team members and future employees with 4-year vesting `215,101,000 UNI`
 
-- 17.80% to investors with 4-year vesting [178,000,000 UNI]
+- 17.80% to investors with 4-year vesting `178,000,000 UNI`
 
-- .069% to advisors with 4-year vesting [6,899,000 UNI]
+- .069% to advisors with 4-year vesting `6,899,000 UNI`
 
 A **perpetual inflation rate of 2% per year will start after 4 years** , ensuring continued participation and contribution to Uniswap at the expense of passive UNI holders.
 
@@ -60,17 +60,17 @@ A **perpetual inflation rate of 2% per year will start after 4 years** , ensurin
 
 Uniswap owes its success to the thousands of community members that have joined its journey over the past two years. These early community members will naturally serve as responsible stewards of Uniswap.
 
-15% of UNI _[150,000,000 UNI]_ can immediately be claimed by **historical liquidity providers, users, and SOCKS redeemers/holders** based on a snapshot endingSeptember 1, 2020, at 12:00 am UTC.
+15% of UNI _`150,000,000 UNI`_ can immediately be claimed by **historical liquidity providers, users, and SOCKS redeemers/holders** based on a snapshot endingSeptember 1, 2020, at 12:00 am UTC.
 
-_4.92% pro-rata to all_ _ **49,192** _ _historical LPs [49,166,400 UNI]_
+_4.92% pro-rata to all_ _ **49,192** _ _historical LPs `49,166,400 UNI`_
 
 **49 million UNI** are claimable by historical liquidity providers. The formula accounts for LP liquidity on a per-second basis since the deployment of Uniswap v1, ensuring that rewards are weighted towards LPs that provided liquidity when total liquidity was low.
 
-_10.06% split evenly across all_ _ **251,534** _ _historical user addresses [100,613,600 UNI]_
+_10.06% split evenly across all_ _ **251,534** _ _historical user addresses `100,613,600 UNI`_
 
 400 UNI are claimable by each address that has ever called the Uniswap v1 or v2 contracts. This includes **~12,000** addresses that have only ever submitted failed transactions — love you guys.
 
-_0.02% to_ _ **220 SOCKS** _ _holders/redeemers [220,000 UNI]_
+_0.02% to_ _ **220 SOCKS** _ _holders/redeemers `220,000 UNI`_
 
 1000 UNI are claimable by each address that has either redeemed SOCKS tokens for physical socks or owned at least one SOCKS token at the snapshot date
 
@@ -190,3 +190,5 @@ Governance:
 Timelock:
 
 [https://etherscan.io/address/0x1a9c8182c09f50c8318d769245bea52c32be35bc](https://etherscan.io/address/0x1a9c8182c09f50c8318d769245bea52c32be35bc)
+
+P.S. [Uniswap Token icon](logo.uniswap.org)

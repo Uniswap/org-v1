@@ -270,7 +270,7 @@ const About = props => {
             <p>We are committed to open source software and building on the decentralized web.</p>
 
             <div style={{ display: 'flex', width: '100%', gap: '1rem', margin: 0 }}>
-              <InternalLink to="/uni">$UNI token</InternalLink>
+              <InternalLink to="/blog/uni">UNI token</InternalLink>
               <InternalLink to="/whitepaper.pdf">
                 Whitepaper <span style={{ fontSize: '11px' }}>↗</span>
               </InternalLink>
