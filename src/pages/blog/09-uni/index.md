@@ -10,7 +10,7 @@ previewText: 'UNI, the Uniswap Protocol token, is live!'
 
 - UNI, the Uniswap Protocol token, is live!
 
-- UNI contract address: [0x1f9840a85d5af5bf1d1762f925bdaddc4201f984](https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984)
+- UNI contract address: [0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984](https://etherscan.io/token/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984)
 
 - 60% of the UNI genesis supply is allocated to Uniswap community members, a quarter of which (15% of total supply) has already been distributed to past users
 
@@ -74,7 +74,7 @@ _0.02% to_ _ **220 SOCKS** _ _holders/redeemers [220,000 UNI]_
 
 1000 UNI are claimable by each address that has either redeemed SOCKS tokens for physical socks or owned at least one SOCKS token at the snapshot date
 
-[_**[view the formula source code here]**_](https://github.com/Uniswap/retroactive)
+[_**[view the formula source code here]**_](https://github.com/Uniswap/retroactive-query)
 
 **Community Treasury**
 
