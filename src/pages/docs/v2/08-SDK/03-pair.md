@@ -28,7 +28,7 @@ const pair = new Pair(new TokenAmount(HOT, '2000000000000000000'), new TokenAmou
 getAddress(tokenA: Token, tokenB: Token): string
 ```
 
-Computes the pair address for the passed <Link to='/docs/v2/SDK/token'>Token</Link>s. See <Link to='/docs/v2/technical-considerations/pair-addresses'>Pair Addresses</Link>.
+Computes the pair address for the passed <Link to='/docs/v2/SDK/token'>Token</Link>s. See <Link to='/docs/v2/javascript-SDK/getting-pair-addresses/'>Pair Addresses</Link>.
 
 # Properties
 
