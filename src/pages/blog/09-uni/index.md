@@ -74,7 +74,7 @@ _0.02% to_ _ **220 SOCKS** _ _holders/redeemers [220,000 UNI]_
 
 1000 UNI are claimable by each address that has either redeemed SOCKS tokens for physical socks or owned at least one SOCKS token at the snapshot date
 
-[_**[view the formula source code here]**_](https://github.com/Uniswap/retroactive-query)
+[View the formula source code here](https://github.com/Uniswap/retroactive-query)
 
 **Community Treasury**
 
@@ -157,7 +157,7 @@ All historical users, liquidity providers, and SOCKS redeemers can [claim their 
 
 ![](claim.gif)
 
-Liquidity providers in the preliminary set of targeted pools can [deposit](https://app.uniswap.org/#/uni) their liquidity tokens now to start receiving UNI
+Liquidity providers in the preliminary set of targeted pools can [deposit](https://app.uniswap.org/#/uni) their liquidity tokens. Mining will begin on September 18th 2020 12am UTC.
 
 ![](deposit.gif)
 
