@@ -15,15 +15,15 @@ module.exports = {
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: process.env.AWS_S3_BUCKET,
-        protocol: 'https',
-        hostname: 'uniswap.org',
-        acl: null
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-s3`,
+    //   options: {
+    //     bucketName: process.env.AWS_S3_BUCKET,
+    //     protocol: 'https',
+    //     hostname: 'uniswap.org',
+    //     acl: null
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {

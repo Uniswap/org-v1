@@ -35,7 +35,7 @@ function getPair(address tokenA, address tokenB) external view returns (address 
 Returns the address of the pair for `tokenA` and `tokenB`, if it has been created, else `address(0)` (`0x0000000000000000000000000000000000000000`).
 
 - `tokenA` and `tokenB` are interchangeable.
-- Pair addresses can also be calculated deterministically, see <Link to='/docs/v2/technical-considerations/pair-addresses'>Pair Addresses</Link>.
+- Pair addresses can also be calculated deterministically, see <Link to='/docs/v2/javascript-SDK/getting-pair-addresses/'>Pair Addresses</Link>.
 
 ## allPairs
 

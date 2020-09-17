@@ -142,7 +142,7 @@ function permit(address owner, address spender, uint value, uint deadline, uint8
 
 Sets the allowance for a spender where approval is granted via a signature.
 
-- See <Link to='/docs/v2/technical-considerations/using-permit'>Using Permit</Link>.
+- See <Link to='/docs/v2/javascript-SDK/getting-pair-addresses/'>Using Permit</Link>.
 - Emits [Approval](#approval).
 
 # Interface

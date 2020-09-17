@@ -55,7 +55,7 @@ const MenuFlyout = styled.span`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 2rem;
+  top: 1.75rem;
   left: -1rem;
   min-width: 256px;
   width: 100%;
