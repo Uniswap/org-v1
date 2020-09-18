@@ -26,7 +26,7 @@ Thanks to some [fancy footwork in the factory](https://github.com/Uniswap/uniswa
 
 ## Examples
 
-### Typescript
+### TypeScript
 
 This example makes use of the <Link to='docs/v2/SDK/getting-started'>Uniswap SDK</Link>. In reality, the SDK computes pair addresses behind the scenes, obviating the need to compute them manually like this.
 

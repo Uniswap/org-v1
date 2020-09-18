@@ -34,7 +34,7 @@ On July 6th, 2017 I was laid off from my first job out of college, working as a 
 
 > **Hayden**: Okay…
 
-Catching me at a low point, Karl convinced me to accept Ethereum into my life. I was determined to give it a shot, and spent the next two months learning the basics of Ethereum, Solidity, and Javascript.
+Catching me at a low point, Karl convinced me to accept Ethereum into my life. I was determined to give it a shot, and spent the next two months learning the basics of Ethereum, Solidity, and JavaScript.
 
 In order to expand my skillset, I decided it was time to work on a “real” project. At Karl’s suggestion I decided to implement an automated market maker, as described by Vitalik in [this reddit post](https://www.reddit.com/r/ethereum/comments/55m04x/lets_run_onchain_decentralized_exchanges_the_way/) and [this blogpost](https://vitalik.ca/general/2017/06/22/marketmakers.html).
 

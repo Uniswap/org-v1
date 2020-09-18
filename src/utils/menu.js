@@ -36,7 +36,7 @@ const menu = [
         name: 'Documentation',
         link: '/docs/v2'
       },
-      { name: 'Github', link: 'https://github.com/Uniswap' },
+      { name: 'GitHub', link: 'https://github.com/Uniswap' },
       { name: 'Whitepaper', link: '/whitepaper.pdf' },
       { name: 'Audit', link: '/audit.html' },
       { name: 'Bug Bounty', link: '/bug-bounty' }

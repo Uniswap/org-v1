@@ -27,10 +27,10 @@ cd demo
 npx truffle init
 ```
 
-## Setting up NPM
+## Setting up npm
 
-In order to reference the Uniswap V2 contracts, you should use the NPM artifacts we deploy containing the core and
-periphery smart contracts and interfaces. To add npm dependencies, we first initialize the NPM package. 
+In order to reference the Uniswap V2 contracts, you should use the npm artifacts we deploy containing the core and
+periphery smart contracts and interfaces. To add npm dependencies, we first initialize the npm package. 
 We can run `npm init` in the same directory to create a `package.json` file. You can accept all the defaults and
 change it later.
 
@@ -40,7 +40,7 @@ npm init
 
 ## Adding dependencies
 
-Now that we have an NPM package, we can add our dependencies. Let's add both the 
+Now that we have an npm package, we can add our dependencies. Let's add both the 
 [`@uniswap/v2-core`](https://www.npmjs.com/package/@uniswap/v2-core) and 
 [`@uniswap/v2-periphery`](https://www.npmjs.com/package/@uniswap/v2-periphery) packages.
 

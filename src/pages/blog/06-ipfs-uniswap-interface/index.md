@@ -42,7 +42,7 @@ Our team has always cared about decentralization, security, and accessibility. T
 [open-source interface](https://github.com/Uniswap/uniswap-interface) for Uniswap that the community can directly run,
 verify and build upon. We’ve just taken another step forward by decentralizing the hosting of the Uniswap Interface using IPFS.
 
-Using [Github Actions](https://github.com/features/actions), the [Uniswap Interface](https://github.com/Uniswap/uniswap-interface)
+Using [GitHub Actions](https://github.com/features/actions), the [Uniswap Interface](https://github.com/Uniswap/uniswap-interface)
 is now deployed at least once per day to IPFS. Each release is automatically [pinned](https://docs.ipfs.io/concepts/persistence/)
 using [pinata.cloud](https://pinata.cloud), a free IPFS pinning service.
 The IPFS releases can be found [on GitHub](https://github.com/Uniswap/uniswap-interface/releases).
