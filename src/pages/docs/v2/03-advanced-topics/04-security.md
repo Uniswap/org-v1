@@ -22,7 +22,7 @@ The report also has a "Design Comments" section that we highly recommend for gai
 
 # Bug Bounty
 
-Uniswap has an open and ogoing bug [bounty program](/bug-bounty).
+Uniswap has an open and ongoing bug [bounty program](/bug-bounty).
 
 # Considerations when building on Uniswap
 
@@ -34,4 +34,4 @@ There are two primary categories of risk associated with Uniswap V2. The first i
 
 The second risk category is "dynamic", and involves runtime pricing. Because Ethereum transactions occur in an adversarial environment, naively written smart contracts _can be exploited for profit_. For example, if a smart contract checks the asset ratio in a Uniswap pool at runtime and trades against it, assuming that the ratio represents the "fair" or "market" price of these assets, _it is highly vulnerable to manipulation_. A malicious actor could e.g. trivially insert transactions before and after the naive transaction (a so-called "sandwich" attack) causing the smart contract to trade at a radically worse price, profit from this at the trader's expense, and then return the contracts to their original state, all at a low cost. (One important caveat is that these types of attacks are mitigated by trading in extremely liquid pools, and/or at low values.)
 
-The best way to protect against these attacks is to introduce a price oracle. The best "oracle" is simply _traders' off-chain observation of the prevailing price_, which can be passed into the trade as a safety check. This strategy is best suited to retail trading venues _where users initiate trades on their own behalf_. However, it is often the case that a trusted price observation cannot be obtained (e.g. in multi-step, programmatic interations involving Uniswap). Without a price oracle, these interactions are forced to trade at whatever the (potentially manipulated) rate on Uniswap is. However, an oracle can bound manipulation, and is a sine qua non. Determining the ideal oracle for a given setting is out of scope, but for details on the Uniswap V2 approach to oracles, see <Link to='/docs/v2/core-concepts/oracles'>Oracles</Link>.
+The best way to protect against these attacks is to introduce a price oracle. The best "oracle" is simply _traders' off-chain observation of the prevailing price_, which can be passed into the trade as a safety check. This strategy is best suited to retail trading venues _where users initiate trades on their own behalf_. However, it is often the case that a trusted price observation cannot be obtained (e.g. in multi-step, programmatic interactions involving Uniswap). Without a price oracle, these interactions are forced to trade at whatever the (potentially manipulated) rate on Uniswap is. However, an oracle can bound manipulation, and is a sine qua non. Determining the ideal oracle for a given setting is out of scope, but for details on the Uniswap V2 approach to oracles, see <Link to='/docs/v2/core-concepts/oracles'>Oracles</Link>.
