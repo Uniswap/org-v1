@@ -4,26 +4,22 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
 
-module.exports = {
-  siteMetadata: {
-    title: `Uniswap`,
-    description: `Automated liquidity protocol on Ethereum`,
-    author: `@UniswapProtocol`,
-    menulinks: menu,
-    siteUrl: `https://uniswap.org`,
-    repository: `https://github.com/Uniswap/uniswap-org`,
-    commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
-  },
-  plugins: [
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: process.env.AWS_S3_BUCKET,
-        protocol: 'https',
-        hostname: 'uniswap.org',
-        acl: null
-      }
-    },
+let gatsbyPlugins = new Array();
+
+// detect local build
+if (!process.env.NO_AWS) {
+  gatsbyPlugins.push({
+    resolve: `gatsby-plugin-s3`,
+    options: {
+      bucketName: process.env.AWS_S3_BUCKET,
+      protocol: 'https',
+      hostname: 'uniswap.org',
+      acl: null
+    }
+  });
+}
+
+gatsbyPlugins.concat([
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
@@ -210,5 +206,18 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-  ]
+  ])
+
+
+module.exports = {
+  siteMetadata: {
+    title: `Uniswap`,
+    description: `Automated liquidity protocol on Ethereum`,
+    author: `@UniswapProtocol`,
+    menulinks: menu,
+    siteUrl: `https://uniswap.org`,
+    repository: `https://github.com/Uniswap/uniswap-org`,
+    commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
+  },
+  plugins: gatsbyPlugins
 }

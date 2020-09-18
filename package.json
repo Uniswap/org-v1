@@ -99,6 +99,7 @@
     "dev": "gatsby develop",
     "devlocal": "gatsby develop -H 0.0.0.0",
     "start": "gatsby develop",
+    "start-local": "NO_AWS=1 gatsby develop",
     "build": "gatsby build && yarn post-build",
     "post-build": "cp ./node_modules/@uniswap/token-lists/src/tokenlist.schema.json public/",
     "serve": "gatsby serve",
