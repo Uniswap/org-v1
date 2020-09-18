@@ -14,7 +14,7 @@ This guide will focus exclusively on sending a transaction to the <Link to='/doc
 Let's say we want to trade 1 WETH for as much DAI as possible:
 
 ```typescript
-import { ChainId, Token, WETH, Fetcher, Trade } from '@uniswap/sdk'
+import { ChainId, Token, WETH, Fetcher, Trade, Route, TokenAmount, TradeType } from '@uniswap/sdk'
 
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
 
