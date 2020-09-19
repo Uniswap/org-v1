@@ -1,4 +1,4 @@
----
+---------------
 title: Pools
 tags: pools, documentation
 ---
@@ -15,7 +15,7 @@ When other liquidity providers add to an existing pool, they must deposit pair t
 
 ![](images/lp.jpg)
 
-Whenever liquidity is deposited into a pool, special tokens known as _liquidity tokens_ are minted to the provider’s address, in proportion to how much liquidity they contributed to the pool. These tokens are a representation of a liquidity provider’s contribution to a pool. Whenever a trade occurs, the 0.3% fee which is levied is distributed _pro-rata_ to all LPs in the pool at the moment of the trade. To receive the underlying liquidity back, plus any fees that were accrued while their liquidity was locked, LPs must burn their liquidity tokens.
+Whenever liquidity is deposited into a pool, special tokens known as _liquidity tokens_ are minted to the provider’s address, in proportion to how much liquidity they contributed to the pool. These tokens are a representation of a liquidity provider’s contribution to a pool. Whenever a trade occurs, the 0.03% fee which is levied is distributed _pro-rata_ to all LPs in the pool at the moment of the trade. To receive the underlying liquidity back, plus any fees that were accrued while their liquidity was locked, LPs must burn their liquidity tokens.
 
 Liquidity providers can also choose to sell, transfer, or otherwise use their liquidity tokens in any way they see fit.
 
