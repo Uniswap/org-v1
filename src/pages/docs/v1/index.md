@@ -32,7 +32,7 @@ This site will serve as a project overview for Uniswap - explaining how it works
 # Resources
 
 - [Website](https://uniswap.org)
-- [Github](https://github.com/Uniswap)
+- [GitHub](https://github.com/Uniswap)
 - [Twitter](https://twitter.com/UniswapProtocol)
 - [Reddit](https://www.reddit.com/r/Uniswap)
 - [Email](mailto:contact@uniswap.org)
