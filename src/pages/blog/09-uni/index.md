@@ -44,7 +44,7 @@ In doing so, **UNI officially enshrines Uniswap as publicly-owned and self-susta
 
 - 60.00% to Uniswap community members `600,000,000 UNI`
 
-- 21.266% to team members and future employees with 4-year vesting `~212,660,000 UNI`
+- 21.266% to team members and future employees with 4-year vesting `212,660,000 UNI`
 
 - 18.044% to investors with 4-year vesting `180,440,000 UNI`
 
