@@ -44,11 +44,11 @@ In doing so, **UNI officially enshrines Uniswap as publicly-owned and self-susta
 
 - 60.00% to Uniswap community members `600,000,000 UNI`
 
-- 21.51% to team members and future employees with 4-year vesting `215,101,000 UNI`
+- 21.266% to team members and future employees with 4-year vesting `~212,660,000 UNI`
 
-- 17.80% to investors with 4-year vesting `178,000,000 UNI`
+- 18.044% to investors with 4-year vesting `180,440,000 UNI`
 
-- .069% to advisors with 4-year vesting `6,899,000 UNI`
+- 0.69% to advisors with 4-year vesting `6,900,000 UNI`
 
 A **perpetual inflation rate of 2% per year will start after 4 years**, ensuring continued participation and contribution to Uniswap at the expense of passive UNI holders.
 
@@ -62,17 +62,17 @@ Uniswap owes its success to the thousands of community members that have joined 
 
 15% of UNI _`150,000,000 UNI`_ can immediately be claimed by **historical liquidity providers, users, and SOCKS redeemers/holders** based on a snapshot ending September 1, 2020, at 12:00 am UTC.
 
-_4.92% pro-rata to all_ _ **49,192** _ _historical LPs `49,166,400 UNI`_
+_4.91664% pro-rata to all **49,192** historical LPs `49,166,400 UNI`_
 
-**49 million UNI** are claimable by historical liquidity providers. The formula accounts for LP liquidity on a per-second basis since the deployment of Uniswap v1, ensuring that rewards are weighted towards LPs that provided liquidity when total liquidity was low.
+**~49 million UNI** are claimable by historical liquidity providers. The formula accounts for LP liquidity on a per-second basis since the deployment of Uniswap v1, ensuring that rewards are weighted towards LPs that provided liquidity when total liquidity was low.
 
-_10.06% split evenly across all_ _ **251,534** _ _historical user addresses `100,613,600 UNI`_
+_10.06136% split evenly across all **251,534** historical user addresses `100,613,600 UNI`_
 
 400 UNI are claimable by each address that has ever called the Uniswap v1 or v2 contracts. This includes **~12,000** addresses that have only ever submitted failed transactions — love you guys.
 
-_0.02% to_ _ **220 SOCKS** _ _holders/redeemers `220,000 UNI`_
+_0.022% to **220** SOCKS holders/redeemers `220,000 UNI`_
 
-1000 UNI are claimable by each address that has either redeemed SOCKS tokens for physical socks or owned at least one SOCKS token at the snapshot date
+1000 UNI are claimable by each address that has either redeemed SOCKS tokens for physical socks or owned at least one SOCKS token at the snapshot date.
 
 [View the formula source code here](https://github.com/Uniswap/retroactive-query)
 
@@ -80,7 +80,7 @@ _0.02% to_ _ **220 SOCKS** _ _holders/redeemers `220,000 UNI`_
 
 ![](Release_Schedule.png)
 
-With 15 **%** of tokens already available to be claimed by historical users and liquidity providers, the governance treasury will retain 43% [430,000,000 UNI] of UNI supply to distribute on an ongoing basis through **contributor grants, community initiatives, liquidity mining**, and other programs.
+With 15% of tokens already available to be claimed by historical users and liquidity providers, the governance treasury will retain 43% [430,000,000 UNI] of UNI supply to distribute on an ongoing basis through **contributor grants, community initiatives, liquidity mining**, and other programs.
 
 UNI will vest to the governance treasury on a continuous basis according to the following schedule. Governance will have access to vested UNI starting October 18 2020 12:00am UTC.
 
@@ -107,9 +107,9 @@ An initial liquidity mining program will go live September 18 2020 12:00am UTC. 
 
 5,000,000 UNI will be allocated per pool to LPs proportional to liquidity, which roughly translates to:
 
-- 83,333.33 UNI per pool per day
+- 83,333 UNI per pool per day
 
-- 13.5 UNI UNI per pool per block
+- 13.5 UNI per pool per block (14s blocktime)
 
 These UNI are not subject to vesting or lock up.
 
@@ -135,7 +135,7 @@ In the meantime, UNI holders will have immediate ownership of:
 
 - The protocol fee switch
 
-- eth ENS
+- uniswap.eth ENS name
 
 - Uniswap Default List (tokens.uniswap.eth)
 
