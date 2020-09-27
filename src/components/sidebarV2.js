@@ -1,11 +1,19 @@
-import React, { useState, useLayoutEffect } from 'react'
-import { Link } from 'gatsby'
+import React, {
+  useState,
+  useLayoutEffect
+} from 'react'
+import {
+  Link
+} from 'gatsby'
 import styled from 'styled-components'
 import scrollTo from 'gatsby-plugin-smoothscroll'
-import { useStaticQuery, graphql } from 'gatsby'
+import {
+  useStaticQuery,
+  graphql
+} from 'gatsby'
 import DropdownArrow from './dropdownArrow.js'
 
-const StyledSidebar = styled.div`
+const StyledSidebar = styled.div `
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -23,92 +31,84 @@ const StyledSidebar = styled.div`
   }
 `
 
-const StyledSection = styled.div`
+const StyledSection = styled.div `
   height: ${({ open }) => (open ? 'inital' : '1.75rem')};
   overflow: hidden;
+  position: relative;
   /* cursor: pointer; */
 `
 
 // eslint-disable-next-line no-unused-vars
-const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
-  font-weight: ${({ isActive }) => (isActive ? 600 : 400)};
-  border-radius: 8px;
-  padding: 0.25rem 0;
-  margin: 0;
-  color: ${({ theme }) => theme.colors.link};
-`
+const StyledLink = styled(({
+    isActive,
+    ...props
+  }) => < Link {
+    ...props
+  }
+  />)`
+  font - weight: $ {
+    ({
+      isActive
+    }) => (isActive ? 600 : 400)
+  }; border - radius: 8 px; padding: 0.25 rem 0; margin: 0; color: $ {
+    ({
+      theme
+    }) => theme.colors.link
+  };
+  `
 
 const StyledList = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
-`
+  list - style: none; margin: 0; padding: 0; font - weight: 400;
+  `
 
 const StyledListItem = styled.li`
-  margin-bottom: 0.25rem;
-  transition: transform 0.3s ease;
-  will-change: transform;
-  list-style: none;
-  :hover {
+  margin - bottom: 0.25 rem; transition: transform 0.3 s ease; will - change: transform; list - style: none;: hover {
     a {
-      text-decoration: underline;
+      text - decoration: underline;
     }
   }
-`
+  `
 
 const StyledInset = styled.div`
   /* margin-left: 0.75rem; */
-  border-left: 1px solid ${({ theme }) => theme.colors.grey2};
-  margin-bottom: 0.75rem;
-`
+  border - left: 1 px solid $ {
+    ({
+      theme
+    }) => theme.colors.grey2
+  }; margin - bottom: 0.75 rem;
+  `
 
 const StyledSectionTitle = styled.div`
-  margin: 0;
-  margin-bottom: 0.25rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: no-wrap;
-  font-weight: ${({ open }) => (open ? 500 : 400)};
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.link};
+  margin: 0; margin - bottom: 0.25 rem; display: flex; flex - direction: row; align - items: center; flex - wrap: no - wrap; font - weight: $ {
+    ({
+      open
+    }) => (open ? 500 : 400)
+  }; font - size: 16 px; color: $ {
+    ({
+      theme
+    }) => theme.colors.link
+  };
 
-  :hover {
+  : hover {
     a {
-      text-decoration: underline;
+      text - decoration: underline;
     }
   }
-`
+  `
 
 const StyledCategoryTitle = styled.div`
-  margin: 0;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: no-wrap;
-  font-weight: 500;
-  user-select: none;
-  font-size: 10px;
-  opacity: 0.8;
-  text-transform: uppercase;
-`
+  margin: 0; margin - bottom: 0.5 rem; margin - top: 1 rem; display: flex; flex - direction: row; align - items: center; flex - wrap: no - wrap; font - weight: 500; user - select: none; font - size: 10 px; opacity: 0.8; text - transform: uppercase;
+  `
 
 const ListWrapper = styled.span`
-  min-width: 200px;
-  width: 220px;
-  @media (max-width: 960px) {
-    margin-bottom: 1rem;
+  min - width: 200 px; width: 220 px; @media(max - width: 960 px) {
+    margin - bottom: 1 rem;
   }
-`
+  `
 
 const SectionHeader = styled.div`
-  font-size: 11px;
-  text-transform: uppercase;
-  margin: 0.5rem 0;
-`
+  font - size: 11 px; text - transform: uppercase; margin: 0.5 rem 0;
+  `
 
 const CollapsibleList = ({ node, listData, referenceData, path, parent, atTopLevel }) => {
   const [open, setOpen] = useState(true)
@@ -131,7 +131,7 @@ const CollapsibleList = ({ node, listData, referenceData, path, parent, atTopLev
       {atTopLevel ? (
         <StyledSectionTitle onClick={() => setOpen(!open)} style={{ cursor: 'pointer' }}>
           {title}
-          <div style={{ marginLeft: '6px', opacity: '0.2', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+          <div style={{ marginLeft: '6px', opacity: '0.2', position: "absolute", right: '-1px', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}>
             <DropdownArrow />
           </div>
         </StyledSectionTitle>
@@ -210,81 +210,122 @@ function List(props) {
 
 const SideBar = props => {
   const data = useStaticQuery(graphql`
-    query {
-      topNavDocsV1: allDirectory(
-        filter: { sourceInstanceName: { eq: "docs" }, relativeDirectory: { eq: "v1" } }
-        sort: { fields: name, order: ASC }
-      ) {
-        edges {
-          node {
-            name
-            id
-            relativePath
-          }
+  query {
+    topNavDocsV1: allDirectory(
+      filter: {
+        sourceInstanceName: {
+          eq: "docs"
+        },
+        relativeDirectory: {
+          eq: "v1"
         }
       }
-      topNavDocsV2: allDirectory(
-        filter: { sourceInstanceName: { eq: "docs" }, relativeDirectory: { eq: "v2" } }
-        sort: { fields: name, order: ASC }
-      ) {
-        edges {
-          node {
-            name
-            id
-            relativePath
-          }
-        }
+      sort: {
+        fields: name,
+        order: ASC
       }
-      docsV1: allMdx(
-        filter: { fileAbsolutePath: { regex: "/docs/v1/" } }
-        sort: { order: ASC, fields: fileAbsolutePath }
-      ) {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-            }
-            fields {
-              slug
-              subDir
-              topLevelDir
-            }
-            fileAbsolutePath
-          }
-        }
-      }
-      docsV2: allMdx(
-        filter: { fileAbsolutePath: { regex: "/docs/v2/" } }
-        sort: { order: ASC, fields: fileAbsolutePath }
-      ) {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-            }
-            fields {
-              slug
-              subDir
-              topLevelDir
-            }
-            fileAbsolutePath
-          }
-        }
-      }
-      v2Reference: allFile(filter: { absolutePath: { regex: "/docs/v2/" }, ext: { eq: ".js" } }) {
-        edges {
-          node {
-            name
-            absolutePath
-            relativePath
-            relativeDirectory
-            id
-          }
+    ) {
+      edges {
+        node {
+          name
+          id
+          relativePath
         }
       }
     }
+    topNavDocsV2: allDirectory(
+      filter: {
+        sourceInstanceName: {
+          eq: "docs"
+        },
+        relativeDirectory: {
+          eq: "v2"
+        }
+      }
+      sort: {
+        fields: name,
+        order: ASC
+      }
+    ) {
+      edges {
+        node {
+          name
+          id
+          relativePath
+        }
+      }
+    }
+    docsV1: allMdx(
+      filter: {
+        fileAbsolutePath: {
+          regex: "/docs/v1/"
+        }
+      }
+      sort: {
+        order: ASC,
+        fields: fileAbsolutePath
+      }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+            subDir
+            topLevelDir
+          }
+          fileAbsolutePath
+        }
+      }
+    }
+    docsV2: allMdx(
+      filter: {
+        fileAbsolutePath: {
+          regex: "/docs/v2/"
+        }
+      }
+      sort: {
+        order: ASC,
+        fields: fileAbsolutePath
+      }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+            subDir
+            topLevelDir
+          }
+          fileAbsolutePath
+        }
+      }
+    }
+    v2Reference: allFile(filter: {
+      absolutePath: {
+        regex: "/docs/v2/"
+      },
+      ext: {
+        eq: ".js"
+      }
+    }) {
+      edges {
+        node {
+          name
+          absolutePath
+          relativePath
+          relativeDirectory
+          id
+        }
+      }
+    }
+  }
   `)
 
   const v2Toggle = props.path.slice(0, 8) === '/docs/v2'
@@ -302,99 +343,178 @@ const SideBar = props => {
           <StyledLink
             isActive={atTopLevel}
             style={{ marginBottom: '.25rem', display: 'inline-block', padding: !atTopLevel && '0px' }}
-            to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
-          >
-            Introduction
-          </StyledLink>
-        ) : (
-          <StyledLink
-            isActive={atTopLevel}
-            style={{ marginBottom: '1rem', display: 'inline-block', padding: !atTopLevel && '0px', fontSize: '14px' }}
-            to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
-          >
-            {'<- Back'}
-          </StyledLink>
-        )}
-        {navData.edges
-          .filter(({ node }) => {
-            return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
-          })
-          .map(({ node }) => {
-            const hideRender =
-              (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
-              (node.name.split('-')[1] === 'API' && atTopLevel) ||
-              (node.name.split('-')[1] === 'smart' && atTopLevel) ||
-              (node.name.split('-')[1] === 'user' && atTopLevel) ||
-              (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
-              (node.name.split('-')[1] === 'other' && atTopLevel) ||
-              (node.name.split('-')[1] === 'interface' && atTopLevel) ||
-              (node.name === 'images' && atTopLevel)
+            to={` / docs / $ {
+    v2Toggle ? 'v2' : 'v1'
+  }
+  /`} >
+  Introduction <
+  /StyledLink>
+): ( <
+  StyledLink isActive = {
+    atTopLevel
+  }
+  style = {
+    {
+      marginBottom: '1rem',
+      display: 'inline-block',
+      padding: !atTopLevel && '0px',
+      fontSize: '14px'
+    }
+  }
+  to = {
+    `/docs/${v2Toggle ? 'v2' : 'v1'}/`
+  } >
+  {
+    '<- Back'
+  } <
+  /StyledLink>
+)
+} {
+  navData.edges
+    .filter(({
+      node
+    }) => {
+      return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+    })
+    .map(({
+      node
+    }) => {
+      const hideRender =
+        (node.name.split('-')[1] === 'SDK' && atTopLevel) ||
+        (node.name.split('-')[1] === 'API' && atTopLevel) ||
+        (node.name.split('-')[1] === 'smart' && atTopLevel) ||
+        (node.name.split('-')[1] === 'user' && atTopLevel) ||
+        (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
+        (node.name.split('-')[1] === 'other' && atTopLevel) ||
+        (node.name.split('-')[1] === 'interface' && atTopLevel) ||
+        (node.name === 'images' && atTopLevel)
 
-            return (
-              !hideRender && (
-                <CollapsibleList
-                  key={node.id}
-                  node={node}
-                  listData={listData}
-                  referenceData={data.v2Reference}
-                  path={props.path}
-                  parent={props.parent}
-                  atTopLevel={atTopLevel}
-                  topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
-                />
-              )
+      return (
+        !hideRender && ( <
+          CollapsibleList key = {
+            node.id
+          }
+          node = {
+            node
+          }
+          listData = {
+            listData
+          }
+          referenceData = {
+            data.v2Reference
+          }
+          path = {
+            props.path
+          }
+          parent = {
+            props.parent
+          }
+          atTopLevel = {
+            atTopLevel
+          }
+          topLevel = {
+            v2Toggle ? '/docs/v2' : '/docs/v1'
+          }
+          />
+        )
+      )
+    })
+} {
+  atTopLevel && ( <
+    StyledList style = {
+      {
+        marginTop: '1rem'
+      }
+    } >
+    <
+    SectionHeader > Developer Guides < /SectionHeader> {
+      navData.edges
+        .filter(({
+          node
+        }) => {
+          return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
+        })
+        .map(({
+          node
+        }) => {
+          const showRender =
+            (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
+            (node.name.split('-')[1] === 'interface' && atTopLevel) ||
+            (node.name.split('-')[2] === 'contract' && atTopLevel)
+          return (
+            showRender && ( <
+              CollapsibleList key = {
+                node.id
+              }
+              node = {
+                node
+              }
+              listData = {
+                listData
+              }
+              referenceData = {
+                data.v2Reference
+              }
+              path = {
+                props.path
+              }
+              parent = {
+                props.parent
+              }
+              atTopLevel = {
+                atTopLevel
+              }
+              topLevel = {
+                v2Toggle ? '/docs/v2' : '/docs/v1'
+              }
+              />
             )
-          })}
-        {atTopLevel && (
-          <StyledList style={{ marginTop: '1rem' }}>
-            <SectionHeader>Developer Guides</SectionHeader>
-            {navData.edges
-              .filter(({ node }) => {
-                return !props.path.split('/')[3] || props.path.split('/')[3] === node.name.replace(/\d+-/g, '')
-              })
-              .map(({ node }) => {
-                const showRender =
-                  (node.name.split('-')[1] === 'javascript' && atTopLevel) ||
-                  (node.name.split('-')[1] === 'interface' && atTopLevel) ||
-                  (node.name.split('-')[2] === 'contract' && atTopLevel)
-                return (
-                  showRender && (
-                    <CollapsibleList
-                      key={node.id}
-                      node={node}
-                      listData={listData}
-                      referenceData={data.v2Reference}
-                      path={props.path}
-                      parent={props.parent}
-                      atTopLevel={atTopLevel}
-                      topLevel={v2Toggle ? '/docs/v2' : '/docs/v1'}
-                    />
-                  )
-                )
-              })}
-          </StyledList>
-        )}
-
-        {atTopLevel && (
-          <StyledList style={{ marginTop: '1rem' }}>
-            <SectionHeader>Reference</SectionHeader>
-            <StyledListItem>
-              <StyledLink to={'/docs/v2/SDK/getting-started'}>SDK</StyledLink>
-            </StyledListItem>
-            <StyledListItem>
-              <StyledLink to={'/docs/v2/API/overview'}>API</StyledLink>
-            </StyledListItem>
-            <StyledListItem>
-              <StyledLink to={'/docs/v2/smart-contracts/factory'}>Smart Contracts</StyledLink>
-            </StyledListItem>
-            <StyledListItem>
-              <StyledLink to={'/whitepaper.pdf'}>Whitepaper</StyledLink>
-            </StyledListItem>
-          </StyledList>
-        )}
-      </ListWrapper>
-    </StyledSidebar>
+          )
+        })
+    } <
+    /StyledList>
   )
+}
+
+{
+  atTopLevel && ( <
+    StyledList style = {
+      {
+        marginTop: '1rem'
+      }
+    } >
+    <
+    SectionHeader > Reference < /SectionHeader> <
+    StyledListItem >
+    <
+    StyledLink to = {
+      '/docs/v2/SDK/getting-started'
+    } > SDK < /StyledLink> <
+    /StyledListItem> <
+    StyledListItem >
+    <
+    StyledLink to = {
+      '/docs/v2/API/overview'
+    } > API < /StyledLink> <
+    /StyledListItem> <
+    StyledListItem >
+    <
+    StyledLink to = {
+      '/docs/v2/smart-contracts/factory'
+    } > Smart Contracts < /StyledLink> <
+    /StyledListItem> <
+    StyledListItem >
+    <
+    StyledLink to = {
+      '/whitepaper.pdf'
+    } > Whitepaper < /StyledLink> <
+    /StyledListItem> <
+    /StyledList>
+  )
+} <
+/ListWrapper> <
+/StyledSidebar>
+)
 }
 
 export default SideBar
