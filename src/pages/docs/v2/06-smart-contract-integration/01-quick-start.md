@@ -35,7 +35,7 @@ We can run `npm init` in the same directory to create a `package.json` file. You
 change it later.
 
 ```shell script
-npm init
+npm init -y
 ```
 
 ## Adding dependencies
