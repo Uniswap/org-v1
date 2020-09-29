@@ -103,4 +103,4 @@ import { InsufficientInputAmountError } from '@uniswap/sdk'
 import { WETH } from '@uniswap/sdk'
 ```
 
-An object whose values are <Link to='/docs/v2/smart-contracts/router/#weth'>WETH</Link> <Link to='/docs/v2/SDK/token'>Token</Link> instances, indexed by [ChainId](#chainid).
+An object whose values are <Link to='/docs/v2/smart-contracts/router02/#weth'>WETH</Link> <Link to='/docs/v2/SDK/token'>Token</Link> instances, indexed by [ChainId](#chainid).
