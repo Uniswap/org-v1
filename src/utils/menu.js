@@ -50,7 +50,8 @@ const menu = [
         link: '/blog/uni'
       },
       { name: 'Forum', link: 'https://gov.uniswap.org/' },
-      { name: 'Voting Portal', link: 'https://app.uniswap.org/#/vote/' }
+      { name: 'Voting Portal', link: 'https://app.uniswap.org/#/vote/' },
+      { name: 'Documentation', link: '/docs/v2/governance/overview' }
     ]
   },
   {

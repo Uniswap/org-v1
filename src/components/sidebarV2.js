@@ -390,6 +390,9 @@ const SideBar = props => {
             <StyledListItem>
               <StyledLink to={'/whitepaper.pdf'}>Whitepaper</StyledLink>
             </StyledListItem>
+            <StyledListItem>
+              <StyledLink to={'/docs/v2/governance/overview'}>Governance</StyledLink>
+            </StyledListItem>
           </StyledList>
         )}
       </ListWrapper>
