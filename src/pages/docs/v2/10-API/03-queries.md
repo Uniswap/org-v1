@@ -47,7 +47,7 @@ Fetch a snapshot of the current state of the pair with common values. This examp
 
 ```
 {
- pair(id: "0xa478c2975ab1ea89e8196811f51a7b7ade33eb11"}){
+ pair(id: "0xa478c2975ab1ea89e8196811f51a7b7ade33eb11"){
      token0 {
        id
        symbol
