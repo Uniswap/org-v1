@@ -29,12 +29,16 @@
 
 # مطالعه بیشتر
 توضیح چگونگی انجام مبادله :
+
 https://github.com/irnb/uniswap-org/blob/master/src/pages/docs/v2/02-core-concepts/01-swaps.md
+
 توضیح استخر های نقدینگی :
+
 https://github.com/irnb/uniswap-org/blob/master/src/pages/docs/v2/02-core-concepts/02-pools.md
 
 
 در نهایت پروتکل یونی سواپ چیزی بیشتر از کد های یک قرارداد هوشمند که بر روی شبکه اتریوم اجرا می‌شوند بیشتر نیست برای فهمیدن چگونگی کار کردن قرار داد هوشمند آن لینک زیر مفید هست :
+
 https://github.com/irnb/uniswap-org/blob/master/src/pages/docs/v2/01-protocol-overview/03-smart-contracts.md
 
 </div>
