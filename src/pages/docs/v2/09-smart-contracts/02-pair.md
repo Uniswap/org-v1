@@ -94,7 +94,7 @@ Returns the address of the pair token with the higher sort order.
 function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
 ```
 
-Returns the reserves of token0 and token1 used to price trades and distribute liquidity. See <Link to='/docs/v2/smart-contracts/architecture/#pricing'>Pricing</Link>. Also returns the `block.timestamp` (mod `2**32`) of the last block during which an interaction occured for the pair.
+Returns the reserves of token0 and token1 used to price trades and distribute liquidity. See <Link to='/docs/v2/advanced-topics/pricing/'>Pricing</Link>. Also returns the `block.timestamp` (mod `2**32`) of the last block during which an interaction occured for the pair.
 
 ## price0CumulativeLast
 
