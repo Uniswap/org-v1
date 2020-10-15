@@ -98,7 +98,7 @@ const StyledCategoryTitle = styled.div`
 
 const ListWrapper = styled.span`
   min-width: 200px;
-  width: 220px;
+  width: 224px;
   @media (max-width: 960px) {
     margin-bottom: 1rem;
   }
