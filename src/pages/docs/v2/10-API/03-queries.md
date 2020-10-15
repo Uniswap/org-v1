@@ -245,20 +245,22 @@ query($allPairs: [Bytes]!) {
 Like pair and global daily lookups, tokens have daily entities that can be queries as well. This query gets daily information for DAI. Note that you may want to sort in ascending order to receive your days from oldest to most recent in the return array.
 
 ```
-tokenDayDatas(orderBy: date, orderDirection: asc,
- where: {
-   token: "0x6b175474e89094c44da98b954eedeac495271d0f"
+{
+ tokenDayDatas(orderBy: date, orderDirection: asc,
+  where: {
+    token: "0x6b175474e89094c44da98b954eedeac495271d0f"
+  }
+ ) {
+    id
+    date
+    priceUSD
+    totalLiquidityToken
+    totalLiquidityUSD
+    totalLiquidityETH
+    dailyVolumeETH
+    dailyVolumeToken
+    dailyVolumeUSD
  }
-) {
-   id
-   date
-   priceUSD
-   totalLiquidityToken
-   totalLiquidityUSD
-   totalLiquidityETH
-   dailyVolumeETH
-   dailyVolumeToken
-   dailyVolumeUSD
 }
 ```
 
