@@ -118,7 +118,7 @@ See <Link to='/docs/v2/core-concepts/oracles/'>Oracles</Link>.
 function kLast() external view returns (uint);
 ```
 
-Returns the product of the reserves as of the most recent liquidity event. See <Link to='/docs/v2/smart-contracts/architecture/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
+Returns the product of the reserves as of the most recent liquidity event. See <Link to='/docs/v2/advanced-topics/fees/#protocol-charge-calculation'>Protocol Charge Calculation</Link>.
 
 # State-Changing Functions
 
