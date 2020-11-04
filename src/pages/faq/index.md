@@ -60,8 +60,7 @@ There are many community built tools like [https://www.uniswaproi.com/](https://
 
 # I updated my token via a proxy contract, but the Uniswap information page is showing the old symbol / name!
 
-[Info.uniswap](https://info.uniswap.org/) reads the details of new tokens when they're added to the subgraph. There may be some circumstances where an old symbol or name isn't updated if the token was updated with a proxy contract. If that happens, submit a pull request on Github that updates the list
-of token overrides, an example pull request can be found [here](https://github.com/Uniswap/uniswap-info/pull/309/files#diff-f50e2181e0971516e1489be86f6b6bb0018272452a9f0724343ac9229e887646).
+[Info.uniswap](https://info.uniswap.org/) reads the details of new tokens when they're added to the subgraph. There may be some circumstances where an old symbol or name isn't updated if the token was updated with a proxy contract. A guide to fix this yourself is forthcoming, in the meantime, reach out with the details on our developer discord.
 
 # Uniswap tools and resources
 
