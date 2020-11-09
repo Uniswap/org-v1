@@ -120,6 +120,7 @@ The [`UniswapV2Library`](/docs/v2/smart-contracts/library/) has some helpful met
 ```solidity
 pragma solidity ^0.6.6;
 
+import './interfaces/ILiquidityValueCalculator.sol';
 import '@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol';
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
 
