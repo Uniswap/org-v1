@@ -164,9 +164,6 @@ The allPairs field gets the first 200 pairs DAI is included in sorted by liquidi
    derivedETH
    tradeVolumeUSD
    totalLiquidity
-   allPairs(first: 200, orderBy: reserveUSD, orderDirection: desc) {
-     reserveUSD
-   }
  }
 }
 ```
