@@ -58,6 +58,10 @@ Ethereum requires gas to execute each transaction. You can also check ETH gas st
 
 There are many community built tools like [https://www.uniswaproi.com/](https://www.uniswaproi.com/), [https://www.zapper.fi/dashboard](https://www.zapper.fi/dashboard) and [https://zerion.io/](https://zerion.io/). Uniswap provides no guarantees the information on these sites is correct.
 
+# I updated my token via a proxy contract, but the Uniswap information page is showing the old symbol / name!
+
+[Info.uniswap](https://info.uniswap.org/) reads the details of new tokens when they're added to the subgraph. There may be some circumstances where an old symbol or name isn't updated if the token was updated with a proxy contract. A guide to fix this yourself is forthcoming, in the meantime, reach out with the details on our developer discord.
+
 # Uniswap tools and resources
 
 [https://github.com/Uniswap/universe](https://github.com/Uniswap/universe)
