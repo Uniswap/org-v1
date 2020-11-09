@@ -198,7 +198,7 @@ allPairs = [
 ```
 
 ```
-query($allPairs: [Bytes]!) {
+query($allPairs: [String!]) {
  mints(first: 30, where: { pair_in: $allPairs }, orderBy: timestamp, orderDirection: desc) {
    transaction {
      id
