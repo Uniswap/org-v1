@@ -3,22 +3,21 @@ title: Beginners Guide to Voting
 tags: goveranance, documentation
 ---
 
-This guide contains everything you need to start voting in Uniswap Governance. 
+This guide contains everything you need to start voting in Uniswap Governance.
 
-In order to participate you will need: 
+In order to participate you will need:
 
-[UNI Tokens](https://uniswap.org/blog/uni/)
-ETH for transaction costs
-A browser with [Metamask](https://metamask.io/) installed
+- [UNI Tokens](https://uniswap.org/blog/uni/)
+  ETH for transaction costs
+- A browser with [Metamask](https://metamask.io/) installed
 
-The governance [process](https://uniswap.org/docs/v2/governance/process/) begins in the [Governance Forum](https://gov.uniswap.org/), where you can find proposals under consideration, gather information about community sentiment, and engage with the community. 
+The governance [process](https://uniswap.org/docs/v2/governance/process/) begins in the [Governance Forum](https://gov.uniswap.org/), where you can find proposals under consideration, gather information about community sentiment, and engage with the community.
 
-Once a given proposal has made it through the proposal process and is ready for voting, it will appear in the Uniswap [voting dashboard](https://app.uniswap.org/#/vote) - where you can view all current and former Uniswap proposals. 
+Once a given proposal has made it through the proposal process and is ready for voting, it will appear in the Uniswap [voting dashboard](https://app.uniswap.org/#/vote) - where you can view all current and former Uniswap proposals.
 
-If a proposal is currently live for voting, it will say “active” next to the title. Clicking the proposal will show all the necessary information, documentation, and discussion needed for a voter to make an informed decision.
+If a proposal is currently live for voting, it will say `active` next to the title. Clicking the proposal will show all the necessary information, documentation, and discussion needed for a voter to make an informed decision.
 
 Once a proposal has reached the voting stage it represents real, executable code which will alter the functionality of Uniswap Governance or anything under its jurisdiction - proper care should be taken to ensure that the code represented in the proposal has been audited and is found to be in good faith.
-
 
 ## Delegation
 
@@ -26,11 +25,11 @@ UNI is a tradable asset and functions like most other standard ERC20 tokens, exc
 
 A democratic consensus, in our process called “quorum”, is determined by the percentage of UNI tokens in favor of, or against, a proposal. 1% of all UNI must be cast in favor to submit a proposal, and 4% in order to pass a vote.
 
-To delegate your UNI tokens and enact their voting power, visit the [Uniswap voting dashboard](https://app.uniswap.org/#/vote) and click the button that says “Unlock Voting”. 
+To delegate your UNI tokens and enact their voting power, visit the [Uniswap voting dashboard](https://app.uniswap.org/#/vote) and click the button that says “Unlock Voting”.
 
-Once you click this button, you will see a screen that gives you the option to self delegate, or add a delegate address. If you wish to delegate your UNI voting power to your own address, click “Self Delegate”. 
+Once you click this button, you will see a screen that gives you the option to self delegate, or add a delegate address. If you wish to delegate your UNI voting power to your own address, click “Self Delegate”.
 
-When you click “Self Delegate”, a transaction will pop up in Metamask. If this doesn’t happen, double check that metamask is connected to app.uniswap.org, turn off any popup blockers, and try again. Click confirm, and once the transaction has processed, you will see that the voting dashboard homepage has changed to show the number of votes you have, and “Delegated to: Self”. 
+When you click “Self Delegate”, a transaction will pop up in Metamask. If this doesn’t happen, double check that metamask is connected to app.uniswap.org, turn off any popup blockers, and try again. Click confirm, and once the transaction has processed, you will see that the voting dashboard homepage has changed to show the number of votes you have, and “Delegated to: Self”.
 
 If you wish to delegate your voting power to another party, choose “Add Delegate” and enter the ethereum address of your chosen voting party.
 
@@ -40,4 +39,4 @@ If you are unsure of how best to vote and are interested in delegating your UNI 
 
 ## Voting
 
-If you have successfully self delegated and there is currently an active proposal, you are now able to vote in Uniswap Governance. 
+If you have successfully self delegated and there is currently an active proposal, you are now able to vote in Uniswap Governance.
