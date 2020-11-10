@@ -39,4 +39,14 @@ If you are unsure of how best to vote and are interested in delegating your UNI 
 
 ## Voting
 
-If you have successfully self delegated and there is currently an active proposal, you are now able to vote in Uniswap Governance.
+If you have successfully self delegated and there is an active proposal, you are ready to vote in Uniswap Governance.
+
+To cast your vote, navigate to the proposals page and click on an active proposal.
+
+After reviewing the attached details and deciding your opinion, choose “Vote For”, or “Vote Against”.
+
+Once you’ve chosen, a window will pop up allowing you to execute the vote.
+ 
+When you click to cast your vote, metamask will pop up asking you to confirm your transaction. Click “submit”, wait a bit, and check that the transaction has been confirmed.
+
+That’s it! Once your transaction has been confirmed, you will have cast your vote and participated in Uniswap Governance. 
