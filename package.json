@@ -78,7 +78,7 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
-    "@uniswap/token-lists": "^1.0.0-beta.17",
+    "@uniswap/token-lists": "^1.0.0-beta.18",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-loader": "^3.0.3",
