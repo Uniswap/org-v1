@@ -41,11 +41,11 @@ Rebasing tokens typically work in two ways.
 
 ### Negative Rebasing Tokens
 
-A negative rebasing token, the more common variant, deflates the balances of token owners. Because the rebasing is not triggered by transfers, the router can not expect when or how a rebasing will happen. Once it does, the pair reserves will be unbalanced, and the next person to transact with the pair will bear the cost of the delta as a result of the rebasing. 
+A negative rebasing token, the more common variant, deflates the balances of token owners. Because the rebasing is not triggered by transfers, the router cannot expect when or how a rebasing will happen. Once it does, the pair reserves will be unbalanced, and the next person to transact with the pair will bear the cost of the delta as a result of the rebasing. 
 
 Needless to say, an unenviable position.
 
-Negative rebasing tokens have solved this error by altering their token contract to call sync() on the trading pair at the end of every transaction involving the Uniswap router contract. Those interested in forking the router contract should anticipate that negative rebasing tokens will break the pair until the token contracts are updated to accommodate your new router. 
+Negative rebasing tokens have solved this error by altering their token contract to call [sync](https://uniswap.org/docs/v2/smart-contracts/pair/#sync) on the trading pair at the end of every transaction involving the Uniswap router contract. Those interested in forking the router contract should anticipate that negative rebasing tokens will break the pair until the token contracts are updated to accommodate your new router. 
 
 ### Positive Rebasing Tokens 
 
