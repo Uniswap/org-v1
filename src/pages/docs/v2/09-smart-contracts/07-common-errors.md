@@ -5,7 +5,7 @@ tags: smart-contracts, documentation
 
 This document covers a few error codes freqeuently encountered while building on Uniswap V2.
 
-# Uniswap V2: K
+# UniswapV2: K
 
 This is an error that is frequently encountered, and requires a bit of context to understand it.
 
@@ -56,3 +56,46 @@ While positive rebalancing does not break any functionality of Uniswap, those in
 ### A Note on Rebasing Tokens
 
 For those interested in building a rebasing token, a word of caution: many contracts involving decentralized trading and liquidity provisioning will break upon interacting with your token. An example approach that will lead to much easier integration in future protocols can be found in [CHAI](https://chai.money/about.html). uses a wrapper function that contains the rebalancing within the wrapper, such that the redeemable token can be easily integrated into many different systems.
+
+# UniswapV2: LOCKED
+
+The LOCKED error is a guard built into the router contract that prevents customized reentrancy contracts from attempting to return malicious code into the router contract at the end of a transaction.
+
+This error is commonly encountered when using Ganache CLI to fork the Ethereum mainnet to a local instance as a part of a development environment. The error is a bug in Ganache-Cli that will hopefully be fixed in a future release by the truffle team. 
+
+A temporary fix is available by simply restarting the local fork.
+
+
+# No Access To Archive Node
+
+This is an error with either Metamask or Ganache-CLI. It usually occurs after a local fork is instantiated and contracts are deployed but there is one failed transaction.
+
+A temporary fix is available by restarting the local fork and resetting metamask.
+
+
+# UniswapV2: TRANSFER_FAILED
+
+This means the core contract was unable to send tokens to the recipient. This is most likely due to a scam token, where the token owner has maliciously disabled the transfer function in a way that allows users to buy the token, but not sell them. 
+
+# UniswapV2: EXPIRED
+
+This is a result of a transaction that took too long to be broadcast to the mainnet. 
+
+Uniswap does not set gas prices natively, so most users default to the suggested gas prices in metamask. Sometimes metamask gets it wrong, though, and sets the gas price too low. If a swap takes more than 20 minutes to execute, the core contract won’t allow it to go through.
+
+Finding accurate gas prices can be a challenge, for the time being, we like [Gas Now](https://www.gasnow.org/).
+
+# Action Requires an Active Reserve
+
+VM Exception While Processing Transaction: Action Requires an Active Reserve
+
+This is potentially a ganache bug encountered when working on flash swaps. We haven't figured out the source of it yet. 
+
+# Unable To Approve Transaction On The Front End 
+
+There are rare circumstances where users are unable to approve a token on the Uniswap front end. 
+
+This is a result of some token contracts taking steps to defend against malicious contracts that attempt to front run approvals and steal a users tokens. It happens only when the user is trying to increase an approval allowance from a preallocated amount to a larger one, and only happens with a few token contracts.
+
+The solution is have the user manually set the router contract approval amount to zero, then to the number they want. The easiest way to do this is through Etherscan. 
+
