@@ -36,6 +36,9 @@ const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
   padding: 0.25rem 0;
   margin: 0;
   color: ${({ theme }) => theme.colors.link};
+  :hover {
+    opacity: 0.6;
+  }
 `
 
 const StyledList = styled.ul`
@@ -312,7 +315,7 @@ const SideBar = props => {
             style={{ marginBottom: '1rem', display: 'inline-block', padding: !atTopLevel && '0px', fontSize: '14px' }}
             to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
           >
-            {'<- Back'}
+            {'← Back'}
           </StyledLink>
         )}
         {navData.edges

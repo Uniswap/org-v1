@@ -482,7 +482,7 @@ hr {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: calc(1.45rem - 1px);
-  background: hsla(0, 0%, 0%, 0.2);
+  background: hsl(0deg 0% 40% / 20%);
   border: none;
   height: 1px;
 }
@@ -494,7 +494,7 @@ address {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin-bottom: 1rem;
 }
 b {
   font-weight: bold;
