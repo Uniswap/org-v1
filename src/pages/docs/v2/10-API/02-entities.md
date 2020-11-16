@@ -84,12 +84,12 @@ specific data about each position.
 This entity is used to store data about a user's liquidity position. This information, along with
 information from the pair itself can be used to provide position sizes, token deposits, and more.
 
-| Field Name            | Value Type | Description                                          |
-| --------------------- | ---------- | ---------------------------------------------------- |
-| id                    | ID         | user address concatenated with pair address          |
-| user                  | User       | reference to user                                    |
-| pair                  | Pair       | reference to the pair liquidity is being provided on |
-| liquidityTokenBalance | BigDecimal | amount of LP tokens minted for this position         |
+| Field Name            | Value Type | Description                                               |
+| --------------------- | ---------- | ----------------------------------------------------------|
+| id                    | ID         | user address and pair address concatenated with a dash    |
+| user                  | User       | reference to user                                         |
+| pair                  | Pair       | reference to the pair liquidity is being provided on      |
+| liquidityTokenBalance | BigDecimal | amount of LP tokens minted for this position              |
 
 ### Transaction
 
@@ -204,20 +204,20 @@ Tracks data across all pairs aggregated into a daily bucket.
 
 Tracks pair data across each day.
 
-| Field Name        | Value Type | Description                                                                          |
-| ----------------- | ---------- | ------------------------------------------------------------------------------------ |
-| id                | ID         | pair contract address concatenated with day id (day start timestamp in unix / 86400) |
-| date              | Int        | unix timestamp for start of day                                                      |
-| pairAddress       | Bytes      | address for pair contract                                                            |
-| token0            | Token      | reference to token0                                                                  |
-| token1            | Token      | reference to token1                                                                  |
-| reserve0          | BigDecimal | reserve of token0 (updated during each transaction on pair)                          |
-| reserve1          | BigDecimal | reserve of token1 (updated during each transaction on pair)                          |
-| reserveUSD        | BigDecimal | reserve of token0 plus token1 stored as a derived USD amount                         |
-| dailyVolumeToken0 | BigDecimal | total amount of token0 swapped throughout day                                        |
-| dailyVolumeToken1 | BigDecimal | total amount of token1 swapped throughout day                                        |
-| dailyVolumeUSD    | BigDecimal | total volume within pair throughout day                                              |
-| dailyTxns         | BigInt     | amount of transactions on pair throughout day                                        |
+| Field Name        | Value Type | Description                                                                                      |
+| ----------------- | ---------- | ------------------------------------------------------------------------------------------------ |
+| id                | ID         | pair contract address and day id (day start timestamp in unix / 86400) concatenated with a dash  |
+| date              | Int        | unix timestamp for start of day                                                                  |
+| pairAddress       | Bytes      | address for pair contract                                                                        |
+| token0            | Token      | reference to token0                                                                              |
+| token1            | Token      | reference to token1                                                                              |
+| reserve0          | BigDecimal | reserve of token0 (updated during each transaction on pair)                                      |
+| reserve1          | BigDecimal | reserve of token1 (updated during each transaction on pair)                                      |
+| reserveUSD        | BigDecimal | reserve of token0 plus token1 stored as a derived USD amount                                     |
+| dailyVolumeToken0 | BigDecimal | total amount of token0 swapped throughout day                                                    |
+| dailyVolumeToken1 | BigDecimal | total amount of token1 swapped throughout day                                                    |
+| dailyVolumeUSD    | BigDecimal | total volume within pair throughout day                                                          |
+| dailyTxns         | BigInt     | amount of transactions on pair throughout day                                                    |
 
 ### TokenDayData
 
@@ -225,7 +225,7 @@ Tracks token data aggregated across all pairs that include token.
 
 | Field Name          | Value Type    | Description                                                                                                                            |
 | ------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| id                  | ID            | token address concatenated with day id (day start timestamp in unix / 86400)                                                           |
+| id                  | ID            | token address and day id (day start timestamp in unix / 86400) concatenated with a dash                                                         |
 | date                | Int           | unix timestamp for start of day                                                                                                        |
 | token               | Token         | reference to token entity                                                                                                              |
 | dailyVolumeToken    | BigDecimal    | amount of token swapped across all pairs throughout day                                                                                |
