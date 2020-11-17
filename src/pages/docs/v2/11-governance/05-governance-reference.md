@@ -102,7 +102,7 @@ Returns the prior number of votes for an account at a specific block number. The
 
 # State-Changing Functions: UNI
 
-# Delegate
+## Delegate
 
 ```solidity
 function delegate(address delegatee)
@@ -114,7 +114,7 @@ Delegate votes from the sender to the delegatee. Users can delegate to 1 address
 | delegatee      | `address` | The address to which msg.sender wishes to delegate their votes to.                                             |
 
 
-# Delegate By Signature
+## Delegate By Signature
 
 ```solidity
 function delegateBySig(address delegatee, uint nonce, uint expiry, uint8 v, bytes32 r, bytes32 s)
