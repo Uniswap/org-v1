@@ -173,21 +173,78 @@ The proposer cannot create another proposal if they currently have a pending or 
 | signatures     | `string`  | The ordered list of function signatures to be passed during execution. This array must be the same length as all other array parameters in this function.                              |
 | calldatas      | `bytes`   | The ordered list of data to be passed to each individual function call during proposal execution. This array must be the same length as all other array parameters in this function.   |
 | description    | `string`  | A human readable description of the proposal and the changes it will enact.                                                                                                            |
+|                |           |                                                                                                                                                                                        |
+| Unnamed        | `uint`    | Returns ID of the new proposal                                                                                                         |
 
 
 
 ## Queue
 
+```solidity
+function queue(uint proposalId)
+```
+
+After a proposal has succeeded, any address can call the queue method to move the proposal into the Timelock queue. A proposal can only be queued if it has succeeded.
+
+| Name           | Type      |                                                                                                                    |
+| :------------- | :-------- | :----------------------------------------------------------------------------------------------------------------- |
+| proposalId     | `uint`    | ID of a given successful proposal                                                                                  |
+
 
 
 ## Execute
 
+```solidity
+function execute(uint proposalId) payable returns (uint)
+```
+
+After the Timelock delay period, any account may invoke the execute method to apply the changes from the proposal to the target contracts. This will invoke each of the actions described in the proposal.
+This function is payable so the Timelock contract can invoke payable functions that were selected in the proposal.
+
+| Name           | Type      |                                                                                                                    |
+| :------------- | :-------- | :----------------------------------------------------------------------------------------------------------------- |
+| proposalId     | `uint`    | ID of a given successful proposal                                                                                  |
+
+
 ## Cancel 
+
+```solidity
+function queue(uint proposalId)
+```
+Cancel a proposal that has not yet been executed. The Guardian is the only one who may execute this unless the proposer does not maintain the delegates required to create a proposal. If the proposer does not have more delegates than the proposal threshold, anyone can cancel the proposal.
+
 
 ## Cast Vote
 
+```solidity
+function castVote(uint proposalId, bool support)
+```
+
+Cast a vote on a proposal. The account's voting weight is determined by it's number of delegated votes at the time the proposal becomes active.
+
+| Name           | Type      |                                                                                                                    |
+| :------------- | :-------- | :----------------------------------------------------------------------------------------------------------------- |
+| proposalId     | `uint`    | ID of a given successful proposal                                                                                  |
+| support        | `bool`    | A boolean of true for 'yes' or false for 'no' on the proposal vote.                                                |
+
+
 ## Cast Vote By Signature
 
+```solidity
+function castVoteBySig(uint proposalId, bool support, uint8 v, bytes32 r, bytes32 s)
+```
+
+Cast a vote on a proposal. The account's voting weight is determined its number of delegated votes at the time the proposal became active. This method has the same purpose as Cast Vote, but instead enables offline signatures to participate in governance voting. For more details on how to create an offline signature, review EIP-712.
+
+
+| Name           | Type      |                                                                                                                    |
+| :------------- | :-------- | :----------------------------------------------------------------------------------------------------------------- |
+| proposalId     | `uint`    | ID of a given successful proposal                                                                                  |
+| support        | `bool`    | A boolean of true for 'yes' or false for 'no' on the proposal vote.                                                |
+| expiry         | `uint`    | The time when the signature expires. A block timestamp in seconds since the unix epoch.                            |
+| v              | `uint`    | The recovery byte of the signature.                                                                                |
+| r              | `bytes32` | Half of the ECDSA signature pair.                                                                                  |
+| s              | `bytes32` | Half of the ECDSA signature pair.                                                                                  |
 
 
 
