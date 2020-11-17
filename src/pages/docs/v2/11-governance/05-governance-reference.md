@@ -3,11 +3,15 @@ title: Governance Reference
 tags: governance, documentation
 ---
 
-# TODO: INTRO
+Uniswap protocol is goverened and upgraded by UNI token holders, using three distinct components; the UNI token, governance module, and Timelock. Together, these contracts allow the community to propose, vote, and implement changes to the uniswap protocol.
+
+Any addresses with more than 10M UNI delegated to it may propose governance actions, which contain finished, executable code. When a proposal is created, the community can cast their votes during a 3 day voting period. If a majority, and at least 4M votes are cast for the proposal, it is queued in the Timelock, and may be executed in a minimum of 2 days.
 
 ## Timelock
 
 The Timelock contract can modify system parameters, logic, and contracts in a 'time-delayed, opt-out' upgrade pattern. Timelock has a hard-coded minimum delay of 2 days, which is the least amount of notice possible for a governance action. Each proposed action will be published at a minimum of 2 days in the future from the time of announcement. Major upgrades, such as changing the risk system, may have up to a 30 day delay. Timelock is controlled by the governance module; pending and completed governance actions can be monitored on the Timelock Dashboard.
+
+![](images/gov_diagram-1.png)
 
 
 
@@ -78,12 +82,23 @@ function getCurrentVotes(address account) returns (uint96)
 
 Returns the balance of votes for an account as of the current block.
 
+| Name           | Type      |                                                                                                                |
+| :------------- | :-------- | :------------------------------------------------------------------------------------------------------------- |
+| account        | `address` | Address of the account of which to retrieve the number of votes.                                               |
+
 ## Get Prior Votes
 
 ```solidity
 function getPriorVotes(address account, uint blockNumber) returns (uint96)
 ```
 Returns the prior number of votes for an account at a specific block number. The block number passed must be a finalized block or the function will revert.
+
+| Name           | Type      |                                                                                                                |
+| :------------- | :-------- | :------------------------------------------------------------------------------------------------------------- |
+| account        | `address` | Address of the account of which to retrieve the prior number of votes.                                         |
+| blocknumber    | `uint`    | The block number at which to retrieve the prior number of votes.                                               |
+|                |           |                                                                                                                |
+| unnamed        | `uint96`  | The number of prior votes                                                                                      |
 
 # State-Changing Functions: UNI
 
@@ -114,7 +129,6 @@ Delegate votes from the sender to the delegatee. Users can delegate to 1 address
 | v              | `uint`    | The recovery byte of the signature.                                                                                |
 | r              | `bytes32` | Half of the ECDSA signature pair.                                                                                  |
 | s              | `bytes32` | Half of the ECDSA signature pair.                                                                                  |
-|                |           |                                                                                                                    |
 
 # Read-Only Functions: Governor Alpha
 
@@ -140,7 +154,7 @@ Returns the minimum number of votes required for an account to create a proposal
 function proposalMaxOperations() returns (uint)
 ```
 
-Returns the maximum number of actions that can be included in a proposal.
+Returns the maximum number of actions that can be included in a proposal. Actions are functions calls that will be made when a proposal succeeds and executes.
 
 ## Voting Delay
 
@@ -148,7 +162,7 @@ Returns the maximum number of actions that can be included in a proposal.
 function votingDelay() returns (uint)
 ```
 
-Returns the number of blocks to wait before voting on a proposal may begin.
+Returns the number of blocks to wait before voting on a proposal may begin. This value is added to the current block number when a proposal is created.
 
 
 ## Voting Period
@@ -157,13 +171,20 @@ Returns the number of blocks to wait before voting on a proposal may begin.
 function votingPeriod() returns (uint)
 ```
 
-Returns the duration of voting on a proposal (in blocks).
+Returns the duration of voting on a proposal, in blocks.
 
 ## Get Actions
 
 ```solidity
 function getActions(uint proposalId) returns (uint proposalId) public view returns (address[] memory targets, uint[] memory values, string[] memory signatures, bytes[] memory calldatas)
 ```
+
+Gets the actions of a selected proposal. Pass a proposal ID and get the targets, values, signatures and calldatas of that proposal.
+
+| Name           | Type      |                                                                                                                    |
+| :------------- | :-------- | :----------------------------------------------------------------------------------------------------------------- |
+| proposalId     | `uint`    | ID of the proposal                                                                                                 |
+
 Returns:
 - Array of addresses of contracts the proposal calls.
 - Array of unsigned integers the proposal uses as values.
@@ -178,12 +199,12 @@ function getReceipt(uint proposalId, address voter) returns (Receipt memory)
 
 Returns a proposal ballot receipt of a given voter.
 
-
 | Name           | Type      |                                                                                                                    |
 | :------------- | :-------- | :----------------------------------------------------------------------------------------------------------------- |
-| proposalId     | `uint`    | ID of the proposal                                                                                                 |
-| delegatee      | `address` | The address of the voter                                                                                           |
-
+| proposalId     | `uint`    | ID of the proposal in which to get a voter’s ballot receipt.                                                       |
+| voter          | `address` | Address of the account of a proposal voter.                                                                        |
+|                |           |                                                                                                                    |
+| Receipt        | `struct`  | A Receipt struct for the ballot of the voter address.                                                              |
 
 ## State
 
@@ -215,9 +236,9 @@ function propose(address[] memory targets, uint[] memory values, string[] memory
 
 Creates a Proposal to change the protocol.
 
-Proposals will be voted on by delegated voters. If there is sufficient support before the voting period ends, the proposal shall be automatically enacted. Enacted proposals are queued and executed in the  Timelock contract.
+Proposals will be voted on by delegated voters. If there is sufficient support before the voting period ends, the proposal shall be automatically enacted. Enacted proposals are queued and executed in the Timelock contract.
 
-The sender must hold more UNI than the current proposal threshold (proposalThreshold()) as of the immediately previous block. If the threshold is 100,000 UNI, the sender must have been delegated more than 1% of all UNI in order to create a proposal. The proposal can have up to 10 actions (based on proposalMaxOperations()).
+The sender must hold more UNI than the current proposal threshold (proposalThreshold()) as of the immediately previous block. The proposal can have up to 10 actions (based on proposalMaxOperations()).
 
 The proposer cannot create another proposal if they currently have a pending or active proposal. It is not possible to queue two identical actions in the same block (due to a restriction in the Timelock), therefore actions in a single proposal must be unique, and unique proposals that share an identical action must be queued in different blocks.
 
@@ -250,7 +271,7 @@ After a proposal has succeeded, any address can call the queue method to move th
 ## Execute
 
 ```solidity
-function execute(uint proposalId) payable returns (uint)
+function execute(uint proposalId) payable
 ```
 
 After the Timelock delay period, any account may invoke the execute method to apply the changes from the proposal to the target contracts. This will invoke each of the actions described in the proposal.
@@ -268,6 +289,9 @@ function queue(uint proposalId)
 ```
 Cancel a proposal that has not yet been executed. The Guardian is the only one who may execute this unless the proposer does not maintain the delegates required to create a proposal. If the proposer does not have more delegates than the proposal threshold, anyone can cancel the proposal.
 
+| Name           | Type      |                                                                                                                    |
+| :------------- | :-------- | :----------------------------------------------------------------------------------------------------------------- |
+| proposalId     | `uint`    | ID of a proposal to cancel                                                                                         |
 
 ## Cast Vote
 
