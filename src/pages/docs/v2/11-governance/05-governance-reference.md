@@ -7,10 +7,65 @@ tags: governance, documentation
 
 ## Timelock
 
-## Pause Guardian
+The Timelock contract can modify system parameters, logic, and contracts in a 'time-delayed, opt-out' upgrade pattern. Timelock has a hard-coded minimum delay of 2 days, which is the least amount of notice possible for a governance action. Each proposed action will be published at a minimum of 2 days in the future from the time of announcement. Major upgrades, such as changing the risk system, may have up to a 30 day delay. Timelock is controlled by the governance module; pending and completed governance actions can be monitored on the Timelock Dashboard.
 
-## Key Events
 
+
+# Key Events
+
+## DelegateChanged
+
+```solidity
+DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate)
+```
+
+Emitted when an account changes its delegate.
+
+## DelegateVotesChanged
+
+```solidity
+DelegateVotesChanged(address indexed delegate, uint previousBalance, uint newBalance)
+```
+
+Emitted when a delegate account's vote balance changes.
+
+## ProposalCreated
+
+```solidity
+ProposalCreated(uint id, address proposer, address[] targets, uint[] values, string[] signatures, bytes[] calldatas, uint startBlock, uint endBlock, string description)
+```
+
+Emitted when a new proposal is created.
+
+## VoteCast
+
+```solidity
+VoteCast(address voter, uint proposalId, bool support, uint votes)
+```
+Emitted when a vote has been cast on a proposal.
+
+## ProposalCanceled
+
+```solidity
+ProposalCanceled(uint id)
+```
+
+Emitted when a proposal has been canceled.
+
+## ProposalQueued
+
+```solidity
+ProposalQueued(uint id, uint eta)
+```
+Emitted when a proposal has been queued in the Timelock.
+
+## ProposalExecuted
+
+```solidity
+ProposalExecuted(uint id)
+```
+
+Emitted when a proposal has been executed in the Timelock.
 
 
 # Read-Only Functions: UNI
@@ -174,7 +229,7 @@ The proposer cannot create another proposal if they currently have a pending or 
 | calldatas      | `bytes`   | The ordered list of data to be passed to each individual function call during proposal execution. This array must be the same length as all other array parameters in this function.   |
 | description    | `string`  | A human readable description of the proposal and the changes it will enact.                                                                                                            |
 |                |           |                                                                                                                                                                                        |
-| Unnamed        | `uint`    | Returns ID of the new proposal                                                                                                         |
+| Unnamed        | `uint`    | Returns ID of the new proposal                                                                                                                                                         |
 
 
 
