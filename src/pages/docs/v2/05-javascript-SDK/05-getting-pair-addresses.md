@@ -41,6 +41,6 @@ const token1 = '0xF00D000000000000000000000000000000000000' // change me!
 const pair = getCreate2Address(
   FACTORY_ADDRESS,
   keccak256(['bytes'], [pack(['address', 'address'], [token0, token1])]),
-  INIT_CODE_HASH'
+  INIT_CODE_HASH
 )
 ```
