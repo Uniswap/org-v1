@@ -209,7 +209,7 @@ const SideBar = props => {
             style={{ marginBottom: '1rem', display: 'inline-block', padding: !atTopLevel && '0px', fontSize: '14px' }}
             to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
           >
-            {'<- Home'}
+            {'← Home'}
           </StyledLink>
         )}
         {navData.edges
