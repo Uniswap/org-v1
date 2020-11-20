@@ -324,36 +324,3 @@ Cast a vote on a proposal. The account's voting weight is determined its number 
 | v              | `uint`    | The recovery byte of the signature.                                                                                |
 | r              | `bytes32` | Half of the ECDSA signature pair.                                                                                  |
 | s              | `bytes32` | Half of the ECDSA signature pair.                                                                                  |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
