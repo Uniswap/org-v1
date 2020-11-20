@@ -36,6 +36,9 @@ const StyledLink = styled(({ isActive, ...props }) => <Link {...props} />)`
   padding: 0.25rem 0;
   margin: 0;
   color: ${({ theme }) => theme.colors.link};
+  :hover {
+    opacity: 0.6;
+  }
 `
 
 const StyledList = styled.ul`

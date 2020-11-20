@@ -178,7 +178,7 @@ export const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-family: "GT Haptik Regular", 'Inferi Light','Times New Roman',serif;
-    margin-top: 1rem ;
+    margin-top: 1.75rem ;
     font-size: 1.875rem;
     font-weight: 500;
   }
