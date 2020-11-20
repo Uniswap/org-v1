@@ -312,7 +312,7 @@ const SideBar = props => {
             style={{ marginBottom: '1rem', display: 'inline-block', padding: !atTopLevel && '0px', fontSize: '14px' }}
             to={`/docs/${v2Toggle ? 'v2' : 'v1'}/`}
           >
-            {'<- Back'}
+            {'← Back'}
           </StyledLink>
         )}
         {navData.edges
@@ -391,7 +391,7 @@ const SideBar = props => {
               <StyledLink to={'/whitepaper.pdf'}>Whitepaper</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/docs/v2/governance/overview'}>Governance</StyledLink>
+              <StyledLink to={'/docs/v2/governance/governance-reference'}>Governance</StyledLink>
             </StyledListItem>
           </StyledList>
         )}
