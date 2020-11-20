@@ -29,6 +29,8 @@ Get to know the Uniswap SDK and smart contract API objects, methods, attributes,
 - <Link to="/docs/v2/API">API</Link>
 - <Link to="/docs/v2/smart-contracts">Smart Contracts</Link>
 - [Whitepaper](/whitepaper.pdf)
+- <Link to="/docs/v2/governance/governance-reference">Governance</Link>
+
 
 ### Developer community
 
