@@ -218,6 +218,7 @@ Tracks pair data across each day.
 | dailyVolumeToken1 | BigDecimal | total amount of token1 swapped throughout day                                                    |
 | dailyVolumeUSD    | BigDecimal | total volume within pair throughout day                                                          |
 | dailyTxns         | BigInt     | amount of transactions on pair throughout day                                                    |
+| totalSupply       | BigDecimal | total supply of liquidity token distributed to LPs                                               |
 
 ### TokenDayData
 
