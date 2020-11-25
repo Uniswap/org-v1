@@ -24,7 +24,6 @@ const StyledHeader = styled.header`
   z-index: 3;
   position: sticky;
   top: 0;
-  background-color: white;
   height: 2rem;
   background-color: white;
   @media (max-width: 960px) {
