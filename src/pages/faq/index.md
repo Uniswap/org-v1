@@ -20,6 +20,10 @@ For a more in depth description. Check out the [How Uniswap works](/docs/v2/prot
 
 Prices are determined by the amount of each token in a pool. The smart contract maintains a constant using the following function: `x*y=k`. In this case `x = token0`, `y = token1`, `k = constant`. For each trade a certain amount of tokens are removed from the pool for an amount of the other token. To maintain `k`, the balances held by the smart contract are adjusted during the execution of the trade, therefore changing the price.
 
+# I saw a token was trading at X value, but when I traded on uniswap I got a much lower value!
+
+Websites that show tokens prices typically aggregate data from multiple sources. Some of these sources can be inaccurate, especially with new or low volume tokens. If a website or app says a token is worth more than what it shows as on uniswap, it is due to bad data being fed to the website. Always check the exchange rate on the uniswap app before trading.
+
 # Why is my swap failing or stuck?
 
 You might be trying to swap a fee on transfer or deflationary token. If so, you have to increase your allowed slippage to account for the fee taken during the swap. Click on the gear for settings and adjust Slippage tolerance accordingly.
