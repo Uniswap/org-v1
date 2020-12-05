@@ -22,7 +22,7 @@ Prices are determined by the amount of each token in a pool. The smart contract 
 
 # I saw a token was trading at X value, but when I traded on uniswap I got a much lower value!
 
-Websites that show tokens prices typically aggregate data from multiple sources. Some of these sources can be inaccurate, especially with new or low volume tokens. If a website or app says a token is worth more than what it shows as on uniswap, it is due to bad data being fed to the website. Always check the exchange rate on the uniswap app before trading.
+Websites that show tokens prices typically aggregate data from multiple sources. Some of these sources can be inaccurate, especially with new or low volume tokens. If a website or app says a token is worth more than what it shows on Uniswap, it is due to the website's inaccurate data sources. Always check the exchange rate on the Uniswap app before trading.
 
 # Why is my swap failing or stuck?
 
