@@ -8,7 +8,7 @@ This guide contains everything you need to start voting in Uniswap Governance.
 In order to participate you will need:
 
 - [UNI Tokens](https://uniswap.org/blog/uni/)
-  ETH for transaction costs
+- ETH for transaction costs
 - A browser with [Metamask](https://metamask.io/) installed
 
 The governance [process](https://uniswap.org/docs/v2/governance/process/) begins in the [Governance Forum](https://gov.uniswap.org/), where you can find proposals under consideration, gather information about community sentiment, and engage with the community.
