@@ -65,4 +65,4 @@ Importantly, Uniswap V2 is not opinionated on how you use the new cumulative pri
 
 # Building an oracle
 
-To learn more about building oracles check out <Link to="docs/v2/06-smart-contract-integration/04-building-an-oracle">building an oracle</Link> in the developer guides.
+To learn more about building oracles check out <Link to="/docs/v2/smart-contract-integration/building-an-oracle/">building an oracle</Link> in the developer guides.
