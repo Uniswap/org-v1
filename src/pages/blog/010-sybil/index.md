@@ -32,7 +32,7 @@ The Sybil verification flow is a three step process.
 
 In the background, Sybil verifies that the tweet content matches the signed message. Once a user has been verified, their Twitter handle is matched to their Ethereum address and will appear on the Sybil interface next to their associated vote count. Sybil users can proceed to **review available delegates, as well as delegate or vote on governance proposals directly through the interface.**
 
-## Get involved
+## Extending Sybil
 
 At launch, Sybil supports both Uniswap and Compound's delegate lists but it's mapping tool can be used to display public identities for any project.
 
@@ -42,7 +42,9 @@ Sybil's use cases extend beyond delegation. The mapping of addresses to social i
 
 Similarly, the Sybil verification process is not constrained to the Sybil.org interface. The documentation below provides detailed steps for both supporting the Sybil verification process directly from your existing interface and running custom verification flows around list creation.
 
-We encourage projects to:
+## Get involed
+
+- [Verify yourself as a delegate on Sybil.org](https://sybil.org/)
 
 - [Use the Sybil list](https://github.com/Uniswap/sybil-list#use-the-sybil-list)
 
