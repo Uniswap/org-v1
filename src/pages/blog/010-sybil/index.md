@@ -8,7 +8,7 @@ previewText: 'Sybil maps on-chain addresses to digital identities to maintain a 
 
 ![](banner.jpg)
 
-Today we're excited to introduce **Sybil, a governance tool for discovering delegates.** Sybil **maps on-chain addresses to digital identities** to maintain a list of delegates, all while avoiding pesky user signups, on-chain transactions, and manual record keeping.
+Today we're excited to introduce **[Sybil](https://sybil.org/), a governance tool for discovering delegates.** Sybil **maps on-chain addresses to digital identities** to maintain a list of delegates, all while avoiding pesky user signups, on-chain transactions, and manual record keeping.
 
 We hope that Sybil can grow adoption of Uniswap's governance system and encourage both existing and future Uniswap delegates to verify their identities, **making it easier for delegators to discover and engage with their community representatives**.
 
