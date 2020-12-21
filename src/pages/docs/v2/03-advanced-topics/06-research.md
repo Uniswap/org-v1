@@ -3,7 +3,15 @@ title: Research
 tags: advanced-topics, documentation
 ---
 
-Because the concept of AMMs is so new many people have begun researching Uniswap other projects in the space in an academic settings.
+The automated market maker is a new concept, and as such, new research comes out frequently. We've selected some of the most thoughtful here.
+
+# Uniswap's Financial Alchemy
+
+Authors: Dave White, Martin Tassy, Charlie Noyes, and Dan Robinson
+
+> An automated market maker is a type of decentralized exchange that lets customers trade between on-chain assets like USDC and ETH. Uniswap is the most popular AMM on Ethereum. Like most AMMs, Uniswap facilitates trading between a particular pair of assets by holding reserves of both assets. It sets the trading price between them based on the size of its reserves in such a way that prices will stay in line with the broader market. Anybody who would like to can join the “pool” for a particular pair and become a liquidity provider, or LP, so-called because they provide liquid assets for others to trade against. LPs contribute assets to both reserves simultaneously, taking on some of the risk of trading in exchange for a share of the returns.
+
+- [Uniswap's Financial Alchemy](https://research.paradigm.xyz/uniswaps-alchemy)
 
 # An analysis of Uniswap markets
 
@@ -35,8 +43,6 @@ Authors: Alex Evans
 > Geometric mean market makers (G3Ms), such as Uniswap and Balancer, comprise a popular class of automated market makers (AMMs) defined by the following rule: the reserves of the AMM before and after each trade must have the same (weighted) geometric mean. This paper extends several results known for constant-weight G3Ms to the general case of G3Ms with time-varying and potentially stochastic weights. These results include the returns and no-arbitrage prices of liquidity pool (LP) shares that investors receive for supplying liquidity to G3Ms. Using these expressions, we show how to create G3Ms whose LP shares replicate the payoffs of financial derivatives. The resulting hedges are model-independent and exact for derivative contracts whose payoff functions satisfy an elasticity constraint. These strategies allow LP shares to replicate various trading strategies and financial contracts, including standard options. G3Ms are thus shown to be capable of recreating a variety of active trading strategies through passive positions in LP shares.
 
 - [Liquidity Provider Returns in Geometric Mean Markets](https://arxiv.org/abs/2006.08806)
-
-This is a stub. Help us expand it by submitting a PR using the github link below!
 
 # The Replicating Portfolio of a Constant Product Market
 
