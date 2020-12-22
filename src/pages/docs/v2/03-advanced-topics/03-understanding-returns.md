@@ -3,7 +3,7 @@ title: Understanding Returns
 tags: pools, documentation
 ---
 
-Uniswap incentivizes users to add liquidity to pools by rewarding providers with fees on trades. Market making, in general, is a complex activity which has the risk of losing money (compared to just **hodling**) in the case of big directional moves of the underlying asset price.
+Uniswap incentivizes users to add liquidity to trading pools by rewarding providers with the fees generated when other users trade with those pools. Market making, in general, is a complex activity. There is a risk of losing money during large and sustained movement in the underlying asset price compared to simply holding an asset.
 
 # Risks
 
