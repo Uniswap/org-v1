@@ -5,27 +5,24 @@ tags: oracles, documentation
 
 # Introduction
 
-Uniswap V2 enables building highly decentralized and manipulation-resistant on-chain price oracles.
+A price oracle is any tool used to view price information about a given asset. When you look at stock prices on your phone, you are using your phone as a price oracle. Similarly, the app on your phone relies on devices to retrieve price information - likely several, which are aggregated and then displayed to you, the end-user. These are price oracles as well.
 
-Price oracles are a crucial to the viability and security of DeFi protocols. Oracle designs between different projects have been implemented on an ad hoc basis, with varying degrees of decentralization and security. Because of this, the ecosystem has witnessed numerous high-profile hacks where the oracle implementation is the main attack vector.
+When building smart contracts that integrate with DeFi protocols, developers will inevitably run into the price oracle problem. What is the best way to retrieve the price of a given asset?
 
-Some of these vulnerabilities have been discussed [here](https://samczsun.com/taking-undercollateralized-loans-for-fun-and-for-profit/). A lack of a robust price oracle has held back both the adoption of DeFi and made it difficult and costly for new entrants to launch new derivative products.
+Many Oracle designs on Ethereum have been implemented on an ad-hoc basis, with varying degrees of decentralization and security. Because of this, the ecosystem has witnessed numerous high-profile hacks where the oracle implementation is the primary attack vector.
+Some of these vulnerabilities are discussed [here](https://samczsun.com/taking-undercollateralized-loans-for-fun-and-for-profit/). A lack of a robust price oracle has held back both the adoption of DeFi and made it difficult and costly for new entrants to launch new derivative products.
 
-Enter Uniswap V2. As liquidity and trade volume on the protocol continue to grow, Uniswap's on-chain trade history is becoming an evermore valuable, accurate, and robust source of price information. This insight has been formalized into the Price Oracle mechanism in Uniswap V2.
+While there is no one size fits all solution, Uniswap V2 enables building highly decentralized and manipulation-resistant on-chain price oracles, which may solve many of the demands encountered while building robust protocols.
 
-# Why Oracles?
-
-On-chain price feeds are a critical component for many decentralized financial applications including those similar to derivatives, lending, margin trading, prediction markets and more.
-
-Despite closely tracking the real-world price most of the time, Uniswap V1 cannot be used safely as a price oracle. In Uniswap V1, an attacker can simply manipulate the price just before it is measured.
+As liquidity and trade volume on the protocol continues to grow, Uniswap’s on-chain trade history has become an increasingly accurate and manipulation resistant price information source. This insight is now formalized as the Price Oracle mechanism in Uniswap V2.
 
 # Uniswap V2 solution
 
-Uniswap V2 includes a number of improvements for price feeds built on top of it. First, every pair measures (but does not store) the market price at the beginning of each block, before any trades take place. This price is expensive to manipulate because it was set by the last transaction in a previous block.
+Uniswap V2 includes several improvements for price feeds built on top of it. First, every pair measures (but does not store) the market price at the beginning of each block, before any trades take place. This price is expensive to manipulate because it is by the last transaction in a previous block.
 
-**To set the measured price to one that is out of sync with the global market price, an attacker has to make a bad trade at the end of a previous block** , typically with no guarantee that they will be able to arbitrage it back in the next block. Attackers will lose money to arbitrageurs, unless they can "selfishly" mine two blocks in a row. This type of attack presents a number of challenges and [has not been observed to date](https://arxiv.org/abs/1912.01798).
+**To set the measured price to one that is out of sync with the global market price, an attacker has to make a bad trade at the end of a previous block** , typically with no guarantee that they will arbitrage it back in the next block. Attackers will lose money to arbitrageurs unless they can “selfishly” mine two blocks in a row. This type of attack presents several challenges and [has not been observed to date](https://arxiv.org/abs/1912.01798).
 
-This alone is not enough. If significant value settles based on the price resulting from this mechanism, then the profit of an attack likely can outweigh the loss.
+Unfortunately, this alone is not enough. If significant value settles based on the price resulting from this mechanism, an attack’s profit will likely outweigh the loss.
 
 Instead, Uniswap V2 adds this end-of-block price to a single cumulative-price variable in the core contract weighted by the amount of time this price existed. **This variable represents a sum of the Uniswap price for every second in the entire history of the contract.**
 
