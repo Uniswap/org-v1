@@ -10,7 +10,7 @@ A price oracle is any tool used to view price information about a given asset. W
 When building smart contracts that integrate with DeFi protocols, developers will inevitably run into the price oracle problem. What is the best way to retrieve the price of a given asset?
 
 Many Oracle designs on Ethereum have been implemented on an ad-hoc basis, with varying degrees of decentralization and security. Because of this, the ecosystem has witnessed numerous high-profile hacks where the oracle implementation is the primary attack vector.
-Some of these vulnerabilities are discussed [here](https://samczsun.com/taking-undercollateralized-loans-for-fun-and-for-profit/). A lack of a robust price oracle has held back both the adoption of DeFi and made it difficult and costly for new entrants to launch new derivative products.
+Some of these vulnerabilities are discussed [here](https://samczsun.com/taking-undercollateralized-loans-for-fun-and-for-profit/). A lack of a robust price oracle has held back the adoption of DeFi and made it difficult and costly for new entrants to launch new derivative products.
 
 While there is no one size fits all solution, Uniswap V2 enables building highly decentralized and manipulation-resistant on-chain price oracles, which may solve many of the demands encountered while building robust protocols.
 
