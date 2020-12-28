@@ -58,6 +58,10 @@ Ethereum requires gas to execute each transaction. You can also check ETH gas st
 
 There are many community built tools like [https://www.uniswaproi.com/](https://www.uniswaproi.com/), [https://www.zapper.fi/dashboard](https://www.zapper.fi/dashboard) and [https://zerion.io/](https://zerion.io/). Uniswap provides no guarantees the information on these sites is correct.
 
+# I accidentally transferred tokens directly to a pair contract, is there any way I can get them back?
+
+Uniswap token pair contracts are ownerless. We have no special control over the pair contracts' functionality; because of this, any tokens accidentally transferred to the token contract itself are lost forever.
+
 # I updated my token via a proxy contract, but the Uniswap information page is showing the old symbol / name!
 
 [Info.uniswap](https://info.uniswap.org/) reads the details of new tokens when they're added to the subgraph. There may be some circumstances where an old symbol or name isn't updated if the token was updated with a proxy contract. A guide to fix this yourself is forthcoming, in the meantime, reach out with the details on our developer discord.
