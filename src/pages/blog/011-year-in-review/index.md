@@ -117,6 +117,7 @@ We're eternally grateful to the Ethereum community for helping us achieve so muc
 Happy holidays to all, and see you in the new year!
 
 Uniswap Team
+🦄
 
 ---
 
