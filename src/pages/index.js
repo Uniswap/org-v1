@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Layout from '../layouts'
 import SEO from '../components/seo'
-import Ticker from '../components/ticker'
+// import Ticker from '../components/ticker'
 import BG from '../components/bg'
 import { useDarkMode } from '../contexts/Application'
+
 import { CardBGImage, CardNoise, StyledLink, StyledExternalLink } from '../components/utils'
 
 const BGCard = styled.span`
@@ -40,6 +41,7 @@ const StyledBody = styled.div`
   flex-direction: column;
 
   padding: 4rem;
+  margin-bottom: 8rem;
   @media (max-width: 375px) {
     margin-bottom: 2rem;
     justify-content: center;
@@ -70,7 +72,7 @@ const StyledBodyTitle = styled.h1`
   overflow-wrap: normal;
   max-width: 1000px;
   letter-spacing: -0.05em;
-  font-family: 'Inferi Light', 'Times New Roman', serif;
+  font-family: 'GT Haptik', 'Times New Roman', serif;
   @media (max-width: 1024px) {
     margin: 2rem 0 3rem 0;
   }
@@ -140,18 +142,20 @@ const StyledImgSection = styled.div`
 `
 
 const MiniNewInfo = styled(Link)`
-  color: ${({ theme }) => theme.textColor};
+  color: ${({ theme }) => theme.invertedTextColor};
+  background-color: ${({ theme }) => theme.textColor};
   display: inline-block;
   border: 1px solid ${({ theme }) => theme.textColor};
-  padding: 1rem;
+  padding: 0.5rem;
 
   font-family: 'GT Haptik Regular';
   border-radius: 8px;
   transition: transform 0.3s ease;
+  opacity: 0.9;
 
   will-change: transform;
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
-
+  transform: rotateZ(-2deg);
   :hover {
     transform: translate3d(2px, 2px, 10px);
   }
@@ -171,13 +175,13 @@ const MiniNewInfo = styled(Link)`
 
 const NewPill = styled.span`
   float: left;
-  color: ${({ theme }) => theme.invertedTextColor};
-  background-color: ${({ theme }) => theme.textColor};
+  color: ${({ theme }) => theme.textColor};
+  background-color: ${({ theme }) => theme.invertedTextColor};
   padding: 0rem 0.75rem;
   border-radius: 0.5em;
   text-align: center;
   margin: 0;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   font-weight: 400;
 `
 
@@ -185,12 +189,12 @@ const IndexPage = props => {
   const isDark = useDarkMode()
 
   return (
-    <Layout path={props.location.pathname} nofooter={true}>
+    <Layout path={props.location.pathname} nofooter={false}>
       <BGCard>
         <CardBGImage isDark={isDark} />
         <CardNoise />
       </BGCard>
-      <Ticker />
+      {/* <Ticker /> */}
       <BG />
       <SEO
         title=""
@@ -211,8 +215,8 @@ const IndexPage = props => {
           </StyledNav>
           <StyledImgSection>
             <MiniNewInfo to="/blog/uni/">
-              <NewPill>UNI</NewPill>
-              Read the announcement ↗
+              <NewPill>2020</NewPill>
+              Read the year in review ↗
             </MiniNewInfo>
           </StyledImgSection>
         </StyledTitle>

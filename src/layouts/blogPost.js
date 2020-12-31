@@ -13,7 +13,8 @@ const StyledBlog = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 2rem 5rem;
+  align-items: center;
+  /* padding: 2rem 5rem; */
   margin-bottom: 2rem;
   @media (max-width: 960px) {
     padding: 1rem;
@@ -53,7 +54,7 @@ const StyledMDX = styled.div`
     font-style: italic;
   }
   img {
-    border-radius: 12px;
+    border-radius: 4px;
     background-color: transparent;
   }
   .gatsby-resp-image-background-image {
@@ -67,6 +68,8 @@ const PostHeader = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   min-width: 550px;
   padding: 4rem 0 5rem 0;
   @media (max-width: 960px) {
@@ -78,11 +81,13 @@ const PostHeader = styled.div`
 const PostMetaData = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  text-align: center;
   font-size: 1rem;
   margin-bottom: 1rem;
   opacity: 0.6;
 
-  width: 100%;
+  /* width: 100%; */
   @media (max-width: 960px) {
     flex-direction: column;
   }

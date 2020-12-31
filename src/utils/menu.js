@@ -23,6 +23,11 @@ const menu = [
         description: 'Dynamically priced socks'
       },
       {
+        name: 'Sybil',
+        link: 'https://sybil.org/#/',
+        description: 'Identities for governance'
+      },
+      {
         name: 'Unipig',
         link: 'https://unipig.exchange/',
         description: 'Optimistic rollup demo'
