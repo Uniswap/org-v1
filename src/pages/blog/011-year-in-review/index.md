@@ -3,16 +3,14 @@ title: "Uniswap's Year in Review: 2020"
 date: '2020-12-31'
 author: '🦄 '
 featuredImage: ./banner.jpg
-previewText: 'Sybil maps on-chain addresses to digital identities to maintain a list of delegates, all while avoiding pesky user signups, on-chain transactions, and manual record keeping'
+previewText: 'As 2020 comes to a close, we wanted to review some key accomplishments from the past 12 months and share some insight into our roadmap for the coming year.'
 ---
 
 ![](banner.jpg)
 
-As 2020 comes to a close, we wanted to review some key accomplishments from the past 12 months and share some insight into our roadmap for the coming year.
+2020 was a breakout year for the Uniswap protocol. As it comes to a close, we wanted to review some key accomplishments from the past 12 months and share some insight into our roadmap for the coming year.
 
 # 2020 Review:
-
-2020 was a breakout year for the Uniswap protocol.
 
 ### V2 launch introduces new primitives and efficiency gains:
 
@@ -120,6 +118,6 @@ Happy holidays to all, and see you in the new year!
 
 Uniswap Team
 
-![](RackMultipart20201231-4-nxjy7m_html_237499165a11f2b9.gif)
+---
 
 _To learn more and get involved in the Uniswap ecosystem, join the project's_ [_Discord_](https://discord.com/invite/XErMcTq) _channel, participate in Uniswap's governance discussions on the_ [_Uniswap forum_](http://gov.uniswap.org/)_, and register as a delegate via_ [_Sybil_](http://sybil.org/)_._

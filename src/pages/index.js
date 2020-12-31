@@ -214,7 +214,7 @@ const IndexPage = props => {
             <StyledLink to={'/faq'}>FAQ</StyledLink>
           </StyledNav>
           <StyledImgSection>
-            <MiniNewInfo to="/blog/uni/">
+            <MiniNewInfo to="/blog/year-in-review/">
               <NewPill>2020</NewPill>
               Read the year in review ↗
             </MiniNewInfo>
