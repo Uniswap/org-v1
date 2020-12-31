@@ -26,7 +26,7 @@ previewText: 'As 2020 comes to a close, we wanted to review some key accomplishm
 
 ![](volume.jpg)
 
-- The Uniswap protocol supported more than $58bn volume over the course of 2020, up 15,000% from $390m in 2019.
+- The Uniswap protocol supported more than **\$58bn** volume over the course of 2020, up **15,000%** from \$390m in 2019.
 
 - In September, the protocol briefly surpassed Coinbase on weekly volumes. Today, Uniswap is the 5th largest venue for crypto spot trading in the world.
 
