@@ -277,6 +277,48 @@ const About = props => {
             </div>
           </StyledSectionFlex>
 
+          <StyledSectionFlex id="jobs" style={{ flexDirection: 'column' }}>
+            <h2 style={{ width: '100%' }}>Jobs</h2>
+            <p>We are looking for talented people to join our team!</p>
+
+            <span>
+              <a href="https://jobs.lever.co/Uniswap/5709e492-4c32-45de-bedc-2f65e9f86cfc">
+                {' '}
+                <h3>Senior Frontend Engineer</h3>
+              </a>
+            </span>
+            <span>
+              <a href="https://jobs.lever.co/Uniswap/7bc54d95-c6c2-4dda-a313-3f791ceb8c09">
+                {' '}
+                <h3>Smart Contract Engineer</h3>
+              </a>
+            </span>
+            <span>
+              <a href="https://jobs.lever.co/Uniswap/a1aa6e8c-bfea-4fbd-a473-ddae0c06cb7d">
+                {' '}
+                <h3>Full Stack Engineer</h3>
+              </a>
+            </span>
+            <span>
+              <a href="https://jobs.lever.co/Uniswap/401112a6-efe1-441b-a29d-19b687722acd">
+                {' '}
+                <h3>Software Engineering Intern</h3>
+              </a>
+            </span>
+            <span>
+              <a href="https://angel.co/company/uniswap/jobs/888942-community-manager">
+                {' '}
+                <h3>Community Manager</h3>
+              </a>
+            </span>
+            <p>
+              Uniswap welcomes all qualified persons to apply regardless of race, religion, gender, gender identity or
+              expression, sexual orientation, national origin, genetics, disability, age, or veteran status.
+              Compensation will be competitive and commensurate with experience. This is a full time role which includes
+              health insurance and other benefits.
+            </p>
+          </StyledSectionFlex>
+
           <StyledSectionFlex id="contact" style={{ flexDirection: 'column' }}>
             <h2 style={{ width: '100%' }}>Contact</h2>
             <p>
@@ -299,36 +341,6 @@ const About = props => {
                 Reddit <span style={{ fontSize: '11px' }}>↗</span>
               </InternalLink>
             </div>
-          </StyledSectionFlex>
-
-          <StyledSectionFlex id="jobs" style={{ flexDirection: 'column' }}>
-            <h2 style={{ width: '100%' }}>Jobs</h2>
-            <p>We are looking for talented people to join our team!</p>
-
-            <span>
-              <a href="https://angel.co/company/uniswap/jobs/888942-community-manager">
-                {' '}
-                <h3>Community Manager</h3>
-              </a>
-            </span>
-            <span>
-              <a href="https://angel.co/company/uniswap/jobs/889337-senior-front-end-engineer">
-                {' '}
-                <h3>Senior Front End Engineer</h3>
-              </a>
-            </span>
-            <span>
-              <a href="https://angel.co/company/uniswap/jobs/921706-smart-contract-engineer">
-                {' '}
-                <h3>Smart Contract Engineer</h3>
-              </a>
-            </span>
-            <p>
-              Uniswap welcomes all qualified persons to apply regardless of race, religion, gender, gender identity or
-              expression, sexual orientation, national origin, genetics, disability, age, or veteran status.
-              Compensation will be competitive and commensurate with experience. This is a full time role which includes
-              health insurance and other benefits.
-            </p>
           </StyledSectionFlex>
 
           <StyledSectionFlex id="brand" style={{ flexDirection: 'column' }}>
