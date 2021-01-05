@@ -44,7 +44,7 @@ previewText: 'As 2020 comes to a close, we wanted to review some key accomplishm
 
 ![](addresses.jpg)
 
-- The protocol's MAU figures have grown month-on-month since the launch of v2, with December surpassing 290k unique addresses.
+- The protocol's MAU figures have grown month-on-month since the launch of v2, with December surpassing 300k unique addresses.
 
 - Uniswap trades regularly account for 25% of Ethereum network transactions.
 
