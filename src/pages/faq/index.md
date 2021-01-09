@@ -70,6 +70,10 @@ Uniswap token pair contracts are ownerless. We have no special control over the 
 
 [Info.uniswap](https://info.uniswap.org/) reads the details of new tokens when they're added to the subgraph. There may be some circumstances where an old symbol or name isn't updated if the token was updated with a proxy contract. A guide to fix this yourself is forthcoming, in the meantime, reach out with the details on our developer discord.
 
+# My swap failed with code "EXPIRED", what happened?
+
+If a swap takes more than 20 minutes to execute, the router is programmed to fail the transaction. This is to protect the user from extreme swings in prices that can occur while the transaction is pending. If this happens, your tokens will still be in your wallet, but the gas fees paid are not recoverable. To keep this from happening, use a high enough gas price to have your transaction mined in under 20 minutes. This usually falls under "Standard" or "Fast" in most gas price calculators.
+
 # Uniswap tools and resources
 
 [https://github.com/Uniswap/universe](https://github.com/Uniswap/universe)
