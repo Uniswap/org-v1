@@ -48,7 +48,7 @@ At the end of `uniswapV2Call`, contracts must return enough tokens to the pair t
 
 In the case where the token withdrawn is _not_ the token returned (i.e. DAI was requested in the flash swap, and WETH was returned, or vice versa), the fee simplifies to the simple swap case. This means that the standard `getAmountIn` pricing function should be used to calculate e.g. the amount of WETH that must be returned in exchange for the amount of DAI that was requested out.
 
-This fee calculation is an excellent reason to use Uniswap flash swaps - if you pay for your flash swap in the corresponding pair token, it's free!
+If you pay for your flash swap in the corresponding pair token, you pay the usual 0.3% LP fee.
 
 ## Single-Token
 
