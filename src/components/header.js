@@ -24,7 +24,10 @@ const StyledHeader = styled.header`
   z-index: 3;
   position: sticky;
   top: 0;
+  height: 2rem;
+  background-color: white;
   @media (max-width: 960px) {
+    background-color: none;
     padding: 1.5rem 2rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
   }
