@@ -189,6 +189,22 @@ To get the bytecode for deploying UniswapV2Factory, you can import the file via:
 const UniswapV2FactoryBytecode = require('@uniswap/v2-core/build/UniswapV2Factory.json').bytecode
 ```
 
+If you're using [ethers.js](https://docs.ethers.io/v5/), an example deploy of `UniswapV2Factory` would look like:
+
+```javascript
+const UniswapV2FactoryBytecode = require('@uniswap/v2-core/build/UniswapV2Factory.json').bytecode;
+
+const UniswapV2Library = await ethers.getContractFactory(
+  [
+    "constructor(address _feeToSetter)",
+    "function createPair(address tokenA, address tokenB) external returns (address pair)",
+  ],
+  UniswapV2FactoryBytecode
+);
+const [owner] = await ethers.getSigners();
+const uniswapV2Library = await UniswapV2Library.deploy(owner.address);
+```
+
 We recommend using a standard ERC20 from `@openzeppelin/contracts` for deploying an ERC20.
 
 You can read more about deploying contracts and writing tests using Truffle 
