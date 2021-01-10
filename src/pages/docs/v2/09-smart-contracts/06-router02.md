@@ -91,7 +91,7 @@ Adds liquidity to an ERC-20⇄ERC-20 pool.
 | amountAMin     | `uint`    | Bounds the extent to which the B/A price can go up before the transaction reverts. Must be <= amountADesired.  |
 | amountBMin     | `uint`    | Bounds the extent to which the A/B price can go up before the transaction reverts. Must be <= amountBDesired.  |
 | to             | `address` | Recipient of the liquidity tokens.                                                                             |
-| deadline       | `uint`    | Unix timestamp after which the transaction will revert.                                                        |
+| deadline       | `uint`    | Unix timestamp in seconds after which the transaction will revert.                                             |
 |                |           |                                                                                                                |
 | amountA        | `uint`    | The amount of tokenA sent to the pool.                                                                         |
 | amountB        | `uint`    | The amount of tokenB sent to the pool.                                                                         |
@@ -126,7 +126,7 @@ Adds liquidity to an ERC-20⇄WETH pool with ETH.
 | amountTokenMin                 | `uint`    | Bounds the extent to which the WETH/token price can go up before the transaction reverts. Must be <= amountTokenDesired.  |
 | amountETHMin                   | `uint`    | Bounds the extent to which the token/WETH price can go up before the transaction reverts. Must be <= `msg.value`.         |
 | to                             | `address` | Recipient of the liquidity tokens.                                                                                        |
-| deadline                       | `uint`    | Unix timestamp after which the transaction will revert.                                                                   |
+| deadline                       | `uint`    | Unix timestamp in seconds after which the transaction will revert.                                                         |
 |                                |           |                                                                                                                           |
 | amountToken                    | `uint`    | The amount of token sent to the pool.                                                                                     |
 | amountETH                      | `uint`    | The amount of ETH converted to WETH and sent to the pool.                                                                 |
@@ -158,7 +158,7 @@ Removes liquidity from an ERC-20⇄ERC-20 pool.
 | amountAMin | `uint`    | The minimum amount of tokenA that must be received for the transaction not to revert. |
 | amountBMin | `uint`    | The minimum amount of tokenB that must be received for the transaction not to revert. |
 | to         | `address` | Recipient of the underlying assets.                                                   |
-| deadline   | `uint`    | Unix timestamp after which the transaction will revert.                               |
+| deadline   | `uint`    | Unix timestamp in seconds after which the transaction will revert.                    |
 |            |           |                                                                                       |
 | amountA    | `uint`    | The amount of tokenA received.                                                        |
 | amountB    | `uint`    | The amount of tokenB received.                                                        |
@@ -187,7 +187,7 @@ Removes liquidity from an ERC-20⇄WETH pool and receive ETH.
 | amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
 | amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
 | to             | `address` | Recipient of the underlying assets.                                                  |
-| deadline       | `uint`    | Unix timestamp after which the transaction will revert.                              |
+| deadline       | `uint`    | Unix timestamp in seconds after which the transaction will revert.                   |
 |                |           |                                                                                      |
 | amountToken    | `uint`    | The amount of token received.                                                        |
 | amountETH      | `uint`    | The amount of ETH received.                                                          |
@@ -217,7 +217,7 @@ Removes liquidity from an ERC-20⇄ERC-20 pool without pre-approval, thanks to <
 | amountAMin | `uint`    | The minimum amount of tokenA that must be received for the transaction not to revert. |
 | amountBMin | `uint`    | The minimum amount of tokenB that must be received for the transaction not to revert. |
 | to         | `address` | Recipient of the underlying assets.                                                   |
-| deadline   | `uint`    | Unix timestamp after which the transaction will revert.                               |
+| deadline   | `uint`    | Unix timestamp in seconds after which the transaction will revert.                    |
 | approveMax | `bool`    | Whether or not the approval amount in the signature is for liquidity or `uint(-1)`.   |
 | v          | `uint8`   | The v component of the permit signature.                                              |
 | r          | `bytes32` | The r component of the permit signature.                                              |
@@ -249,7 +249,7 @@ Removes liquidity from an ERC-20⇄WETTH pool and receive ETH without pre-approv
 | amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
 | amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
 | to             | `address` | Recipient of the underlying assets.                                                  |
-| deadline       | `uint`    | Unix timestamp after which the transaction will revert.                              |
+| deadline       | `uint`    | Unix timestamp in seconds after which the transaction will revert.                   |
 | approveMax     | `bool`    | Whether or not the approval amount in the signature is for liquidity or `uint(-1)`.  |
 | v              | `uint8`   | The v component of the permit signature.                                             |
 | r              | `bytes32` | The r component of the permit signature.                                             |
@@ -282,7 +282,7 @@ Identical to [removeLiquidityETH](#removeliquidityeth), but succeeds for tokens 
 | amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
 | amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
 | to             | `address` | Recipient of the underlying assets.                                                  |
-| deadline       | `uint`    | Unix timestamp after which the transaction will revert.                              |
+| deadline       | `uint`    | Unix timestamp in seconds after which the transaction will revert.                   |
 |                |           |                                                                                      |
 | amountETH      | `uint`    | The amount of ETH received.                                                          |
 
@@ -309,7 +309,7 @@ Identical to [removeLiquidityETHWithPermit](#removeliquidityethwithpermit), but 
 | amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
 | amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
 | to             | `address` | Recipient of the underlying assets.                                                  |
-| deadline       | `uint`    | Unix timestamp after which the transaction will revert.                              |
+| deadline       | `uint`    | Unix timestamp in seconds after which the transaction will revert.                   |
 | approveMax     | `bool`    | Whether or not the approval amount in the signature is for liquidity or `uint(-1)`.  |
 | v              | `uint8`   | The v component of the permit signature.                                             |
 | r              | `bytes32` | The r component of the permit signature.                                             |
@@ -339,7 +339,7 @@ Swaps an exact amount of input tokens for as many output tokens as possible, alo
 | amountOutMin | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
 | path         | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to           | `address`            | Recipient of the output tokens.                                                                                                      |
-| deadline     | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline     | `uint`               | Unix timestamp in seconds after which the transaction will revert.                                                                  |
 |              |                      |                                                                                                                                      |
 | amounts      | `uint[] memory`      | The input token amount and all subsequent output token amounts.                                                                      |
 
@@ -365,7 +365,7 @@ Receive an exact amount of output tokens for as few input tokens as possible, al
 | amountInMax | `uint`               | The maximum amount of input tokens that can be required before the transaction reverts.                                              |
 | path        | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to          | `address`            | Recipient of the output tokens.                                                                                                      |
-| deadline    | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline    | `uint`               | Unix timestamp in seconds after which the transaction will revert.                                                                    |
 |             |                      |                                                                                                                                      |
 | amounts     | `uint[] memory`      | The input token amount and all subsequent output token amounts.                                                                      |
 
@@ -386,7 +386,7 @@ Swaps an exact amount of ETH for as many output tokens as possible, along the ro
 | amountOutMin           | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
 | path                   | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to                     | `address`            | Recipient of the output tokens.                                                                                                      |
-| deadline               | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline               | `uint`               | Unix timestamp in seconds after which the transaction will revert.                                                                  |
 |                        |                      |                                                                                                                                      |
 | amounts                | `uint[] memory`      | The input token amount and all subsequent output token amounts.                                                                      |
 
@@ -409,7 +409,7 @@ Receive an exact amount of ETH for as few input tokens as possible, along the ro
 | amountInMax | `uint`               | The maximum amount of input tokens that can be required before the transaction reverts.                                              |
 | path        | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to          | `address`            | Recipient of ETH.                                                                                                                    |
-| deadline    | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline    | `uint`               | Unix timestamp in seconds after which the transaction will revert.                                                                    |
 |             |                      |                                                                                                                                      |
 | amounts     | `uint[] memory`      | The input token amount and all subsequent output token amounts.                                                                      |
 
@@ -431,7 +431,7 @@ Swaps an exact amount of tokens for as much ETH as possible, along the route det
 | amountOutMin | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
 | path         | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to           | `address`            | Recipient of the ETH.                                                                                                                |
-| deadline     | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline     | `uint`               | Unix timestamp in seconds after which the transaction will revert.                                                                  |
 |              |                      |                                                                                                                                      |
 | amounts      | `uint[] memory`      | The input token amount and all subsequent output token amounts.                                                                      |
 
@@ -454,7 +454,7 @@ Receive an exact amount of tokens for as little ETH as possible, along the route
 | `msg.value` (amountInMax) | `uint`               | The maximum amount of ETH that can be required before the transaction reverts.                                                       |
 | path                      | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to                        | `address`            | Recipient of the output tokens.                                                                                                      |
-| deadline                  | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline                  | `uint`               | Unix timestamp in seconds after which the transaction will revert.                                                                    |
 |                           |                      |                                                                                                                                      |
 | amounts                   | `uint[] memory`      | The input token amount and all subsequent output token amounts.                                                                      |
 
@@ -480,7 +480,7 @@ Identical to [swapExactTokensForTokens](#swapexacttokensfortokens), but succeeds
 | amountOutMin | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
 | path         | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to           | `address`            | Recipient of the output tokens.                                                                                                      |
-| deadline     | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline     | `uint`               | Unix timestamp in seconds after which the transaction will revert.                                                                  |
 
 ## swapExactETHForTokensSupportingFeeOnTransferTokens
 
@@ -501,7 +501,7 @@ Identical to [swapExactETHForTokens](#swapexactethfortokens), but succeeds for t
 | amountOutMin           | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
 | path                   | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to                     | `address`            | Recipient of the output tokens.                                                                                                      |
-| deadline               | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline               | `uint`               | Unix timestamp in seconds  after which the transaction will revert.                                                                  |
 
 ## swapExactTokensForETHSupportingFeeOnTransferTokens
 
@@ -525,7 +525,7 @@ Identical to [swapExactTokensForETH](#swapexacttokensforeth), but succeeds for t
 | amountOutMin | `uint`               | The minimum amount of output tokens that must be received for the transaction not to revert.                                         |
 | path         | `address[] calldata` | An array of token addresses. `path.length` must be >= 2. Pools for each consecutive pair of addresses must exist and have liquidity. |
 | to           | `address`            | Recipient of the ETH.                                                                                                                |
-| deadline     | `uint`               | Unix timestamp after which the transaction will revert.                                                                              |
+| deadline     | `uint`               | Unix timestamp in seconds after which the transaction will revert.                                                                  |
 
 # Interface
 
