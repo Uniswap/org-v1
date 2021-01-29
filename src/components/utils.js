@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import uImage from '../images/big_unicorn.png'
+import uImage from '../images/big_unicorn_fade.png'
 import noise from '../images/noise.png'
 import { Link } from 'gatsby'
 
@@ -9,13 +9,14 @@ export const CardBGImage = styled.span`
   width: 100%;
   height: 100%;
   opacity: 0.5;
-  background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
   left: 0;
   top: 0;
   ${({ desaturate }) => desaturate && `filter: saturate(0)`};
-  /* ${({ theme }) => theme.invertImage}; */
+  @media (max-width: 960px) {
+    background-repeat: no-repeat;
+  }
 `
 
 export const CardNoise = styled.span`
@@ -43,6 +44,9 @@ export const CardFade = styled.span`
   top: 0;
   user-select: none;
   z-index: 99;
+  @media (max-width: 960px) {
+    height: 125vh;
+  }
 `
 
 export const StyledLink = styled(Link)`

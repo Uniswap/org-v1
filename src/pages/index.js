@@ -270,7 +270,7 @@ const IndexPage = props => {
       />
       <StyledBody>
         <StyledTitle style={{ marginBottom: '12rem' }}>
-          <StyledBodyTitle>Automated Liquidity Protocol.</StyledBodyTitle>
+          <StyledBodyTitle>Decentralized Trading Protocol</StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
             Unstoppable liquidity for millions of users and hundreds of Ethereum applications.
           </StyledBodySubTitle>

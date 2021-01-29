@@ -29,8 +29,8 @@ export const theme = darkMode => ({
     ? 'radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%)'
     : 'radial-gradient(76.02% 75.41% at 1.84% 0%, #FF3696 0%, #FFD8EB 100%);',
   gradientBG: darkMode
-    ? 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 31.19%)'
-    : 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 31.19%)',
+    ? 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 31.19%, rgba(0, 0, 0, 0) 100%)'
+    : 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 31.19%, rgba(0, 0, 0, 0) 100%)',
   invertImage: darkMode ? 'filter: invert(0);' : 'filter: invert(1);',
 
   // for setting css on <html>

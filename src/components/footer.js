@@ -28,9 +28,8 @@ const StyledFooter = styled.footer`
   justify-content: space-between;
   color: ${({ theme }) => theme.textColor};
   position: relative;
-  padding: 0 2rem;
+  padding: 0 4rem;
   font-family: 'GT Haptik Regular';
-  /* border-top: 1px solid ${({ theme }) => theme.textColor}; */
 
   @media (max-width: 960px) {
     margin-bottom: 2rem;
