@@ -6,7 +6,7 @@ title: FAQ
 
 # What is Uniswap?
 
-Uniswap is a protocol for exchanging [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) tokens on [Ethereum](https://ethereum.org/en/what-is-ethereum/). It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for fast, efficient trading. Where it makes tradeoffs decentralization, censorship resistance, and security are prioritized. Uniswap is open-source software licensed under GPL.
+Uniswap is a protocol for creating liquidity and trading ERC-20 tokens on [Ethereum](https://ethereum.org/en/what-is-ethereum/). It eliminates trusted intermediaries and unnecessary forms of rent extraction, allowing for fast, efficient trading. Where it makes tradeoffs decentralization, censorship resistance, and security are prioritized. Uniswap is open-source software licensed under GPL.
 
 If you want to dive into details check out the [docs](/docs/v2/).
 

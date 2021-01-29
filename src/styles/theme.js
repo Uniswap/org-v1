@@ -175,7 +175,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .title{
     letter-spacing: -0.05em;
-    font-family: 'Inferi Light','Times New Roman',serif;
+    font-family: "GT Haptik Regular",'Inferi Light','Times New Roman',serif;
     font-size: 72px;
   }
 

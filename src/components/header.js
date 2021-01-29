@@ -13,17 +13,22 @@ import CloseIcon from '../images/x.inline.svg'
 import { Sun, Moon } from 'react-feather'
 import { useDarkMode } from '../contexts/Application'
 
+import useDocumentScrollThrottled from '../utils/useDocumentScrollThrottled'
+
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 1.5rem;
   width: 100%;
   z-index: 3;
   position: sticky;
   top: 0;
+  background: ${({ theme, open, showBG }) => (showBG && !open ? theme.backgroundColor : 'none')};
+  border-bottom: 1px solid ${({ theme, open, showBG }) => (showBG && !open ? theme.chaliceGray : 'none')};
+  transition: background-color 0.25s ease;
   @media (max-width: 960px) {
     padding: 1.5rem 2rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
@@ -57,6 +62,13 @@ const StyledNav = styled.nav`
 const StyledNavTitleWrapper = styled.nav`
   display: flex;
   align-items: center;
+`
+const HeaderText = styled.h2`
+  line-height: auto;
+  margin: 0px;
+  margin-bottom: 6px;
+  margin-left: 8px;
+  color: ${({ theme }) => theme.textColor} !important;
 `
 
 const StyledTradeLink = styled.a`
@@ -167,6 +179,20 @@ const Header = props => {
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
   const [darkMode, toggleDarkMode] = useDarkMode()
 
+  const [headerBG, setHeaderBG] = useState(false)
+
+  useDocumentScrollThrottled(callbackData => {
+    const { currentScrollTop } = callbackData
+    // const isScrolledDown = previousScrollTop < currentScrollTop
+    // const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
+
+    setHeaderBG(currentScrollTop > 2)
+
+    // setTimeout(() => {
+    //   setSidebarBG(isScrolledDown && isMinimumScrolled)
+    // }, TIMEOUT_DELAY)
+  })
+
   const data = useStaticQuery(graphql`
     {
       site {
@@ -213,7 +239,7 @@ const Header = props => {
   }, [isMenuOpen, updateIsMenuOpen, matches])
 
   return (
-    <StyledHeader open={isMenuOpen}>
+    <StyledHeader open={isMenuOpen} showBG={headerBG}>
       <StyledNavTitleWrapper>
         <StyledHomeLink
           to="/"
@@ -222,6 +248,7 @@ const Header = props => {
           }}
         >
           <StyledUni />
+          <HeaderText>Uniswap</HeaderText>
         </StyledHomeLink>
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>

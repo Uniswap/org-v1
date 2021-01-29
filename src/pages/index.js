@@ -370,8 +370,9 @@ const ProductsSection = props => {
 
       <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
       <StyledBodySubText>
-        Check out the <Link to="/docs/v2/">documentation</Link> or start with a guide below to integrate your project
-        with thousands of tokens and billions in liquidity.
+        Check out the <Link to="/docs/v2/">documentation</Link>, the{' '}
+        <Link to="/docs/v2/javascript-SDK/quick-start/">quick start</Link> or check out a guide below to integrate your
+        project with thousands of tokens and billions in liquidity.
       </StyledBodySubText>
       <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
         <Wizard />
