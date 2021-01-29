@@ -27,7 +27,7 @@ const StyledHeader = styled.header`
   position: sticky;
   top: -1px;
   background: ${({ theme, open, showBG }) => (showBG && !open ? theme.backgroundColor : 'none')};
-  border-bottom: 1px solid ${({ theme, open, showBG }) => (showBG && !open ? theme.chaliceGray : 'none')};
+  border-bottom: 1px solid ${({ theme, open, showBG }) => (showBG && !open ? theme.concreteGray : 'none')};
   transition: background-color 0.25s ease;
   @media (max-width: 960px) {
     padding: 1.5rem 2rem;

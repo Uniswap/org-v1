@@ -55,6 +55,7 @@ const StyledButton = styled.button`
   }
   a {
     height: 24px;
+    color: ${({ theme }) => theme.textColor};
   }
   svg path {
     fill: ${({ theme, fill }) => fill && theme.textColor};
@@ -190,7 +191,7 @@ const VersionToggle = styled(Link)`
   border-radius: 14px;
   margin-right: 1rem;
   color: ${({ theme }) => theme.invertedTextColor};
-  border: 1px solid ${({ theme }) => theme.colors.grey2};
+  border: 1px solid ${({ theme }) => theme.colors.grey4};
   display: flex;
   width: fit-content;
   cursor: pointer;

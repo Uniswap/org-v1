@@ -195,7 +195,7 @@ const ProtocolData = () => {
   return (
     <Numbers id="about" style={{ flexDirection: 'column' }}>
       <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', margin: 0 }}>
-        <BigNumbers>
+        {/* <BigNumbers>
           {UniStats.liquidity}
           <p style={{ fontSize: '14px' }}>Total Liquidity</p>
         </BigNumbers>
@@ -206,6 +206,24 @@ const ProtocolData = () => {
         <BigNumbers>
           {UniStats.fees}
           <p style={{ fontSize: '14px' }}>24H LP fees</p>
+        </BigNumbers> */}
+        <BigNumbers>
+          <span>
+            $83B<span style={{ opacity: '0.1' }}>+</span>
+          </span>
+          <p style={{ fontSize: '14px' }}>All Time Volume</p>
+        </BigNumbers>
+        <BigNumbers>
+          <span>
+            72K<span style={{ opacity: '0.1' }}>+</span>
+          </span>
+          <p style={{ fontSize: '14px' }}>Liquidity Providers</p>
+        </BigNumbers>
+        <BigNumbers>
+          <span>
+            29M<span style={{ opacity: '0.1' }}>+</span>
+          </span>
+          <p style={{ fontSize: '14px' }}>All Time Trades</p>
         </BigNumbers>
         <BigNumbers>
           {'200+'}

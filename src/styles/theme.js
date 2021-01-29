@@ -34,7 +34,7 @@ export const theme = darkMode => ({
   invertImage: darkMode ? 'filter: invert(0);' : 'filter: invert(1);',
 
   // for setting css on <html>
-  backgroundColor: darkMode ? '#0f1013' : '#FFF',
+  backgroundColor: darkMode ? '#0f1013' : '#F7F8FA',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(0, 0, 0, .5)' : 'rgba(255, 255, 255, .5)',

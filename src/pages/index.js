@@ -285,7 +285,7 @@ const IndexPage = props => {
               style={{
                 background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
                 color: 'white',
-                fontSize: '24px'
+                fontSize: '20px'
               }}
               target="_blank"
               href="https://app.uniswap.org/"
@@ -297,7 +297,7 @@ const IndexPage = props => {
               to="/docs"
               as={Link}
               style={{
-                fontSize: '24px'
+                fontSize: '20px'
               }}
             >
               Documentation
@@ -307,7 +307,7 @@ const IndexPage = props => {
               to="/faq"
               as={Link}
               style={{
-                fontSize: '24px',
+                fontSize: '20px',
                 marginRight: '20px'
               }}
             >
@@ -393,8 +393,8 @@ const ProductsSection = props => {
       <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
       <StyledBodySubText>
         Check out the <Link to="/docs/v2/">documentation</Link>, the{' '}
-        <Link to="/docs/v2/javascript-SDK/quick-start/">quick start</Link> or check out a guide below to integrate your
-        project with thousands of tokens and billions in liquidity.
+        <Link to="/docs/v2/javascript-SDK/quick-start/">quick start</Link> or a guide below to integrate your project
+        with thousands of tokens and billions in liquidity.
       </StyledBodySubText>
       <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
         <Wizard />
