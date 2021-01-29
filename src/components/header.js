@@ -64,10 +64,10 @@ const StyledTradeLink = styled.a`
   background-color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   color: ${({ theme }) => theme.invertedTextColor};
-  border-radius: 8px;
+  border-radius: 12px;
   display: inline-block;
   transition: transform 0.25s ease;
-  font-weight: 400;
+  font-weight: 600;
   font-family: 'GT Haptik Regular';
 
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
@@ -237,7 +237,17 @@ const Header = props => {
           </StyledButton>
         </HideSmall>
 
-        {props.path !== undefined && <StyledTradeLink href="https://app.uniswap.org/">Launch App ↗</StyledTradeLink>}
+        {props.path !== undefined && (
+          <StyledTradeLink
+            style={{
+              background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+              color: 'white'
+            }}
+            href="https://app.uniswap.org/"
+          >
+            Use Uniswap
+          </StyledTradeLink>
+        )}
       </StyledNav>
     </StyledHeader>
   )

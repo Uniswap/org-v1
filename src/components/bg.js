@@ -15,7 +15,7 @@ const StyledBG = styled.div`
   background: ${({ theme }) =>
     `radial-gradient(50% 50% at 50% 50%, ${theme.colors.link} 0%, ${theme.backgroundColor} 100%)`};
   opacity: 0.15;
-  z-index: 9999;
+  /* z-index: 9999; */
   user-select: none;
   pointer-events: none;
 `

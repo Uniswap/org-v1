@@ -7,24 +7,24 @@ import styled from 'styled-components'
 const StyledMiniCards = styled(Link)`
   padding: 1.25rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
-  background-color: ${({ theme }) => theme.menuBG};
-  height: 120px;
+  background-color: ${({ theme }) => theme.cardBG};
   max-width: 100%;
   min-width: 45%;
   width: 260px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.grey2};
+  /* border: 1px solid ${({ theme }) => theme.textColor}; */
   box-shadow: ${({ theme }) => theme.shadows.huge};
-
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   transition: transform 0.3s ease;
   will-change: transform;
+  text-align: center;
   :hover {
     transform: scale(1.03);
   }
@@ -33,7 +33,7 @@ const StyledMiniCards = styled(Link)`
     width: 100%;
     max-width: 450px;
     margin-bottom: 0.25rem;
-    height: ${({ small }) => !small && '120px'};
+    /* height: ${({ small }) => !small && '120px'}; */
     /* height: 200px; */
   }
 `
@@ -49,16 +49,16 @@ const StyledCardBG = styled(Img)`
 `
 
 const Tag = styled.p`
-  position: absolute;
   top: 16px;
   right: 16px;
+  font-size: 32px;
 `
 
 const StyledMiniCardHeader = styled.p`
   line-height: 130%;
   margin-top: 0px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-family: 'Inter Roman';
 `
 
@@ -72,13 +72,13 @@ const StyledMiniCardDesc = styled.p`
 const InlineCard = props => {
   return (
     <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
+      <Tag>{props.icon}</Tag>
+
       {props.image && <StyledCardBG fluid={props.image} />}
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
-      <span>
-        <StyledMiniCardDesc>{props.description || props.desc}</StyledMiniCardDesc>
-        <Tag>{props.icon}</Tag>
-        {/* {props.tag && <Tag tag={props.tag}>{props.tag}</Tag>} */}
-      </span>
+
+      <StyledMiniCardDesc>{props.description || props.desc}</StyledMiniCardDesc>
+
       {/* <StyledArrow>{'->'}</StyledArrow> */}
     </StyledMiniCards>
   )

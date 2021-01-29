@@ -5,7 +5,7 @@ import GithubIcon from '../../images/githubicon.inline.svg'
 const StyledInfo = styled.a`
   color: ${({ theme }) => theme.textColor};
   padding: 0.25rem 0.5rem;
-  background-color: ${({ theme }) => theme.colors.yellow2};
+  border: 1px solid ${({ theme }) => theme.textColor};
 
   color: #5a3800;
   border-radius: 0.5rem;
@@ -23,8 +23,9 @@ const StyledInfo = styled.a`
 const StyledGithubIcon = styled(GithubIcon)`
   width: 16px;
   margin-right: 6px;
+
   path {
-    fill: ${({ theme }) => theme.colors.text1};
+    fill: ${({ theme }) => theme.textColor};
   }
 
   :before {

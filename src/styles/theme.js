@@ -28,13 +28,16 @@ export const theme = darkMode => ({
   heroBG: darkMode
     ? 'radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%)'
     : 'radial-gradient(76.02% 75.41% at 1.84% 0%, #FF3696 0%, #FFD8EB 100%);',
+  gradientBG: darkMode
+    ? 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 31.19%)'
+    : 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 31.19%)',
   invertImage: darkMode ? 'filter: invert(0);' : 'filter: invert(1);',
 
   // for setting css on <html>
   backgroundColor: darkMode ? '#0f1013' : '#FFF',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
-  cardBG: darkMode ? 'rgba(0, 0, 0, .9)' : 'rgba(236, 236, 236, .9)',
+  cardBG: darkMode ? 'rgba(0, 0, 0, .5)' : 'rgba(255, 255, 255, .5)',
   menuBG: darkMode ? 'black' : 'white',
   marqueeBG: darkMode ? '#010101' : '#010101',
 
@@ -50,7 +53,7 @@ export const theme = darkMode => ({
   doveGray: darkMode ? '#C4C4C4' : '#737373',
 
   colors: {
-    blue1: darkMode ? '#2F80ED' : '#D4E4FA',
+    blue1: darkMode ? '#3b80ff' : '#D4E4FA',
     blue2: darkMode ? '#1966D2' : '#A9C8F5',
     blue3: darkMode ? '#165BBB' : '#7DACF0',
     blue4: darkMode ? '#2D47A6' : '#5190EB',
@@ -86,8 +89,8 @@ export const theme = darkMode => ({
     pink2: '#FF8EC4',
     pink3: '#FFD7EA',
 
-    yellow1: darkMode ? '#F3BE1E60' : '#F3BE1E60',
-    yellow2: darkMode ? '#FFF4D260' : '#F7F2E360',
+    yellow1: darkMode ? '#F3BE1E' : '#F3BE1E',
+    yellow2: darkMode ? '#ffe490' : '#ffe490',
 
     red1: '#FF6871',
 
@@ -148,7 +151,7 @@ export const GlobalStyle = createGlobalStyle`
     font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on;
 
     line-height: 1.55;
-    max-width: 1440px;
+    /* max-width: 1440px; */
     width: 100vw;
     margin: 0px auto;
     font-weight: 400 !important;

@@ -36,8 +36,11 @@ const PostsWrapper = styled.div`
 const PageTitleWrapper = styled.section`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   /* align-items: baseline; */
   /* gap: 36px; */
+  width: 100%;
   padding-bottom: 4rem;
 `
 
@@ -207,7 +210,7 @@ const Blog = props => {
 
                     <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
                   </PostTitleWrapper>
-                  {node.frontmatter.featuredImage && (
+                  {index === 0 && node.frontmatter.featuredImage && (
                     <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
                   )}
                 </PostLinkWrapper>
