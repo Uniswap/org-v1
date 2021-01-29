@@ -109,7 +109,7 @@ export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = block => {
   return gql(queryString)
 }
 
-const ProtocolData = props => {
+const ProtocolData = () => {
   dayjs.extend(utc)
   const utcCurrentTime = dayjs()
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()

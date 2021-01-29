@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '.'
 import SEO from '../components/seo'
-import Sidebar from '../components/sidebarFAQ'
 
 import BG from '../components/bg'
 

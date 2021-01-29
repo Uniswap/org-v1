@@ -11,9 +11,7 @@ import ProtocolData from '../components/protocolData'
 
 import { useDarkMode } from '../contexts/Application'
 
-import { CardBGImage, CardFade, CardNoise, StyledLink, StyledExternalLink } from '../components/utils'
-
-import Discord from '../images/discord.inline.svg'
+import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../components/utils'
 
 const BGCard = styled.span`
   width: 100vw;
