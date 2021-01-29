@@ -13,9 +13,10 @@ const StyledSectionFlex = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+
   max-width: 960px;
   width: 100%;
-  margin-left: 2rem;
   @media (max-width: 1024px) {
     padding: 1rem;
     margin-top: 0rem;
@@ -193,7 +194,7 @@ const ProtocolData = () => {
 
   return (
     <Numbers id="about" style={{ flexDirection: 'column' }}>
-      <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', margin: 0 }}>
+      <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', margin: 0 }}>
         <BigNumbers>
           {UniStats.liquidity}
           <p style={{ fontSize: '14px' }}>Total Liquidity</p>
