@@ -284,17 +284,33 @@ const IndexPage = props => {
             <Button
               style={{
                 background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
-                color: 'white'
+                color: 'white',
+                fontSize: '24px'
               }}
               target="_blank"
               href="https://app.uniswap.org/"
             >
               Use Uniswap
             </Button>
-            <Button outlined to="/docs" as={Link}>
+            <Button
+              outlined
+              to="/docs"
+              as={Link}
+              style={{
+                fontSize: '24px'
+              }}
+            >
               Documentation
             </Button>
-            <Button outlined to="/faq" as={Link}>
+            <Button
+              outlined
+              to="/faq"
+              as={Link}
+              style={{
+                fontSize: '24px',
+                marginRight: '20px'
+              }}
+            >
               FAQ
             </Button>
           </StyledItemRow>

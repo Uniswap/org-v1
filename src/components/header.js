@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
   width: 100%;
   z-index: 3;
   position: sticky;
-  top: 0;
+  top: -1px;
   background: ${({ theme, open, showBG }) => (showBG && !open ? theme.backgroundColor : 'none')};
   border-bottom: 1px solid ${({ theme, open, showBG }) => (showBG && !open ? theme.chaliceGray : 'none')};
   transition: background-color 0.25s ease;
