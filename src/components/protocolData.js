@@ -11,7 +11,7 @@ import { client, blockClient } from '../apollo/client'
 const StyledSectionFlex = styled.div`
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   max-width: 960px;
   width: 100%;
@@ -33,7 +33,6 @@ const StyledSectionFlex = styled.div`
     max-width: 650px;
   }
   p {
-    /* margin-bottom: 0.5rem; */
     max-width: 650px;
   }
 `
@@ -149,7 +148,6 @@ const ProtocolData = () => {
   }
 
   if (data && oneDayResult) {
-    console.log(UniStats)
     const volume24Hour = parseFloat(data?.uniswapFactory?.totalVolumeUSD) - parseFloat(oneDayResult?.totalVolumeUSD)
 
     UniStats.volume = [
@@ -160,6 +158,17 @@ const ProtocolData = () => {
         compactDisplay: 'short'
       }).format(volume24Hour)
     ]
+
+    UniStats.fees = [
+      new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        notation: 'compact',
+        compactDisplay: 'short'
+        // maximumSignificantDigits: 5
+      }).format(volume24Hour * 0.003)
+    ]
+
     UniStats.liquidity = [
       new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -187,19 +196,19 @@ const ProtocolData = () => {
     <Numbers id="about" style={{ flexDirection: 'column' }}>
       <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', margin: 0 }}>
         <BigNumbers>
-          {UniStats.exchanges}
-          <p style={{ fontSize: '14px' }}>Token Pairs </p>
+          {UniStats.liquidity}
+          <p style={{ fontSize: '14px' }}>Total Liquidity</p>
         </BigNumbers>
         <BigNumbers>
           {UniStats.volume}
           <p style={{ fontSize: '14px' }}>24H Volume</p>
         </BigNumbers>
         <BigNumbers>
-          {UniStats.liquidity}
-          <p style={{ fontSize: '14px' }}>Total Liquidity</p>
+          {UniStats.fees}
+          <p style={{ fontSize: '14px' }}>24H LP fees</p>
         </BigNumbers>
         <BigNumbers>
-          {'> 200'}
+          {'200+'}
           <p style={{ fontSize: '14px' }}>Defi Integrations</p>
         </BigNumbers>
       </div>
