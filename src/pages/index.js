@@ -353,19 +353,19 @@ const ProductsSection = props => {
         decentralized finance.
       </StyledBodySubText>
       <StyledItemRow>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://socks.uniswap.org'}>
           <StyledProductImage fadeIn={false} fluid={props.data.socks.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://info.uniswap.org'}>
           <StyledProductImage fadeIn={false} fluid={props.data.info.childImageSharp.fluid} />
         </StyledExternalLink>
         <StyledExternalLink href={'https://app.uniswap.org'}>
           <StyledProductImage fadeIn={false} fluid={props.data.swap.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://tokenlists.org'}>
           <StyledProductImage fadeIn={false} fluid={props.data.tokenlists.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://sybil.org'}>
           <StyledProductImage fadeIn={false} fluid={props.data.sybil.childImageSharp.fluid} />
         </StyledExternalLink>
       </StyledItemRow>
@@ -385,16 +385,16 @@ const ProductsSection = props => {
         of the Uniswap protocol.
       </StyledBodySubText>
       <StyledItemRow>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://discord.gg/XErMcTq'}>
           <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://twitter.com/Uniswap'}>
           <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://gov.uniswap.org/'}>
           <StyledProductImage fadeIn={false} fluid={props.data.discourse.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://www.reddit.com/r/Uniswap'}>
           <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
         </StyledExternalLink>
       </StyledItemRow>
