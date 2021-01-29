@@ -82,7 +82,8 @@ export const StyledExternalLink = styled.a`
   align-items: center;
   width: fit-content;
   color: ${({ theme }) => theme.textColor};
-  background-color: ${({ theme }) => theme.CardBG};
+  background-color: ${({ theme }) => theme.cardBG};
+  border-radius: 12px;
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 
   :hover {

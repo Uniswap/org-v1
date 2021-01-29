@@ -15,7 +15,8 @@ const StyledMiniCards = styled(Link)`
   margin-bottom: 0.5rem;
   /* border: 1px solid ${({ theme }) => theme.textColor}; */
   box-shadow: ${({ theme }) => theme.shadows.huge};
-  border-radius: 12px;
+  /* font-style: monospace; */
+  /* border-radius: 12px; */
   overflow: hidden;
   position: relative;
   display: flex;
@@ -60,6 +61,7 @@ const StyledMiniCardHeader = styled.p`
   font-weight: 600;
   font-size: 1.25rem;
   font-family: 'Inter Roman';
+  font-style: monospace;
 `
 
 const StyledMiniCardDesc = styled.p`

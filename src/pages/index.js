@@ -115,9 +115,9 @@ const StyledProductImage = styled(Img)`
   min-width: 220px;
   max-width: 220px;
   background-color: none;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   border-radius: 12px;
-  margin: 1rem;
+  /* margin: 1rem; */
   box-shadow: ${({ theme }) => theme.shadows.huge};
 
   @media (max-width: 960px) {
@@ -158,7 +158,7 @@ const StyledItemRow = styled.nav`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     justify-content: flex-start;
@@ -354,7 +354,7 @@ const ProductsSection = props => {
       </StyledBodySubText>
       <StyledItemRow>
         <StyledExternalLink href={'https://app.uniswap.org'}>
-          <StyledProductImage fadeIn={false} fluid={props.data.sybil.childImageSharp.fluid} />
+          <StyledProductImage fadeIn={false} fluid={props.data.socks.childImageSharp.fluid} />
         </StyledExternalLink>
         <StyledExternalLink href={'https://app.uniswap.org'}>
           <StyledProductImage fadeIn={false} fluid={props.data.info.childImageSharp.fluid} />
@@ -366,7 +366,7 @@ const ProductsSection = props => {
           <StyledProductImage fadeIn={false} fluid={props.data.tokenlists.childImageSharp.fluid} />
         </StyledExternalLink>
         <StyledExternalLink href={'https://app.uniswap.org'}>
-          <StyledProductImage fadeIn={false} fluid={props.data.socks.childImageSharp.fluid} />
+          <StyledProductImage fadeIn={false} fluid={props.data.sybil.childImageSharp.fluid} />
         </StyledExternalLink>
       </StyledItemRow>
 
