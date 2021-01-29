@@ -270,6 +270,7 @@ const Header = props => {
               background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
               color: 'white'
             }}
+            target="_blank"
             href="https://app.uniswap.org/"
           >
             Use Uniswap
