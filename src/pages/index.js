@@ -77,6 +77,12 @@ const StyledBodyTitle = styled.h1`
     text-align: left;
     font-size: 58px;
   }
+
+  @media (max-width: 440px) {
+    font-weight: 500;
+    text-align: left;
+    font-size: 52px;
+  }
 `
 const StyledBodySubTitle = styled.h2`
   @media (max-width: 640px) {
@@ -113,9 +119,7 @@ const StyledProductImage = styled(Img)`
   min-width: 220px;
   max-width: 220px;
   background-color: none;
-  /* margin-top: 1rem; */
   border-radius: 12px;
-  /* margin: 1rem; */
   box-shadow: ${({ theme }) => theme.shadows.huge};
 
   @media (max-width: 960px) {
@@ -130,12 +134,13 @@ const StyledSectionFlex = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  /* max-width: 650px; */
+
   @media (max-width: 1024px) {
     padding: 1rem;
     margin-top: 0rem;
     flex-direction: ${({ wrapSmall }) => (!wrapSmall ? 'row' : 'column')};
   }
+
   @media (max-width: 960px) {
     padding: 1rem;
     margin-top: 0rem;
@@ -281,6 +286,7 @@ const IndexPage = props => {
                 background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
                 color: 'white'
               }}
+              target="_blank"
               href="https://app.uniswap.org/"
             >
               Use Uniswap
@@ -351,19 +357,19 @@ const ProductsSection = props => {
         decentralized finance.
       </StyledBodySubText>
       <StyledItemRow>
-        <StyledExternalLink href={'https://socks.uniswap.org'}>
+        <StyledExternalLink href={'https://socks.uniswap.org'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.socks.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://info.uniswap.org'}>
+        <StyledExternalLink href={'https://info.uniswap.org'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.info.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'}>
+        <StyledExternalLink href={'https://app.uniswap.org'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.swap.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://tokenlists.org'}>
+        <StyledExternalLink href={'https://tokenlists.org'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.tokenlists.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://sybil.org'}>
+        <StyledExternalLink href={'https://sybil.org'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.sybil.childImageSharp.fluid} />
         </StyledExternalLink>
       </StyledItemRow>
@@ -384,16 +390,16 @@ const ProductsSection = props => {
         of the Uniswap protocol.
       </StyledBodySubText>
       <StyledItemRow>
-        <StyledExternalLink href={'https://discord.gg/XErMcTq'}>
+        <StyledExternalLink href={'https://discord.gg/XErMcTq'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://twitter.com/Uniswap'}>
+        <StyledExternalLink href={'https://twitter.com/Uniswap'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://gov.uniswap.org/'}>
+        <StyledExternalLink href={'https://gov.uniswap.org/'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.discourse.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://www.reddit.com/r/Uniswap'}>
+        <StyledExternalLink href={'https://www.reddit.com/r/Uniswap'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
         </StyledExternalLink>
       </StyledItemRow>
