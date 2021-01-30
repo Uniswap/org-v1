@@ -32,9 +32,10 @@ const StyledFooter = styled.footer`
   font-family: 'GT Haptik Regular';
 
   @media (max-width: 960px) {
-    margin-bottom: 2rem;
+    margin: 0;
     flex-direction: column;
-    padding: 0rem 1rem;
+    padding: 0;
+    height: 0;
     display: NONE;
   }
 `

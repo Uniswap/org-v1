@@ -40,7 +40,7 @@ const StyledNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  /* gap: 24px; */
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     position: fixed;
@@ -57,6 +57,16 @@ const StyledNav = styled.nav`
     overflow: scroll;
     box-shadow: ${({ theme }) => theme.shadows.huge};
   }
+
+  > * + * {
+    margin-left: 24px;
+  }
+
+  @media (max-width: 960px) {
+    > * + * {
+      margin-left: 0;
+    }
+  }
 `
 
 const StyledNavTitleWrapper = styled.nav`
@@ -66,7 +76,7 @@ const StyledNavTitleWrapper = styled.nav`
 const HeaderText = styled.h2`
   line-height: auto;
   margin: 0px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   margin-left: 8px;
   color: ${({ theme }) => theme.textColor} !important;
 `

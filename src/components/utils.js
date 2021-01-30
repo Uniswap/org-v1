@@ -12,6 +12,8 @@ export const CardBGImage = styled.span`
   background-size: contain;
   position: absolute;
   left: 0;
+  background-repeat: no-repeat;
+
   top: 0;
   ${({ desaturate }) => desaturate && `filter: saturate(0)`};
   @media (max-width: 960px) {

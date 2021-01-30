@@ -36,12 +36,13 @@ const StyledBody = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 4rem;
+  padding-bottom: 12rem;
   margin-bottom: 4rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   @media (max-width: 960px) {
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     padding: 2rem;
+    padding-bottom: 8rem;
   }
 `
 
@@ -52,8 +53,10 @@ const StyledTitle = styled.div`
   justify-content: center;
   will-change: transform;
   margin: 3rem 0 4rem 0;
+  margin-bottom: 12rem;
   @media (max-width: 960px) {
     margin: 3rem 0 1rem 0;
+    margin-bottom: 4rem;
   }
 `
 
@@ -122,9 +125,10 @@ const StyledProductImage = styled(Img)`
   border-radius: 12px;
   box-shadow: ${({ theme }) => theme.shadows.huge};
 
-  @media (max-width: 960px) {
-    max-width: 320px;
-  }
+  /* @media (max-width: 960px) {
+    min-width: 120px;
+    max-width: 120px;
+  } */
 `
 
 const StyledSectionFlex = styled.div`
@@ -161,13 +165,28 @@ const StyledItemRow = styled.nav`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  /* gap: 12px; */
   transition: right 0.25s ease;
+  margin-top: 0.5rem;
+
+  > * + * {
+    margin-left: 12px;
+  }
+
   @media (max-width: 960px) {
-    justify-content: flex-start;
-    margin-left: 0rem;
-    gap: 12px;
-    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0rem;
+    /* gap: 12px; */
+    /* flex-direction: column; */
+
+    > * + * {
+      margin: 0rem;
+      margin-top: 12px;
+    }
+  }
+  @media (max-width: 640px) {
+    /* align-items: flex-start; */
   }
 `
 
@@ -274,10 +293,10 @@ const IndexPage = props => {
         description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
       />
       <StyledBody>
-        <StyledTitle style={{ marginBottom: '12rem' }}>
+        <StyledTitle>
           <StyledBodyTitle>Decentralized Trading Protocol</StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
-            Unstoppable liquidity for millions of users and hundreds of Ethereum applications.
+            Guaranteed liquidity for millions of users and hundreds of Ethereum applications.
           </StyledBodySubTitle>
 
           <StyledItemRow>
@@ -307,8 +326,7 @@ const IndexPage = props => {
               to="/faq"
               as={Link}
               style={{
-                fontSize: '20px',
-                marginRight: '20px'
+                fontSize: '20px'
               }}
             >
               FAQ
@@ -334,7 +352,7 @@ const StyledSectionTitle = styled.h1`
   max-width: 900px;
   text-align: center;
   font-family: 'GT Haptik', 'Times New Roman', serif;
-  margin-top: 12rem;
+  margin-top: 10rem;
 
   @media (max-width: 960px) {
     width: 100%;

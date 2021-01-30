@@ -29,6 +29,9 @@ const StyledSectionFlex = styled.div`
     width: 100%;
     flex-direction: column;
   }
+  @media (max-width: 640px) {
+    display: none;
+  }
   h1,
   h2 {
     max-width: 650px;
@@ -40,7 +43,7 @@ const StyledSectionFlex = styled.div`
 
 const Numbers = styled(StyledSectionFlex)`
   @media (max-width: 960px) {
-    display: none;
+    /* display: none; */
   }
 `
 
@@ -227,7 +230,9 @@ const ProtocolData = () => {
           <p style={{ fontSize: '14px' }}>All Time Trades</p>
         </BigNumbers>
         <BigNumbers>
-          {'200+'}
+          <span>
+            200<span style={{ opacity: '0.1' }}>+</span>
+          </span>
           <p style={{ fontSize: '14px' }}>Defi Integrations</p>
         </BigNumbers>
       </div>
