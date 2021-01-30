@@ -13,17 +13,22 @@ import CloseIcon from '../images/x.inline.svg'
 import { Sun, Moon } from 'react-feather'
 import { useDarkMode } from '../contexts/Application'
 
+import useDocumentScrollThrottled from '../utils/useDocumentScrollThrottled'
+
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 1.5rem;
   width: 100%;
   z-index: 3;
   position: sticky;
-  top: 0;
+  top: -1px;
+  background: ${({ theme, open, showBG }) => (showBG && !open ? theme.backgroundColor : 'none')};
+  border-bottom: 1px solid ${({ theme, open, showBG }) => (showBG && !open ? theme.concreteGray : 'none')};
+  transition: background-color 0.25s ease;
   @media (max-width: 960px) {
     padding: 1.5rem 2rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
@@ -35,7 +40,7 @@ const StyledNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  /* gap: 24px; */
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     position: fixed;
@@ -52,11 +57,28 @@ const StyledNav = styled.nav`
     overflow: scroll;
     box-shadow: ${({ theme }) => theme.shadows.huge};
   }
+
+  > * + * {
+    margin-left: 24px;
+  }
+
+  @media (max-width: 960px) {
+    > * + * {
+      margin-left: 0;
+    }
+  }
 `
 
 const StyledNavTitleWrapper = styled.nav`
   display: flex;
   align-items: center;
+`
+const HeaderText = styled.h2`
+  line-height: auto;
+  margin: 0px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  color: ${({ theme }) => theme.textColor} !important;
 `
 
 const StyledTradeLink = styled.a`
@@ -64,10 +86,10 @@ const StyledTradeLink = styled.a`
   background-color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   color: ${({ theme }) => theme.invertedTextColor};
-  border-radius: 8px;
+  border-radius: 12px;
   display: inline-block;
   transition: transform 0.25s ease;
-  font-weight: 400;
+  font-weight: 600;
   font-family: 'GT Haptik Regular';
 
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
@@ -167,6 +189,20 @@ const Header = props => {
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
   const [darkMode, toggleDarkMode] = useDarkMode()
 
+  const [headerBG, setHeaderBG] = useState(false)
+
+  useDocumentScrollThrottled(callbackData => {
+    const { currentScrollTop } = callbackData
+    // const isScrolledDown = previousScrollTop < currentScrollTop
+    // const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
+
+    setHeaderBG(currentScrollTop > 2)
+
+    // setTimeout(() => {
+    //   setSidebarBG(isScrolledDown && isMinimumScrolled)
+    // }, TIMEOUT_DELAY)
+  })
+
   const data = useStaticQuery(graphql`
     {
       site {
@@ -213,7 +249,7 @@ const Header = props => {
   }, [isMenuOpen, updateIsMenuOpen, matches])
 
   return (
-    <StyledHeader open={isMenuOpen}>
+    <StyledHeader open={isMenuOpen} showBG={headerBG}>
       <StyledNavTitleWrapper>
         <StyledHomeLink
           to="/"
@@ -222,6 +258,7 @@ const Header = props => {
           }}
         >
           <StyledUni />
+          <HeaderText>Uniswap</HeaderText>
         </StyledHomeLink>
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
@@ -237,7 +274,18 @@ const Header = props => {
           </StyledButton>
         </HideSmall>
 
-        {props.path !== undefined && <StyledTradeLink href="https://app.uniswap.org/">Launch App ↗</StyledTradeLink>}
+        {props.path !== undefined && (
+          <StyledTradeLink
+            style={{
+              background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+              color: 'white'
+            }}
+            target="_blank"
+            href="https://app.uniswap.org/"
+          >
+            Use Uniswap
+          </StyledTradeLink>
+        )}
       </StyledNav>
     </StyledHeader>
   )

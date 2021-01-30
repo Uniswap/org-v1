@@ -43,7 +43,7 @@ const StyledHeader = styled.header`
 const StyledButton = styled.button`
   border: none;
   background-color: rgba(0, 0, 0, 0);
-  color: ${({ theme }) => theme.colors.link};
+  color: ${({ theme }) => theme.colors.textColor};
   :focus {
     outline: none;
   }
@@ -55,10 +55,11 @@ const StyledButton = styled.button`
   }
   a {
     height: 24px;
+    color: ${({ theme }) => theme.textColor};
   }
   svg path {
-    fill: ${({ theme, fill }) => fill && theme.colors.link};
-    stroke: ${({ theme }) => theme.colors.link};
+    fill: ${({ theme, fill }) => fill && theme.textColor};
+    stroke: ${({ theme }) => theme.textColor};
   }
 `
 
@@ -91,13 +92,14 @@ const StyledNavTitleWrapper = styled.nav`
 `
 
 const StyledNavTitle = styled(Link)`
-  font-family: 'Inter', sans-serif;
-  color: ${({ theme }) => theme.colors.link};
+  font-family: 'GT Haptik Regular', 'Inter', sans-serif;
+  color: ${({ theme }) => theme.textColor};
   margin-left: 0.35rem;
+  margin-bottom: 0.15rem;
   z-index: 999;
   text-decoration: none;
   vertical-align: bottom;
-  font-weight: 500;
+  font-weight: 600;
   white-space: pre;
 
   :hover {
@@ -113,7 +115,7 @@ const StyledHomeLink = styled(Link)`
 
 const StyledUni = styled(Uni)`
   path {
-    fill: ${({ theme }) => theme.colors.link};
+    fill: ${({ theme }) => theme.textColor};
   }
   margin: 0;
   width: 20px;
@@ -129,13 +131,13 @@ const StyledUni = styled(Uni)`
 
 const StyledCloseIcon = styled(CloseIcon)`
   path {
-    stroke: ${({ theme }) => theme.colors.link};
+    stroke: ${({ theme }) => theme.textColor};
   }
 `
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
-    stroke: ${({ theme }) => theme.colors.link};
+    stroke: ${({ theme }) => theme.textColor};
   }
 `
 
@@ -178,8 +180,8 @@ const MenuToggle = styled.button`
 const VersionLabel = styled.span`
   padding: 0.15rem 0.45rem;
   border-radius: 12px;
-  background: ${({ theme, toggled }) => (toggled ? theme.colors.link : 'none')};
-  color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.colors.link)};
+  background: ${({ theme, toggled }) => (toggled ? theme.textColor : 'none')};
+  color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.textColor)};
 
   font-size: 0.75rem;
   font-weight: 400;
@@ -189,7 +191,7 @@ const VersionToggle = styled(Link)`
   border-radius: 14px;
   margin-right: 1rem;
   color: ${({ theme }) => theme.invertedTextColor};
-  border: 1px solid ${({ theme }) => theme.colors.grey2};
+  border: 1px solid ${({ theme }) => theme.colors.grey4};
   display: flex;
   width: fit-content;
   cursor: pointer;

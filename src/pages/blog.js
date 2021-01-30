@@ -27,17 +27,28 @@ const PostsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 12px;
+  /* gap: 12px; */
 
   max-width: 1200px;
   margin: 0 auto;
+  > * + * {
+    margin-left: 12px;
+  }
+  @media (max-width: 960px) {
+    > * + * {
+      margin-left: 0;
+    }
+  }
 `
 
 const PageTitleWrapper = styled.section`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   /* align-items: baseline; */
   /* gap: 36px; */
+  width: 100%;
   padding-bottom: 4rem;
 `
 
@@ -82,17 +93,33 @@ export const PostLinkWrapper = styled(Link)`
   flex-wrap: no-wrap;
   flex-direction: ${({ wide }) => (wide === 0 ? 'row' : 'column-reverse')};
   justify-content: ${({ wide }) => (wide === 0 ? 'flex-start' : 'space-between')};
-  gap: 36px;
+  /* gap: 36px; */
   align-items: ${({ wide }) => (wide === 0 ? 'center' : 'flex-start')};
+  > * + * {
+    margin-left: 36px;
+  }
+  @media (max-width: 960px) {
+    > * + * {
+      margin-left: 0;
+    }
+  }
 `
 
 export const PostTitleWrapper = styled.div`
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  /* gap: 24px; */
   h2 {
     font-size: 36px;
+  }
+  > * + * {
+    margin-left: 24px;
+  }
+  @media (max-width: 960px) {
+    > * + * {
+      margin-left: 0;
+    }
   }
 `
 
@@ -207,7 +234,7 @@ const Blog = props => {
 
                     <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
                   </PostTitleWrapper>
-                  {node.frontmatter.featuredImage && (
+                  {index === 0 && node.frontmatter.featuredImage && (
                     <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
                   )}
                 </PostLinkWrapper>

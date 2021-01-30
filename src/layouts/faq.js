@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '.'
 import SEO from '../components/seo'
-import Sidebar from '../components/sidebarFAQ'
 
 import BG from '../components/bg'
 
@@ -18,9 +17,9 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const StyledDocs = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   padding: 0 2rem;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
@@ -151,17 +150,6 @@ const Docs = props => {
             <StyledMDX>{props.children}</StyledMDX>
           </span>
         </span>
-        {data ? (
-          data.allMdx.edges
-            .filter(({ node }) => {
-              return node.fields.slug === props.path
-            })
-            .map(({ node }) => {
-              return <Sidebar path={props.path} key={node.id} headings={node.headings} />
-            })
-        ) : (
-          <div style={{ width: '160px', height: '60px' }}></div>
-        )}
       </StyledDocs>
     </Layout>
   )

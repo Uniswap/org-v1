@@ -10,28 +10,29 @@ const links = [
     name: 'Developers',
     sublinks: [
       {
-        title: 'Getting started with the SDK',
-        link: '/docs/v2/javascript-SDK/quick-start/',
-        description: 'A step-by-step guide to getting started building interfaces with Uniswap.',
-        tag: 'tutorial',
-        icon: '📌'
-      },
-      {
-        title: 'Smart contract development',
-        link: '/docs/v2/smart-contract-integration/quick-start/',
+        title: 'Token Swaps',
+        link: '/docs/v2/smart-contract-integration/trading-from-a-smart-contract/',
         description: 'Simplify the process of integrating Uniswap into your project.',
         tag: 'reference',
-        icon: '🖥️'
+        icon: '📦'
       },
       {
-        title: 'Introduction to Flash Swaps',
+        title: 'Programmable Liquidity',
+        link: '/docs/v2/smart-contract-integration/providing-liquidity/',
+        description: 'A step-by-step guide to getting started building interfaces with Uniswap.',
+        tag: 'tutorial',
+        icon: '🧼'
+      },
+
+      {
+        title: 'Flash Swaps',
         link: '/docs/v2/core-concepts/flash-swaps/',
         description: 'Withdraw the reserves of any ERC20 token on Uniswap and execute arbitrary logic.',
         tag: 'guide',
         icon: '⚡'
       },
       {
-        title: 'Introduction to Oracles',
+        title: 'Oracles',
         link: '/docs/v2/core-concepts/oracles/',
         description: 'Highly decentralized, manipulation-resistant, on-chain price feeds.',
         icon: '🔮'
