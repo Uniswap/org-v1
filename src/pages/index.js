@@ -161,32 +161,29 @@ const StyledSectionFlex = styled.div`
 `
 
 const StyledItemRow = styled.nav`
-  box-sizing: border-box;
+  align-items: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   flex-wrap: wrap;
-  /* gap: 12px; */
-  transition: right 0.25s ease;
-  margin-top: 0.5rem;
-
-  > * + * {
-    margin-left: 12px;
+  margin: 0rem;
+  width: 100%;
+  & > *:not(:first-of-type) {
+    margin-top: 12px;
   }
-
-  @media (max-width: 960px) {
-    align-items: center;
-    width: 100%;
-    margin: 0rem;
-    /* gap: 12px; */
-    /* flex-direction: column; */
-
-    > * + * {
-      margin: 0rem;
-      margin-top: 12px;
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: center;
+    & > * {
+      margin-bottom: 12px;
+    }
+    & > *:not(:first-of-type) {
+      margin-top: 0;
+      margin-left: 12px;
     }
   }
-  @media (max-width: 640px) {
-    /* align-items: flex-start; */
+  @media (min-width: 960px) {
+    box-sizing: border-box;
+    transition: right 0.25s ease;
   }
 `
 
