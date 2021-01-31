@@ -114,7 +114,7 @@ const StyledWizard = styled.div`
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-wrap: wrap;
   /* padding: 1.5rem; */
   /* overflow-x: scroll;
