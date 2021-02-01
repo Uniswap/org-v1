@@ -9,22 +9,6 @@
     font-family: 'Inter var', sans-serif;
   }
 }
-
-@font-face {
-  font-family: 'Inferi Book';
-  src: url('/fonts/Inferi-Book.otf');
-}
-
-@font-face {
-  font-family: 'Inferi Light';
-  src: url('/fonts/Inferi-Light.otf');
-}
-
-@font-face {
-  font-family: 'Inferi Normal';
-  src: url('/fonts/Inferi-Normal.otf');
-}
-
 @font-face {
   font-family: 'GT Haptik Medium';
   src: url('/fonts/GT-Haptik-Medium.woff2');

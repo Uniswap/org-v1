@@ -68,7 +68,7 @@ const StyledBodyTitle = styled.h1`
   overflow-wrap: normal;
   max-width: 900px;
   text-align: center;
-  font-family: 'GT Haptik Regular', 'Inferi Normal', 'Times New Roman', serif;
+  font-family: 'GT Haptik Regular';
   @media (max-width: 1024px) {
     margin: 2rem 0 3rem 0;
   }
@@ -351,7 +351,7 @@ const StyledSectionTitle = styled.h1`
   overflow-wrap: normal;
   max-width: 900px;
   text-align: center;
-  font-family: 'GT Haptik', 'Times New Roman', serif;
+  font-family: 'GT Haptik Regular';
   margin-top: 10rem;
 
   @media (max-width: 960px) {

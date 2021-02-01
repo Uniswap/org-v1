@@ -115,7 +115,7 @@ module.exports = {
               fontColor: '#FF3093', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default
               titleFontSize: 124, // default
-              fontFile: require.resolve('./static/fonts/Inferi-Normal.ttf') // will override fontStyle - path to custom TTF font
+              fontFile: require.resolve('./static/fonts/GT-Haptik-Regular.ttf') // will override fontStyle - path to custom TTF font
             }
           },
           `gatsby-remark-smartypants`,

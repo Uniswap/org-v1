@@ -176,12 +176,12 @@ export const GlobalStyle = createGlobalStyle`
 
   .title{
     letter-spacing: -0.05em;
-    font-family: "GT Haptik Regular",'Inferi Light','Times New Roman',serif;
+    font-family: "GT Haptik Regular";
     font-size: 72px;
   }
 
   h1 {
-    font-family: "GT Haptik Regular", 'Inferi Light','Times New Roman',serif;
+    font-family: "GT Haptik Regular";
     margin-top: 1.75rem ;
     font-size: 1.875rem;
     font-weight: 500;
@@ -190,13 +190,11 @@ export const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: 1.5rem;
     font-weight: 400;
-    font-family: "GT Haptik Regular";
-  }
+    font-family: "GT Haptik Regular";  }
 
   h3 {
     font-weight: 400;
-    font-family: "GT Haptik Regular";
-  }
+    font-family: "GT Haptik Regular";  }
 
 
 
