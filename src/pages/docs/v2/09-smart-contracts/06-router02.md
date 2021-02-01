@@ -355,7 +355,7 @@ function swapTokensForExactTokens(
 ) external returns (uint[] memory amounts);
 ```
 
-Receive an exact amount of output tokens for as few input tokens as possible, along the route determined by the path. The first element of path is the input token, the last is the output token, and any intermediate elements represent intermediate pairs to trade through (if, for example, a direct pair does not exist).
+Receive an exact amount of output tokens for as few input tokens as possible, along the route determined by the path. The first element of path is the input token, the last is the output token, and any intermediate elements represent intermediate tokens to trade through (if, for example, a direct pair does not exist).
 
 - `msg.sender` should have already given the router an allowance of at least amountInMax on the input token.
 
