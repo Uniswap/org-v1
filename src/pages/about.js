@@ -85,14 +85,19 @@ const Title = styled.h1`
 `
 
 const InternalLink = styled(Link)`
-  font-weight: 600;
   border-radius: 8px;
   color: ${({ theme }) => theme.textColor};
+  font-weight: 600;
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+
   h2 {
     margin: 0;
   }
-  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
   :hover {
     transform: translate3d(2px, 2px, 10px);
   }
@@ -265,7 +270,7 @@ const About = props => {
             </p>
             <p>We are committed to open source software and building on the decentralized web.</p>
 
-            <div style={{ display: 'flex', width: '100%', gap: '1rem', margin: 0 }}>
+            <div style={{ display: 'flex', width: '100%', margin: 0 }}>
               <InternalLink to="/blog/uni">UNI token</InternalLink>
               <InternalLink to="/whitepaper.pdf">
                 Whitepaper <span style={{ fontSize: '11px' }}>↗</span>
@@ -330,7 +335,7 @@ const About = props => {
               active community discord.
             </p>
 
-            <div style={{ display: 'flex', width: '100%', gap: '1rem', margin: 0 }}>
+            <div style={{ display: 'flex', width: '100%', margin: 0 }}>
               <InternalLink>
                 Discord <span style={{ fontSize: '11px' }}>↗</span>
               </InternalLink>

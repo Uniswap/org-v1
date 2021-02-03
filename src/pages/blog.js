@@ -27,18 +27,8 @@ const PostsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* gap: 12px; */
-
   max-width: 1200px;
   margin: 0 auto;
-  > * + * {
-    margin-left: 12px;
-  }
-  @media (max-width: 960px) {
-    > * + * {
-      margin-left: 0;
-    }
-  }
 `
 
 const PageTitleWrapper = styled.section`
@@ -47,12 +37,12 @@ const PageTitleWrapper = styled.section`
   align-items: center;
   justify-content: center;
   /* align-items: baseline; */
-  /* gap: 36px; */
   width: 100%;
   padding-bottom: 4rem;
 `
 
 export const Posts = styled.div`
+  margin: 6px;
   position: relative;
   padding: 2rem;
   width: ${({ wide }) => (wide === 0 ? '100%' : '32%')};
@@ -62,7 +52,6 @@ export const Posts = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.grey1};
   background-color: ${({ theme }) => theme.cardBG};
   backdrop-filter: blur(2px);
-
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 
   :hover {
@@ -84,6 +73,7 @@ export const Posts = styled.div`
   }
 
   @media (max-width: 960px) {
+    margin: 6px 0;
     width: 100%;
   }
 `
@@ -93,7 +83,6 @@ export const PostLinkWrapper = styled(Link)`
   flex-wrap: no-wrap;
   flex-direction: ${({ wide }) => (wide === 0 ? 'row' : 'column-reverse')};
   justify-content: ${({ wide }) => (wide === 0 ? 'flex-start' : 'space-between')};
-  /* gap: 36px; */
   align-items: ${({ wide }) => (wide === 0 ? 'center' : 'flex-start')};
   > * + * {
     margin-left: 36px;
@@ -109,7 +98,6 @@ export const PostTitleWrapper = styled.div`
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  /* gap: 24px; */
   h2 {
     font-size: 36px;
   }
