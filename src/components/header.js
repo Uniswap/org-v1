@@ -40,7 +40,6 @@ const StyledNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* gap: 24px; */
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     position: fixed;
