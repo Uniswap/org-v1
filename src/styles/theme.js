@@ -138,7 +138,7 @@ export const GlobalStyle = createGlobalStyle`
     background-size: contain;
     background-repeat: no-repeat;
     overflow-y: scroll;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
   }
 
@@ -153,7 +153,7 @@ export const GlobalStyle = createGlobalStyle`
 
     line-height: 1.55;
     /* max-width: 1440px; */
-    width: 100vw;
+    width: 100%;
     margin: 0px auto;
     font-weight: 400 !important;
     color: ${({ theme }) => theme.textColor};
