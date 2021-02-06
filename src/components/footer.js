@@ -30,6 +30,10 @@ const StyledFooter = styled.footer`
   position: relative;
   padding: 0 4rem 4rem 4rem;
   font-family: 'GT Haptik Regular';
+  
+  @media (max-width: 1155px) {
+    display: block;
+  }
 
   @media (max-width: 960px) {
     margin: 0;
@@ -204,6 +208,9 @@ const StyledInput = styled.input`
 
 const StyledGoal = styled.div`
   color: ${({ theme }) => theme.textColor};
+  @media (max-width: 1155px) {
+    padding-top: 2rem;
+  }
   p {
     margin-bottom: 0.5rem;
     font-weight: 400;
