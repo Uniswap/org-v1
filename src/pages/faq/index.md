@@ -2,7 +2,7 @@
 title: FAQ
 ---
 
-<Info>Didn't find an answer? Join the <a href="https://discord.gg/XErMcTq">community Discord</a> to get support</Info>
+<Info>Didn't find an answer? Join the <a href="https://discord.gg/FCfyBSbCU5">community Discord</a> to get support</Info>
 
 # What is Uniswap?
 

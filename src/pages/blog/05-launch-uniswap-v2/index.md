@@ -69,4 +69,4 @@ Uniswap V1 is an automated, decentralized set of smart contracts. It will contin
 
 ## All other questions
 
-For all questions, you can join and engage with the community in the [Uniswap Discord](https://discord.gg/XErMcTq).
+For all questions, you can join and engage with the community in the [Uniswap Discord](https://discord.gg/FCfyBSbCU5).
