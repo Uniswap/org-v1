@@ -121,4 +121,4 @@ Uniswap Team
 
 ---
 
-_To learn more and get involved in the Uniswap ecosystem, join the project's_ [_Discord_](https://discord.com/invite/XErMcTq) _channel, participate in Uniswap's governance discussions on the_ [_Uniswap forum_](http://gov.uniswap.org/)_, and register as a delegate via_ [_Sybil_](http://sybil.org/)_._
+_To learn more and get involved in the Uniswap ecosystem, join the project's_ [_Discord_](https://discord.com/invite/FCfyBSbCU5) _channel, participate in Uniswap's governance discussions on the_ [_Uniswap forum_](http://gov.uniswap.org/)_, and register as a delegate via_ [_Sybil_](http://sybil.org/)_._
