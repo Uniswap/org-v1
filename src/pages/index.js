@@ -421,7 +421,7 @@ const ProductsSection = props => {
         of the Uniswap protocol.
       </StyledBodySubText>
       <StyledItemRow>
-        <StyledExternalLink href={'https://discord.gg/U5hpTFtYAJ'} target="_blank">
+        <StyledExternalLink href={'https://discord.gg/FCfyBSbCU5'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
         </StyledExternalLink>
         <StyledExternalLink href={'https://twitter.com/Uniswap'} target="_blank">
