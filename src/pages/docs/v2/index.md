@@ -31,7 +31,6 @@ Get to know the Uniswap SDK and smart contract API objects, methods, attributes,
 - [Whitepaper](/whitepaper.pdf)
 - <Link to="/docs/v2/governance/governance-reference">Governance</Link>
 
-
 ### Developer community
 
-Join the Uniswap developer community on [Discord](https://discord.gg/XErMcTq).
+Join the Uniswap developer community on [Discord](https://discord.gg/FCfyBSbCU5).
