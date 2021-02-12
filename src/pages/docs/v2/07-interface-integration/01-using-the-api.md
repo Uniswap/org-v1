@@ -46,7 +46,7 @@ import { HttpLink } from "apollo-link-http"
 
 export const client = new ApolloClient({
  link: new HttpLink({
-   uri: "https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2"
+   uri: "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2"
  }),
  cache: new InMemoryCache(),
 })
@@ -100,7 +100,7 @@ const DAI_QUERY = gql`
 const ETH_PRICE_QUERY = gql`
   query ethPrice {
     bundle(id: "1") {
-      ethprice
+      ethPrice
     }
   }
 `
