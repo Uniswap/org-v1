@@ -5,7 +5,7 @@ tags: protocol-overview, documentation
 
 ### Automated market maker
 
-An automated market maker is a smart contract on Ethereum that hold on-chain liquidity reserves. Users can trade against these reserves at prices set by an automated market making formula.
+An automated market maker is a smart contract on Ethereum that holds on-chain liquidity reserves. Users can trade against these reserves at prices set by an automated market making formula.
 
 ### Constant product formula
 
