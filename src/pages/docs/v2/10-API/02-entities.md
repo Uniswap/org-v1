@@ -213,6 +213,7 @@ Tracks pair data across each day.
 | token1            | Token      | reference to token1                                                                              |
 | reserve0          | BigDecimal | reserve of token0 (updated during each transaction on pair)                                      |
 | reserve1          | BigDecimal | reserve of token1 (updated during each transaction on pair)                                      |
+| totalSupply       | BigDecimal | total supply of liquidity token distributed to LPs                                               |
 | reserveUSD        | BigDecimal | reserve of token0 plus token1 stored as a derived USD amount                                     |
 | dailyVolumeToken0 | BigDecimal | total amount of token0 swapped throughout day                                                    |
 | dailyVolumeToken1 | BigDecimal | total amount of token1 swapped throughout day                                                    |
