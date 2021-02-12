@@ -46,9 +46,9 @@ At the end of `uniswapV2Call`, contracts must return enough tokens to the pair t
 
 ## Multi-Token
 
-In the case where the token withdrawn is _not_ the token returned (i.e. DAI was requested in the flash swap, and WETH was returned, or vice versa), the fee simplifies to the simple swap case. This means that the standard `getAmountIn` pricing function should be used to calculate e.g. the amount of WETH that must be returned in exchange for the amount of DAI that was requested out.
+In the case where the token withdrawn is _not_ the token returned (i.e. DAI was requested in the flash swap, and WETH was returned, or vice versa), the fee simplifies to the simple swap case. This means that the standard `getAmountIn` pricing function should be used to calculate e.g., the amount of WETH that must be returned in exchange for the amount of DAI that was requested out.
 
-This fee calculation is an excellent reason to use Uniswap flash swaps - if you pay for your flash swap in the corresponding pair token, it's free!
+This type of fee calculation gives a slight advantage to the caller, as the fee derived from repayment in a corresponding token will always be slightly less than the fee derived from a direct token repayment, as a result of the difference between a `getAmountIn` calculation and its corresponding `amountOut`.
 
 ## Single-Token
 
