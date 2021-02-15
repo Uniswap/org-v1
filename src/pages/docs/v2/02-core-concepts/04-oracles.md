@@ -28,7 +28,7 @@ Instead, Uniswap V2 adds this end-of-block price to a single cumulative-price va
 
 This variable can be used by external contracts to track accurate time-weighted average prices (TWAPs) across any time interval.
 
-The TWAPThis is constructed by reading the cumulative price from an ERC20 token pair at the beginning and at the end of the desired interval. The difference in this cumulative price can then be divided by the length of the interval to create a TWAP for that period.
+The TWAP is constructed by reading the cumulative price from an ERC20 token pair at the beginning and at the end of the desired interval. The difference in this cumulative price can then be divided by the length of the interval to create a TWAP for that period.
 
 ![](images/v2_twap.png)
 
