@@ -146,7 +146,7 @@ const ProtocolData = () => {
   }, [oneDayBackBlock])
 
   let UniStats = {
-    key: function(n) {
+    key: function (n) {
       return this[Object.keys(this)[n]]
     }
   }
@@ -213,19 +213,19 @@ const ProtocolData = () => {
         </BigNumbers>  */}
         <BigNumbers>
           <span>
-            $83B<span style={{ opacity: '0.1' }}>+</span>
+            $100B<span style={{ opacity: '0.1' }}>+</span>
           </span>
           <p style={{ fontSize: '14px' }}>All Time Volume</p>
         </BigNumbers>
         <BigNumbers>
           <span>
-            72K<span style={{ opacity: '0.1' }}>+</span>
+            80K<span style={{ opacity: '0.1' }}>+</span>
           </span>
           <p style={{ fontSize: '14px' }}>Liquidity Providers</p>
         </BigNumbers>
         <BigNumbers>
           <span>
-            29M<span style={{ opacity: '0.1' }}>+</span>
+            31M<span style={{ opacity: '0.1' }}>+</span>
           </span>
           <p style={{ fontSize: '14px' }}>All Time Trades</p>
         </BigNumbers>
