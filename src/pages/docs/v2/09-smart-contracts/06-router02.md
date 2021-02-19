@@ -84,8 +84,8 @@ Adds liquidity to an ERC-20⇄ERC-20 pool.
 
 | Name           | Type      |                                                                                                                |
 | :------------- | :-------- | :------------------------------------------------------------------------------------------------------------- |
-| tokenA         | `address` | A pool token.                                                                                                  |
-| tokenB         | `address` | A pool token.                                                                                                  |
+| tokenA         | `address` | The contract address of the desired token.                                                                     |
+| tokenB         | `address` | The contract address of the desired token.                                                                     |
 | amountADesired | `uint`    | The amount of tokenA to add as liquidity if the B/A price is <= amountBDesired/amountADesired (A depreciates). |
 | amountBDesired | `uint`    | The amount of tokenB to add as liquidity if the A/B price is <= amountADesired/amountBDesired (B depreciates). |
 | amountAMin     | `uint`    | Bounds the extent to which the B/A price can go up before the transaction reverts. Must be <= amountADesired.  |
@@ -120,7 +120,7 @@ Adds liquidity to an ERC-20⇄WETH pool with ETH.
 
 | Name                           | Type      |                                                                                                                           |
 | :----------------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------ |
-| token                          | `address` | A pool token.                                                                                                             |
+| token                          | `address` | The contract address of the desired token.                                                                                |
 | amountTokenDesired             | `uint`    | The amount of token to add as liquidity if the WETH/token price is <= `msg.value`/amountTokenDesired (token depreciates). |
 | `msg.value` (amountETHDesired) | `uint`    | The amount of ETH to add as liquidity if the token/WETH price is <= amountTokenDesired/`msg.value` (WETH depreciates).    |
 | amountTokenMin                 | `uint`    | Bounds the extent to which the WETH/token price can go up before the transaction reverts. Must be <= amountTokenDesired.  |
@@ -152,8 +152,8 @@ Removes liquidity from an ERC-20⇄ERC-20 pool.
 
 | Name       | Type      |                                                                                       |
 | :--------- | :-------- | :------------------------------------------------------------------------------------ |
-| tokenA     | `address` | A pool token.                                                                         |
-| tokenB     | `address` | A pool token.                                                                         |
+| tokenA     | `address` | The contract address of the desired token.                                            |
+| tokenB     | `address` | The contract address of the desired token.                                            |
 | liquidity  | `uint`    | The amount of liquidity tokens to remove.                                             |
 | amountAMin | `uint`    | The minimum amount of tokenA that must be received for the transaction not to revert. |
 | amountBMin | `uint`    | The minimum amount of tokenB that must be received for the transaction not to revert. |
@@ -182,7 +182,7 @@ Removes liquidity from an ERC-20⇄WETH pool and receive ETH.
 
 | Name           | Type      |                                                                                      |
 | :------------- | :-------- | :----------------------------------------------------------------------------------- |
-| token          | `address` | A pool token.                                                                        |
+| token          | `address` | The contract address of the desired token.                                           |
 | liquidity      | `uint`    | The amount of liquidity tokens to remove.                                            |
 | amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
 | amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
@@ -211,8 +211,8 @@ Removes liquidity from an ERC-20⇄ERC-20 pool without pre-approval, thanks to <
 
 | Name       | Type      |                                                                                       |
 | :--------- | :-------- | :------------------------------------------------------------------------------------ |
-| tokenA     | `address` | A pool token.                                                                         |
-| tokenB     | `address` | A pool token.                                                                         |
+| tokenA     | `address` | The contract address of the desired token.                                            |
+| tokenB     | `address` | The contract address of the desired token.                                            |
 | liquidity  | `uint`    | The amount of liquidity tokens to remove.                                             |
 | amountAMin | `uint`    | The minimum amount of tokenA that must be received for the transaction not to revert. |
 | amountBMin | `uint`    | The minimum amount of tokenB that must be received for the transaction not to revert. |
@@ -244,7 +244,7 @@ Removes liquidity from an ERC-20⇄WETTH pool and receive ETH without pre-approv
 
 | Name           | Type      |                                                                                      |
 | :------------- | :-------- | :----------------------------------------------------------------------------------- |
-| token          | `address` | A pool token.                                                                        |
+| token          | `address` | The contract address of the desired token.                                           |
 | liquidity      | `uint`    | The amount of liquidity tokens to remove.                                            |
 | amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
 | amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
@@ -277,7 +277,7 @@ Identical to [removeLiquidityETH](#removeliquidityeth), but succeeds for tokens 
 
 | Name           | Type      |                                                                                      |
 | :------------- | :-------- | :----------------------------------------------------------------------------------- |
-| token          | `address` | A pool token.                                                                        |
+| token          | `address` | The contract address of the desired token.                                           |
 | liquidity      | `uint`    | The amount of liquidity tokens to remove.                                            |
 | amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
 | amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
@@ -304,7 +304,7 @@ Identical to [removeLiquidityETHWithPermit](#removeliquidityethwithpermit), but 
 
 | Name           | Type      |                                                                                      |
 | :------------- | :-------- | :----------------------------------------------------------------------------------- |
-| token          | `address` | A pool token.                                                                        |
+| token          | `address` | The contract address of the desired token.                                           |
 | liquidity      | `uint`    | The amount of liquidity tokens to remove.                                            |
 | amountTokenMin | `uint`    | The minimum amount of token that must be received for the transaction not to revert. |
 | amountETHMin   | `uint`    | The minimum amount of ETH that must be received for the transaction not to revert.   |
