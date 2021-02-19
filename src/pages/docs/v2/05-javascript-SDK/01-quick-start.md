@@ -7,7 +7,10 @@ The Uniswap SDK exists to help developers build on top of Uniswap. It's designed
 
 # Installation
 
-The easiest way to consume the SDK is via npm. To install it in your project, simply run `yarn add @uniswap/sdk` (or `npm install @uniswap/sdk`).
+The easiest way to consume the SDK is via npm. To install it in your project, simply run:
+
+* Using yarn: `yarn add @uniswap/sdk @ethersproject/address @ethersproject/solidity @ethersproject/contracts @ethersproject/providers`
+* Using npm: `npm install @uniswap/sdk @ethersproject/address @ethersproject/solidity @ethersproject/contracts @ethersproject/providers`
 
 # Usage
 
