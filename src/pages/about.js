@@ -139,6 +139,7 @@ const APOLLO_QUERY = gql`
       totalVolumeUSD
       totalLiquidityUSD
       pairCount
+      txCount
     }
     bundle(id: 1) {
       ethPrice

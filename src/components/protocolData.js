@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react'
-
+import React from 'react'
 import styled from 'styled-components'
-
 import gql from 'graphql-tag'
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
 import { useQuery } from '@apollo/react-hooks'
-import { client, blockClient } from '../apollo/client'
+import { client } from '../apollo/client'
+import { GLOBAL_QUERY } from '../apollo/queries'
 
 const StyledSectionFlex = styled.div`
   display: flex;
@@ -86,134 +83,34 @@ export const ETH_PRICE = block => {
   return gql(queryString)
 }
 
-const APOLLO_QUERY = gql`
-  {
-    uniswapFactory(id: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f") {
-      totalVolumeUSD
-      totalLiquidityUSD
-      pairCount
-    }
-    bundle(id: 1) {
-      ethPrice
-    }
-  }
-`
-
-export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = block => {
-  let queryString = `
-  query uniswapFactory {
-    uniswapFactory(id: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f", block: { number: ${block} }) {
-      totalVolumeUSD
-      totalLiquidityUSD
-      pairCount
-    
-    }
-  }
-  `
-  return gql(queryString)
-}
-
 const ProtocolData = () => {
-  dayjs.extend(utc)
-  const utcCurrentTime = dayjs()
-  const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()
+  const { data: globalData } = useQuery(GLOBAL_QUERY, { pollInterval: 10000, client: client })
 
-  const { data: blockData } = useQuery(GET_BLOCK, {
-    client: blockClient,
-    variables: {
-      timestamp: utcOneDayBack
-    }
-  })
-  const oneDayBackBlock = blockData?.blocks?.[0]?.number
-  const { data } = useQuery(APOLLO_QUERY, { pollInterval: 10000, client: client })
+  // hardcode at 1B in case of data failure
+  const volume = globalData ? globalData?.uniswapFactory?.totalVolumeUSD : 100000000000
+  const transactions = globalData ? globalData?.uniswapFactory?.txCount : 29000000
 
-  const [oneDayResult, setOnedayResult] = useState()
+  const formattedVol = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    notation: 'compact',
+    compactDisplay: 'short'
+    // maximumSignificantDigits: 5
+  }).format(volume)
 
-  useEffect(() => {
-    async function getData() {
-      let result = await client.query({
-        query: UNISWAP_GLOBALS_24HOURS_AGO_QUERY(oneDayBackBlock),
-
-        fetchPolicy: 'cache-first'
-      })
-      if (result) {
-        setOnedayResult(result?.data?.uniswapFactory)
-      }
-    }
-    if (oneDayBackBlock) {
-      getData()
-    }
-  }, [oneDayBackBlock])
-
-  let UniStats = {
-    key: function(n) {
-      return this[Object.keys(this)[n]]
-    }
-  }
-
-  if (data && oneDayResult) {
-    const volume24Hour = parseFloat(data?.uniswapFactory?.totalVolumeUSD) - parseFloat(oneDayResult?.totalVolumeUSD)
-
-    UniStats.volume = [
-      new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        notation: 'compact',
-        compactDisplay: 'short'
-      }).format(volume24Hour)
-    ]
-
-    UniStats.fees = [
-      new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        notation: 'compact',
-        compactDisplay: 'short'
-        // maximumSignificantDigits: 5
-      }).format(volume24Hour * 0.003)
-    ]
-
-    UniStats.liquidity = [
-      new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        notation: 'compact',
-        compactDisplay: 'short'
-        // maximumSignificantDigits: 5
-      }).format(data.uniswapFactory.totalLiquidityUSD)
-    ]
-    UniStats.exchanges = [Number.parseFloat(data?.uniswapFactory?.pairCount)]
-
-    UniStats.ETHprice = [
-      new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        notation: 'compact',
-        compactDisplay: 'short',
-        maximumSignificantDigits: 5
-      }).format(parseFloat(data?.bundle?.ethPrice)),
-      '<small> Uni ETH Price </small>'
-    ]
-  }
+  const formattedTransactions = new Intl.NumberFormat('en-US', {
+    notation: 'compact',
+    compactDisplay: 'short'
+    // maximumSignificantDigits: 5
+  }).format(transactions)
 
   return (
     <Numbers id="about" style={{ flexDirection: 'column' }}>
       <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', margin: 0 }}>
-        {/* <BigNumbers>
-          {UniStats.liquidity}
-          <p style={{ fontSize: '14px' }}>Total Liquidity</p>
-        </BigNumbers>
-        <BigNumbers>
-          {UniStats.volume}
-          <p style={{ fontSize: '14px' }}>24H Volume</p>
-        </BigNumbers>
-        <BigNumbers>
-          {UniStats.fees}
-          <p style={{ fontSize: '14px' }}>24H LP fees</p>
-        </BigNumbers>  */}
         <BigNumbers>
           <span>
-            $83B<span style={{ opacity: '0.1' }}>+</span>
+            {formattedVol}
+            <span style={{ opacity: '0.1' }}>+</span>
           </span>
           <p style={{ fontSize: '14px' }}>All Time Volume</p>
         </BigNumbers>
@@ -225,7 +122,8 @@ const ProtocolData = () => {
         </BigNumbers>
         <BigNumbers>
           <span>
-            29M<span style={{ opacity: '0.1' }}>+</span>
+            {formattedTransactions}
+            <span style={{ opacity: '0.1' }}>+</span>
           </span>
           <p style={{ fontSize: '14px' }}>All Time Trades</p>
         </BigNumbers>

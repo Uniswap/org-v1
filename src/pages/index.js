@@ -8,9 +8,7 @@ import BG from '../components/bg'
 import { Button } from '../components/button'
 import Wizard from '../components/wizard'
 import ProtocolData from '../components/protocolData'
-
 import { useDarkMode } from '../contexts/Application'
-
 import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../components/utils'
 
 const BGCard = styled.span`
@@ -331,7 +329,6 @@ const IndexPage = props => {
           </StyledItemRow>
         </StyledTitle>
         <ProtocolData />
-
         <DeveloperSection data={data} props={props} />
         <ProductsSection data={data} props={props} />
       </StyledBody>
