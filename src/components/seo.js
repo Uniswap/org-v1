@@ -50,8 +50,8 @@ function SEO({ description, lang, title, path }) {
       <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}twitter-card.jpg`} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content="@UniswapProtocol"></meta>
-      <meta name="twitter:site" content="@UniswapProtocol" />
+      <meta name="twitter:creator" content="@Uniswap"></meta>
+      <meta name="twitter:site" content="@Uniswap" />
       <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}twitter-card.jpg`} />
 
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" />

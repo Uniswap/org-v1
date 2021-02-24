@@ -33,7 +33,7 @@ This site will serve as a project overview for Uniswap - explaining how it works
 
 - [Website](https://uniswap.org)
 - [GitHub](https://github.com/Uniswap)
-- [Twitter](https://twitter.com/UniswapProtocol)
+- [Twitter](https://twitter.com/Uniswap)
 - [Reddit](https://www.reddit.com/r/Uniswap)
 - [Email](mailto:contact@uniswap.org)
 - [Whitepaper](https://hackmd.io/s/HJ9jLsfTz)

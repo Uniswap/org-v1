@@ -8,7 +8,7 @@ previewText: 'Uniswap V2 the second iteration of the Uniswap protocol has been d
 
 Uniswap V2, the second iteration of the Uniswap protocol, has been [deployed to the Ethereum mainnet](https://etherscan.io/address/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f#code)!
 
-An [audit report and formal verification](https://uniswap.org/audit.html) has already been released and the [Uniswap V2 Bug Bounty](https://twitter.com/UniswapProtocol/status/1250474233131495424) has been running for over a month.
+An [audit report and formal verification](https://uniswap.org/audit.html) has already been released and the [Uniswap V2 Bug Bounty](https://twitter.com/Uniswap/status/1250474233131495424) has been running for over a month.
 
 Developers can begin building on Uniswap V2 immediately! Initial [docs](http://uniswap.org/docs/v2) and [example projects](http://github.com/Uniswap/uniswap-v2-periphery/tree/master/contracts/examples) are already available.
 

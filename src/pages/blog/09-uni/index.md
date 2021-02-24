@@ -139,7 +139,7 @@ In the meantime, UNI holders will have immediate ownership of:
 
 - Uniswap Default List (tokens.uniswap.eth)
 
-- [SOCKS](https://twitter.com/UniswapProtocol/status/1126506339075641344?s=20) liquidity tokens
+- [SOCKS](https://twitter.com/Uniswap/status/1126506339075641344?s=20) liquidity tokens
 
 Initial governance parameters are as follows:
 
