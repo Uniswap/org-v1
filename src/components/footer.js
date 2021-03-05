@@ -141,7 +141,7 @@ const Footer = () => {
       <StyledSection>
         <StyledFooterSection>
           <EmailSection />
-          <p>© 2020 Uniswap</p>
+          <p>© {new Date().getFullYear()} Uniswap</p>
         </StyledFooterSection>
       </StyledSection>
     </StyledFooter>
