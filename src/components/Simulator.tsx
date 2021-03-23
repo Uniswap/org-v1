@@ -131,14 +131,6 @@ var formatter = new Intl.NumberFormat('en-US', {
 
 const marks = [{ value: 1820, label: 'Current Price: $1,820' }]
 
-function handleStep(x) {
-  if (x < 2800) {
-    return x
-  } else {
-    return x ** (1 + (x - 2800) / 2000)
-  }
-}
-
 const LabelWrapper = styled.div`
   position: absolute;
   background: blue;
@@ -263,7 +255,6 @@ export default function Simulator() {
               marks={marks}
               min={1}
               max={4000}
-              scale={handleStep}
               ValueLabelComponent={ValueLabelComponent}
             />
           </SliderWrapper>
