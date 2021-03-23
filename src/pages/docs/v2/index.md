@@ -2,6 +2,8 @@
 title: Uniswap Documentation
 ---
 
+<Info>Looking for the recently released V3 Documentation? Find it <a href="https://docs.uniswap.org">here</a></Info>
+
 Welcome! The pages that follow contain comprehensive documentation of the Uniswap V2 ecosystem. If you are new to Uniswap, you might want to check out the <Link to="/docs/v2/protocol-overview">Protocol Overview</Link> or <Link to="/faq">FAQ</Link> first.
 
 For a high-level overview of V2, see the <Link to='/blog/uniswap-v2'>introductory blog post</Link>.

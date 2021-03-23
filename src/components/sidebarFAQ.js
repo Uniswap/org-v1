@@ -55,7 +55,7 @@ const StyledTOC = styled.ul`
   transition: opacity 0.3s ease;
   list-style: none;
   text-decoration: none;
-  overflow: scroll;
+  overflow: auto;
 
   li {
     padding: 0;
