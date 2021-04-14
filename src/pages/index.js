@@ -264,12 +264,6 @@ const NewPill = styled.span`
   font-weight: 400;
 `
 
-const LinkTitle = styled.span`
-  @media (max-width: 960px) {
-    display: none;
-  }
-`
-
 const IndexPage = props => {
   const isDark = useDarkMode()
 

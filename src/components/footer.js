@@ -1,7 +1,6 @@
 import { Link } from 'gatsby'
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -32,26 +31,6 @@ const StyledFooterLink = styled(Link)`
 `
 
 const Footer = () => {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          commit
-          repository
-          menulinks {
-            name
-            sublinks {
-              description
-              name
-              link
-            }
-          }
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <StyledFooter>
       <p>© 2021 Uniswap</p>
