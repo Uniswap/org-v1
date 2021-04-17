@@ -200,51 +200,9 @@ const StyledDescription = styled.p`
 `
 
 export default function Menu(props) {
-  const matches = useMediaQuery('only screen and (max-width: 960px)')
-  const node = useRef()
-  const [isOpen, updateIsOpen] = useState(matches)
-
-  useEffect(() => {
-    const handleClickOutside = e => {
-      if (node.current.contains(e.target)) {
-        return
-      }
-      updateIsOpen(false)
-    }
-
-    const onFocus = focused => {
-      if (focused) {
-        updateIsOpen(true)
-      } else {
-        updateIsOpen(false)
-      }
-    }
-
-    if (isOpen && !matches) {
-      node.current.removeEventListener('focusin', () => onFocus(false))
-      node.current.removeEventListener('focusout', () => onFocus(false))
-      document.addEventListener('mouseover', handleClickOutside)
-    } else {
-      node.current.addEventListener('focusin', () => onFocus(true))
-      node.current.addEventListener('focusout', () => onFocus(false))
-      document.removeEventListener('mouseover', handleClickOutside)
-    }
-
-    return () => {
-      document.removeEventListener('mouseover', handleClickOutside)
-      node.current.removeEventListener('focusin', () => onFocus(false))
-      node.current.removeEventListener('focusout', () => onFocus(false))
-    }
-  }, [isOpen, updateIsOpen, matches])
-
   return (
-    <StyledMenu ref={node} tabIndex={0}>
+    <StyledMenu tabIndex={0}>
       <StyledMenuTitle
-        onMouseOver={() => updateIsOpen(true)}
-        onFocus={() => {
-          updateIsOpen(true)
-        }}
-        isOpen={isOpen}
       >
         <span style={{ marginRight: '0.25rem' }}>{props.data.name} </span>
         
