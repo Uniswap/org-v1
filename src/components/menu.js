@@ -50,18 +50,22 @@ const StyledMenu = styled.button`
   }
 `
 
-const MenuFlyout = styled.span`
+const MenuFlyout = styled.nav`
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 1.75rem;
+  top: 1.65rem;
   left: -1rem;
   min-width: 256px;
   width: 100%;
   width: fit-content;
-  padding: 1rem 1.5rem;
   border-radius: 8px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  transition: max-height 0.4s 2s, opacity 0.4s;
+
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.04);
   z-index: 999;
@@ -82,6 +86,8 @@ const MenuFlyout = styled.span`
     margin-top: 1rem;
     backdrop-filter: 'none';
     background-color: rgba(255, 255, 255, 0);
+    width: auto;
+    height: auto;
   }
 `
 
@@ -93,11 +99,29 @@ const StyledMenuTitle = styled.span`
   font-family: 'GT Haptik Regular';
   width: fit-content;
   font-size: 16px;
+  padding: 0 0 0.2rem;
+  :focus {
+    outline: 0;
+    
+  }
+  a:focus {
+    opacity: 0.5;
+  }
 
   cursor: pointer;
   :hover {
     color: ${({ theme }) => theme.colors.grey7};
   }
+
+  :hover nav, &:focus-within nav, nav:hover {
+    width: auto;
+    height: auto;
+    max-height: 1500px;
+    padding: 1rem;
+    opacity: 1;
+    transition: max-height 0.4s 3s;
+  }
+
   @media (max-width: 960px) {
     margin-bottom: 1rem;
     user-select: none;
@@ -132,6 +156,10 @@ const StyledExternalLink = styled.a`
   margin: 0.25rem 0;
   width: 100%;
   cursor: pointer;
+  :focus {
+    outline: 0;
+    opacity: 0.9;
+  }
   :hover {
     * {
       color: ${({ theme }) => theme.colors.grey5};
@@ -219,7 +247,7 @@ export default function Menu(props) {
         isOpen={isOpen}
       >
         <span style={{ marginRight: '0.25rem' }}>{props.data.name} </span>
-        {isOpen ? (
+        
           <MenuFlyout>
             {props.data.sublinks.map((item, index) => {
               return (
@@ -239,9 +267,6 @@ export default function Menu(props) {
               )
             })}
           </MenuFlyout>
-        ) : (
-          ''
-        )}
       </StyledMenuTitle>
     </StyledMenu>
   )
