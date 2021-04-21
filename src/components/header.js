@@ -21,7 +21,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   width: 100%;
   z-index: 3;
   position: sticky;
@@ -53,7 +53,7 @@ const StyledNav = styled.nav`
     height: 100%;
     z-index: 999;
     padding: 2rem;
-    overflow: scroll;
+    overflow: auto;
     box-shadow: ${({ theme }) => theme.shadows.huge};
   }
 
@@ -72,11 +72,13 @@ const StyledNavTitleWrapper = styled.nav`
   display: flex;
   align-items: center;
 `
+
 const HeaderText = styled.h2`
   line-height: auto;
   margin: 0px;
   margin-bottom: 4px;
   margin-left: 8px;
+  font-size: 20px;
   color: ${({ theme }) => theme.textColor} !important;
 `
 
@@ -152,8 +154,8 @@ const StyledUni = styled(Uni)`
     fill: ${({ theme }) => theme.textColor};
   }
   margin: 0;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   margin-right: 0.35rem;
   margin-top: -4px;
   transform: rotate(0deg);
@@ -267,6 +269,7 @@ const Header = props => {
         {data.site.siteMetadata.menulinks.map(item => {
           return <Menu key={item.name} data={item} />
         })}
+
         <HideSmall>
           <StyledButton type="button" onClick={toggleDarkMode}>
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}

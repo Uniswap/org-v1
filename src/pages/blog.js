@@ -27,35 +27,36 @@ const PostsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
 `
 
 const PageTitleWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* align-items: baseline; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  max-width: 960px;
+  margin: 0 auto;
   width: 100%;
-  padding-bottom: 4rem;
+  padding: 4rem;
+  @media (max-width: 960px) {
+    padding: 0;
+  }
 `
 
 export const Posts = styled.div`
-  margin: 6px;
+  margin: 1rem 0;
   position: relative;
-  padding: 2rem;
-  width: ${({ wide }) => (wide === 0 ? '100%' : '32%')};
-  border-radius: 8px;
+  width: 100%;
   text-decoration: none;
-
-  border: 1px solid ${({ theme }) => theme.colors.grey1};
+  border-radius: 20px;
   background-color: ${({ theme }) => theme.cardBG};
   backdrop-filter: blur(2px);
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  border: 1px solid rgba(0, 0, 0, 0);
 
   :hover {
-    transform: translate3d(2px, 2px, 10px);
     border: 1px solid ${({ theme }) => theme.colors.grey3};
   }
   h1 {
@@ -73,7 +74,6 @@ export const Posts = styled.div`
   }
 
   @media (max-width: 960px) {
-    margin: 6px 0;
     width: 100%;
   }
 `
@@ -81,12 +81,13 @@ export const Posts = styled.div`
 export const PostLinkWrapper = styled(Link)`
   display: flex;
   flex-wrap: no-wrap;
-  flex-direction: ${({ wide }) => (wide === 0 ? 'row' : 'column-reverse')};
-  justify-content: ${({ wide }) => (wide === 0 ? 'flex-start' : 'space-between')};
-  align-items: ${({ wide }) => (wide === 0 ? 'center' : 'flex-start')};
-  > * + * {
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  /* > * + * {
     margin-left: 36px;
-  }
+  } */
   @media (max-width: 960px) {
     > * + * {
       margin-left: 0;
@@ -98,12 +99,14 @@ export const PostTitleWrapper = styled.div`
   min-width: 200px;
   display: flex;
   flex-direction: column;
+  /* margin-top: 24px; */
+  padding: 2rem;
   h2 {
     font-size: 36px;
   }
-  > * + * {
+  /* > * + * {
     margin-left: 24px;
-  }
+  } */
   @media (max-width: 960px) {
     > * + * {
       margin-left: 0;
@@ -125,11 +128,12 @@ export const PostMetaData = styled.p`
 export const StyledImage = styled(Img)`
   width: 100%;
   border-radius: 12px;
-  height: 250px;
+  height: 420px;
   box-shadow: ${({ theme }) => theme.shadows.huge};
+  border-radius: 20px;
+  overflow: hidden;
   @media (max-width: 960px) {
-    display: none;
-    max-width: 256px;
+    height: 256px;
   }
 `
 
@@ -144,6 +148,7 @@ export const NewPill = styled.p`
   text-align: center;
   margin: 0;
   transform: rotateZ(-20deg);
+  z-index: 99;
 `
 
 const Blog = props => {
@@ -201,7 +206,7 @@ const Blog = props => {
 
       <StyledBlog>
         <PageTitleWrapper>
-          <h2 style={{ fontSize: '56px' }}>Uniswap Blog</h2>
+          <h2 style={{ fontSize: '56px' }}>Blog</h2>
           <p>
             News, stories, and announcements from Uniswap.{' '}
             <a style={{ paddingBottom: '1rem' }} href="/rss.xml" target="_blank">
@@ -222,7 +227,7 @@ const Blog = props => {
 
                     <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
                   </PostTitleWrapper>
-                  {index === 0 && node.frontmatter.featuredImage && (
+                  {node.frontmatter.featuredImage && (
                     <StyledImage fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
                   )}
                 </PostLinkWrapper>

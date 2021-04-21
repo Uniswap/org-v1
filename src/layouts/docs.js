@@ -30,9 +30,9 @@ const StyledDocs = styled.div`
 
 const StyledMDX = styled.div`
   min-width: 550px;
-  max-width: 768px;
+  max-width: 75% !important;
   padding: 0;
-  margin-bottom: 3rem;
+  margin: 0 auto;
   margin-top: 4rem;
   a {
     color: ${({ theme }) => theme.colors.link};

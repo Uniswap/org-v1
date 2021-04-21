@@ -103,6 +103,25 @@ const InternalLink = styled(Link)`
   }
 `
 
+const ExternalLink = styled.a`
+  border-radius: 8px;
+  color: ${({ theme }) => theme.textColor};
+  font-weight: 600;
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  :hover {
+    transform: translate3d(2px, 2px, 10px);
+  }
+`
+
 export const GET_BLOCK = gql`
   query blocks($timestamp: Int!) {
     blocks(first: 1, orderBy: timestamp, orderDirection: asc, where: { timestamp_gt: $timestamp }) {
@@ -113,7 +132,7 @@ export const GET_BLOCK = gql`
   }
 `
 
-export const ETH_PRICE = block => {
+export const ETH_PRICE = (block) => {
   const queryString = block
     ? `
     query bundles {
@@ -147,7 +166,7 @@ const APOLLO_QUERY = gql`
   }
 `
 
-export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = block => {
+export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = (block) => {
   let queryString = `
   query uniswapFactory {
     uniswapFactory(id: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f", block: { number: ${block} }) {
@@ -161,7 +180,7 @@ export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = block => {
   return gql(queryString)
 }
 
-const About = props => {
+const About = (props) => {
   dayjs.extend(utc)
   const utcCurrentTime = dayjs()
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()
@@ -169,8 +188,8 @@ const About = props => {
   const { data: blockData } = useQuery(GET_BLOCK, {
     client: blockClient,
     variables: {
-      timestamp: utcOneDayBack
-    }
+      timestamp: utcOneDayBack,
+    },
   })
   const oneDayBackBlock = blockData?.blocks?.[0]?.number
   const { data } = useQuery(APOLLO_QUERY, { pollInterval: 10000, client: client })
@@ -182,7 +201,7 @@ const About = props => {
       let result = await client.query({
         query: UNISWAP_GLOBALS_24HOURS_AGO_QUERY(oneDayBackBlock),
 
-        fetchPolicy: 'cache-first'
+        fetchPolicy: 'cache-first',
       })
       if (result) {
         setOnedayResult(result?.data?.uniswapFactory)
@@ -194,9 +213,9 @@ const About = props => {
   }, [oneDayBackBlock])
 
   let UniStats = {
-    key: function(n) {
+    key: function (n) {
       return this[Object.keys(this)[n]]
-    }
+    },
   }
 
   if (data && oneDayResult) {
@@ -207,17 +226,17 @@ const About = props => {
         style: 'currency',
         currency: 'USD',
         notation: 'compact',
-        compactDisplay: 'short'
-      }).format(volume24Hour)
+        compactDisplay: 'short',
+      }).format(volume24Hour),
     ]
     UniStats.liquidity = [
       new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         notation: 'compact',
-        compactDisplay: 'short'
+        compactDisplay: 'short',
         // maximumSignificantDigits: 5
-      }).format(data.uniswapFactory.totalLiquidityUSD)
+      }).format(data.uniswapFactory.totalLiquidityUSD),
     ]
     UniStats.exchanges = [Number.parseFloat(data?.uniswapFactory?.pairCount)]
 
@@ -227,9 +246,9 @@ const About = props => {
         currency: 'USD',
         notation: 'compact',
         compactDisplay: 'short',
-        maximumSignificantDigits: 5
+        maximumSignificantDigits: 5,
       }).format(parseFloat(data?.bundle?.ethPrice)),
-      '<small> Uni ETH Price </small>'
+      '<small> Uni ETH Price </small>',
     ]
   }
 
@@ -274,7 +293,10 @@ const About = props => {
             <div style={{ display: 'flex', width: '100%', margin: 0 }}>
               <InternalLink to="/blog/uni">UNI token</InternalLink>
               <InternalLink to="/whitepaper.pdf">
-                Whitepaper <span style={{ fontSize: '11px' }}>↗</span>
+                V2 Whitepaper <span style={{ fontSize: '11px' }}>↗</span>
+              </InternalLink>
+              <InternalLink to="/whitepaper-v3.pdf">
+                V3 Whitepaper <span style={{ fontSize: '11px' }}>↗</span>
               </InternalLink>
               <InternalLink to="/audit.html">
                 Audit <span style={{ fontSize: '11px' }}>↗</span>
@@ -307,15 +329,15 @@ const About = props => {
             </p>
 
             <div style={{ display: 'flex', width: '100%', margin: 0 }}>
-              <InternalLink>
+              <ExternalLink href={'https://discord.gg/FCfyBSbCU5'}>
                 Discord <span style={{ fontSize: '11px' }}>↗</span>
-              </InternalLink>
-              <InternalLink>
+              </ExternalLink>
+              <ExternalLink href={'https://twitter.com/Uniswap'}>
                 Twitter <span style={{ fontSize: '11px' }}>↗</span>
-              </InternalLink>
-              <InternalLink>
+              </ExternalLink>
+              <ExternalLink href={'https://www.reddit.com/r/Uniswap'}>
                 Reddit <span style={{ fontSize: '11px' }}>↗</span>
-              </InternalLink>
+              </ExternalLink>
             </div>
           </StyledSectionFlex>
 

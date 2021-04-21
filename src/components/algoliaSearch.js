@@ -14,8 +14,8 @@ const StyledForm = styled.form`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  color: ${({ theme }) => theme.colors.grey2};
-  background-color: ${({ theme }) => theme.concreteGray};
+  color: ${({ theme }) => theme.colors.grey5};
+  background-color: ${({ theme }) => theme.colors.grey3};
   margin: 0px;
   margin-right: 12px;
   @media (max-width: 960px) {
@@ -24,12 +24,12 @@ const StyledForm = styled.form`
 
   :hover {
     color: ${({ theme }) => theme.colors.grey3};
-    background-color: ${({ theme }) => theme.colors.grey2};
+    background-color: ${({ theme }) => theme.colors.grey4};
   }
 
   :focus {
     color: ${({ theme }) => theme.colors.grey3};
-    background-color: ${({ theme }) => theme.colors.grey2};
+    background-color: ${({ theme }) => theme.colors.grey4};
   }
 `
 
