@@ -32,6 +32,9 @@ export const theme = darkMode => ({
   gradientBG: darkMode
     ? 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 31.19%, rgba(0, 0, 0, 0) 100%)'
     : 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 31.19%, rgba(0, 0, 0, 0) 100%)',
+  newPill: darkMode
+    ? 'radial-gradient(76.02% 75.41% at 1.84% 0%,#ffffff 0%,#61a2ff 100%)'
+    : 'radial-gradient(76.02% 75.41% at 1.84% 0%,#000 0%,#260082 100%)',
   invertImage: darkMode ? 'filter: invert(0);' : 'filter: invert(1);',
 
   // for setting css on <html>
@@ -228,7 +231,7 @@ export const GlobalStyle = createGlobalStyle`
  .ds-dropdown-menu {
     width: 100px;
     max-height: 600px;
-    overflow: scroll;
+    overflow: auto;
 
     @media screen and (max-width: 1080px) {
       min-width: 300px !important;

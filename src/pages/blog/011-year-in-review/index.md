@@ -6,8 +6,6 @@ featuredImage: ./banner.jpg
 previewText: 'As 2020 comes to a close, we wanted to review some key accomplishments from the past 12 months and share some insight into our roadmap for the coming year.'
 ---
 
-![](banner.jpg)
-
 2020 was a breakout year for the Uniswap protocol. As it comes to a close, we wanted to review some key accomplishments from the past 12 months and share some insight into our roadmap for the coming year.
 
 # 2020 Review:

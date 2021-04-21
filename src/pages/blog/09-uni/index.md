@@ -6,8 +6,6 @@ featuredImage: ./banner.jpg
 previewText: 'UNI, the Uniswap Protocol token, is live!'
 ---
 
-![](banner_top.jpg)
-
 - UNI, the Uniswap Protocol token, is live!
 
 - UNI contract address: [0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984](https://etherscan.io/token/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984)

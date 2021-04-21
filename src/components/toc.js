@@ -1,4 +1,3 @@
-import scrollTo from 'gatsby-plugin-smoothscroll'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -26,23 +25,6 @@ const StyledHeadingLink = styled.a`
   }
 `
 
-const Heading = ({ heading }) => {
-  const slug = slugger.slug(heading.value.replace(/\d+-/g, ''))
-  slugger.reset()
-  return (
-    <StyledHeadingListElement key={heading.value} depth={heading.depth}>
-      <StyledHeadingLink
-        onClick={() => {
-          scrollTo('#' + slug)
-          window.history.pushState({}, '', '#' + slug)
-        }}
-      >
-        {heading.value}
-      </StyledHeadingLink>
-    </StyledHeadingListElement>
-  )
-}
-
 const StyledTOC = styled.ul`
   display: flex;
   flex-direction: column;
@@ -53,7 +35,7 @@ const StyledTOC = styled.ul`
   top: 6rem;
   min-width: 180px;
   max-height: 70vh;
-  overflow: scroll;
+  overflow: auto;
   font-size: 0.75rem;
   margin: 0 2rem 0 0;
   opacity: 0.6;
@@ -74,6 +56,27 @@ const StyledTOC = styled.ul`
     display: none;
   }
 `
+
+const Heading = ({ heading }) => {
+  const slug = slugger.slug(heading.value.replace(/\d+-/g, ''))
+  slugger.reset()
+  return (
+    <StyledHeadingListElement key={heading.value} depth={heading.depth}>
+      <StyledHeadingLink
+        onClick={() => {
+          // scrollTo('#' + slug)
+          const id = '#' + slug
+          const anchor = document.querySelector(id)
+          const offset = anchor.getBoundingClientRect().top + window.scrollY
+          window.scroll({ top: offset - 80, left: 0 })
+          window.history.pushState({}, '', '#' + slug)
+        }}
+      >
+        {heading.value}
+      </StyledHeadingLink>
+    </StyledHeadingListElement>
+  )
+}
 
 const TableofContents = ({ headings }) => (
   <StyledTOC>

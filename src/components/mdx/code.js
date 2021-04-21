@@ -30,7 +30,7 @@ const Pre = styled.pre`
   margin: 1em 0;
   padding: 0.5em;
   line-height: 1.75;
-  overflow: scroll;
+  overflow: auto;
   border-radius: 0.25rem;
   text-shadow: none !important;
 

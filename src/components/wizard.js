@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-// import Img from 'gatsby-image'
-// import { Link } from 'gatsby'
 import InlineCard from './inlineCard'
 
 import styled from 'styled-components'
@@ -93,9 +91,7 @@ const StyledWizard = styled.div`
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
   width: 100%;
   max-width: 720px;
-  /* border: 1px solid ${({ theme }) => theme.colors.grey2}; */
   border-radius: 20px;
-  /* overflow: hidden; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -106,8 +102,6 @@ const StyledWizard = styled.div`
     width: 100%;
     max-width: 450px;
     margin: 1rem 0;
-    /* height: ${({ small }) => !small && '200px'}; */
-    /* height: 200px; */
   }
 `
 
@@ -116,12 +110,6 @@ const CardWrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-  /* padding: 1.5rem; */
-  /* overflow-x: scroll;
-  overflow-y: visible;
-  *::-webkit-scrollbar {
-    display: none;
-  } */
 `
 
 const Wizard = () => {

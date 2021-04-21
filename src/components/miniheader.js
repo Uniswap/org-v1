@@ -26,9 +26,9 @@ const StyledHeader = styled.header`
   align-items: center;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.backgroundColor};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey4};
   left: 0px;
-  padding: 1rem 2rem;
+  padding: 1rem 1.25rem;
   width: 100%;
   z-index: 3;
   height: 65px;
@@ -80,7 +80,7 @@ const StyledNav = styled.nav`
     height: 100%;
     z-index: 999;
     padding: 2rem;
-    overflow: scroll;
+    overflow: auto;
     box-shadow: ${({ theme }) => theme.shadows.huge};
   }
 `
@@ -99,7 +99,7 @@ const StyledNavTitle = styled(Link)`
   z-index: 999;
   text-decoration: none;
   vertical-align: bottom;
-  font-weight: 600;
+  font-weight: 500;
   white-space: pre;
 
   :hover {
