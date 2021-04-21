@@ -14,7 +14,7 @@ We'll need to create the basic skeleton for the application. We'll use [create-r
 ```javascript
 yarn create react-app uniswap-demo
 cd uniswap-demo
-yarn add  apollo-client apollo-cache-inmemory apollo-link-http graphql graphql-tag @apollo/react-hooks
+yarn add @apollo/client graphql
 yarn start
 ```
 
@@ -40,14 +40,10 @@ We need to set up some middleware in order to make requests to the Uniswap subgr
 ```javascript
 import React from "react"
 import "./App.css"
-import { ApolloClient } from "apollo-client"
-import { InMemoryCache } from "apollo-cache-inmemory"
-import { HttpLink } from "apollo-link-http"
+import { ApolloClient, InMemoryCache } from "@apollo/client"
 
 export const client = new ApolloClient({
- link: new HttpLink({
-   uri: "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2"
- }),
+ uri: "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2",
  cache: new InMemoryCache(),
 })
 
@@ -67,7 +63,7 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from '@apollo/client'
 import { client } from './App'
 
 ReactDOM.render(
@@ -86,7 +82,7 @@ Next we'll construct our query and fetch data. For this example we will fetch so
 1. First we need to define the query itself. We'll use `gql` to parse a query string into the GraphQL AST standard. Import the `gql` helper into the app and use it to create the query. Add the following to your `App.js` file:
 
 ```javascript
-import gql from 'graphql-tag'
+import gql from '@apollo/client'
 
 const DAI_QUERY = gql`
   query tokens($tokenAddress: Bytes!) {
@@ -113,9 +109,9 @@ We use an id of `1` for the bundle because there is only one hardcoded bundle in
 Now we're ready to use these queries to fetch data from the Uniswap V2 subgraph. To do this we can use the `useQuery` hook which uses our client instance to fetch data, and gives us live info about the status of the request. To do this add the following to your `App.js` file:
 
 ```javascript
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 
-const { loading, error, data: ethPriceData } = useQuery(ETH_PRICE_QUERY)
+const { loading: ethLoading, error, data: ethPriceData } = useQuery(ETH_PRICE_QUERY)
 const { loading: daiLoading, error: daiError, data: daiData } = useQuery(DAI_QUERY, {
   variables: {
     tokenAddress: '0x6b175474e89094c44da98b954eedeac495271d0f'
