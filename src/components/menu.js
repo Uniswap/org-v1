@@ -1,8 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import styled from 'styled-components'
-
-import { useMediaQuery } from '@react-hook/media-query'
 
 export function useToggle(initialState = false) {
   const [state, setState] = useState(initialState)
@@ -102,7 +100,6 @@ const StyledMenuTitle = styled.span`
   padding: 0 0 0.2rem;
   :focus {
     outline: 0;
-    
   }
   a:focus {
     opacity: 0.5;
@@ -113,7 +110,9 @@ const StyledMenuTitle = styled.span`
     color: ${({ theme }) => theme.colors.grey7};
   }
 
-  :hover nav, &:focus-within nav, nav:hover {
+  :hover nav,
+  &:focus-within nav,
+  nav:hover {
     width: auto;
     height: auto;
     max-height: 1500px;
@@ -204,25 +203,25 @@ export default function Menu(props) {
     <StyledMenu tabIndex={0}>
       <StyledMenuTitle>
         <span style={{ marginRight: '0.25rem' }}>{props.data.name} </span>
-          <MenuFlyout>
-            {props.data.sublinks.map((item, index) => {
-              return (
-                <StyledMenuItem tabindex={index} key={index}>
-                  {item.link.split('.').slice(-1)[0] === 'pdf' ? (
-                    <StyledExternalLink href={item.link} target="_blank" rel="noopener noreferrer">
-                      <StyledTitle>{item.name}</StyledTitle>
-                      {item.description && <StyledDescription>{item.description}</StyledDescription>}
-                    </StyledExternalLink>
-                  ) : (
-                    <StyledExternalLink href={item.link}>
-                      <StyledTitle>{item.name}</StyledTitle>
-                      {item.description && <StyledDescription>{item.description}</StyledDescription>}
-                    </StyledExternalLink>
-                  )}
-                </StyledMenuItem>
-              )
-            })}
-          </MenuFlyout>
+        <MenuFlyout>
+          {props.data.sublinks.map((item, index) => {
+            return (
+              <StyledMenuItem tabindex={index} key={index}>
+                {item.link.split('.').slice(-1)[0] === 'pdf' ? (
+                  <StyledExternalLink href={item.link} target="_blank" rel="noopener noreferrer">
+                    <StyledTitle>{item.name}</StyledTitle>
+                    {item.description && <StyledDescription>{item.description}</StyledDescription>}
+                  </StyledExternalLink>
+                ) : (
+                  <StyledExternalLink href={item.link}>
+                    <StyledTitle>{item.name}</StyledTitle>
+                    {item.description && <StyledDescription>{item.description}</StyledDescription>}
+                  </StyledExternalLink>
+                )}
+              </StyledMenuItem>
+            )
+          })}
+        </MenuFlyout>
       </StyledMenuTitle>
     </StyledMenu>
   )

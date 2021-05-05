@@ -255,7 +255,7 @@ const MiniNewInfo = styled(Link)`
 const NewPill = styled.span`
   float: left;
   color: ${({ theme }) => theme.invertedTextColor};
-  background: ${({ theme }) => theme.newPill};
+  background: ${({ theme }) => theme.textColor};
   padding: 0.15rem 0.75rem;
   border-radius: 0.5em;
   text-align: center;
@@ -376,7 +376,7 @@ const IndexPage = props => {
       <StyledBody>
         <StyledTitle>
           <StyledImgSection>
-            <MiniNewInfo to="/blog/uniswap-v3/">
+            <MiniNewInfo to="/blog/launch-uniswap-v3/">
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <NewPill>Announcing Uniswap V3</NewPill>
                 More details ↗
