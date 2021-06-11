@@ -375,15 +375,6 @@ const IndexPage = props => {
       />
       <StyledBody>
         <StyledTitle>
-          <StyledImgSection>
-            <MiniNewInfo to="/blog/launch-uniswap-v3/">
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <NewPill>Announcing Uniswap V3</NewPill>
-                More details ↗
-              </div>
-              <StyledHeroImage fadeIn={false} fluid={props.data.thin.childImageSharp.fluid} />
-            </MiniNewInfo>
-          </StyledImgSection>
           <StyledBodyTitle>Decentralized Trading Protocol</StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
             Guaranteed liquidity for millions of users and hundreds of Ethereum applications.
