@@ -64,7 +64,7 @@ const StyledTitle = styled.div`
 const StyledBodyTitle = styled.h1`
   font-size: 104px;
   margin: 4rem auto;
-  pointer-events: none;
+  /* pointer-events: none; */
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
@@ -182,60 +182,20 @@ const StyledItemRow = styled.nav`
     transition: right 0.25s ease;
   }
 `
-
-const StyledHeroImage = styled(Img)`
-  width: 75vw;
-  height: 360px;
-  /* max-width: 960px; */
-  background-color: none;
-  border-radius: 12px;
-  margin-top: 1rem;
-  @media (max-width: 960px) {
-    width: auto;
-    height: 360px;
-  }
-`
-
-const StyledImgSection = styled.div`
-  color: ${({ theme }) => theme.colors.link};
-  position: relative;
-  margin: 6rem 0 1rem 0;
-  @media (max-width: 960px) {
-    width: 100%;
-    margin: 0;
-    p {
-      max-width: 450px;
-    }
-    h1 {
-      max-width: 450px;
-    }
-  }
-  p {
-    line-height: 155%;
-    margin-bottom: 2rem;
-    max-width: 450px;
-  }
-  h1 {
-    max-width: 450px;
-    line-height: 1.3;
-  }
-  h2 {
-    max-width: 450px;
-    line-height: 1.3;
-    margin-bottom: 1rem;
-  }
-`
-
 const MiniNewInfo = styled(Link)`
-  transform: rotate(-2deg) scale(0.98);
+  transform: rotate(-6deg) scale(0.98);
   color: ${({ theme }) => theme.textColor};
-  display: inline-block;
-  height: 500px;
+  /* display: inline-block; */
   transition: transform 0.3s ease;
   will-change: transform;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  position: absolute;
+  bottom: 170px;
+  right: 0px;
+  z-index: 99;
+  /* width: 160px; */
   :hover {
     transform: rotate(-1deg);
   }
@@ -243,25 +203,21 @@ const MiniNewInfo = styled(Link)`
     color: ${({ theme }) => theme.textColor};
   }
   @media (max-width: 960px) {
-    position: relative;
-    max-width: 450px;
-    width: 100%;
-    height: 100%;
-    margin: 4rem 0;
-    transform: rotate(-2deg);
+    display: none;
   }
 `
 
 const NewPill = styled.span`
   float: left;
   color: ${({ theme }) => theme.invertedTextColor};
-  background: ${({ theme }) => theme.textColor};
-  padding: 0.15rem 0.75rem;
-  border-radius: 0.5em;
+  background: ${({ theme }) => theme.colors.blue1};
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75em;
   text-align: center;
   margin: 0;
   margin-right: 1rem;
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 14px;
 `
 
 const IndexPage = props => {
@@ -375,16 +331,18 @@ const IndexPage = props => {
       />
       <StyledBody>
         <StyledTitle>
-          <StyledImgSection>
+          <StyledBodyTitle>
+            Decentralized Trading Protocol
             <MiniNewInfo to="/blog/launch-uniswap-v3/">
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <NewPill>Announcing Uniswap V3</NewPill>
-                More details ↗
-              </div>
-              <StyledHeroImage fadeIn={false} fluid={props.data.thin.childImageSharp.fluid} />
+              <NewPill
+                style={{
+                  color: 'white'
+                }}
+              >
+                Learn about Uniswap V3 ↗
+              </NewPill>
             </MiniNewInfo>
-          </StyledImgSection>
-          <StyledBodyTitle>Decentralized Trading Protocol</StyledBodyTitle>
+          </StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
             Guaranteed liquidity for millions of users and hundreds of Ethereum applications.
           </StyledBodySubTitle>

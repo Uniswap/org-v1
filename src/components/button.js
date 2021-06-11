@@ -8,7 +8,7 @@ const ButtonStyles = css`
   transform: scale(0.98);
   transition: transform 0.25s ease;
   box-sizing: border-box;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.125rem;
   cursor: pointer;
   width: fit-content;

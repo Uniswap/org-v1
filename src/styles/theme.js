@@ -57,7 +57,7 @@ export const theme = darkMode => ({
   doveGray: darkMode ? '#C4C4C4' : '#737373',
 
   colors: {
-    blue1: darkMode ? '#3b80ff' : '#D4E4FA',
+    blue1: darkMode ? '#2172E5' : '#2172E5',
     blue2: darkMode ? '#1966D2' : '#A9C8F5',
     blue3: darkMode ? '#165BBB' : '#7DACF0',
     blue4: darkMode ? '#2D47A6' : '#5190EB',

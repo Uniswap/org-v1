@@ -90,7 +90,7 @@ const StyledTradeLink = styled.a`
   border-radius: 12px;
   display: inline-block;
   transition: transform 0.25s ease;
-  font-weight: 600;
+  font-weight: 500;
   font-family: 'GT Haptik Regular';
 
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
