@@ -26,6 +26,7 @@
     "gatsby-plugin-algolia": "^0.11.1",
     "gatsby-plugin-algolia-docsearch-appid": "^0.0.4",
     "gatsby-plugin-feed": "^2.5.3",
+    "gatsby-plugin-google-analytics": "^3.7.1",
     "gatsby-plugin-google-gtag": "^3.7.0",
     "gatsby-plugin-instagram-embed": "^1.1.0",
     "gatsby-plugin-layout": "^1.3.2",
