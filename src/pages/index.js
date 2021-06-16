@@ -361,8 +361,8 @@ const IndexPage = props => {
             </Button>
             <Button
               outlined
-              to="/docs"
-              as={Link}
+              target="_blank"
+              href="https://docs.uniswap.org/"
               style={{
                 fontSize: '20px'
               }}
