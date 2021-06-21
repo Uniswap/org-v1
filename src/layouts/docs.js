@@ -24,7 +24,7 @@ const StyledDocs = styled.div`
     flex-direction: column;
     grid-template-columns: 1fr;
     margin-top: 0rem;
-    padding-top: 80px;
+    padding-top: 110px;
   }
 `
 

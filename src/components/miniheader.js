@@ -37,7 +37,7 @@ const StyledHeader = styled.header`
   @media (max-width: 960px) {
     flex-direction: column;
     padding: 1.5rem 2rem;
-    height: ${({ open }) => (open ? '100vh' : '125px;')};
+    height: ${({ open }) => (open ? '100vh' : 'fit-content;')};
   }
 `
 const StyledButton = styled.button`
