@@ -8,7 +8,7 @@ title: Uniswap V1
 
 Uniswap V1 is the first version of the protocol, [launched in November 2018](https://twitter.com/haydenzadams/status/1058376395108376577) at Devcon 4. Because of its permissionless nature, it will exist for as long as Ethereum does. However, V2 includes a number of tangible improvements over V1. You are invited to explore the <Link to='/docs/v2/'>V2 documentation</Link>.
 
-Designed with simplicity in mind, the Uniswap protocol provides an interface for seamless exchange of ERC20 tokens on Ethereum. By eliminating unnecessary forms of rent extraction and middlemen it allows faster, more efficient exchange. Where it makes tradeoffs, decentralization, censorship resistance, and security are prioritized.
+Designed with simplicity in mind, the Uniswap protocol provides an interface for seamless swaps of ERC20 tokens on Ethereum. Where it makes tradeoffs, decentralization, censorship resistance, and security are prioritized.
 
 Uniswap is open source and functions as a public good. There is no central token or platform fee. No special treatment is given to early investors, adopters, or developers. Token listing is open and free. All smart contract functions are public and all upgrades are opt-in.
 
