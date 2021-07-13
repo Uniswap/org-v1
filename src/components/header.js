@@ -285,7 +285,7 @@ const Header = props => {
             target="_blank"
             href="https://app.uniswap.org/"
           >
-            Use Uniswap
+            Launch App
           </StyledTradeLink>
         )}
       </StyledNav>

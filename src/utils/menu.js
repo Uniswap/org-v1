@@ -44,13 +44,7 @@ const menu = [
       { name: 'V3 Whitepaper', link: '/whitepaper-v3.pdf' },
       { name: 'GitHub', link: 'https://github.com/Uniswap' },
       // { name: 'Audit', link: '/audit.html' },
-      { name: 'Bug Bounty', link: '/bug-bounty' },
-      { name: '―', link: '/' },
-      {
-        name: 'V2 Documentation',
-        link: '/docs/v2'
-      },
-      { name: 'V2 Whitepaper', link: '/whitepaper.pdf' }
+      { name: 'Bug Bounty', link: '/bug-bounty' }
     ]
   },
   {

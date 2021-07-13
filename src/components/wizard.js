@@ -9,29 +9,29 @@ const links = [
     sublinks: [
       {
         title: 'Token Swaps',
-        link: '/docs/v2/smart-contract-integration/trading-from-a-smart-contract/',
+        link: 'https://docs.uniswap.org/protocol/guides/swaps/single-swaps',
         description: 'Simplify the process of integrating Uniswap into your project.',
         tag: 'reference',
         icon: '📦'
       },
       {
         title: 'Programmable Liquidity',
-        link: '/docs/v2/smart-contract-integration/providing-liquidity/',
-        description: 'A step-by-step guide to getting started building interfaces with Uniswap.',
+        link: 'https://docs.uniswap.org/protocol/reference/periphery/NonfungiblePositionManager',
+        description: 'Explore the NFT position manager.',
         tag: 'tutorial',
         icon: '🧼'
       },
 
       {
         title: 'Flash Swaps',
-        link: '/docs/v2/core-concepts/flash-swaps/',
+        link: 'https://docs.uniswap.org/protocol/guides/flash-integrations/inheritance-constructors',
         description: 'Withdraw the reserves of any ERC20 token on Uniswap and execute arbitrary logic.',
         tag: 'guide',
         icon: '⚡'
       },
       {
         title: 'Oracles',
-        link: '/docs/v2/core-concepts/oracles/',
+        link: 'https://docs.uniswap.org/protocol/concepts/V3-overview/oracle',
         description: 'Highly decentralized, manipulation-resistant, on-chain price feeds.',
         icon: '🔮'
       }

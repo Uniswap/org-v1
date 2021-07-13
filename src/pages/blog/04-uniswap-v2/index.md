@@ -29,7 +29,7 @@ For full details check out the:
 - [Core smart contracts](https://github.com/Uniswap/uniswap-v2-core/)
 - [Periphery smart contracts](https://github.com/Uniswap/uniswap-v2-periphery)
 - <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>Uniswap V2 Technical Whitepaper</a>
-- <Link to='/docs/v2/'>Uniswap V2 Documentation</Link> (in progress!)
+- <a href='https://docs.uniswap.org'>Uniswap V2 Documentation</a> (in progress!)
 
 ## ERC20 / ERC20 Pairs
 

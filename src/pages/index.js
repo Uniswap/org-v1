@@ -6,7 +6,6 @@ import Layout from '../layouts'
 import SEO from '../components/seo'
 import BG from '../components/bg'
 import { Button } from '../components/button'
-import Wizard from '../components/wizard'
 import ProtocolData from '../components/protocolData'
 import { useDarkMode } from '../contexts/Application'
 import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../components/utils'
@@ -117,6 +116,19 @@ const StyledBannerImage = styled(Img)`
   }
 `
 
+const StyledImageLink = styled.a`
+  width: 100%;
+  height: 100%;
+  min-width: 260px;
+  max-width: 720px;
+  background-color: none;
+  border-radius: 12px;
+  box-shadow: ${({ theme }) => theme.shadows.huge};
+  @media (max-width: 960px) {
+    min-width: unset;
+  }
+`
+
 const StyledProductImage = styled(Img)`
   width: 100%;
   height: 100%;
@@ -125,35 +137,6 @@ const StyledProductImage = styled(Img)`
   background-color: none;
   border-radius: 12px;
   box-shadow: ${({ theme }) => theme.shadows.huge};
-`
-
-const StyledSectionFlex = styled.div`
-  padding: 4rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-
-  @media (max-width: 1024px) {
-    padding: 1rem;
-    margin-top: 0rem;
-    flex-direction: ${({ wrapSmall }) => (!wrapSmall ? 'row' : 'column')};
-  }
-
-  @media (max-width: 960px) {
-    padding: 1rem;
-    margin-top: 0rem;
-    width: 100%;
-    max-width: 450px;
-  }
-
-  h2 {
-    margin-bottom: 0.5rem;
-  }
-  p {
-    margin-bottom: 0.5rem;
-  }
 `
 
 const StyledItemRow = styled.nav`
@@ -314,6 +297,13 @@ const IndexPage = props => {
           }
         }
       }
+      devs: file(relativePath: { eq: "devs.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 
@@ -357,17 +347,27 @@ const IndexPage = props => {
               target="_blank"
               href="https://app.uniswap.org/"
             >
-              Use Uniswap
+              Launch App
             </Button>
             <Button
               outlined
-              to="/docs"
+              href="https://docs.uniswap.org/"
               as={Link}
               style={{
                 fontSize: '20px'
               }}
             >
-              Documentation
+              Docs
+            </Button>
+            <Button
+              outlined
+              to="/blog"
+              as={Link}
+              style={{
+                fontSize: '20px'
+              }}
+            >
+              Blog
             </Button>
             <Button
               outlined
@@ -457,19 +457,20 @@ const ProductsSection = props => {
 
       <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
       <StyledBodySubText>
-        Check out the <Link to="/docs/v2/">documentation</Link>, the{' '}
-        <Link to="/docs/v2/javascript-SDK/quick-start/">quick start</Link> or a guide below to integrate your project
-        with thousands of tokens and billions in liquidity.
+        Check out the <a href="https://docs.uniswap.org">documentation</a>, the{' '}
+        <a href="https://docs.uniswap.org/sdk/guides/quick-start">Javascript SDK quick start</a> or a guide below to
+        integrate your project with thousands of tokens and billions in liquidity.
       </StyledBodySubText>
-      <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
-        <Wizard />
-      </StyledSectionFlex>
+      <StyledImageLink href="https://docs.uniswap.org">
+        <StyledBannerImage fadeIn={false} fluid={props.data.devs.childImageSharp.fluid} />
+      </StyledImageLink>
 
       <StyledSectionTitle>A global community.</StyledSectionTitle>
       <StyledBodySubText>
         Learn more about Uniswap, chat with the team, others in the community, and have your say in shaping the future
         of the Uniswap protocol.
       </StyledBodySubText>
+
       <StyledItemRow>
         <StyledExternalLink href={'https://discord.gg/FCfyBSbCU5'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
