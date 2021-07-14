@@ -13,23 +13,23 @@ Uniswap protocol liquidity pools are autonomous and use the Constant Product Mar
 - [Formalized Specification](https://github.com/runtimeverification/verified-smart-contracts/blob/uniswap/uniswap/x-y-k.pdf)
 - [Lightweight Verification](https://github.com/runtimeverification/verified-smart-contracts/tree/uniswap/uniswap/results)
 
-## Create Trading Contract
+## Create Pair
 
-The `createExchange` function is used to deploy trading contracts for ERC20 tokens that do not yet have one.
+The `createExchange` function is used to deploy a pair for ERC20 tokens that do not yet have one.
 
 ```javascript
 factory.methods.createExchange(tokenAddress).send()
 ```
 
-Once a trading contract is created the address can be retrieved with [`getExchange`](../connect-to-uniswap/#get-exchange-address).
+Once a pair is created the address can be retrieved with [`getExchange`](../connect-to-uniswap/#get-exchange-address).
 
-## Trading Contract Reserves
+## Pair Reserves
 
-Each trading contract holds a liquidity reserve of ETH and its associated ERC20 token.
+Each pair holds a liquidity reserve of ETH and its associated ERC20 token.
 
 ### ETH Reserve
 
-The ETH reserve associated with an ERC20 token trade is the ETH balance of the trading smart contract.
+The ETH reserve associated with an ERC20 token trade is the ETH balance of the pair.
 
 ```javascript
 const ethReserve = web3.eth.getBalance(exchangeAddress)
@@ -37,7 +37,7 @@ const ethReserve = web3.eth.getBalance(exchangeAddress)
 
 ### ERC20 Reserve
 
-The ERC20 reserve associated with an ERC20 token trade is the ERC20 balance of the trading smart contract.
+The ERC20 reserve associated with an ERC20 token trade is the ERC20 balance of the pair.
 
 ```javascript
 const tokenReserve = tokenContract.methods.balanceOf(exchangeAddress)
@@ -45,13 +45,13 @@ const tokenReserve = tokenContract.methods.balanceOf(exchangeAddress)
 
 ## Add Liquidity
 
-Anyone who wants can join a Uniswap liquidity pool by calling the `addLiquidity` function.
+Anyone who wants can join a Uniswap protocol liquidity pool by calling the `addLiquidity` function.
 
 ```javascript
 exchange.methods.addLiquidity(min_liquidity, max_tokens, deadline).send({ value: ethAmount })
 ```
 
-Adding liquidity requires depositing an equivalent **value** of ETH and ERC20 tokens into the ERC20 token's associated trading contract.
+Adding liquidity requires depositing an equivalent **value** of ETH and ERC20 tokens into the ERC20 token's associated pair.
 
 The first liquidity provider to join a pool sets the initial exchange rate by depositing what they believe to be an equivalent value of ETH and ERC20 tokens. If this ratio is off, arbitrage traders will bring the prices to equilibrium at the expense of the initial liquidity provider.
 
