@@ -8,28 +8,28 @@ Uniswap V1, while still fully functional, is no longer under active development.
 
 # Formalized Model
 
-Uniswap liquidity pools are autonomous and use the Constant Product Market Maker \(`x * y = k`\). This model was formalized and the smart contract implementation passed a lightweight formal verification.
+Uniswap protocol liquidity pools are autonomous and use the Constant Product Market Maker \(`x * y = k`\). This model was formalized and the smart contract implementation passed a lightweight formal verification.
 
 - [Formalized Specification](https://github.com/runtimeverification/verified-smart-contracts/blob/uniswap/uniswap/x-y-k.pdf)
 - [Lightweight Verification](https://github.com/runtimeverification/verified-smart-contracts/tree/uniswap/uniswap/results)
 
-## Create Exchange
+## Create Trading Contract
 
-The `createExchange` function is used to deploy exchange contracts for ERC20 tokens that do not yet have one.
+The `createExchange` function is used to deploy trading contracts for ERC20 tokens that do not yet have one.
 
 ```javascript
 factory.methods.createExchange(tokenAddress).send()
 ```
 
-Once an exchange is created the address can be retrieved with [`getExchange`](../connect-to-uniswap/#get-exchange-address).
+Once a trading contract is created the address can be retrieved with [`getExchange`](../connect-to-uniswap/#get-exchange-address).
 
-## Exchange Reserves
+## Trading Contract Reserves
 
-Each exchange contract holds a liquidity reserve of ETH and its associated ERC20 token.
+Each trading contract holds a liquidity reserve of ETH and its associated ERC20 token.
 
 ### ETH Reserve
 
-The ETH reserve associated with an ERC20 token exchange is the ETH balance of the exchange smart contract.
+The ETH reserve associated with an ERC20 token trade is the ETH balance of the trading smart contract.
 
 ```javascript
 const ethReserve = web3.eth.getBalance(exchangeAddress)
@@ -37,7 +37,7 @@ const ethReserve = web3.eth.getBalance(exchangeAddress)
 
 ### ERC20 Reserve
 
-The ERC20 reserve associated with an ERC20 token exchange is the ERC20 balance of the exchange smart contract.
+The ERC20 reserve associated with an ERC20 token trade is the ERC20 balance of the trading smart contract.
 
 ```javascript
 const tokenReserve = tokenContract.methods.balanceOf(exchangeAddress)
@@ -51,17 +51,17 @@ Anyone who wants can join a Uniswap liquidity pool by calling the `addLiquidity`
 exchange.methods.addLiquidity(min_liquidity, max_tokens, deadline).send({ value: ethAmount })
 ```
 
-Adding liquidity requires depositing an equivalent **value** of ETH and ERC20 tokens into the ERC20 token's associated exchange contract.
+Adding liquidity requires depositing an equivalent **value** of ETH and ERC20 tokens into the ERC20 token's associated trading contract.
 
 The first liquidity provider to join a pool sets the initial exchange rate by depositing what they believe to be an equivalent value of ETH and ERC20 tokens. If this ratio is off, arbitrage traders will bring the prices to equilibrium at the expense of the initial liquidity provider.
 
-All future liquidity providers deposit ETH and ERC20's using the exchange rate at the moment of their deposit. If the exchange rate is bad there is a profitable arbitrage opportunity that will correct the price.
+All future liquidity providers deposit ETH and ERC20's using the trading rate at the moment of their deposit. If the trading rate is bad there is a profitable arbitrage opportunity that will correct the price.
 
 ### Parameters
 
 The `ethAmount` sent to `addLiquidity` is the exact amount of ETH that will be deposited into the liquidity reserves. It should be 50% of the total value a liquidity provider wishes to deposit into the reserves.
 
-Since liquidity providers must deposit at the current exchange rate, the Uniswap smart contracts use `ethAmount` to determine the amount of ERC20 tokens that must be deposited. This token amount is the remaining 50% of total value a liquidity provider wishes to deposit. Since exchange rate can change between when a transaction is signed and when it is executed on Ethereum, `max_tokens` is used to bound the amount this rate can fluctuate. For the first liquidity provider, `max_tokens` is the exact amount of tokens deposited.
+Since liquidity providers must deposit at the current exchange rate, the Uniswap protocol smart contracts use `ethAmount` to determine the amount of ERC20 tokens that must be deposited. This token amount is the remaining 50% of total value a liquidity provider wishes to deposit. Since exchange rates can change between when a transaction is signed and when it is executed on Ethereum, `max_tokens` is used to bound the amount this rate can fluctuate. For the first liquidity provider, `max_tokens` is the exact amount of tokens deposited.
 
 Liquidity tokens are minted to track the relative proportion of total reserves that each liquidity provider has contributed. `min_liquidity` is used in combination with `max_tokens` and `ethAmount` to bound the rate at which liquidity tokens are minted. For the first liquidity provider, `min_liquidity` does not do anything and can be set to 0.
 
