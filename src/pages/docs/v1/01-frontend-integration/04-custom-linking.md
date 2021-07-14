@@ -8,11 +8,11 @@ Uniswap V1, while still fully functional, is no longer under active development.
 
 # Query Parameters
 
-The Uniswap front-end supports URL query parameters to allow for custom linking to the Uniswap exchange. Users and developers can use these query parameters to link to the Uniswap exchange with custom prefilled settings.
+The Uniswap frontend supports URL query parameters to allow for custom linking to a Uniswap trading contract. Users and developers can use these query parameters to link to the Uniswap trading contract with custom prefilled settings.
 
 Each Page has specific available URL parameters that can be set. Global parameters can be used on all pages.
 
-A parameter used on an incorrect page will have no effect on exchange settings. Parameters not set with a URL parameter will be set to standard exchange defaults.
+A parameter used on an incorrect page will have no effect on trading contract settings. Parameters not set with a URL parameter will be set to standard trading contract defaults.
 
 ## Global
 
@@ -32,8 +32,8 @@ Theme can be set as `light` or `dark`.
 
 | Parameter      | Type             | Description                                                            |
 | :------------- | :--------------- | :--------------------------------------------------------------------- |
-| inputCurrency  | `address`        | Input currency that will be swapped for output currency.               |
-| outputCurrency | `address or ETH` | Output currency that input currency will be swapped for.               |
+| inputCurrency  | `address`        | Input currency that will be traded for output currency.               |
+| outputCurrency | `address or ETH` | Output currency that input currency will be traded for.               |
 | slippage       | `number`         | Max slippage to be used during transaction \(in bips\)                 |
 | exactAmount    | `number`         | The custom token amount to buy or sell.                                |
 | exactField     | `string`         | The field to set custom token amount for. Must be `input` or `output`. |
@@ -44,7 +44,7 @@ ETH defaults as the input currency. When a different token is selected for eithe
 
 ### Constraints
 
-Addresses must be valid ERC20 addresses. Slippage and amount values must be valid numbers accepted by the exchange \(or error will prevent from swapping\). Slippage can 0, or within the range 10-&gt;9999 bips \(which converts to 0%, 0.01%-&gt;99%\)
+Addresses must be valid ERC20 addresses. Slippage and amount values must be valid numbers accepted by the trading contract \(or error will prevent from swapping\). Slippage can 0, or within the range 10-&gt;9999 bips \(which converts to 0%, 0.01%-&gt;99%\)
 
 When selecting ETH as the output currency a user must also choose an inputCurrency that is not ETH \(to prevent ETH being populated in both fields\)
 
@@ -99,7 +99,7 @@ The Pool page is made up of 3 subroutes: `add-liquidity`, `remove-liquidity`, `c
 
 | Parameter    | Type      | Description                                                                                                |
 | :----------- | :-------- | :--------------------------------------------------------------------------------------------------------- |
-| tokenAddress | `address` | ERC20 token to create the exchange for. Must be valid ERC20 token for which there is no existing exchange. |
+| tokenAddress | `address` | ERC20 token to create the trading contract for. Must be valid ERC20 token for which there is no existing trading contract. |
 
 ### Example Usage
 
