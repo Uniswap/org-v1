@@ -17,7 +17,7 @@ interface UniswapFactoryInterface {
     uint256 public tokenCount;
     // Create Exchange
     function createExchange(address token) external returns (address exchange);
-    // Get Exchange and Token Info
+    // Get Trade and Token Info
     function getExchange(address token) external view returns (address exchange);
     function getToken(address exchange) external view returns (address token);
     function getTokenWithId(uint256 tokenId) external view returns (address token);
@@ -35,7 +35,7 @@ contract UniswapFactoryInterface():
     # Public Variables
     def exchangeTemplate() -> address: constant
     def tokenCount() -> uint256: constant
-    # Get Exchange and Token Info
+    # Get Trade and Token Info
     def getExchange(token_addr: address) -> address: constant
     def getToken(exchange: address) -> address: constant
     def getTokenWithId(token_id: uint256) -> address: constant
@@ -43,7 +43,7 @@ contract UniswapFactoryInterface():
     def initializeFactory(template: address): modifying
 ```
 
-# Exchange
+# Trade
 
 ## Solidity
 
