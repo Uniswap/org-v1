@@ -10,7 +10,7 @@ The Uniswap smart contracts exist on the Ethereum blockchain. Use [ethers.js](ht
 
 # Factory Contract
 
-The Uniswap [factory contract](https://github.com/Uniswap/uniswap-v1/blob/master/contracts/uniswap_factory.vy) can be used to create trading contracts for any ERC20 token that does not already have one. It also functions as a registry of ERC20 tokens that have been added to the system, and the swap with which they are associated.
+The Uniswap [factory contract](https://github.com/Uniswap/uniswap-v1/blob/master/contracts/uniswap_factory.vy) can be used to create a pair for any ERC20 token that does not already have one. It also functions as a registry of ERC20 tokens that have been added to the system, and the pair with which they are associated.
 
 The factory contract can be instantiated using the factory address and ABI:
 
