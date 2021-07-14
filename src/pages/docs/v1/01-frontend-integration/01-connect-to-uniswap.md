@@ -10,7 +10,7 @@ The Uniswap smart contracts exist on the Ethereum blockchain. Use [ethers.js](ht
 
 # Factory Contract
 
-The Uniswap [factory contract](https://github.com/Uniswap/uniswap-v1/blob/master/contracts/uniswap_factory.vy) can be used to create exchange contracts for any ERC20 token that does not already have one. It also functions as a registry of ERC20 tokens that have been added to the system, and the exchange with which they are associated.
+The Uniswap [factory contract](https://github.com/Uniswap/uniswap-v1/blob/master/contracts/uniswap_factory.vy) can be used to create swap contracts for any ERC20 token that does not already have one. It also functions as a registry of ERC20 tokens that have been added to the system, and the swap with which they are associated.
 
 The factory contract can be instantiated using the factory address and ABI:
 
@@ -615,11 +615,11 @@ const exchangeContract = new web3.eth.Contract(exchangeABI, exchangeAddress)
 
 # Token Contracts
 
-Some Uniswap interactions require making calls directly to ERC20 token contracts rather than the exchanges with which they are associated.
+Some Uniswap protocol interactions require making calls directly to ERC20 token contracts rather than the swaps with which they are associated.
 
 ## Get Token Address
 
-The `getToken` method in the factory contract can be used to find the ERC20 token address associated with an exchange contract. There is no barrier of entry for adding an ERC20 token to Uniswap or checks on the validity of the token contracts. Frontend interfaces should maintain a list of valid ERC20 tokens that users can safely trade or allow users to paste in arbitrary addresses.
+The `getToken` method in the factory contract can be used to find the ERC20 token address associated with a swap contract. There is no barrier of entry for adding an ERC20 token to the Uniswap protocol or checks on the validity of the token contracts. Frontend interfaces should maintain a list of valid ERC20 tokens that users can safely trade or allow users to paste in arbitrary addresses.
 
 ```javascript
 const tokenAddress = factoryContract.methods.getToken(exchangeAddress)
