@@ -8,7 +8,7 @@ Uniswap V1, while still fully functional, is no longer under active development.
 
 # Query Parameters
 
-The Uniswap frontend supports URL query parameters to allow for custom linking to a Uniswap trading contract. Users and developers can use these query parameters to link to the Uniswap trading contract with custom prefilled settings.
+The Uniswap frontend supports URL query parameters to allow for custom linking to a Uniswap protocol pair. Users and developers can use these query parameters to link to the Uniswap protocol pair with custom prefilled settings.
 
 Each Page has specific available URL parameters that can be set. Global parameters can be used on all pages.
 
@@ -99,7 +99,7 @@ The Pool page is made up of 3 subroutes: `add-liquidity`, `remove-liquidity`, `c
 
 | Parameter    | Type      | Description                                                                                                |
 | :----------- | :-------- | :--------------------------------------------------------------------------------------------------------- |
-| tokenAddress | `address` | ERC20 token to create the trading contract for. Must be valid ERC20 token for which there is no existing trading contract. |
+| tokenAddress | `address` | ERC20 token to create the pair for. Must be valid ERC20 token for which there is no existing pair. |
 
 ### Example Usage
 
