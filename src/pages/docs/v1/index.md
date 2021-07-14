@@ -23,7 +23,7 @@ These documents serve as a project overview for v1 of the Uniswap protocol - exp
 - Trade <Link to='/docs/v1/frontend-integration/trade-tokens'>any ERC20 for any ERC20</Link> in a single transaction
 - Trade and transfer to a different address in a single transaction
 - Lowest gas cost of any decentralized exchange
-- Support for private and custom Uniswap protocol swaps
+- Support for private and custom Uniswap protocol trading contracts
 - Buy ERC20 tokens from any wallet using ENS
 - [Partially verified](https://github.com/runtimeverification/verified-smart-contracts/tree/uniswap/uniswap) smart contracts written in Vyper
 - Mobile-optimized open source [frontend implementation](https://github.com/Uniswap/uniswap-interface)
