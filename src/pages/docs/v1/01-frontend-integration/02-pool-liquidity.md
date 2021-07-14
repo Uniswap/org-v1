@@ -55,7 +55,7 @@ Adding liquidity requires depositing an equivalent **value** of ETH and ERC20 to
 
 The first liquidity provider to join a pool sets the initial exchange rate by depositing what they believe to be an equivalent value of ETH and ERC20 tokens. If this ratio is off, arbitrage traders will bring the prices to equilibrium at the expense of the initial liquidity provider.
 
-All future liquidity providers deposit ETH and ERC20's using the trading rate at the moment of their deposit. If the trading rate is bad there is a profitable arbitrage opportunity that will correct the price.
+All future liquidity providers deposit ETH and ERC20's using the exchange rate at the moment of their deposit. If the exchange rate is bad there is a profitable arbitrage opportunity that will correct the price.
 
 ### Parameters
 
