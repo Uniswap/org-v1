@@ -8,7 +8,7 @@ title: Uniswap V1
 
 Uniswap V1 is the first version of the protocol, [launched in November 2018](https://twitter.com/haydenzadams/status/1058376395108376577) at Devcon 4. Because of its permissionless nature, it will exist for as long as Ethereum does. However, V2 includes a number of tangible improvements over V1. You are invited to explore the <Link to='/docs/v2/'>V2 documentation</Link>.
 
-Designed with simplicity in mind, the Uniswap protocol (as distinct from the Uniswap frontend, which provides one interface to the Uniswap protocol) allows users to seamslessly swap ERC20 tokens on Ethereum. By eliminating unnecessary forms of rent extraction and middlemen it allows faster, more efficient exchange. Where it makes tradeoffs, decentralization, censorship resistance, and security are prioritized.
+Designed with simplicity in mind, the Uniswap protocol (as distinct from the Uniswap frontend, which provides one interface to the Uniswap protocol) allows users to seamslessly swap ERC20 tokens on Ethereum. By eliminating unnecessary forms of rent extraction and middlemen it allows faster, more efficient trading. Where it makes tradeoffs, decentralization, censorship resistance, and security are prioritized.
 
 The Uniswap protocol is open source and functions as a public good. There is no central token or platform fee. No special treatment is given to early investors, adopters, or developers. Token listing is open and free. All smart contract functions are public and all upgrades are opt-in.
 
@@ -23,7 +23,7 @@ These documents serve as a project overview for v1 of the Uniswap protocol - exp
 - Trade <Link to='/docs/v1/frontend-integration/trade-tokens'>any ERC20 for any ERC20</Link> in a single transaction
 - Trade and transfer to a different address in a single transaction
 - Lowest gas cost of any decentralized exchange
-- Support for private and custom Uniswap protocol trading contracts
+- Support for private and custom Uniswap protocol pairs
 - Buy ERC20 tokens from any wallet using ENS
 - [Partially verified](https://github.com/runtimeverification/verified-smart-contracts/tree/uniswap/uniswap) smart contracts written in Vyper
 - Mobile-optimized open source [frontend implementation](https://github.com/Uniswap/uniswap-interface)
