@@ -6,7 +6,7 @@ title: Trade Tokens
 Uniswap V1, while still fully functional, is no longer under active development. Looking for <Link to='/docs/v2/'>V2 documentation</Link>?
 </Info>
 
-In Uniswap, there is a separate exchange contract for each ERC20 token. These exchanges hold reserves of both ETH and their associated ERC20. Instead of waiting to be matched in an order-book, users can make trades against the reserves at any time. Reserves are pooled between a decentralized network of liquidity providers who collect fees on every trade.
+In Uniswap, there is a separate trading contract for each ERC20 token. These trading contracts hold reserves of both ETH and their associated ERC20. Instead of waiting to be matched in an order-book, users can make trades against the reserves at any time. Reserves are pooled between a decentralized network of liquidity providers who collect fees on every trade.
 
 Pricing is automatic, based on the `x * y = k` market making formula which automatically adjusts prices based off the relative sizes of the two reserves and the size of the incoming trade. Since all tokens share ETH as a common pair, it is used as an intermediary asset for direct trading between any ERC20 ⇄ ERC20 pair.
 
@@ -80,10 +80,10 @@ const rate = outputAmount / inputAmount
 
 The variables needed to determine price when trading between two ERC20 tokens is:
 
-- ETH reserve size of the input ERC20 exchange
-- ERC20 reserve size of the input ERC20 exchange
-- ETH reserve size of the output ERC20 exchange
-- ERC20 reserve size of the output ERC20 exchange
+- ETH reserve size of the input ERC20 trading contract
+- ERC20 reserve size of the input ERC20 trading contract
+- ETH reserve size of the output ERC20 trading contract
+- ERC20 reserve size of the output ERC20 trading contract
 - Amount sold \(input\) or amount bought \(output\)
 
 ### Amount Bought \(sell order\)
@@ -138,7 +138,7 @@ const inputAmountA = numeratorA / denominatorA + 1
 
 ### Liquidity Provider Fee
 
-There is a 0.30% liquidity provider fee to swap from TokenA to ETH on the input exchange. There is another 0.3% liquidity provider fee to swap the remaining ETH to TokenB.
+There is a 0.30% liquidity provider fee to swap from TokenA to ETH on the input trading contract. There is another 0.3% liquidity provider fee to swap the remaining ETH to TokenB.
 
 ```javascript
 const exchangeAFee = inputAmountA * 0.003
@@ -161,7 +161,7 @@ const rate = outputAmountB / inputAmountA
 
 ## Deadlines
 
-Many Uniswap functions include a transaction `deadline` that sets a time after which a transaction can no longer be executed. This limits miners holding signed transactions for extended durations and executing them based off market movements. It also reduces uncertainty around transactions that take a long time to execute due to issues with gas price.
+Many Uniswap protocol functions include a transaction `deadline` that sets a time after which a transaction can no longer be executed. This limits miners holding signed transactions for extended durations and executing them based off market movements. It also reduces uncertainty around transactions that take a long time to execute due to issues with gas price.
 
 Deadlines are calculated by adding the desired amount of time \(in seconds\) to the latest Ethereum block timestamp.
 
@@ -173,7 +173,7 @@ web3.eth.getBlock('latest', (error, block) => {
 
 ## Recipients
 
-Uniswap allows traders to swap tokens and transfer the output to a new `recipient` address. This allows for a type of payment where the payer sends one token and the payee receives another.
+The Uniswap protocol allows traders to trade tokens and transfer the output to a new `recipient` address. This allows for a type of payment where the payer sends one token and the payee receives another.
 
 ## ETH ⇄ ERC20 Trades
 
