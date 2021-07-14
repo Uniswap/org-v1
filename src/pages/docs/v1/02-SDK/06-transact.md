@@ -4,7 +4,7 @@ title: Transact
 
 # getExecutionDetails
 
-The function formats trade data for execution against the relevant Uniswap exchange.
+The function formats trade data for execution against the relevant Uniswap protocol pair.
 
 ## Function Signature
 
