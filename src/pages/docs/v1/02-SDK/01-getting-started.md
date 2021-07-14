@@ -14,11 +14,11 @@ The SDK was built to be extremely easy to use, but also feature-rich. It offers 
 
 The SDK is divided into several modular components that perform tightly scoped tasks:
 
-- <Link to='/docs/v1/SDK/data'>Data</Link> - Fetches Uniswap data from the blockchain
+- <Link to='/docs/v1/SDK/data'>Data</Link> - Fetches Uniswap protocol data from the blockchain
 - <Link to='/docs/v1/SDK/computation'>Computation</Link> - Computes market- and trade-specific statistics using blockchain data
 - <Link to='/docs/v1/SDK/format'>Format</Link> - Formats data for display
 - <Link to='/docs/v1/SDK/orchestration'>Orchestration</Link> - Offers named abstraction functions that seamlessly combine lower-level data- and computation-related functions
-- <Link to='/docs/v1/SDK/transact'>Transact</Link> - Prepares computed trades for execution against Uniswap smart contracts
+- <Link to='/docs/v1/SDK/transact'>Transact</Link> - Prepares computed trades for execution against Uniswap protocol smart contracts
 - <Link to='/docs/v1/SDK/constants'>Constants</Link> - Exports various helpful constants for use throughout the SDK
 
 Additionally, it exports a number of custom types:
