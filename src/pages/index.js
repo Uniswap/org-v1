@@ -350,12 +350,11 @@ const IndexPage = props => {
               Launch App
             </Button>
             <Button
-              outlined
-              href="https://docs.uniswap.org/"
-              as={Link}
+              outlined        
               style={{
                 fontSize: '20px'
               }}
+              href="https://docs.uniswap.org/"
             >
               Docs
             </Button>
