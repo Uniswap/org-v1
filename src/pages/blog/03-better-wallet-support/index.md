@@ -28,7 +28,7 @@ You can also now dynamically switch between wallets through the account modal, w
 
 WalletConnect allows mobile wallets to connect to your desktop browser through a QR code and sign transactions. It even works on browsers such as Safari!
 
-Adding WalletConnect support allows wallets such as [Rainbow Wallet](https://rainbow.me/), [Gnosis Safe](https://safe.gnosis.io/) and [Argent Wallet](https://www.argent.xyz/) (coming soon) to connect to Uniswap for the first time. MetaMask mobile and Trust Wallet can also be used with wallet connect.
+Adding WalletConnect support allows wallets such as [Rainbow Wallet](https://rainbow.me/), [Gnosis Safe](https://safe.gnosis.io/) and [Argent Wallet](https://www.argent.xyz/) (coming soon) to connect to the Uniswap interface for the first time. MetaMask mobile and Trust Wallet can also be used with wallet connect.
 
 ![Scan a QR code to connect your mobile wallet to app.uniswap.org](https://cdn-images-1.medium.com/max/1920/1*8A9MDGkWmQnPi8g0LtVndA.gif)
 
@@ -52,6 +52,6 @@ This is all built on the new v6.0 release of the [web3-react library](https://gi
 
 Do you use another wallet that’s not supported yet? [Let us know.](http://contact@uniswap.org)
 
-Happy Holidays from the Uniswap team!
+Happy Holidays from the Uniswap Labs team!
 
 ❤
