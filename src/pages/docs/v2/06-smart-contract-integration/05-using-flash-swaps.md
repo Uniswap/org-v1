@@ -56,7 +56,7 @@ In the case where the token withdrawn is the _same_ as the token returned (i.e. 
 
 `DAIReservePre - DAIWithdrawn + (DAIReturned * .997) >= DAIReservePre`
 
-It may be more intuitive to rewrite this formula in terms of a "fee" levied on the _withdrawn_ amount (despite the fact that Uniswap always levies fees on input amounts, in this case the _returned_ amount, here we can simplify to an effective fee on the _withdrawn_ amount). If we rearrange, the formula looks like:
+It may be more intuitive to rewrite this formula in terms of a "fee" levied on the _withdrawn_ amount (despite the fact that the Uniswap protocol always levies fees on input amounts, in this case the _returned_ amount, here we can simplify to an effective fee on the _withdrawn_ amount). If we rearrange, the formula looks like:
 
 `(DAIReturned * .997) - DAIWithdrawn >= 0`
 
