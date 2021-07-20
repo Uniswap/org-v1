@@ -3,7 +3,7 @@ title: Queries
 tags: api, documentation
 ---
 
-The subgraph can be queried to retrieve important information about Uniswap, pairs, tokens, transactions, users, and more. This page will provide examples for common queries.
+The subgraph can be queried to retrieve important information about the Uniswap protocol, pairs, tokens, transactions, users, and more. This page will provide examples for common queries.
 
 To try these queries and run your own visit the [subgraph sandbox](https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2).
 
@@ -72,9 +72,9 @@ Fetch a snapshot of the current state of the pair with common values. This examp
 }
 ```
 
-#### All pairs in Uniswap
+#### All pairs in the Uniswap protocol
 
-The Graph limits entity return amounts to 1000 per query as of now. To get all pairs on Uniswap use a loop and graphql skip query to fetch multiple chunks of 1000 pairs. The query would look like this (where skip is some incrementing variable passed into your query).
+The Graph limits entity return amounts to 1000 per query as of now. To get all pairs on the Uniswap protocol use a loop and graphql skip query to fetch multiple chunks of 1000 pairs. The query would look like this (where skip is some incrementing variable passed into your query).
 
 ```
 {
@@ -88,7 +88,7 @@ The Graph limits entity return amounts to 1000 per query as of now. To get all p
 
 #### Most liquid pairs
 
-Order by liquidity to get the most liquid pairs in Uniswap.
+Order by liquidity to get the most liquid pairs in the Uniswap protocol.
 
 ```
 {
@@ -148,11 +148,11 @@ Day data is useful for building charts and historical views around entities. To 
 
 ### Token Data
 
-Token data can be fetched using the token contract address as an ID. Token data is aggregated across all pairs the token is included in. Any token that is included in some pair in Uniswap can be queried.
+Token data can be fetched using the token contract address as an ID. Token data is aggregated across all pairs the token is included in. Any token that is included in some pair in the Uniswap protocol can be queried.
 
 #### Token Overview
 
-Get a snapshot of the current stats on a token in Uniswap. This query fetches current stats on DAI.
+Get a snapshot of the current stats on a token in the Uniswap protocol. This query fetches current stats on DAI.
 The allPairs field gets the first 200 pairs DAI is included in sorted by liquidity in derived USD.
 
 ```
@@ -168,9 +168,9 @@ The allPairs field gets the first 200 pairs DAI is included in sorted by liquidi
 }
 ```
 
-#### All Tokens in Uniswap
+#### All Tokens in the Uniswap Protocol
 
-Similar to fetching all pairs (see above), you can query all tokens in Uniswap. Because The Graph service limits return size to 1000 entities use graphql skip query. (Note this query will not work in the graph sandbox and more resembles the structure of a query you'd pass to some graphql middleware like [Apollo](https://www.apollographql.com/)).
+Similar to fetching all pairs (see above), you can query all tokens in the Uniswap protocol. Because The Graph service limits return size to 1000 entities use graphql skip query. (Note this query will not work in the graph sandbox and more resembles the structure of a query you'd pass to some graphql middleware like [Apollo](https://www.apollographql.com/)).
 
 ```
 {
@@ -262,7 +262,7 @@ Like pair and global daily lookups, tokens have daily entities that can be queri
 
 ### ETH Price
 
-You can use the Bundle entity to query current USD price of ETH in Uniswap based on a weighted average of stablecoins.
+You can use the Bundle entity to query current USD price of ETH in the Uniswap protocol based on a weighted average of stablecoins.
 
 ```
 {
