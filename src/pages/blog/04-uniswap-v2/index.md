@@ -8,13 +8,13 @@ previewText: 'All about Uniswap V2. Price oracles, optimistic swaps and much muc
 
 **Uniswap V1** was the proof-of-concept for a new type of decentralized marketplace.
 
-As a venue for pooled, automated liquidity provision on Ethereum, the Uniswap protocol (Uniswap) functions without upkeep, providing an unstoppable platform for ERC20 token conversion. **Uniswap V1 will continue to work for as long as Ethereum exists**, and so far, it has worked very nicely for a wide variety of use cases.
+As a venue for pooled, automated liquidity provision on Ethereum, the Uniswap protocol functions without upkeep, providing an unstoppable platform for ERC20 token conversion. **Uniswap V1 will continue to work for as long as Ethereum exists**, and so far, it has worked very nicely for a wide variety of use cases.
 
 ![Uniswap V1 Liquidity Growth](v1_liquidity.png)
 
-However, pooled automated liquidity remains nascent technology, and **we have only just begun to realize its potential**. For this reason, last year [we raised a seed round](https://finance.yahoo.com/news/paradigm-backs-decentralized-exchange-protocol-184824051.html) and formed a dedicated team to research and develop Uniswap alongside the broader Ethereum community.
+However, pooled automated liquidity remains nascent technology, and **we have only just begun to realize its potential**. For this reason, last year [we raised a seed round](https://finance.yahoo.com/news/paradigm-backs-decentralized-exchange-protocol-184824051.html) and formed a dedicated team to research and develop  the Uniswap protocol alongside the broader Ethereum community.
 
-**Uniswap V2** is our second iteration of Uniswap and includes many new features and improvements. This article will serve as a high-level overview of these changes including:
+**Uniswap V2** is our second iteration of the Uniswap protocol and includes many new features and improvements. This article will serve as a high-level overview of these changes including:
 
 - [ERC20 / ERC20 Pairs](#erc20--erc20-pairs)
 - [Price Oracles](#price-oracles)
@@ -51,7 +51,7 @@ We still anticipate ETH pairs being very popular, but expect to see growth in ot
 
 ## Price Oracles
 
-**Uniswap V2 implements new functionality that enables highly decentralized and manipulation-resistant on-chain price feeds.** This is achieved by measuring prices when they are expensive to manipulate, and cleverly accumulating historical data. This allows external smart contracts to create gas-efficient, time-weighted averages of Uniswap prices across **any** time interval.
+**Uniswap V2 implements new functionality that enables highly decentralized and manipulation-resistant on-chain price feeds.** This is achieved by measuring prices when they are expensive to manipulate, and cleverly accumulating historical data. This allows external smart contracts to create gas-efficient, time-weighted averages of Uniswap protocol prices across **any** time interval.
 
 **On-chain price feeds are a critical component for many decentralized financial applications** including those similar to derivatives, lending, margin trading, prediction markets and more. Despite [closely tracking the real-world price](https://arxiv.org/abs/1911.03380) most of the time, Uniswap V1 cannot be used safely as a price oracle because the price can move significantly in a short period of time.
 
@@ -61,7 +61,7 @@ Uniswap V2 includes a number of improvements for price feeds built on top of it.
 
 This alone is not enough. If significant value settles based on the price resulting from this mechanism, then the profit of an attack likely can outweigh the loss.
 
-Instead, Uniswap V2 adds this end-of-block price to a single cumulative-price variable in the core contract weighted by the amount of time this price existed. **This variable represents a sum of the Uniswap price for every second in the entire history of the contract.**
+Instead, Uniswap V2 adds this end-of-block price to a single cumulative-price variable in the core contract weighted by the amount of time this price existed. **This variable represents a sum of the Uniswap protocol price for every second in the entire history of the contract.**
 
 ![](v2_onchain_price_data.png)
 
@@ -76,7 +76,7 @@ TWAPs can be used directly or as the basis for moving averages (EMAs and SMAs) a
 A few notes:
 
 - For a 10-minute TWAP, sample once every 10 minutes. For a 1-week TWAP, sample once every week.
-- For a simple TWAP, the cost of manipulation increases (approx. linear) with liquidity on Uniswap, as well as (approx. linear) with the length of time over which you average.
+- For a simple TWAP, the cost of manipulation increases (approx. linear) with liquidity on the Uniswap protocol, as well as (approx. linear) with the length of time over which you average.
 - Cost of an attack is relatively simple to estimate. Moving the price 5% on a 1-hour TWAP is approximately equal to the amount lost to arbitrage and fees for moving the price 5% every block for 1 hour.
 
 There are some nuances that are good to be aware of when using Uniswap V2 as an oracle, especially where manipulation resistance is concerned. The <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> elaborates on some of them. Additional oracle-focused developer guides and documentation will be released soon.
@@ -85,7 +85,7 @@ In the meantime, check out our [example implementation](https://github.com/Unisw
 
 ## Flash Swaps
 
-**Uniswap V2 flash swaps** allow you to withdraw as much as you want of any ERC20 token on Uniswap at no upfront cost and do anything you want with them (execute arbitrary code), provided that by the end of the transaction execution, you either:
+**Uniswap V2 flash swaps** allow you to withdraw as much as you want of any ERC20 token on the Uniswap protocol at no upfront cost and do anything you want with them (execute arbitrary code), provided that by the end of the transaction execution, you either:
 
 - pay for all ERC20 tokens withdrawn
 - pay for a percentage of ERC20 tokens and return the rest
@@ -95,29 +95,29 @@ Liquidity provider fees are enforced by subtracting 0.3% from all input amounts,
 
 ![](v2_flash_swaps.png)
 
-It is often the case that a series of transactions on Ethereum has a high upfront cost but ultimately a low net cost or is even net profitable by the end of the series. **Flash swaps** are incredibly useful because they **remove upfront capital requirements and unnecessary constraints on order-of-operations** for multi-step transactions that use Uniswap.
+It is often the case that a series of transactions on Ethereum has a high upfront cost but ultimately a low net cost or is even net profitable by the end of the series. **Flash swaps** are incredibly useful because they **remove upfront capital requirements and unnecessary constraints on order-of-operations** for multi-step transactions that use the Uniswap protocol.
 
-One example is **arbitrage with no upfront capital**. Imagine a scenario where you can sell 200 DAI for 1 ETH on Uniswap and then sell that 1 ETH on Oasis for 220 DAI at a 20 DAI profit. But, unfortunately, you don't have any DAI in your wallet.
+One example is **arbitrage with no upfront capital**. Imagine a scenario where you can sell 200 DAI for 1 ETH on the Uniswap protocol and then sell that 1 ETH on Oasis for 220 DAI at a 20 DAI profit. But, unfortunately, you don't have any DAI in your wallet.
 
 ![](no_capital.gif)
 
-With flash swaps you could synchronously withdraw 1 ETH from Uniswap, sell it on Oasis for 220 DAI and then pay for the ETH on Uniswap with 200 of the DAI you just purchased.
+With flash swaps you could synchronously withdraw 1 ETH from the Uniswap protocol, sell it on Oasis for 220 DAI and then pay for the ETH on the Uniswap protocol with 200 of the DAI you just purchased.
 
-Another example use case is **improving the efficiency of margin trading protocols** that borrow from lending protocols and use Uniswap for ERC20 token conversion. This is currently done with the following process:
+Another example use case is **improving the efficiency of margin trading protocols** that borrow from lending protocols and use the Uniswap protocol for ERC20 token conversion. This is currently done with the following process:
 
 1. add user ETH to Maker,
 2. borrow DAI from Maker
-3. swap DAI for ETH on Uniswap
+3. swap DAI for ETH on the Uniswap protocol
 4. repeat steps 1–3 **multiple times** until you reached desired leverage
 
 With flash swaps this process is simplified to:
 
-1. withdraw all ETH you want from Uniswap
-2. add user and Uniswap ETH to Maker
+1. withdraw all ETH you want from the Uniswap protocol
+2. add user and Uniswap protocol ETH to Maker
 3. borrow all DAI you need from Maker
 4. return DAI to the Uniswap protocol
 
-If the Uniswap pool does not receive enough DAI to cover the ETH withdrawn, then the entire transaction will revert; thus, all ERC20 tokens are returned or paid for at the end of the transaction.
+If the Uniswap protocol pool does not receive enough DAI to cover the ETH withdrawn, then the entire transaction will revert; thus, all ERC20 tokens are returned or paid for at the end of the transaction.
 
 ## Core/Helper Architecture
 
@@ -126,7 +126,7 @@ If the Uniswap pool does not receive enough DAI to cover the ETH withdrawn, then
 - [UniswapV2Pair.sol](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Pair.sol), which implements core swapping and liquidity provision functionality
 - [UniswapV2Factory.sol](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Factory.sol), which deploys [UniswapV2Pair.sol](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Pair.sol) contracts for any ERC20 token/ERC20 token pair
 
-**Core is minimalist in design, removing all logic that is not strictly necessary to secure liquidity stored in its pools.** Logic related to trader security or ease-of-use must be implemented in external helper contracts. Since external helpers can be improved and replaced without needing to migrate liquidity, **this improves on the flexibility and modularity of Uniswap.**
+**Core is minimalist in design, removing all logic that is not strictly necessary to secure liquidity stored in its pools.** Logic related to trader security or ease-of-use must be implemented in external helper contracts. Since external helpers can be improved and replaced without needing to migrate liquidity, **this improves on the flexibility and modularity of the Uniswap protocol.**
 
 [Uniswap V2 Periphery](https://github.com/Uniswap/uniswap-v2-periphery) (periphery) is an initial set of helpers, including:
 
@@ -138,7 +138,7 @@ If the Uniswap pool does not receive enough DAI to cover the ETH withdrawn, then
 
 _Periphery contracts described as "Example" are for illustrative purposes only and should not be used in actual transactions._
 
-While this is a huge improvement, there are some new smart contract patterns introduced which developers building on top of Uniswap should be aware of.
+While this is a huge improvement, there are some new smart contract patterns introduced which developers building on top of the Uniswap protocol should be aware of.
 
 - Core uses WETH instead of ETH. Routers can convert between ETH and WETH allowing users to use ETH directly
 - Core stores ERC20 token balances internally instead of relying on the balances stored in the ERC20 token contract
@@ -177,11 +177,11 @@ In the Classical Period of crypto (2014), [Vitalik described](https://blog.ether
 
 This perfectly describes the Uniswap protocol's path forward. In Uniswap V1 pricing, coordination, listing, and trade execution are fully automated while arbitrage and liquidity provision are incentivized.
 
-However, **the best version of Uniswap will be one that autonomously incentivizes contributions to its own growth and development** as well as to the broader ecosystem in which it exists--one that supports the contributions of the **incredible community** that has formed and continues to grow.
+However, **the best version of the Uniswap protocol will be one that autonomously incentivizes contributions to its own growth and development** as well as to the broader ecosystem in which it exists--one that supports the contributions of the **incredible community** that has formed and continues to grow.
 
-Uniswap is an ideal candidate for exploring decentralized on-chain cash flows. **Without any additional growth**, it will generate more than $5M in liquidity provider fees this year. If the protocol charge was on, ~$830,000 of this would instead go to a decentralized funding mechanism used to support contributions to Uniswap and its ecosystem.
+The Uniswap protocol is an ideal candidate for exploring decentralized on-chain cash flows. **Without any additional growth**, it will generate more than $5M in liquidity provider fees this year. If the protocol charge was on, ~$830,000 of this would instead go to a decentralized funding mechanism used to support contributions to the Uniswap protocol and its ecosystem.
 
-**This type of support boosts network effects from which Uniswap and its users benefit greatly.** Incentivized contributions lead to increased protocol functionality and usage. Usage generates fees which attracts liquidity. Increased liquidity further entrenches Uniswap, attracting additional users, contributors, and integrations.
+**This type of support boosts network effects from which the Uniswap protol and its users benefit greatly.** Incentivized contributions lead to increased protocol functionality and usage. Usage generates fees which attracts liquidity. Increased liquidity further entrenches the Uniswap protocol, attracting additional users, contributors, and integrations.
 
 ![](graph.jpeg)
 
@@ -209,5 +209,5 @@ In the meantime, developers can begin playing with Uniswap V2 today! The factory
 We will be releasing additional updates, information, and documentation over the coming months. We look forward to continued feedback and involvement from the fantastic Uniswap community. To get involved and stay up to date:
 
 - [Join the Uniswap community discord](https://discord.gg/FCfyBSbCU5)
-- [Follow Uniswap on Twitter](https://twitter.com/Uniswap)
+- [Follow Uniswap Labs on Twitter](https://twitter.com/Uniswap)
 - Subscribe to the <Link to='/blog/'>Uniswap blog</Link>
