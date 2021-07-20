@@ -8,7 +8,7 @@ previewText: 'A new and improved Uniswap.info with more detailed information abo
 
 ![](https://cdn-images-1.medium.com/max/3200/1*QwjSzdnwzAYoU7rXCjEF5A.jpeg)
 
-We’re excited to release a new and improved [Uniswap.info](http://uniswap.info/) with more detailed information about the Uniswap ecosystem and token exchanges. For this release we focused providing more complete and accurate data, better UI/UX and the ability to buy and sell tokens with the Uniswap iframe integration.
+We’re excited to release a new and improved [Uniswap.info](http://uniswap.info/) with more detailed information about the Uniswap ecosystem and token exchanges. For this release we focused providing more complete and accurate data, better UI/UX and the ability to buy and sell tokens with the Uniswap frontend iframe integration.
 
 Keep reading below for a breakdown of the new features.
 
@@ -18,7 +18,7 @@ Keep reading below for a breakdown of the new features.
 
 ![](https://cdn-images-1.medium.com/max/1900/1*hLD1rKF9GHBZZTevW1YZsg.gif)
 
-We’ve built a new overview page with high level data about exchanges on Uniswap. Detailed stats like 24 hour volume, total liquidity and daily transactions are now available at a glance. We’ve also listed the top exchanges sortable by price, volume, liquidity and more to help you explore different aspects of the most active pools.
+We’ve built a new overview page with high level data about exchanges on the Uniswap protocol. Detailed stats like 24 hour volume, total liquidity and daily transactions are now available at a glance. We’ve also listed the top exchanges sortable by price, volume, liquidity and more to help you explore different aspects of the most active pools.
 
 # Exchange Pages
 
@@ -46,9 +46,9 @@ Analytics for a specific pool can be linked to directly using the tokens address
 
 # Data!
 
-The updated Uniswap.info was built using data from [The Graph](https://thegraph.com/). We’ve worked closely with [The Graph](https://thegraph.com/) team to upgrade the [Uniswap subgraph](https://thegraph.com/explorer/subgraph/graphprotocol/uniswap) to support for better views, historical data and transactions. We’ve added historical data for Uniswap as a whole with daily volumes and liquidity over time.
+The updated Uniswap.info was built using data from [The Graph](https://thegraph.com/). We’ve worked closely with [The Graph](https://thegraph.com/) team to upgrade the [Uniswap subgraph](https://thegraph.com/explorer/subgraph/graphprotocol/uniswap) to support for better views, historical data and transactions. We’ve added historical data for the Uniswap protocol as a whole with daily volumes and liquidity over time.
 
-_If you are building a uniswap data tool you may consider building off [the new subgraph.](https://github.com/graphprotocol/uniswap-subgraph)_
+_If you are building a uniswap protocol data tool you may consider building off [the new subgraph.](https://github.com/graphprotocol/uniswap-subgraph)_
 
 # UI and UX polish
 
@@ -82,6 +82,6 @@ If you have any ideas for things you’d like to see that isn’t on this list w
 
 ---
 
-If you are looking for more Uniswap analytics tools check out [https://github.com/Uniswap/universe](https://github.com/Uniswap/universe) for a list of tools.
+If you are looking for more Uniswap protocol analytics tools check out [https://github.com/Uniswap/universe](https://github.com/Uniswap/universe) for a list of tools.
 
 You can check out the repo on [github](https://github.com/Uniswap/uniswap-info) if you’d like to explore how everything works.
