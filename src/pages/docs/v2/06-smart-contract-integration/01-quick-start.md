@@ -176,7 +176,7 @@ In order to test your contract, you need to:
 
 \#1 is handled for you automatically by the `truffle test` command.
 
-Note you should only deploy the precompiled Uniswap contracts in the `build` directories for unit tests. 
+Note you should only deploy the precompiled Uniswap protocol contracts in the `build` directories for unit tests. 
 This is because solidity appends a metadata hash to compiled contract artifacts which includes the hash of the contract
 source code path, and compilations on other machines will not result in the exact same bytecode.
 This is problematic because in Uniswap V2 we use the hash of the bytecode in the v2-periphery
