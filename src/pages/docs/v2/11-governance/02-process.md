@@ -3,11 +3,11 @@ title: Process
 tags: goveranance, documentation
 ---
 
-This document is a living document which represents the current process guidelines for developing and advancing Uniswap Protocol Governance Proposals.
+This document is a living document which represents the current process guidelines for developing and advancing Uniswap Governance Proposals to manage the Uniswap protocol.
 
 ## Process
 
-Several governance venues are available to Uniswap protocol governance, each serving its own particular purpose.
+Several governance venues are available to Uniswap Governance, each serving its own particular purpose.
 
 1. [_gov.uniswap.org_](https://gov.uniswap.org/)
 
@@ -29,7 +29,7 @@ The purpose of the Temperature Check is to determine if there is sufficient will
 
 To create a Temperature Check:
 
-1. Ask a general, non-biased question to the community on gov.uniswap.org about a potential change (example: &quot;Should Uniswap protocol governance add liquidity mining for XYZ token?&quot;). Forum posts should be labeled as follows: &quot;Temperature Check - [Your Title Here]&quot;. The forum post should include a link to the associated Snapshot poll.
+1. Ask a general, non-biased question to the community on gov.uniswap.org about a potential change (example: &quot;Should Uniswap Governance add liquidity mining for XYZ token?&quot;). Forum posts should be labeled as follows: &quot;Temperature Check - [Your Title Here]&quot;. The forum post should include a link to the associated Snapshot poll.
 
 1. Voters use Snapshot to indicate their interest in bringing it forward to the next stage. Snapshot poll lengths should be set to 2 days.
 
