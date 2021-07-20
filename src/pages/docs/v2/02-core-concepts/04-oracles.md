@@ -5,7 +5,7 @@ tags: oracles, documentation
 
 # Introduction
 
-A price oracle is any tool used to view price information about a given asset. When you look at stock prices on your phone, you are using your phone as a price oracle. Similarly, the app on your phone relies on devices to retrieve price information - likely several, which are aggregated and then displayed to you, the end-user. These are price oracles as well.
+A price oracle is any tool used to view price information about a given asset. When you look at an asset's price on your phone, you are using your phone as a price oracle. Similarly, the app on your phone relies on devices to retrieve price information - likely several, which are aggregated and then displayed to you, the end-user. These are price oracles as well.
 
 When building smart contracts that integrate with DeFi protocols, developers will inevitably run into the price oracle problem. What is the best way to retrieve the price of a given asset on-chain?
 
@@ -37,7 +37,7 @@ TWAPs can be used directly or as the basis for moving averages (EMAs and SMAs) a
 A few notes:
 
 - For a 10-minute TWAP, sample once every 10 minutes. For a 1-week TWAP, sample once every week.
-- For a simple TWAP, the cost of manipulation increases (approx. linear) with liquidity on Uniswap, as well as (approx. linear) with the length of time over which you average.
+- For a simple TWAP, the cost of manipulation increases (approx. linear) with liquidity on the Uniswap protocol, as well as (approx. linear) with the length of time over which you average.
 - The Cost of an attack is relatively simple to estimate. Moving the price 5% on a 1-hour TWAP is approximately equal to the amount lost to arbitrage and fees for moving the price 5% every block for 1 hour.
 
 There are some nuances that are good to be aware of when using Uniswap V2 as an oracle, especially where manipulation resistance is concerned. The <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> elaborates on some of them. Additional oracle-focused developer guides and documentation will be released soon.
