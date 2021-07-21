@@ -1,10 +1,8 @@
-import React from 'react'
 import Img from 'gatsby-image'
-import { Link } from 'gatsby'
-
+import React from 'react'
 import styled from 'styled-components'
 
-const StyledMiniCards = styled(Link)`
+const StyledMiniCards = styled.a`
   padding: 1.25rem;
   color: ${({ theme, outlined }) => (outlined ? theme.colors.link : theme.textColor)};
   background-color: ${({ theme }) => theme.cardBG};
@@ -71,9 +69,9 @@ const StyledMiniCardDesc = styled.p`
   padding-bottom: 1.5rem;
 `
 
-const InlineCard = props => {
+const InlineCard = (props) => {
   return (
-    <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
+    <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} href={props.to}>
       <Tag>{props.icon}</Tag>
 
       {props.image && <StyledCardBG fluid={props.image} />}
