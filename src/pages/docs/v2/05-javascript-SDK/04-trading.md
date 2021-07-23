@@ -5,9 +5,9 @@ tags: SDK, developer-guides, documentation
 
 Looking for a <Link to='/docs/v2/javascript-SDK/quick-start'>quickstart</Link>?
 
-The SDK _cannot execute trades or send transactions on your behalf_. Rather, it offers utility classes and functions which make it easy to calculate the data required to safely interact with Uniswap. Nearly everything you need to safely transact with Uniswap is provided by the <Link to='/docs/v2/SDK/trade'>Trade</Link> entity. However, it is your responsibility to use this data to send transactions in whatever context makes sense for your application.
+The SDK _cannot execute trades or send transactions on your behalf_. Rather, it offers utility classes and functions which make it easy to calculate the data required to safely interact with the Uniswap protocol. Nearly everything you need to safely transact with the Uniswap protocol is provided by the <Link to='/docs/v2/SDK/trade'>Trade</Link> entity. However, it is your responsibility to use this data to send transactions in whatever context makes sense for your application.
 
-This guide will focus exclusively on sending a transaction to the <Link to='/docs/v2/smart-contracts/router02'>currently recommended Uniswap router</Link>.
+This guide will focus exclusively on sending a transaction to the <Link to='/docs/v2/smart-contracts/router02'>currently recommended Uniswap protocol router</Link>.
 
 # Sending a Transaction to the Router
 

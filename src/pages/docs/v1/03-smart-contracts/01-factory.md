@@ -30,9 +30,9 @@ factoryContract.methods.initializeFactory(template).send()
 | :-------- | :------ | ---------------------------------: |
 | token     | address | Ethereum address of an ERC20 token |
 
-| Returns |                                        |
-| :------ | -------------------------------------: |
-| address | Ethereum address of a Uniswap exchange |
+| Returns |                                             |
+| :------ | ------------------------------------------: |
+| address | Ethereum address of a Uniswap protocol pair |
 
 ## Smart Contract
 
@@ -52,9 +52,9 @@ factoryContract.methods.createExchange(token).send()
 | :-------- | :------ | ---------------------------------: |
 | token     | address | Ethereum address of an ERC20 token |
 
-| Returns |                                        |
-| :------ | -------------------------------------: |
-| address | Ethereum address of a Uniswap exchange |
+| Returns |                                             |
+| :------ | ------------------------------------------: |
+| address | Ethereum address of a Uniswap protocol pair |
 
 ## Smart Contract
 
@@ -69,9 +69,9 @@ factoryContract.methods.getExchange(token).call()
 
 # getToken
 
-| Parameter | Type    |                            Description |
-| :-------- | :------ | -------------------------------------: |
-| exchange  | address | Ethereum address of a Uniswap exchange |
+| Parameter | Type    |                                 Description |
+| :-------- | :------ | ------------------------------------------: |
+| exchange  | address | Ethereum address of a Uniswap protocol pair |
 
 | Returns |                                    |
 | :------ | ---------------------------------: |

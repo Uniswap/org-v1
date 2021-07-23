@@ -1,5 +1,5 @@
 ---
-title: Exchange
+title: Trade
 ---
 
 <Info>
@@ -563,7 +563,7 @@ exchangeContract.methods
 | max_tokens_sold | uint256 |      Maximum input ERC20 tokens bought |
 | max_eth_sold    | uint256 |     Maximum ETH bought as intermediary |
 | deadline        | uint256 |                   Transaction deadline |
-| exchange_addr   | address | Address of output ERC20 token exchange |
+| exchange_addr   | address |     Address of output ERC20 token pair |
 
 | Returns |                                   |
 | :------ | --------------------------------: |
@@ -598,7 +598,7 @@ exchangeContract.methods
 | max_eth_sold    | uint256 |        Maximum ETH bought as intermediary |
 | deadline        | uint256 |                      Transaction deadline |
 | recipient       | address | Address that receives output ERC20 tokens |
-| exchange_addr   | address |    Address of output ERC20 token exchange |
+| exchange_addr   | address |        Address of output ERC20 token pair |
 
 | Returns |                                   |
 | :------ | --------------------------------: |
@@ -719,9 +719,9 @@ exchangeContract.methods.getTokenToEthOutputPrice(eth_bought).call()
 
 # tokenAddress
 
-| Returns |                                         |
-| :------ | --------------------------------------: |
-| address | Address of ERC20 token sold on exchange |
+| Returns |                                     |
+| :------ | ----------------------------------: |
+| address | Address of ERC20 token sold in pair |
 
 ## Smart Contract
 
@@ -738,9 +738,9 @@ exchangeContract.methods.tokenAddress().call()
 
 # factoryAddress
 
-| Returns |                                          |
-| :------ | ---------------------------------------: |
-| address | Address of factory that created exchange |
+| Returns |                                      |
+| :------ | -----------------------------------: |
+| address | Address of factory that created pair |
 
 ## Smart Contract
 
@@ -764,7 +764,7 @@ exchangeContract.methods.factoryAddress().call()
 ## Smart Contract
 
 ```python
-# all exchange contracts have the same name
+# all pair contracts have the same name
 @constant
 name(): bytes32 // Uniswap V1
 ```
@@ -784,7 +784,7 @@ exchangeContract.methods.tokenAddress().call()
 ## Smart Contract
 
 ```python
-# all exchange contracts have the same symbol
+# all pair contracts have the same symbol
 @constant
 symbol(): bytes32 // UNI-V1
 ```
@@ -804,7 +804,7 @@ exchangeContract.methods.tokenAddress().call()
 ## Smart Contract
 
 ```python
-# all exchange contracts have the same decimals
+# all pair contracts have the same decimals
 @constant
 decimals(): uint256 // 18
 ```

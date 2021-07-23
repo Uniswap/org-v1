@@ -3,7 +3,7 @@ title: API Overview
 tags: api, documentation
 ---
 
-This section explains the Uniswap Subgraph and how to interact with it. The Uniswap subgraph indexes data from the Uniswap contracts over time. It organizes data about pairs, tokens, Uniswap as a whole, and more. The subgraph updates any time a transaction is made on Uniswap. The subgraph runs on [The Graph](https://thegraph.com/) protocol's hosted service and can be openly queried.
+This section explains the Uniswap protocol subgraph and how to interact with it. The Uniswap protocol subgraph indexes data from the Uniswap protocol contracts over time. It organizes data about pairs, tokens, the Uniswap protocol as a whole, and more. The subgraph updates any time a transaction is made on the Uniswap protocol. The subgraph runs on [The Graph](https://thegraph.com/) protocol's hosted service and can be openly queried.
 
 ## Resources
 
@@ -13,7 +13,7 @@ This section explains the Uniswap Subgraph and how to interact with it. The Unis
 
 ## Usage
 
-The subgraph provides a snapshot of the current state of Uniswap and also tracks historical data. It is currently used to power [uniswap.info](https://uniswap.info/). **It is not intended to be used as a data source for structuring transactions (contracts should be referenced directly for the most reliable live data).**
+The subgraph provides a snapshot of the current state of the Uniswap protocol and also tracks historical data. It is currently used to power [uniswap.info](https://uniswap.info/). **It is not intended to be used as a data source for structuring transactions (contracts should be referenced directly for the most reliable live data).**
 
 ## Making Queries
 

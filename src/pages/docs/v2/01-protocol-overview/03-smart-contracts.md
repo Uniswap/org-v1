@@ -3,7 +3,7 @@ title: Smart contracts
 tags: protocol-overview, documentation
 ---
 
-Uniswap V2 is a binary smart contract system. [Core](#core) contracts provide fundamental safety guarantees for all parties interacting with Uniswap. [Periphery](#periphery) contracts interact with one or more core contracts but are not themselves part of the core.
+Uniswap V2 is a binary smart contract system. [Core](#core) contracts provide fundamental safety guarantees for all parties interacting with the Uniswap protocol. [Periphery](#periphery) contracts interact with one or more core contracts but are not themselves part of the core.
 
 # Core
 
@@ -29,7 +29,7 @@ Pairs have two primary purposes: serving as automated market makers and keeping 
 
 [Source code](https://github.com/Uniswap/uniswap-v2-periphery)
 
-The periphery is a constellation of smart contracts designed to support domain-specific interactions with the core. Because of Uniswap's permissionless nature, the contracts described below have no special privileges, and are in fact only a small subset of the universe of possible periphery-like contracts. However, they are useful examples of how to safely and efficiently interact with Uniswap V2.
+The periphery is a constellation of smart contracts designed to support domain-specific interactions with the core. Because of the Uniswap protocol's permissionless nature, the contracts described below have no special privileges, and are in fact only a small subset of the universe of possible periphery-like contracts. However, they are useful examples of how to safely and efficiently interact with V2 of the Uniswap protocol.
 
 ## Library
 
@@ -45,7 +45,7 @@ The router, which uses the library, fully supports all the basic requirements of
 
 # Design Decisions
 
-The following sections describe some of the notable design decisions made in Uniswap V2. These are safe to skip unless you're interested in gaining a deep technical understanding of how V2 works under the hood, or writing smart contract integrations!
+The following sections describe some of the notable design decisions made in V2 of the Uniswap protoco.. These are safe to skip unless you're interested in gaining a deep technical understanding of how V2 works under the hood, or writing smart contract integrations!
 
 ## Sending Tokens
 

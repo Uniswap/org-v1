@@ -48,7 +48,7 @@ than once per period.
 
 There are at least
 [two kinds of moving averages](https://www.investopedia.com/terms/m/movingaverage.asp#types-of-moving-averages)
-that you can compute using the Uniswap cumulative price variable.
+that you can compute using the Uniswap protocol cumulative price variable.
 
 [Simple moving averages](https://www.investopedia.com/terms/s/sma.asp)
 give equal weight to each price measurement. We have built

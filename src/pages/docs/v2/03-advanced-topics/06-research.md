@@ -5,7 +5,7 @@ tags: advanced-topics, documentation
 
 The automated market maker is a new concept, and as such, new research comes out frequently. We've selected some of the most thoughtful here.
 
-# Uniswap's Financial Alchemy
+# The Uniswap Protocol's Financial Alchemy
 
 Authors: Dave White, Martin Tassy, Charlie Noyes, and Dan Robinson
 
@@ -13,7 +13,7 @@ Authors: Dave White, Martin Tassy, Charlie Noyes, and Dan Robinson
 
 - [Uniswap's Financial Alchemy](https://research.paradigm.xyz/uniswaps-alchemy)
 
-# An analysis of Uniswap markets
+# An analysis of Uniswap protocol markets
 
 Authors: Guillermo Angeris, Hsien-Tang Kao, Rei Chiang, Charlie Noyes, Tarun Chitra
 

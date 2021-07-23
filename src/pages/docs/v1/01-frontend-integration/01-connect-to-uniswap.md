@@ -10,7 +10,7 @@ The Uniswap smart contracts exist on the Ethereum blockchain. Use [ethers.js](ht
 
 # Factory Contract
 
-The Uniswap [factory contract](https://github.com/Uniswap/uniswap-v1/blob/master/contracts/uniswap_factory.vy) can be used to create exchange contracts for any ERC20 token that does not already have one. It also functions as a registry of ERC20 tokens that have been added to the system, and the exchange with which they are associated.
+The Uniswap [factory contract](https://github.com/Uniswap/uniswap-v1/blob/master/contracts/uniswap_factory.vy) can be used to create a pair for any ERC20 token that does not already have one. It also functions as a registry of ERC20 tokens that have been added to the system, and the pair with which they are associated.
 
 The factory contract can be instantiated using the factory address and ABI:
 
@@ -112,11 +112,11 @@ const factoryABI = [
 const factoryContract = new web3.eth.Contract(factoryABI, factoryAddress)
 ```
 
-# Exchange Contracts
+# Trading Contracts
 
-## Get Exchange Address
+## Get Trading Contract Address
 
-There is a separate exchange contract for every ERC20 token. The `getExchange` method in the factory contract can be used to find the Ethereum address associated with an ERC20 token address.
+There is a separate trading contract for every ERC20 token. The `getExchange` method in the factory contract can be used to find the Ethereum address associated with an ERC20 token address.
 
 ```javascript
 const exchangeAddress = factoryContract.methods.getExchange(tokenAddress)
@@ -124,9 +124,9 @@ const exchangeAddress = factoryContract.methods.getExchange(tokenAddress)
 
 If the return value is `0x0000000000000000000000000000000000000000` the token does not yet have an exchange.
 
-## Exchange Interface
+## Trading Interface
 
-Creating an exchange interface in web3 requires the **exchange address** and the **exchange ABI**:
+Creating a trading interface in web3 requires the **exchange address** and the **exchange ABI**:
 
 ```javascript
 const exchangeABI = [
@@ -615,17 +615,17 @@ const exchangeContract = new web3.eth.Contract(exchangeABI, exchangeAddress)
 
 # Token Contracts
 
-Some Uniswap interactions require making calls directly to ERC20 token contracts rather than the exchanges with which they are associated.
+Some Uniswap protocol interactions require making calls directly to ERC20 token contracts rather than the trading contracts with which they are associated.
 
 ## Get Token Address
 
-The `getToken` method in the factory contract can be used to find the ERC20 token address associated with an exchange contract. There is no barrier of entry for adding an ERC20 token to Uniswap or checks on the validity of the token contracts. Frontend interfaces should maintain a list of valid ERC20 tokens that users can safely trade or allow users to paste in arbitrary addresses.
+The `getToken` method in the factory contract can be used to find the ERC20 token address associated with a trading contract. There is no barrier of entry for adding an ERC20 token to the Uniswap protocol or checks on the validity of the token contracts. Frontend interfaces should maintain a list of valid ERC20 tokens that users can safely trade or allow users to paste in arbitrary addresses.
 
 ```javascript
 const tokenAddress = factoryContract.methods.getToken(exchangeAddress)
 ```
 
-If the return value is `0x0000000000000000000000000000000000000000` the input address is not a Uniswap exchange.
+If the return value is `0x0000000000000000000000000000000000000000` the input address is not a Uniswap trading contract.
 
 ## Token Interface
 

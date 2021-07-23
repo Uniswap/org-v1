@@ -6,7 +6,7 @@ title: Token Listing
 Uniswap V1, while still fully functional, is no longer under active development. Looking for <Link to='/docs/v2/'>V2 documentation</Link>?
 </Info>
 
-It is possible that a token you are interested in is not included in the token dropdown on [https://app.uniswap.org/#/swap?use=v1](https://app.uniswap.org/#/swap?use=v1), however, all tokens that have a deployed uniswap exchange are supported on the front-end.
+It is possible that a token you are interested in is not included in the token dropdown on [https://app.uniswap.org/#/swap?use=v1](https://app.uniswap.org/#/swap?use=v1), however, most tokens that have a deployed Uniswap protocol pair are supported on the frontend.
 
 There are three ways to interact with tokens that are not yet included on the default list.
 
@@ -16,7 +16,7 @@ If a token is not included in the list, try pasting the token address into the s
 
 ## 2. Custom Linking
 
-[https://app.uniswap.org/#/swap?use=v1](https://app.uniswap.org/#/swap?use=v1) supports custom linking to all tokens that have a Uniswap exchange. See <Link to='/docs/v1/frontend-integration/custom-linking'>Custom Linking</Link> for details on how to link.
+[https://app.uniswap.org/#/swap?use=v1](https://app.uniswap.org/#/swap?use=v1) supports custom linking to all tokens that have a Uniswap protocol pair. See <Link to='/docs/v1/frontend-integration/custom-linking'>Custom Linking</Link> for details on how to link.
 
 For example, to populate the output token field with an unlisted token, we can specify the outputCurrency in the URL and pass in the token's address like this:
 

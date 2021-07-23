@@ -7,7 +7,7 @@ tags: sdk, documentation
 constructor(pairs: Pair[], input: Token)
 ```
 
-The Route entity represents one or more ordered Uniswap pairs with a fully specified path from input token to output token.
+The Route entity represents one or more ordered Uniswap protocol pairs with a fully specified path from input token to output token.
 
 # Example
 

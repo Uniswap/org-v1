@@ -3,7 +3,7 @@ title: Entities
 tags: api, documentation
 ---
 
-Entities define the schema of the subgraph, and represent the data that can be queried. Within each entity are sets of fields that store useful information related to the entity. Below is a list of the available entities within the Uniswap Subgraph, and descriptions for the available fields.
+Entities define the schema of the subgraph, and represent the data that can be queried. Within each entity are sets of fields that store useful information related to the entity. Below is a list of the available entities within the Uniswap protocol subgraph, and descriptions for the available fields.
 
 To see an interactive sandbox of all entities see the [Graph Explorer](https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2).
 
@@ -93,7 +93,7 @@ information from the pair itself can be used to provide position sizes, token de
 
 ### Transaction
 
-Transaction entities are created for each Ethereum transaction that contains an interaction within Uniswap contracts. This subgraph tracks Mint, Burn, and Swap events on the Uniswap core contracts. Each transaction contains 3 arrays, and at least one of these arrays has a length of 1.
+Transaction entities are created for each Ethereum transaction that contains an interaction within Uniswap protocol contracts. This subgraph tracks Mint, Burn, and Swap events on the Uniswap protocol core contracts. Each transaction contains 3 arrays, and at least one of these arrays has a length of 1.
 
 | Field Name  | Value Type | Description                                               |
 | ----------- | ---------- | --------------------------------------------------------- |
@@ -106,7 +106,7 @@ Transaction entities are created for each Ethereum transaction that contains an 
 
 ### Mint
 
-Mint entities are created for every emitted Mint event on the Uniswap core contracts. The Mint entity stores key data about the event like token amounts, who sent the transaction, who received the liquidity, and more. This entity can be used to track liquidity provisions on pairs.
+Mint entities are created for every emitted Mint event on the Uniswap protocol core contracts. The Mint entity stores key data about the event like token amounts, who sent the transaction, who received the liquidity, and more. This entity can be used to track liquidity provisions on pairs.
 
 | Field Name   | Value Type  | Description                                                 |
 | ------------ | ----------- | ----------------------------------------------------------- |
@@ -126,7 +126,7 @@ Mint entities are created for every emitted Mint event on the Uniswap core contr
 
 ### Burn
 
-Burn entities are created for every emitted Burn event on the Uniswap core contracts. The Burn entity stores key data about the event like token amounts, who burned LP tokens, who received tokens, and more. This entity can be used to track liquidity removals on pairs.
+Burn entities are created for every emitted Burn event on the Uniswap protocol core contracts. The Burn entity stores key data about the event like token amounts, who burned LP tokens, who received tokens, and more. This entity can be used to track liquidity removals on pairs.
 
 | Field Name   | Value Type  | Description                                               |
 | ------------ | ----------- | --------------------------------------------------------- |
@@ -178,7 +178,7 @@ be used in other places in the subgraph.
 
 ## Historical Entities
 
-The subgraph tracks aggregated information grouped by days to provide insights to daily activity on Uniswap. While [time travel queries](https://blocklytics.org/blog/ethereum-blocks-subgraph-made-for-time-travel/) can be used for direct comparison against values in the past, it is much more expensive to query grouped data. For this reason the subgraph tracks information grouped in daily buckets, using timestamps provided by contract events. These entities can be used to query things like total volume on a given day, price of a token on a given day, etc.
+The subgraph tracks aggregated information grouped by days to provide insights to daily activity on the Uniswap protocol. While [time travel queries](https://blocklytics.org/blog/ethereum-blocks-subgraph-made-for-time-travel/) can be used for direct comparison against values in the past, it is much more expensive to query grouped data. For this reason the subgraph tracks information grouped in daily buckets, using timestamps provided by contract events. These entities can be used to query things like total volume on a given day, price of a token on a given day, etc.
 
 For each DayData type, a new entity is created each day.
 
@@ -197,7 +197,7 @@ Tracks data across all pairs aggregated into a daily bucket.
 | totalVolumeUSD    | BigDecimal      | all time volume across all pairs in USD up to and including this day             |
 | totalLiquidityUSD | BigDecimal      | total liquidity across all pairs in USD up to and including this day             |
 | maxStored         | Int             | reference used to store most liquid tokens, used for historical liquidity charts |
-| mostLiquidTokens  | [TokenDayData!] | tokens with most liquidity in Uniswap                                            |
+| mostLiquidTokens  | [TokenDayData!] | tokens with most liquidity in the Uniswap protocol                               |
 | txCount           | BigInt          | number of transactions throughout this day                                       |
 
 ### Pair Day Data

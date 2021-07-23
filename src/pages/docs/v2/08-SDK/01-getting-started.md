@@ -3,7 +3,7 @@ title: Getting Started
 tags: sdk, documentation
 ---
 
-The pages that follow contain technical reference information on the Uniswap SDK.
+The pages that follow contain technical reference information on the Uniswap protocol SDK.
 Looking for a <Link to='/docs/v2/javascript-SDK/quick-start'>quickstart</Link> instead? 
 You may also want to jump into a <Link to='/docs/v2/javascript-SDK/fetching-data'>guide</Link>, 
 which offers a friendlier introduction to the SDK!

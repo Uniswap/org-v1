@@ -3,15 +3,15 @@ title: Iframe Integration
 tags: frontend integration, documentation
 ---
 
-Uniswap can be used within other sites as an iframe. An iframe shows an exact version of the uniswap frontend site and can have custom prefilled settings.
+The Uniswap frontend can be used within other sites as an iframe. An iframe shows an exact version of the Uniswap frontend site and can have custom prefilled settings.
 
 # Why You May Want This
 
-Integrating the Uniswap site directly into your web application can be useful for a variety of reasons.
+Integrating the Uniswap frontend directly into your web application can be useful for a variety of reasons.
 
-The interface allows users to buy, sell, send, or provide liquidity for ERC20 tokens. An iframe integration may be useful if your application provides services around these ERC20 tokens. \(For example, users can buy DAI through a Uniswap iframe on your site, then allow users to lend that DAI on your site\).
+The interface allows users to buy, sell, send, or provide liquidity for ERC20 tokens. An iframe integration may be useful if your application provides services around these ERC20 tokens. \(For example, users can buy DAI through a Uniswap frontend iframe on your site, then allow users to lend that DAI on your site\).
 
-It can also be useful if your application requires users to acquire some token in order to use some service \(For example, allow users to buy "REP" token so they can engage in prediction markets on the Augur Dapp\).
+It can also be useful if your application requires users to acquire some token in order to use some service \(For example, allow users to buy "GRT" token so they can participate in The Graph network\).
 
 # iframe vs. custom UI
 
@@ -36,7 +36,7 @@ To see the Iframe click the dropdown in the top right and click "get foam".
 
 # Add To Your Site
 
-To include a Uniswap iframe within your site just add an iframe element within your website code and link to the Uniswap frontent.
+To include a Uniswap site iframe within your site just add an iframe element within your website code and link to the Uniswap frontend.
 
 Linking to a ETH &lt;-&gt; DAI swap page would look something like this. To link to a token of your choice replace the address after "outputCurrency" with the token address of the token you want to link to.
 

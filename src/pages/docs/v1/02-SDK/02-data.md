@@ -4,10 +4,10 @@ title: Data
 
 # getTokenReserves
 
-This function fetches Uniswap reserve data for a given token address on a given network.
+This function fetches Uniswap protocol reserve data for a given token address on a given network.
 
 - If only a chain id is specified, the Ethereum node used to fulfill data requests is determined by [`ethers.getDefaultProvider`](https://docs.ethers.io/ethers.js/html/api-providers.html#connecting-to-ethereum), else it is the one specified by the passed provider.
-- This function throws an error if the provided tokenAddress is not a token with a Uniswap exchange.
+- This function throws an error if the provided tokenAddress is not a token with a Uniswap protocol pair.
 
 ## Function Signature
 

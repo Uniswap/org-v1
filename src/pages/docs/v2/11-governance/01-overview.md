@@ -9,7 +9,7 @@ tags: smart-contracts, documentation
 
 # Documentation
 
-For reference material on the Uniswap Governance system please see [Governance Reference](https://uniswap.org/docs/v2/governance/governance-reference).
+For reference material on the Uniswap Governance system, which allows the Uniswap community to manage the Uniswap protocol, please see [Governance Reference](https://uniswap.org/docs/v2/governance/governance-reference).
 
 # UNI Address
 

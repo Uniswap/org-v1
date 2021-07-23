@@ -3,7 +3,7 @@ title: 'Using the API'
 tags: user-guides, documentation
 ---
 
-In this guide we will create a web interface that consumes and displays data from the Uniswap Subgraph. The goal is to provide a quick overview of a setup that you can extend to create your own UIs and analytics around Uniswap data.
+In this guide we will create a web interface that consumes and displays data from the Uniswap protocol subgraph. The goal is to provide a quick overview of a setup that you can extend to create your own UIs and analytics around Uniswap protocol data.
 
 Many different libraries can be used to create an interface and a connection to the subgraph graphql endpoint, but in this guide we will use [React](https://reactjs.org/) for the interface, and [Apollo Client](https://www.apollographql.com/docs/react/) for sending queries. We'll also be using yarn for dependency management.
 
@@ -33,9 +33,9 @@ export default App
 
 ### Graphql Client
 
-We need to set up some middleware in order to make requests to the Uniswap subgraph and receive data. To do this we'll use Apollo and create a graphql client to handle this.
+We need to set up some middleware in order to make requests to the Uniswap protocol subgraph and receive data. To do this we'll use Apollo and create a graphql client to handle this.
 
-1. Add the imports shown below and instantiate a new client instance. Notice how we use the link to the Uniswap subgraph here.
+1. Add the imports shown below and instantiate a new client instance. Notice how we use the link to the Uniswap protocol subgraph here.
 
 ```javascript
 import React from "react"
@@ -169,9 +169,9 @@ return (
 
 ### Next steps
 
-This should render a very basic page with these two stats about the Dai token within Uniswap. This is a very basic example of what you can do with the Uniswap subgraph and we encourage you to build out more complex and interesting tools!
+This should render a very basic page with these two stats about the DAI token within the Uniswap protocol. This is a very basic example of what you can do with the Uniswap protocol subgraph and we encourage you to build out more complex and interesting tools!
 
-You can visit our [analytics site](https://uniswap.info/) to see a more advanced analytics page, or visit [the github](https://github.com/Uniswap/uniswap-info) for more detailed examples of using the Uniswap subgraph to create UIs.
+You can visit our [analytics site](https://uniswap.info/) to see a more advanced analytics page, or visit [the github](https://github.com/Uniswap/uniswap-info) for more detailed examples of using the Uniswap protocol subgraph to create UIs.
 
 ### Review
 

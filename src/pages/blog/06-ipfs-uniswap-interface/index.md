@@ -9,7 +9,7 @@ previewText: 'The Uniswap Interface is now served exclusively from IPFS'
 # TL;DR
 
 - In an effort to continue decentralizing, we have created a mechanism for the community to host the Uniswap Interface
-- The open-source [Uniswap Interface](https://github.com/Uniswap/uniswap-interface) built by our team and
+- The open-source [Uniswap Interface](https://github.com/Uniswap/uniswap-interface) built by the Uniswap Labs team and
   community is [automatically deployed](https://github.com/Uniswap/uniswap-interface/releases) daily to IPFS
 - Community members can pin the IPFS hashes to ensure availability
 - We use IPNS + DNSLink to point `/ipns/app.uniswap.org` to the latest [IPFS release](https://github.com/Uniswap/uniswap-interface/releases)
@@ -22,12 +22,12 @@ previewText: 'The Uniswap Interface is now served exclusively from IPFS'
 
 The Uniswap **protocol** is trustless and decentralized because it lives entirely on-chain.
 Anyone running an Ethereum node can interact with the contracts directly which will perform as programmed for as long as Ethereum exists.
-However, not everyone wants to run a node. Instead, many users choose to interact with Uniswap through web interfaces,
-trade aggregators, wallets, or other DAPPs that have integrated Uniswap natively in their smart contracts.
+However, not everyone wants to run a node. Instead, many users choose to interact with the Uniswap protocol through web interfaces,
+trade aggregators, wallets, or other DAPPs that have integrated the Uniswap protocol natively in their smart contracts.
 
 When using an interface, users should verify the transactions they sign match the transaction presented by the interface.
 However, it is not always easy to do this. This is why it is important to use reputable interfaces.
-We're thrilled to see a growing ecosystem of high-quality interfaces for Uniswap, including Argent, 1inch, Rainbow,
+We're thrilled to see a growing ecosystem of high-quality interfaces for the Uniswap protocol, including Argent, 1inch, Rainbow,
 Paraswap, Zerion, Instadapp, and many more.
 
 Open source interfaces (including many of the above) allow users to verify the code they are interacting with does what
@@ -39,7 +39,7 @@ This is one of the problem that IPFS [aims to solve](https://blog.cloudflare.com
 ## What we did
 
 Our team has always cared about decentralization, security, and accessibility. This is why we built an
-[open-source interface](https://github.com/Uniswap/uniswap-interface) for Uniswap that the community can directly run,
+[open-source interface](https://github.com/Uniswap/uniswap-interface) for the Uniswap protocol that the community can directly run,
 verify and build upon. We’ve just taken another step forward by decentralizing the hosting of the Uniswap Interface using IPFS.
 
 Using [GitHub Actions](https://github.com/features/actions), the [Uniswap Interface](https://github.com/Uniswap/uniswap-interface)
@@ -93,4 +93,4 @@ Cloudflare's gateway uses the IPFS hash of the deployment in the `etag` header, 
 
 To keep the Uniswap Interface available, you can pin the hash of the [latest release](https://github.com/Uniswap/uniswap-interface/releases/latest).
 
-If this sort of work sounds cool to you, we're hiring! [Shoot us a message!](mailto:contact@uniswap.org)
+If this sort of work sounds cool to you, Uniswap Labs is hiring! [Shoot us a message!](mailto:contact@uniswap.org)
