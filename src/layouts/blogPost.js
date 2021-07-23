@@ -110,6 +110,10 @@ const PostHeader = styled.div`
     max-width: 100%;
     padding: 2rem 0;
   }
+
+  h1 {
+    word-break: break-word;
+  }
 `
 
 const PostMetaData = styled.div`
