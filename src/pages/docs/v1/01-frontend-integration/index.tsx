@@ -1,5 +1,5 @@
 import React from 'react'
-import ExternalRedirect from '../../../components/ExternalRedirect'
+import ExternalRedirect from '../../../../components/ExternalRedirect'
 
 export default function Index() {
   return <ExternalRedirect href="https://docs.uniswap.org/protocol/v1/introduction" />

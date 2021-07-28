@@ -1,6 +1,6 @@
-import useExternalRedirect from '../../components/useExternalRedirect'
+import React from 'react'
+import ExternalRedirect from '../../components/ExternalRedirect'
 
-export default function Redirector() {
-  useExternalRedirect('https://docs.uniswap.org')
-  return null
+export default function Index() {
+  return <ExternalRedirect href="https://docs.uniswap.org" />
 }
