@@ -13,10 +13,12 @@ import InlineBoxLink from '../inlineBoxLink'
 import Wizard from '../wizard'
 import Video from '../video'
 import Simulator from '../Simulator'
+import ExternalRedirect from '../ExternalRedirect'
 
 import '../../styles/katex.css'
 
 const components = {
+  ExternalRedirect,
   Info,
   Github,
   Link,

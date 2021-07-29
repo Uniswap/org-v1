@@ -9,7 +9,6 @@ node_modules/
 #misc
 **/.DS_Store
 .now
-.nvmrc
 yarn-error.log
 .vercel
 .env
