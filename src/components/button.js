@@ -11,7 +11,6 @@ const ButtonStyles = css`
   cursor: pointer;
   width: fit-content;
   @media (max-width: 960px) {
-    /* margin: 0 0.5rem 0 0.5rem; */
     text-align: center;
     text-decoration: none;
     padding: 0.25rem 1rem;
@@ -22,6 +21,7 @@ const ButtonStyles = css`
   }
   :hover {
     transform: scale(1);
+    border: ${({ outlined, theme }) => (outlined ? `1px solid ${theme.buttonBorderHover}` : 'initial')};
   }
   background-color: ${({ outlined, theme }) => (outlined ? 'none' : theme.textColor)};
   color: ${({ outlined, theme }) => (outlined ? theme.textColor : theme.invertedTextColor)};

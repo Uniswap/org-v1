@@ -1,13 +1,17 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+import Twitter from '../images/twitter.inline.svg'
+import Github from '../images/github.inline.svg'
+import Discord from '../images/discord.inline.svg'
 
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: ${({ theme }) => theme.textColor};
   position: relative;
-  padding: 0 3rem 2rem 3rem;
+  padding: 2rem;
 
   @media (max-width: 1155px) {
     display: block;
@@ -21,18 +25,45 @@ const StyledFooter = styled.footer`
 const StyledFooterLinkSection = styled.ul`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   margin: 0;
 `
 
 const StyledFooterLink = styled(Link)`
+  margin-right: 12px;
+  color: ${({ theme }) => theme.textColor};
+`
+
+const StyledTwitter = styled(Twitter)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+`
+
+const StyledDiscord = styled(Discord)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  width: 16px;
+  height: 16px;
+`
+
+const StyledGithub = styled(Github)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  width: 16px;
+  height: 16px;
   margin-right: 12px;
 `
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <p>© {new Date().getFullYear()} Uniswap</p>
+      <p style={{ margin: 0 }}>© {new Date().getFullYear()} Uniswap</p>
       <StyledFooterLinkSection>
         <StyledFooterLink to="/about">About</StyledFooterLink>
         <StyledFooterLink to="/disclaimer" style={{ marginRight: '12px' }}>
@@ -40,6 +71,9 @@ const Footer = () => {
         </StyledFooterLink>
         <StyledFooterLink to="/trademarks">Trademarks</StyledFooterLink>
         <StyledFooterLink to="/about#brand">Brand</StyledFooterLink>
+        <StyledTwitter />
+        <StyledGithub />
+        <StyledDiscord />
       </StyledFooterLinkSection>
     </StyledFooter>
   )

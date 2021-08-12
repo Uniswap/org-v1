@@ -15,6 +15,7 @@ import Twitter from '../images/twitter.inline.svg'
 import Github from '../images/github.inline.svg'
 import Discord from '../images/discord.inline.svg'
 import DevImage from '../images/developer.png'
+import GovImage from '../images/governance.png'
 
 const BGCard = styled.span`
   width: 100vw;
@@ -38,7 +39,6 @@ const StyledBody = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   padding: 3rem;
-  margin-bottom: 4rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   @media (max-width: 960px) {
     margin-bottom: 0;
@@ -85,6 +85,7 @@ const StyledBodyTitle = styled.h1`
 const StyledBodySubTitle = styled.h2`
   max-width: 720px;
   line-height: 125%;
+  font-weight: 500;
 
   @media (max-width: 640px) {
     text-align: left;
@@ -153,7 +154,7 @@ const StyledItemRow = styled.nav`
   & > *:not(:first-of-type) {
     margin-top: 12px;
   }
-  @media (min-width: 640px) {
+  @media (min-width: 960px) {
     flex-direction: row;
     & > * {
       margin-bottom: 12px;
@@ -163,9 +164,14 @@ const StyledItemRow = styled.nav`
       margin-left: 12px;
     }
   }
-  @media (min-width: 960px) {
-    box-sizing: border-box;
-    transition: right 0.25s ease;
+`
+
+const StyledItemColumn = styled.nav`
+  display: flex;
+  flex-direction: column;
+
+  & > *:not(:last-of-type) {
+    margin-bottom: 12px;
   }
 `
 
@@ -306,7 +312,12 @@ const IndexPage = props => {
 
         <DeveloperSection data={data} props={props} />
         <ProductsSection data={data} props={props} />
-        <ProtocolData />
+        <StyledSectionHeader>{'Analytics →'}</StyledSectionHeader>
+        <div
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '2rem' }}
+        >
+          <ProtocolData />
+        </div>
       </StyledBody>
       <BG />
     </Layout>
@@ -339,9 +350,8 @@ const StyledSectionHeader = styled.h1`
 
 const StyledSection = styled.section`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 4rem 0;
+  flex-direction: column;
+  margin: 2rem 0;
 `
 
 export const DeveloperCard = styled(StyledCard)`
@@ -352,18 +362,28 @@ export const DeveloperCard = styled(StyledCard)`
   background-repeat: no-repeat;
 `
 
+export const GovernanceCard = styled(StyledCard)`
+  mix-blend-mode: ${({ isDark }) => (isDark ? 'overlay' : 'lighten')};
+  background: url(${GovImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 12px;
+`
+
 const DeveloperSection = props => {
   return (
     <StyledSection>
-      <span>
-        <StyledSectionHeader>{'ECOSYSTEM →'}</StyledSectionHeader>
-        <StyledSectionTitle>A growing protocol ecosystem.</StyledSectionTitle>
-        <StyledBodySubText>
-          The Uniswap protocol empowers developers, liquidity providers and traders to participate in a financial
-          marketplace that is open and accessible to all.
-        </StyledBodySubText>
-      </span>
-      <StyledBannerImage fadeIn={false} fluid={props.data.banner.childImageSharp.fluid} />
+      <StyledItemRow>
+        <span>
+          <StyledSectionHeader>{'ECOSYSTEM →'}</StyledSectionHeader>
+          <StyledSectionTitle>A growing protocol ecosystem.</StyledSectionTitle>
+          <StyledBodySubText>
+            The Uniswap Protocol because it is fully decentralized, battle tested and the best home for liquidty,
+            oracles and trading on Ethereum.
+          </StyledBodySubText>
+        </span>
+        <StyledBannerImage fadeIn={false} fluid={props.data.banner.childImageSharp.fluid} />
+      </StyledItemRow>
     </StyledSection>
   )
 }
@@ -371,77 +391,77 @@ const DeveloperSection = props => {
 const ProductsSection = props => {
   return (
     <>
-      <StyledSectionHeader>{'DEVELOPERS →'}</StyledSectionHeader>
-      <StyledItemRow>
-        <DeveloperCard style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-          <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
-          <StyledBodySubText>
-            Check out the documentation, the Javascript SDK quick start or a guide below to integrate your project with
-            thousands of tokens and billions in liquidity.
-          </StyledBodySubText>
+      <StyledSection>
+        <StyledSectionHeader>{'DEVELOPERS →'}</StyledSectionHeader>
+        <StyledItemRow>
+          <DeveloperCard style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+            <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
+            <StyledBodySubText>
+              Check out the documentation, the Javascript SDK quick start or a guide below to integrate your project
+              with thousands of tokens and billions in liquidity.
+            </StyledBodySubText>
 
-          <Button outlined>
-            <p style={{ margin: 0 }}>Developer Docs ↗</p>
-          </Button>
-        </DeveloperCard>
-        <StyledCard style={{ maxWidth: '375px' }}>
-          <StyledProductImage fadeIn={false} fluid={props.data.grants.childImageSharp.fluid} />
-          <StyledBodySubTitle>Apply for the Uniswap Developer Grants Program</StyledBodySubTitle>
-          <p>
-            We aim to empower our community with the resources needed to improve the experience of all UNI users,
-            builders, and community members.
-          </p>
-          <Button outlined>
-            <p style={{ margin: 0 }}>Learn more ↗</p>
-          </Button>
-        </StyledCard>
-      </StyledItemRow>
+            <Button outlined>
+              <p style={{ margin: 0 }}>Developer Docs ↗</p>
+            </Button>
+          </DeveloperCard>
+          <StyledCard style={{ maxWidth: '375px' }}>
+            <StyledProductImage fadeIn={false} fluid={props.data.grants.childImageSharp.fluid} />
+            <StyledBodySubTitle>Apply for the Uniswap Developer Grants Program</StyledBodySubTitle>
+            <p>
+              We aim to empower our community with the resources needed to improve the experience of all UNI users,
+              builders, and community members.
+            </p>
+            <Button outlined>
+              <p style={{ margin: 0 }}>Learn more ↗</p>
+            </Button>
+          </StyledCard>
+        </StyledItemRow>
+      </StyledSection>
 
-      <StyledSectionHeader>{'COMMUNITY →'}</StyledSectionHeader>
+      <StyledSection>
+        <StyledSectionHeader>{'GOVERNANCE →'}</StyledSectionHeader>
+        <StyledItemRow>
+          <GovernanceCard style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+            <StyledSectionTitle>A self sustaining ecosystem.</StyledSectionTitle>
+            <StyledBodySubText>
+              The protocol is goverened and by a suite of decentralized governance tools powered by the Uni Token.
+            </StyledBodySubText>
 
-      <StyledItemRow>
-        <StyledCard>
-          <StyledItemRow>
-            <StyledExternalLink href={'https://discord.gg/FCfyBSbCU5'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
-            </StyledExternalLink>
-            <StyledExternalLink href={'https://twitter.com/Uniswap'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
-            </StyledExternalLink>
-            <StyledExternalLink href={'https://gov.uniswap.org/'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.discourse.childImageSharp.fluid} />
-            </StyledExternalLink>
-            <StyledExternalLink href={'https://www.reddit.com/r/Uniswap'} target="_blank">
-              <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
-            </StyledExternalLink>
-          </StyledItemRow>
-        </StyledCard>
-      </StyledItemRow>
-      <StyledBodySubText>
-        Learn more about Uniswap, chat with the team, others in the community, and have your say in shaping the future
-        of the Uniswap protocol.
-      </StyledBodySubText>
-
-      <StyledSectionHeader>{'GOVERNANCE →'}</StyledSectionHeader>
-      <StyledBodySubText>
-        Learn more about Uniswap, chat with the team, others in the community, and have your say in shaping the future
-        of the Uniswap protocol.
-      </StyledBodySubText>
-
-      <StyledItemRow>
-        <StyledExternalLink href={'https://discord.gg/FCfyBSbCU5'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://twitter.com/Uniswap'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://gov.uniswap.org/'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.discourse.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://www.reddit.com/r/Uniswap'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
-        </StyledExternalLink>
-      </StyledItemRow>
+            <Button outlined>
+              <p style={{ margin: 0 }}>Read more </p>
+            </Button>
+          </GovernanceCard>
+          <StyledItemColumn style={{ display: 'flex', flexDirection: 'column' }}>
+            <Button outlined>
+              <div style={{ padding: '1rem' }}>
+                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>gov.uniswap.org ↗</StyledBodySubTitle>
+                <p style={{ margin: '0', opacity: '0.6', fontSize: '16px' }}>
+                  We aim to empower our community with the resources needed to improve the experience of all UNI users,
+                  builders, and community members.
+                </p>
+              </div>
+            </Button>
+            <Button outlined>
+              <div style={{ padding: '1rem' }}>
+                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>Snapshot ↗</StyledBodySubTitle>
+                <p style={{ margin: '0', opacity: '0.6', fontSize: '16px' }}>
+                  Vote on proposals offchain with the Snapshot interface. Votes are weighted by the number of UNI
+                  delegates.
+                </p>
+              </div>
+            </Button>
+            <Button outlined>
+              <div style={{ padding: '1rem' }}>
+                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>Governance Portal↗</StyledBodySubTitle>
+                <p style={{ margin: '0', opacity: '0.6', fontSize: '16px' }}>
+                  The hub for where the formal governance process happens. Accessed through the Unsiwap Interface.
+                </p>
+              </div>
+            </Button>
+          </StyledItemColumn>
+        </StyledItemRow>
+      </StyledSection>
     </>
   )
 }

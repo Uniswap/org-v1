@@ -25,6 +25,7 @@ export const theme = darkMode => ({
   invertedTextColor: darkMode ? '#010101' : white,
   greyText: darkMode ? white : '#6C7284',
   buttonBorder: darkMode ? `#FFFFFF30` : '#01010130',
+  buttonBorderHover: darkMode ? `#FFFFFF60` : '#01010160',
 
   heroBG: darkMode
     ? 'radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%)'
