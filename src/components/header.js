@@ -182,6 +182,33 @@ const HideSmall = styled.span`
   }
 `
 
+const StyledExternalLink = styled.a`
+  display: flex;
+  cursor: pointer;
+  :focus {
+    outline: 0;
+    opacity: 0.9;
+  }
+  :hover {
+    * {
+      color: ${({ theme }) => theme.colors.grey5};
+    }
+  }
+`
+
+const StyledTitle = styled.p`
+  display: block;
+  font-weight: ${({ active }) => active && 500};
+  text-decoration: none;
+  margin: 0;
+  padding: 0 0rem 0.2rem 0.5rem;
+  color: ${({ theme }) => theme.colors.grey9};
+  width: fit-content;
+  @media (max-width: 960px) {
+    padding: 0;
+  }
+`
+
 const Header = props => {
   const matches = useMediaQuery('only screen and (max-width: 1024px)')
   const node = useRef()
@@ -210,7 +237,6 @@ const Header = props => {
           menulinks {
             name
             sublinks {
-              description
               name
               link
             }
@@ -275,7 +301,14 @@ const Header = props => {
         </HideSmall>
 
         {props.path !== undefined && (
-          <StyledTradeLink target="_blank" href="https://app.uniswap.org/">
+          <StyledTradeLink
+            style={{
+              background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+              color: 'white'
+            }}
+            target="_blank"
+            href="https://app.uniswap.org/"
+          >
             Launch App
           </StyledTradeLink>
         )}

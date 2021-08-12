@@ -54,7 +54,7 @@ const MenuFlyout = styled.nav`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 1.65rem;
+  top: 2rem;
   left: -1rem;
   min-width: 256px;
   width: 100%;
@@ -63,8 +63,7 @@ const MenuFlyout = styled.nav`
   height: 0;
   width: 0;
   overflow: hidden;
-  transition: max-height 0.4s 2s, opacity 0.4s;
-
+  z-index: -2;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.04);
   z-index: 999;
@@ -127,10 +126,6 @@ const StyledMenuTitle = styled.span`
     user-select: none;
   }
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
-
-  :hover {
-    transform: translate3d(2px, 2px, 10px);
-  }
 `
 
 const StyledMenuItem = styled.span`
@@ -138,6 +133,7 @@ const StyledMenuItem = styled.span`
   margin: 0px;
   border-radius: 0.5rem;
   width: fit-content;
+  padding: 0;
 
   :hover {
     color: ${({ theme }) => theme.colors.grey7};
@@ -179,11 +175,6 @@ const StyledTitle = styled.p`
   @media (max-width: 960px) {
     padding: 0;
   }
-  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
-
-  :hover {
-    transform: translate3d(2px, 2px, 10px);
-  }
 `
 
 const StyledDescription = styled.p`
@@ -210,7 +201,6 @@ export default function Menu(props) {
                 {item.link.split('.').slice(-1)[0] === 'pdf' ? (
                   <StyledExternalLink href={item.link} target="_blank" rel="noopener noreferrer">
                     <StyledTitle>{item.name}</StyledTitle>
-                    {item.description && <StyledDescription>{item.description}</StyledDescription>}
                   </StyledExternalLink>
                 ) : (
                   <StyledExternalLink href={item.link}>

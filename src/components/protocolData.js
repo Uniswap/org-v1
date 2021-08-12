@@ -108,29 +108,19 @@ const ProtocolData = () => {
     <Numbers id="about" style={{ flexDirection: 'column' }}>
       <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', margin: 0 }}>
         <BigNumbers>
-          <span>
-            {formattedVol}
-            <span style={{ opacity: '0.1' }}>+</span>
-          </span>
+          <span>{formattedVol}</span>
           <p style={{ fontSize: '14px' }}>All Time Volume</p>
         </BigNumbers>
         <BigNumbers>
-          <span>
-            72K<span style={{ opacity: '0.1' }}>+</span>
-          </span>
+          <span>72K</span>
           <p style={{ fontSize: '14px' }}>Liquidity Providers</p>
         </BigNumbers>
         <BigNumbers>
-          <span>
-            {formattedTransactions}
-            <span style={{ opacity: '0.1' }}>+</span>
-          </span>
+          <span>{formattedTransactions}</span>
           <p style={{ fontSize: '14px' }}>All Time Trades</p>
         </BigNumbers>
         <BigNumbers>
-          <span>
-            200<span style={{ opacity: '0.1' }}>+</span>
-          </span>
+          <span>200+</span>
           <p style={{ fontSize: '14px' }}>Defi Integrations</p>
         </BigNumbers>
       </div>
