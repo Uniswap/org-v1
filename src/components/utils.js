@@ -52,7 +52,6 @@ export const CardFade = styled.span`
 `
 
 export const StyledLink = styled(Link)`
-  font-family: 'GT Haptik Regular';
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -74,7 +73,6 @@ export const StyledLink = styled(Link)`
   }
 `
 export const StyledExternalLink = styled.a`
-  font-family: 'GT Haptik Regular';
   margin: 0;
   padding: 0;
   text-decoration: none;

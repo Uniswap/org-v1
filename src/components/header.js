@@ -21,7 +21,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 1rem 1.25rem;
+  padding: 1.5rem;
   width: 100%;
   z-index: 3;
   position: sticky;
@@ -91,7 +91,6 @@ const StyledTradeLink = styled.a`
   display: inline-block;
   transition: transform 0.25s ease;
   font-weight: 500;
-  font-family: 'GT Haptik Regular';
 
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -154,8 +153,8 @@ const StyledUni = styled(Uni)`
     fill: ${({ theme }) => theme.textColor};
   }
   margin: 0;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   margin-right: 0.35rem;
   margin-top: -4px;
   transform: rotate(0deg);
@@ -259,7 +258,6 @@ const Header = props => {
           }}
         >
           <StyledUni />
-          <HeaderText>Uniswap</HeaderText>
         </StyledHomeLink>
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
@@ -277,14 +275,7 @@ const Header = props => {
         </HideSmall>
 
         {props.path !== undefined && (
-          <StyledTradeLink
-            style={{
-              background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
-              color: 'white'
-            }}
-            target="_blank"
-            href="https://app.uniswap.org/"
-          >
+          <StyledTradeLink target="_blank" href="https://app.uniswap.org/">
             Launch App
           </StyledTradeLink>
         )}

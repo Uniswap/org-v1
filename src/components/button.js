@@ -5,8 +5,6 @@ const ButtonStyles = css`
   text-decoration: none;
   border-radius: 12px;
   display: inline-block;
-  transform: scale(0.98);
-  transition: transform 0.25s ease;
   box-sizing: border-box;
   font-weight: 500;
   font-size: 1.125rem;

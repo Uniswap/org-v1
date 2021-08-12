@@ -10,10 +10,15 @@ import ProtocolData from '../components/protocolData'
 import { useDarkMode } from '../contexts/Application'
 import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../components/utils'
 
+import PinkGlimmer from '../images/pink_glimmer.inline.svg'
+import Twitter from '../images/twitter.inline.svg'
+import Github from '../images/github.inline.svg'
+import Discord from '../images/discord.inline.svg'
+import DevImage from '../images/developer.png'
+
 const BGCard = styled.span`
   width: 100vw;
   height: 100vh;
-  /* max-width: 1200px; */
   max-height: 1220px;
   user-select: none;
   background-repeat: no-repeat;
@@ -31,9 +36,8 @@ const StyledBody = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 12rem;
+  justify-content: flex-start;
+  padding: 3rem;
   margin-bottom: 4rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   @media (max-width: 960px) {
@@ -45,30 +49,21 @@ const StyledBody = styled.div`
 
 const StyledTitle = styled.div`
   display: flex;
-  text-align: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   will-change: transform;
-  /* margin: 3rem 0 4rem 0; */
-  margin: 0 auto;
-  margin-bottom: 6rem;
+  align-items: flex-start;
+  height: 70vh;
+
   @media (max-width: 960px) {
     margin: 0 auto;
-
-    /* margin: 3rem 0 1rem 0; */
-    /* margin-bottom: 4rem; */
   }
 `
 
 const StyledBodyTitle = styled.h1`
-  font-size: 104px;
-  margin: 4rem auto;
-  /* pointer-events: none; */
+  font-size: 56px;
   white-space: wrap;
   overflow-wrap: normal;
-  max-width: 900px;
-  text-align: center;
-  font-family: 'GT Haptik Regular';
   @media (max-width: 1024px) {
     margin: 2rem 0 3rem 0;
   }
@@ -88,6 +83,9 @@ const StyledBodyTitle = styled.h1`
   }
 `
 const StyledBodySubTitle = styled.h2`
+  max-width: 720px;
+  line-height: 125%;
+
   @media (max-width: 640px) {
     text-align: left;
   }
@@ -95,8 +93,17 @@ const StyledBodySubTitle = styled.h2`
 
 const StyledBodySubText = styled.h3`
   max-width: 960px;
-  text-align: center;
   line-height: 160%;
+  opacity: 0.8;
+  @media (max-width: 640px) {
+    text-align: left;
+  }
+`
+
+const StyledSectionTitle = styled.h3`
+  max-width: 960px;
+  line-height: 160%;
+  font-size: 32px;
   @media (max-width: 640px) {
     text-align: left;
   }
@@ -116,42 +123,38 @@ const StyledBannerImage = styled(Img)`
   }
 `
 
-const StyledImageLink = styled.a`
-  width: 100%;
-  height: 100%;
-  min-width: 260px;
-  max-width: 720px;
-  background-color: none;
-  border-radius: 12px;
-  box-shadow: ${({ theme }) => theme.shadows.huge};
-  @media (max-width: 960px) {
-    min-width: unset;
-  }
-`
+// const StyledImageLink = styled.a`
+//   width: 100%;
+//   height: 100%;
+//   min-width: 260px;
+//   max-width: 720px;
+//   background-color: none;
+//   border-radius: 12px;
+//   box-shadow: ${({ theme }) => theme.shadows.huge};
+//   @media (max-width: 960px) {
+//     min-width: unset;
+//   }
+// `
 
 const StyledProductImage = styled(Img)`
   width: 100%;
-  height: 100%;
-  min-width: 220px;
-  max-width: 220px;
+  max-width: 120px;
+  margin-bottom: 2rem;
   background-color: none;
   border-radius: 12px;
   box-shadow: ${({ theme }) => theme.shadows.huge};
 `
 
 const StyledItemRow = styled.nav`
-  align-items: center;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+
   margin: 0rem;
-  width: 100%;
   & > *:not(:first-of-type) {
     margin-top: 12px;
   }
   @media (min-width: 640px) {
     flex-direction: row;
-    justify-content: center;
     & > * {
       margin-bottom: 12px;
     }
@@ -165,42 +168,50 @@ const StyledItemRow = styled.nav`
     transition: right 0.25s ease;
   }
 `
-const MiniNewInfo = styled(Link)`
-  transform: rotate(-6deg) scale(0.98);
-  color: ${({ theme }) => theme.textColor};
-  /* display: inline-block; */
-  transition: transform 0.3s ease;
-  will-change: transform;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: absolute;
-  bottom: 170px;
-  right: 0px;
-  z-index: 99;
-  /* width: 160px; */
+
+const StyledPinkGlimmer = styled(PinkGlimmer)`
+  margin: 0;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  top: -24px;
+  right: -32px;
+  margin-left: -48px;
+  margin-right: 8px;
+  transition: transform 0.2s linear;
   :hover {
-    transform: rotate(-1deg);
-  }
-  a {
-    color: ${({ theme }) => theme.textColor};
-  }
-  @media (max-width: 960px) {
-    display: none;
+    transform: rotate(-10deg);
   }
 `
 
-const NewPill = styled.span`
-  float: left;
-  color: ${({ theme }) => theme.invertedTextColor};
-  background: ${({ theme }) => theme.colors.blue1};
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.75em;
-  text-align: center;
-  margin: 0;
-  margin-right: 1rem;
-  font-weight: 500;
-  font-size: 14px;
+const StyledTwitter = styled(Twitter)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  width: 24px;
+  height: 24px;
+`
+
+const StyledDiscord = styled(Discord)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  width: 24px;
+  height: 24px;
+`
+
+const StyledGithub = styled(Github)`
+  path {
+    fill: ${({ theme }) => theme.textColor};
+  }
+  width: 24px;
+  height: 24px;
+`
+const StyledCard = styled.div`
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 24px;
 `
 
 const IndexPage = props => {
@@ -213,13 +224,6 @@ const IndexPage = props => {
           siteUrl
         }
       }
-      newYear: file(relativePath: { eq: "newyear.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
       banner: file(relativePath: { eq: "Banner.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
@@ -227,38 +231,10 @@ const IndexPage = props => {
           }
         }
       }
-      swap: file(relativePath: { eq: "swap.png" }) {
+      grants: file(relativePath: { eq: "unigrants.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      info: file(relativePath: { eq: "info.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      socks: file(relativePath: { eq: "socks.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      sybil: file(relativePath: { eq: "sybil.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      tokenlists: file(relativePath: { eq: "tokenlists.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
@@ -290,13 +266,6 @@ const IndexPage = props => {
           }
         }
       }
-      thin: file(relativePath: { eq: "thin.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       devs: file(relativePath: { eq: "devs.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
@@ -322,67 +291,22 @@ const IndexPage = props => {
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>
-            Decentralized Trading Protocol
-            <MiniNewInfo to="/blog/launch-uniswap-v3/">
-              <NewPill
-                style={{
-                  color: 'white'
-                }}
-              >
-                Learn about Uniswap V3 ↗
-              </NewPill>
-            </MiniNewInfo>
+            <span style={{ fontWeight: 300 }}>UNISWAP</span>
+            <StyledPinkGlimmer /> PROTOCOL
           </StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
-            Guaranteed liquidity for millions of users and hundreds of Ethereum applications.
+            Trusted by traders, developers, and protocols in the Ethereum ecosystem.
           </StyledBodySubTitle>
-
           <StyledItemRow>
-            <Button
-              style={{
-                background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
-                color: 'white',
-                fontSize: '20px'
-              }}
-              target="_blank"
-              href="https://app.uniswap.org/"
-            >
-              Launch App
-            </Button>
-            <Button
-              outlined        
-              style={{
-                fontSize: '20px'
-              }}
-              href="https://docs.uniswap.org/"
-            >
-              Docs
-            </Button>
-            <Button
-              outlined
-              to="/blog"
-              as={Link}
-              style={{
-                fontSize: '20px'
-              }}
-            >
-              Blog
-            </Button>
-            <Button
-              outlined
-              to="/faq"
-              as={Link}
-              style={{
-                fontSize: '20px'
-              }}
-            >
-              FAQ
-            </Button>
+            <StyledTwitter />
+            <StyledGithub />
+            <StyledDiscord />
           </StyledItemRow>
         </StyledTitle>
-        <ProtocolData />
+
         <DeveloperSection data={data} props={props} />
         <ProductsSection data={data} props={props} />
+        <ProtocolData />
       </StyledBody>
       <BG />
     </Layout>
@@ -391,14 +315,12 @@ const IndexPage = props => {
 
 export default IndexPage
 
-const StyledSectionTitle = styled.h1`
-  font-size: 48px;
+const StyledSectionHeader = styled.h1`
+  font-size: 20px;
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
-  text-align: center;
-  font-family: 'GT Haptik Regular';
-  margin-top: 10rem;
+  font-weight: 500;
 
   @media (max-width: 960px) {
     width: 100%;
@@ -415,56 +337,92 @@ const StyledSectionTitle = styled.h1`
   }
 `
 
+const StyledSection = styled.section`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 4rem 0;
+`
+
+export const DeveloperCard = styled(StyledCard)`
+  mix-blend-mode: ${({ isDark }) => (isDark ? 'overlay' : 'lighten')};
+  background: url(${DevImage});
+
+  background-size: cover;
+  background-repeat: no-repeat;
+`
+
 const DeveloperSection = props => {
   return (
-    <>
-      <StyledSectionTitle>A growing protocol ecosystem.</StyledSectionTitle>
-      <StyledBodySubText>
-        The Uniswap protocol empowers developers, liquidity providers and traders to participate in a financial
-        marketplace that is open and accessible to all.
-      </StyledBodySubText>
+    <StyledSection>
+      <span>
+        <StyledSectionHeader>{'ECOSYSTEM →'}</StyledSectionHeader>
+        <StyledSectionTitle>A growing protocol ecosystem.</StyledSectionTitle>
+        <StyledBodySubText>
+          The Uniswap protocol empowers developers, liquidity providers and traders to participate in a financial
+          marketplace that is open and accessible to all.
+        </StyledBodySubText>
+      </span>
       <StyledBannerImage fadeIn={false} fluid={props.data.banner.childImageSharp.fluid} />
-    </>
+    </StyledSection>
   )
 }
 
 const ProductsSection = props => {
   return (
     <>
-      <StyledSectionTitle>A suite of tools for a tokenized world.</StyledSectionTitle>
-      <StyledBodySubText>
-        We build state of the art open source apps to access the Uniswap protocol and contribute to the world of
-        decentralized finance.
-      </StyledBodySubText>
+      <StyledSectionHeader>{'DEVELOPERS →'}</StyledSectionHeader>
       <StyledItemRow>
-        <StyledExternalLink href={'https://socks.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.socks.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://info.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.info.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.swap.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://tokenlists.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.tokenlists.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://sybil.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.sybil.childImageSharp.fluid} />
-        </StyledExternalLink>
+        <DeveloperCard style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+          <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
+          <StyledBodySubText>
+            Check out the documentation, the Javascript SDK quick start or a guide below to integrate your project with
+            thousands of tokens and billions in liquidity.
+          </StyledBodySubText>
+
+          <Button outlined>
+            <p style={{ margin: 0 }}>Developer Docs ↗</p>
+          </Button>
+        </DeveloperCard>
+        <StyledCard style={{ maxWidth: '375px' }}>
+          <StyledProductImage fadeIn={false} fluid={props.data.grants.childImageSharp.fluid} />
+          <StyledBodySubTitle>Apply for the Uniswap Developer Grants Program</StyledBodySubTitle>
+          <p>
+            We aim to empower our community with the resources needed to improve the experience of all UNI users,
+            builders, and community members.
+          </p>
+          <Button outlined>
+            <p style={{ margin: 0 }}>Learn more ↗</p>
+          </Button>
+        </StyledCard>
       </StyledItemRow>
 
-      <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
-      <StyledBodySubText>
-        Check out the <a href="https://docs.uniswap.org">documentation</a>, the{' '}
-        <a href="https://docs.uniswap.org/sdk/guides/quick-start">Javascript SDK quick start</a> or a guide below to
-        integrate your project with thousands of tokens and billions in liquidity.
-      </StyledBodySubText>
-      <StyledImageLink href="https://docs.uniswap.org">
-        <StyledBannerImage fadeIn={false} fluid={props.data.devs.childImageSharp.fluid} />
-      </StyledImageLink>
+      <StyledSectionHeader>{'COMMUNITY →'}</StyledSectionHeader>
 
-      <StyledSectionTitle>A global community.</StyledSectionTitle>
+      <StyledItemRow>
+        <StyledCard>
+          <StyledItemRow>
+            <StyledExternalLink href={'https://discord.gg/FCfyBSbCU5'} target="_blank">
+              <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
+            </StyledExternalLink>
+            <StyledExternalLink href={'https://twitter.com/Uniswap'} target="_blank">
+              <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
+            </StyledExternalLink>
+            <StyledExternalLink href={'https://gov.uniswap.org/'} target="_blank">
+              <StyledProductImage fadeIn={false} fluid={props.data.discourse.childImageSharp.fluid} />
+            </StyledExternalLink>
+            <StyledExternalLink href={'https://www.reddit.com/r/Uniswap'} target="_blank">
+              <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
+            </StyledExternalLink>
+          </StyledItemRow>
+        </StyledCard>
+      </StyledItemRow>
+      <StyledBodySubText>
+        Learn more about Uniswap, chat with the team, others in the community, and have your say in shaping the future
+        of the Uniswap protocol.
+      </StyledBodySubText>
+
+      <StyledSectionHeader>{'GOVERNANCE →'}</StyledSectionHeader>
       <StyledBodySubText>
         Learn more about Uniswap, chat with the team, others in the community, and have your say in shaping the future
         of the Uniswap protocol.

@@ -8,7 +8,6 @@ const StyledFooter = styled.footer`
   color: ${({ theme }) => theme.textColor};
   position: relative;
   padding: 0 3rem 2rem 3rem;
-  font-family: 'GT Haptik Regular';
 
   @media (max-width: 1155px) {
     display: block;

@@ -20,7 +20,8 @@ const StyledMenu = styled.button`
   border: none;
   text-align: left;
   list-style: none;
-  font-family: 'GT Haptik Regular';
+  color: ${({ theme }) => theme.textColor};
+
 
   /* padding-right: 2rem; */
   background: none;
@@ -94,7 +95,7 @@ const StyledMenuTitle = styled.span`
   margin: 0px;
   border-radius: 0.5rem;
   font-weight: 400;
-  font-family: 'GT Haptik Regular';
+  color: ${({ theme }) => theme.textColor};
   width: fit-content;
   font-size: 16px;
   padding: 0 0 0.2rem;
@@ -136,7 +137,6 @@ const StyledMenuItem = styled.span`
   text-decoration: none;
   margin: 0px;
   border-radius: 0.5rem;
-  font-family: 'GT Haptik Regular';
   width: fit-content;
 
   :hover {
