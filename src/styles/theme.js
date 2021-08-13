@@ -156,7 +156,7 @@ export const GlobalStyle = createGlobalStyle`
     /* font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on; */
 
     line-height: 1.55;
-    /* max-width: 1440px; */
+    max-width: 1440px;
     width: 100%;
     margin: 0px auto;
     font-weight: 400 !important;

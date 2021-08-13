@@ -54,7 +54,7 @@ const StyledTitle = styled.div`
   justify-content: flex-end;
   will-change: transform;
   align-items: flex-start;
-  height: 70vh;
+  height: 80vh;
   margin-bottom: 4rem;
 `
 
@@ -302,8 +302,6 @@ const IndexPage = props => {
           </StyledSocialRow>
         </StyledTitle>
         <EcosystemSection data={data} props={props} />
-
-        <DeveloperSection data={data} props={props} />
         <HideSmall>
           <StyledSectionHeader>
             <a href="https://info.uniswap.org/">{'PROTOCOL ANALYTICS →'}</a>
@@ -320,6 +318,7 @@ const IndexPage = props => {
             <ProtocolData />
           </div>
         </HideSmall>
+        <DeveloperSection data={data} props={props} />
       </StyledBody>
       <BG />
     </Layout>
