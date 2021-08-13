@@ -160,10 +160,10 @@ const StyledPinkGlimmer = styled(PinkGlimmer)`
   width: 48px;
   height: 48px;
   position: relative;
-  top: -30px;
+  top: -24px;
   right: -32px;
-  margin-left: -48px;
-  margin-right: 0px;
+  margin-left: -50px;
+  margin-right: 2px;
   transition: transform 0.2s linear;
   :hover {
     transform: rotate(-10deg);
