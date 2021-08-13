@@ -43,7 +43,7 @@ const StyledBody = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.buttonBorder};
   @media (max-width: 960px) {
     margin-bottom: 0;
-    padding: 2rem;
+    padding: 1rem;
     padding-bottom: 8rem;
   }
 `
@@ -63,7 +63,7 @@ const StyledBodyTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   @media (max-width: 1024px) {
-    margin: 2rem 0 3rem 0;
+    margin: 2rem 0 0rem 0;
   }
 
   @media (max-width: 640px) {
@@ -304,7 +304,7 @@ const IndexPage = props => {
       <SEO
         title="Home"
         path={props.location.pathname}
-        description={'Swap, earn, and build on the largest crypto trading protocol on Ethereum.'}
+        description={'Swap, earn, and build on the leading decentralized crypto trading protocol.'}
       />
       <StyledBody>
         <StyledTitle>
@@ -313,7 +313,7 @@ const IndexPage = props => {
             <StyledPinkGlimmer /> PROTOCOL
           </StyledBodyTitle>
           <StyledBodySubTitle>
-            {'Swap, earn, and build on the largest crypto trading protocol on Ethereum.'}
+            {'Swap, earn, and build on the leading decentralized crypto trading protocol.'}
           </StyledBodySubTitle>
 
           <StyledTradeLink
@@ -462,7 +462,7 @@ const EcosystemSection = () => {
       <StyledItemRow>
         <span>
           <StyledSectionHeader>{'UNISWAP ECOSYSTEM →'}</StyledSectionHeader>
-          <StyledSectionTitle>A growing network of DApps.</StyledSectionTitle>
+          <StyledSectionTitle>A growing network of Defi Apps.</StyledSectionTitle>
           <StyledBodySubText style={{ marginRight: '48px' }}>
             Developers, traders, and liquidity providers participate together in a financial marketplace that is open
             and accessible to all.
@@ -483,12 +483,14 @@ const DeveloperSection = props => {
       <StyledSection>
         <StyledSectionHeader>{'DEVELOPERS →'}</StyledSectionHeader>
         <StyledItemRow>
-          <DeveloperCard style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+          <DeveloperCard
+            style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', width: '100%' }}
+          >
             <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
-            <StyledBodySubText>
+            <StyledBodySubTitle style={{ fontSize: '20px' }}>
               Build DApps and tools on the largest crypto project on Ethereum. Get started with quick start guides,
               protocol documentation, a Javascript SDK, and fully open source code.
-            </StyledBodySubText>
+            </StyledBodySubTitle>
 
             <Button href="https://docs.uniswap.org/">
               <p style={{ margin: 0 }}>
@@ -533,7 +535,7 @@ const DeveloperSection = props => {
                 <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
                   Governance Forum <span style={{ fontSize: '16px' }}>↗</span>
                 </StyledBodySubTitle>
-                <p style={{ textAlign: 'left', margin: '0', opacity: '0.6', fontSize: '16px' }}>
+                <p style={{ textAlign: 'left', margin: '0', opacity: '0.6', fontSize: '16px', fontWeight: 400 }}>
                   Participate by proposing upgrades and discussing the future of the protocol with the Uniswap
                   community.
                 </p>
@@ -544,7 +546,7 @@ const DeveloperSection = props => {
                 <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
                   Sybil <span style={{ fontSize: '16px' }}>↗</span>
                 </StyledBodySubTitle>
-                <p style={{ textAlign: 'left', margin: '0', opacity: '0.6', fontSize: '16px' }}>
+                <p style={{ textAlign: 'left', margin: '0', opacity: '0.6', fontSize: '16px', fontWeight: 400 }}>
                   Vote on offchain proposals with the Snapshot interface. Votes are weighted by the number of UNI
                   delegates.
                 </p>
@@ -555,7 +557,7 @@ const DeveloperSection = props => {
                 <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
                   Governance Portal <span style={{ fontSize: '16px' }}>↗</span>
                 </StyledBodySubTitle>
-                <p style={{ textAlign: 'left', margin: '0', opacity: '0.6', fontSize: '16px' }}>
+                <p style={{ textAlign: 'left', margin: '0', opacity: '0.6', fontSize: '16px', fontWeight: 400 }}>
                   Vote on official Uniswap governance proposals and view past proposals.{' '}
                 </p>
               </div>
