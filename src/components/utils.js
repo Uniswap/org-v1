@@ -23,6 +23,8 @@ export const CardBGImage = styled.span`
   ${({ desaturate }) => desaturate && `filter: saturate(0)`};
   @media (max-width: 960px) {
     background-repeat: no-repeat;
+    width: 100vw;
+    left: -60px;
   }
 `
 
@@ -42,6 +44,8 @@ export const CardGlimmerImage = styled.span`
   /* ${({ desaturate }) => desaturate && `filter: saturate(0)`}; */
   @media (max-width: 960px) {
     background-repeat: no-repeat;
+    background-size: unset;
+
   }
 `
 

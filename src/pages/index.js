@@ -83,7 +83,7 @@ const StyledBodyTitle = styled.h1`
 const StyledBodySubTitle = styled.h2`
   max-width: 720px;
   line-height: 125%;
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
 
   @media (max-width: 640px) {
@@ -120,6 +120,7 @@ const StyledProductImage = styled(Img)`
 const StyledSocialRow = styled.nav`
   display: flex;
   flex-direction: row;
+  margin-top: 2rem;
   & > *:not(:first-of-type) {
     margin-top: 0;
     margin-left: 16px;
@@ -198,11 +199,36 @@ const StyledCard = styled.div`
   border: 1px solid ${({ theme }) => theme.buttonBorder};
   padding: 2rem;
   border-radius: 24px;
+  box-shadow: ${({ theme }) => theme.shadows.huge};
 `
 
 const HideSmall = styled.span`
   @media (max-width: 960px) {
     display: none;
+  }
+`
+
+const StyledTradeLink = styled.a`
+  padding: 0.25rem 0.75rem;
+  background-color: ${({ theme }) => theme.textColor};
+  text-decoration: none;
+  color: ${({ theme }) => theme.invertedTextColor};
+  border-radius: 12px;
+  display: inline-block;
+  font-weight: 500;
+  width: 100%;
+  width: min-content;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  box-shadow: ${({ theme }) => theme.shadows.small};
+  display: none;
+
+  :hover,
+  :focus {
+    border: 1px solid white;
+  }
+  @media (max-width: 960px) {
+    display: inline-block;
   }
 `
 const IndexPage = props => {
@@ -278,7 +304,7 @@ const IndexPage = props => {
       <SEO
         title="Home"
         path={props.location.pathname}
-        description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
+        description={'Swap, earn, and build on the largest crypto trading protocol on Ethereum.'}
       />
       <StyledBody>
         <StyledTitle>
@@ -286,9 +312,20 @@ const IndexPage = props => {
             <span style={{ fontWeight: 200 }}>UNISWAP</span>
             <StyledPinkGlimmer /> PROTOCOL
           </StyledBodyTitle>
-          <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
-            Swap, earn, and build on the largest crypto trading protocol on Ethereum
+          <StyledBodySubTitle>
+            {'Swap, earn, and build on the largest crypto trading protocol on Ethereum.'}
           </StyledBodySubTitle>
+
+          <StyledTradeLink
+            style={{
+              background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+              color: 'white'
+            }}
+            target="_blank"
+            href="https://app.uniswap.org/"
+          >
+            Launch App
+          </StyledTradeLink>
           <StyledSocialRow>
             <a href="https://twitter.com/uniswap/">
               <StyledTwitter />
@@ -359,7 +396,7 @@ const StyledSection = styled.section`
   margin: 2rem 0;
 
   @media (max-width: 640px) {
-    margin: 2rem 0;
+    margin: 0;
   }
 `
 
@@ -377,14 +414,13 @@ export const GovernanceCard = styled(StyledCard)`
   background-size: cover;
   background-repeat: no-repeat;
   margin-right: 12px;
-  @media (max-width: 640px) {
+  @media (max-width: 960px) {
     margin-bottom: 12px;
     margin-right: 0px;
   }
 `
 
 export const AppsCard = styled(StyledCard)`
-  /* mix-blend-mode: ${({ isDark }) => (isDark ? 'overlay' : 'lighten')}; */
   background: url(${AppsImage});
   background-size: cover;
   background-repeat: no-repeat;
@@ -392,16 +428,17 @@ export const AppsCard = styled(StyledCard)`
   width: 100%;
   min-height: 290px;
   max-width: 590px;
-  /* mask-image: radial-gradient(ellipse 70% 90% at 50% 50%, black 50%, transparent 80%); */
 
   h1 {
     font-size: 48px;
     font-weight: 700;
     margin: 0;
+    margin-bottom: 0.25rem;
   }
 
   p {
     opacity: 0.6;
+    font-size: 20px;
     font-weight: 300;
   }
 
@@ -454,7 +491,10 @@ const DeveloperSection = props => {
             </StyledBodySubText>
 
             <Button href="https://docs.uniswap.org/">
-              <p style={{ margin: 0 }}>Developer Documentation ↗</p>
+              <p style={{ margin: 0 }}>
+                {' '}
+                <HideSmall>Developer</HideSmall> Documentation ↗
+              </p>
             </Button>
           </DeveloperCard>
           <GrantsCard>

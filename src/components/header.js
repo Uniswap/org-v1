@@ -21,7 +21,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   width: 100%;
   z-index: 3;
   position: sticky;
@@ -30,7 +30,7 @@ const StyledHeader = styled.header`
   border-bottom: 1px solid ${({ theme, open, showBG }) => (showBG && !open ? theme.concreteGray : 'none')};
   transition: background-color 0.25s ease;
   @media (max-width: 960px) {
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.25rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
   }
 `
@@ -265,20 +265,19 @@ const Header = props => {
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </StyledButton>
         </HideSmall>
+        {props.path !== undefined && (
+          <StyledTradeLink
+            style={{
+              background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+              color: 'white'
+            }}
+            target="_blank"
+            href="https://app.uniswap.org/"
+          >
+            Launch App
+          </StyledTradeLink>
+        )}
       </StyledNav>
-
-      {props.path !== undefined && (
-        <StyledTradeLink
-          style={{
-            background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
-            color: 'white'
-          }}
-          target="_blank"
-          href="https://app.uniswap.org/"
-        >
-          Launch App
-        </StyledTradeLink>
-      )}
     </StyledHeader>
   )
 }

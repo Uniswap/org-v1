@@ -128,9 +128,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
-  
-  
-    html {
+  html {
     font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
@@ -144,6 +142,7 @@ export const GlobalStyle = createGlobalStyle`
     overflow-y: scroll;
     width: 100%;
     box-sizing: border-box;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
 
   body {
@@ -153,15 +152,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    /* font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on; */
-
     line-height: 1.55;
     max-width: 1440px;
     width: 100%;
     margin: 0px auto;
     font-weight: 400 !important;
     color: ${({ theme }) => theme.textColor};
-
     
     @media (min-width: 1441px) {
         overflow-x: visible;
@@ -184,17 +180,20 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin-top: 1.75rem ;
     font-size: 1.875rem;
     font-weight: 600;
   }
 
   h2 {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1.5rem;
     font-weight: 400;
   }
 
   h3 {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
   }
 

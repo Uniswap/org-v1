@@ -161,15 +161,15 @@ const ProtocolData = () => {
       <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', margin: 0 }}>
         <BigNumbers>
           <Sparkle />
-          <span>{formattedVol}</span>
-          <p style={{ fontSize: '14px' }}>All Time Volume</p>
+          <span>$386B</span>
+          <p style={{ fontSize: '14px' }}>Trade Volume</p>
           <SparkleGray />
         </BigNumbers>
         <BigNumbers>
           <SparkleTopRight />
 
           <SparkleGray />
-          <span>1M+</span>
+          <span>1.5M+</span>
           <p style={{ fontSize: '14px' }}>All Time Users</p>
         </BigNumbers>
         <BigNumbers>
@@ -177,11 +177,12 @@ const ProtocolData = () => {
           <p style={{ fontSize: '14px' }}>All Time Trades</p>
           <SparkleGray />
         </BigNumbers>
+
         <BigNumbers>
           <Sparkle />
           <SparkleBottom />
-          <span>200+</span>
-          <p style={{ fontSize: '14px' }}>Defi Integrations</p>
+          <span>325M</span>
+          <p style={{ fontSize: '14px' }}>Votes Cast by Community</p>
         </BigNumbers>
       </div>
     </Numbers>

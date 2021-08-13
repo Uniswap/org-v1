@@ -96,7 +96,7 @@ const StyledMenuTitle = styled.span`
   font-weight: 400;
   color: ${({ theme }) => theme.textColor};
   width: fit-content;
-  font-size: 16px;
+  font-size: 1.15rem;
   padding: 0 0 0.2rem;
   :focus {
     outline: 0;
