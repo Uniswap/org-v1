@@ -84,6 +84,7 @@ const StyledBodySubTitle = styled.h2`
   max-width: 720px;
   line-height: 125%;
   font-weight: 500;
+  text-align: left;
 
   @media (max-width: 640px) {
     text-align: left;
@@ -377,7 +378,7 @@ export const GovernanceCard = styled(StyledCard)`
   background-size: cover;
   background-repeat: no-repeat;
   margin-right: 12px;
-  @media (max-width: 960px) {
+  @media (max-width: 640px) {
     margin-bottom: 12px;
     margin-right: 0px;
   }

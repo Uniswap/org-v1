@@ -32,7 +32,6 @@ export const CardGlimmerImage = styled.span`
   width: 100%;
   height: 100%;
   opacity: 0.5;
-  background-size: contain;
   position: absolute;
   left: 0;
   background-repeat: no-repeat;
