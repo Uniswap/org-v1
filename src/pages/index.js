@@ -95,7 +95,7 @@ const StyledBodySubTitle = styled.h2`
 
 const StyledBodySubText = styled.h3`
   max-width: 960px;
-  line-height: 160%;
+  line-height: 140%;
   opacity: 0.8;
   @media (max-width: 640px) {
     text-align: left;
@@ -104,7 +104,7 @@ const StyledBodySubText = styled.h3`
 
 const StyledSectionTitle = styled.h3`
   max-width: 960px;
-  line-height: 160%;
+  line-height: 140%;
   font-size: 32px;
   @media (max-width: 640px) {
     text-align: left;
@@ -124,19 +124,6 @@ const StyledBannerImage = styled(Img)`
     min-width: unset;
   }
 `
-
-// const StyledImageLink = styled.a`
-//   width: 100%;
-//   height: 100%;
-//   min-width: 260px;
-//   max-width: 720px;
-//   background-color: none;
-//   border-radius: 12px;
-//   box-shadow: ${({ theme }) => theme.shadows.huge};
-//   @media (max-width: 960px) {
-//     min-width: unset;
-//   }
-// `
 
 const StyledProductImage = styled(Img)`
   width: 100%;
@@ -223,7 +210,8 @@ const StyledGithub = styled(Github)`
   height: 24px;
 `
 const StyledCard = styled.div`
-  background: rgba(255, 255, 255, 0.02);
+  background-color: ${({ theme }) => theme.cardBG};
+
   border: 1px solid ${({ theme }) => theme.buttonBorder};
   padding: 2rem;
   border-radius: 24px;
@@ -315,7 +303,7 @@ const IndexPage = props => {
             <StyledPinkGlimmer /> PROTOCOL
           </StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
-            Trusted by traders, developers, and protocols in the Ethereum ecosystem.
+            Swap, earn, and build on the largest crypto trading protocol on Ethereum
           </StyledBodySubTitle>
           <StyledSocialRow>
             <a href="https://twitter.com/uniswap/">
@@ -329,17 +317,23 @@ const IndexPage = props => {
             </a>
           </StyledSocialRow>
         </StyledTitle>
+        <EcosystemSection data={data} props={props} />
 
-        <DeveloperSection data={data} props={props} />
-        <ProductsSection data={data} props={props} />
         <HideSmall>
-          <StyledSectionHeader>{'ANALYTICS →'}</StyledSectionHeader>
-          <div
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '2rem' }}
+          <StyledSectionHeader>{'PROTOCOL ANALYTICS →'}</StyledSectionHeader>
+          <StyledCard
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              padding: '4rem 0 3rem 0'
+            }}
           >
             <ProtocolData />
-          </div>
+          </StyledCard>
         </HideSmall>
+        <DeveloperSection data={data} props={props} />
       </StyledBody>
       <BG />
     </Layout>
@@ -407,16 +401,16 @@ export const GrantsCard = styled(StyledCard)`
   }
 `
 
-const DeveloperSection = props => {
+const EcosystemSection = props => {
   return (
     <StyledSection>
       <StyledItemRow>
         <span>
-          <StyledSectionHeader>{'ECOSYSTEM →'}</StyledSectionHeader>
-          <StyledSectionTitle>A growing protocol ecosystem.</StyledSectionTitle>
+          <StyledSectionHeader>{'UNISWAP ECOSYSTEM →'}</StyledSectionHeader>
+          <StyledSectionTitle>A growing network of DApps.</StyledSectionTitle>
           <StyledBodySubText style={{ marginRight: '48px' }}>
-            The Uniswap Protocol is fully decentralized, battle tested and the best home for liquidty, oracles and
-            trading on Ethereum.
+            Developers, traders, and liquidity providers participate together in a financial marketplace that is open
+            and accessible to all.
           </StyledBodySubText>
         </span>
         <StyledBannerImage fadeIn={false} fluid={props.data.banner.childImageSharp.fluid} />
@@ -425,7 +419,7 @@ const DeveloperSection = props => {
   )
 }
 
-const ProductsSection = props => {
+const DeveloperSection = props => {
   return (
     <>
       <StyledSection>
@@ -434,8 +428,8 @@ const ProductsSection = props => {
           <DeveloperCard style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
             <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
             <StyledBodySubText>
-              Check out the documentation, the Javascript SDK quick start or a guide below to integrate your project
-              with thousands of tokens and billions in liquidity.
+              Build DApps and tools on the largest crypto project on Ethereum. Get started with quick start guides,
+              protocol documentation, a Javascript SDK, and fully open source code.
             </StyledBodySubText>
 
             <Button href="https://docs.uniswap.org/">
@@ -446,8 +440,8 @@ const ProductsSection = props => {
             <StyledProductImage fadeIn={false} fluid={props.data.grants.childImageSharp.fluid} />
             <StyledBodySubTitle>Apply for the Uniswap Developer Grants Program</StyledBodySubTitle>
             <p>
-              We aim to empower our community with the resources needed to improve the experience of all UNI users,
-              builders, and community members.
+              Get paid to build the future of finance. Uniswap Governance offers grant funding for people building apps,
+              tools, and activities on the Uniswap Protocol.
             </p>
             <Button href="https://unigrants.org/" outlined>
               <p style={{ margin: 0 }}>Learn more ↗</p>
@@ -461,40 +455,45 @@ const ProductsSection = props => {
         <StyledItemRow>
           <GovernanceCard style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
             <StyledSectionTitle>A self sustaining ecosystem.</StyledSectionTitle>
-            <StyledBodySubText style={{ fontSize: '16px' }}>
-              Uniswap protocol is goverened and upgraded by UNI token holders, using three distinct components; the UNI
-              token, governance module, and Timelock. Together, these contracts allow the community to propose, vote,
-              and implement changes to the uniswap protocol.{' '}
-            </StyledBodySubText>
+            <StyledBodySubTitle style={{ fontSize: '20px' }}>
+              The Uniswap Protocol is governed by a decentralized community of UNI token holders and their delegates who
+              propose and vote on upgrades to the protocol.
+            </StyledBodySubTitle>
 
-            <Button href="/about" outlined>
+            <Button href="https://docs.uniswap.org/protocol/concepts/governance/guide-to-voting" outlined>
               <p style={{ margin: 0 }}>Read more </p>
             </Button>
           </GovernanceCard>
           <StyledItemColumn style={{ display: 'flex', flexDirection: 'column' }}>
             <Button href="https://gov.uniswap.org" outlined>
               <div style={{ padding: '1rem' }}>
-                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>gov.uniswap.org ↗</StyledBodySubTitle>
+                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
+                  gov.uniswap.org <span style={{ fontSize: '16px' }}>↗</span>
+                </StyledBodySubTitle>
                 <p style={{ margin: '0', opacity: '0.6', fontSize: '16px' }}>
-                  We aim to empower our community with the resources needed to improve the experience of all UNI users,
-                  builders, and community members.
+                  Participate by proposing upgrades and discussing the future of the protocol with the Uniswap
+                  community.
                 </p>
               </div>
             </Button>
-            <Button href="https://snapshot.page/#/uniswap" outlined>
+            <Button href="https://sybil.org/" outlined>
               <div style={{ padding: '1rem' }}>
-                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>Snapshot ↗</StyledBodySubTitle>
+                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
+                  Sybil <span style={{ fontSize: '16px' }}>↗</span>
+                </StyledBodySubTitle>
                 <p style={{ margin: '0', opacity: '0.6', fontSize: '16px' }}>
                   Vote on offchain proposals with the Snapshot interface. Votes are weighted by the number of UNI
                   delegates.
                 </p>
               </div>
             </Button>
-            <Button href="https://app.uniswap.org/#/vote" outlined>
+            <Button style={{ width: '100%' }} href="https://app.uniswap.org/#/vote" outlined>
               <div style={{ padding: '1rem' }}>
-                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>Governance Portal↗</StyledBodySubTitle>
+                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
+                  Governance Portal <span style={{ fontSize: '16px' }}>↗</span>
+                </StyledBodySubTitle>
                 <p style={{ margin: '0', opacity: '0.6', fontSize: '16px' }}>
-                  Vote on formal proposals with UNI. Accessed through the Unsiwap Interface.
+                  Vote on official Uniswap governance proposals and view past proposals.{' '}
                 </p>
               </div>
             </Button>

@@ -48,6 +48,9 @@ const BigNumbers = styled(StyledSectionFlex)`
   font-size: 48px;
   font-weight: 700;
   flex-direction: column;
+  p {
+    font-weight: 300;
+  }
   @media (max-width: 960px) {
     font-size: 32px;
   }

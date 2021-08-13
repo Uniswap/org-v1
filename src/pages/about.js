@@ -132,7 +132,7 @@ export const GET_BLOCK = gql`
   }
 `
 
-export const ETH_PRICE = (block) => {
+export const ETH_PRICE = block => {
   const queryString = block
     ? `
     query bundles {
@@ -166,7 +166,7 @@ const APOLLO_QUERY = gql`
   }
 `
 
-export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = (block) => {
+export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = block => {
   let queryString = `
   query uniswapFactory {
     uniswapFactory(id: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f", block: { number: ${block} }) {
@@ -180,7 +180,7 @@ export const UNISWAP_GLOBALS_24HOURS_AGO_QUERY = (block) => {
   return gql(queryString)
 }
 
-const About = (props) => {
+const About = props => {
   dayjs.extend(utc)
   const utcCurrentTime = dayjs()
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()
@@ -188,8 +188,8 @@ const About = (props) => {
   const { data: blockData } = useQuery(GET_BLOCK, {
     client: blockClient,
     variables: {
-      timestamp: utcOneDayBack,
-    },
+      timestamp: utcOneDayBack
+    }
   })
   const oneDayBackBlock = blockData?.blocks?.[0]?.number
   const { data } = useQuery(APOLLO_QUERY, { pollInterval: 10000, client: client })
@@ -201,7 +201,7 @@ const About = (props) => {
       let result = await client.query({
         query: UNISWAP_GLOBALS_24HOURS_AGO_QUERY(oneDayBackBlock),
 
-        fetchPolicy: 'cache-first',
+        fetchPolicy: 'cache-first'
       })
       if (result) {
         setOnedayResult(result?.data?.uniswapFactory)
@@ -213,9 +213,9 @@ const About = (props) => {
   }, [oneDayBackBlock])
 
   let UniStats = {
-    key: function (n) {
+    key: function(n) {
       return this[Object.keys(this)[n]]
-    },
+    }
   }
 
   if (data && oneDayResult) {
@@ -226,17 +226,17 @@ const About = (props) => {
         style: 'currency',
         currency: 'USD',
         notation: 'compact',
-        compactDisplay: 'short',
-      }).format(volume24Hour),
+        compactDisplay: 'short'
+      }).format(volume24Hour)
     ]
     UniStats.liquidity = [
       new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         notation: 'compact',
-        compactDisplay: 'short',
+        compactDisplay: 'short'
         // maximumSignificantDigits: 5
-      }).format(data.uniswapFactory.totalLiquidityUSD),
+      }).format(data.uniswapFactory.totalLiquidityUSD)
     ]
     UniStats.exchanges = [Number.parseFloat(data?.uniswapFactory?.pairCount)]
 
@@ -246,9 +246,9 @@ const About = (props) => {
         currency: 'USD',
         notation: 'compact',
         compactDisplay: 'short',
-        maximumSignificantDigits: 5,
+        maximumSignificantDigits: 5
       }).format(parseFloat(data?.bundle?.ethPrice)),
-      '<small> Uni ETH Price </small>',
+      '<small> Uni ETH Price </small>'
     ]
   }
 
@@ -260,7 +260,7 @@ const About = (props) => {
       <StyledAbout>
         <span style={{ marginTop: '5rem' }}>
           <Title style={{ paddingBottom: '4rem' }}>
-            Guaranteed liquidity for thousands of users and hundreds of applications.{' '}
+            Swap, earn, and build on the largest crypto trading protocol on Ethereum.
           </Title>
 
           <Numbers id="about" style={{ flexDirection: 'column' }}>
@@ -278,7 +278,7 @@ const About = (props) => {
                 <p style={{ fontSize: '14px' }}>Total Liquidity</p>
               </h2>
               <h2 style={{ fontSize: '32px' }}>
-                {'> 100'}
+                {'> 200'}
                 <p style={{ fontSize: '14px' }}>Defi Integrations</p>
               </h2>
             </div>
@@ -298,9 +298,6 @@ const About = (props) => {
               <InternalLink to="/whitepaper-v3.pdf">
                 V3 Whitepaper <span style={{ fontSize: '11px' }}>↗</span>
               </InternalLink>
-              <InternalLink to="/audit.html">
-                Audit <span style={{ fontSize: '11px' }}>↗</span>
-              </InternalLink>
               <InternalLink to="/faq">FAQ</InternalLink>
             </div>
           </StyledSectionFlex>
@@ -312,7 +309,7 @@ const About = (props) => {
             <span>
               <a href="https://jobs.lever.co/Uniswap">
                 {' '}
-                <h3>Full list of roles available at Uniswap</h3>
+                <h3>Full list of roles available at Uniswap Labs</h3>
               </a>
             </span>
           </StyledSectionFlex>
@@ -325,7 +322,8 @@ const About = (props) => {
 
             <p>
               We encourage anyone facing issues with their wallet, transaction or Uniswap related question to join our
-              active community discord.
+              active community discord or explore the{' '}
+              <ExternalLink href={'https://help.uniswap.org'}>help & tutorial</ExternalLink> site.
             </p>
 
             <div style={{ display: 'flex', width: '100%', margin: 0 }}>

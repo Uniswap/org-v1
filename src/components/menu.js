@@ -124,6 +124,11 @@ const StyledMenuTitle = styled.span`
   @media (max-width: 960px) {
     margin-bottom: 1rem;
     user-select: none;
+    :hover nav,
+    &:focus-within nav,
+    nav:hover {
+      padding: 0;
+    }
   }
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 `

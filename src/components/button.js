@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 const ButtonStyles = css`
   padding: 0.35rem 0.85rem;
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: 16px;
   display: inline-block;
   box-sizing: border-box;
   font-weight: 500;
@@ -23,7 +23,7 @@ const ButtonStyles = css`
     transform: scale(1);
     border: ${({ outlined, theme }) => (outlined ? `1px solid ${theme.buttonBorderHover}` : 'initial')};
   }
-  background-color: ${({ outlined, theme }) => (outlined ? 'none' : theme.textColor)};
+  background-color: ${({ outlined, theme }) => (outlined ? theme.cardBG : theme.textColor)};
   color: ${({ outlined, theme }) => (outlined ? theme.textColor : theme.invertedTextColor)};
   border: ${({ outlined, theme }) => (outlined ? `1px solid ${theme.buttonBorder}` : 'initial')};
 `
