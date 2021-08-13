@@ -462,7 +462,7 @@ const EcosystemSection = () => {
       <StyledItemRow>
         <span>
           <StyledSectionHeader>{'UNISWAP ECOSYSTEM →'}</StyledSectionHeader>
-          <StyledSectionTitle>A growing network of Defi Apps.</StyledSectionTitle>
+          <StyledSectionTitle>A growing network of DeFi Apps.</StyledSectionTitle>
           <StyledBodySubText style={{ marginRight: '48px' }}>
             Developers, traders, and liquidity providers participate together in a financial marketplace that is open
             and accessible to all.
@@ -470,7 +470,7 @@ const EcosystemSection = () => {
         </span>
         <AppsCard>
           <h1>200+</h1>
-          <p>Defi Integrations</p>
+          <p>DeFi Integrations</p>
         </AppsCard>
       </StyledItemRow>
     </StyledSection>
@@ -486,7 +486,7 @@ const DeveloperSection = props => {
           <DeveloperCard
             style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', width: '100%' }}
           >
-            <StyledSectionTitle>Superpowers for DEFI developers.</StyledSectionTitle>
+            <StyledSectionTitle>Superpowers for DeFi developers.</StyledSectionTitle>
             <StyledBodySubTitle style={{ fontSize: '20px' }}>
               Build DApps and tools on the largest crypto project on Ethereum. Get started with quick start guides,
               protocol documentation, a Javascript SDK, and fully open source code.

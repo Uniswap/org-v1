@@ -279,7 +279,7 @@ const About = props => {
               </h2>
               <h2 style={{ fontSize: '32px' }}>
                 {'> 200'}
-                <p style={{ fontSize: '14px' }}>Defi Integrations</p>
+                <p style={{ fontSize: '14px' }}>DeFi Integrations</p>
               </h2>
             </div>
           </Numbers>
