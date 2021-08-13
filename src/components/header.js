@@ -88,7 +88,7 @@ const StyledTradeLink = styled.a`
   white-space: nowrap;
   margin-left: 1rem;
   border: 1px solid transparent;
-  box-shadow: ${({ theme }) => theme.shadows.huge};
+  box-shadow: ${({ theme }) => theme.shadows.small};
 
   :hover,
   :focus {
