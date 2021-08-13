@@ -25,6 +25,7 @@ export const theme = darkMode => ({
   invertedTextColor: darkMode ? '#010101' : white,
   greyText: darkMode ? white : '#6C7284',
   buttonBorder: darkMode ? `#FFFFFF30` : '#01010130',
+  buttonBorderHover: darkMode ? `#FFFFFF60` : '#01010160',
 
   heroBG: darkMode
     ? 'radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%)'
@@ -41,7 +42,7 @@ export const theme = darkMode => ({
   backgroundColor: darkMode ? '#0f1013' : '#F7F8FA',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
-  cardBG: darkMode ? 'rgba(0, 0, 0, .5)' : 'rgba(255, 255, 255, .5)',
+  cardBG: darkMode ? 'rgba(255, 255, 255, .02)' : 'rgba(0, 0, 0, .04)',
   menuBG: darkMode ? 'black' : 'white',
   marqueeBG: darkMode ? '#010101' : '#010101',
 
@@ -127,9 +128,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
-  
-  
-    html {
+  html {
     font-size: 16px;
     font-variant: none;
     background-color: ${({ theme }) => theme.backgroundColor};
@@ -143,6 +142,7 @@ export const GlobalStyle = createGlobalStyle`
     overflow-y: scroll;
     width: 100%;
     box-sizing: border-box;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
 
   body {
@@ -151,16 +151,13 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: "Inter Roman", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on;
-
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.55;
-    /* max-width: 1440px; */
+    max-width: 1440px;
     width: 100%;
     margin: 0px auto;
     font-weight: 400 !important;
     color: ${({ theme }) => theme.textColor};
-
     
     @media (min-width: 1441px) {
         overflow-x: visible;
@@ -179,26 +176,26 @@ export const GlobalStyle = createGlobalStyle`
 
   .title{
     letter-spacing: -0.05em;
-    font-family: "GT Haptik Regular";
     font-size: 72px;
   }
 
   h1 {
-    font-family: "GT Haptik Regular";
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin-top: 1.75rem ;
     font-size: 1.875rem;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   h2 {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1.5rem;
     font-weight: 400;
-    font-family: "GT Haptik Regular";  }
+  }
 
   h3 {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
-    font-family: "GT Haptik Regular";  }
-
+  }
 
 
   #gatsby-focus-wrapper{

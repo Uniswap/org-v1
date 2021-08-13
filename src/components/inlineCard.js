@@ -58,7 +58,7 @@ const StyledMiniCardHeader = styled.p`
   margin-top: 0px;
   font-weight: 600;
   font-size: 1.25rem;
-  font-family: 'Inter Roman';
+  font-family: 'Inter';
   font-style: monospace;
 `
 
@@ -69,7 +69,7 @@ const StyledMiniCardDesc = styled.p`
   padding-bottom: 1.5rem;
 `
 
-const InlineCard = (props) => {
+const InlineCard = props => {
   return (
     <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} href={props.to}>
       <Tag>{props.icon}</Tag>

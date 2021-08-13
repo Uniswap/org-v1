@@ -4,6 +4,8 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import { client } from '../apollo/client'
 import { GLOBAL_QUERY } from '../apollo/queries'
+import Glimmer from '../images/glimmer_center.svg'
+import GlimmerGray from '../images/glimmer_gray.svg'
 
 const StyledSectionFlex = styled.div`
   display: flex;
@@ -48,9 +50,59 @@ const BigNumbers = styled(StyledSectionFlex)`
   font-size: 48px;
   font-weight: 700;
   flex-direction: column;
+  position: relative;
+  overflow: visisble;
+  p {
+    font-weight: 300;
+  }
   @media (max-width: 960px) {
     font-size: 32px;
   }
+`
+
+export const Sparkle = styled.div`
+  background: url(${Glimmer});
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  top: -30px;
+  left: -30px;
+`
+
+export const SparkleBottom = styled.div`
+  background: url(${Glimmer});
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  right: -30px;
+  bottom: -30px;
+`
+
+export const SparkleGray = styled.div`
+  background: url(${GlimmerGray});
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  right: -30px;
+  bottom: -30px;
+`
+
+export const SparkleTopRight = styled.div`
+  background: url(${GlimmerGray});
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: -30px;
+  right: -30px;
 `
 
 export const GET_BLOCK = gql`
@@ -87,16 +139,16 @@ const ProtocolData = () => {
   const { data: globalData } = useQuery(GLOBAL_QUERY, { pollInterval: 10000, client: client })
 
   // hardcode at 1B in case of data failure
-  const volume = globalData ? globalData?.uniswapFactory?.totalVolumeUSD : 100000000000
+  // const volume = globalData ? globalData?.uniswapFactory?.totalVolumeUSD : 100000000000
   const transactions = globalData ? globalData?.uniswapFactory?.txCount : 29000000
 
-  const formattedVol = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    notation: 'compact',
-    compactDisplay: 'short'
-    // maximumSignificantDigits: 5
-  }).format(volume)
+  // const formattedVol = new Intl.NumberFormat('en-US', {
+  //   style: 'currency',
+  //   currency: 'USD',
+  //   notation: 'compact',
+  //   compactDisplay: 'short'
+  //   // maximumSignificantDigits: 5
+  // }).format(volume)
 
   const formattedTransactions = new Intl.NumberFormat('en-US', {
     notation: 'compact',
@@ -108,30 +160,28 @@ const ProtocolData = () => {
     <Numbers id="about" style={{ flexDirection: 'column' }}>
       <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', margin: 0 }}>
         <BigNumbers>
-          <span>
-            {formattedVol}
-            <span style={{ opacity: '0.1' }}>+</span>
-          </span>
-          <p style={{ fontSize: '14px' }}>All Time Volume</p>
+          <Sparkle />
+          <span>$386B</span>
+          <p style={{ fontSize: '14px' }}>Trade Volume</p>
+          <SparkleGray />
         </BigNumbers>
         <BigNumbers>
-          <span>
-            72K<span style={{ opacity: '0.1' }}>+</span>
-          </span>
-          <p style={{ fontSize: '14px' }}>Liquidity Providers</p>
+          <SparkleTopRight />
+
+          <SparkleGray />
+          <span>1.5M+</span>
+          <p style={{ fontSize: '14px' }}>All Time Users</p>
         </BigNumbers>
         <BigNumbers>
-          <span>
-            {formattedTransactions}
-            <span style={{ opacity: '0.1' }}>+</span>
-          </span>
+          <span>{formattedTransactions}</span>
           <p style={{ fontSize: '14px' }}>All Time Trades</p>
+          <SparkleGray />
         </BigNumbers>
+
         <BigNumbers>
-          <span>
-            200<span style={{ opacity: '0.1' }}>+</span>
-          </span>
-          <p style={{ fontSize: '14px' }}>Defi Integrations</p>
+          <SparkleBottom />
+          <span>325M</span>
+          <p style={{ fontSize: '14px' }}>Votes Cast by Community</p>
         </BigNumbers>
       </div>
     </Numbers>

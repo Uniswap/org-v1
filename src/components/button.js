@@ -5,15 +5,12 @@ const ButtonStyles = css`
   text-decoration: none;
   border-radius: 12px;
   display: inline-block;
-  transform: scale(0.98);
-  transition: transform 0.25s ease;
   box-sizing: border-box;
   font-weight: 500;
   font-size: 1.125rem;
   cursor: pointer;
   width: fit-content;
   @media (max-width: 960px) {
-    /* margin: 0 0.5rem 0 0.5rem; */
     text-align: center;
     text-decoration: none;
     padding: 0.25rem 1rem;
@@ -24,8 +21,9 @@ const ButtonStyles = css`
   }
   :hover {
     transform: scale(1);
+    border: ${({ outlined, theme }) => (outlined ? `1px solid ${theme.buttonBorderHover}` : 'initial')};
   }
-  background-color: ${({ outlined, theme }) => (outlined ? 'none' : theme.textColor)};
+  background-color: ${({ outlined, theme }) => (outlined ? theme.cardBG : theme.textColor)};
   color: ${({ outlined, theme }) => (outlined ? theme.textColor : theme.invertedTextColor)};
   border: ${({ outlined, theme }) => (outlined ? `1px solid ${theme.buttonBorder}` : 'initial')};
 `

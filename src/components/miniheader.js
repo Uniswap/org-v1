@@ -92,7 +92,7 @@ const StyledNavTitleWrapper = styled.nav`
 `
 
 const StyledNavTitle = styled(Link)`
-  font-family: 'GT Haptik Regular', 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: ${({ theme }) => theme.textColor};
   margin-left: 0.35rem;
   margin-bottom: 0.15rem;

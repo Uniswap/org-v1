@@ -30,7 +30,7 @@ const StyledHeader = styled.header`
   border-bottom: 1px solid ${({ theme, open, showBG }) => (showBG && !open ? theme.concreteGray : 'none')};
   transition: background-color 0.25s ease;
   @media (max-width: 960px) {
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.25rem;
     height: ${({ open }) => (open ? '100vh' : '100%')};
   }
 `
@@ -39,7 +39,8 @@ const StyledNav = styled.nav`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  width: 100%;
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     position: fixed;
@@ -71,15 +72,7 @@ const StyledNav = styled.nav`
 const StyledNavTitleWrapper = styled.nav`
   display: flex;
   align-items: center;
-`
-
-const HeaderText = styled.h2`
-  line-height: auto;
-  margin: 0px;
-  margin-bottom: 4px;
-  margin-left: 8px;
-  font-size: 20px;
-  color: ${({ theme }) => theme.textColor} !important;
+  width: 100%;
 `
 
 const StyledTradeLink = styled.a`
@@ -89,18 +82,17 @@ const StyledTradeLink = styled.a`
   color: ${({ theme }) => theme.invertedTextColor};
   border-radius: 12px;
   display: inline-block;
-  transition: transform 0.25s ease;
   font-weight: 500;
-  font-family: 'GT Haptik Regular';
+  width: 100%;
+  width: min-content;
+  white-space: nowrap;
+  margin-left: 1rem;
+  border: 1px solid transparent;
+  box-shadow: ${({ theme }) => theme.shadows.small};
 
-  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
-
-  :hover {
-    transform: translate3d(2px, 2px, 10px);
-  }
-
-  @media (max-width: 960px) {
-    display: none;
+  :hover,
+  :focus {
+    border: 1px solid white;
   }
 `
 
@@ -154,8 +146,8 @@ const StyledUni = styled(Uni)`
     fill: ${({ theme }) => theme.textColor};
   }
   margin: 0;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   margin-right: 0.35rem;
   margin-top: -4px;
   transform: rotate(0deg);
@@ -211,7 +203,6 @@ const Header = props => {
           menulinks {
             name
             sublinks {
-              description
               name
               link
             }
@@ -259,7 +250,6 @@ const Header = props => {
           }}
         >
           <StyledUni />
-          <HeaderText>Uniswap</HeaderText>
         </StyledHomeLink>
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
@@ -275,7 +265,6 @@ const Header = props => {
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </StyledButton>
         </HideSmall>
-
         {props.path !== undefined && (
           <StyledTradeLink
             style={{
