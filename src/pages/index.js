@@ -330,10 +330,10 @@ const IndexPage = props => {
             <a href="https://twitter.com/uniswap/">
               <StyledTwitter />
             </a>
-            <a href="https://twitter.com/uniswap/">
+            <a href="https://github.com/Uniswap/">
               <StyledGithub />
             </a>
-            <a href="https://twitter.com/uniswap/">
+            <a href="https://discord.gg/FCfyBSbCU5">
               <StyledDiscord />
             </a>
           </StyledSocialRow>
