@@ -180,8 +180,8 @@ const ProtocolData = () => {
 
         <BigNumbers>
           <SparkleBottom />
-          <span>325M</span>
-          <p style={{ fontSize: '14px' }}>Votes Cast by Community</p>
+          <span>8,400+</span>
+          <p style={{ fontSize: '14px' }}>Community Delegates</p>
         </BigNumbers>
       </div>
     </Numbers>
