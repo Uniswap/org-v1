@@ -71,9 +71,15 @@ const Footer = () => {
         </StyledFooterLink>
         <StyledFooterLink to="/trademarks">Trademarks</StyledFooterLink>
         <StyledFooterLink to="/about#brand">Brand</StyledFooterLink>
-        <StyledTwitter />
-        <StyledGithub />
-        <StyledDiscord />
+        <a href="https://twitter.com/Uniswap" rel="noopener noreferrer" target="_blank">
+          <StyledTwitter />
+        </a>
+        <a href="https://github.com/Uniswap" rel="noopener noreferrer" target="_blank">
+          <StyledGithub />
+        </a>
+        <a href="https://discord.gg/FCfyBSbCU5" rel="noopener noreferrer" target="_blank">
+          <StyledDiscord />
+        </a>
       </StyledFooterLinkSection>
     </StyledFooter>
   )
