@@ -98,6 +98,9 @@
     "gatsby-plugin-s3": "^0.3.4",
     "prettier": "^1.19.1"
   },
+  "resolutions": {
+    "sharp": "0.28.0"
+  },
   "keywords": [
     "gatsby"
   ],
