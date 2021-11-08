@@ -318,7 +318,7 @@ const Blog = props => {
           <PostMetaData>
             {/* <PostAuthor>{props.pageContext.frontmatter.author}</PostAuthor> {' — '} */}
             <PostDate parse="YYYY-MM-DD" format="MMMM Do, YYYY">
-              {props.pageContext.frontmatter.date}
+              {console.log(props.pageContext.frontmatter.date)}
             </PostDate>
           </PostMetaData>
         </PostHeader>
