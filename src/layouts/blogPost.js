@@ -317,9 +317,9 @@ const Blog = props => {
           <PostTitle>{props.pageContext.frontmatter.title}</PostTitle>
           <PostMetaData>
             {/* <PostAuthor>{props.pageContext.frontmatter.author}</PostAuthor> {' — '} */}
-            <PostDate parse="YYYY-MM-DD" format="MMMM Do, YYYY">
+            {/* <PostDate parse="YYYY-MM-DD" format="MMMM Do, YYYY">
               {props.pageContext.frontmatter.date}
-            </PostDate>
+            </PostDate> */}
           </PostMetaData>
         </PostHeader>
 
