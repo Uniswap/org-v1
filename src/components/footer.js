@@ -20,6 +20,10 @@ const StyledFooter = styled.footer`
   @media (max-width: 960px) {
     padding: 1rem;
   }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
 `
 
 const StyledFooterLinkSection = styled.ul`

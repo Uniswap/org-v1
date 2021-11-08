@@ -210,9 +210,15 @@ const WrappedHeroImage = styled(Img)`
   width: 100vw;
   height: 550px;
   max-width: 1440px;
+
   @media (max-width: 960px) {
     width: 100vw;
     height: 360px;
+  }
+
+  @media (max-width: 960px) {
+    width: 100vw;
+    height: 200px;
   }
 
   img {
@@ -316,7 +322,6 @@ const Blog = props => {
           <BlogLink to="/blog">{'Blog'}</BlogLink>
           <PostTitle>{props.pageContext.frontmatter.title}</PostTitle>
           <PostMetaData>
-            {/* <PostAuthor>{props.pageContext.frontmatter.author}</PostAuthor> {' — '} */}
             <PostDate parse="YYYY-MM-DD" format="MMMM Do, YYYY">
               {props.pageContext.frontmatter.date}
             </PostDate>

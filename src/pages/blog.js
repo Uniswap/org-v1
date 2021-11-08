@@ -85,9 +85,6 @@ export const PostLinkWrapper = styled(Link)`
   justify-content: space-between;
   align-items: flex-start;
 
-  /* > * + * {
-    margin-left: 36px;
-  } */
   @media (max-width: 960px) {
     > * + * {
       margin-left: 0;
@@ -99,14 +96,11 @@ export const PostTitleWrapper = styled.div`
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  /* margin-top: 24px; */
   padding: 2rem;
   h2 {
     font-size: 36px;
   }
-  /* > * + * {
-    margin-left: 24px;
-  } */
+
   @media (max-width: 960px) {
     > * + * {
       margin-left: 0;
@@ -134,6 +128,10 @@ export const StyledImage = styled(Img)`
   overflow: hidden;
   @media (max-width: 960px) {
     height: 256px;
+  }
+
+  @media (max-width: 600px) {
+    height: 160px;
   }
 `
 
@@ -203,7 +201,6 @@ const Blog = props => {
     <Layout path={props.location.pathname}>
       <BG />
       <SEO title="Uniswap Blog" path={props.location.pathname} />
-
       <StyledBlog>
         <PageTitleWrapper>
           <h2 style={{ fontSize: '56px' }}>Blog</h2>
@@ -222,9 +219,7 @@ const Blog = props => {
                   {index === 0 && <NewPill>New</NewPill>}
                   <PostTitleWrapper>
                     <h2 style={{ marginTop: '0px' }}>{node.frontmatter.title}</h2>
-
                     {node.frontmatter.previewText ? <p>{node.frontmatter.previewText} </p> : ''}
-
                     <PostMetaData>{node.frontmatter.date + ' - ' + node.fields.readingTime.text}</PostMetaData>
                   </PostTitleWrapper>
                   {node.frontmatter.featuredImage && (
