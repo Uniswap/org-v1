@@ -6,45 +6,45 @@ featuredImage: ./hero.png
 previewText: 'Uniswap Brand Update, an overview of the new Uniswap brand.'
 ---
 
-Today, we're incredibly excited to share proposed new branding for the Uniswap Protocol. 
+Today, we're incredibly excited to share proposed new branding for the Uniswap Protocol.
 
-And, over the coming week, we’ll be hosting a community call to discuss the creative process and also soliciting feedback through the governance forum. 
+And, over the coming week, we’ll be hosting a community call to discuss the creative process and also soliciting feedback through the governance forum.
 
 # Visually Distinguishing Labs from Protocol
 
 Since its inception, the unicorn logo has been a steadfast marker of the spirit of Uniswap. But as the Uniswap ecosystem has grown, the need for a more robust graphic toolkit to express and distinguish the ecosystem’s many facets has become apparent.
 
-In particular, separate visual identities will clarify the distinction between the Uniswap Protocol and Uniswap Labs to the Uniswap community and external observers, further defining the function, responsibilities, and governance of each. The two are sometimes confused with each other, but in practice they are entirely separate things: the Uniswap Protocol is the set of on-chain, immutable smart contracts that facilitate peer-to-peer trading, while Uniswap Labs refers to the software development studio that builds and maintains products generally adjacent to the Protocol. Uniswap Labs is one of hundreds of companies that builds products on top of the Protocol and may someday build products further afield from the Protocol.  
+In particular, separate visual identities will clarify the distinction between the Uniswap Protocol and Uniswap Labs to the Uniswap community and external observers, further defining the function, responsibilities, and governance of each. The two are sometimes confused with each other, but in practice they are entirely separate things: the Uniswap Protocol is the set of on-chain, immutable smart contracts that facilitate peer-to-peer trading, while Uniswap Labs refers to the software development studio that builds and maintains products generally adjacent to the Protocol. Uniswap Labs is one of hundreds of companies that builds products on top of the Protocol and may someday build products further afield from the Protocol.
 
 # Designing a new mark
 
-Graphic designer Timothy Luke, who worked with Uniswap Grants to develop its logo system, drew the new Protocol mark. His ornate, futuristic sensibility felt like the perfect fit for depicting a crypto-powered unicorn. 
+Graphic designer Timothy Luke, who worked with Uniswap Grants to develop its logo system, drew the new Protocol mark. His ornate, futuristic sensibility felt like the perfect fit for depicting a crypto-powered unicorn.
 
-The final logo-set consists of 4 variations based on size: 
+The final logo-set consists of 4 variations based on size:
 
 ![](./protocol.png)
 
-Luke also developed a mark for Uniswap Labs, using the atomic parts of the glimmer and shield. Compared to the ornate unicorn logo, the mark for Labs is more neutral, representing an organization that has a connection to, but is separate from, the Protocol. 
+Luke also developed a mark for Uniswap Labs, using the atomic parts of the glimmer and shield. Compared to the ornate unicorn logo, the mark for Labs is more neutral, representing an organization that has a connection to, but is separate from, the Protocol.
 
 ![](./labs.png)
 
-The final result is a cohesive system of marks that symbolizes the relationship between Uniswap Protocol, Uniswap Labs, and Uniswap Grants Program. We’re blown away by the vision Luke has brought to life, and we hope you’re just as excited. 
+The final result is a cohesive system of marks that symbolizes the relationship between Uniswap Protocol, Uniswap Labs, and Uniswap Grants Program. We’re blown away by the vision Luke has brought to life, and we hope you’re just as excited.
 
-![](./uniswap.png)
+![](./family.png)
 
 # An on-chain brand
 
-We are taking steps to be the first organization to bring their brand fully on chain. 
+We are taking steps to be the first organization to bring their brand fully on chain.
 
 Once the community has settled on branding, the Protocol logos will be generated as NFTs and sent to the Uniswap governance treasury. Community members may use the logos as they see fit under the rights set out by Uniswap Labs’ [Trademark Guidelines](https://uniswap.org/trademarks/).
 
-# Request for Comment 
+# Request for Comment
 
 The Uniswap community is invited to contribute comments and propose changes to the redesign before it goes live through a thread on the Governance forum.
 
-On Wednesday, November 10th at 1pm ET, the Labs design team will share a presentation, describing the inspiration for the new branding and providing additional context on the creative process, before opening up the floor to community discussion. (Details for the presentation call will be posted on the Uniswap Labs Twitter account and in the governance forum thread.) 
+On Wednesday, November 10th at 1pm ET, the Labs design team will share a presentation, describing the inspiration for the new branding and providing additional context on the creative process, before opening up the floor to community discussion. (Details for the presentation call will be posted on the Uniswap Labs Twitter account and in the governance forum thread.)
 
-We’re thrilled to share these updates and look forward to hearing your thoughts over the coming week. 
+We’re thrilled to share these updates and look forward to hearing your thoughts over the coming week.
 
 ---
 
